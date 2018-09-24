@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<?NLS  TYPE="org.eclipse.help.toc"?>
-<toc label="“Healthcare：从 HIPAA 到 XML”模式" topic="pattern/overview.htm">
-    <topic label="“Healthcare：从 HIPAA 到 XML”模式" href="pattern/overview.htm">
-  		<topic label="模式参数" href="pattern/parameters.htm"/>
-    </topic>
-</toc>

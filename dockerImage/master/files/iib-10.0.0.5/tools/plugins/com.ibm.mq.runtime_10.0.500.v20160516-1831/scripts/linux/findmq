@@ -1,4 +1,0 @@
-#/bin/bash
-echo "$1/iib mqsifindmqpath"
-$1/iib mqsifindmqpath
-exit

@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# Work out the DFDL directory.
-DFDLDIR=$(cd `dirname $0`; cd ..; pwd)
-
-# Run the Java command.
-java -cp "${DFDLDIR}/lib/ibm-dfdl.jar:${DFDLDIR}/lib/icu4j.jar" com.ibm.dfdl.common.util.DFDLVersion

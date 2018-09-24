@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<SoftwareIdentity name="IBM WebSphere Message Broker Healthcare Provider Pack Base" uniqueId="91660cc8c48746fe8ca620c21492d345-4.0.0" version="4.0.0" versionScheme="multipartnumeric" xmlns="http://standards.iso.org/iso/19770/-2/2014-CD1/schema.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.iso.org/iso/19770/-2/2014-CD1/schema.xsd swid.xsd">
-    <Meta persistentId="91660cc8c48746fe8ca620c21492d345"/>
-    <Meta taxonomyCode="SS8SP2"/>
-    <Meta taggingProcess="4-1-20150417"/>
-    <Entity name="IBM" regid="regid.1986-03.com.ibm" role="licensor publisher tagcreator"/>
-</SoftwareIdentity>

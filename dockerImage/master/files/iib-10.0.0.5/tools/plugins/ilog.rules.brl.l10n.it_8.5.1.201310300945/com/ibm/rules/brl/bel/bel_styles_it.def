@@ -1,8 +1,0 @@
-#
-#Mon Sep 12 12:25:44 CEST 2011
-locale=it
-imports=boot
-syntaxes=styles_dummy
-name=bel_styles
-schema=com/ibm/rules/brl/bel/bel_styles.xsd
-onlyVocabulary=false

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--© Copyright IBM Corporation 2013-->
-<?eclipse version="3.0"?><plugin id="com.ibm.wbit.samples.framework.doc" name="Samples Gallery Documentation"
-        provider-name="IBM"
-        version="8.5.0.v20130522-1718">
-   <extension point="org.eclipse.help.toc">
-      <toc file="xprod_sampframe_toc.xml" primary="true"/>
-   </extension>
-</plugin>

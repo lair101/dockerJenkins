@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><feature id="com.ibm.iib.langpacks.doc.feature" label="IBM Integration Bus: Language packs local help" provider-name="IBM Corp." version="10.0.0.v20150327_0856">
-<description>Download and install the Language packs</description>
-<copyright>© Copyright IBM Corp. 1998, 2015.</copyright>
-<license>Licensed by IBM under the terms and conditions of the International Program License Agreement. Refer to the accompanying License Information and License Agreement documentation.</license>
-<plugin fragment="true" id="com.ibm.iib.langpacks.doc.nl1" unpack="false" version="10.0.0.v20150325_1057"/>
-<plugin id="com.ibm.iib.langpacks.doc" unpack="false" version="10.0.0.v20150325_1057"/>
-</feature>

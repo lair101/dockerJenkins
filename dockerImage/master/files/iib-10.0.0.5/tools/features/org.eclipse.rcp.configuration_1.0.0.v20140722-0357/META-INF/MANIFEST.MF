@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Build-Jdk: 1.7.0_25
-Built-By: genie.ltscentral
-Archiver-Version: Plexus Archiver
-Created-By: Apache Maven
-
-Name: feature.xml
-SHA1-Digest: xUeRqc2Ih94Ueotv2jRqSOE4Zjc=
-

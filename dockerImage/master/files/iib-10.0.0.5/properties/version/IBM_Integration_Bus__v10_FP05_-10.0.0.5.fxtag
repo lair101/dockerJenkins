@@ -1,7 +1,0 @@
-<Fix InventoryTagVersion="1.0">
-<FixType>Fix Pack</FixType>
-<FixName>IBM Integration Bus (v10 FP05)</FixName>
-<FixVersion>10.0.0.5</FixVersion>
-<FixID>10.0.0-IIB-FP0005</FixID>
-<SWGFMIDX>HIIBUS000</SWGFMIDX>
-</Fix>

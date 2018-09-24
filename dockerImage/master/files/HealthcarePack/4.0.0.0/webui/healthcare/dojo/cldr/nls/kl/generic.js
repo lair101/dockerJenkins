@@ -1,2 +1,0 @@
-//>>built
-define("dojo/cldr/nls/kl/generic",{"field-day-relative+-1":"ippassaq","field-day-relative+0":"ullumi","field-day-relative+-2":"ippassaani","field-day-relative+1":"aqagu","field-day-relative+2":"aqaguagu"});

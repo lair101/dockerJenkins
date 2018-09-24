@@ -1,8 +1,0 @@
-# IBM Content Magic TCPIP parameters for the proxy configuration
-SocksEnabled = false 
-NoProxy = *.your.local.domain
-ProxyPort = 80 
-Socks = your.socks.server
-ProxyEnabled = false 
-Proxy = your.proxy.server
-SocksPort = 1080 

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<?NLS  TYPE="org.eclipse.help.toc"?>
-<toc label="Healthcare: Patient Identifier Cross-reference Manager" topic="pattern/overview.htm">
-    <topic label="「Healthcare: Patient Identifier Cross-reference Manager」パターン" href="pattern/overview.htm">
-       <topic href="pattern/constraints.htm" label="パターンの使用に関する制約" />
-       <topic href="pattern/before.htm" label="パターンを使用する前に完了するタスク" />
-       <topic href="pattern/parameters.htm" label="パターン・パラメーター" />
-	</topic>
-</toc>

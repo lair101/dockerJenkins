@@ -1,4 +1,0 @@
-# Any line that begins with # are comment lines so it will be ignored in this file.
-# Also, empty lines will be ignored.
-
-runtimes/websphere_apis.jar

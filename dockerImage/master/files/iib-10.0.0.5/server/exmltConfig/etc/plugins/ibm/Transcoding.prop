@@ -1,9 +1,0 @@
-#General Purpose WebSphere Transcoding Publisher Constants
-
-#The Maximum Document size (in bytes) the Text Engine or Fragmentation Engine will process
-maxDocumentSize=250000
-
-#The Maximum Document size (in characters) the Text Engine will Save for Possible later use in
-#Generating an Original (Untranscoded) DOM for Text Clippers
-maxSavedDocumentSize=30000
-

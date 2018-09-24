@@ -1,6 +1,0 @@
-#
-#Mon Sep 12 12:25:44 CEST 2011
-locale=it
-imports=bel_number,bel_string,bel_date,bel_logical,bel_object,bel_context,bel_array,bel_concepts
-name=bel_boot
-onlyVocabulary=true

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions name="Inbound_PortType" targetNamespace="http://" xmlns:tns="http://" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <wsdl:types>
-    <xsd:schema>
-    </xsd:schema>
-  </wsdl:types>
-  <wsdl:portType name="Inbound_PortType"/>
-</wsdl:definitions>

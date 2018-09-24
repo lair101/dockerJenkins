@@ -1,8 +1,0 @@
-<module name="brokerSecurity" class="com.ibm.broker.axis2.BrokerSecurityModule">
-  <Description>This is a handler for broker specific security setup for RM.</Description>
-  <InFlow>
-    <handler name="BrokerSecurityInHandler" class="com.ibm.broker.axis2.BrokerSecurityInHandler">
-      <order phase="BrokerSecurity" phaseFirst="true"/>
-    </handler>
-  </InFlow>
-</module> 

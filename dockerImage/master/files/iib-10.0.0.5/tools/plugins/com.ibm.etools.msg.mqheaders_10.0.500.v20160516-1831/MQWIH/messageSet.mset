@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<msgmodel:MRMessageSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:msgmodel="http://www.ibm.com/msgmodel/2003/MSGModel" name="MQWIH" description="MQWIH (MQSeries work information header). " messageTypePrefix="" parserDomain="MQWIH" namespacesEnabled="false" currentMessageSetId="//@MRMessageSetID.0">
-  <MRMessageSetRep xsi:type="msgmodel:MRCWFMessageSetRep" name="CWF" formatIdentifier_deprecated="CWF" daysInFirstWeekOfTheYear="Four" firstDayOfWeek="Monday" timeZoneID="0" useMessageSetDefaultDateTimeFormat="true" byteAlignmentPad="SPACE"/>
-  <MRMessageSetID repositoryId="940620106" messageSetId="118" level="1"/>
-</msgmodel:MRMessageSet>

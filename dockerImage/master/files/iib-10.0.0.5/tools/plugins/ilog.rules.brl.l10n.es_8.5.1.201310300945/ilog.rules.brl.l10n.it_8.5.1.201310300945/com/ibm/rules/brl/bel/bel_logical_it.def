@@ -1,6 +1,0 @@
-#
-#Mon Sep 12 12:25:43 CEST 2011
-locale=it
-imports=bel_styles,boolean
-name=bel_logical
-onlyVocabulary=true

@@ -1,2 +1,0 @@
-instructions.install = \
-	chmod(targetDir:@artifact,targetFile:importer/IGYCCOB2,permissions:755);

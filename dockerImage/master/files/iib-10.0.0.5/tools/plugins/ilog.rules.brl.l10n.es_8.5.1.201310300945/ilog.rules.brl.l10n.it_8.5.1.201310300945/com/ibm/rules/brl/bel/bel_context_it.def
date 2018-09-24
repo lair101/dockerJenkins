@@ -1,6 +1,0 @@
-#
-#Mon Sep 12 12:25:44 CEST 2011
-locale=it
-imports=bel_styles,bel_concepts,bel_date,string
-name=bel_context
-onlyVocabulary=true

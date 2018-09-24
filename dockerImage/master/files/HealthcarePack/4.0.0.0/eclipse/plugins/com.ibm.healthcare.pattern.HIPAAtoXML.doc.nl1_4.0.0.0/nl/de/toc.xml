@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<?NLS  TYPE="org.eclipse.help.toc"?>
-<toc label="Muster 'Healthcare: HIPAA in XML'" topic="pattern/overview.htm">
-    <topic label="Muster: 'Healthcare: HIPAA in XML'" href="pattern/overview.htm">
-  		<topic label="Musterparameter für das Muster 'Web-Service an DICOM'" href="pattern/parameters.htm"/>
-    </topic>
-</toc>
