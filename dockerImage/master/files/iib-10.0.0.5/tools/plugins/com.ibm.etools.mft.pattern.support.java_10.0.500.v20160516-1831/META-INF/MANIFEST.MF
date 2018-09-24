@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.jet;bundle-version="[1.1.0,1.2.0)",com.ibm
+ .etools.mft.pattern.support.api;bundle-version="[10.0.0,11.0.0)",org.
+ eclipse.core.resources;bundle-version="3.4.2",org.eclipse.ui.ide;bund
+ le-version="[3.2.1,4.0.0)",org.eclipse.jdt.core;bundle-version="[3.2.
+ 3,4.0.0)";visibility:=reexport,org.eclipse.jdt.ui;bundle-version="[3.
+ 2.2,4.0.0)",org.eclipse.ui.forms;bundle-version="[3.2.0,4.0.0)",com.i
+ bm.etools.mft.api;bundle-version="[10.0.0,11.0.0)",com.ibm.etools.mft
+ .flow;bundle-version="[10.0.0,11.0.0)",com.ibm.etools.mft.util;bundle
+ -version="[10.0.0,11.0.0)",org.apache.xerces;bundle-version="2.9.0",c
+ om.ibm.etools.mft.pattern.support.php;bundle-version="[10.0.0,11.0.0)
+ ",com.ibm.etools.mft.pattern.support;bundle-version="[10.0.0,11.0.0)"
+ ,com.ibm.broker.config.appdev;bundle-version="[10.0.0,11.0.0)",org.ec
+ lipse.ui;bundle-version="3.6.2",com.ibm.etools.patterns.ui;bundle-ver
+ sion="[10.0.0,11.0.0)",com.ibm.etools.mft.pattern.support.ui;bundle-v
+ ersion="[10.0.0,11.0.0)"
+Export-Package: com.ibm.etools.mft.pattern.support.java,com.ibm.etools
+ .mft.pattern.support.java.transform,com.ibm.etools.mft.pattern.suppor
+ t.java.ui,com.ibm.etools.mft.pattern.support.java.util,com.ibm.etools
+ .mft.pattern.support.java.wizards
+Plugin-Class: com.ibm.etools.mft.pattern.support.java.PatternAuthoring
+ JavaPlugin
+Bundle-Vendor: IBM
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: patterns.jar
+Bundle-Version: 10.0.500.v20160516-1831
+Eclipse-BuddyPolicy: global
+Bundle-Localization: plugin
+Bundle-Name: %Plugin.name
+Bundle-Activator: com.ibm.etools.mft.pattern.support.java.PatternAutho
+ ringJavaPlugin
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ibm.etools.mft.pattern.support.java;singleton
+ :=true
+
+

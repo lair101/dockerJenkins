@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Licensed Material - Property of IBM 
+ 5724-I66
+ (C) Copyright IBM Corporation 2005, 2015 - All Rights Reserved. 
+ Note to U.S. Government Users Restricted Rights - Use, duplication or disclosure 
+ restricted by GSA ADP Schedule Contract with IBM Corp. 
+
+-->
+<?eclipse version="3.0"?>
+<plugin>
+
+     <!-- Adding to the preference page -->
+    
+    <!--<extension
+         point="com.ibm.etools.mft.debug.common.PreferencePageContents">
+         <contents
+		        id="com.ibm.etools.mft.debug.comm.TimeOut"
+         		type="TEXTBOX"
+         		label="%PREF_SET_COMM_TIMEOUT"
+         		group = "1"
+         		default_value="30000">
+         </contents>
+    </extension>-->
+	<extension
+         point="com.ibm.etools.mft.debug.common.PreferencePageContents">
+         <contents
+		        id="com.ibm.etools.mft.debug.comm.logger"
+         		type="CHECK"
+         		label="%PREF_SET_TRACE"
+         		group = "1"
+         		default_value="false">
+         </contents>
+    </extension>
+</plugin>

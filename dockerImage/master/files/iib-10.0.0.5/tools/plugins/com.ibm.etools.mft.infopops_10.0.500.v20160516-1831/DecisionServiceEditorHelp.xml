@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+  <contexts>
+  
+    <context id="DecisionServiceEditor">
+      <description><b>Decision Service editor</b>
+Use this editor to create or update rules and parameters in a decision service. To create an additional rule, click Add Rule. To create an additional parameter, click Add parameters.
+If the decision service was created by importing an IBM Operational Decision Manager (ODM) Rule Application archive, the editor operates in read-only mode, and it is only possible to view ruleset parameters.  
+    </description>
+      <topic href="../com.ibm.etools.mft.doc/bc23793_.htm" label="DecisionService node"/> 
+      <topic href="../com.ibm.etools.mft.doc/bc23794_.htm" label="Creating a decision service"/>
+      <topic href="../com.ibm.etools.mft.doc/bc23812_.htm" label="Writing rules"/>            
+    </context>
+        
+        
+  </contexts>

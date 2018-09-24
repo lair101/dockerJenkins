@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pdHelp xmlns="http://www.ibm.com/visualutils/pdhelpcontent"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ibm.com/visualutils/pdhelpcontent http://www.ibm.com/visualutils/pdhelpcontent">
+    <!-- This is the PD help for policy properties and tabs for IBM nodes. If you need to add PD help for your node then add entries for your node -->
+    <pluginCategory id="com.ibm.etools.mft.ibmnodes">
+    	<pageHelp id="ComIbmMQOutput_policy">
+			<title>Policy</title>
+			<shortDescription>Use a policy to control the operational behavior of the node at run time. If a policy is specified, the properties in the policy override any properties that are set on the MQ Connection tab in the Integration Toolkit at run time.</shortDescription>
+			<moreDescription>
+			<p>If you require a policy to control the node behavior at run time, you can either generate a new policy document based on the current operational properties of the node by clicking <b>Generate new policy</b>, or you can use a predefined policy document. If you want to use a predefined policy document, enter the policy URL manually.</p>
+            <p>Note, you can find out the URL of a saved policy by viewing the policy in the web user interface. In the navigation tree, expand Operational Policy followed by the policy type, and select the policy name that you want to view.</p>
+            <p>For more information, click the <b>Operational policy</b> link.</p>
+			</moreDescription>
+		</pageHelp>
+        <fieldHelp id="ComIbmMQOutput_policy_policyUrl">
+            <title>Policy URL</title>
+            <description>
+                <p>The URL that specifies the name and location of the policy document. </p>
+                <p>The URL format for the Integration Registry is: /apiv1/policy/MQEndpoint/&lt;policy document name&gt;</p>
+            </description>
+        </fieldHelp>
+        <!-- MQ input policy help -->  
+        <pageHelp id="ComIbmMQInput_policy">
+			<title>Policy</title>
+			<shortDescription>Use a policy to control the operational behavior of the node at run time. If a policy is specified, the properties in the policy override any properties that are set on the MQ Connection tab in the Integration Toolkit at run time.</shortDescription>
+			<moreDescription>
+			<p>If you require a policy to control the node behavior at run time, you can either generate a new policy document based on the current operational properties of the node by clicking <b>Generate new policy</b>, or you can use a predefined policy document. If you want to use a predefined policy document, enter the policy URL manually.</p>
+            <p>Note, you can find out the URL of a saved policy by viewing the policy in the web user interface. In the navigation tree, expand Operational Policy followed by the policy type, and select the policy name that you want to view.</p>
+            <p>For more information, click the <b>Operational policy</b> link.</p>
+			</moreDescription>
+		</pageHelp>
+        <fieldHelp id="ComIbmMQInput_policy_policyUrl">
+            <title>Policy URL</title>
+            <description>
+                <p>The URL that specifies the name and location of the policy document. </p>
+                <p>The URL format for the Integration Registry is: /apiv1/policy/MQEndpoint/&lt;policy document name&gt;</p>
+            </description>
+        </fieldHelp>  
+        <!-- MQ Get policy help -->  
+        <pageHelp id="ComIbmMQGet_policy">
+			<title>Policy</title>
+			<shortDescription>Use a policy to control the operational behavior of the node at run time. If a policy is specified, the properties in the policy override any properties that are set on the MQ Connection tab in the Integration Toolkit at run time.</shortDescription>
+			<moreDescription>
+			<p>If you require a policy to control the node behavior at run time, you can either generate a new policy document based on the current operational properties of the node by clicking <b>Generate new policy</b>, or you can use a predefined policy document. If you want to use a predefined policy document, enter the policy URL manually.</p>
+            <p>Note, you can find out the URL of a saved policy by viewing the policy in the web user interface. In the navigation tree, expand Operational Policy followed by the policy type, and select the policy name that you want to view.</p>
+            <p>For more information, click the <b>Operational policy</b> link.</p>
+			</moreDescription>
+		</pageHelp>
+        <fieldHelp id="ComIbmMQGet_policy_policyUrl">
+            <title>Policy URL</title>
+            <description>
+                <p>The URL that specifies the name and location of the policy document. </p>
+                <p>The URL format for the Integration Registry is: /apiv1/policy/MQEndpoint/&lt;policy document name&gt;</p>
+            </description>
+        </fieldHelp>
+        <!-- MQ Reply policy help -->  
+        <pageHelp id="ComIbmMQReply_policy">
+			<title>Policy</title>
+			<shortDescription>Use a policy to control the operational behavior of the node at run time. If a policy is specified, the properties in the policy override any properties that are set on the MQ Connection tab in the Integration Toolkit at run time.</shortDescription>
+			<moreDescription>
+			<p>If you require a policy to control the node behavior at run time, you can either generate a new policy document based on the current operational properties of the node by clicking <b>Generate new policy</b>, or you can use a predefined policy document. If you want to use a predefined policy document, enter the policy URL manually.</p>
+            <p>Note, you can find out the URL of a saved policy by viewing the policy in the web user interface. In the navigation tree, expand Operational Policy followed by the policy type, and select the policy name that you want to view.</p>
+            <p>For more information, click the <b>Operational policy</b> link.</p>
+			</moreDescription>
+		</pageHelp>
+        <fieldHelp id="ComIbmMQReply_policy_policyUrl">
+            <title>Policy URL</title>
+            <description>
+                <p>The URL that specifies the name and location of the policy document. </p>
+                <p>The URL format for the Integration Registry is: /apiv1/policy/MQEndpoint/&lt;policy document name&gt;</p>
+            </description>
+        </fieldHelp>  
+          
+     </pluginCategory>
+</pdHelp>

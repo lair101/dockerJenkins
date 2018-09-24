@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: asm-3.1.jar,asm-analysis-3.1.jar,asm-commons-3.1.jar
+ ,asm-tree-3.1.jar,asm-util-3.1.jar
+Bundle-Vendor: IBM
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: OW2 ASM (repackaged for IBM WODM)
+Bundle-SymbolicName: com.ibm.rules.thirdparty.asm
+Export-Package: org.objectweb.asm,org.objectweb.asm.commons; uses:="or
+ g.objectweb.asm.signature,  new org.objectweb.asm.commons,  org.objec
+ tweb.asm.tree,  org.objectweb.asm",org.objectweb.asm.signature,org.ob
+ jectweb.asm.tree;uses:="new org.objectweb.asm.tree,org.objectweb.asm"
+ ,org.objectweb.asm.tree.analysis;uses:="org.objectweb.asm.tree,org.ob
+ jectweb.asm",org.objectweb.asm.util;uses:="org.objectweb.asm.signatur
+ e,org.objectweb.asm"
+Bundle-Version: 3.1.0
+Bundle-ManifestVersion: 2
+
+

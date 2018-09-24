@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Export-Package: com.ibm.disthub2.client,com.ibm.disthub2.impl.admin,co
+ m.ibm.disthub2.impl.client,com.ibm.disthub2.impl.crypto.export,com.ib
+ m.disthub2.impl.crypto.nonexport,com.ibm.disthub2.impl.durable,com.ib
+ m.disthub2.impl.durable.pfs,com.ibm.disthub2.impl.durable.pstore,com.
+ ibm.disthub2.impl.formats,com.ibm.disthub2.impl.formats.bridge,com.ib
+ m.disthub2.impl.gd,com.ibm.disthub2.impl.jms,com.ibm.disthub2.impl.ma
+ tching,com.ibm.disthub2.impl.matching.selector,com.ibm.disthub2.impl.
+ multicast,com.ibm.disthub2.impl.multicast.client,com.ibm.disthub2.imp
+ l.net,com.ibm.disthub2.impl.net.http,com.ibm.disthub2.impl.net.proxy,
+ com.ibm.disthub2.impl.net.tcp,com.ibm.disthub2.impl.security,com.ibm.
+ disthub2.impl.util,com.ibm.disthub2.spi,com.ibm.mq.runtime,com.ibm.mq
+ .runtime.classloader,javax.resource,javax.resource.cci,javax.resource
+ .spi,javax.resource.spi.security,javax.transaction,javax.transaction.
+ xa
+Require-Bundle: org.eclipse.osgi;bundle-version="3.8.2",org.eclipse.ui
+ ;bundle-version="3.104.3",org.eclipse.core.runtime;bundle-version="3.
+ 8.0"
+Bundle-Vendor: IBM
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,lib/connector.jar,lib/dhbcore.jar,lib/jta.jar
+Bundle-Version: 10.0.500.v20160516-1831
+Bundle-Localization: plugin
+Bundle-Name: MQ Runtime Plug-in
+Bundle-Activator: com.ibm.mq.runtime.MqActivator
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ibm.mq.runtime;singleton:=true
+
+

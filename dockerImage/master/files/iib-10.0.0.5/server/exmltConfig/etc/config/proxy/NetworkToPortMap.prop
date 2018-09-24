@@ -1,0 +1,4 @@
+# IBM Content Magic NetworkToPortMap parameters for the proxy configuration
+wireless = 8089
+default = 8088
+14.4 = 8090

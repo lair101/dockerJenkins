@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+  <contexts>
+    <context id="StartFromScratchWizard">
+		<description><b>Quick Start - Start from scratch wizard</b>
+Use this wizard to create the basic resources that are required to develop an Integration application. You can create a message flow project, a message set project, set up the project dependency, create a message set and, optionally, create a message flow and working set.</description>
+		<topic href="../com.ibm.etools.mft.doc/ac50010_.htm" label="Quick Start wizards overview"/>
+		<topic href="../com.ibm.etools.mft.doc/ac50050_.htm" label="Getting started with Quick Start wizards"/>
+		<topic href="../com.ibm.etools.mft.doc/ad50030_.htm" label="Creating an application from scratch"/>
+    </context>
+    
+    <context id="StartFromWSDLXSDWizard">
+		<description><b>Quick Start - Start from WSDL and/or XSD wizard</b>
+Use this wizard to create a new application that is based on existing WSDL or XSD files.</description>
+		<topic href="../com.ibm.etools.mft.doc/ac50010_.htm" label="Quick Start wizards overview"/>
+		<topic href="../com.ibm.etools.mft.doc/ac50050_.htm" label="Getting started with Quick Start wizards"/>
+		<topic href="../com.ibm.etools.mft.doc/ad20809_.htm" label="Creating an application based on WSDL or XSD files"/>
+    </context>
+    
+    <context id="StartFromExistingWizard">
+		<description><b>Quick Start - Start from existing message set wizard</b>
+Before using this wizard you must first have created a message set. Use the wizard to create a new application that is based on an existing message set.</description>
+		<topic href="../com.ibm.etools.mft.doc/ac50010_.htm" label="Quick Start wizards overview"/>
+		<topic href="../com.ibm.etools.mft.doc/ac50050_.htm" label="Getting started with Quick Start wizards"/>
+		<topic href="../com.ibm.etools.mft.doc/ad20810_.htm" label="Creating an application based on an existing message set"/>
+    </context>
+    
+    <context id="xx">
+		<description><b>Quick Start - Start from an adapter connection wizard</b>
+Use this wizard to create an application that uses WebSphere Adapters.</description>
+<topic href="../com.ibm.etools.mft.doc/ac50010_.htm" label="Quick Start wizards overview"/>
+<topic href="../com.ibm.etools.mft.doc/ac50050_.htm" label="Getting started with Quick Start wizards"/>
+<topic href="../com.ibm.etools.mft.doc/ac37490_.htm" label="Creating an application using WebSphere Adapters"/>
+<topic href="../com.ibm.etools.mft.doc/ac37160_.htm" label="WebSphere Adapters nodes"/>
+<topic href="../com.ibm.etools.mft.doc/ac37450_.htm" label="Developing message flow applications using WebSphere Adapters"/>
+   </context>
+</contexts>

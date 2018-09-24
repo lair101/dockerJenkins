@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ibm.etools.mft.feature.unittest"
+      label="%Feature.name"
+      version="10.0.500.v20160516-1831"
+      provider-name="IBM"
+      plugin="com.ibm.etools.mft.unittest.core"
+      image="wsFeatUpdate.jpg">
+
+   <description>
+      %description
+   </description>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="com.ibm.etools.mft.unittest.common"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.mft.unittest.core"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"/>
+
+   <plugin
+         id="com.ibm.etools.mft.unittest.ui"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+</feature>

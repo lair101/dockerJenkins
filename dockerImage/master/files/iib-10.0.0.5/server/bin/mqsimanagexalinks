@@ -1,0 +1,664 @@
+#!/bin/bash
+
+#
+# (C) COPYRIGHT International Business Machines Corp. 2007 - 2015
+# All Rights Reserved
+# Licensed Material - Property of IBM
+#
+# US Government Users Restricted Rights - Use, duplication or
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+#
+# NAME: mqsimanagexalinks
+#
+# PLATFORM: 64 bit Linux AMD/INTEL.
+#
+# PURPOSE: Manage the symbolic links needed for XA coordination.
+#
+# Version %Z% %I% [%H% %T%]
+#
+
+#------------------ Get Supplied arguments ----------------
+action=$1
+driver_ver=$2
+broker_dir=$3
+# Depending on the type of database $4 may also be provided
+database_dir=$4                   # For DB2 and Informix
+
+#------------------ Global Variables ----------------------
+link_errors=0
+
+#------------------ Start of functions --------------------
+
+supported_drivers_create ()
+{
+  echo "DB2 DD INF"
+}
+
+supported_drivers_remove ()
+{
+  echo "DB2 DD52 DD53 DD60 DD70 DD71 DD INF"
+}
+
+supported_driver_versions_list_create ()
+{
+  # Only edit the table using <space> for blanks not tab !
+  echo
+  echo " Supported Version information for the 'create' option."
+  echo "-----------------------------------------------------------------------------------"
+  echo "| Supported versions of the ODBC drivers | Version number for mqsimanagexalinks   |"
+  echo "|----------------------------------------+----------------------------------------|"
+  echo "| IBM DB2 ODBC driver                    |                  DB2                   |"
+  echo "| DataDirect Connect for ODBC            |                  DD                    |"
+  echo "| Informix with Data Server CLI Driver   |                  INF                   |"
+  echo "-----------------------------------------------------------------------------------"
+  echo
+}
+
+supported_driver_versions_list_remove ()
+{
+  # Only edit the table using <space> for blanks not tab !
+  echo
+  echo " Supported Version information for the 'remove' option."
+  echo "---------------------------------------------------+---------------------------------------"
+  echo "| Supported versions of the ODBC drivers           | Version number for mqsimanagexalinks |"
+  echo "|--------------------------------------------------+--------------------------------------|"
+  echo "| IBM DB2 ODBC driver                              |                  DB2                 |"
+  echo "| DataDirect Connect for ODBC V5.2                 |                  DD52                |"
+  echo "| DataDirect Connect for ODBC V5.3                 |                  DD53                |"
+  echo "| DataDirect Connect for ODBC V6.0                 |                  DD60                |"
+  echo "| DataDirect Connect for ODBC V7.0                 |                  DD70                |"
+  echo "| DataDirect Connect for ODBC V7.1                 |                  DD71                |"
+  echo "| DataDirect Connect for ODBC (IIB V10 onwards)    |                  DD                  |"
+  echo "| Informix with Data Server CLI Driver             |                  INF                 |"
+  echo "-------------------------------------------------------------------------------------------"
+  echo
+}
+
+usage ()
+{
+  echo
+  echo "Usage:"
+  echo "    mqsimanagexalinks 'create' 'version' 'broker directory' ['database directory']"
+  echo "      OR"
+  echo "    mqsimanagexalinks 'remove' 'version' "
+  echo "      OR"
+  echo "    mqsimanagexalinks 'list' "
+  echo
+  echo "Where:"
+  echo
+  echo "    create    : Create the the symbolic links needed for the ODBC driver "
+  echo "                version specified. A list of these version numbers can be "
+  echo "                obtained using the 'list' option. "
+  echo "    remove    : Remove the the symbolic links created for the ODBC driver "
+  echo "                version specified. A list of these version numbers can be "
+  echo "                obtained using the 'list' option. "
+  echo "    list      : Display the table of the supported ODBC driver versions"
+  echo "                and the version number needed for this script.   "
+  echo "    version   : The ODBC driver version number. A list of the version "
+  echo "                numbers can be obtained using the 'list' option."
+  echo "    broker directory   : The directory where the broker has been installed"
+  echo "    database directory : The directory where the database has been installed"
+  echo "                         This is only needed for DB2 and Informix."
+  echo
+  exit 1
+}
+
+
+valid_version ()
+{
+  # Has a driver version been provided ?
+  if [ -z "${driver_ver}" ];
+  then
+     usage
+  fi;
+
+  # Check correct remove or create list
+  if [[ $action = "create" ]]
+  then
+    # Is the driver version provided a vaild version ?
+    if [ -z "`supported_drivers_create | grep ${driver_ver}`" ] > /dev/null ; then
+      echo
+      echo "ODBC driver version number $driver_ver is not valid for 'create'"
+      echo
+      exit 1
+    fi;
+  else
+    # Is the driver version provided a vaild version ?
+    if [ -z "`supported_drivers_remove | grep ${driver_ver}`" ] > /dev/null ; then
+      echo
+      echo "ODBC driver version number $driver_ver is not valid for 'remove'"
+      echo
+      exit 1
+    fi;
+  fi; 
+}
+
+
+valid_directory()
+{
+  # Has a broker directory been provided ?
+  if [ -z "${broker_dir}" ];
+  then
+    usage
+  fi;
+
+  # Is the broker directory provided valid  ?
+  if [ ! -d "${broker_dir}" ];
+  then
+    echo
+    echo "The broker installation directory ${broker_dir} can not be found."
+    echo "Please check that the supplied directory is correct and try again."
+    exit 1
+  fi;
+
+}
+
+remove_link_text()
+{
+  echo
+  echo "Removing the links needed for XA coordination with the $driver_ver ODBC driver "
+  echo "--------------------------------------------------------------------------------"
+}
+
+create_link_text()
+{
+  echo
+  echo "Creating the links needed for XA coordination with the $driver_ver ODBC driver "
+  echo "--------------------------------------------------------------------------------"
+}
+
+
+create_links ()
+{  
+
+  case ${driver_ver} in
+    DD)
+        # DataDirect ODBC driver XA links
+        create_link_text;
+
+        if [ ! -d "${broker_dir}/server/ODBC/drivers/lib" ];
+        then
+          echo
+          echo "The path to the ODBC drivers directory '$broker_dir/server/ODBC/drivers/lib' cannot be found."
+          echo "Please check the 'directory' and 'version' supplied are correct."
+          echo
+          echo
+          exit 1
+        fi;
+
+        if [ ! -d "${broker_dir}/ie02/lib" ];
+        then
+          echo
+          echo "The path to the ODBC driver manager directory '$broker_dir/ie02/lib' cannot be found."
+          echo
+          echo
+          exit 1
+        fi;
+
+        for name in UKora95.so UKoradtc95.so UKase95.so UKasedtc95.so libUKicu95.so libUKssl95.so
+        do
+          ln -s $broker_dir/server/ODBC/drivers/lib/$name /var/mqm/exits64/$name
+          if (( $? != 0 ))
+          then
+            echo "Unable to create the symbolic link needed for $name"
+            link_errors=1
+          else
+            echo "Created the symbolic link needed for $name"
+          fi;
+        done
+
+        for name in libodbcinst.so libodbcinst.so.1
+        do
+          ln -s $broker_dir/ie02/lib/$name /var/mqm/exits64/$name
+          if (( $? != 0 ))
+          then
+            echo "Unable to create the symbolic link needed for $name"
+            link_errors=1
+          else
+            echo "Created the symbolic link needed for $name"
+          fi;
+        done
+
+        echo "The symbolic links needed for XA coordination with"
+        if (( $link_errors != 0))
+        then
+         echo "Oracle and Sybase by WebSphereMQ have NOT all been created"
+          exit 2;
+        else
+          echo "Oracle and Sybase by WebSphereMQ have all been created"
+          exit 0;
+        fi;
+    ;;
+
+    DB2)
+        # DB2 ODBC driver XA links
+
+        create_link_text;
+
+        if [ ! -f "${broker_dir}/server/sample/xatm/db2swit" ]
+        then
+          echo
+          echo "The path to the Message Broker DB2 XA switch load"
+          echo "file ${broker_dir}/server/sample/xatm/db2swit cannot be found."
+          echo "Please check the 'directory' supplied."
+          echo
+          echo
+          exit 1;
+        fi;
+
+        if [ ! -d "${database_dir}/lib64" ];
+        then
+          echo
+          echo "The installation path provided for DB2 is not correct."
+          echo "The directory '$database_dir/lib64' can not be found."
+          echo "Please check the 'directory' supplied is correct."
+          echo
+          echo
+          exit 1
+        fi;
+
+        ln -s $database_dir/lib64/libdb2o.so /var/mqm/exits64/libdb2o.so
+        if (( $? != 0 ))
+        then
+          echo "Unable to create the symbolic link needed for libdb2o.so"
+          link_errors=1
+        else
+          echo "Created the symbolic link needed for libdb2o.so"
+        fi;
+
+        ln -s $broker_dir/server/sample/xatm/db2swit /var/mqm/exits64/db2swit
+        if (( $? != 0 ))
+        then
+          echo "Unable to create the symbolic link needed for db2swit"
+          link_errors=1
+        else
+          echo "Created the symbolic link needed for db2swit"
+        fi;
+
+        ln -s /var/mqm/exits64/libdb2o.so /var/mqm/exits64/libdb2o.so.1
+        if (( $? != 0 ))
+        then
+          echo "Unable to create the symbolic link needed for libdb2o.so.1"
+          link_errors=1
+        else
+          echo "Created the symbolic link needed for libdb2o.so.1"
+        fi;
+
+        echo "The symbolic links needed for XA coordination with"
+        if (( $link_errors != 0))
+        then
+          echo "DB2 and WebSphereMQ have NOT all been created"
+          exit 2;
+        else
+          echo "DB2 and WebSphereMQ have all been created"
+          exit 0;
+        fi;
+    ;;
+
+    INF)
+        # Informix ODBC driver XA links
+        create_link_text;
+
+        if [ ! -f "${broker_dir}/server/sample/xatm/idsswit" ]
+        then
+          echo
+          echo "The path to the Message Broker Informix XA switch load"
+          echo "file ${broker_dir}/server/sample/xatm/idsswit cannot be found."
+          echo "Please check the 'directory' supplied."
+          echo
+          echo
+          exit 1;
+        fi;
+
+        if [[ ! -d "${database_dir}/lib" ]]
+        then
+          echo
+          echo "The path to the Data Server Driver directory ${database_dir}/lib"
+          echo "cannot be found."
+          echo "Please check the 'database directory' supplied is correct."
+          echo
+          echo
+          exit 1;
+        fi;
+
+        ln -s $database_dir/lib/libdb2o.so.1 /var/mqm/exits64/libdb2o.so.1
+        if (( $? != 0 ))
+        then
+          echo "Unable to create the symbolic link needed for libdb2o.so.1"
+          link_errors=1
+        else
+          echo "Created the symbolic link needed for libdb2o.so.1"
+        fi;
+
+        ln -s $broker_dir/server/sample/xatm/idsswit /var/mqm/exits64/idsswit
+        if (( $? != 0 ))
+        then
+          echo "Unable to create the symbolic link needed for idsswit"
+          link_errors=1
+        else
+          echo "Created the symbolic link needed for idsswit"
+        fi;
+
+        ln -s /var/mqm/exits64/libdb2o.so.1 /var/mqm/exits64/libdb2o.so
+        if (( $? != 0 ))
+        then
+          echo "Unable to create the symbolic link needed for libdb2o.so"
+          link_errors=1
+        else
+          echo "Created the symbolic link needed for libdb2o.so"
+        fi;
+
+        echo "The symbolic links needed for XA coordination with"
+        if (( $link_errors != 0))
+        then
+          echo "Informix and WebSphereMQ have NOT all been created"
+          exit 2;
+        else
+          echo "Informix and WebSphereMQ have all been created"
+          exit 0;
+        fi;
+    ;;
+
+    *)
+        # Unsupported ODBC driver Version selected. Put out a usage message.
+        echo
+        echo "Invalid ODBC driver version selected. Valid driver versions are:"
+        supported_driver_versions_list_create
+    ;;
+  esac
+
+}
+
+remove_links ()
+{  
+  case ${driver_ver} in
+    DD52)
+        # DataDirect Version 5.2 ODBC driver links
+        remove_link_text;
+
+        name_list="UKor822.so UKor8dtc22.so UKase22.so UKasedtc22.so libUKicu22.so"
+        for name in $name_list
+        do
+          rm /var/mqm/exits/$name
+          if (( $? != 0 ))
+          then
+            echo "Unable to remove the 32-bit symbolic link for $name"
+            link_errors=1
+          else
+            echo "Removed the 32-bit symbolic link for $name"
+          fi;
+        done
+
+        name_list="UKora22.so UKoradtc22.so UKase22.so UKasedtc22.so libUKicu22.so"
+        for name in $name_list
+        do
+          rm /var/mqm/exits64/$name
+          if (( $? != 0 ))
+          then
+            echo "Unable to remove the 64-bit symbolic link for $name"
+            link_errors=1
+          else
+            echo "Removed the 64-bit symbolic link for $name"
+          fi;
+        done
+
+        echo "The DataDirect V5.2 driver symbolic links needed for XA coordination with"
+        if (( $link_errors != 0))
+        then
+          echo "Oracle and Sybase by WebSphereMQ have NOT all been removed"
+          exit 2;
+        else
+          echo "Oracle and Sybase by WebSphereMQ have all been removed"
+          exit 0;
+        fi;
+    ;;
+
+    DD53)
+        # DataDirect Version 5.3 ODBC driver links
+        remove_link_text;
+
+        name_list="UKor823.so UKor8dtc23.so UKase23.so UKasedtc23.so libUKicu23.so libodbcinst.so"
+        for name in $name_list
+        do
+          rm /var/mqm/exits/$name
+          if (( $? != 0 ))
+          then
+            echo "Unable to remove the 32-bit symbolic link for $name"
+            link_errors=1
+          else
+            echo "Removed the 32-bit symbolic link for $name"
+          fi;
+        done
+
+        name_list="UKora23.so UKoradtc23.so UKase23.so UKasedtc23.so libUKicu23.so libodbcinst.so"
+        for name in $name_list
+        do
+          rm /var/mqm/exits64/$name
+          if (( $? != 0 ))
+          then
+            echo "Unable to remove the 64-bit symbolic link for $name"
+            link_errors=1
+          else
+            echo "Removed the 64-bit symbolic link for $name"
+          fi;
+        done
+
+        echo "The DataDirect V5.3 driver symbolic links needed for XA coordination with"
+        if (( $link_errors != 0))
+        then
+          echo "Oracle and Sybase by WebSphereMQ have NOT all been removed"
+          exit 2;
+        else
+          echo "Oracle and Sybase by WebSphereMQ have all been removed"
+          exit 0;
+        fi;
+    ;;
+
+    DD60)
+        # DataDirect Version 6.0 ODBC driver links
+        remove_link_text;
+
+        for name in UKora24.so UKoradtc24.so UKase24.so UKasedtc24.so libUKicu24.so libodbcinst.so
+        do
+          rm /var/mqm/exits64/$name
+          if (( $? != 0 ))
+          then
+            echo "Unable to remove the symbolic link for $name"
+            link_errors=1
+          else
+            echo "Removed the symbolic link for $name"
+          fi;
+        done
+
+        echo "The DataDirect V6.0 driver symbolic links needed for XA coordination with"
+        if (( $link_errors != 0))
+        then
+          echo "Oracle and Sybase by WebSphereMQ have NOT all been removed"
+          exit 2;
+        else
+          echo "Oracle and Sybase by WebSphereMQ have all been removed"
+          exit 0;
+        fi;
+    ;;
+
+    DD70)
+        # DataDirect Version 7.0 ODBC driver links
+        remove_link_text;
+  
+        for name in UKora26.so UKoradtc26.so UKase26.so UKasedtc26.so libUKicu26.so libodbcinst.so
+        do
+          rm /var/mqm/exits64/$name
+          if (( $? != 0 ))
+          then
+            echo "Unable to remove the symbolic link for $name"
+            link_errors=1
+          else
+            echo "Removed the symbolic link for $name"
+          fi;
+        done
+
+        echo "The DataDirect V7.0 driver symbolic links needed for XA coordination with"
+        if (( $link_errors != 0))
+        then
+          echo "Oracle and Sybase by WebSphereMQ have NOT all been removed"
+          exit 2;
+        else
+          echo "Oracle and Sybase by WebSphereMQ have all been removed"
+          exit 0;
+        fi;
+    ;;
+
+    DD71)
+        # DataDirect Version 7.1 ODBC driver links
+        remove_link_text;
+
+        for name in UKora26.so UKoradtc26.so UKase26.so UKasedtc26.so libUKicu26.so libUKssl26.so libodbcinst.so
+        do
+          rm /var/mqm/exits64/$name
+          if (( $? != 0 ))
+          then
+            echo "Unable to remove the symbolic link for $name"
+            link_errors=1
+          else
+            echo "Removed the symbolic link for $name"
+          fi;
+        done
+
+        echo "The DataDirect V7.1 driver symbolic links needed for XA coordination with"
+        if (( $link_errors != 0))
+        then
+          echo "Oracle and Sybase by WebSphereMQ have NOT all been removed"
+          exit 2;
+        else
+          echo "Oracle and Sybase by WebSphereMQ have all been removed"
+          exit 0;
+        fi;
+    ;;
+
+    DD)
+        # DataDirect ODBC driver links
+        remove_link_text;
+  
+        for name in UKora95.so UKoradtc95.so UKase95.so UKasedtc95.so libUKicu95.so libUKssl95.so libodbcinst.so libodbcinst.so.1
+        do
+          rm /var/mqm/exits64/$name
+          if (( $? != 0 ))
+          then
+            echo "Unable to remove the symbolic link for $name"
+            link_errors=1
+          else
+            echo "Removed the symbolic link for $name"
+          fi;
+        done
+
+        echo "The DataDirect driver symbolic links needed for XA coordination with"
+        if (( $link_errors != 0))
+        then
+          echo "Oracle and Sybase by WebSphereMQ have NOT all been removed"
+          exit 2;
+        else
+          echo "Oracle and Sybase by WebSphereMQ have all been removed"
+          exit 0;
+        fi;
+    ;;
+
+    DB2)
+        # DB2 ODBC driver links
+        remove_link_text;
+
+        for name in libdb2o.so libdb2o.so.1 db2swit
+        do
+          rm /var/mqm/exits64/$name
+          if (( $? != 0 ))
+          then
+            echo "Unable to remove the symbolic link for $name"
+            link_errors=1
+          else
+            echo "Removed the symbolic link for $name"
+          fi;
+        done
+
+        echo "The symbolic links needed for XA coordination with"
+        if (( $link_errors != 0))
+        then
+          echo "DB2 and WebSphereMQ have NOT all been removed"
+          exit 2;
+        else
+          echo "DB2 and WebSphereMQ have all been removed"
+          exit 0;
+        fi;
+    ;;
+
+    INF)
+        # Informix ODBC driver links
+        remove_link_text;
+
+        for name in libdb2o.so libdb2o.so.1 idsswit
+        do
+          rm /var/mqm/exits64/$name
+          if (( $? != 0 ))
+          then
+            echo "Unable to remove the symbolic link for $name"
+            link_errors=1
+          else
+            echo "Removed the symbolic link for $name"
+          fi;
+        done
+
+        echo "The symbolic links needed for XA coordination with"
+        if (( $link_errors != 0))
+        then
+          echo "Informix and WebSphereMQ have NOT all been removed"
+          exit 2;
+        else
+          echo "Informix and WebSphereMQ have all been removed"
+          exit 0;
+        fi;
+    ;;
+
+    *)
+        # Unsupported ODBC driver Version selected. Put out a usage message.
+        echo
+        echo "Invalid ODBC driver version selected. Valid driver versions are:"
+        supported_driver_versions_list_remove
+    ;;
+  esac
+
+}
+
+#-----------------End of functions--------------------------
+
+#-----------------Main Routine------------------------------
+
+if [ $# -gt 4 ]; then
+   echo
+   echo "Too many arguments."
+   echo
+   usage
+fi;
+
+case ${action} in
+  remove) 
+    valid_version;
+    remove_links;
+  ;;
+  create) 
+    valid_version;
+    valid_directory;
+    create_links;
+  ;;
+  list) supported_driver_versions_list_create;
+        supported_driver_versions_list_remove;
+  ;;
+  *)
+    # Unsupported action specified (not 'list', 'create' or 'remove')
+    echo
+    echo "Invalid action specified as first argument. "
+    echo "First argument must be 'list', 'remove' or 'create'"
+    echo
+    usage 
+  ;;
+esac
+
+#-----------------End of Main Routine-----------------------

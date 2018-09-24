@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS  TYPE="org.eclipse.help.toc"?>
+<toc link_to="../com.ibm.healthcare.doc/ha00000.xml#mb_continua_pattern" label="「Healthcare: Home Health」パターン" topic="pattern/overview.htm">
+    <topic label="「Healthcare: Home Health」パターン" href="pattern/overview.htm">
+    <topic label="パターンの使用に関する制約" href="pattern/constraints.htm"/>
+    <topic label="パターンを使用する前" href="pattern/before.htm"/>
+  		<topic label="パターン・パラメーター" href="pattern/parameters.htm"/>
+  		<topic label="パターンを生成した後に完了するタスク" href="pattern/after.htm"/>
+  		
+    </topic>
+</toc>

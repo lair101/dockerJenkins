@@ -1,0 +1,12 @@
+# IBM WebSphere Transcoding Publisher registry parameters for the proxy configuration
+# Version 3.5
+ibm/ResourceRepositoryEngine=true
+ibm/PreferenceControl=true
+ibm/TextEngine=true
+ibm/ImageEngine=true
+ibm/MEGletEngine=true
+ibm/FragmentationEngine=true
+ibm/HtmlDomGenerator=false
+ibm/AnnotationHandler=true
+ibm/PreferenceMonitor=false
+

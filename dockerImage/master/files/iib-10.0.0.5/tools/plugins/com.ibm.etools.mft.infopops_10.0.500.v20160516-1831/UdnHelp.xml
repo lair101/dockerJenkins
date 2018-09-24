@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<contexts>
+
+	<context id="NewPluginNodeProjectWizard">
+		<description><b>New User-defined Node Project wizard</b>
+Use this wizard to create an user-defined node project. When you have created the project, you can then develop a user-defined node.</description>
+		<topic href="../com.ibm.etools.mft.doc/as04480_.htm"  label="Creating the user interface representation of a user-defined node in the workbench"/>
+		<topic href="../com.ibm.etools.mft.doc/as04490_.htm"  label="Creating a user-defined node project"/>
+	</context>
+
+	<context id="ConvertPluginNodeProjectWizard">
+		<description><b>Convert to User-defined Node Project wizard</b>
+Use this wizard to convert a message flow project to a user-defined node project. When you have created the project, you can then develop a user-defined node.</description>
+		<topic href="../com.ibm.etools.mft.doc/as04480_.htm"  label="Creating the user interface representation of a user-defined node in the workbench"/>
+		<topic href="../com.ibm.etools.mft.doc/as04490_.htm"  label="Creating a user-defined node project"/>
+	</context>
+
+	<context id="NewPluginNodeWizard">
+		<description><b>New User-defined Node wizard</b>
+Use this wizard to create a user-defined node. You must have already created the project that contains the user-defined node.</description>
+	    <topic href="../com.ibm.etools.mft.doc/as04500_.htm"  label="Creating a user-defined node"/>
+		<topic href="../com.ibm.etools.mft.doc/as04495_.htm"  label="Creating the user-defined node plug-in files"/>
+	</context>
+	
+	<context id="PackageChoice">
+		<description><b>Package and Distribute User-defined Nodes</b>
+Choose the type of the package for the user-defined nodes.</description>
+		<topic href="../com.ibm.etools.mft.doc/as37340_.htm"  label="Packaging and distributing a user-defined node project"/>
+	</context>
+
+	<context id="PackageCreateUpdate">
+		<description><b>Package and Distribute User-defined Nodes</b>
+Choose the user-defined nodes to be packaged.</description>
+		<topic href="../com.ibm.etools.mft.doc/as37540_.htm"  label="Packaging as an update site"/>
+	</context>
+
+	<context id="PackageFinalizeUpdate">
+		<description><b>Package and Distribute User-defined Nodes</b>
+Specify additional details of the package.</description>
+		<topic href="../com.ibm.etools.mft.doc/as37540_.htm"  label="Packaging as an update site"/>
+	</context>
+
+	<context id="PackagePublish">
+		<description><b>Package and Distribute User-defined Nodes</b>
+Distribute the user-defined nodes package over Web or Network.</description>
+		<topic href="../com.ibm.etools.mft.doc/as37540_.htm"  label="Packaging as an update site"/>
+	</context>
+
+	<context id="PackageExport">
+		<description><b>Package and Distribute User-defined Nodes</b>
+Package user-defined nodes as Eclipse Plug-in.</description>
+		<topic href="../com.ibm.etools.mft.doc/as37530_.htm"  label="Packaging as plug-in JAR files"/>
+	</context>
+
+	<context id="ConvertPluginNodeWizard">
+		<description><b>Convert to User-defined Node wizard</b>
+Use this wizard to convert a message flow to a user-defined node. You must have already created the project that contains the user-defined node.</description>
+	    <topic href="../com.ibm.etools.mft.doc/as04500_.htm"  label="Creating a user-defined node"/>
+		<topic href="../com.ibm.etools.mft.doc/as04495_.htm"  label="Creating the user-defined node plug-in files"/>
+	</context>
+	
+	<context id="PluginNodeEditorTerminalsView">
+		<description><b>Plug-in Node editor - Terminals page</b>
+Define the input and output terminals on the plug-in node.  You must define an input terminal; output terminals are optional.</description>
+	    <topic href="../com.ibm.etools.mft.doc/as04496_.htm"  label="Defining the node properties"/>
+	</context>
+	
+	<context id="PluginNodeEditorPropertiesView">
+		<description><b>Plug-in Node editor - Properties page</b>
+Add and remove properties that users can configure on the plug-in. These properties are displayed when the user clicks the Properties item on the node's context menu.</description>
+		<topic href="../com.ibm.etools.mft.doc/as04496_.htm"  label="Defining the node properties"/>
+	</context>
+	
+</contexts>

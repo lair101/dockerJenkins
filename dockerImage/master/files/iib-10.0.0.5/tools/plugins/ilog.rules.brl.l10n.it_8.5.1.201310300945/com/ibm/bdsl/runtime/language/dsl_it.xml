@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><vocabulary xmlns="http://schemas.ilog.com/Rules/1.0/Vocabulary">
+  <glossary>
+    <term>
+      <label><![CDATA[oggetto]]></label>
+      <termProperties>
+        <plural><![CDATA[oggetti]]></plural>
+      </termProperties>
+    </term>
+  </glossary>
+  <concept>
+    <name>ilog.rules.brl.Object</name>
+    <properties>
+      <property>
+        <key>automaticVariable</key>
+        <value>false</value>
+      </property>
+      <property>
+        <key>hiddenType</key>
+        <value>true</value>
+      </property>
+      <property>
+        <key>valueType</key>
+        <value>true</value>
+      </property>
+      <property>
+        <key>vocabularyClass</key>
+        <value>true</value>
+      </property>
+    </properties>
+    <valueType>false</valueType>
+    <label><![CDATA[oggetto]]></label>
+    <categories>
+      <category>
+        <label><![CDATA[any]]></label>
+        <description><![CDATA[ANY category]]></description>
+      </category>
+    </categories>
+  </concept>
+</vocabulary>

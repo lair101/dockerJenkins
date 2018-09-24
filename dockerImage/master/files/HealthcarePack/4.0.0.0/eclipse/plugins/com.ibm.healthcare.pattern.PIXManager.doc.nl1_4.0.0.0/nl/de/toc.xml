@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS  TYPE="org.eclipse.help.toc"?>
+<toc label="Healthcare: Patient Identifier Cross-reference Manager" topic="pattern/overview.htm">
+    <topic label="Muster 'Healthcare: Patient Identifier Cross-reference Manager'" href="pattern/overview.htm">
+       <topic href="pattern/constraints.htm" label="Bedingungen für die Verwendung des Musters 'Healthcare: Web-Service an DICOM'" />
+       <topic href="pattern/before.htm" label="Tasks, die vor der Anwendung des Musters auszuführen sind" />
+       <topic href="pattern/parameters.htm" label="Musterparameter" />
+	</topic>
+</toc>

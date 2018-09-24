@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.core.resources;bundle-version="[3.2.2.R32x
+ _v20061218,4.0.0)",org.eclipse.ui;bundle-version="[3.2.1.M20061108,4.
+ 0.0)"
+Bundle-Vendor: IBM
+Fragment-Host: com.ibm.etools.mft.eou
+Bundle-ClassPath: linux.jar
+Bundle-Version: 10.0.500.v20160516-1831
+Bundle-Localization: plugin
+Bundle-Name: %Fragment.linux.name
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ibm.etools.mft.eou.linux; singleton:=true
+
+

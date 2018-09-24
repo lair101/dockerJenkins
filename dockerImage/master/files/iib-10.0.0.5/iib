@@ -1,0 +1,820 @@
+#!/bin/bash
+# Licensed Materials - Property of IBM
+# 5724-A82
+# (c) Copyright IBM Corp. 2014.
+# All Rights Reserved
+# US Government Users Restricted Rights - use,
+# duplication or disclosure restricted by GSA
+# ADP Schedule Contract with IBM Corp.
+##############################################################################
+# Create local registry function
+createRegistry() {
+        # Create registry
+        REGROOT=$1
+        mkdir -p "$REGROOT"
+        mkdir -p "$REGROOT/common"
+        mkdir -p "$REGROOT/common/locks"
+        mkdir -p "$REGROOT/common/log"
+        mkdir -p "$REGROOT/common/errors"
+        mkdir -p "$REGROOT/common/wsrr"
+        mkdir -p "$REGROOT/common/profiles"
+        mkdir -p "$REGROOT/components"
+        mkdir -p "$REGROOT/config"
+        mkdir -p "$REGROOT/odbc"
+        mkdir -p "$REGROOT/registry"
+        mkdir -p "$REGROOT/shared-classes"
+        mkdir -p "$REGROOT/XML"
+        mkdir -p "$REGROOT/XML/external"
+        mkdir -p "$REGROOT/XSL"
+        mkdir -p "$REGROOT/XSL/external"
+}
+##############################################################################
+# Update mqsiprofile with license acceptance
+profileUpdate() {
+  INSTPATH=$(echo $1 | sed -e 's,/,\\/,g')
+  PROFILE="$1/server/bin/mqsiprofile"
+  # Set LICENSE_ACCEPTED to 1
+  sed "s/LICENSE_ACCEPTED=0/LICENSE_ACCEPTED=1/"  "${PROFILE}" > "${PROFILE}.tmp"
+  mv "${PROFILE}.tmp" "${PROFILE}"
+  chmod a+rx "${PROFILE}"
+}
+# Add adapter paths to eclipse config
+adapterPath() {
+  INSTPATH=$1
+  CONFFILE="$1/tools/configuration/config.ini"
+  # Append adapter paths to config.ini
+  echo "rarsPathVar=$INSTPATH/tools/ResourceAdapters" >> "$CONFFILE"
+  echo "mb.stub.base=$INSTPATH/tools/runtimes" >> "$CONFFILE"
+  echo "CommonPath=$INSTPATH/common/classes" >> "$CONFFILE"
+}
+# Start tools function
+startTools() {
+  REGROOT=$1
+  NONODE=false
+  if [[ $# -gt 1 ]]
+  then
+    if [[ $# -ge 3 ]]
+    then
+      if [[ $2 == "without" ]] && [[ $3 == "testnode" ]]
+      then
+        shift # without
+        shift # testnode
+        NONODE=true
+      fi
+    fi
+  fi
+  shift # tools
+  if [[ "$(uname)" == "Darwin" ]]
+  then
+    # Test node management is taken care of within Eclipse on OS X.
+    NONODE=true
+    # Need to set up additional environment variables on OS X.
+    . "${MQSI_BASE_FILEPATH}/server/bin/.internal/mqsiprofileint"
+  fi
+  #
+  # Get the mod number
+  #
+  VER=10
+  REL=0
+  MOD=0
+  FIX=5
+  #while read -r LINE || [[ -n $LINE ]]; do
+  #  if [[ $LINE == build_number* ]]
+  #  then
+  #    MOD=`echo $LINE | sed -e "s/build_number=//"`
+  #  fi
+  #done < "${MQSI_BASE_FILEPATH}/common/component.properties"
+  VRMFbuild=${VER}.${REL}.${MOD}.${FIX}
+  #
+  # Check for eclipse switch for without testnode
+  #
+  if [[ -e "${MQSI_WORKPATH}/common/preferences.ini" ]]
+  then
+    read USENODE < "${MQSI_WORKPATH}/common/preferences.ini"
+    USENODEVAL=`echo ${USENODE} | awk -F"=" '{print $2}' | tr -d " "`
+    if [[ ${USENODEVAL} == "true" ]]
+    then
+       NONODE=true
+    else
+       NONODE=false
+    fi
+  fi
+  REG_PARENT=`dirname "$REGROOT"`
+  if ( [[ $GLOBAL == true ]] && [[ ! -w "$REGROOT" ]] )  ||  ( [[ $GLOBAL == false ]]  && [[ ! -w "$REG_PARENT" ]] )
+  then
+    # root registry directory not writable $REGROOT is not writable by you therefore you will not be able to use the registry"
+    mqsiexplain BIP15055 -m -r "${REGROOT}"
+  else
+    if [[ $GLOBAL == false ]]
+    then
+      # Create registry, in case it does not exist
+      createRegistry "$REGROOT"
+    fi
+    export MQSI_WORKPATH="$REGROOT"
+    source "${MQSI_BASE_FILEPATH}/server/bin/mqsiprofile"
+    #
+    # If MQ exists and environment not set add path elements
+    #
+    # firstly find an MQ environment if one has not already been established, if possible
+    # it is valid to have no MQ installed
+    if [[ ! -n "$MQ_INSTALLATION_PATH" ]]
+    then
+      MQ_INSTALLATION_PATH=`"${MQSI_BASE_FILEPATH}/server/bin/mqsifindmqpath" | sed -n 1p`
+      if [[ ! -n "$MQ_INSTALLATION_PATH" ]]
+      then
+         . $MQ_INSTALLATION_PATH/bin/setmqenv -l -s -x 64
+      fi
+    fi
+    # having got an MQ environment if we can, we then need some additional libraries
+    # which are not part of the default MQ profile
+    if [[ -n $MQ_INSTALLATION_PATH ]]
+    then
+         export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${MQ_INSTALLATION_PATH}/java/lib64:${MQ_INSTALLATION_PATH}/bin64
+         export CLASSPATH=${MQ_JAVA_INSTALL_PATH}/lib/com.ibm.mq.jar:${MQ_JAVA_INSTALL_PATH}/lib/com.ibm.mqjms.jar:${MQ_JAVA_INSTALL_PATH}/lib/connector.jar:${MQ_JAVA_INSTALL_PATH}/lib/com.ibm.mq.pcf.jar:${MQ_JAVA_INSTALL_PATH}/lib/com.ibm.mq.jmqi.jar:${MQ_JAVA_INSTALL_PATH}/lib/com.ibm.mq.headers.jar:${MQ_JAVA_INSTALL_PATH}/lib/com.ibm.mq.commonservices.jar:${CLASSPATH}
+    fi
+    # Registry is $MQSI_WORKPATH
+    mqsiexplain BIP15056 -m -r "${MQSI_WORKPATH}"
+    OWNER=`whoami`
+    if [[ $NONODE == false ]]
+    then
+      MQSI_START_LOG="${MQSI_WORKPATH}/common/log/TESTNODE_${OWNER}_IIB_Start_log.txt"
+      # Create TESTNODE_$OWNER if it doesnt exist, otherwise start it
+      if [[ ! -e "$MQSI_WORKPATH/registry/TESTNODE_${OWNER}" ]]
+      then
+        echo "Creating integration node TESTNODE_${OWNER}" > ${MQSI_START_LOG}
+        "${MQSI_BASE_FILEPATH}/iib" mqsicreatebroker TESTNODE_${OWNER} >> ${MQSI_START_LOG}
+        echo "Starting new integration node TESTNODE_${OWNER}" >> ${MQSI_START_LOG}
+        "${MQSI_BASE_FILEPATH}/iib" mqsistart TESTNODE_${OWNER} >> ${MQSI_START_LOG}
+        echo "Creating integration server default on TESTNODE_${OWNER}" >> ${MQSI_START_LOG}
+        "${MQSI_BASE_FILEPATH}/iib" mqsicreateexecutiongroup TESTNODE_${OWNER} -e default >> ${MQSI_START_LOG}
+      else
+        echo "Starting existing integration node TESTNODE_${OWNER}" > ${MQSI_START_LOG}
+        "${MQSI_BASE_FILEPATH}/iib" mqsistart TESTNODE_${OWNER} >> ${MQSI_START_LOG}
+      fi
+    fi
+    #
+    # Check for the prefs file
+    #
+    if [[ ! -e "${HOME}/IBM/IIBT10-config/${VRMFbuild}/configuration/.settings/org.eclipse.ui.ide.prefs" ]]
+    then
+      mkdir -p "${HOME}/IBM/IIBT10-config/${VRMFbuild}/configuration/.settings/"
+      echo "SHOW_WORKSPACE_SELECTION_DIALOG=false" > "${HOME}/IBM/IIBT10-config/${VRMFbuild}/configuration/.settings/org.eclipse.ui.ide.prefs"
+    fi
+    #
+    # Create the extensions link in the dropins folder
+    #
+    if [[ "${MQSI_EXTENSIONS_PATH}" != "" ]]
+    then
+      if [[ ! -e "${HOME}/IBM/IIBT10-config/${VRMFbuild}/dropins" ]]
+      then
+        mkdir -p "${HOME}/IBM/IIBT10-config/${VRMFbuild}/dropins"
+      fi
+      echo "path=${MQSI_EXTENSIONS_PATH}/tools" > "${HOME}/IBM/IIBT10-config/${VRMFbuild}/dropins/extensions.link"
+    fi
+    # Start the tools
+    if [[ "${MQSI_LAUNCH_TOOLKIT_IN_FOREGROUND}" = "1" ]]
+    then
+      exec "${MQSI_BASE_FILEPATH}/tools/eclipse" "$@"
+    else
+      "${MQSI_BASE_FILEPATH}/tools/eclipse" "$@"
+    fi
+    if [[ $NONODE == false ]]
+    then
+      MQSI_STOP_LOG="${MQSI_WORKPATH}/common/log/TESTNODE_${OWNER}_IIB_Stop_Log.txt"
+      echo "Stopping integration node TESTNODE_${OWNER}" > ${MQSI_STOP_LOG}
+      "${MQSI_BASE_FILEPATH}/iib" mqsistop TESTNODE_${OWNER} >> ${MQSI_STOP_LOG}
+    fi
+  fi
+}
+##############################################################################
+# Set up local registry function
+localRegistry() {
+  # Now create the local registry
+  # Check that  registry root is writable if not abandon
+  REG_PARENT=`dirname "$REG_HOME"`
+  if [[ ! -w "$REG_PARENT" ]]
+  then
+    # Set up temporary workpath, as there is no valid workpath, and source mqsiprofile
+    export MQSI_WORKPATH="/tmp/iib_install"
+    mkdir -p "${MQSI_WORKPATH}/common/errors" > /dev/null 2>&1
+    mkdir -p "${MQSI_WORKPATH}/common/log" > /dev/null 2>&1
+    # Make MQSI_BASE_FILEPATH available for mqsiprofile
+    export TEMP_MQSI_BASE_FILEPATH="${MQSI_BASE_FILEPATH}"
+    source "${MQSI_BASE_FILEPATH}/server/bin/mqsiprofile" > /dev/null 2>&1
+    # Registry parent directory is not writable by you
+    mqsiexplain BIP15032 -m -r "${REG_PARENT}"
+    # Remove temporary workpath directory
+    rm -rf "/tmp/iib_install" > /dev/null 2>&1
+  else
+    # Create registry, in case it does not exist
+    createRegistry "$REG_HOME"
+  fi
+}
+##############################################################################
+# Accept license function
+acceptLicense() {
+  MODE=$1
+  # Invoke the LAP tool
+
+  # Check permissions
+  if [ ! -w "${MQSI_BASE_FILEPATH}/license" ]
+  then
+    echo You do not have permission to accept the license. See your system administrator to obtain write permissions to the IBM Integration Bus installation directory.
+    exit 1
+  fi
+
+  # Are we using a JDK or a JRE?
+  MQSI_JAVA="${MQSI_BASE_FILEPATH}/common/jdk/jre/bin/java"
+  if [ ! -e "${MQSI_JAVA}" ]
+  then
+    MQSI_JAVA="${MQSI_BASE_FILEPATH}/common/jre/bin/java"
+  fi
+
+  # check for silent acceptance
+  if [[ "$MODE" = "silently" ]]
+  then
+    "${MQSI_JAVA}" -jar "${MQSI_BASE_FILEPATH}/common/license/LAPApp.jar" -l "${MQSI_BASE_FILEPATH}/common/license/agreement" -s "${MQSI_BASE_FILEPATH}/" -t 5
+  else
+    # Check for graphic or text mode
+    if [[ ! -n $DISPLAY ]]
+    then
+      "${MQSI_JAVA}" -jar "${MQSI_BASE_FILEPATH}/common/license/LAPApp.jar" -l "${MQSI_BASE_FILEPATH}/common/license/agreement" -s "${MQSI_BASE_FILEPATH}/" -text_only
+    else
+      "${MQSI_JAVA}" -jar "${MQSI_BASE_FILEPATH}/common/license/LAPApp.jar" -l "${MQSI_BASE_FILEPATH}/common/license/agreement" -s "${MQSI_BASE_FILEPATH}/"
+    fi
+  fi
+
+  #
+  # Has the license been accepted?
+  #
+  if [[ -e "${MQSI_BASE_FILEPATH}/license/status.dat" ]]
+  then
+    chmod -R go-w ${MQSI_BASE_FILEPATH}/license/* > /dev/null 2>&1
+    chmod -R a+rx ${MQSI_BASE_FILEPATH}/license/* > /dev/null 2>&1
+    #
+    # If local user check for registry
+    if [[ "$GLOBAL" == "false" ]]
+    then
+      id | grep "uid=0" > /dev/null 2>&1
+      if [ $? -ne 0 ]; then
+        OWNER="NOTROOT"
+      else
+        OWNER="root"
+      fi
+      if [[ "$OWNER" == "root" ]]
+      then
+        # License accepted
+        mqsiexplain BIP15033 -m
+      else
+        localRegistry
+        # License accepted and local registry created in $REG_HOME
+        mqsiexplain BIP15057 -m -r "${REG_HOME}"
+        echo " "
+        # Help message
+        mqsiexplain BIP15040 -m
+      fi
+    else
+      # License accepted
+      mqsiexplain BIP15033 -m
+    fi
+    # Update eclipse config with adapter paths
+    if [[ -d "${MQSI_BASE_FILEPATH}/tools/configuration" ]]
+    then
+      # skip if the toolkit has not been installed
+      adapterPath "${MQSI_BASE_FILEPATH}"
+    fi
+    # Update install path and license acceptance in mqsiprofile
+    profileUpdate "${MQSI_BASE_FILEPATH}"
+  else
+    # No license accepted
+    mqsiexplain BIP15035 -m
+    exit 1
+  fi
+}
+##############################################################################
+# Remove license function
+removeLicense() {
+  if [[ -e "${MQSI_BASE_FILEPATH}/license/status.dat" ]]
+  then
+    # Removing license
+    mqsiexplain BIP15036 -m
+    rm "${MQSI_BASE_FILEPATH}/license/status.dat"
+  fi
+}
+##############################################################################
+# Use Global Registry function
+useGlobalRegistry() {
+  if [[ ! -n "$REGISTRY" ]]
+  then
+    REGISTRY="/var/mqsi"
+  fi
+  #
+  # Check whether a registry exists
+  #
+  if [[ ! -e "$REGISTRY" ]]
+  then
+    # Create registry directories for mqsiexplain exist
+    mkdir -p $REGISTRY
+    mkdir -p $REGISTRY/common/errors
+    mkdir -p $REGISTRY/common/log
+  else
+    # Ensure directories for mqsiexplain exist
+    mkdir -p $REGISTRY/common/errors
+    mkdir -p $REGISTRY/common/log
+
+    # Registry $REGISTRY already exists and will not be overwritten
+    mqsiexplain BIP15039 -m -r "${REGISTRY}"
+  fi
+  #
+  # Create the admin group
+  #
+  if [[ ! -n "$REG_GROUP" ]]
+  then
+    REG_GROUP="mqbrkrs"
+  fi
+  #
+  # Check if the  group exists
+  #
+  GECMD="getent group \${REG_GROUP} | awk -F':' '{print \$1}'"
+  GACMD="groupadd -f \$REG_GROUP"
+  IGRP=root
+  GEXIST=`eval ${GECMD}`
+  if [[ "$GEXIST" == "$REG_GROUP" ]]
+  then
+    # Group $REG_GROUP already exists
+    mqsiexplain BIP15037 -m -r "${REG_GROUP}"
+  else
+    # Group $REG_GROUP will be created
+    mqsiexplain BIP15038 -m -r "${REG_GROUP}"
+    eval ${GACMD}
+  fi
+  #
+  # Run mqsicreateworkpath to get correct directory structure and permissions
+  #
+  "${MQSI_BASE_FILEPATH}/server/bin/mqsicreateworkpath" "$REGISTRY"
+  #
+  # Create the global flag file
+  #
+  echo $REGISTRY > "${MQSI_BASE_FILEPATH}/common/GLOBAL_REG"
+  chmod 644 "${MQSI_BASE_FILEPATH}/common/GLOBAL_REG"
+  #
+  # Set the install to root:root
+  #
+  if [[ "$(uname)" != "Darwin" ]]
+  then
+    find "${MQSI_BASE_FILEPATH}" \! -user root -exec chown root:${IGRP} {} + > /dev/null 2>&1
+  fi
+}
+##############################################################################
+# Display install information function
+getInstallInfo() {
+  MODE=$1
+  # Version
+  mqsiexplain BIP15012 -m -r "10.0.0.5"
+  # Product: IBM Integration Bus"
+  mqsiexplain BIP15013 -m -r "IBM Integration Bus"
+  while read -r LINE || [[ -n $LINE ]]; do
+    if [[ $LINE == output_name* ]]
+    then
+      # IB Level
+      mqsiexplain BIP15018 -m -r "$LINE" | sed -e 's/output_name=//'
+    fi
+    if  [ "$MODE" = "version" ]
+    then
+      if [[ $LINE == build_number* ]]
+      then
+        # Build Number
+        mqsiexplain BIP15021 -m -r "$LINE" | sed -e 's/build_number=//'
+      fi
+      if [[ $LINE == server_name* ]]
+      then
+        # Server level
+        mqsiexplain BIP15019 -m -r "$LINE" | sed -e 's/server_name=//'
+      fi
+      if [[ $LINE == tooling_name* ]]
+      then
+        # Toolkit level
+        if [[ ! -f "${MQSI_BASE_FILEPATH}/tools/eclipse" ]]
+        then
+          # Display "Tools level:  'level' [not installed]"
+          mqsiexplain BIP15063 -m -r "$LINE" | sed -e 's/tooling_name=//'
+        else
+          mqsiexplain BIP15020 -m -r "$LINE" | sed -e 's/tooling_name=//'
+        fi
+      fi
+      if [[ $LINE == ie02_name* ]]
+      then
+        # IE02 level
+        mqsiexplain BIP15059 -m -r "$LINE" | sed -e 's/ie02_name=//'
+      fi
+   fi
+  done < "${MQSI_BASE_FILEPATH}/common/component.properties"
+}
+##############################################################################
+# Compare file checksums against known good
+checkFiles() {
+  installName=iib-10.0.0.5
+  cd ${MQSI_BASE_FILEPATH}
+  CSCOMM=md5sum
+  count=0
+  which $CSCOMM > /dev/null 2>&1
+  if [[ $? -eq 0 ]]
+  then
+    # Check for checksum failures
+        if [[ ! -f "${MQSI_BASE_FILEPATH}/tools/eclipse" ]]
+        then
+          md5sum -c ${MQSI_BASE_FILEPATH}/common/iib.notools.chk > /tmp/${installName}.checkOut 2> /dev/null
+        else
+          md5sum -c ${MQSI_BASE_FILEPATH}/common/iib.chk > /tmp/${installName}.checkOut 2> /dev/null
+        fi
+        if [[ -e "/tmp/${installName}.checkOut" ]]
+        then
+          while read line
+          do
+            if [ `echo $line | grep -c "FAILED"` -gt 0 ] && [ `echo $line | grep -c "/tools/configuration/config.ini"` -eq 0 ] && [ `echo $line | grep -c "/server/bin/mqsiprofile"` -eq 0 ]
+            then
+              count=`expr $count + 1`
+              # Write failures to a file
+              if [ $count -eq 1 ]
+              then
+                echo $line > /tmp/${installName}.checkFails
+              else
+                echo $line >> /tmp/${installName}.checkFails
+              fi
+            fi
+          done < /tmp/${installName}.checkOut
+        fi
+  else
+    count=-1
+  fi
+  if [ $count -gt 0 ]
+  then
+    # There are $count checksum mismatches in your installation see file /tmp/${installName}.checkFails
+    mqsiexplain BIP15042 -m -r "${count}":"${installName}"
+  elif [ $count -lt 0 ]
+  then
+    # The required checksum command $CSCOMM is not installed on your system
+    mqsiexplain BIP15043 -m -r "${CSCOMM}"
+  else
+    # All of the file checksums are as expected
+    mqsiexplain BIP15044 -m
+  fi
+}
+# Get a random port number in the range 4414-4499
+randPort() {
+  RNDPORT=0
+  while [  "$RNDPORT" -lt 4414 ]
+  do
+    RNDPORT=$RANDOM
+    let "RNDPORT %= 4499"
+  done
+}
+#
+# Verification of installation
+#
+verify() {
+  MODE=$1
+  TRACE=$2
+  good=0
+  if [[ ! -n $MODE ]] || [[ "$MODE" == "install" ]] || [[ "$MODE" == "all" ]]
+  then
+    # Check the checksums of the install against the 'good' list
+    # Verifying checksums of files
+    mqsiexplain BIP15045 -m
+    checkFiles
+    good=1
+  fi
+  if [[ "$MODE" == "node" ]] || [[ "$MODE" == "all" ]]
+  then
+    cmptrc=1
+    if [[ ! -n $TRACE ]]
+    then
+      cmptrc=0
+    fi
+    # Get port info
+    NETCMD="netstat -tl"
+    UNIQP=0
+    while [[ "$UNIQP" = "0"  ]]
+    do
+      randPort
+      NETOUT=`eval "${NETCMD} | grep LISTEN | grep ${RNDPORT}"`
+      if [[ -n $NETOUT ]]
+      then
+        UNIQP=0
+      else
+        UNIQP=1
+      fi
+    done
+    VNODE=VERIFY$RANDOM
+    # Create Node using:
+    mqsiexplain BIP15023 -m
+    echo    mqsicreatebroker ${VNODE}
+    OUTMSG=`eval "mqsicreatebroker ${VNODE}"`
+    echo "$OUTMSG"
+    echo " "
+    # Verify the Node using:
+    mqsiexplain BIP15024 -m
+    echo    mqsicvp ${VNODE}
+    OUTMSG=`eval "mqsicvp ${VNODE}"`
+    echo "$OUTMSG"
+    echo " "
+    # Set the web admin port using:
+    mqsiexplain BIP15025 -m
+    echo    mqsichangeproperties ${VNODE} -b webadmin -o HTTPConnector -n port -v ${RNDPORT}
+    OUTMSG=`eval "mqsichangeproperties ${VNODE} -b webadmin -o HTTPConnector -n port -v ${RNDPORT}"`
+    echo "$OUTMSG"
+    echo " "
+    # Start the node using:
+    mqsiexplain BIP15026 -m
+    echo    mqsistart ${VNODE}
+    OUTMSG=`eval "mqsistart ${VNODE}"`
+    echo "$OUTMSG"
+    echo " "
+    sleep 3
+    # List all nodes using:
+    mqsiexplain BIP15027 -m
+    echo    mqsilist
+    OUTMSG=`eval "mqsilist"`
+    echo "$OUTMSG"
+    echo " "
+    sleep 3
+    # Create a server on the node using:
+    mqsiexplain BIP15028 -m
+    echo    mqsicreateexecutiongroup ${VNODE} -e default -w 90
+    OUTMSG=`eval "mqsicreateexecutiongroup ${VNODE} -e default -w 90"`
+    echo "$OUTMSG"
+    echo " "
+    # List the server status using:
+    mqsiexplain BIP15029 -m
+    echo    mqsilist ${VNODE}
+    OUTMSG=`eval "mqsilist ${VNODE}"`
+    echo "$OUTMSG"
+    echo " "
+    sleep 3
+    # Stop the node using:
+    mqsiexplain BIP15030 -m
+    echo    mqsistop ${VNODE}
+    OUTMSG=`eval "mqsistop ${VNODE}"`
+    echo "$OUTMSG"
+    echo " "
+    # Delete the node using:
+    mqsiexplain BIP15031 -m
+    echo    mqsideletebroker ${VNODE}
+    OUTMSG=`eval "mqsideletebroker ${VNODE}"`
+    echo "$OUTMSG"
+    good=2
+  fi
+  if [[ $good -eq 0 ]]
+  then
+    # Invalid mode $MODE for verify command
+    mqsiexplain BIP15060 -m -r "${MODE}"
+  fi
+  echo " "
+}
+##############################################################################
+# main
+#
+
+# Save arguments to this command
+ARG1=$1
+ARG2=$2
+ARG3=$3
+ARG4=$4
+ARG5=$5
+ARG6=$6
+
+# Get the install directory
+MQSI_BASE_FILEPATH=$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)
+#
+# First check whether we are using a global registry
+#
+if [[ -e "${MQSI_BASE_FILEPATH}/common/GLOBAL_REG" ]]
+then
+  read REGVAL < "${MQSI_BASE_FILEPATH}/common/GLOBAL_REG"
+  GLOBAL=true
+  REG_HOME="$REGVAL"
+else
+  if [[ -n "${MQSI_FORCE_GLOBAL_REGISTRY}" ]]
+  then
+    REGVAL="${MQSI_FORCE_GLOBAL_REGISTRY}"
+    GLOBAL=true
+    REG_HOME="$REGVAL"
+  else
+    GLOBAL=false
+    if [[ ! -n "$REG_HOME" ]]
+    then
+      REG_HOME="$HOME/iibconfig"
+    fi
+  fi
+fi
+id | grep "uid=0" > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+  OWNER="NOTROOT"
+else
+  OWNER="root"
+fi
+# Check for license
+if [[ ! -e "${MQSI_BASE_FILEPATH}/license/status.dat" ]]
+then
+
+  # Set up temporary workpath and source mqsiprofile
+  export MQSI_WORKPATH="/tmp/iib_install"
+  mkdir -p "${MQSI_WORKPATH}/common/errors" > /dev/null 2>&1
+  mkdir -p "${MQSI_WORKPATH}/common/log" > /dev/null 2>&1
+  # Make MQSI_BASE_FILEPATH available for mqsiprofile
+  export TEMP_MQSI_BASE_FILEPATH="${MQSI_BASE_FILEPATH}"
+  . "${MQSI_BASE_FILEPATH}/server/bin/mqsiprofile" > /dev/null 2>&1
+
+  if [[ "${ARG1}" = "accept" ]] && [[ "${ARG2}" = "license" ]]
+  then
+    # Continue only if user is not root or super user
+    if [[ "$OWNER" != "root" ]]
+    then
+      if [[ "${ARG3}" = "silently" ]]
+      then
+          acceptLicense "silently"
+      else
+          acceptLicense "noisily"
+      fi
+    else
+      # You can not set up a single-user installation as root
+      mqsiexplain BIP15046 -m
+    fi
+  #
+  # Global registry
+  #
+  elif [[ "${ARG1}" = "make" ]] &&  [[ "${ARG2}" = "registry" ]] && [[ "${ARG3}" = "global" ]] && [[ "${ARG4}" = "accept" ]] && [[ "${ARG5}" = "license" ]]
+  then
+    # Continue only if user is root or super user
+    if [[ "$OWNER" == "root" ]]
+      then
+      if [[ "${ARG6}" = "silently" ]]
+      then
+          acceptLicense "silently"
+      else
+          acceptLicense "noisily"
+      fi
+      useGlobalRegistry
+    else
+      # You need to be root to set up a shared installation
+      mqsiexplain BIP15047 -m
+    fi
+  else
+    # Before using iib you must first accept the license agreement
+    mqsiexplain BIP15048 -m
+
+    if [[ "$OWNER" == "root" ]]
+    then
+      # Shared installation install instructions
+      mqsiexplain BIP15049 -m
+    else
+      # Single-user installation install instructions
+      mqsiexplain BIP15050 -m
+    fi
+  fi
+  # Clean up temporary directory
+  rm -rf "/tmp/iib_install" > /dev/null 2>&1
+else
+  # --------------------------------------------------------------------
+  # Process commands
+  #
+  if ([[ "${ARG1}" = "accept" ]]) || ([[ "${ARG1}" = "accept" ]] && [[ "${ARG2}" = "license" ]] )
+  then
+    if [[ "$GLOBAL" == "false" ]] && [[ "$OWNER" != "root" ]]
+    then
+      localRegistry
+    fi
+    export MQSI_WORKPATH="$REG_HOME"
+    # Source mqsiprofile
+    export MQSI_BASE_FILEPATH
+    . "${MQSI_BASE_FILEPATH}/server/bin/mqsiprofile" > /dev/null 2>&1
+    # You have already accepted the license
+    mqsiexplain BIP15051 -m
+    echo ""
+    # Help message
+    mqsiexplain BIP15040 -m
+  else
+    if [[ "$GLOBAL" == "false" ]] && [[ "$OWNER" != "root" ]]
+    then
+      localRegistry
+    fi
+    export MQSI_WORKPATH="$REG_HOME"
+    # Source mqsiprofile
+    export MQSI_BASE_FILEPATH
+    IIBPROFILEDIRS=
+    i=0
+    while [ $# -gt 0 ]
+    do
+      IIBPROFILEDIRS[$i]="$1"
+      shift
+      let "i += 1"
+    done
+    . "${MQSI_BASE_FILEPATH}/server/bin/mqsiprofile" > /dev/null 2>&1
+    set -- "${IIBPROFILEDIRS[@]}"
+    unset IIBPROFILEDIRS
+    unset i
+    #
+    # Show help
+    #
+    if [ ! -n "${ARG1}" ] || [ "${ARG1}" = "-h" ] || [ "${ARG1}" = "help" ] || [ "${ARG1}" = "-help" ]
+    then
+      # Command to get help
+      mqsiexplain BIP15061 -m -r "${MQSI_BASE_FILEPATH}"
+      # Help message
+      mqsiexplain BIP15040 -m
+    else
+      #
+      # start tools
+      #
+      if [[ "${ARG1}" = "tools" ]] || [[ "${ARG1}" = "toolkit" ]]
+      then
+        if [[ ! -n $DISPLAY ]]
+        then
+          # The DISPLAY variable must be set before you can start the Integration Toolkit
+          mqsiexplain BIP15058 -m
+        elif [[ ! -f "${MQSI_BASE_FILEPATH}/tools/eclipse" ]]
+        then
+          # toolkit has not yet been installed
+          mqsiexplain BIP15062 -m
+        else
+          shift
+          # Starting Integration Toolkit
+          mqsiexplain BIP15006 -m
+
+          # Disable overlay scrollbars
+          export LIBOVERLAY_SCROLLBAR=0
+
+          if [[ "${MQSI_LAUNCH_TOOLKIT_IN_FOREGROUND}" = "1" ]]
+          then
+            startTools "$REG_HOME" "$@"
+          else
+            startTools "$REG_HOME" "$@" > "${HOME}/Toolkit.log" 2>&1 &
+          fi
+        fi
+      elif [[ "${ARG1}" = "make" ]]
+      #
+      # Make stuff
+      #
+      then
+        #
+        # Global registry
+        #
+        if [[ "${ARG2}" = "registry" ]] && [[ "${ARG3}" = "global" ]]
+        then
+          # Continue only if user is root or super user
+          if [[ "$OWNER" == "root" ]]
+          then
+            useGlobalRegistry
+          else
+            # You need to be root to convert from a single-user installation to a shared user installation
+            mqsiexplain BIP15053 -m
+          fi
+        else
+          # Unknown 'make' command
+          mqsiexplain BIP15054 -m
+        fi
+      #
+      # Version information
+      #
+      elif [[ "${ARG1}" = "version" ]]
+      then
+        getInstallInfo ${ARG1}
+      #
+      # Remove license
+      #
+      elif [[ "${ARG1}" = "remove" ]] && [[ "${ARG2}" = "license" ]]
+      then
+        removeLicense
+      #
+      # Execute Java under profile
+      #
+      elif [[ "${ARG1}" = "java" ]]
+      then
+        shift
+        java "$@"
+      #
+    # Verify the installation
+      #
+      elif [[ "${ARG1}" = "verify" ]]
+      then
+        verify "${ARG2}" "${ARG3}"
+      #
+      # execute mqsi* commands
+      #
+      else
+        CMD=${ARG1}
+        shift
+        which ${CMD} > /dev/null 2>&1
+        if [[ $? -eq 0 ]] && ( [[ ${CMD} == mqsi* ]] || [[ ${CMD} == iib* ]] )
+        then
+          ${CMD} "$@"
+        else
+          #Command not recognised
+          mqsiexplain BIP15002 -m -r "${CMD}"
+          # Displays help message
+          mqsiexplain BIP15001 -m
+        fi
+      fi
+    fi
+  fi
+fi

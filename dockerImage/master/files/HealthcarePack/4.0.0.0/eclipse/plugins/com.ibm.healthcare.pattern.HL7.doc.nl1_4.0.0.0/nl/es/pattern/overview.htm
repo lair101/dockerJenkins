@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> <title>Patrón Servicio sanitario: HL7 a HL7</title>
+</head>
+<body role="main">
+<h1 class="topictitle1">Patrón Servicio sanitario: HL7 a HL7</h1>
+<div>
+    <p class="shortdesc"/>
+    <p>
+    El patrón
+    <span>
+    Servicio sanitario: HL7 a HL7
+    </span>
+    integra una aplicación que puede enviar mensajes HL7 (Health
+    Level Seven International) v2 con una o más aplicaciones que
+pueden recibir mensajes HL7.
+    Las aplicaciones deben poder enviar y recibir mensajes HL7
+utilizando el protocolo MLLP (Minimal Lower Layer Protocol) sobre
+TCP/IP.
+    </p>
+</div>
+<div class="image">
+    <img src="overview.png"
+    alt="Diagrama que muestra las tres partes del patrón Servicio sanitario: HL7 a HL7" />
+</div>
+<div>
+	<p><b>Nota:</b> El patrón Servicio sanitario: HL7 a HL7 está disponible a partir de IBM
+WebSphere Message Broker Connectivity Pack 	for Healthcare versión
+7.0 y sigue disponible y soportado en esta versión de 	IBM
+Integration Bus Healthcare Pack. Sin
+embargo, se
+recomienda utilizar el patrón Servicio sanitario: HL7 a DFDL HL7 en
+su lugar, cuando sea posible. El patrón Servicio sanitario: HL7 a
+DFDL HL7 utiliza el modelo de mensaje DFDL en lugar de MRM y el
+conjunto de mensajes HL7v25P.
+	El modelo de mensaje DFDL tiene las siguientes ventajas:
+	<ul>
+		<li>DFDL es un formato estándar abierto, mientras que MRM y el
+conjunto de mensajes HL7v25P son de propiedad de IBM Integration Bus
+		</li>
+		<li>El editor DFDL proporciona herramientas más sencillas para
+desarrollar y probar extensiones a los esquemas HL7, en comparación
+con MRM y el conjunto de mensajes HL7v25P
+		</li>
+		<li>El modelo de mensaje DFDL admite HL7 versiones 2.7, 2.6, 2.5.1
+y anteriores, mientras que MRM y el conjunto de mensajes HL7v25P solo
+admiten HL7 versión 2.5.1 y anteriores
+		</li>
+	</ul>
+	</p>
+</div>
+<div>
+    <h2>Importante</h2>
+    <p>
+    Debe desplegar el conjunto de mensajes HL7 en el nodo de
+integración antes de desplegar una instancia de patrón. El conjunto
+de mensajes se utiliza para analizar mensajes HL7 a medida que los
+procesan los flujos de mensajes. Los flujos de mensajes que genera el
+patrón no se pueden desplegar en el nodo de integración hasta que se
+haya desplegado el conjunto de mensajes.
+    </p>
+    <p>
+    Puede importar el conjunto de mensajes HL7 en el espacio de
+trabajo desde la página <a href="resources.htm"
+    title="Recursos para el patrón">Recursos para el patrón</a>.
+    </p>
+    <p>
+    El conjunto de mensajes HL7 tarda mucho tiempo en construirse y
+puede ralentizar significativamente el espacio de trabajo. Por esto
+se recomienda hacer lo siguiente:
+    <ul>
+        <li>
+            Importe el conjunto de mensajes HL7 en su espacio de
+trabajo
+        </li>
+        <li>
+            Añada el conjunto de mensajes HL7 a un archivo BAR
+        </li>
+        <li>
+            Despliegue el archivo BAR en su nodo de integración
+        </li>
+        <li>
+            Suprima el conjunto de mensajes HL7 y el archivo BAR
+de su espacio de trabajo
+        </li>
+    </ul>
+    </p>
+    <p>
+    Si desea utilizar el correlacionador de gráficos para las
+transformaciones de mensajes, tendrá que dejar el conjunto de
+mensajes HL7 en su espacio de trabajo. Puede reducir el tiempo que se
+tarda en construir el conjunto de mensajes suprimiendo los capítulos
+HL7 del conjunto de mensajes 
+    Deje los archivos de definición de mensajes
+    <span class="filepath">
+    segments.mxsd
+    </span>
+    ,
+    <span class="filepath">
+    fields.mxsd
+    </span>
+    y
+    <span class="filepath">
+    datatypes.mxsd
+    </span>
+    del conjunto de mensajes tal como los requiera el patrón.
+    </p>
+</div>
+<div class = "description">
+    <h2>Opciones</h2>
+    <p>
+    El flujo Receiver del patrón Servicio sanitario: HL7 a HL7 admite les
+siguientes opciones:
+    </p>
+    <ul>
+        <li>
+            Recepción de mensajes HL7 utilizando MLLP sobre TCP/IP
+        </li>
+        <li>
+            Validación y análisis de los mensajes
+        </li>
+        <li>
+            Auditoría de los mensajes entrantes
+        </li>
+        <li>
+            Comprobación y proceso de mensajes duplicados
+        </li>
+        <li>
+            Soporte a las opciones de secuenciación
+        </li>
+        <li>
+            Publicación o envío a una cola de cada uno de los
+mensajes entrantes para su proceso fuera del patrón
+        </li>
+        <li>
+            Envío de la salida a una cola de transformación y
+direccionamiento
+        </li>
+        <li>
+            Manejo de excepciones
+        </li>
+    </ul>
+    <p>
+    El flujo TransformAndRoute del patrón Servicio sanitario: HL7 a HL7 admite les
+siguientes opciones:
+    </p>
+    <ul>
+        <li>
+            Transformación a formato XML canónico
+        </li>
+        <li>
+            Publicación o envío a una cola del mensaje canónico
+entrante para su proceso fuera del patrón
+        </li>
+        <li>
+            Informes de los campos adicionales encontrados en los
+segmentos HL7
+        </li>
+        <li>
+            Distribución de los mensajes a diversos destinos,
+configurables por separado
+        </li>
+        <li>
+            Filtrado de los mensajes a enviar a cada destino
+        </li>
+        <li>
+            Filtrado de los segmentos a incluir para cada destino
+        </li>
+        <li>
+            Puntos de personalización para habilitar la inclusión de
+cambios no estándar específicos de cada destino
+        </li>
+        <li>
+            Volver a transformar a HL7 y envío de la salida a la cola
+del flujo Sender de cada destino
+        </li>
+        <li>
+            Manejo de excepciones
+        </li>
+    </ul>
+    <p>
+    Cada uno de los flujos Sender del patrón Servicio sanitario:
+HL7 a HL7 admite les siguientes opciones:
+    </p>
+    <ul>
+        <li>
+            Lectura de mensajes transformados para este destino
+        </li>
+        <li>
+            Validación de los mensajes transformados
+        </li>
+        <li>
+            Garantizar que los mensajes se entregan secuencialmente
+según las opciones de secuenciación
+        </li>
+        <li>
+            Notificar cuando los mensajes llegan fuera de secuencia
+        </li>
+        <li>
+            Entrega de los mensajes HL7 a la aplicación de destino
+utilizando MLLP sobre TCP/IP
+        </li>
+        <li>
+            Manejo de excepciones
+        </li>
+    </ul>
+</div>
+<div class="familylinks">
+    <a name="anchorBack"></a>
+    <div class="section">
+        <h2 class="sectiontitle">Información adicional</h2>
+        <div>
+            <a href="design.htm">Diseño del patrón</a>
+        </div>
+        <div>
+            <a href="management.htm">Gestión de una instancia de
+patrón</a>
+        </div>
+        <div>
+            <a href="monitoring.htm">Supervisión del patrón</a>
+        </div>
+        <div>
+            <a href="parameters.htm">Parámetros del patrón</a>
+        </div>
+        <div>
+            <a href="resources.htm" title="Recursos para el patrón">Recursos para el patrón</a>
+        </div>
+        <div>
+            <a href="running.htm">Ejecución del patrón</a>
+        </div>
+        <div>
+            <a href="testing.htm">Prueba del patrón</a>
+        </div>
+    </div>
+</div>
+<p>
+</p>
+</body>
+</html>

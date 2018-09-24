@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+    <extension id="" name="" point="org.eclipse.jet.transform">
+        <transform startTemplate="templates/main.jet"
+           templateLoaderClass="com.ibm.etools.mft.pattern.support.java.compiled._jet_transformation">
+            <description></description>
+            <tagLibraries>
+                <importLibrary id="org.eclipse.jet.controlTags" usePrefix="c" autoImport="true"/>
+                <importLibrary id="org.eclipse.jet.javaTags" usePrefix="java" autoImport="true"/>
+                <importLibrary id="org.eclipse.jet.formatTags" usePrefix="f" autoImport="true"/>
+                <importLibrary id="org.eclipse.jet.workspaceTags" usePrefix="ws" autoImport="false"/>
+            </tagLibraries>
+        </transform>
+    </extension>
+    <extension point="com.ibm.etools.mft.pattern.support.api.PatternInstanceTransform">
+        <pattern class="com.ibm.etools.mft.pattern.support.java.JavaPatternInstanceTransform"></pattern>
+    </extension>
+    <extension point="org.eclipse.ui.newWizards">
+        <category
+            name="Pattern Authoring Wizards"
+            id="com.ibm.etools.mft.pattern.support.java.wizards">
+        </category>
+        <wizard
+            name="%NewPatternAuthoringJavaClassWizard.name"
+            icon="icons/newjavaclass.gif"
+            category="com.ibm.etools.mft.wizards.mbappdevcat"
+            class="com.ibm.etools.mft.pattern.support.java.wizards.JavaClassWizard"
+            finalPerspective="com.ibm.etools.mft.perspectives.BrokerDevelopmentPerspective"
+            id="com.ibm.etools.mft.pattern.support.java.wizards.JavaClassWizard">
+        </wizard>
+    </extension>
+    <extension point="org.eclipse.ui.newWizards">
+        <category
+            name="Pattern Authoring Wizards"
+            id="com.ibm.etools.mft.pattern.support.java.wizards">
+        </category>
+        <wizard
+              name="%NewPatternAuthoringProjectWizard.name"
+              icon="icons/newjavaproject.gif"
+              category="com.ibm.etools.mft.wizards.mbappdevcat"
+              class="com.ibm.etools.mft.pattern.support.java.wizards.RefinementProjectWizard"
+              finalPerspective="com.ibm.etools.mft.perspectives.BrokerDevelopmentPerspective"
+              id="com.ibm.etools.mft.pattern.support.java.wizards.RefinementProjectWizard"
+              project="true">
+        </wizard>
+    </extension>
+    <extension point="org.eclipse.ui.newWizards">
+        <category
+            name="Pattern Authoring Wizards"
+            id="com.ibm.etools.mft.pattern.support.java.wizards">
+        </category>
+        <wizard
+            name="%NewPatternAuthoringPropertyEditorWizard.name"
+            icon="icons/newpropertyeditor.gif"
+            category="com.ibm.etools.mft.wizards.mbappdevcat"
+            class="com.ibm.etools.mft.pattern.support.java.wizards.PropertyEditorWizard"
+            finalPerspective="com.ibm.etools.mft.perspectives.BrokerDevelopmentPerspective"
+            id="com.ibm.etools.mft.pattern.support.java.wizards.PropertyEditorWizard">
+        </wizard>
+    </extension>
+</plugin>

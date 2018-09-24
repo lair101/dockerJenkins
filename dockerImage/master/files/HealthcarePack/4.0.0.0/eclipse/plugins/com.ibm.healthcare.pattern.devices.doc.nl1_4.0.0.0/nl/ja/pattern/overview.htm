@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <title>「Healthcare: Medical devices to EMR」パターン</title>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    -->
+</head>
+<body role="main">
+<h1 class="topictitle1">「Healthcare: Medical devices to EMR」パターン</h1>
+<div>
+    <p class="shortdesc"/>
+    <p>
+<span>「Healthcare: Medical devices to EMR」</span>パターンは、医療デバイスと、Health Level Seven International (HL7) v2 検査結果メッセージ (ORU R01) を受信できる電子カルテ (EMR) アプリケーションとを統合します。
+このアプリケーションは、Minimal Lower Layer Protocol (MLLP) over TCP/IP を使用して HL7 ORU R01 メッセージを受信できる必要があります。
+</p>
+</div>
+<div class="image">
+    <img src="overview.png" alt="「Healthcare: Medical devices to EMR」パターンを示す図" />
+</div>
+<div>
+	<p><b>注:</b> このパターンは、IBM WebSphere Message Broker Connectivity Pack for Healthcare バージョン 7.0 で利用可能になりましたが、このバージョンの IBM Integration Bus Healthcare Pack でも引き続き利用可能であり、サポートされています。
+しかし、このパターンでは、IBM WebSphere Message Broker Connectivity Pack for Healthcare バージョン 8 で導入された DFDL メッセージ・モデルではなく、依然として MRM および HL7v25P メッセージ・セットを使用しています。
+DFDL メッセージ・モデルには以下のような利点があるため、新規アプリケーションや更新するアプリケーションでは、DFDL メッセージ・モデルを使用することをお勧めします。
+<ul>
+		<li>DFDL がオープン・スタンダードなフォーマットであるのに対し、MRM および HL7v25P メッセージ・セットは IBM Integration Bus 独自のものです。</li>
+		<li>DFDL エディターは、MRM および HL7v25P メッセージ・セットと比べると、HL7 スキーマに対する拡張機能をより容易に開発およびテストできるツールを提供しています。
+</li>
+		<li>DFDL メッセージ・モデルが HL7 バージョン 2.7、2.6、および 2.5.1 以前をサポートしているのに対し、MRM および HL7v25P メッセージ・セットは HL7 バージョン 2.5.1 以前のみをサポートしています。
+</li>
+	</ul>
+	</p>
+</div>
+<div>
+    <h2>重要</h2>
+    <p>
+パターン・インスタンスをデプロイする前に、HL7 メッセージ・セットを Integration ノードにデプロイする必要があります。
+このメッセージ・セットは、HL7 メッセージがメッセージ・フローによって処理される際に、HL7 メッセージを解析するために使用されます。
+パターンによって生成されるメッセージ・フローを Integration ノードにデプロイするには、その前にメッセージ・セットをデプロイしておく必要があります。
+</p>
+    <p>
+HL7 メッセージ・セットは、<a href="resources.htm" title="パターンのリソース">パターンのリソース</a>のページからワークスペースにインポートできます。
+</p>
+    <p>
+HL7 メッセージ・セットは、ビルドするのに長時間かかり、ワークスペースの動作を著しく低速にします。
+このため、以下のようにすることをお勧めします。
+<ul>
+        <li>
+HL7 メッセージ・セットをワークスペースにインポートします。
+</li>
+        <li>
+HL7 メッセージ・セットを BAR ファイルに追加します。
+</li>
+        <li>
+BAR ファイルを Integration ノードにデプロイします。
+</li>
+        <li>
+HL7 メッセージ・セットと BAR ファイルをワークスペースから削除します。
+</li>
+    </ul>
+    </p>
+    <p>
+メッセージ変換にグラフィカル・マッパーを使用する場合は、HL7 メッセージ・セットをワークスペース内に残しておく必要があります。
+メッセージ・セットのビルドに要する時間を短縮するには、メッセージ・セットから HL7 チャプターを削除します。
+ただし、メッセージ・セットに含まれる
+    <span class="filepath">
+    segments.mxsd
+    </span>
+    、
+    <span class="filepath">
+    fields.mxsd
+    </span>
+    および
+            <span class="filepath">
+            datatypes.mxsd
+    </span>
+    の各メッセージ定義ファイルは、パターンに必要なため、残しておいてください。
+    </p>
+    <p>
+患者 ID のためにデータベース・ルックアップを使用し、Web サービスが作成されるようにパターン・インスタンスを構成する場合には、PatientIdentifiersService メッセージ・セットをインポートしてデプロイする必要があります。
+このメッセージ・セットは、WSDL ファイルを含むため、Web サービス・フロー内の SOAP ノードで必要です。
+このメッセージ・セットと、MedicalDeviceInput ノードからの測定をモデル化するメッセージ・セットは、<a href="resources.htm" title="パターンのリソース">パターンのリソース</a>のページから入手できます。
+</p>
+    <p>
+MedicalDeviceInput ノード・メッセージ・セットは、デバイス・メッセージのメッセージ変換用のグラフィカル・マッパーと共に使用することができます。
+グラフィカル・マッパーにおける出力メッセージのために、ターゲット・パーサーが必ず DataObject になるように設定してください。
+デフォルトでは XMLNSC になるためです。
+このパターンでは、すべてのデバイス・メッセージが DataObject ドメインに属する必要があるため、XMLNSC を使用した場合は正しく機能しません。
+</p>
+</div>
+<div class = "description">
+    <h2>オプション</h2>
+    <p>
+このパターンの医療デバイス・フローでは、以下のオプションがサポートされます。
+</p>
+    <ul>
+        <li>
+医療デバイスからメッセージを受信。
+仮想デバイス・ドライバーからデータを生成するためにデフォルトの構成可能サービスが作成されます。
+</li>
+        <li>
+各着信メッセージをパターンの外部で処理するため、パブリッシュまたはキューへの送信を行う。
+</li>
+        <li>
+変換および経路指定キューに出力を送信
+</li>
+        <li>
+古いデバイス・メッセージが破棄されるように、有効期限を設定
+</li>
+    </ul>
+    <p>
+このパターンの変換および経路指定フローでは、以下のオプションがサポートされます。
+</p>
+    <ul>
+        <li>
+正規 HL7 フォーマットに変換</li>
+        <li>
+パターンの外部で処理するために、正規メッセージをキューに送信またはパブリッシュ
+</li>
+        <li>
+宛先固有の変更を組み込み可能にする、カスタマイズ・ポイント
+</li>
+        <li>
+HL7 に変換し、送信側フロー用のキューに出力を送信</li>
+        <li>
+このパターンの一部として定義されたデータベースを使用したデータベース・ルックアップにより、デバイス・メッセージと患者 ID とを関連付け</li>
+        <li>
+DB2 または Oracle のデータベース表を作成するための指示を提供。
+パターンから ODBC を介してデータベースにアクセス
+</li>
+    </ul>
+    <p>
+このパターンの送信側フローでは、以下のオプションがサポートされます。
+</p>
+    <ul>
+        <li>
+宛先用の変換済みメッセージを読み取り</li>
+        <li>
+変換されたメッセージを妥当性検査
+</li>
+        <li>
+MLLP over TCP/IP を使用して HL7 メッセージ宛先アプリケーションに送達
+</li>
+    </ul>
+    <p>
+このパターンでは、オプションで、患者 ID データベースを管理するための Web サービスを生成することができます。
+</p>
+    <ul>
+        <li>
+患者 ID を取得、設定、およびクリアするためにメッセージ・フローとして Web サービスを実装
+</li>
+        <li>
+すべての Web サービス要求をキューに記録
+</li>
+        <li>
+データベースに対する照会または更新として Web サービスを実装
+</li>
+    </ul>
+    <p>
+このパターンによって生成されるすべてのメッセージ・フローは、エラー情報を格納するキューを使用して例外を処理します。
+</p>
+</div>
+<div class="familylinks">
+    <a name="anchorBack"></a>
+    <div class="section">
+        <h2 class="sectiontitle">詳細情報</h2>
+        <div>
+            <a href="remove.htm">患者 ID データベースのクリーンアップ</a>
+</div>
+        <div>
+            <a href="customizing.htm">パターン・インスタンスのカスタマイズ</a>
+</div>
+        <div>
+            <a href="design.htm">パターンの設計</a>
+        </div>
+        <div>
+            <a href="management.htm">パターン・インスタンスの管理</a>
+        </div>
+        <div>
+            <a href="parameters.htm">パターン・パラメーター</a>
+        </div>
+        <div>
+            <a href="resources.htm">パターンのリソース</a>
+</div>
+        <div>
+            <a href="create.htm">患者 ID データベースのセットアップ</a>
+</div>
+        <div>
+            <a href="testing.htm">パターンのテスト</a>
+        </div>
+    </div>
+</div>
+<p>
+</p>
+</body>
+</html>

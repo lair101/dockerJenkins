@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>Testing the Healthcare: Medical devices to EMR pattern</title>
+</head>
+<body role="main">
+<a name="links"></a>
+<div class="section">
+    <h1 class="topictitle1">Testing the Healthcare: Medical devices to EMR pattern</h1>
+    <p class="shortdesc">
+    Use the following information to help you to test the
+    <span>
+    Healthcare: Medical devices to EMR
+    </span>
+    pattern.
+    </p>
+</div>
+<div class="section">
+    <a name="setup"></a> <h2 class="sectiontitle">Basic pattern instance setup</h2>
+    <p>
+    The main message flows of the pattern instance are:
+    </p>
+    <ul>
+        <li>
+            MedicalDevices
+        </li>
+        <li>
+            TransformAndRoute
+        </li>
+        <li>
+            Sender
+        </li>
+        <li>
+            PatientIdentifiers
+        </li>
+    </ul>
+    <p>
+    You must ensure that you have all the queues set up for the pattern instance, 
+    see the &quot;Queues&quot; section in <a href="management.htm">Managing a 
+    Healthcare: Medical devices to EMR pattern instance</a>.
+    </p>
+</div>
+<div class="section">
+    <a name="flow"></a> <h2 class="sectiontitle">Flow of information through the 
+    pattern instance</h2>
+    <p>
+    When you deploy an instance of the Healthcare: Medical devices to EMR pattern, 
+    information flows in the following sequence:
+    </p>
+    <ol>
+        <li>
+            The MedicalDeviceInput node locates its configurable service to determine which 
+            medical devices to connect to and what measurements to collect.
+        </li>
+        <li>
+            The MedicalDeviceInput reads a medical device measurement and propagates the 
+            information as a message into the MedicalDevices message flow.
+        </li>
+        <li>
+            The MedicalDevices message flow adds an expiry time and sends the message to the 
+            RXF queue for the TransformAndRoute message flow.
+        </li>
+        <li>
+            The TransformAndRoute message flow converts the device message into an HL7 
+            observation result. The message is published out in an HL7 canonical format for 
+            other applications to consume. The observation result is associated with the 
+            current patient identifier for that device and then written to the DEST queue.
+        </li>
+        <li>
+            The Sender message flow sends the HL7 message to the EMR, which responds with an 
+            ACK.
+        </li>
+        <li>
+            The ACK message is processed by the Sender flow.
+        </li>
+    </ol>
+    <p>
+    All flows also have an exception handling subflow that handles any problems that 
+    are caught by the flow.
+    </p>
+    <p>
+    The HL7 test application can be used during development to simulate the 
+    receiving EMR. Start the test application and start a TCP/IP MLLP listener. The 
+    test application will receive and display the observation results sent by the 
+    pattern instance.
+    </p>
+    <p>
+   	To start the HL7 test application, complete the following steps:
+    <ol>
+    	<li>Click <span class="uicontrol">File > New > Other</span>.</li>
+    	<li>In the <span class="uicontrol">Healthcare</span> folder, select 
+    		<span class="uicontrol">HL7 Test Application</span> and click <span class="uicontrol">Next</span>.</li>
+    	<li>Enter a container and filename for the test application settings and click <span class="uicontrol">Finish</span>. 
+    		The HL7 test application starts.</li>
+    </ol>
+    </p>
+</div>
+<a href="overview.htm#anchorBack" title="Back">Back to the Healthcare: Medical 
+devices to EMR pattern specification</a>
+<p>
+</p>
+</body>
+</html>

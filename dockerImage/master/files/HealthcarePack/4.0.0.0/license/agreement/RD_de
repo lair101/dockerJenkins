@@ -1,0 +1,99 @@
+﻿<html>
+
+<head>
+	<style>
+		body {margin-top:0;}
+		h3 {font-family:arial; font-weight:bold; font-size:12; padding:20px 0 0; margin:0;}
+		p {font-family:arial; font-weight:normal; font-size:12; padding:10px 0 0; margin:0;}
+		.padoff {padding:0 !important;}
+	</style>
+</head>
+
+<body>
+<h3 class='padoff'>
+
+
+<!--LI 2 Title-->
+Nutzungsbeschränkungen
+
+
+</h3>
+<p>
+
+
+<!--LI 2 Paragraph 1-->
+Das Programm kann als Datensystem für medizinische Geräte (Medical Device Data System, MDDS) eingesetzt werden, um Daten zu übertragen, zu speichern oder von einem Format in ein anderes zu konvertieren. Das Programm kann mitunter auch Daten an bettseitige medizinische Geräte (z. B. für Polling und Telemetrie) übertragen. Das Programm selbst ist jedoch kein medizinisches Gerät.
+
+
+</p>
+<p>
+<!--LI 2 Paragraph 2, pre-bullets-->
+Die Nutzung des Programms für folgende Zwecke ist untersagt:
+
+
+<br />
+
+
+<!--LI 2 Paragraph 2, bullets-->
+a. zur Kontrolle bettseitiger medizinischer Geräte für klinische, therapeutische oder Behandlungszwecke (z. B., jedoch ohne Beschränkung hierauf, zur Überwachung der Medikation, Anästhesie, Verabreichung von Kochsalzlösungen und Ähnliches);
+<br />
+b. zur aktiven Patientenüberwachung (d. h., falls das Programm als alleiniges Mittel zur Überwachung lebenswichtiger Patientendaten, z. B. der Herzfrequenz, eingesetzt wird);
+<br />
+c. zur Entscheidungsunterstützung (d. h., falls das Programm als Hauptgrundlage für die Bestimmung der patientenspezifischen Behandlung oder sofortiger klinischer Maßnahmen dient); oder
+<br />
+d. bei aktiven Überwachungen, die von einer zeitgenauen Datenübertragung abhängig sind.
+
+
+</p>
+<h3>
+
+
+<!--LI 3 Title-->
+Haftungsfreistellung gegenüber IBM
+
+
+</h3>
+<p>
+
+
+<!--LI 3 Paragraph 1-->
+Der Lizenznehmer wird die International Business Machines Corporation und ihre verbundenen Unternehmen für jegliche Forderungen und Schadensersatzansprüche Dritter, die direkt oder indirekt aus der Nutzung des Programms durch oder für den Lizenznehmer zu irgendeinem Verwendungszweck, der gemäß den Bestimmungen des vorstehenden Abschnitts "Nutzungsbeschränkungen" untersagt ist, entschädigen.
+
+</p>
+<h3>
+
+
+<!--LI 5 Title-->
+Länderspezifische Beschränkungen
+
+
+</h3>
+<p>
+
+
+<!--LI 5 Paragraph 1-->
+Das Programm unterliegt bestimmten gesetzlichen und behördlichen Genehmigungen und kann daher von IBM nur auf eingeschränkter und länderabhängiger Basis zur Vermarktung freigegeben werden. Das Programm darf ausschließlich in den Ländern verwendet werden, die unter der folgenden URL aufgelistet sind: -
+
+
+<br />
+<a href='http://www-01.ibm.com/software/integration/wbimessagebroker/healthcare/license'>http://www-01.ibm.com/software/integration/<br />wbimessagebroker/healthcare/license</a>.
+<br />
+
+
+<!--LI 5 Paragraph 1, pre-email-->
+Sie können auch eine entsprechende Anfrage an IBM unter Verwendung der folgenden E-Mail-Adresse richten:
+
+
+&nbsp;<a href='mailto:mqlcycle@uk.ibm.com'>mqlcycle@uk.ibm.com</a>.
+</p>
+<p>
+
+
+<!--LI 5 Paragraph 2-->
+Länderspezifische gesetzliche und behördliche Genehmigungen können sich im Laufe der Zeit ändern. IBM lehnt jegliche Haftung für den Fall ab, dass eine Genehmigung in einem Land, das zuvor seine Zustimmung erteilt hat, eingeschränkt oder zurückgezogen wird. Der Lizenznehmer ist dafür verantwortlich, in regelmäßigen Abständen zu prüfen, ob und welche Änderungen unter der angegebenen URL dokumentiert sind.
+
+
+</p>
+</body>
+
+</html>

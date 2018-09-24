@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+     <extension
+         point="org.eclipse.datatools.connectivity.ProfileManagerInitializationProvider">
+      <connection
+            connectionProfileName="Derby Sample Connection"
+            connectionProfileID="org.eclipse.datatools.connectivity.db.derby.embedded.connectionProfile"
+            connectionInitializer = "com.ibm.datatools.db2.cloudscape.driver.DerbyInitialization"
+            driverDefinitionName="Derby Sample Driver"
+            driverTemplateID="org.eclipse.datatools.connectivity.db.derby101.genericDriverTemplate">
+         <property
+         		id="org.eclipse.datatools.connectivity.db.databaseName"
+         		value="SAMPLE">
+         </property>
+       </connection>
+   </extension>
+   
+      
+   <extension point="org.eclipse.datatools.connectivity.driverExtension">
+  	  <driverTemplateOverride 
+  	  	priority="5" 
+  	  	createDefault="true" 
+  	  	valuesProvider="com.ibm.datatools.db2.cloudscape.driver.DerbyDriverValuesProvider" 
+  	  	targetId="org.eclipse.datatools.connectivity.db.derby101.genericDriverTemplate" /> 
+   </extension>
+
+</plugin>

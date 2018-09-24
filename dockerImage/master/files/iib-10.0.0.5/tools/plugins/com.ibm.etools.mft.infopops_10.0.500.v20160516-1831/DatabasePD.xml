@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+
+<pdHelp xmlns="http://www.ibm.com/visualutils/pdhelpcontent"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.ibm.com/visualutils/pdhelpcontent http://www.ibm.com/visualutils/pdhelpcontent">
+<!--pdHelp xmlns="http://www.ibm.com/visualutils/pdhelpcontent"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.ibm.com/visualutils/pdhelpcontent pdhelpcontent.xsd"-->
+
+	<pluginCategory id="com.ibm.etools.mft.ibmnodes">
+		<pageHelp id="ComIbmDatabaseInput_basic">
+			<title>Basic tab</title>
+			<shortDescription>Specify the data source and ESQL module</shortDescription>
+			<moreDescription><p>To configure the DatabaseInput node:</p>
+		<ol>
+			<li>Double-click the node. An editor displays the Database Event Design window for the module. Complete the mandatory fields and then click Generate query. To view or modify the ESQL code, click the Source tab. Code that has been generated is clearly marked by color-coded --@!{ and --@!} comments. Any changes that you make within these comments are lost if you regenerate the code.</li>
+			<li>Configure the Data source and ESQL module fields on this tab.</li>
+
+		</ol>
+			</moreDescription>
+			<topic href="../com.ibm.etools.mft.doc/bc34040_.htm">
+				<label>Event-based database integration</label>
+			</topic>
+			<topic href="../com.ibm.etools.mft.doc/bc34042_.htm">
+				<label>Configuring a DatabaseInput node</label>
+			</topic>
+			<topic href="../com.ibm.etools.mft.doc/bc34044_.htm">
+				<label>Event tables</label>
+			</topic>
+			
+		</pageHelp>
+
+
+
+		<fieldHelp id="ComIbmDatabaseInput_basic_dataSource">
+			<title>Data source</title>
+			<description>
+				<p>The ODBC data source name of the database that contains the tables that you refer to in the ESQL module.
+				</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmDatabaseInput_basic_databaseInputExpression">
+			<title>ESQL module</title>
+			<description><p>Ensure that this field refers to the module that you configured in the Database Event Design window.</p>
+			</description>
+		</fieldHelp>
+		
+		</pluginCategory>
+
+</pdHelp>

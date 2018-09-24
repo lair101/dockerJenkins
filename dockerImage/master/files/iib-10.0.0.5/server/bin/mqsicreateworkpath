@@ -1,0 +1,159 @@
+#!/bin/bash
+# Licensed Materials - Property of IBM;
+# 5724-A82
+# (c) Copyright IBM Corp. 2005, 2013
+# All Rights Reserved;
+# US Government Users Restricted Rights - use,
+# duplication or disclosure restricted by GSA
+# ADP Schedule Contract with IBM Corp.;
+#
+# %A%
+
+# Name of the script for usage message
+SCRIPTNAME=`basename $0`
+
+# Script must be run as root
+id | grep "uid=0" > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+    ROOT=FALSE
+    CHCMD="chgrp mqbrkrs"
+else
+    ROOT=TRUE
+    CHCMD="chown root:mqbrkrs"
+fi
+
+# The mqbrkrs group must exist
+tmpfile="/tmp/mqsicreateworkpath_$$"
+user_rc=0
+group_rc=0
+
+rm -f $tmpfile
+touch $tmpfile
+
+# Check that the mqbrkrs group exists
+if [ -f $tmpfile ]; then                      # Make sure we really created the file
+    chgrp mqbrkrs $tmpfile  > /dev/null 2>&1  # Look for the group
+    group_rc=$?
+    if [ $group_rc -ne 0 ]; then
+        echo "$SCRIPTNAME:  Group 'mqbrkrs' does not exist." >&2
+    fi
+    rm -f $tmpfile
+fi
+
+if [ $user_rc -ne 0 -o $group_rc -ne 0 ]; then
+    exit 1  # Exit if mqbrkrs does not exist
+fi
+
+# Find out the FilePath of this install
+FILEPATH=`dirname "$0"`/..
+
+# Check a WorkPath has been specified
+if [ "$1" = "" ]; then
+  echo "Usage: $SCRIPTNAME <WorkPath>"
+  exit 1
+fi
+
+# Check a valid WorkPath has been specified
+if [ ! -d "$1" -o ! -w "$1" ]; then
+  echo "$SCRIPTNAME:  \"$1\" does not exist or is not accessible." >&2
+  exit 1
+fi
+
+
+# Create basic WorkPath structure
+
+mkdir -p "$1/components"
+mkdir -p "$1/common"
+mkdir -p "$1/common/errors"
+mkdir -p "$1/common/locks"
+mkdir -p "$1/common/log"
+mkdir -p "$1/common/profiles"
+mkdir -p "$1/common/wsrr"
+mkdir -p "$1/connectors"
+mkdir -p "$1/odbc"
+mkdir -p "$1/registry"
+mkdir -p "$1/shared-classes"
+mkdir -p "$1/config"
+mkdir -p "$1/XML"
+mkdir -p "$1/XML/external"
+mkdir -p "$1/XSL"
+mkdir -p "$1/XSL/external"
+
+touch "$1/registry/LOCK"
+
+
+# Copy the odbc.ini template, if it exists, to the workpath, if it is not already there
+# We still need to do this on Linux x86 for the Default Configuration Wizard to work.
+if [[ -n `uname | grep Linux` && -n `uname -m | grep 86` ]]; then
+  if [ -f "$FILEPATH/ODBC/V7.1/odbc.ini" -a ! -f "$1/odbc/.odbc.ini" ]; then
+    cp "$FILEPATH/ODBC/V7.1/odbc.ini" "$1/odbc/.odbc.ini"
+  fi
+fi
+
+
+# Set permissions
+
+chmod 775 "$1"
+$CHCMD "$1"
+
+chmod 775 "$1/components"
+chmod g+s "$1/components"
+$CHCMD "$1/components"
+
+chmod 775 "$1/common"
+$CHCMD "$1/common"
+
+chmod 2770 "$1/common/errors"
+$CHCMD "$1/common/errors"
+
+chmod 770 "$1/common/locks"
+chmod g+s "$1/common/locks"
+$CHCMD "$1/common/locks"
+
+chmod 2770 "$1/common/log"
+$CHCMD "$1/common/log"
+
+chmod 775 "$1/common/profiles"
+chmod g+s "$1/common/profiles"
+$CHCMD "$1/common/profiles"
+
+chmod 775 "$1/common/wsrr"
+chmod g+s "$1/common/wsrr"
+$CHCMD "$1/common/wsrr"
+
+chmod 775 "$1/connectors"
+chmod g+s "$1/connectors"
+$CHCMD "$1/connectors"
+
+chmod 775 "$1/odbc"
+$CHCMD "$1/odbc"
+
+if [ -f "$1/odbc/.odbc.ini" ]; then
+  chmod 664 "$1/odbc/.odbc.ini"
+  $CHCMD "$1/odbc/.odbc.ini"
+fi
+
+chmod 770 "$1/registry"
+chmod g+s "$1/registry"
+$CHCMD "$1/registry"
+
+chmod 660 "$1/registry/LOCK"
+$CHCMD "$1/registry/LOCK"
+
+chmod 775 "$1/shared-classes"
+$CHCMD "$1/shared-classes"
+
+chmod 775 "$1/config"
+$CHCMD "$1/config"
+chmod 775 "$1/XML"
+$CHCMD "$1/XML"
+
+chmod 775 "$1/XML/external"
+$CHCMD "$1/XML/external"
+
+chmod 775 "$1/XSL"
+$CHCMD "$1/XSL"
+
+chmod 775 "$1/XSL/external"
+$CHCMD "$1/XSL/external"
+

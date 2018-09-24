@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Licensed Material - Property of IBM
+ 5724-L79
+ © Copyright IBM Corporation 2007.  All Rights Reserved.
+ US Government Users Restricted Rights - Use, duplication or disclosure
+ restricted by GSA ADP Schedule Contract with IBM Corp. 
+-->
+
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="com.ibm.j2ca.wmb.migration.core.updateContributions">
+		<updateContribution id="SAP_to_v610" version="(6.1\.*.*)" file="updates_to_v610.xml"/>
+	</extension>
+	<extension point="com.ibm.j2ca.wmb.migration.core.updateContributions">
+		<updateContribution id="SAP_to_v620" version="(6.2\.*.*)" file="updates_to_v620.xml"/>
+	</extension>
+	
+	<extension point="com.ibm.j2ca.wmb.migration.core.updateContributions">
+		<updateContribution id="SAP_to_v700" version="(7.0\.*.*)" file="updates_to_v700.xml"/>
+	</extension>
+	<extension
+		point="org.eclipse.help.contexts">
+		<contexts file="help_contexts.xml"/>
+	</extension>
+	
+	<extension 
+		point="org.eclipse.ui.ide.markerHelp">
+		<markerHelp
+			markerType="com.ibm.j2ca.wmb.migration.base.validation.MigrationValidationMarker"
+			helpContextId="com.ibm.j2ca.wmb.migration.sap.CWPADL79A1">
+			<attribute name="id" value="CWPADL79A1"/>
+		</markerHelp>
+	</extension>
+	
+	<extension 
+		point="org.eclipse.ui.ide.markerHelp">
+		<markerHelp
+			markerType="com.ibm.j2ca.wmb.migration.base.validation.MigrationValidationMarker"
+			helpContextId="com.ibm.j2ca.wmb.migration.sap.CWPADL79A2">
+			<attribute name="id" value="CWPADL79A2"/>
+		</markerHelp>
+	</extension>
+</plugin>

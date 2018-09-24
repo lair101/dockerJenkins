@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Data Discovery" default="default" xmlns:adapter="http://com.ibm.adapter">
+
+	<property name="debug" value="true"/>
+	<property name="srcProject" value="Sample"/>
+	<property name="dstProject" value="Output"/>
+	<!-- 
+		- If the importResource is a file than it must have either a workspace 
+		relative path or a full file system path.
+	 -->
+ 	<target name="default">
+		<adapter:createProject projectName="${dstProject}" projectType="Java"/>
+		<adapter:discover>
+			<adapter:performImport agent="{com/ibm/adapter}CobolDiscoveryAgent">
+				<adapter:importResource>
+					<adapter:propertyGroup name="CobolFileGroup">
+						<adapter:propertyElement name="CobolFile" value="/${srcProject}/taderc99.ccp"/>
+					</adapter:propertyGroup>
+				</adapter:importResource>
+				<adapter:queryProperties>
+					<adapter:propertyGroup name="ImportProperties">
+						<adapter:propertyElement name="Platform" value="Win32"/>
+					</adapter:propertyGroup>
+				</adapter:queryProperties>
+				<adapter:queryResult>
+					<adapter:selectElement name="DFHCOMMAREA"/>
+				</adapter:queryResult>
+			</adapter:performImport>
+			<adapter:writeToWorkspace writer="{com/ibm/adapter/cobol/writer}JAVA_WRITER">
+				<adapter:propertyGroup name="COBOLToJavaResourceWriter">
+					<adapter:propertyGroup name="Java Type Name">
+						<adapter:propertyElement name="Overwrite existing class" value="true"/>
+						<adapter:propertyElement name="Project Name" value="${dstProject}"/>
+						<adapter:propertyElement name="Package Name" value="com.ibm.test"/>
+						<adapter:propertyElement name="Class Name" value="Taderc99"/>
+						<adapter:propertyElement name="GenerationStyle" value="Default"/>
+					</adapter:propertyGroup>
+				</adapter:propertyGroup>
+			</adapter:writeToWorkspace>
+		</adapter:discover>
+	</target>
+
+</project>

@@ -1,0 +1,555 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>“Healthcare：从 HL7 到 HL7”模式的设计</title>
+</head>
+<body role="main">
+<a name="links"></a>
+<div class="section">
+    <h1 class="topictitle1">“Healthcare：从 HL7 到 HL7”模式的设计</h1>
+    <p class="shortdesc">
+    “Healthcare：从 HL7 到 HL7”模式使用 GenericHL7Input 节点完整读取入局 HL7 消息；对可以包括在消息中的段没有任何限制，前提是这些段在此模式所使用的 HL7v25P 消息集中存在。此模式使用 IBM Integration Bus Healthcare Pack 随附的 HL7v25P 消息集。HL7v25P 消息集包含 HL7 V2.5 中所有有效标准段的定义。您可以向此 HL7v25P 消息集添加其他 Z 段。应用程序可以使用 Z 段来发送或接收已定义但不符合 HL7 规范的数据。
+</p>
+    <p>
+    “接收方”流对源消息执行一次序列编号、重复检查和 HL7 应答。
+</p>
+    <p>
+    此模式定义入局消息分发到的目标数。对于每个目标，将处理此消息并应用过滤。此过滤功能确定消息是否为目标所必需，以及源消息中要包括在输出消息中的段。
+</p>
+    <p>
+    每个目标的“发送方”流确保消息按正确的顺序发送到目标应用程序。
+</p>
+</div>
+<div>
+    <p>
+    本主题包含下列各节：</p>
+    <ul><li>
+        <a href="design.htm#source">使用 GenericHL7Input 节点处理源消息</a></li>
+    
+    <li>
+        <a href="design.htm#sequencing">在“接收方”流中进行排序</a></li>
+    <li>
+        <a href="design.htm#transform">变换并路由</a></li>
+    <li>
+        <a href="design.htm#sending">“发送方”流</a></li>
+    <li>
+        <a href="design.htm#messageset">HL7v25P 消息集</a></li>
+    <li>
+        <a href="design.htm#publish">模式实例的输出</a></li>
+    </ul>
+</div>
+<div class="section">
+    <a name="source"></a> <h2>使用 GenericHL7Input 节点处理源消息</h2>
+    <p>
+    输入消息最初由“接收方”流中的 GenericHL7Input 节点读作 BLOB 消息。在解析之前，将除去前导 MLLP 字节。如果找不到前导字节，那么将因为发送方未遵守 MLLP 协议而拒绝消息，关闭连接并发送否定应答 (NACK) 响应消息。
+</p>
+    <p>
+    GenericHL7Input 节点将根据 HL7v25P 消息集中的 HL7 消息定义来解析消息；请参阅<a href="resources.htm">“<span>Healthcare：HL7 到 HL7</span>”模式的资源</a>。将读取所有段，如果任何段具有其他字段，那么这些字段将放在该段的“其余”字段中。
+</p>
+    <h3>消息验证</h3>
+    <p>
+    在“接收方”流中未进行标准的消息数据验证。但是，已确认 MSH 段中存在下列特定于 HL7 的数据字段，因为这些字段是继续处理所必需的：</p>
+    <ul>
+        <li>
+            MSH.1.FieldSeparator
+        </li>
+        <li>
+            MSH.2.SeviceString
+        </li>
+        <li>
+            MSH.3.SendingApplication
+        </li>
+        <li>
+            MSH4.SendingFacility
+        </li>
+        <li>
+            MSH.10.MessageControlID
+        </li>
+        <li>
+            MSH.11.ProcessingID
+        </li>
+        <li>
+            MSH.12.VersionID
+        </li>
+    </ul>
+    <h3>重复处理选项</h3>
+    <p>
+    每条 HL7 入局消息的 MSH 头段中都有一个 MessageControlID 字段，用于标识记录。
+</p>
+    <p>
+    控制重复检查的模式参数用于在 GenericHL7Input 节点上设置等效属性。
+</p>
+    <p>
+    如果在 IBM Integration Bus Toolkit 中选中了“<span class="uicontrol">检查重复</span>”复选框，那么所有标识将与返回到发送方的应答 (ACK) 一起存储在重复队列中。将根据已保存的标识检查入局消息的标识，以确定其是否为重复项。
+</p>
+    <p>
+    检测到重复项后，不会对此重复项进行处理，但随第一条消息发送的同一应答将返回到发送方。
+</p>
+    <p>
+    标识将在重复队列中存储一段指定的时间，在该时间之后，这些标识将被删除，并且具有同一标识的消息不再被视作重复。消息标识的缺省存储时间段为 24 小时，但您可以使用模式参数更改此时间。必须对重复队列的大小进行调整，以使其包含所设置时间段内预期的消息标识数目的峰值。
+</p>
+    <p>
+    如果入局消息不是重复项，那么此消息将通过 GenericHL7Input 节点的“输出”终端传递，以进行进一步处理。
+</p>
+    <p>
+    如果检测到重复项，那么 GenericHL7Input 节点会将 ACK 返回给请求者。如果选择了重复报告并且检测到重复项，或者如果 GenericHL7Input 节点中发生了任何其他错误，那么消息将传递到“故障”终端，并且环境将提供有关此错误的描述。
+</p>
+</div>
+<p>
+</p>
+<a name="sequencing"></a> <h3>在“接收方”流中进行排序</h3>
+<p>
+“<span class="msobjprop">序号</span>”参数确定“接收方”流如何向输入消息分配序号，以确保消息按正确的顺序进行交付。
+</p>
+<p>
+下面三个选项可用于分配序号：</p>
+<ul>
+    <li>
+        <span class="msobjpropval">
+        “根据到达顺序”</span>，这是缺省选项。集成节点在消息到达时分配序号。“接收方”流必须作为单一线程流进行部署，以使消息按照源应用程序发送这些消息的顺序到达并分配序号。
+</li>
+    <li>
+        <span class="msobjpropval">
+        基于内容</span>。此选项使用 HL7 MSH 段中包含的序号。如果您知道源应用程序确实将填写此字段，那么可以选择此选项。
+</li>
+    <li>
+        <span class="msobjpropval">
+        不排序</span>。如果您不需要消息按顺序交付到任何目标，请选择此选项，以免 Sequence 节点包含在“接收方”消息流中。
+</li>
+</ul>
+<h3>应答</h3>
+<p>
+此模式的交互样式是源应用程序与集成节点流之间的同步交互，在发送同步应答之前，消息将保留在 TransformAndRoute 流的队列中。
+</p>
+<p>
+缺省情况下，HL7 的“接收方”流将生成应答回复 (ACK) 或否定应答回复 (NACK) 消息作为对成功接收了数据的响应。如果不需要应答，请取消选中“<span class="msobjprop">发送应答</span>”参数的复选框。
+</p>
+<p>
+返回应答之后，消息流将确保对消息进行处理或者引发错误，在后一种情况下，将保存消息数据以允许进行再提交或其他处理。
+</p>
+<p>
+在消息中存在构建应答所需的值时，将使用这些值。
+</p>
+<p>
+端到端交互的当前状态存储在流中的所有主要点中，并且 NACK 消息包含此错误信息。
+</p>
+<div class="tablenoborder">
+    <h2>MSH</h2>
+    <table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+        <thead align="left">
+        <tr>
+            <th class="firstcol" align="left" valign="top" width="33%">字段名</th>
+            <th class="invisible" valign="top" width="33%">应答消息中的字段值</th>
+            <th class="invisible" valign="top" width="34%">如果在输入消息中不存在</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.1.FieldSeparator</th>
+            <td valign="top" width="*" class="invisible">输入消息中的 MSH.1.FieldSeparator</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                '|'
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.ServiceString</th>
+            <td valign="top" width="*" class="invisible">输入消息中的 MSH.2.ServiceString</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                “^~\&amp;”</span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.3.SendingApplication</th>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                “BROKER.RECEIVER”</span>
+            </td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.4.SendingFacility</th>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                ' '
+                </span>
+            </td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.5.ReceivingApplication</th>
+            <td valign="top" width="*" class="invisible">输入消息中的 MSH.3.SendingApplication</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                ' '
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.6.ReceivingFacility</th>
+            <td valign="top" width="*" class="invisible">输入消息中的 MSH.4.SendingFacility</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                ' '
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.7.DateTimeOfMessage</th>
+            <td valign="top" width="*" class="invisible">这是采用“<span class="msobjprop">YYYYMMddHHmmss</span>”格式的当前日期时间。</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.9.MessageType</th>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                “ACK”</span>
+            </td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.10.MessageControlID</th>
+            <td valign="top" width="*" class="invisible">新唯一标识</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.11.ProcessingID</th>
+            <td valign="top" width="*" class="invisible">输入消息中的 MSH.11.ProcessingID</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                “P”</span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.12.VersionID</th>
+            <td valign="top" width="*" class="invisible">输入消息中的 MSH.12.VersionID</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                “2.2”</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <h2>MSA</h2>
+    <table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+        <thead align="left">
+        <tr>
+            <th class="firstcol" align="left" valign="top" width="33%">字段名</th>
+            <th class="invisible" valign="top" width="33%">应答消息中的字段值</th>
+            <th class="invisible" valign="top" width="34%">如果在输入消息中不存在</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSA.1.AcknowledgmentCode</th>
+            <td valign="top" width="*" class="invisible">成功接收消息后，MSA 应答代码将设置为“<span class="msobjpropval">AA</span>”，并且 MSA.3.TextMessage 字段将为空。</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSA.2.MessageControlID</th>
+            <td valign="top" width="*" class="invisible">输入消息中的 MSH.10.MessageControlID</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                “123456789”</span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSA.3.TextMessage</th>
+            <td valign="top" width="*" class="invisible">成功接收消息后，MSA 应答代码将设置为“<span class="msobjpropval">AA</span>”，并且 MSA.3.TextMessage 字段将为空。</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSA.4.ExpectedSequenceNumber</th>
+            <td valign="top" width="*" class="invisible">输入消息中的 MSH.13.ExpectedSequenceNumber</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        </tbody>
+    </table>
+    <h3>错误</h3>
+    <p>
+    <b>除去 MLLP 字节时出错</b>。MSA 应答代码将设置为“<span class="msobjpropval">AR</span>”，并且 MSA.3.TextMessage 字段将设置为“<span class="msobjpropval">MLLP 错误 - 缺少起始字节</span>”。
+</p>
+    <p>
+    <b>验证入局 MSH 或执行重复数据删除时出错</b>。MSA 应答代码将设置为“<span class="msobjpropval">AE</span>”，并且 MSA.3.TextMessage 字段将设置为“<span class="msobjpropval">输入消息解析或验证错误</span>”。</p>
+    <p>
+    <b>应用顺序逻辑时出错</b>。MSA 应答代码将设置为“<span class="msobjpropval">AR</span>”，并且 MSA.3.TextMessage 字段将设置为“<span class="msobjpropval">Sequence 节点中发生了内部故障</span>”。
+</p>
+    <p>
+    <b>将 HL7 消息存储到队列中时出错</b>。MSA 应答代码将设置为“<span class="msobjpropval">AR</span>”，并且 MSA.3.TextMessage 字段将设置为“<span class="msobjpropval">将消息提交到处理方队列中时出错</span>”。
+</p>
+</div>
+<div>
+    <h2>分发</h2>
+    <p>
+    源消息将写入一个或多个队列中，以进行变换和路由。
+    对于此模式的每个部分，此消息将写入一个队列，此模式的各个部分随后将路由到所需数目的目标。
+</p>
+</div>
+<p>
+</p>
+<div class="section">
+    <a name="transform"></a> <h2 class="sectiontitle">变换并路由</h2>
+    <p>
+    TransformAndRoute 流从队列中读取 HL7 消息。
+</p>
+    <h3>“其余”字段</h3>
+    <p>
+    如果选中了“<span class="msobjprop">报告其余项</span>”参数，那么将对“其余”字段执行检查，这些字段是存在于段中，但未在用于解析入局消息的 HL7 消息中进行建模的附加字段。如果找到了“其余”字段，那么这些字段将写入队列或进行发布。此选项在开发期间用于标识附加字段并确定这些字段的处理方式。
+</p>
+    <h3>XML 规范格式</h3>
+    <p>
+    HL7 消息将变换为其 XML 规范格式并传递到 SubCustomize 子流。缺省情况下，此子流仅传递消息而不执行任何其他操作。但是，此子流为您提供了一个位置，您可以在其中引入对特定模式实例的定制，而不更改流的结构。
+</p>
+    <p>
+    如果选择了“<span class="msobjprop">规范订阅源</span>”参数，那么此时将输出规范格式，请参阅<a href="design.htm#publish">模式实例的输出</a>。您可以使用输入消息的规范格式作为其他不接受基本 HL7 消息的应用程序的订阅源。
+</p>
+    <h3>分发到目标</h3>
+    <p>
+    此模式针对其各个部分提供了多达 6 个目标。您可以单独地对每个目标进行配置。如果您选择的目标数少于 6，那么将仅配置所选目标。对于每个目标，TransformAndRoute 流会向 TransformAndRoute 流的过滤子流发送消息副本。对于每个目标，将应用过滤器以确定是否将入局消息发送到目标。每个目标的过滤子流 Dest<var>n</var>Filter（其中 <var>n</var> 是目标编号）由模式参数进行配置，以生成允许的“消息代码/消息事件”对列表。只有那些匹配的消息才会传递到目标应用程序。
+</p>
+    <p>
+    除目标的“<span class="msobjprop">排序操作</span>”参数设置为“<span class="msobjpropval">不执行排序</span>”的情况外，每当过滤掉一条消息时，都会向发送方 Dest<var>n</var>Sender 子流传递一条伪消息，其中 <var>n</var> 是目标的编号。为了维护来自源的消息的正确顺序，这条伪消息是必需的。
+</p>
+    <h2>段过滤</h2>
+    <p>
+    完成消息过滤后，每条必需消息都将重新变换为 HL7 格式。如果选择了“<span class="msobjprop">段过滤</span>”参数，那么目标的“<span class="msobjprop">段过滤器</span>”表中列出的所有段都将在变换过程中除去。
+</p>
+    <h2>定制</h2>
+    <p>
+    随后，消息将通过定制子流进行传递。缺省情况下，此子流仅传递消息而不执行任何其他操作。但是，此子流为您提供了一个位置，您可以在其中引入对特定模式实例的定制。
+    最后，消息将写入“发送方”流的队列。
+</p>
+</div>
+<div class="section">
+    <a name="sending"></a> <h2 class="sectiontitle">“发送方”流</h2>
+    <p>
+    对于每个目标，将创建单独的消息流 Dest<var>n</var>Sender 子流，其中 <var>n</var> 是目标的编号。
+</p>
+    <h3>重新排序</h3>
+    <p>
+    可以对目标执行严格或宽松的排序，这由“<span class="msobjprop">排序操作</span>”模式参数确定。如果选择了“<span class="msobjpropval">严格</span>”排序，那么将在“发送方”流中包含一个无限期超时的 Resequence 节点。如果消息不按顺序到达，那么它们将在缺失的消息到达之前一直保留在排序队列中。如果选择了此选项，那么必须对暂挂消息所在的系统队列进行监视，并执行操作以提供缺失的消息。
+</p>
+    <p>
+    对于成功交付到目标的每条消息，源中的序号以及“发送方”流中的所有重新排序将随时间戳记和与指定为 Dest<var>n</var>（其中，<var>n</var> 表示目标的编号）的目标相对应的序列组一起写入 <var>QueuePrefix</var>.SEQNOS 队列，其中 <var>QueuePrefix</var> 由“<span class="msobjprop">队列前缀</span>”参数定义。
+</p>
+    <p>
+    如果选择了“<span class="msobjprop">消息过滤</span>”选项，那么进行了严格排序的事件和某些消息不会传递到目标。在这种情况下，进行重新排序并将新的序号应用于下列消息（在这些消息传递到目标之前）之后，表示这些未交付消息的伪消息将被除去。
+</p>
+    <p>
+    如果选择了“<span class="msobjpropval">宽松</span>”排序选项，那么一般情况下，消息将按顺序交付，但如果在“<span class="msobjprop">排序超时</span>”参数指定的时间段之后缺失消息，那么将向通知队列发送一条消息，并且消息流将继续。缺失的消息将在到达后插入流中。缺失消息到达后，还将写入 .SEQNTFY 队列。
+</p>
+    <p>
+    缺省情况下，系统排序队列定义如下：</p>
+    <ul>
+        <li>
+            SYSTEM.BROKER.EDA.EVENTS
+        </li>
+        <li>
+            SYSTEM.BROKER.EDA.COLLECTIONS
+        </li>
+    </ul>
+    <p>
+    如果对于某个模式选择了“<span class="msobjprop">单独的排序队列</span>”参数，那么特定于此模式实例的排序队列将通过使用“<span class="msobjprop">队列前缀</span>”参数进行定义，如下所示：</p>
+    <ul>
+        <li>
+            SYSTEM.BROKER.EDA.<var>QueuePrefix</var>.EVENTS
+        </li>
+        <li>
+            SYSTEM.BROKER.EDA.<var>QueuePrefix</var>.COLLECTIONS
+        </li>
+    </ul>
+    <p>
+    这些非缺省排序队列由名为 <span class="msobjprop">patternInstance_setSeqQs</span> 的可配置服务定义。此模式实例创建了一个名为 <span class="filepath"><i>patternInstance</i>.resequence.configurableservice</span> 的文件，其中包含必须在运行此模式实例的集成节点上创建的此服务定义。另外，“发送方”流还配置为使用这个可配置服务。
+</p>
+    <p>
+    如果目标不要求进行排序，那么将忽略流中的 Resequence 节点以及关于缺失消息的报告。
+</p>
+    <h3>在 GenericHL7Output 节点中发送并重试</h3>
+    <p>
+    GenericHL7Output 节点为目标应用程序准备消息，从而将消息更改到位流中，并在开头添加所需的 Minimal Lower Layer Protocol (MLLP) 定界符字节 <span class="msobjpropval">0B</span>。然后，GenericHL7Output 节点将这条准备好的消息转发到 TCP/IP 输出节点，后者尝试将此消息发送到目标应用程序。
+</p>
+    <p>
+    如果目标应用程序返回了“<span class="msobjpropval">AA</span>”成功代码，那么“<span class="msobjprop">Environment.PatternVariables.FlowMilestoneReached</span>”变量将清除，并且消息将传递到“输出”终端。
+</p>
+    <p>
+    如果目标应用程序返回了“<span class="msobjpropval">AE</span>”响应码，那么“<span class="msobjprop">Environment.PatternVariables.FlowMilestoneReached</span>”变量将设置为“<span class="msobjpropval">ACKAE</span>”，并且消息将传递到“故障”终端。返回“<span class="msobjpropval">ACKAE</span>”响应后，不会进行重试。
+</p>
+    <p>
+    如果成功发送了消息但未接收到应答，或者接收到无效应答，那么将按照处理“<span class="msobjpropval">AE</span>”响应的方式处理这种情况，但是，在消息传递到“故障”终端之前，“<span class="msobjprop">Environment.PatternVariables.FlowMilestoneReached</span>”变量将设置为“<span class="msobjpropval">TIMEOUT</span>”、“<span class="msobjpropval">RECEIVEACK</span>”或“<span class="msobjpropval">ACKERROR</span>”。不进行重试。
+</p>
+    <p>
+    如果 GenericHL7Output 节点未能将消息发送到目标，或者如果从目标返回了“<span class="msobjpropval">AR</span>”应答，那么消息将传递到“记录重试”终端。完成记录后，将在返回控制权时重试发送消息，直到发送成功或重试次数达到了“<span class="msobjprop">重试限制</span>”参数设置的限制。
+</p>
+    <p>
+    达到重试限制后，“<span class="msobjprop">Environment.PatternVariables.FlowMilestoneReached</span>”变量将设置为“<span class="msobjpropval">ACKARTOOMANYREPEATS</span>”，并且消息将传递到“故障”终端。
+</p>
+    <h3>消息验证</h3>
+    <p>
+    基于目标选择内容验证，方法是将<span class="msobjprop">
+    “验证”</span>
+    参数用于<span class="msobjprop">
+    文档通信</span>
+    部分中。对目标选择验证后，在相关“发送方”流的 MQInput 节点上，<span class="msobjprop">
+    “验证”</span>
+    参数将设置为<span class="msobjpropval">
+    “内容”</span>
+    。此节点上的“<span class="msobjprop">解析计时</span>”属性由模式定义为“<span class="msobjpropval">立即</span>”，以便在验证后再进行任何进一步处理。验证仅提供针对 HL7v25P 消息集的消息验证。例如，它未提供从属字段的完全 HL7 验证。
+</p>
+</div>
+<div class="section">
+    <a name="messageset"></a> <h2 class="sectiontitle">HL7v25P 消息集</h2>
+    <p>
+    HL7v25P 消息集与 MRM 解析器配合使用，以解析和编写 HL7 消息。生成的消息树可以序列化为 XML 规范格式。
+    消息定义非常灵活，足以容纳局部变体而不需要定制，并且它们还可以进行扩展，以允许解析局部定义的 Z 段和额外的字段。如果出现了局部变体并且必须处理这些局部变体中的数据，那么必须修改 HL7 模型，以使其符合匹配的规范，从而确保可访问所有数据。
+</p>
+    <p>
+    您的组织可以使用规范格式来存放在任何操作系统上运行的数据的表示。此数据的格式可能是标准化的日期及时间、数字格式或者您的组织实施的任何其他数据标准化要求。规范格式表示源应用程序与目标应用程序的分离，从而支持最大程度的复用和最小程度的维护。此规范格式的定制子流包含在您生成的模式中。
+</p>
+    <p>
+    HL7v25P 消息集包含 HL7 V2.5 规范中定义的所有段的全局元素定义。每个段中的组件和子组件都通过正确的定界符进行建模。您可以使用名为“<span class="msobjprop">HL7</span>”的通用消息定义来解析 HL7 段的任何序列。
+</p>
+    <p>
+    <b>注意：</b>IBM Integration Bus 中提供的 Healthcare 样本也具有 HL7 消息集。为了避免冲突，IBM Integration Bus Healthcare Pack 所使用的消息集具有其他名称 (HL7v25P)。HL7v25P 消息集较新，并且是您必须与“<span>Healthcare：从 HL7 到 HL7</span>”模式配合使用的消息集。
+</p>
+</div>
+<p>
+</p>
+<div class="section">
+    <a name="publish"></a> <h2 class="sectiontitle">模式实例的输出</h2>
+    <p>
+    除路由到指定目标的 HL7 消息以外，此模式还提供了众多其他输出。这些输出将写入队列或发送到 Publication 节点。目标由“<span class="msobjprop">发布</span>”模式参数确定。如果选中了“<span class="msobjpropval">发布</span>”选项，那么所有信息都将使用以模式实例名开头的主题层次结构进行发布。</p>
+    <p>
+    如果选择了“<span class="msobjpropval">写入队列</span>”选项，那么输出将发送到一些队列，这些队列的名称根据模式参数“<span class="msobjprop">队列前缀</span>”和一组固定后缀生成，如下表所示。</p>
+    <p>
+    <b>注意</b>：未显示每个主题和队列的初始构面（模式实例名）。</p>
+</div>
+<div class="tablenoborder">
+    <table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+        <thead align="left">
+        <tr>
+            <th class="firstcol" align="left" valign="top" width="20%">输出</th>
+            <th class="invisible" valign="top" width="15%">队列</th>
+            <th class="invisible" valign="top" width="15%">主题</th>
+            <th valign="top" width="50%">备注</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">源订阅源</th>
+            <td valign="top" width="*" class="invisible">.SRC</td>
+            <td valign="top" width="*" class="invisible">/Receiver/Source</td>
+            <td valign="top" width="*" class="invisible">将编写接收到的源消息的副本。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">日志</th>
+            <td valign="top" width="*" class="invisible">.JRNL</td>
+            <td valign="top" width="*" class="invisible">/Receiver/Journal</td>
+            <td valign="top" width="*" class="invisible">此输出以标准模式格式提供入局消息的日志。<p>
+                请参阅“注 1”。</p>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">目标 TransformAndRoute 流</th>
+            <td valign="top" width="*" class="invisible">.RXF<var>n</var></td>
+            <td valign="top" width="*" class="invisible">不适用</td>
+            <td valign="top" width="*" class="invisible">对于每个目标，将向 TransformAndRoute 流发送消息。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">出错的消息</th>
+            <td valign="top" width="*" class="invisible">.ERR</td>
+            <td valign="top" width="*" class="invisible">不适用</td>
+            <td valign="top" width="*" class="invisible">无法正确处理的消息将写入错误队列，并且错误信息包含在 MQRFH2 头中。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">用于重复检查的消息标识</th>
+            <td valign="top" width="*" class="invisible">.DUPID</td>
+            <td valign="top" width="*" class="invisible">不适用</td>
+            <td valign="top" width="*" class="invisible">消息标识及关联的 ACK 消息将进行存储，以便与稍后的入局消息进行比较，从而检测重复消息。
+<p>
+                请参阅“注 2”。</p>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">其余</th>
+            <td valign="top" width="*" class="invisible">.REM</td>
+            <td valign="top" width="*" class="invisible">/Remainders</td>
+            <td valign="top" width="*" class="invisible">可以选择性地编写具有“其余”字段的消息。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">规范</th>
+            <td valign="top" width="*" class="invisible">.CAN</td>
+            <td valign="top" width="*" class="invisible">/Canonical</td>
+            <td valign="top" width="*" class="invisible">如果选中了输出规范订阅源的选项，那么将编写输入消息的规范 XML 格式。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">目标“发送方”流</th>
+            <td valign="top" width="*" class="invisible">.DEST<var>n</var></td>
+            <td valign="top" width="*" class="invisible">不适用</td>
+            <td valign="top" width="*" class="invisible">对于每个目标，将向“发送方”流发送消息。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">数据排序</th>
+            <td valign="top" width="*" class="invisible">SYSTEM.BROKER.EDA.EVENTS</td>
+            <td valign="top" width="*" class="invisible">不适用</td>
+            <td valign="top" width="*" class="invisible">这是缺省情况下“发送方”流中的 Resequence 节点所使用的系统队列。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">数据排序</th>
+            <td valign="top" width="*" class="invisible">SYSTEM.BROKER.EDA.COLLECTIONS</td>
+            <td valign="top" width="*" class="invisible">不适用</td>
+            <td valign="top" width="*" class="invisible">这是缺省情况下“发送方”流中的 Resequence 节点所使用的系统队列。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">数据排序</th>
+            <td valign="top" width="*" class="invisible">SYSTEM.BROKER.EDA.<var>QueuePrefix</var>.EVENTS</td>
+            <td valign="top" width="*" class="invisible">不适用</td>
+            <td valign="top" width="*" class="invisible">这是选择了“<span class="msobjpropval">单独的排序队列</span>”选项的情况下，“发送方”流中的 Resequence 节点所使用的队列。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">数据排序</th>
+            <td valign="top" width="*" class="invisible">SYSTEM.BROKER.EDA.<var>QueuePrefix</var>.COLLECTIONS</td>
+            <td valign="top" width="*" class="invisible">不适用</td>
+            <td valign="top" width="*" class="invisible">这是选择了“<span class="msobjpropval">单独的排序队列</span>”选项的情况下，“发送方”流中的 Resequence 节点所使用的队列。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">序列消息的输出</th>
+            <td valign="top" width="*" class="invisible">.SEQNTFY</td>
+            <td valign="top" width="*" class="invisible">不适用</td>
+            <td valign="top" width="*" class="invisible">如果选择了“<span class="msobjpropval">宽松</span>”排序选项，那么未按顺序到达的消息将写入此队列并交付到目标。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">序列号</th>
+            <td valign="top" width="*" class="invisible">.SEQNOS</td>
+            <td valign="top" width="*" class="invisible">不适用</td>
+            <td valign="top" width="*" class="invisible">此队列记录交付到各个目标的最新序号。如果选择了“<span class="msobjpropval">严格</span>”排序选项，那么此队列将用于确定交付到目标的最后一个序号。</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    <b>注 1：</b>通过添加 MQMD 头和 MQRFH2 头，可以根据源消息生成日志消息。MQRFH2 头包含以下内容：</p>
+    <ul>
+        <li>
+            集成节点名</li>
+        <li>
+            消息流</li>
+        <li>
+            当前时间戳记</li>
+    </ul>
+    <p>
+    <b>注 2：</b>每条消息到达时，消息标识队列都将对其进行检查，以查找具有同一标识的先前消息。对这些消息指定了超时（由某个消息参数确定），在此时间之后，将从队列中除去这些消息。因此，将仅在指定的时间段内查找重复项，缺省值为 24 小时。
+</p>
+</div>
+<a href="overview.htm#anchorBack" title="返回">返回到“Healthcare：从 HL7 到 HL7”模式规范</a>
+<p>
+</p>
+</body>
+</html>

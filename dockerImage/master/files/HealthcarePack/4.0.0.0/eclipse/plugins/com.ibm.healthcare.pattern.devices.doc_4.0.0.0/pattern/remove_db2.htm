@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <title>Clean up DB2</title>
+    <!-- 
+       (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+       All Rights Reserved * Licensed Materials - Property of IBM
+      -->
+</head>
+<body role="main">
+<div>
+    <h1 class="topictitle1">Clean up DB2</h1>
+    <p class="shortdesc">
+    These instructions assume that you are using DB2 Universal Database and guide 
+    you through the following tasks:
+    </p>
+    <ul>
+        <li>
+            Remove the database called PATSDB that is used by the pattern
+        </li>
+        <li>
+            Remove the ODBC definition for the database
+        </li>
+    </ul>
+</div>
+<p>
+To remove the database and the ODBC definition:
+</p>
+<ol>
+    <li>
+        In a DB2 command window, enter the following command to ensure that DB2 is 
+        started:
+        <pre>db2start</pre>
+    </li>
+    <li>
+        In a DB2 command window, enter the following command:
+        <pre>db2 DROP DATABASE PATSDB</pre>
+    </li>
+    <li>
+        To remove the ODBC definition for the PATSDB database, (which has a data 
+        source name of PATIENTSDSN), undo the ODBC setup step; see Enabling ODBC 
+        connections to the databases in the IBM Integration Bus documentation. 
+    </li>
+</ol>
+<p>
+</p>
+<a href="remove.htm" title="Back">Back to Cleaning up the patient identifier 
+database</a>
+<p>
+</p>
+</body>
+</html>

@@ -1,0 +1,37 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.4.0,4.0.0)
+ ",org.eclipse.core.resources;bundle-version="[3.4.0,4.0.0)",org.eclip
+ se.emf.ecore.xmi;bundle-version="[2.4.0,3.0.0)",org.eclipse.ui.workbe
+ nch;bundle-version="[3.4.0,4.0.0)",org.eclipse.ui.forms;bundle-versio
+ n="[3.4.0,4.0.0)",org.eclipse.jface;bundle-version="[3.4.0,4.0.0)",or
+ g.eclipse.jface.text;bundle-version="[3.4.0,4.0.0)",org.eclipse.xsd;b
+ undle-version="[2.4.0,3.0.0)",org.eclipse.datatools.modelbase.sql;bun
+ dle-version="[1.0.0,2.0.0)",org.eclipse.jdt.core;bundle-version="[3.4
+ .0,4.0.0)",com.ibm.etools.mft.uri;bundle-version="[10.0.0,11.0.0)",co
+ m.ibm.etools.mft.builder.xsi;bundle-version="[10.0.0,11.0.0)",com.ibm
+ .etools.mft.util;bundle-version="[10.0.0,11.0.0)",com.ibm.etools.mft.
+ applib;bundle-version="[10.0.0,11.0.0)",com.ibm.etools.mft.navigator;
+ bundle-version="[10.0.0,11.0.0)",com.ibm.etools.mft.gplang;bundle-ver
+ sion="[10.0.0,11.0.0)",com.ibm.etools.mft.mapping.maplang;bundle-vers
+ ion="[10.0.0,11.0.0)",com.ibm.etools.mft.mapping;bundle-version="[10.
+ 0.0,11.0.0)",com.ibm.etools.mft.uri.map;bundle-version="[10.0.0,11.0.
+ 0)",com.ibm.msl.mapping;bundle-version="[7.0.0,10.0.0)",com.ibm.msl.m
+ apping.api;bundle-version="[7.0.0,10.0.0)",com.ibm.msl.mapping.xml;bu
+ ndle-version="[7.0.0,10.0.0)",com.ibm.msl.mapping.rdb;bundle-version=
+ "[7.0.0,10.0.0)",com.ibm.etools.mft.map.api;bundle-version="[10.0.0,1
+ 1.0.0)",com.ibm.etools.mft.map;bundle-version="[10.0.0,11.0.0)",com.i
+ bm.etools.mft.uri.esql;bundle-version="[10.0.0,11.0.0)",org.apache.an
+ t
+Export-Package: com.ibm.etools.mft.map.msgmap,com.ibm.etools.mft.map.m
+ sgmap.convert
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: msg-map.jar
+Bundle-Version: 10.0.500.v20160516-1831
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Bundle-Activator: com.ibm.etools.mft.map.msgmap.MsgmapConverterPlugin
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ibm.etools.mft.map.msgmap;singleton:=true
+
+

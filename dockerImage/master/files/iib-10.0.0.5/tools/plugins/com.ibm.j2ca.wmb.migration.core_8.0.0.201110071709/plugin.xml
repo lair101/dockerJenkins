@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Licensed Materials - Property of IBM
+ 5724-N40, 5724-N41, 5724-N42, 5724-N43, 5724-L77, 5724-L78, 5724-L79, 5724-L80, 5724-L81, 5724-L82
+ © Copyright IBM Corporation 2007.  All Rights Reserved.
+ US Government Users Restricted Rights - Use, duplication or disclosure
+ restricted by GSA ADP Schedule Contract with IBM Corp. 
+-->
+
+<?eclipse version="3.0"?>
+<plugin>
+
+    <extension point="org.eclipse.help.contexts">
+		<contexts file="help_contexts.xml"  plugin="com.ibm.j2ca.wmb.migration.core" />
+	</extension>
+
+
+  <!-- Here we define a new extension point.  This extension point is used
+        to programmatically contribute adapter update entries -->
+	<extension-point id="updateContributions" name="%Update_Contributions_Extension_Point.name" schema="schema/updateContributions.exsd"/>
+	<extension-point id="migrationParticipant" name="%MigrationParticipantExtensionPoint.name" schema="schema/migrationParticipant.exsd"/>
+	   <!-- Primary participant for adapter migration -->
+	<extension
+		point="com.ibm.j2ca.wmb.migration.core.migrationParticipant">
+		<migrationParticipant
+			class="com.ibm.j2ca.wmb.migration.AdapterUpdateParticipant"
+            id="AdapterUpdateParticipant"
+            name="%AdapterUpdateParticipantName">
+		</migrationParticipant>
+	</extension>
+	
+	<extension
+		point="com.ibm.j2ca.wmb.migration.core.migrationParticipant">
+		<migrationParticipant
+			class="com.ibm.j2ca.wmb.migration.OrganizeClasspathParticipant"
+            id="OrganizeClasspathParticipant"
+            name="%OrganizeClasspathParticipantName">           
+		</migrationParticipant>
+	</extension>
+	
+</plugin>

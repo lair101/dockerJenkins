@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Export-Package: com.ibm.etools.msgbroker.tooling
+Require-Bundle: org.eclipse.ui.intro;bundle-version="[3.2.2,4.0.0)",or
+ g.eclipse.ui;bundle-version="[3.2.1,4.0.0)",org.eclipse.ui.ide;bundle
+ -version="[3.2.1,4.0.0)";resolution:=optional,org.eclipse.ui.views;bu
+ ndle-version="[3.2.1,4.0.0)";resolution:=optional,org.eclipse.ui.edit
+ ors;bundle-version="[3.2.1,4.0.0)";resolution:=optional,org.eclipse.j
+ face.text;bundle-version="[3.2.2,4.0.0)";resolution:=optional,org.ecl
+ ipse.ui.workbench.texteditor;bundle-version="[3.2.0,4.0.0)";resolutio
+ n:=optional,org.eclipse.core.resources,org.eclipse.core.runtime.compa
+ tibility;bundle-version="[3.1.100,4.0.0)",org.eclipse.core.runtime;bu
+ ndle-version="[3.2.0,4.0.0)",com.ibm.etools.mft.uri,com.ibm.ccl.commo
+ n.splash,org.eclipse.equinox.p2.ui;bundle-version="2.2.0",org.eclipse
+ .equinox.p2.operations;bundle-version="2.2.0",org.eclipse.equinox.p2.
+ repository;bundle-version="2.2.0"
+Plugin-Class: com.ibm.etools.msgbroker.tooling.ToolingPlugin
+Bundle-Vendor: IBM
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 10.0.500.v20160516-1831
+Bundle-Localization: plugin
+Bundle-Name: %Plugin.name
+Bundle-Activator: com.ibm.etools.msgbroker.tooling.ToolingPlugin
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ibm.etools.msgbroker.tooling; singleton:=true
+
+

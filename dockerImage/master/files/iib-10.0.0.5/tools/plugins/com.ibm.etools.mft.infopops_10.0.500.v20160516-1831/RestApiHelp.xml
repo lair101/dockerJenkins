@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<contexts>
+  
+	<context id="editor">
+		<description><b>REST API Editor</b>
+This is where you work with a REST API.  
+The editor consists of the following sections: Header, Resources, Model Definitions, Error Handling, and Security.
+		</description>
+ 		<topic href="../com.ibm.etools.mft.doc/bi12016_.htm" label="Developing integration solutions by using REST APIs"/>
+ 		<topic href="../com.ibm.etools.mft.doc/bi12040_.htm" label="Defining resources, models, and operations in a REST API"/>
+ 		<topic href="../com.ibm.etools.mft.doc/bi12017_.htm" label="REST APIs"/>
+ 		<topic href="../com.ibm.etools.mft.doc/bi12020_.htm" label="Restrictions on Swagger documents"/>
+    </context>
+            
+	<context id="createResource">
+		<description><b>Create a Resource with Operations</b>
+Create a resource under the existing resource structure with selected default operations. 
+Existing resource paths in the API are shown in a tree structure.
+A new resource path can be created under the existing path structure by selecting a path container and specifying the path under the container.
+Use curly braces ({}) to mark a section of a URL path as replaceable using a path parameter.
+Select default operations to be added in the resource to be created.
+		</description>
+ 		<topic href="../com.ibm.etools.mft.doc/bi12016_.htm" label="Developing integration solutions by using REST APIs"/>
+ 		<topic href="../com.ibm.etools.mft.doc/bi12040_.htm" label="Defining resources, models, and operations in a REST API"/>
+ 		<topic href="../com.ibm.etools.mft.doc/bi12017_.htm" label="REST APIs"/>
+    </context>
+            
+	<context id="modifyResourcePaths">
+		<description><b>Modify Resource Paths</b>
+Use this dialog to modify one or more resource paths.
+Existing resource paths in the API are shown in a tree structure.
+A path segment can be modified or removed, and all of the resources with a path containing the segment are affected.
+New path segments can be inserted to existing paths.
+Use curly braces ({}) to mark a section of a URL path as replaceable using a path parameter.
+		</description>
+ 		<topic href="../com.ibm.etools.mft.doc/bi12016_.htm" label="Developing integration solutions by using REST APIs"/>
+ 		<topic href="../com.ibm.etools.mft.doc/bi12040_.htm" label="Defining resources, models, and operations in a REST API"/>
+ 		<topic href="../com.ibm.etools.mft.doc/bi12017_.htm" label="REST APIs"/>
+    </context>
+            
+	<context id="addOperation">
+		<description><b>Add Operation</b>
+Select the operations to be added to the operation.
+A resource can have at most one operation for each method.
+Those operations already in the resource are checked, and cannot be selected again.
+		</description>
+ 		<topic href="../com.ibm.etools.mft.doc/bi12016_.htm" label="Developing integration solutions by using REST APIs"/>
+ 		<topic href="../com.ibm.etools.mft.doc/bi12040_.htm" label="Defining resources, models, and operations in a REST API"/>
+ 		<topic href="../com.ibm.etools.mft.doc/bi12017_.htm" label="REST APIs"/>
+    </context>
+            
+	<context id="confirmSchemaTypeChange">
+		<description><b>Confirm Schema Type Change</b>
+You are about to change the schema type of an operation request or response body.
+The current schema type is defined inline with the body, which is not supported by the REST API editor.
+With the REST API editor, you must define a model, and make the request or response body to reference the model.
+If you change the inlined schema type to another type, you will not be able to change the type back using the REST API editor.
+		</description>
+ 		<topic href="../com.ibm.etools.mft.doc/bi12017_.htm" label="REST APIs"/>
+    </context>
+            
+	<context id="confirmForSubflow">
+		<description><b>Confirm Save REST API</b>
+Confirm to save REST API changes before an operation related to an implementation subflow.
+The REST API editor needs to be saved in order for a subflow to reference the current content of the REST API.
+The saving of the REST API is performed before the following actions:
+ <ul>
+  <li>Create an implementing subflow for an operation</li>
+  <li>Open the implementation subflow for an operation</li>
+  <li>Create an implementing subflow for an error handler</li>
+  <li>Open the implementation subflow for an error handler</li>
+  <li>Rename an operation</li>
+</ul> 
+        </description>
+ 		<topic href="../com.ibm.etools.mft.doc/bi12016_.htm" label="Developing integration solutions by using REST APIs"/>
+ 		<topic href="../com.ibm.etools.mft.doc/bi12017_.htm" label="REST APIs"/>
+    </context>
+            
+    <context id="wizardCreate">
+		<description><b>REST API Wizard</b>
+Use this wizard to create a REST API Project. REST API projects implement a RESTful interface.  
+Enter a name for the REST API project.
+When creating a REST API from scratch, the REST API project name will also be the name of the REST API.
+When importing a Swagger document, the name of the REST API is in the Swagger.
+The REST API name, base path and version can be edited after the REST API is created.
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/bi12019_.htm" label="Creating a REST API that is based on a Swagger file"/>    
+		<topic href="../com.ibm.etools.mft.doc/bi12036_.htm" label="Creating a REST API from scratch by using the IBM Integration Toolkit"/> 
+    </context>
+            
+    <context id="wizardImport">
+		<description><b>REST API Wizard</b>
+Import a Swagger document to create a REST API Project. REST API projects implement a RESTful interface.
+You may click the hyperlink at the bottom to open a Swagger editor outside of the IIB Toolkit.
+The URL location of the external Swagger editor can be edited in the Preference.
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/bi12019_.htm" label="Creating a REST API that is based on a Swagger file"/>  
+		<topic href="../com.ibm.etools.mft.doc/bi12035_.htm" label="Creating a REST API from an imported Swagger document"/>    
+    </context>
+            
+    <context id="wizardReview">
+		<description><b>REST API Wizard</b>
+Review the content of the Swagger document to be imported.  
+The content of the Swagger document can be edited after the REST API project is created.
+Press the Back button if you want to import a different Swagger.
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/bi12019_.htm" label="Creating a REST API that is based on a Swagger file"/>    
+		<topic href="../com.ibm.etools.mft.doc/bi12035_.htm" label="Creating a REST API from an imported Swagger document"/>    
+    </context>
+            
+ </contexts>

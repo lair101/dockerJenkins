@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: bcel-5.1.jar
+Bundle-Vendor: IBM
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: Apache Commons BCEL (repackaged for IBM WODM)
+Bundle-SymbolicName: com.ibm.rules.thirdparty.bcel
+Export-Package: org.apache.bcel;uses:="org.apache.bcel.util,org.apache
+ .bcel.classfile",org.apache.bcel.classfile;uses:="org.apache.bcel.uti
+ l,org.apache.bcel.generic,org.apache.bcel",org.apache.bcel.generic;us
+ es:="org.apache.bcel.util,org.apache.bcel.classfile",org.apache.bcel.
+ util;uses:="org.apache.bcel.classfile,org.apache.bcel.generic,org.apa
+ che.bcel",org.apache.bcel.verifier;uses:="javax.swing.event,javax.swi
+ ng",org.apache.bcel.verifier.exc,org.apache.bcel.verifier.statics; us
+ es:="org.apache.bcel.classfile,  org.apache.bcel.verifier,  org.apach
+ e.bcel.generic,  org.apache.bcel",org.apache.bcel.verifier.structural
+ s;uses:="org.apache.bcel.verifier,org.apache.bcel.generic,org.apache.
+ bcel"
+Bundle-Version: 5.1.0
+Import-Package: javax.swing,javax.swing.event
+Bundle-ManifestVersion: 2
+
+

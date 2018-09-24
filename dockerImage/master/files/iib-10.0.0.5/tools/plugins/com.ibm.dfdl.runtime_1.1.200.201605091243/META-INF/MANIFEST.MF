@@ -1,0 +1,70 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: .,lib/gpb.jar,lib/ibm-dfdl.jar,lib/icu4j-charsets.ja
+ r,lib/icu4j.jar,lib/scd.jar
+Bundle-Vendor: IBM
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Name: DFDL Runtime
+Bundle-SymbolicName: com.ibm.dfdl.runtime;singleton:=true
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,org.eclipse
+ .emf.ecore.xmi;visibility:=reexport,org.eclipse.xsd;visibility:=reexp
+ ort,org.eclipse.wst.common.uriresolver;bundle-version="[1.1.401,2.0.0
+ )"
+Export-Package: com.google.protobuf;version="2.4.0",com.ibm.dfdl.commo
+ n.util,com.ibm.dfdl.descriptions,com.ibm.dfdl.extensions,com.ibm.dfdl
+ .extensions.impl,com.ibm.dfdl.extensions.util,com.ibm.dfdl.grammar,co
+ m.ibm.dfdl.internal.backtracking,com.ibm.dfdl.internal.buffer,com.ibm
+ .dfdl.internal.common.loader,com.ibm.dfdl.internal.common.util,com.ib
+ m.dfdl.internal.conversions,com.ibm.dfdl.internal.converters.physical
+ ,com.ibm.dfdl.internal.expressions,com.ibm.dfdl.internal.grammar,com.
+ ibm.dfdl.internal.parser.exceptions,com.ibm.dfdl.internal.parser.fram
+ ework,com.ibm.dfdl.internal.parser.parsers,com.ibm.dfdl.internal.pars
+ er.scanner,com.ibm.dfdl.internal.parser.scanner.text,com.ibm.dfdl.int
+ ernal.parser.utils,com.ibm.dfdl.internal.pif.enums,com.ibm.dfdl.inter
+ nal.pif.generator,com.ibm.dfdl.internal.pif.iterator,com.ibm.dfdl.int
+ ernal.pif.serialize,com.ibm.dfdl.internal.pif.tables.logical,com.ibm.
+ dfdl.internal.pif.tables.physical,com.ibm.dfdl.internal.processor.imp
+ l,com.ibm.dfdl.internal.processor.trace.impl,com.ibm.dfdl.internal.pr
+ ocessor.utils,com.ibm.dfdl.internal.properties.utils,com.ibm.dfdl.int
+ ernal.simplevalue.utils,com.ibm.dfdl.internal.trace;uses:="com.ibm.df
+ dl.processor.trace",com.ibm.dfdl.internal.values,com.ibm.dfdl.interna
+ l.variables,com.ibm.dfdl.internal.xpath,com.ibm.dfdl.model.api,com.ib
+ m.dfdl.model.internal.nls,com.ibm.dfdl.model.property.common,com.ibm.
+ dfdl.model.property.helpers.api,com.ibm.dfdl.model.property.helpers.a
+ pi.edit,com.ibm.dfdl.model.property.helpers.api.globalformats,com.ibm
+ .dfdl.model.property.helpers.api.xsdcomponent,com.ibm.dfdl.model.prop
+ erty.helpers.editor,com.ibm.dfdl.model.property.helpers.properties,co
+ m.ibm.dfdl.model.property.internal.annotation,com.ibm.dfdl.model.prop
+ erty.internal.factories,com.ibm.dfdl.model.property.internal.interfac
+ es,com.ibm.dfdl.model.property.internal.scopingRules,com.ibm.dfdl.mod
+ el.property.internal.utils,com.ibm.dfdl.model.variables.synthetic,com
+ .ibm.dfdl.model.xsdhelpers.internal,com.ibm.dfdl.model.xsdmodel,com.i
+ bm.dfdl.pif.gpb.tables,com.ibm.dfdl.processor,com.ibm.dfdl.processor.
+ exceptions,com.ibm.dfdl.processor.trace,com.ibm.dfdl.processor.types,
+ com.ibm.dfdl.property.serializer,com.ibm.dfdl.validation.annotations,
+ com.ibm.dfdl.validation.expressions,com.ibm.dfdl.validation.internal,
+ com.ibm.dfdl.validation.logical,com.ibm.icu.charset;version="51.1";df
+ dl_icu="true";mandatory:="dfdl_icu";uses:="com.ibm.icu.text,com.ibm.i
+ cu.impl",com.ibm.icu.impl;version="51.1";dfdl_icu="true";mandatory:="
+ dfdl_icu"; uses:="com.ibm.icu.math,  com.ibm.icu.text,  new com.ibm.i
+ cu.impl,  com.ibm.icu.util",com.ibm.icu.impl.data;version="51.1";dfdl
+ _icu="true";mandatory:="dfdl_icu",com.ibm.icu.impl.duration;version="
+ 51.1";dfdl_icu="true";mandatory:="dfdl_icu";uses:="com.ibm.icu.impl.d
+ uration.impl,com.ibm.icu.text,com.ibm.icu.util",com.ibm.icu.impl.dura
+ tion.impl;version="51.1";dfdl_icu="true";mandatory:="dfdl_icu";uses:=
+ "com.ibm.icu.impl.duration",com.ibm.icu.impl.locale;version="51.1";df
+ dl_icu="true";mandatory:="dfdl_icu";uses:="new com.ibm.icu.impl.local
+ e",com.ibm.icu.lang;version="51.1";dfdl_icu="true";mandatory:="dfdl_i
+ cu";uses:="com.ibm.icu.text,com.ibm.icu.impl,com.ibm.icu.util",com.ib
+ m.icu.math;version="51.1";dfdl_icu="true";mandatory:="dfdl_icu",com.i
+ bm.icu.text;version="51.1";dfdl_icu="true";mandatory:="dfdl_icu"; use
+ s:="com.ibm.icu.math,  new com.ibm.icu.text,  com.ibm.icu.impl,  com.
+ ibm.icu.util",com.ibm.icu.util;version="51.1";dfdl_icu="true";mandato
+ ry:="dfdl_icu"; uses:="com.ibm.icu.math,  com.ibm.icu.text,  com.ibm.
+ icu.impl,  new com.ibm.icu.util,  com.ibm.icu.impl.locale",com.ibm.xm
+ l.scd.canonical,com.ibm.xml.scd.emfModel,com.ibm.xml.scd.scdModel,com
+ .ibm.xml.scd.schemaModel,com.ibm.xml.scd.util,org.ogf.dfdl,org.ogf.df
+ dl.impl,org.ogf.dfdl.properties,org.ogf.dfdl.util
+Bundle-Version: 1.1.200.201605091243
+Bundle-ManifestVersion: 2
+
+

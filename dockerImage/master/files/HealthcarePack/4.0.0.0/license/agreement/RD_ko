@@ -1,0 +1,100 @@
+﻿<html>
+
+<head>
+	<style>
+		body {margin-top:0;}
+		h3 {font-family:arial; font-weight:bold; font-size:12; padding:20px 0 0; margin:0;}
+		p {font-family:arial; font-weight:normal; font-size:12; padding:10px 0 0; margin:0;}
+		.padoff {padding:0 !important;}
+	</style>
+</head>
+
+<body>
+<h3 class='padoff'>
+
+
+<!--LI 2 Title-->
+사용 제한사항 
+
+
+</h3>
+<p>
+
+
+<!--LI 2 Paragraph 1-->
+본 프로그램은 데이터를 전송 및 저장하고 데이터의 포맷을 변환하는 의료 장치 데이터 시스템 용도로 사용될 수 있습니다. 본 프로그램은 때로 병실 의료 장치(예: 폴링(polling), 텔레메트리(telemetry))에 데이터를 전송할 수 있습니다. 그러나 본 프로그램 자체는 의료 장치가 아닙니다. 
+
+
+</p>
+<p>
+<!--LI 2 Paragraph 2, pre-bullets-->
+다음 용도로는 본 프로그램을 사용할 수 없습니다. 
+
+
+<br />
+
+
+<!--LI 2 Paragraph 2, bullets-->
+a. 임상, 치료 또는 처치 목적(예: 약품, 마취제, 생리 식염수 등의 관리. 단, 이에 한하지 않음)으로 병실 의료 장치를 제어하는 용도
+<br />
+b. 실제 환자 모니터링 용도(즉, 심박수 등의 응급 환자 데이터를 모니터링하는 유일한 수단으로 본 프로그램을 사용하는 경우) 
+<br />
+c. 의사결정 지원 용도(즉, 환자별 치료 또는 응급 처치를 결정하는 주요 기준으로 본 프로그램을 사용하는 경우) 또는 
+<br />
+d. 데이터 전송 시각표에 따른 활성 모니터링 용도.
+
+
+</p>
+<h3>
+
+
+<!--LI 3 Title-->
+IBM에 대한 면책 
+
+
+</h3>
+<p>
+
+
+<!--LI 3 Paragraph 1-->
+라이센스 사용자는 상기한 제2조 "사용 제한사항" 조항에서 금지한 용도 또는 목적으로 라이센스 사용자가 직접 또는 라이센스 사용자를 위하여 본 프로그램을 사용하여 직접 또는 간접적으로 발생한 모든 제3자 배상 청구 및 책임에 대해 International Business Machines Corporation 및 계열사에게 책임을 묻지 않습니다. 
+
+
+</p>
+<h3>
+
+
+<!--LI 5 Title-->
+국가별 제한사항 
+
+
+</h3>
+<p>
+
+
+<!--LI 5 Paragraph 1-->
+본 프로그램에는 특정 법적 승인과 규제 승인이 필요하므로 국가별로 제한적인 판매가 이루어지도록 IBM만 본 프로그램을 제공할 수 있습니다. 본 프로그램은 다음 URL의 목록에 있는 국가에서만 사용될 수 있습니다. -
+
+
+<br />
+<a href='http://www-01.ibm.com/software/integration/wbimessagebroker/healthcare/license'>http://www-01.ibm.com/software/integration/<br />wbimessagebroker/healthcare/license</a>
+<br />
+
+
+<!--LI 5 Paragraph 1, pre-email-->
+또는 이메일(
+
+
+<a href='mailto:mqlcycle@uk.ibm.com'>mqlcycle@uk.ibm.com</a>)을 통해 IBM에 요청하십시오.
+</p>
+<p>
+
+
+<!--LI 5 Paragraph 2-->
+국가별 법적 승인과 규제 승인은 이후에 변경될 수 있습니다. 이전에 승인된 나라에서 승인이 제한되거나 철회된 이벤트에 대해 IBM은 책임을 지지 않습니다. 라이센스 사용자는 지정된 URL에서 보고된 변경사항이 있는지 주기적으로 확인해야 할 책임이 있습니다.
+
+
+</p>
+</body>
+
+</html>

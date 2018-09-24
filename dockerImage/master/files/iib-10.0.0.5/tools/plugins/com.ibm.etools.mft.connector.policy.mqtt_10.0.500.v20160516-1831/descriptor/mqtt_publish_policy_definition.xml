@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:discoveries xmlns:p="http://www.ibm.com/mb/connector"
+	xmlns:p1="http://www.ibm.com/mb/commonmodel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ibm.com/mb/connector ../../com.ibm.etools.mft.connector.policy/descriptor/connectors.xsd">
+	<resourceBundleTemplate>nl/Model.properties</resourceBundleTemplate>
+	<modelVersion>1.0.0</modelVersion>
+	<policy>
+		<id>MQTTPublish</id>
+		<policyType>MQTTPublish</policyType>
+		<policyGroups>
+			<policyProperties>
+				<id>MQTTPublishProperties</id>
+				<displayName nlKey="MQTTPublishPropertiesDispName">MQTTPublish node policy properties
+				</displayName>
+				<description nlKey="MQTTPublishPropertiesDesc">MQTT connector policy for MQTTPublish
+					node</description>
+				<groups>
+					<group>
+						<id>description</id>
+						<displayName nlKey="MQTTPublishPolicyDescriptionDispName">Description</displayName>
+						<generateDocumentation>true</generateDocumentation>
+						<description nlKey="MQTTPublishPolicyDescriptionDesc">MQTT publish policy for IIB
+							MQTTPublish node</description>
+						<expand>true</expand>
+						<visible>true</visible>
+						<parameters>
+							<parameter>
+								<id>shortDesc</id>
+								<groupId>description</groupId>
+								<displayName nlKey="MQTTPublishPolicyDescriptionshortDescDispName">Short description</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="MQTTPublishPolicyDescriptionshortDescHelpText">MQTTPublishPolicyDescriptionshortDescHelpText
+								</helpText>
+							</parameter>
+							<parameter>
+								<id>longDesc</id>
+								<groupId>description</groupId>
+								<displayName nlKey="MQTTPublishPolicyDescriptionlongDescDispName">Long description</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="MQTTPublishPolicyDescriptionlongDescHelpText">MQTTPublishPolicyDescriptionlongDescHelpText
+								</helpText>
+							</parameter>
+						</parameters>
+					</group>
+
+					<group>
+						<id>basic</id>
+						<displayName nlKey="MQTTPublishPolicyBasicDispName">Basic</displayName>
+						<generateDocumentation>true</generateDocumentation>
+						<description nlKey="MQTTPublishPolicyBasicDesc">MQTT publish policy for IIB
+							MQTTPublish node</description>
+						<expand>true</expand>
+						<visible>true</visible>
+						<parameters>
+							<parameter>
+								<id>clientId</id>
+								<groupId>Basic</groupId>
+								<displayName nlKey="MQTTPublishPolicyBasicclientIdDispName">Client ID</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="MQTTPublishPolicyBasicclientIdHelpText">Client Id for connecting to MQTT server
+								</helpText>
+								<master>
+									<slave>
+										<parameterId>clientId</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+								</master>
+								<actions>
+									<action>
+										<type>validate</type>
+										<default>false</default>
+										<conditionExpression>(string-length(pp:getValue('clientId'))
+											&lt; 24) != true()</conditionExpression>
+										<valueExpression>Length must not exceeds 23 bytes
+										</valueExpression>
+									</action>
+									<action>
+										<type>validate</type>
+										<default>false</default>
+										<conditionExpression>contains(pp:getValue('clientId'), ' ') =
+											true()</conditionExpression>
+										<valueExpression>Space is not allowed</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>topicName</id>
+								<groupId>Basic</groupId>
+								<displayName nlKey="MQTTPublishPolicyBasictopicNameDispName">Topic name</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="MQTTPublishPolicyBasictopicNameHelpText">MQTT topic(s) to which message will be
+									published </helpText>
+								<master>
+									<slave>
+										<parameterId>topicName</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+								</master>
+								<actions>
+									<action>
+										<type>validate</type>
+										<default>false</default>
+										<conditionExpression>(string-length(pp:getValue('topicName'))
+											&lt; 32768) != true()</conditionExpression>
+										<valueExpression>Length must not exceeds 32,767 characters
+										</valueExpression>
+									</action>
+									<action>
+										<type>validate</type>
+										<default>false</default>
+										<conditionExpression>contains(pp:getValue('topicName'), ' ') =
+											true()</conditionExpression>
+										<valueExpression>Space is not allowed</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>hostName</id>
+								<groupId>Basic</groupId>
+								<displayName nlKey="MQTTPublishPolicyBasichostNameDispName">Host name</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="MQTTPublishPolicyBasichostNameHelpText">MQTT server name</helpText>
+								<master>
+									<slave>
+										<parameterId>hostName</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+								</master>
+								<actions>
+									<action>
+										<type>validate</type>
+										<default>false</default>
+										<conditionExpression>(string-length(pp:getValue('hostName'))
+											&gt; 255)</conditionExpression>
+										<valueExpression>Length must not exceed 255 characters
+										</valueExpression>
+									</action>
+									<action>
+										<type>validate</type>
+										<default>false</default>
+										<conditionExpression>(string-length(translate(pp:getValue('hostName'),
+											'ABCEDFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.',
+											'')) &gt; 0) or (starts-with(pp:getValue('hostName'),'.')) or
+											(starts-with(pp:getValue('hostName'),'-')) or
+											(substring(pp:getValue('hostName'),
+											string-length(pp:getValue('hostName')) ) = '.') or
+											(substring(pp:getValue('hostName'),
+											string-length(pp:getValue('hostName')) ) = '-')
+										</conditionExpression>
+										<valueExpression>Only 'A' - 'Z', 'a' - 'z', '0' - '9', '-', or
+											'.' are the allowed characters, and the first and last
+											character must not be '.' or '-'</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>port</id>
+								<groupId>Basic</groupId>
+								<displayName nlKey="MQTTPublishPolicyBasicportDispName">Port</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>integer</type>
+								</schema>
+								<helpText nlKey="MQTTPublishPolicyBasicportHelpText">MQTT server port no</helpText>
+								<master>
+									<slave>
+										<parameterId>port</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+								</master>
+								<actions>
+									<action>
+										<type>validate</type>
+										<default>false</default>
+										<conditionExpression>(pp:getValue('port') = '' or
+											(number(pp:getValue('port')) = pp:getValue('port') and
+											pp:getValue('port') &gt; 0 and pp:getValue('port') &lt;
+											65536)) != true()</conditionExpression>
+										<valueExpression>Port number must be in range 1 to 65535
+										</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>qos</id>
+								<groupId>Basic</groupId>
+								<displayName nlKey="MQTTPublishPolicyBasicqosDispName">QoS</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>integer</type>
+									<values>
+										<name>qosEnum</name>
+										<enumValues>
+											<enumValue>
+												<!-- question to eugene - how to assign value 0 for AtMostOnce 
+													and 1 for Once , these are the actual values that need to be passed to runtime -->
+												<valueName>0</valueName>
+												<displayName>0 - At most once</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>1</valueName>
+												<displayName>1 - At least once</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>2</valueName>
+												<displayName>2 - Exactly once</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="MQTTPublishPolicyBasicqosHelpText">MQTT publish quality of service
+								</helpText>
+								<master>
+									<slave>
+										<parameterId>qos</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+								</master>
+								<actions>
+									<action>
+										<type>validate</type>
+										<default>false</default>
+										<conditionExpression>(pp:getValue('qos') = '' or
+											(number(pp:getValue('qos')) = pp:getValue('qos') and
+											(pp:getValue('qos')=0 or pp:getValue('qos')= 1 or
+											pp:getValue('qos')= 2))) != true()</conditionExpression>
+										<valueExpression>Quality of service can only be 0, 1, or 2
+										</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>useSSL</id>
+								<groupId>Basic</groupId>
+								<displayName nlKey="MQTTPublishPolicyBasicUseSSLDispName">Use SSL</displayName>
+								<default></default>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>boolean</type>
+								</schema>
+								<helpText nlKey="MQTTPublishPolicyBasicUseSSLHelpText">If selected then SSL will be used for
+									connections to the MQTT Broker</helpText>
+								<master>
+									<slave>
+										<parameterId>useSSL</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>
+								</master>
+							</parameter>
+						</parameters>
+					</group>
+
+				</groups>
+			</policyProperties>
+		</policyGroups>
+		<searchTree />
+		<sharedEnums />
+		<sharedTables />
+		<specification>
+			<pluginId>com.ibm.etools.mft.connector.policy.mqtt</pluginId>
+			<relativePath>mqttpublish.html</relativePath>
+		</specification>
+	</policy>
+</p:discoveries>

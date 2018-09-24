@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<msgCoreModel:MRMessageSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:msgCoreModel="http://www.ibm.com/msgmodel/2003/MSGCoreModel" name="EmailOutputHeader" parserDomain="EmailOutputHeader" namespacesEnabled="false" currentMessageSetId="//@MRMessageSetID.0">
+  <MRMessageSetID repositoryId="839005750" messageSetId="1"/>
+</msgCoreModel:MRMessageSet>

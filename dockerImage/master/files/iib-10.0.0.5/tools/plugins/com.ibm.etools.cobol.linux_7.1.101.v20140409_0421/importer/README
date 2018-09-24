@@ -1,0 +1,35 @@
+Linux COBOL Importer driver
+
+Usage notes:
+- Set up environment with command:
+	. cobenv
+
+- To compile and generate xmi:
+	IGYCCOB2 -qXMI filename.cbl
+
+- The XMI compiler exit is also available, compile with:
+	IGYCCOB2 -q"EXIT(PRTEXIT(PRTX)),XMI" filename.cbl
+
+- The source program can be encoded using most any ASCII, EUC, or UTF-8 codepage that is installed
+  on the Linux system.  LC_ALL must be set to a locale with this country code and codepage combination.
+  Recommendation: For COBOL programs that use Japanese DBCS characters,
+	1) export LC_ALL=ja_JP.eucjp
+                  or
+           export LC_ALL=ja_JP.utf8
+	2) ensure that the COBOL source file is encoded in EUC or UTF-8, respectively
+  Use the command:
+	locale -a
+  to confirm that the desired locale is installed and available on the Linux system.
+
+- Translated  messages are supported. 
+  Ensure the environment variable LANG is set to the desired locale, e.g. en_US
+
+- Restrictions:
+
+	- Compiling ERRMSG.cbl to get a list of all the compiler messages is not supported 
+          at this time.
+
+	- The XREF option is tolerated, but generates unsorted results in the listing.        
+
+
+ssm, 10/5/2006

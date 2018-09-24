@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<securityBindings xmlns="http://www.ibm.com/xmlns/prod/websphere/200608/ws-securitybinding">
+    <securityBinding name="application">
+        <securityInboundBindingConfig>
+            <keyInfo type="STRREF" name="con_sign_keyinfo" classname="com.ibm.ws.wssecurity.wssapi.CommonContentConsumer">
+		    	<tokenReference reference="con_sign_tcon"/>
+		    </keyInfo>
+		    <tokenConsumer classname="com.ibm.ws.wssecurity.wssapi.token.impl.CommonTokenConsumer" name="con_sign_tcon">
+		    	<valueType localName="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3" uri="" />
+		        <securityTokenReference reference="request:bst_token"/>
+		        <callbackHandler classname="com.ibm.websphere.wssecurity.callbackhandler.X509ConsumeCallbackHandler">
+		          <certPathSettings>
+		            <trustAnchorRef reference="DigSigTrustAnchor"/>
+		            <certStoreRef reference="DigSigCertStore"/>
+		          </certPathSettings>
+		        </callbackHandler>
+		        <jAASConfig configName="system.wss.consume.x509"/>
+		    </tokenConsumer>
+		    <trustAnchor name="DigSigTrustAnchor">
+		      <keyStore storepass="server" path="/path/to/keystores/dsig-receiver.ks" type="JKS" />
+		    </trustAnchor>
+		    <certStoreList>
+		      <collectionCertStores provider="IBMCertPath" name="DigSigCertStore">
+		        <x509Certificates path="/path/to/keystores/intca2.cer" />
+		      </collectionCertStores>
+		    </certStoreList>
+        </securityInboundBindingConfig>
+        <securityOutboundBindingConfig>
+			<keyInfo type="STRREF" name="gen_sign_keyinfo" classname="com.ibm.ws.wssecurity.wssapi.CommonContentGenerator">
+        		<tokenReference reference="gen_signtgen" />
+      		</keyInfo>
+			<tokenGenerator name="gen_signtgen"	classname="com.ibm.ws.wssecurity.wssapi.token.impl.CommonTokenGenerator">
+				<valueType localName="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3" uri="" />
+				<securityTokenReference reference="response:bst_token"/>
+				<callbackHandler classname="com.ibm.websphere.wssecurity.callbackhandler.X509GenerateCallbackHandler">
+					<key alias="soapprovider" keypass="server"	name="CN=SOAPProvider, OU=TRL, O=IBM, ST=Kanagawa, C=JP" />
+					<keyStore storepass="server" path="/path/to/keystores/dsig-receiver.ks" type="JKS" />
+				</callbackHandler>
+				<jAASConfig configName="system.wss.generate.x509" />
+			</tokenGenerator>
+		</securityOutboundBindingConfig>
+    </securityBinding>
+</securityBindings>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ibm.com/xmlns/prod/websphere/j2ca/peoplesoft/existsresult" xmlns:existsresult="http://www.ibm.com/xmlns/prod/websphere/j2ca/peoplesoft/existsresult" xmlns:pasi="http://www.ibm.com/xmlns/prod/websphere/j2ca/peoplesoft/metadata">
+<import namespace="http://www.ibm.com/xmlns/prod/websphere/j2ca/peoplesoft/metadata" schemaLocation="PeopleSoftASI.xsd"/>
+
+<annotation>
+<appinfo source="http://www.ibm.com/xmlns/prod/j2ca/versionCompatability">
+<info:resourceAdapter xmlns:info="http://www.ibm.com/xmlns/prod/j2ca/versionCompatability" version="6.1"/>
+</appinfo>
+</annotation>
+
+<annotation>
+<appinfo source="commonj.connector.asi">
+<asi:annotationSet xmlns:asi="commonj.connector.asi" asiNSURI="http://www.ibm.com/xmlns/prod/websphere/j2ca/peoplesoft/metadata"/>
+</appinfo>
+</annotation>
+<complexType name="ExistsResult">
+<annotation>
+<appinfo source="http://www.ibm.com/xmlns/prod/websphere/j2ca/peoplesoft/metadata">
+<pasi:PeopleSoftBusinessObjectTypeMetadata xmlns:pasi="http://www.ibm.com/xmlns/prod/websphere/j2ca/peoplesoft/metadata">
+<pasi:ObjectName>ExistsResult</pasi:ObjectName>
+</pasi:PeopleSoftBusinessObjectTypeMetadata>
+</appinfo>
+</annotation>
+<sequence minOccurs="1" maxOccurs="1">
+<element name="Status" type="boolean" minOccurs="0" maxOccurs="1">
+<annotation>
+<appinfo source="http://www.ibm.com/xmlns/prod/websphere/j2ca/peoplesoft/metadata">
+<pasi:PeopleSoftAttributeTypeMetadata xmlns:pasi="http://www.ibm.com/xmlns/prod/websphere/j2ca/peoplesoft/metadata">
+<pasi:Getter>getStatus</pasi:Getter>
+<pasi:Setter>setStatus</pasi:Setter>
+</pasi:PeopleSoftAttributeTypeMetadata>
+</appinfo>
+</annotation>
+</element>
+</sequence>
+</complexType>
+</schema>

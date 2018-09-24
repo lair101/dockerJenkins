@@ -1,0 +1,12 @@
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.1">
+	<!-- Minimum JAXB Bindings for IBM Graphical Data Mapper Map Specification Language "msl.xsd" -->
+	<bindings schemaLocation="msl.xsd">
+		<!-- rename the test attribute on the If that clashes with the test element -->
+		<bindings node="//xs:complexType[@name='If']">
+			<bindings node=".//xs:attribute[@name='test']">
+				<property name="testAttribute" />
+			</bindings>
+		</bindings>
+	</bindings>
+</bindings>

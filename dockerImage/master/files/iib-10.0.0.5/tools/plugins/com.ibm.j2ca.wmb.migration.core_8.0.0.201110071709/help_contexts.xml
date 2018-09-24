@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+
+<contexts>
+	<context id="ConfigSelectionPage">
+		<description>
+		<b>Message Set drop down list</b>
+		This list contains all the message set projects available in the workspace.
+		Select your target message set into which you want to store the migrated WBI Adapter artifacts.
+		You can specify a new name.  During migration, a message set with this name is generated and the migrated artifacts are stored in message set.
+		
+		<b>Configuration file and component table</b>
+		Use the Add, Edit, or Delete buttons to update the table.
+		<b>Add   :</b> When you click <b>Add</b>, the window to enter the configuration file path and components is displayed. During the migration, the wizard uses this configuration file to generate the .inadapter or .outadapter adapter component.
+		<b>Edit  :</b> Will get enabled only when an item in the table gets selected. When you select an item in the table and click <b>Edit</b>, the window to modify configuration file path and component name is displayed.
+		<b>Delete:</b> Will get enabled only when an item in the table gets selected. When you select an item in the table and click <b>Delete</b>, the selected item is removed from the table.  
+		
+		<b>Overwrite the component if already present in the message set</b>
+		The option is applicable only when you select an existing message set from the message set drop-down list.  When you select this check box, a message confirming whether you want to overwrite adapter components in the target message set is displayed.  
+
+		<b>All fields with "*" before the label are mandatory and without a proper value in these fields, next button will not be enabled.</b>
+		
+		<b>Next  :</b> When you click <b>Next</b>, the values entered in this window are validated and errors, if any, are displayed. If the validation is successful, the Migration Summary window is displayed.
+		<b>Cancel:</b> When you click <b>Cancel</b>, the changes you made in this step does not take effect and will pop up a warning message dialog to confirm the action. Up on selection of "OK" the migration wizard get closed, cancel on that window will bring back control to this page.  
+		
+		</description>
+	</context>
+	<context id="ConfigEntryPage">
+		<description>
+		<b>Adapter configuration File</b>
+		Enter a valid configuration file with full path. Also <b>Browse</b>B button is available to choose the configuration file from the file system.
+		
+		<b>Adapter Component Name</b>
+		Enter a valid component name with which the '.inadapter' or '.outadapter' component will get generated in the target Message set Project.
+		
+		<b>OK    :</b> When you click <b>OK</b> the values entered in this window are validated and errors, if any, are displayed. If the validation is successful, the table will be updated with the values entered in this page and this window is closed.
+		<b>Cancel:</b> When you click <b>Cancel</b>, the changes you made in this step does not take effect and this window is closed. 
+		
+		</description>
+	</context>
+	<context id="SummaryPage">
+		<description>
+		<b>Summary Tree</b>
+		This page contains the summary of migration changes to be taken place. All the artifacts which will get generated and get migrated after migration will be displayed in a tree structure.  
+		
+		Expand the element to see mode details about the changes that will taken place for that item.
+		<b>Finish  :</b> When you click <b>Finish</b>, the actual generation of migration of artifacts begins and up on completion, the window is closed.
+		<b>Back    :</b> When you click <b>Back</b>, previous page will be displayed
+		<b>Cancel  :</b> When you click <b>Cancel</b>, the changes you made in this step does not take effect and will pop up a warning message dialog to confirm the action. Up on selection of "OK" the migration wizard get closed, cancel on that window will bring back control to this page. 
+				
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</description>
+	</context>
+</contexts>

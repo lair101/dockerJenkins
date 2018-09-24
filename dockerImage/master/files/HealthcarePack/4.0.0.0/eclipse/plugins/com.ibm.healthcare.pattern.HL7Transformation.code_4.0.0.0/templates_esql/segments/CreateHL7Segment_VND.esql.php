@@ -1,0 +1,43 @@
+<?php
+$assignValue=$_MB['PP']['ppAssignValue'];
+echo 	"CREATE PROCEDURE CreateHL7Segment_VND (IN ns NAMESPACE, IN OutRef REFERENCE)";
+echo 	"\tBEGIN\n";
+echo 	"\t\tDECLARE AssignValue CHARACTER '$assignValue';\n";
+echo <<<ESQL
+		CREATE LASTCHILD OF OutRef AS OutRef NAMESPACE ns NAME 'VND';
+		SET OutRef.ns:"VND.1.SetId_VND" = AssignValue;		
+		SET OutRef.ns:"VND.2.VendorIdentifier".ns:"EI.1" = AssignValue;
+		SET OutRef.ns:"VND.2.VendorIdentifier".ns:"EI.2" = AssignValue;
+		SET OutRef.ns:"VND.2.VendorIdentifier".ns:"EI.3" = AssignValue;
+		SET OutRef.ns:"VND.2.VendorIdentifier".ns:"EI.4" = AssignValue;
+		SET OutRef.ns:"VND.3.VendorName" = AssignValue;		
+		SET OutRef.ns:"VND.4.VendorCatalogNumber".ns:"EI.1" = AssignValue;
+		SET OutRef.ns:"VND.4.VendorCatalogNumber".ns:"EI.2" = AssignValue;
+		SET OutRef.ns:"VND.4.VendorCatalogNumber".ns:"EI.3" = AssignValue;
+		SET OutRef.ns:"VND.4.VendorCatalogNumber".ns:"EI.4" = AssignValue;		
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.1" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.2" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.3" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.4" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.5" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.6" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.7" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.8" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.9" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.10" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.11" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.12" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.13" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.14" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.15" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.16" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.17" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.18" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.19" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.20" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.21" = AssignValue;
+		SET OutRef.ns:"VND.5.PrimaryVendorIndicator".ns:"CNE.22" = AssignValue;		
+		SET OutRef.ns:Remainder = AssignValue;
+	END;
+ESQL;
+?>

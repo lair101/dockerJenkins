@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS  TYPE="org.eclipse.help.toc"?>
+<toc label="Patrón Servicio sanitario: HIPAA a XML" topic="pattern/overview.htm">
+    <topic label="Patrón Servicio sanitario: HIPAA a XML" href="pattern/overview.htm">
+  		<topic label="Parámetros del patrón" href="pattern/parameters.htm"/>
+    </topic>
+</toc>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<pdHelp xmlns="http://www.ibm.com/visualutils/pdhelpcontent"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ibm.com/visualutils/pdhelpcontent http://www.ibm.com/visualutils/pdhelpcontent">
+
+	<pluginCategory id="com.ibm.etools.mft.ibmnodes">
+	
+	    <!-- 
+	       Progressive Disclosure field help for the 'Decision Service' property on the Basic tab of the Properties view of Decision Service node
+	     -->
+	     
+	     	
+		<fieldHelp id="ComIbmDecisionService_basic_decisionService">
+			<title>Decision Service Name</title>
+		    <description><p>To specify a decision service, use one of the following methods:</p>
+			<ul>
+			<li>Drag a decision service (.rules) file onto the node.</li>
+			<li>Click <b>Browse</b> and select a decision service file.</li>
+			<li>Type the decision service file name</li>
+			<li>Double-click the node to open the "New Decision Service" wizard with a default decision service name.</li>
+</ul>			</description>
+		</fieldHelp>
+ 
+
+	    <!-- 
+	       Progressive Disclosure field help for the 'RuleSet' property on the Basic tab of the Properties view of Decision Service node
+	     -->
+	     
+	     	
+		<fieldHelp id="ComIbmDecisionService_basic_ruleSet">
+			<title>Ruleset</title>
+		    <description><p>A decision service contains at least one ruleset. A decision service authored in IBM Integration toolkit will only contain one ruleset. A decision service created by importing an IBM Operational Decision Manager (ODM) Rule Application archive can contain one or more rulesets.</p>
+			</description>
+		</fieldHelp>
+
+
+	    <!-- 
+	       Progressive Disclosure field help for the 'Parameters' complex property on the Basic tab of the Properties view of Decision Service node
+	     -->
+	     
+	     	
+		<fieldHelp id="ComIbmDecisionService_basic_parameterTable">
+			<title>Parameters</title>
+		    <description><p>A decision service ruleset can contain one or more parameters. The parameters for this table are obtained from the decision service file. All column values are read-only except the Data location column. You are required to enter an XPath expression . If the parameters in the decision service file change, an error message will appear in the Problems view informing you that the Parameters table on the node is out of synch with those within the file. Simply re-select the file and the ruleset. </p>
+				<ul>
+					<li> <b>Name:</b> The unique name of the parameter.  </li>
+					<li> <b>Type:</b> The type of the parameter . </li>
+					<li> <b>Direction:</b> The direction of the parameter : IN, OUT, INOUT . Currently only INOUT is supported for decision services authored in the IBM Integration toolkit. IN, OUT, and INOUT are supported if the decision service was created by importing an IBM Operational Decision Manager (ODM) Rule Application archive.</li>					
+					<li> <b>Verbalization:</b> A natural language name (or alias) for the parameter; for example, "the customer". This value is used to refer to the parameter when a writing a rule. If the decision service was created by importing an IBM Operational Decision Manager (ODM) Rule Application archive, this value is not visible. </li>
+				</ul>
+		    
+			</description>
+		</fieldHelp>
+
+	    <!-- 
+	       Progressive Disclosure field help for the 'RuleSet' property on the Basic tab of the Properties view of Decision Service node
+	     -->
+	     
+	     	
+		<fieldHelp id="ComIbmDecisionService_basic_useDecisionServiceRepository">
+			<title>Use DecisionServiceRepository configurable service</title>
+		    <description><p>Choose this option to use rulesets deployed to a remote repository as defined by the DecisionServiceRepository configurable service.</p>
+			</description>
+		</fieldHelp>
+
+	    <!-- 
+	       Progressive Disclosure tab/page help for the Basic tab of the Properties view of Decision Service node
+	       
+	       There is no need for a <more> description (for entire tab) since there is only ONE field on the tab
+	       
+	       
+	     -->	
+
+ 
+	    <pageHelp id="ComIbmDecisionService_basic">
+			<title>Basic</title>
+			<shortDescription>A decision service node executes a collection of business rules that use defined parameters.</shortDescription>
+		</pageHelp>
+
+        <!-- there is no need for a  -->
+ 	
+	</pluginCategory>
+</pdHelp>	

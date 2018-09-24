@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="copyright" content="Copyright IBM Corporation 2010" />
+<link rel="stylesheet" type="text/css" href="./css/pattern.css" />
+<title>Healthcare patterns</title>
+</head>
+<body role="main">
+	<h1 class="topictitle1">Healthcare</h1>
+	<div>
+		<p class="shortdesc">IBM Integration Bus Healthcare Pack builds on
+			IBM Integration Bus to provide support for applications in
+			healthcare.</p>
+	</div>
+	<h3>Healthcare: HIPAA to XML pattern</h3>
+	<p>
+		The <span>Healthcare: HIPAA to XML</span> pattern generates
+		a message flow that you can use to transform HIPAA files to XML files.
+	</p>
+	<div class="image">
+		<img src="HIPAAtoXML.png"
+			alt="HIPAA files from a source application are transformed by the pattern into XML files" />
+	</div>
+	<h3>Healthcare: HL7 Transformation pattern</h3>
+	<p>
+		The <span>Healthcare: HL7 Transformation</span> pattern generates
+		graphical data maps that you can use to assemble HL7 messages.
+	</p>
+	<div class="image">
+		<img src="MapGeneration1.png"
+			alt="A diagram showing the Healthcare: HL7 Transformation" />
+	</div>
+	<h3>Healthcare: HL7 to HL7 DFDL pattern</h3>
+	<p>
+		The <span>Healthcare: HL7 to HL7 DFDL</span> pattern integrates an
+		application that can send HL7 v2 messages with one or more
+		applications that can receive HL7 messages. The applications must be
+		capable of sending and receiving the messages by using MLLP over
+		TCP/IP. This pattern uses the DFDL message model. An alternative version of 
+		this pattern, called the <span>Healthcare: HL7 to HL7</span> pattern is provided 
+		if you want to use MRM and the HL7v25P message set instead of DFDL. 
+	</p>
+	<div class="image">
+		<img src="pattern.png"
+			alt="A diagram showing the three parts of the Healthcare: HL7 to HL7 pattern" />
+	</div>
+
+	<h3>Healthcare: Medical devices to EMR pattern</h3>
+	<p>
+		The <span> Healthcare: Medical devices to EMR </span> pattern
+		integrates medical devices with an Electronic Medical Record (EMR)
+		application that can receive Health Level Seven International (HL7) v2
+		observation result messages (ORU R01). The application must be capable
+		of receiving HL7 ORU R01 messages by using Minimal Lower Layer
+		Protocol (MLLP) over TCP/IP.
+	</p>
+	<div class="image">
+		<img src="devices.png"
+			alt="A diagram showing the three parts of the Healthcare: Medical devices to EMR pattern" />
+	</div>
+
+	<h3>Healthcare: Web service to DICOM pattern</h3>
+	<p>
+		Use the <span> Healthcare: web service to DICOM </span> pattern to
+		integrate an application written using web services with DICOM
+		applications that support C-FIND and C-MOVE operations. You can use
+		the pattern to query patients, studies, series and images from a DICOM
+		archive (PACS) using a web service implemented by IBM Integration Bus.
+	</p>
+	<div class="image">
+		<img src="DICOM.png"
+			alt="A diagram showing the behavior of the Healthcare: web service to DICOM pattern." />
+	</div>
+	<h3>Healthcare: Home Health pattern</h3>
+	<p>
+		Use the <span>Healthcare: Home Health</span> pattern to enable your
+		health systems to accept web service requests from HL7 v2.6-compliant
+		devices. This allows data that Home Health devices collect and send to
+		the Application Hosting Device (AHD) to then be sent to the requesting
+		clinical application.
+	</p>
+	<div class="image">
+		<img src="health_home.png"
+			alt="A diagram showing the behavior of the Healthcare: Home Health pattern." />
+	</div>
+	<h3>Healthcare: Patient Identifier Cross-reference Manager pattern</h3>
+	<p>
+		Use the <span>Healthcare: Patient Identifier Cross-reference Manager</span> pattern to create a Patient Identifier 
+		Cross-reference Manager that you can use with the IHE PIX profile, to add patients to an EMPI and retrieve patient IDs.
+	</p>
+	<h3>Healthcare: Patient Demographics Query Supplier pattern</h3>
+	<p>
+		Use the <span>Healthcare: Patient Demographics Query Supplier</span> pattern to create a Patient Demographics Supplier
+		that you can use with the IHE PDQ profile, to retrieve patient demographic information.
+	</p>
+	<h3>Healthcare: Cross-Enterprise Document Sharing Consumer pattern</h3>
+	<p>
+		Use the <span>Healthcare: Cross-Enterprise Document Sharing Consumer</span> pattern to create an integration solution  
+		that you can use with the IHE XDS profile, to query a document registry and retrieve documents from a document repository.
+	</p>
+	<h3>Healthcare: FHIR Transformation pattern</h3>
+	<p>
+		Use the <span>Healthcare: FHIR Transformation</span> pattern to create an application that you can use to transform HL7 FHIR resources between 
+		XML and JSON formats.
+	</p>
+</body>
+</html>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MRMessageSet id="D40HM6O002001" name="EmailOutputHeader" parser="EmailOutputHeader">
+  <MRMsgCollection
+    href="platform:/plugin/com.ibm.etools.msg.mqheaders/EmailOutputHeader/EmailOutputHeader.mxsd"
+    prefix="" targetNamespace="">
+    <message
+      href="platform:/plugin/com.ibm.etools.msg.mqheaders/EmailOutputHeader/EmailOutputHeader.mxsd#/0/EmailOutputHeader;XSDElementDeclaration$MRMessage" name="EmailOutputHeader"/>
+    <element
+      href="platform:/plugin/com.ibm.etools.msg.mqheaders/EmailOutputHeader/EmailOutputHeader.mxsd#/0/EmailOutputHeader;XSDElementDeclaration"
+      name="EmailOutputHeader" type="mset://EmailOutputHeader#/-/complexType{}EmailOutputHeader_type"/>
+    <complexType
+      baseType="mset://EmailOutputHeader#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType"
+      href="platform:/plugin/com.ibm.etools.msg.mqheaders/EmailOutputHeader/EmailOutputHeader.mxsd#/0/EmailOutputHeader_type;XSDComplexTypeDefinition" name="EmailOutputHeader_type"/>
+  </MRMsgCollection>
+</MRMessageSet>

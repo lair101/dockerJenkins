@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS  TYPE="org.eclipse.help.toc"?>
+<toc label="Healthcare: HIPAA to XML pattern" topic="pattern/overview.htm">
+    <topic label="Healthcare: HIPAA to XML pattern" href="pattern/overview.htm">
+  		<topic label="Parameters for the pattern" href="pattern/parameters.htm"/>
+    </topic>
+</toc>

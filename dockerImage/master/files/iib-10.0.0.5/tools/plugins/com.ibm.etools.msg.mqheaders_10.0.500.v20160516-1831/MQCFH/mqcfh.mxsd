@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Defect 45089: Remove _ID suffix -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:complexType name="MQCFH_TYPE">
+        <xsd:annotation>
+            <xsd:documentation source="WMQI_DOCUMENTATION">MQCFH_TYPE.\s</xsd:documentation>
+            <xsd:appinfo source="WMQI_APPINFO">
+                <MRComplexType composition="unorderedSet" content="open"/>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="Type"
+                nillable="false" type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation source="WMQI_DOCUMENTATION">Type.\s</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="Version"
+                nillable="false" type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation source="WMQI_DOCUMENTATION">Version.\s</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="Command"
+                nillable="false" type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation source="WMQI_DOCUMENTATION">Command.\s</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="MsgSeqNumber"
+                nillable="false" type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation source="WMQI_DOCUMENTATION">MsgSeqNumber.\s</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="Control"
+                nillable="false" type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation source="WMQI_DOCUMENTATION">Control.\s</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="CompCode"
+                nillable="false" type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation source="WMQI_DOCUMENTATION">CompCode.\s</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="Reason"
+                nillable="false" type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation source="WMQI_DOCUMENTATION">Reason.\s</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1"
+                name="ParameterCount" nillable="false" type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation source="WMQI_DOCUMENTATION">ParameterCount.\s</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="MQCFH" type="MQCFH_TYPE">
+        <xsd:annotation>
+            <xsd:documentation source="WMQI_DOCUMENTATION">MQCFH.\s</xsd:documentation>
+            <xsd:appinfo source="WMQI_APPINFO">
+                <MRMessage messageDefinition="/0/MQCFH;XSDElementDeclaration$MRObject"/>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:element>
+</xsd:schema>

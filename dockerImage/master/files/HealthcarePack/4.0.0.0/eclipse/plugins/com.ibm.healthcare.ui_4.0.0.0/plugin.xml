@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+    <extension point="org.eclipse.ui.editors">
+        <editor
+              name="%MedicalDevice.editor"
+              icon="icons/obj16/configservicefile.gif"
+			  extensions="configurableservice"
+              class="com.ibm.healthcare.ui.editor.MedicalDeviceInputCSEditor"
+              id="com.ibm.healthcare.ui.editors.MedicalDeviceInputCSEditor">
+        </editor>
+    </extension>
+    <extension
+          point="org.eclipse.ui.newWizards">
+        <category
+              name="%healthcare.category"
+              id="com.ibm.healthcare.utility">
+        </category>
+        <wizard
+              name="%MedicalDevice.wizard"
+              icon="icons/obj16/configservicefile.gif"
+              category="com.ibm.healthcare.utility"
+              class="com.ibm.healthcare.ui.wizards.MedicalDeviceNewWizard"
+              id="com.ibm.healthcare.ui.wizards.MedicalDeviceNewWizard">
+        </wizard>
+    </extension>
+    <extension point="org.eclipse.ui.perspectiveExtensions">
+        <perspectiveExtension targetID="com.ibm.etools.mft.perspectives.BrokerDevelopmentPerspective">
+            <newWizardShortcut id="com.ibm.healthcare.ui.wizards.MedicalDeviceNewWizard"/>
+        </perspectiveExtension>
+    </extension>
+</plugin>

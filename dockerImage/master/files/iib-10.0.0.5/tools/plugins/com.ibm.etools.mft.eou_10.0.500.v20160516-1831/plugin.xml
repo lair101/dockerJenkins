@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+     <extension-point id="cmdassistwizsummarypgone" name="%Plugin.extension.cmdassistwizsummarypgone.name"/>
+   <extension-point id="defaultcfgwizardpgthree" name="%Plugin.extension.defaultcfgwizardpgthree.name"/>
+   <extension-point id="defaultcfgwizardpgtwo" name="%Plugin.extension.defaultcfgwizardpgtwo.name"/>
+   <extension-point id="defaultcfgwizardpgone" name="%Plugin.extension.defaultcfgwizardpgone.name"/>
+   <extension-point id="eourunnable" name="%Plugin.extension.eourunnable.name"/>
+   <extension-point id="sampleprepwizpgthree" name="%Plugin.extension.sampleprepwizpgthree.name"/>
+   <extension-point id="populatedatabaseoperation" name="%Plugin.extension.sampleprepwizdbpopulate.name"/>
+   <extension-point id="findruntimesoperation" name="%Plugin.extension.findruntimesoperation.name"/>
+   <extension-point id="DbInfo" name="%Plugin.extension.DbInfo.name"/>
+   
+   <extension-point id="sampleProject" name="Sample Project" schema="schema/sampleProject.exsd"/>
+   <extension-point id="sampleResources" name="Sample Runtime Resources" schema="schema/sampleResources.exsd"/>
+   <extension-point id="sample" name="Sample" schema="schema/sample.exsd"/>
+   <extension-point id="eouUtil" name="%Plugin.extension.eouUtil.name"/>
+<!--
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="%Plugin.category"
+            id="com.ibm.etools.mft.eou.new">
+      </category>
+      <wizard
+            name="%DefaultCfgWiz.name"
+            icon="icons/full/ctool16/defaultCfg_wiz.gif"
+            category="com.ibm.etools.mft.eou.new"
+            class="com.ibm.etools.mft.eou.wizards.defaultcfgwiz.DefaultCfgWiz"
+            id="com.ibm.etools.mft.eou.wizards.defaultcfgwiz.new.wizd"
+            finalPerspective="com.ibm.etools.mft.admin.AdminConsolePerspective">
+      </wizard>
+      <wizard
+            name="%RemoveDefaultCfgWiz.name"
+            icon="icons/full/ctool16/defaultCfg_wiz.gif"
+            category="com.ibm.etools.mft.eou.new"
+            class="com.ibm.etools.mft.eou.wizards.defaultcfgwiz.RemoveDefaultCfgWiz"
+            id="com.ibm.etools.mft.eou.wizards.defaultcfgwiz.removedefaultcfgwiz.new.wizd"
+            finalPerspective="com.ibm.etools.mft.admin.AdminConsolePerspective">
+      </wizard>
+      <wizard
+            icon="icons/full/ctool16/msgbroksample_wiz.gif"
+            class="com.ibm.etools.mft.eou.wizards.sampleprepwiz.SamplePrepWiz"
+            category="com.ibm.etools.mft.eou.new"
+            name="%SamplePrepWiz.name"
+            id="com.ibm.etools.mft.eou.wizards.samplewiz.new.wizd"/>
+   </extension>
+-->
+</plugin>

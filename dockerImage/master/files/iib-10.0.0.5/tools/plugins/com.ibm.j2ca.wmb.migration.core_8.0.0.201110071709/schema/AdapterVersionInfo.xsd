@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema"
+targetNamespace="commonj.connector.asi"
+xmlns:asi="commonj.connector.asi"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+elementFormDefault="qualified"
+version="1.0">
+<xsd:annotation>
+<xsd:documentation>
+asiSchema.xsd 1.0 01/31/05
+</xsd:documentation>
+</xsd:annotation>
+<xsd:annotation>
+<xsd:documentation>
+Copyright BEA Systems, Inc. and International Business Machines Corp
+2005. All rights reserved.
+IBM and BEA (collectively, the Authors) agree to grant you a
+royalty-free license, under reasonable, non-discriminatory terms and
+conditions to patents that they deem necessary to implement the
+Enterprise Metadata Discovery Specification.
+</xsd:documentation>
+</xsd:annotation>
+<xsd:annotation>
+<xsd:documentation>
+For schema which is used to describe business objects that can be accessed from
+an enterprise information system, you need to be able to specify application
+specific information (ASI). ASI is used by an application to map the business
+object into its corresponding enterprise entity.
+Providing schema that describes the ASI that can occur on a complexType,
+element, or attribute will enable rich editing support and validation.
+There are two notions of anchor points here. The first being able to anchor
+- ASI schema to complexTypes,
+- ASI schema to elements, and
+- ASI schema to attributes.
+The second being able to anchor the above set of schema to a business object
+schema.
+A set of schema that applies to a business object may have more than one ASI
+schema for complexTypes, elements, or attributes. For example, there may be
+two ASI declarations for what can be stored on elements.
+An enterprise information system may have more than one set of ASI schema. For example,
+the ASI may differ between SAP RFC and SAP BAPI.
+A business object schema may apply to more than one enterprise information system.
+Schema provides the appinfo annotation as a location for storing information for
+tooling and applications.
+</xsd:documentation>
+</xsd:annotation>
+<xsd:element name="annotationSet">
+Page 106 of 114
+Enterprise Metadata Discovery Specification
+<xsd:annotation>
+<xsd:documentation>
+ASI anchor which is used on the business object schema element declaration.
+The asiNSURI must be specified; it identifies the namespace of the
+ASI schema.
+The asiSchemaLocation is an optional hint that can be used to identify
+the location of the ASI schema.
+Example:
+&lt;schema ...&gt;
+&lt;annotation&gt;
+&lt;appinfo source=&quot;commonj.connector.asi&quot;&gt;
+&lt;asi:annotationSet xmlns:asi=&quot;commonj.connector.asi&quot;
+asiNSURI=&quot;http://www.eis.com/asi&quot;
+asiSchemaLocation=&quot;http://www.eis.com/asi/eisSchema.xsd&quot;/&gt;
+&lt;/appinfo&gt;
+&lt;/annotation&gt;
+...
+&lt;/schema&gt;
+</xsd:documentation>
+</xsd:annotation>
+<xsd:complexType>
+<xsd:complexContent>
+<xsd:restriction base="anyType">
+<xsd:attribute name="asiNSURI" type="anyURI"/>
+<xsd:attribute name="asiSchemaLocation" type="anyURI" use="optional"/>
+</xsd:restriction>
+</xsd:complexContent>
+</xsd:complexType>
+</xsd:element>
+<xsd:simpleType name="annotationKind">
+<xsd:annotation>
+<xsd:documentation>
+Specifies the kind of the annotation anchor, which can be
+complexType, element or attribute.
+</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="string">
+<xsd:enumeration value="complexType"/>
+<xsd:enumeration value="element"/>
+<xsd:enumeration value="attribute"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="annotationScope">
+<xsd:annotation>
+<xsd:documentation>
+Specifies the scope of the annotationKind ie whether it is applicable to
+local or global constructs of schema (eg. local elements or global elements).
+</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="string">
+<xsd:enumeration value="local"/>
+<xsd:enumeration value="global"/>
+<xsd:enumeration value="both"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:element name="annotationType">
+<xsd:annotation>
+<xsd:documentation>
+Identifies the anchor point for complexType, element or attribute ASI schema.
+Located as appinfo on global elements in the provider ASI schema.
+The global element's type describes the ASI.
+The appinfo on the global element identifies where the ASI
+Page 107 of 114
+Enterprise Metadata Discovery Specification
+can be used.
+The annotationKind must be specified and associates the ASI being
+described to the XSD component it can be used with.
+The annotationScope is optional. If it is not used then the ASI
+can be used on global and local declarations. If it is specified
+the ASI is scoped to either being used on global or local declarations.
+Example:
+&lt;element name=&quot;BusinessObjectASI&quot; type=&quot;eis1:BusinessObjectASIType&quot;&gt;
+&lt;annotation&gt;
+&lt;appinfo source=&quot;commonj.connector.asi&quot;&gt;
+&lt;asi:annotationType xmlns:asi=&quot;commonj.connector.asi&quot;
+annotationKind=&quot;complexType&quot; annotationScope=&quot;global&quot; /&gt;
+&lt;/appinfo&gt;
+&lt;/annotation&gt;
+&lt;/element&gt;
+&lt;complexType name=&quot;BusinessObjectASIType&quot;&gt;
+&lt;sequence&gt;
+&lt;element name=&quot;ObjectName&quot; type=&quot;string&quot; /&gt;
+&lt;/sequence&gt;
+&lt;/complexType&gt;
+&lt;element name=&quot;ElementASI&quot; type=&quot;eis1:ElementASIType&quot;&gt;
+&lt;annotation&gt;
+&lt;appinfo source=&quot;commonj.connector.asi&quot;&gt;
+&lt;asi:annotationType xmlns:asi=&quot;commonj.connector.asi&quot;
+annotationKind=&quot;element&quot; annotationScope=&quot;local&quot; /&gt;
+&lt;/appinfo&gt;
+&lt;/annotation&gt;
+&lt;/element&gt;
+&lt;complexType name=&quot;ElementASIType&quot;&gt;
+&lt;sequence&gt;
+&lt;element name=&quot;getMethodName&quot; type=&quot;string&quot; /&gt;
+&lt;element name=&quot;setMethodName&quot; type=&quot;string&quot; /&gt;
+&lt;/sequence&gt;
+&lt;/complexType&gt;
+</xsd:documentation>
+</xsd:annotation>
+<xsd:complexType>
+<xsd:complexContent>
+<xsd:restriction base="anyType">
+<xsd:attribute name="annotationKind" type="asi:annotationKind"/>
+<xsd:attribute name="annotationScope" type="asi:annotationScope" default="both" use="optional"/>
+</xsd:restriction>
+</xsd:complexContent>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>

@@ -1,0 +1,57 @@
+msgid "Welcome to IBM Integration Bus Healthcare Pack %HEALTHCARE_VERSION%"
+msgstr "歡迎使用 IBM Integration Bus Healthcare Pack %HEALTHCARE_VERSION%"
+
+msgid "Close the IBM Integration Toolkit and stop any integration nodes that are running before you continue."
+msgstr "繼續之前，請關閉 IBM Integration Toolkit，並停止任何執行中的整合節點。"
+
+msgid "Stop any integration nodes that are running before you continue."
+msgstr "繼續之前，請停止任何執行中的整合節點。"
+
+msgid "Before installing IBM Integration Bus Healthcare Pack, make sure you have permission to write to your IBM Integration Bus installation directory."
+msgstr "安裝 IBM Integration Bus Healthcare Pack 之前，請確定您具有 IBM Integration Bus 安裝目錄的寫入權。"
+
+msgid "You must accept the IBM Integration Bus license before you can install IBM Integration Bus Healthcare Pack."
+msgstr "您必須接受 IBM Integration Bus 授權，才能安裝 IBM Integration Bus Healthcare Pack。"
+
+msgid "Unable to install IBM Integration Bus Healthcare Pack.\nYou must specify an IBM Integration Bus V10 installation directory as the first parameter to this installer."
+msgstr "無法安裝 IBM Integration Bus Healthcare Pack。\n您必須在此安裝程式的第一個參數中指定 IBM Integration Bus V10 安裝目錄。"
+
+msgid "You do not have permission to accept the license. See your system administrator to obtain write permissions to the IBM Integration Bus Healthcare Pack installation directory."
+msgstr "您沒有許可權來接受授權。請向系統管理者取得 IBM Integration Bus Healthcare Pack 安裝目錄的寫入權。"
+
+msgid "The IBM Integration Bus Healthcare Pack use restriction was not accepted.\nBefore using IBM Integration Bus Healthcare Pack you must first accept the use restriction.\nTo view and accept the use restriction, run 'HealthcarePack_install.sh' again."
+msgstr "未接受 IBM Integration Bus Healthcare Pack 使用限制。\n使用 IBM Integration Bus Healthcare Pack 之前，您必須先接受使用限制。\n若要檢視並接受使用限制，請再次執行 'HealthcarePack_install.sh'。"
+
+msgid "License accepted.\nSetting up IBM Integration Bus Healthcare Pack."
+msgstr "已接受授權。\n正在設定 IBM Integration Bus Healthcare Pack。"
+
+msgid "IBM Integration Bus Healthcare Pack is already installed.\nUninstall any previous installations of IBM Integration Bus Healthcare Pack and run this installer again."
+msgstr "已安裝 IBM Integration Bus Healthcare Pack。\n請解除安裝先前已安裝的任何 IBM Integration Bus Healthcare Pack，然後再次執行此安裝程式。"
+
+msgid "Unable to install IBM Integration Bus Healthcare Pack because files could not be created in the IBM Integration Bus registry directory.\nCheck you have the right permissions to write to this directory before running the installer again."
+msgstr "無法安裝 IBM Integration Bus Healthcare Pack，因為無法在 IBM Integration Bus 登錄目錄中建立檔案。\n再次執行安裝程式之前，請檢查您具有此目錄的正確寫入權。"
+
+msgid "Unable to install IBM Integration Bus Healthcare Pack because files could not be created in the IBM Integration Bus installation directory.\nCheck you have the right permissions to write to this directory before running the installer again."
+msgstr "無法安裝 IBM Integration Bus Healthcare Pack，因為無法在 IBM Integration Bus 安裝目錄中建立檔案。\n再次執行安裝程式之前，請檢查您具有此目錄的正確寫入權。"
+
+msgid "IBM Integration Bus Healthcare Pack is installed.\nFor each integration node to which you want to deploy Healthcare nodes or patterns, complete the following steps:\n1. Start the integration node.\n2. Complete one of the following steps:\n\t- If your license entitles you to use all the functionality except the MedicalDeviceInput node, run the following command\n\t\tmqsimode <NODENAME> -x healthcare\n\t- If your license entitles you to use only the MedicalDeviceInput node, run the following command:\n\t\tmqsimode <NODENAME> -x medicalDevices\n\t- If your license entitles you to use all the functionality including the MedicalDeviceInput node, run the following command:\n\t\tmqsimode <NODENAME> -x \"healthcare,medicalDevices\""
+msgstr "已安裝 IBM Integration Bus Healthcare Pack。\n針對您要對其部署 Healthcare 節點或型樣的每個整合節點，完成下列步驟：\n1. 啟動整合節點。\n2. 完成下列其中一個步驟：\n\t- 如果您的軟體使用權授權您使用所有功能（除 MedicalDeviceInput 節點之外），請執行下列指令\n\t\tmqsimode <NODENAME> -x healthcare\n\t- 如果您的軟體使用權授權您只能使用 MedicalDeviceInput 節點，請執行下列指令：\n\t\tmqsimode <NODENAME> -x medicalDevices\n\t- 如果您的軟體使用權授權您使用所有功能（包括 MedicalDeviceInput 節點），請執行下列指令：\n\t\tmqsimode <NODENAME> -x \"healthcare,medicalDevices\""
+
+msgid "The IBM Integration Bus Healthcare Pack license was not accepted.\nBefore using IBM Integration Bus Healthcare Pack you must first accept the license agreement.\nTo view and accept the license agreement, stop and run this installer again."
+msgstr "未接受 IBM Integration Bus Healthcare Pack 授權。\n使用 IBM Integration Bus Healthcare Pack 之前，您必須先接受授權合約。\n若要檢視並接受授權合約，請停止此安裝程式並再次執行。"
+
+msgid "Unsupported parameters provided.\nSee IBM Integration Bus Healthcare Pack documentation for supported options for the installer."
+msgstr "提供的參數不受支援。\n關於安裝程式支援的選項，請參閱 IBM Integration Bus Healthcare Pack 文件。"
+
+
+msgid "IBM Integration Bus Healthcare Pack %HEALTHCARE_VERSION% Uninstallation"
+msgstr "IBM Integration Bus Healthcare Pack %HEALTHCARE_VERSION% 解除安裝"
+
+msgid "Unable to uninstall IBM Integration Bus Healthcare Pack.\nYou must specify an IBM Integration Bus V10 installation directory as the first parameter to this uninstaller."
+msgstr "無法解除安裝 IBM Integration Bus Healthcare Pack。\n您必須在此解除安裝程式的第一個參數中指定 IBM Integration Bus V10 安裝目錄。"
+
+msgid "It was not possible to remove one or more files. Remove the files listed in the error(s) above to complete uninstallation of IBM Integration Bus Healthcare Pack."
+msgstr "無法移除一或多個檔案。請移除上述錯誤中列出的檔案，以完成 IBM Integration Bus Healthcare Pack 的解除安裝。"
+
+msgid "Uninstallation successful."
+msgstr "順利解除安裝。"

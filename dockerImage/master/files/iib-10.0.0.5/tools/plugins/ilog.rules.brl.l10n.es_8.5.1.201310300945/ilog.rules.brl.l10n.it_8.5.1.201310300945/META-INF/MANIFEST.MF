@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: brl_it.jar
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %Plugin.Provider
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: %Plugin.Name
+Bundle-SymbolicName: ilog.rules.brl.l10n.it
+Require-Bundle: ilog.rules.brl.brldf;bundle-version="[8.5.1,8.5.2)",il
+ og.rules.vocabulary.model;bundle-version="[8.5.1,8.5.2)"
+Export-Package: ilog.rules.brl.bal60.i18n,ilog.rules.brl.bql.bom.i18n,
+ ilog.rules.brl.bql.i18n,ilog.rules.brl.i18n,ilog.rules.rf.balselect.i
+ 18n,ilog.rules.vocabulary.i18n,ilog.rules.vocabulary.verbalization.it
+ alian
+Bundle-Version: 8.5.1.201310300945
+Bundle-ManifestVersion: 2
+
+

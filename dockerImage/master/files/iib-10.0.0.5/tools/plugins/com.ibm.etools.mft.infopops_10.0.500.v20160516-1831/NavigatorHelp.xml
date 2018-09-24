@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+  <contexts>
+    <context id="ResourceNavigatorViewer">
+      <description><b>Broker Development view</b>
+This displays a hierarchical view of your resource files, such as message flows and Java projects. Double-click a file to open it in an editor.
+You can create, edit, delete, import, and export projects from this view.</description>
+      <topic href="../com.ibm.etools.mft.doc/ab00040_.htm" label="Broker Application Development perspective"/>
+      <topic href="../org.eclipse.platform.doc.user/tasks/tasks-1b.htm"  label="See also: Working with views and editors"/>
+      
+<!-- <topic href="../org.eclipse.platform.doc.user/gettingStarted/qs-31a.htm"  label="See also: Importing files"/> -->
+    </context>
+  </contexts>

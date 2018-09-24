@@ -1,0 +1,546 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+<head>
+	<!--
+		(c) Copyright IBM Corporation 2009, 2011. All rights reserved.
+		All Rights Reserved * Licensed Materials - Property of IBM 
+	-->
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="abstract" content="Tablas con la información detallada de los parámetros de patrón para el patrón Patient Identifier Cross-reference Manager"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+	<title>Parámetros de patrón para el patrón Patient Identifier
+Cross-reference Manager</title>	
+	<script language="JavaScript" src="../help/actions.js"></script>
+	
+	<!-- START NON-TRANSLATABLE -->
+	<script language="JavaScript">
+	<!--
+
+	function getParameter(location, name) {
+		name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+		var search = "[\\?&]" + name + "=([^&#]*)";
+		var regex = new RegExp(search);
+		var results = regex.exec(location);
+		return (results == null ? true : (results[1] == "false" ? false : true));
+	}
+	
+	function addStyleSheet() {
+		if (getParameter(window.location.href, "everything") == false) {
+			var headId = document.getElementsByTagName("head")[0];         
+			var cssNode = document.createElement("link");
+			cssNode.type = "text/css";
+			cssNode.rel = "stylesheet";
+			cssNode.href = "../css/patterns.css";
+			cssNode.media = "screen";
+			headId.appendChild(cssNode);
+		}
+	}
+		
+	addStyleSheet(); // Depends on the query string!
+	
+	function getElementsByStyleClass (className) {
+  		var all = document.all ? document.all :
+    	document.getElementsByTagName('*');
+  		var elements = new Array();
+  		
+  		for (var e = 0; e < all.length; e++) {
+    		if (all[e].className == className) {
+      			elements[elements.length] = all[e];
+      		}
+      	}
+ 		return elements;
+	}
+	
+	function collapseAll() {
+		var elements = getElementsByStyleClass('twisty');
+		for (var e = 0; e < elements.length; e++) {
+			changeTwisty(elements[e], 'TWISTIE.COLLAPSEALL');
+		}
+	}
+	
+	function expandAll() {
+		var elements = getElementsByStyleClass('twisty');
+		for (var e = 0; e < elements.length; e++) {
+			changeTwisty(elements[e], 'TWISTIE.EXPANDALL');
+		}
+	}
+	
+	function toggleTwisty(group) {
+		changeTwisty(group, 'TWISTIE.TOGGLE');
+		// Make KC adjust content area for change of content height
+		if (typeof kc === "object" && typeof kc.resize === "function") kc.resize();
+	}
+	
+	function changeTwisty(group, mode) {		
+		whichGroupId = group.parentNode.id;
+
+		whichGroupContainerId = whichGroupId + "Container";
+		whichGroupTwistyId = whichGroupId + "Twisty";
+		whichGroupTwistyImageId = whichGroupId + "Arrow";
+		groupContainerObj = document.getElementById(whichGroupContainerId);
+		twistyArrowContainerObj = document.getElementById(whichGroupTwistyId);
+		twistyArrowImageObj = document.getElementById(whichGroupTwistyImageId);
+		group.parentNode.style.height = "auto";
+
+		var toShow = false;
+		
+		if (mode == 'TWISTIE.TOGGLE') {
+			if (groupContainerObj.style.display == "none" || groupContainerObj.style.display == "") {
+				toShow = true;
+			} else {
+				toShow = false;
+			}
+		} else if (mode == 'TWISTIE.EXPANDALL') {
+			toShow = true;
+		}
+		
+		if (toShow) {
+			groupContainerObj.style.visibility = "visible";
+			groupContainerObj.style.display = "block";
+			twistyArrowImageObj.src = '../images/twistyopen.png'
+			group.parentNode.style.height = (groupContainerObj.offsetHeight + 30) +'px'; 
+	
+		} else {
+			groupContainerObj.style.visibility = "hidden";
+			groupContainerObj.style.display = "none";
+			twistyArrowImageObj.src = '../images/twistyclosed.png'
+		}
+	
+	}
+	//-->
+	</script>
+	<!-- END NON-TRANSLATABLE -->
+</head>
+<body id="com.ibm.healthcare.pattern.PIXManager.pattern.parametertable">
+	<!-- Page main title -->
+  	<div id="title" class="invisible">
+		<h1 class="patterns-title">Parámetros de patrón para el patrón <span>Patient Identifier Cross-reference Manager</span></h1>
+  	</div>
+
+
+	
+		
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="Id149ed0f32126edfdbaaadda499a">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="Id149ed0f32126edfdbaaadda499aTwisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="Id149ed0f32126edfdbaaadda499aArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Detalles de conexión</div>
+							
+							
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="Id149ed0f32126edfdbaaadda499aContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Parámetro de patrón</th>
+													  <th class="invisible" valign="top" width="*">Valor predeterminado</th>
+													  <th valign="top" width="*">Descripción</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Información detallada de conexión
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				localhost:1111
+															</td>
+															<td valign="top" width="*">
+																<p>Este parámetro define los detalles de la conexión
+TCP/IP del Patient Identifier Cross-reference Manager. Configure su
+aplicación clínica que actúa como Origen de identidad de pacientes en
+el perfil PIX para que se conecte a esta dirección. El
+parámetro tiene el formato
+<span class="filepath">nombre_host:puerto</span></p>
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	
+		
+	
+
+	
+		
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="Id14a5e676dbda17ee6204c4ba2cb">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="Id14a5e676dbda17ee6204c4ba2cbTwisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="Id14a5e676dbda17ee6204c4ba2cbArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">MDM Patient Hub (EMPI)</div>
+							
+							
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="Id14a5e676dbda17ee6204c4ba2cbContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Parámetro de patrón</th>
+													  <th class="invisible" valign="top" width="*">Valor predeterminado</th>
+													  <th valign="top" width="*">Descripción</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Nombre de usuario
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																<p>Este parámetro especifica el nombre de usuario que
+se necesita para conectarse al EMPI.</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Contraseña
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																<p>Este parámetro especifica la contraseña que
+se necesita para conectarse al EMPI.</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																URL de servicio web
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				http://localhost:9080/ibminitiatews/services/IdentityHub
+															</td>
+															<td valign="top" width="*">
+																<p>Este parámetro especifica el URL de servicio web
+que se necesita para conectar con el concentrador de identidades EMPI, por ejemplo:
+<span class="filepath">http://localhost:9080/ibminitiatews/services/IdentityHub</span></p>
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	
+		
+
+			
+
+			
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="Id149ed2c66414a53664033c44b41">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="Id149ed2c66414a53664033c44b41Twisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="Id149ed2c66414a53664033c44b41Arrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Gestor de PIX</div>
+							
+							
+
+									
+
+									
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="Id149ed2c66414a53664033c44b41Container">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Parámetro de patrón</th>
+													  <th class="invisible" valign="top" width="*">Valor predeterminado</th>
+													  <th valign="top" width="*">Descripción</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Aplicación
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																<p>Este parámetro define el valor de aplicación
+emisora que se especifica en el segmento MSH de los acuses de recibo que
+se envían desde el Patient Identifier Cross-reference Manager.</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Recurso
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																<p>Este parámetro define el valor de recurso
+emisor que se especifica en el segmento MSH de los acuses de recibo
+que se envían desde el Patient Identifier Cross-reference Manager.</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																ID de espacio de nombres
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																<p>Este parámetro define el ID de espacio de
+nombres de la autoridad de asignación (dominio) del Patient Identifier Cross-reference Manager. Este
+parámetro es el equivalente de
+<span class="msobjpropval">srcCode</span> en el EMPI.</p>
+																<p>En un mensaje entrante, si el valor del campo
+PID.3.4.1 no coincide con el valor de este parámetro, se rechaza el
+mensaje. 
+																En un mensaje entrante, si PID.3.4.1 está vacío pero
+PID.3.4.2 y PID.3.4.3 coinciden con sus respectivos parámetros de
+patrón (ID Universal y Tipo de ID Universal), PID.3.4.1 se
+cumplimenta con el valor de este parámetro. 
+																</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																ID universal
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																<p>Este parámetro define el ID universal
+de la autoridad de asignación (dominio) del Patient Identifier
+Cross-reference Manager.</p>
+																<p>En un mensaje entrante, si el valor del campo
+PID.3.4.2 no coincide con el valor de este parámetro, se rechaza el
+mensaje.</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Tipo de ID universal
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				ISO
+															</td>
+															<td valign="top" width="*">
+																<p>Este parámetro define el tipo de ID universal de la
+autoridad de asignación (dominio) del Patient Identifier
+Cross-reference Manager.</p> 
+																<p>En un mensaje entrante, si el valor del campo
+PID.3.4.3 no coincide con el valor de este parámetro, se rechaza el
+mensaje.</p>
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	
+		
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="Id14a5e4fc844bb603a6be37f1a1f">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="Id14a5e4fc844bb603a6be37f1a1fTwisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="Id14a5e4fc844bb603a6be37f1a1fArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Origen
+de identidad de pacientes</div>
+							
+							
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="Id14a5e4fc844bb603a6be37f1a1fContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Parámetro de patrón</th>
+													  <th class="invisible" valign="top" width="*">Valor predeterminado</th>
+													  <th valign="top" width="*">Descripción</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Aplicación
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																<p>Este parámetro define el valor esperado para Aplicación emisora del campo MSH.3 del mensaje entrante.</p>
+																<p>Si el valor que hay en el mensaje no coincide con
+el valor definido para este parámetro, se rechaza el mensaje entrante.</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Recurso
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																<p>Este parámetro define el valor esperado para
+Recurso emisor del campo MSH.4 del mensaje entrante.</p>
+																<p>Si el valor que hay en el mensaje no coincide con
+el valor definido para este parámetro, se rechaza el mensaje
+entrante.</p>
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	<div id="footnotes" class="invisible">
+		<div class="box first">
+			<div class="TitleBox"><!-- --></div>
+			<div class="FooterBox"><!-- --></div>
+			<div class="TL"><!-- --></div>
+			<div class="TR"><!-- --></div>
+			<div class="BL"><!-- --></div>
+			<div class="BR"><!-- --></div>
+			<div class="ContentBox">
+				<div class="invisible" >
+					<p class="shortdesc">Todos los parámetros de patrón aparecen en
+la lista con sus valores predeterminados.
+					Cuando no se indica
+un valor predeterminado, éste es una serie vacía.</p>
+				</div>
+				<a href="overview.htm#anchorBack" title="Atrás">Volver a
+la especificación del patrón Patient Identifier Cross-reference
+Manager</a>
+				<p></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

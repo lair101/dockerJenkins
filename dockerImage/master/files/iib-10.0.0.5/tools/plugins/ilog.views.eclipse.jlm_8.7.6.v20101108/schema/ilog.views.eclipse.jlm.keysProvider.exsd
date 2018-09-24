@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="ilog.views.eclipse.jlm">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="ilog.views.eclipse.jlm" id="ilog.views.eclipse.jlm.keysProvider" name="JViews License Manager Keys File Location Provider"/>
+      </appInfo>
+      <documentation>
+         This extension point can be instantiated to tell the JViews License Manager where to find the license keys file.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <complexType>
+         <sequence>
+            <element ref="implementation" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="implementation">
+      <annotation>
+         <documentation>
+            A specification of a public class that implements the ilog.jlm.JlmKeysProvider interface.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The name of a public class with a public no-argument constructor that implements the ilog.jlm.JlmKeysProvider interface.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         8.5.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         &amp;lt;extension point=&quot;ilog.views.eclipse.jlm.keysProvider&quot;&amp;gt;
+  &amp;lt;implementation class=&quot;ilog.views.eclipse.jlm.JlmKeysProvider&quot;/&amp;gt;
+&amp;lt;/extension&amp;gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         The &amp;lt;implementation&amp;gt; element specifies a public class that implements the ilog.jlm.JlmKeysProvider interface.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         Without extensions in this extension point, the JViews License Manager expects to find the license keys file as a resource named &quot;keys.jlm&quot; in the CLASSPATH.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+</schema>

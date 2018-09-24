@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: vocbom.jar
+Bundle-Vendor: %Plugin.Provider
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: %Plugin.Name
+Bundle-SymbolicName: ilog.rules.vocabulary.bom
+Require-Bundle: ilog.rules.language.shared;bundle-version="[8.5.1,8.5.
+ 2)",ilog.rules.shared;bundle-version="[8.5.1,8.5.2)",ilog.rules.vocab
+ ulary.model;bundle-version="[8.5.1,8.5.2)";visibility:=reexport
+Export-Package: ilog.rules.vocabulary.bom.synthesizer,ilog.rules.vocab
+ ulary.bom.update,ilog.rules.vocabulary.bom.xsd,ilog.rules.vocabulary.
+ model.bom,ilog.rules.vocabulary.model.bom.checker,ilog.rules.vocabula
+ ry.model.bom.generator,ilog.rules.vocabulary.model.bom.io
+Bundle-Version: 8.5.1.201310300945
+Bundle-ManifestVersion: 2
+
+

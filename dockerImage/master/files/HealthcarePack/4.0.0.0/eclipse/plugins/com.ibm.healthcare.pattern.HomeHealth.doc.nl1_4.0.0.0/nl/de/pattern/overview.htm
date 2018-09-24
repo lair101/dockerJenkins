@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="copyright" content="Copyright IBM Corporation 2014" />
+<link rel="stylesheet" type="text/css" href="./css/pattern.css" />
+<title>Muster 'Healthcare: Ambulante Pflege'</title>
+<!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    -->
+</head>
+<body role="main">
+	<h1 class="topictitle1">Muster 'Healthcare: Ambulante Pflege'</h1>
+	<div>
+		<p class="shortdesc"></p>
+	</div>
+	<p>Verwenden Sie das Muster 'Healthcare: Ambulante Pflege' zum Akzeptieren von	Web-Service-Anforderungen von mobilen Geräten oder PC-Geräten, die Daten aus den Geräte für die ambulante Pflege senden.</p>
+
+		<img src="home_health.png"
+		alt="Abbildung mit der Musterlösung 'Ambulante Pflege'" />
+	<div class="section">
+		<h2 class="sectiontitle">Kontext</h2>
+		<p>Patienten besitzen Geräte, zum Beispiel Waagen oder Herzüberwachungsgeräte, die für die häusliche Überwachung des Gesundheitszustands vorgesehen sind. Mit diesen Geräten können die Patienten ihren Gesundheitszustand anhand von Messwerten überprüfen. Diese Geräte verbinden sich mit einem Anwendungshostgerät wie einem mobilen Gerät oder Home-PC, das diese Informationen weiterleiten kann. Das medizinische Fachpersonal muss die gemessenen Werte aus den Anwendungshostgeräten kennen, damit es den Gesundheitszustand seiner Patienten überwachen kann. Für eine präzise Überwachung des Gesundheitszustands der Patienten müssen die Werte regelmäßig abgelesen werden.</p>
+	</div>
+
+	<div class="section">
+		<h2 class="sectiontitle">Ziel</h2>
+		<p>
+						Eine medizinische Fachkraft möchte Daten aus den Geräten für die ambulante Pflege über ein Weitverkehrsnetz (WAN) empfangen und die Daten in ihrer anfordernden Anwendung anzeigen. Sie benötigt ein System, das ihre anfordernde Anwendung in ein Anwendungshostgerät integriert, welches Informationen vom
+Gerät für die ambulante Pflege empfängt. Dieses System muss in der Lage sein, Nachrichten des HL7-Nachrichtentyps <span class="msobjpropval">Unsolicited Observation Results</span> (ORU_R01) (Nicht angeforderte Beobachtungsergebnisse) zu empfangen. Außerdem muss es Empfangsbestätigungen bezüglich der Nachrichten zurücksenden können.
+		</p>
+	</div>
+
+	<div class="section">
+		<h2 class="sectiontitle">Lösung</h2>
+		<p>Das Muster 'Healthcare: Ambulante Pflege' beschleunigt die Entwicklung und stellt folgende Funktionen bereit:</p>
+		<ul>
+			<li>Flüsse und untergeordnete Flüsse, die den HL7-Nachrichtentyp
+			<span class="msobjpropval">Unsolicited Observation Results
+			</span>(ORU_R01) (Nicht angeforderte Beobachtungsergebnisse) von empfangenen SOAP-Anforderungen extrahieren und prüfen</li>
+			<li>Benutzerdefinierte	Verarbeitung der empfangenen Nachricht</li>
+			<li>Rücksenden der entsprechenden	Bestätigung an den Client</li>
+			<li>Konfigurierbare Service-Scripts, mit denen Sie unter Verwendung der Security Assertion Markup Language (SAML) die Sicherheit einrichten können</li>
+		</ul>
+	</div>
+	<div>
+
+				<a href="constraints.htm">Bedingungen für die Verwendung des Musters</a>
+	</div>
+	<div>
+
+				<a href="before.htm">Vor Verwendung des Musters</a>
+	</div>
+
+	<div>
+
+					<a href="parameters.htm">Parameter für das Muster</a>
+		</div>
+	<div>
+				<a href="after.htm">Tasks, die nach der Generierung des Musters auszuführen sind</a>
+	</div>
+
+
+
+
+</body>
+</html>

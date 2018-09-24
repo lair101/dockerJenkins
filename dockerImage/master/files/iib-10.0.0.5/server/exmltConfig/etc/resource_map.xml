@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Map>
+    <Stylesheet
+              Location="stylesheets"
+              UseSelector="true"
+              UseFolder="true"
+              UseEnable="true"
+              AllowExport="true"
+              AllowImport="true"
+              EnablePath="plugins/ibm/TextEngine/XMLHandler"
+              EnableKey="stylesheetMutators"
+              EnableValue="stylesheets/^Folder^/^SelectorName^"
+              EnableSeparator=";"
+              CompareEnableValue="true"
+              ExportCustomizer="com.ibm.transform.cmdmagic.importexport.CustomizeStylesheetExport"
+              ImportCustomizer="com.ibm.transform.cmdmagic.importexport.CustomizeStylesheetImport">
+        <Name internal="DescriptiveName"/>
+        <Description internal="Description"/>
+        <OutputMimeType internal="targetContentType" separator=";" valuePrefix="[" valuePostfix="]"/>
+        <Location internal="styleSheet"/>
+        <OutputDTD internal="targetDTD"/>
+        <InputDTD internal="inputDTD"/>
+        <HTTPCondition internal="condition"/>
+        <TranslationFile internal="translation_file"/>
+    </Stylesheet>
+
+    <Annotator
+              Location="annotators"
+              UseSelector="true"
+              UseFolder="true"
+              UseEnable="true"
+              AllowExport="true"
+              AllowImport="true"
+              EnablePath="annotators/registry"
+              EnableKey="^Folder^/^SelectorName^"
+              EnableValue="true"
+              DisableValue="false"
+              CompareEnableValue="true">
+        <Name internal="DescriptiveName"/>
+        <Description internal="Description"/>
+        <URL internal="URL"/>
+        <Location internal="Location"/>
+    </Annotator>
+
+    <Device
+              Location="preferences/device"
+              UseSelector="true"
+              UseFolder="false"
+              UseEnable="true"
+              SkipEmpty="true"
+              AllowExport="true"
+              AllowImport="true"
+              EnablePath="config/UserAgentToDeviceMap"
+              EnableKey="^SelectorName^"
+              EnableValue="^UserAgent^"
+              CompareEnableValue="false"
+              ImportCustomizer="com.ibm.transform.cmdmagic.importexport.CustomizeDeviceImport">
+        <Name internal="DescriptiveName"/>
+        <Description internal="Description"/>
+        <UserAgent internal="deviceRule"/>
+    </Device>
+
+    <Network
+              Location="preferences/network"
+              UseSelector="true"
+              UseFolder="false"
+              UseEnable="true"
+              SkipEmpty="true"
+              AllowExport="true"
+              AllowImport="true"
+              EnablePath="config/*@cmdlineConfigKey@|^Setup/RunWTPAs^|@ConfigKey@*/NetworkToPortMap"
+              EnableKey="^SelectorName^"
+              EnableValue="^Port^"
+              ExportCustomizer="com.ibm.transform.cmdmagic.importexport.CustomizeNetworkExport"
+              ImportCustomizer="com.ibm.transform.cmdmagic.importexport.CustomizeNetworkImport">
+        <Name internal="DescriptiveName"/>
+        <Description internal="Description"/>
+        <Port internal="networkRule"/>
+    </Network>
+
+    <User
+              Location="preferences/user"
+              UseSelector="true"
+              UseFolder="false"
+              UseEnable="false"
+              AllowExport="true"
+              AllowImport="true">
+        <Name internal="DescriptiveName"/>
+        <Description internal="Description"/>
+    </User>
+
+    <Plugin
+              Location="plugins"
+              UseSelector="true"
+              UseFolder="true"
+              UseEnable="true"
+              SkipEmpty="true"
+              AllowExport="true"
+              AllowImport="true"
+              EnablePath="config/*@cmdlineConfigKey@|^Setup/RunWTPAs^|@ConfigKey@*/registry"
+              EnableKey="^Folder^/^SelectorName^"
+              EnableValue="true"
+              DisableValue="false"
+              CompareEnableValue="true"
+              ExportCustomizer="com.ibm.transform.cmdmagic.importexport.CustomizePluginExport"
+              ImportCustomizer="com.ibm.transform.cmdmagic.importexport.CustomizePluginImport">
+        <Description internal="Description"/>
+        <Name internal="DescriptiveName"/>
+        <Title internal="Name"/>
+        <Class internal="Class"/>
+        <Version>
+            <Major internal="Major"/>
+            <Minor internal="Minor"/>
+        </Version>
+        <Dependencies internal="Dependencies"/>
+        <Priority internal="Priority"/>
+        <MEGType internal="MEGType"/>
+        <Group internal="Group"/>
+        <Condition internal="Condition"/>
+        <Security internal="Security"/>
+        <Printer internal="Printer"/>
+        <Mutator internal="Mutators" separator=" "/>
+        <ClasspathDependencies internal="ClasspathDependencies"/>
+        <ClasspathSeparatorChar internal="ClasspathSeparatorChar"/>
+    </Plugin>
+
+    <Setup
+              IsSingular="true"
+              Location="config/@ConfigKey@,config/UserAgentToDeviceMap,config/ReverseProxy,baseConfiguration"
+              UseSelector="false"
+              UseFolder="false"
+              UseEnable="false"
+              AllowExport="true"
+              AllowImport="true"
+              ExportCustomizer="com.ibm.transform.cmdmagic.importexport.CustomizeSetupExport"
+              ImportCustomizer="com.ibm.transform.cmdmagic.importexport.CustomizeSetupImport">
+        <RunWTPAs internal="ConfigKey" path="baseConfiguration"/>
+        <ServerModelToBeUsed internal="serverModel" path="localConfig"/>
+        <!-- LDAP section will only be exported, it will not be imported -->
+        <LDAP>
+            <RootDN internal="ldaprootdn"/>
+            <Server internal="ldapserver"/>
+            <User internal="ldapadmin"/>
+            <Port internal="ldapport"/>
+            <EncryptedPassword internal="ldappasswd"/>
+        </LDAP>
+        <RMIRegistry>
+            <Enable internal="EnableRMI" path="config/*@cmdlineConfigKey@|^Setup/RunWTPAs^|@ConfigKey@*/ENVIRONMENT" alternatepath="localConfig"/>
+            <HostName internal="notifyHost" path="config/*@cmdlineConfigKey@|^Setup/RunWTPAs^|@ConfigKey@*/ENVIRONMENT" alternatepath="localConfig"/>
+            <Port internal="notifyPort" path="config/*@cmdlineConfigKey@|^Setup/RunWTPAs^|@ConfigKey@*/ENVIRONMENT" alternatepath="localConfig"/>
+        </RMIRegistry>
+        <Configuration>
+            <Firewall>
+                <Socks>
+                    <Enable internal="SocksEnabled" path="config/*@cmdlineConfigKey@|^Setup/RunWTPAs^|@ConfigKey@*/TCPIP"/>
+                    <Server internal="Socks" path="config/*@cmdlineConfigKey@|^Setup/RunWTPAs^|@ConfigKey@*/TCPIP"/>
+                    <Port internal="SocksPort" path="config/*@cmdlineConfigKey@|^Setup/RunWTPAs^|@ConfigKey@*/TCPIP"/>
+                </Socks>
+                <Proxy>
+                    <Enable internal="ProxyEnabled" path="config/*@cmdlineConfigKey@|^Setup/RunWTPAs^|@ConfigKey@*/TCPIP"/>
+                    <Server internal="Proxy" path="config/*@cmdlineConfigKey@|^Setup/RunWTPAs^|@ConfigKey@*/TCPIP"/>
+                    <Port internal="ProxyPort" path="config/*@cmdlineConfigKey@|^Setup/RunWTPAs^|@ConfigKey@*/TCPIP"/>
+                    <NoProxy internal="NoProxy"  path="config/*@cmdlineConfigKey@|^Setup/RunWTPAs^|@ConfigKey@*/TCPIP" separtor=" "/>
+                </Proxy>
+            </Firewall>
+            <ReverseProxy>
+                <TranscodingServerHostName internal="DestinationServerName" path="config/ReverseProxy"/>
+                <SingleWebServerHostName internal="WTPServerName" path="config/ReverseProxy"/>
+                <MultipleWebServerPage internal="WebPageURL" path="config/ReverseProxy"/>
+            </ReverseProxy>
+        </Configuration>
+    </Setup>
+</Map>

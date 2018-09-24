@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2013, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>Constraints on the use of the Healthcare: Web service to DICOM pattern</title>
+</head>
+<body role="main">
+<h1 class="topictitle1">Constraints on the use of the
+<span>
+Healthcare: Web service to DICOM
+</span>
+pattern</h1>
+<div>
+    <p class="shortdesc">
+    A number of constraints apply when you use the Healthcare: Web service to DICOM pattern.
+    </p>
+    <p>
+    You can use the 
+    <span>
+    Healthcare: Web service to DICOM
+    </span>
+    pattern only if you meet all of the following constraints:
+    </p>
+    <ul>
+        <li>
+            Requests must be received as SOAP messages over HTTP.
+        </li>
+        <li>
+            Requesting applications must support a synchronous request response interaction 
+            style.
+        </li>
+        <li>
+            Requesting applications must support the XML format for search criteria and 
+            results defined by the Healthcare: Web service to DICOM pattern.
+        </li>
+        <li>
+            The DICOM PACS must support C-MOVE commands if the DICOM instances are moved to 
+            a destination application.
+        </li>
+        <li>
+            The DICOM PACS must support either the patient or study query root for C-FIND 
+            commands.
+        </li>
+        <li>
+            If logging or error handling is required, the format used by the Healthcare: Web service to DICOM pattern is 
+            assumed to meet your requirements.
+        </li>
+    </ul>
+</div>
+<p>
+<a href="overview.htm#anchor1" title="Back">Back to the Healthcare: Web service to DICOM pattern specification</a>
+</p>
+</body>
+</html>

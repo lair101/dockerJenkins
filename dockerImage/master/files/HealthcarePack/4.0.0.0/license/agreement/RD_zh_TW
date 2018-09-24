@@ -1,0 +1,100 @@
+﻿<html>
+
+<head>
+	<style>
+		body {margin-top:0;}
+		h3 {font-family:arial; font-weight:bold; font-size:12; padding:20px 0 0; margin:0;}
+		p {font-family:arial; font-weight:normal; font-size:12; padding:10px 0 0; margin:0;}
+		.padoff {padding:0 !important;}
+	</style>
+</head>
+
+<body>
+<h3 class='padoff'>
+
+
+<!--LI 2 Title-->
+使用限制
+
+
+</h3>
+<p>
+
+
+<!--LI 2 Paragraph 1-->
+本程式可作為醫療裝置資料系統，用以傳送、儲存及轉換不同格式之資料。本程式在某些情況下得傳輸資料至床邊醫療裝置（例如：為輪詢及遙測之目的）。但本程式本身並非醫療裝置。
+
+
+</p>
+<p>
+<!--LI 2 Paragraph 2, pre-bullets-->
+禁止對本程式為下列使用：
+
+
+<br />
+
+
+<!--LI 2 Paragraph 2, bullets-->
+a. 為臨床、醫療或治療目的，而將本程式用於控制床邊醫療裝置（例如包括但不限於藥物、麻醉、生理食鹽水及類似物品之管理）；
+<br />
+b. 用於作用中之病患監視（亦即，將本程式作為監視攸關生命安危之病患資料之唯一方法，例如：心跳速率）；
+<br />
+c. 用於決策支援（亦即，將本程作為判斷病患特定治療或即時性臨床處置之主要依據）；或
+<br />
+d. 用於需仰賴及時資料傳輸之任何作用中監視。
+
+
+</p>
+<h3>
+
+
+<!--LI 3 Title-->
+IBM 免責聲明
+
+
+</h3>
+<p>
+
+
+<!--LI 3 Paragraph 1-->
+由被授權人或為被授權人直接或間接將本程式使用於上述第 節「使用限制」規定之禁止使用行為或用途，而肇生之任何及一切第三人索賠及賠償責任，均應由被授權人賠償 International Business Machines Corporation 及其關係企業。
+
+
+</p>
+<h3>
+
+
+<!--LI 5 Title-->
+國家/地區所定之限制
+
+
+</h3>
+<p>
+
+
+<!--LI 5 Paragraph 1-->
+本程式應取得依特定法律及法規規定之核准，因此僅限由 IBM 發行，並依受限及特定國家/地區之原則而行銷。本程式僅限使用於下列 URL 所列國家/地區：
+
+
+<br />
+<a href='http://www-01.ibm.com/software/integration/wbimessagebroker/healthcare/license'>http://www-01.ibm.com/software/integration/<br />wbimessagebroker/healthcare/license</a>,
+<br />
+
+
+<!--LI 5 Paragraph 1, pre-email-->
+或寄送電子郵件至
+
+
+&nbsp;<a href='mailto:mqlcycle@uk.ibm.com'>mqlcycle@uk.ibm.com</a>, 向 IBM 索取。
+</p>
+<p>
+
+
+<!--LI 5 Paragraph 2-->
+國家/地區特定法律及法規規定之核准可能因時而異。前項核可於任何先前核准之國家/地區中被限制或撤銷者，IBM 拒絕承認一切責任。被授權人應負責定期驗證特定的 URL 所通報之異動。
+
+
+</p>
+</body>
+
+</html>

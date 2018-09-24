@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<contexts>
+	<context id="caw">
+	    <description><b>Command Assistant wizard</b>
+Use this wizard to create, modify or delete runtime components, such as brokers, in the IBM Integration Toolkit.</description>
+        <topic href="../com.ibm.etools.mft.doc/bz90400_.htm" label="Configuring brokers for a development environment"/>
+	</context>
+	
+	<context id="dcw">
+	    <description><b>Default Configuration wizard - Create</b>
+Use this wizard to create the IBM Integration Default Configuration.
+When you have created the Default Configuration, you can deploy and run the IBM Integration sample applications.</description>
+		<topic href="../com.ibm.etools.mft.doc/be68210_.htm" label="Creating the Default Configuration"/>
+        <topic href="../com.ibm.etools.mft.doc/be68220_.htm" label="What the Default Configuration wizard does"/>
+	</context>
+	
+	<context id="rdcw">
+	    <description><b>Default Configuration wizard - Remove</b>
+Use this wizard to remove the IBM Integration Default Configuration.
+When you have deleted the Default Configuration, you can no longer deploy and run the IBM Integration sample applications. Use the wizard if you want to recreate the Default Configuration.</description>
+		<topic href="../com.ibm.etools.mft.doc/be68210_.htm" label="Creating the Default Configuration"/>
+	</context>
+	
+	<context id="spwSampleList">
+	    <description><b>Prepare the Samples wizard</b>
+Use this wizard to prepare or remove a IBM Integration sample.
+If you have created the Default Configuration, you can also deploy a sample so that you can run it.
+If you have not created the Default Configuration, you can still import a sample into the IBM Integration Toolkit so that you can explore the samples resources without actually running the sample.
+Run this wizard for each sample that you want to import or remove.</description>
+		<topic href="../com.ibm.etools.mft.doc/ax20230_.htm" label="Samples"/>
+	</context>
+	
+	<context id="spwSampleAction">
+	    <description><b>Prepare the Samples wizard - task</b>
+Select a task to perform on the sample.
+</description>
+		<topic href="../com.ibm.etools.mft.doc/ax20230_.htm" label="Samples"/>
+	</context>
+	
+</contexts>

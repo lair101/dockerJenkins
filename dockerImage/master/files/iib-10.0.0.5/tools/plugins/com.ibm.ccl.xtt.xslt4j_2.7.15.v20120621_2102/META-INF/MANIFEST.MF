@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Export-Package: META-INF.services,com.ibm.xslt4j.b2b2dtm,com.ibm.xslt4
+ j.bcel,com.ibm.xslt4j.bcel.classfile,com.ibm.xslt4j.bcel.generic,com.
+ ibm.xslt4j.bcel.util,com.ibm.xslt4j.bcel.verifier,com.ibm.xslt4j.bcel
+ .verifier.exc,com.ibm.xslt4j.bcel.verifier.statics,com.ibm.xslt4j.bce
+ l.verifier.structurals,com.ibm.xslt4j.regexp,org.apache.xalan,org.apa
+ che.xalan.client,org.apache.xalan.extensions,org.apache.xalan.lib,org
+ .apache.xalan.lib.sql,org.apache.xalan.processor,org.apache.xalan.res
+ ,org.apache.xalan.serialize,org.apache.xalan.templates,org.apache.xal
+ an.trace,org.apache.xalan.transformer,org.apache.xalan.xslt,org.apach
+ e.xalan.xsltc,org.apache.xalan.xsltc.cmdline,org.apache.xalan.xsltc.c
+ mdline.getopt,org.apache.xalan.xsltc.compiler,org.apache.xalan.xsltc.
+ compiler.util,org.apache.xalan.xsltc.dom,org.apache.xalan.xsltc.runti
+ me,org.apache.xalan.xsltc.runtime.output,org.apache.xalan.xsltc.trax,
+ org.apache.xalan.xsltc.util,org.apache.xml.dtm,org.apache.xml.dtm.ref
+ ,org.apache.xml.dtm.ref.dom2dtm,org.apache.xml.dtm.ref.sax2dtm,org.ap
+ ache.xml.res,org.apache.xml.serializer,org.apache.xml.serializer.dom3
+ ,org.apache.xml.serializer.utils,org.apache.xml.utils,org.apache.xml.
+ utils.res,org.apache.xpath,org.apache.xpath.axes,org.apache.xpath.com
+ piler,org.apache.xpath.domapi,org.apache.xpath.functions,org.apache.x
+ path.jaxp,org.apache.xpath.objects,org.apache.xpath.operations,org.ap
+ ache.xpath.patterns,org.apache.xpath.res
+Require-Bundle: system.bundle,org.apache.xerces;bundle-version="[2.8.0
+ ,3.0.0)";visibility:=reexport
+Bundle-Vendor: %providerName
+Bundle-ClassPath: lib/xalan.jar,lib/serializer.jar,lib/xercesImpl.jar,
+ lib/xml-apis.jar
+Bundle-Version: 2.7.15.v20120621_2102
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ibm.ccl.xtt.xslt4j
+
+

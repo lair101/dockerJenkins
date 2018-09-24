@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MSGModel:MRMessageSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:MSGModel="MSGModel.xmi" xmi:id="MRMessageSet_1" name="Properties" parserDomain="Properties" namespacesEnabled="false" currentMessageSetId="MRMessageSetID_1">
+  <MRMessageSetID xmi:id="MRMessageSetID_1" repositoryId="1043863151" messageSetId="1" level="1"/>
+</MSGModel:MRMessageSet>

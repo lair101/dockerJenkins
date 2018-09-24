@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+     <extension id="ide"
+         point="org.eclipse.core.runtime.products">
+      <product
+            name="%Plugin.name"
+            application="org.eclipse.ui.ide.workbench">
+          <property name="windowImages" value="wbimb16.gif,wbimb32.gif"/>
+          <property name="featureImage" value="wbimb32.gif"/>
+          <property name="aboutImage" value="wbimbAbout.gif"/>
+          <property name="aboutText" value="%blurb"/>
+          <property name="appName" value="%Plugin.name"/>
+          <property name="preferenceCustomization" value="plugin_customization.ini"/>
+          <property name="cssTheme" value="org.eclipse.e4.ui.css.theme.e4_default"/>
+          <property name="applicationCSSResources" value="platform:/plugin/org.eclipse.platform/images/"/>
+          <!--<property name="welcomePage" value="$nl$/welcome.xml"/>-->
+      </product>
+   </extension>
+
+   <extension point="org.eclipse.ui.intro">  
+      <intro
+            class="org.eclipse.ui.intro.config.CustomizableIntroPart"
+            id="com.ibm.etools.msgbroker.welcome.intro">  
+      </intro>
+      <introProductBinding
+            	introId="com.ibm.etools.msgbroker.welcome.intro"
+            	productId="com.ibm.etools.msgbroker.tooling.ide">
+      		</introProductBinding>
+   </extension> 
+   
+   <extension
+         point="com.ibm.ccl.common.splash.splashExtension">
+      <splashExtension
+            copyrighttext="(c) IBM Corporation and other(s) 2000, 2016.  IBM, the IBM logo, Rational, WebSphere and Rational Application Developer are trademarks of IBM Corp. in the United States, other countries or both.  Built on Eclipse logo is a trademark of Eclipse Foundation, Inc.  Java and all Java-based trademarks are trademarks of Sun Microsystems, Inc. in the United States, other countries, or both. Other company, product or service names may be trademarks or service marks of others."
+            endcopyright="2016"
+            fullproductname="%Plugin.name"
+            icon="wbimb16.gif"
+            id="com.ibm.websphere.msgbroker.product.splashExtension1"
+            startcopyright="2000"
+            tooltip="%pluginName">
+      </splashExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.splashHandlers">
+      <splashHandlerProductBinding
+            productId="com.ibm.etools.msgbroker.tooling.ide"
+            splashId="com.ibm.ccl.common.splash.extensible">
+      </splashHandlerProductBinding>
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.ui.activities">
+     <categoryActivityBinding
+       categoryId="com.ibm.etools.wbimbCategory"
+       activityId="com.ibm.wtp.data.development">
+     </categoryActivityBinding>
+     <!--<categoryActivityBinding
+       categoryId="com.ibm.etools.wbimbCategory"
+       activityId="com.ibm.wtp.data.development.storedprocedure">
+     </categoryActivityBinding>
+     <categoryActivityBinding
+       categoryId="com.ibm.etools.wbimbCategory"
+       activityId="com.ibm.wtp.data.development.sqlj">
+     </categoryActivityBinding>-->
+     <defaultEnablement id="com.ibm.wtp.data.development"/>
+     <!--<defaultEnablement id="com.ibm.wtp.data.development.storedprocedure"/>
+     <defaultEnablement id="com.ibm.wtp.data.development.sqlj"/>-->
+   </extension>
+
+  <!-- IBM Licensing --> 
+   <extension point="com.ibm.cic.licensing.common.licenseInformation">
+      <configuration
+            digest="1753523861F61A1EC8CABEBD54755F135947E67195F8EB7896720B07F89AC97CB2B9979824769A479ACD8F27B90997A89ABF80119146DE2B354542E5F77BC7A1023910BBA885422F12A75946C646ACABCF25C9AC991CC6E9159C3D687F42D58183DE92BA2FC7637FC04FA5628ABDF7083D735FDC4BE8C0EBE5F100F5FDD7124C"
+            file="license.xml"/>
+   </extension>
+   
+   <!-- IBM Product Info -->
+<!--
+   <extension
+         point="com.ibm.cic.licensing.itlm.productInformation">
+      <product
+            id="com.ibm.rational.application.developer"
+            productid="F5F7F2F4D1F1F940"
+            publisherid="8FD69FEC6156029254B17F0000000000"
+            featureid="F6C1E2D7D7F9F1F4"
+            versionid="F74BF04040404040"/>
+   </extension>
+-->
+  
+      <extension
+         point="org.eclipse.ui.activities">
+         
+      <category
+            description="%Activities.MessageBrokerToolkit.category.desc"
+            id="com.ibm.etools.msgbroker.tooling.activitiesCategory.core"
+            name="%Activities.MessageBrokerToolkit.category.title"/>
+            
+      <!-- MB Core Capability -->
+      <activity
+            description="%Activities.MessageBrokerToolkit.Core.desc"
+            id="com.ibm.etools.msgbroker.tooling.activities.core"
+            name="%Activities.MessageBrokerToolkit.Core.title"/>
+      <defaultEnablement id="com.ibm.etools.msgbroker.tooling.activities.core"/>
+      <categoryActivityBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            categoryId="com.ibm.etools.msgbroker.tooling.activitiesCategory.core"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.msg\.trace.*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.msg\.mft\.cache/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.msg\.mrp\.importer/.*"/>
+      <!-- The following is only for the perspective -->
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.mft\.flow/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.msg\.coremodel.*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.msg\.msgmodel.*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.msg\.precanned\.definitions/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.msg\.validation.*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.msg\.wsdl.*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.msgbroker\..*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.mft\.config/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.mft\.config/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.mft\.gef\.emf/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.mft\.infopops/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.mft\.navigator/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.mft\.quickstartwizards/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.mft\.runtime/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.mft\.xpath/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.mft\.util.*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.mft\.builder.*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.mft\.uri.*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.mft\.samples.*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.mft\.unittest.*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.mft\.bar.*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.core"
+            pattern="com\.ibm\.etools\.msg\.dictionary/.*"/>
+            
+      <!-- MB Broker Admin Capability -->
+      <activity
+            description="%Activities.MessageBrokerToolkit.BrokerAdmin.desc"
+            id="com.ibm.etools.msgbroker.tooling.activities.BrokerAdmin"
+            name="%Activities.MessageBrokerToolkit.BrokerAdmin.title"/>
+      <defaultEnablement id="com.ibm.etools.msgbroker.tooling.activities.BrokerAdmin"/>
+      <categoryActivityBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.BrokerAdmin"
+            categoryId="com.ibm.etools.msgbroker.tooling.activitiesCategory.core"/>
+      <activityRequirementBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.BrokerAdmin"
+            requiredActivityId="com.ibm.etools.msgbroker.tooling.activities.core"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.BrokerAdmin"
+            pattern="com\.ibm\.etools\.mft\.admin/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.BrokerAdmin"
+            pattern="com\.ibm\.etools\.mft\.eou.*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.BrokerAdmin"
+            pattern="com\.ibm\.etools\.wmadmin\.broker\..*/.*"/>
+            
+      <!-- MB Development Capability -->
+      <activity
+            description="%Activities.MessageBrokerToolkit.development.desc"
+            id="com.ibm.etools.msgbroker.tooling.activities.development"
+            name="%Activities.MessageBrokerToolkit.development.title"/>
+      <defaultEnablement id="com.ibm.etools.msgbroker.tooling.activities.development"/>
+      <categoryActivityBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            categoryId="com.ibm.etools.msgbroker.tooling.activitiesCategory.core"/>
+      <activityRequirementBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            requiredActivityId="com.ibm.etools.msgbroker.tooling.activities.core"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.mft\.debug.*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.mft\.vfd.*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.mft\.api/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.mft\.fcb/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.mft\.ibmnodes/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.mft\.jcn/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.mft\.node/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.mft\.esql.*/.*"/> 
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.mft\.mapping.*/.*"/>               
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.mft\.java\.builder/.*"/>   
+	  <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.mft\.rdb.*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.mft\.adapter.*/.*"/>             
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.mft\.flow\.adapters/.*"/>   
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.msg\.editor/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.msg\.generator.*/.*"/>             
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.msg\.gen\.html/.*"/>   
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.msg\.reporting\..*/.*"/>
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.msg\.importer.*/.*"/>             
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.msg\.cobol2msg/.*"/>   
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.msg\.c2msg/.*"/>   
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.mft\.flow\.dnd\.wsdl/.*"/>   
+      <activityPatternBinding
+            activityId="com.ibm.etools.msgbroker.tooling.activities.development"
+            pattern="com\.ibm\.etools\.mft\.pattern\.capture\..*/.*"/>   
+
+   </extension> 
+   
+   <!-- Library Project Nature -->
+   <extension
+         id="libraryNature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run class="com.ibm.etools.msgbroker.tooling.natures.LibraryNature"/>
+      </runtime>
+      <builder
+            id="com.ibm.etools.mft.applib.applibbuilder">
+      </builder>
+   </extension>
+   <extension
+         id="sharedLibraryNature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run class="com.ibm.etools.msgbroker.tooling.natures.SharedLibraryNature"/>
+      </runtime>
+      <builder
+            id="com.ibm.etools.mft.applib.applibbuilder">
+      </builder>
+   </extension>
+	<!-- Library Project Nature Folder Overlay -->
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/full/ovr16/lib_ovr.gif"
+            id="libraryNatureImage"
+            natureId="com.ibm.etools.msgbroker.tooling.libraryNature"/>
+   </extension>
+   
+   <!-- Application Project Nature -->
+   <extension
+         id="applicationNature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run class="com.ibm.etools.msgbroker.tooling.natures.ApplicationNature"/>
+      </runtime>
+      <builder
+            id="com.ibm.etools.mft.applib.applibbuilder">
+      </builder>
+   </extension>
+	<!-- Application Project Nature Folder Overlay -->
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/full/ovr16/app_ovr.gif"
+            id="applicationNatureImage"
+            natureId="com.ibm.etools.msgbroker.tooling.applicationNature"/>
+   </extension>
+   
+   <!-- Message Broker Project Nature -->
+   <extension
+         id="messageBrokerProjectNature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run class="com.ibm.etools.msgbroker.tooling.natures.MessageBrokerProjectNature"/>
+      </runtime>
+   </extension>
+	<!-- Message Broker Project Nature Folder Overlay -->
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/full/ovr16/mbp_ovr.gif"
+            id="messageBrokerProjectNatureImage"
+            natureId="com.ibm.etools.msgbroker.tooling.messageBrokerProjectNature"/>
+   </extension>
+
+   <!-- Service Project Nature -->
+   <extension
+         id="serviceApplicationNature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run class="com.ibm.etools.msgbroker.tooling.natures.ServiceApplicationNature"/>
+      </runtime>
+      <builder
+            id="com.ibm.etools.mft.applib.applibbuilder">
+      </builder>
+   </extension>
+	<!-- Service Project Nature Folder Overlay -->
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/full/ovr16/app_ovr.gif"
+            id="serviceNatureImage"
+            natureId="com.ibm.etools.msgbroker.tooling.serviceApplicationNature"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="com.ibm.etools.msgbroker.tooling.OperatingSystemIntegration">
+      </startup>
+   </extension>
+   
+</plugin>

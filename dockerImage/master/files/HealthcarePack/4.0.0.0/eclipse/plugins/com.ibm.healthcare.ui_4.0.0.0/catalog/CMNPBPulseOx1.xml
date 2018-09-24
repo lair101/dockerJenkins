@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CMDriverDescription>
+<SupportedDevices model="Nellcore NPB-190" type="Monitor">
+ <CMLLC type="CMLLCRS232">
+ 	<CMLLCCfg port="" baud="9600,115000" parity="N,E,O" data="7,8" stopbit="1" rtscts="No" />
+ </CMLLC>
+ </SupportedDevices>
+ <SupportedDevices model="Nellcore NPB-195" type="Monitor">
+ <CMLLC type="CMLLCRS232">
+ 	<CMLLCCfg port="" baud="9600,115000" parity="N,E,O" data="7,8" stopbit="1" rtscts="No" />
+ </CMLLC>
+ </SupportedDevices>
+ <SupportedDevices model="Nellcore NPB-395" type="Monitor">
+ <CMLLC type="CMLLCRS232">
+ 	<CMLLCCfg port="" baud="9600,115000" parity="N,E,O" data="7,8" stopbit="1" rtscts="No" />
+ </CMLLC>
+ </SupportedDevices>
+<Variables>
+	<Discrete>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:226:263-501" 
+ 					CMidtext="Rate:Noninvasive:Pulse:CVS-Blood" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PULSE:M_CONTEXT_CVS-M_PERTAINS_BLOOD" 
+ 					defaultunits="bpm" 
+ 					abbreviation="PRNI" 
+ 					shortdesc="Noninvasive Pulse Rate" 
+ 					longdesc="Rate of blood pulse in an artery, the rate is measured not invasively" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:226:263-501" 
+ 					CMidtext="Rate:Noninvasive:Pulse:CVS-Blood" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PULSE:M_CONTEXT_CVS-M_PERTAINS_BLOOD" 
+ 					defaultunits="bpm" 
+ 					abbreviation="PRNI" 
+ 					shortdesc="Noninvasive Pulse Rate" 
+ 					longdesc="Rate of blood pulse in an artery, the rate is measured not invasively" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:331-660:302:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:ArterialBlood:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_FLUIDTYPE_ARTERIALBLOOD:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="%" 
+ 					abbreviation="SaO2" 
+ 					shortdesc="None" 
+ 					longdesc="arterial oxygen saturation" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:371:226:263-501" 
+ 					CMidtext="Rate:Noninvasive:Pulse:CVS-Blood" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PULSE:M_CONTEXT_CVS-M_PERTAINS_BLOOD" 
+ 					defaultunits="bpm" 
+ 					abbreviation="PRNI" 
+ 					shortdesc="Noninvasive Pulse Rate" 
+ 					longdesc="Rate of blood pulse in an artery, the rate is measured not invasively" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:302:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:ArterialBlood:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_FLUIDTYPE_ARTERIALBLOOD:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="%" 
+ 					abbreviation="SaO2" 
+ 					shortdesc="None" 
+ 					longdesc="arterial oxygen saturation" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:302:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:ArterialBlood:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_FLUIDTYPE_ARTERIALBLOOD:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="%" 
+ 					abbreviation="SaO2" 
+ 					shortdesc="None" 
+ 					longdesc="arterial oxygen saturation" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:226:263-501" 
+ 					CMidtext="Rate:Noninvasive:Pulse:CVS-Blood" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PULSE:M_CONTEXT_CVS-M_PERTAINS_BLOOD" 
+ 					defaultunits="bpm" 
+ 					abbreviation="PRNI" 
+ 					shortdesc="Noninvasive Pulse Rate" 
+ 					longdesc="Rate of blood pulse in an artery, the rate is measured not invasively" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:226:263-501" 
+ 					CMidtext="Rate:Noninvasive:Pulse:CVS-Blood" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PULSE:M_CONTEXT_CVS-M_PERTAINS_BLOOD" 
+ 					defaultunits="bpm" 
+ 					abbreviation="PRNI" 
+ 					shortdesc="Noninvasive Pulse Rate" 
+ 					longdesc="Rate of blood pulse in an artery, the rate is measured not invasively" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:302:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:ArterialBlood:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_FLUIDTYPE_ARTERIALBLOOD:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="%" 
+ 					abbreviation="SaO2" 
+ 					shortdesc="None" 
+ 					longdesc="arterial oxygen saturation" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:302:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:ArterialBlood:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_FLUIDTYPE_ARTERIALBLOOD:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="%" 
+ 					abbreviation="SaO2" 
+ 					shortdesc="None" 
+ 					longdesc="arterial oxygen saturation" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:826:835:834" 
+ 					CMidtext="Status:Warning:Battery:PowerSupply" 
+ 					idref="M_BASE_STATUS:M_SPEC_WARNING:M_CONCERNS_BATTERY:M_PERTAINS_POWERSUPPLY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Powered by battery" 
+ 					longdesc="Warning, the device is being powered by its battery" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:826:835:834-836" 
+ 					CMidtext="Status:Warning:Battery:PowerSupply-Low" 
+ 					idref="M_BASE_STATUS:M_SPEC_WARNING:M_CONCERNS_BATTERY:M_PERTAINS_POWERSUPPLY-M_CONDITION_LOW" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Low battery" 
+ 					longdesc="Warning, low battery" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:826:840:843" 
+ 					CMidtext="Status:Warning:Alarms:Silenced" 
+ 					idref="M_BASE_STATUS:M_SPEC_WARNING:M_CONCERNS_ALARMS:M_CONDITION_SILENCED" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarms silenced" 
+ 					longdesc="Warning, alarms are silenced" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:826:840:842" 
+ 					CMidtext="Status:Warning:Alarms:Off" 
+ 					idref="M_BASE_STATUS:M_SPEC_WARNING:M_CONCERNS_ALARMS:M_CONDITION_OFF" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarms off" 
+ 					longdesc="Warning, alarms off" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:826:846:845" 
+ 					CMidtext="Status:Warning:Sensor:Disconnected" 
+ 					idref="M_BASE_STATUS:M_SPEC_WARNING:M_CONCERNS_SENSOR:M_CONDITION_DISCONNECTED" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Sensor disconnected" 
+ 					longdesc="Warning, sensor disconnected" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:826:226:263-501-831" 
+ 					CMidtext="Status:Warning:Pulse:CVS-Blood-NotSensed" 
+ 					idref="M_BASE_STATUS:M_SPEC_WARNING:M_CONCERNS_PULSE:M_CONTEXT_CVS-M_PERTAINS_BLOOD-M_CONDITION_NOTSENSED" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Pulse not detected" 
+ 					longdesc="Warning, pulse not detected" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107::226-846:263-501-847" 
+ 					CMidtext="Status::Pulse-Sensor:CVS-Blood-Initializing" 
+ 					idref="M_BASE_STATUS::M_CONCERNS_PULSE-M_CONCERNS_SENSOR:M_CONTEXT_CVS-M_PERTAINS_BLOOD-M_CONDITION_INITIALIZING" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Pulse search" 
+ 					longdesc="Searching for pulse" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 	</VarGroup>
+ </Discrete>
+</Variables></CMDriverDescription>

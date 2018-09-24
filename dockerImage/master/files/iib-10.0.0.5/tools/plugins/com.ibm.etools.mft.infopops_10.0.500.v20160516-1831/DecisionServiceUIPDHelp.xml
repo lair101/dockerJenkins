@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+
+<pdHelp xmlns="http://www.ibm.com/visualutils/pdhelpcontent"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ibm.com/visualutils/pdhelpcontent http://www.ibm.com/visualutils/pdhelpcontent">
+
+	<pluginCategory id="com.ibm.etools.mft.decision.service.ui">
+
+	    <!-- 
+	       Progressive Disclosure field help for the 'Container' field on the 1st page of the 'New Decision Service' wizard
+	     -->	
+
+		<fieldHelp id="NewDecisionServiceWizardFilePage_decisionServiceProject">
+			<title>Container</title>
+			<description>
+				<p>Specify an application, library, or project in which to store the decision service.</p>
+				<p>When you specify decision service parameters, you can use only the XML schema types and elements in the scope of the selected container.</p>				
+			</description>
+		</fieldHelp>
+
+
+	    <!-- 
+	       Progressive Disclosure field help for the 'Parameters' table on the 2nd page of the 'New Decision Service' wizard
+	     -->	
+
+		<fieldHelp id="NewDecisionServiceWizardParametersPage_decisionServiceParameters">
+			<title>Select parameters</title>
+			<description>
+			    <p>A decision service requires data parameters.</p>
+				<p>Select from a list of global elements, global types, and simple types.</p>
+				<p>The types of the selected items will serve as the data parameter types of the decision service.</p>
+				<p>The direction of each parameter is set to INOUT.</p>				
+                <p>This list of parameters can be modified later in the Decision Service editor.</p>				
+			</description>
+		</fieldHelp>
+
+
+	    <!-- 
+	       Progressive Disclosure field help for the 'RuleSet' property on the Basic tab of the Properties view of Decision Service node
+	     -->
+	     
+	     	
+		<fieldHelp id="DecisionServiceEditor_decisionServiceRuleset">
+			<title>Ruleset</title>
+		    <description>
+<p>A decision service contains at least one ruleset. A decision service authored in IBM Integration toolkit will only contain one ruleset. A decision service created by importing an IBM Operational Decision Manager (ODM) Rule Application archive can contain one or more rulesets.</p>
+<p>( If a decision service was created by importing an IBM Operational Decision Manager (ODM) Rule Application archive and you are interested in obtaining the XML schema files of a ruleset, you can use the 'Extract XML Schema Files...' wizard to extract a ruleset's XML schema files into the workspace. Simply right-click the decision service file, and select 'Extract XML Schema Files' from the context menu. )</p>		    
+			</description>
+		</fieldHelp>
+
+
+	    <!-- 
+	       Progressive Disclosure field help for the 'Parameters' table on the Parameters page of the editor
+	       for an mb authored decision service
+	     -->	
+
+		<fieldHelp id="DecisionServiceEditor_decisionServiceParameters">
+			<title>Parameters</title>
+			<description>
+				<p>Manage the parameters of the decision service.</p>
+				<ul>
+					<li> <b>Name:</b> Specify a unique name for the parameter.  </li>
+					<li> <b>Type:</b> Select a global element, global type, or simple type. The selected item's type will be used as the parameter type. </li>
+					<li> <b>Direction:</b> The direction of the parameter : IN, OUT, INOUT. Currently only INOUT is supported for decision services authored in the IBM Integration toolkit.  </li>					
+					<li> <b>Verbalization:</b> Specify a natural language name (or alias) for the parameter; for example, "the customer". This value is used to refer to the parameter when a writing a rule.  </li>
+				</ul>
+				
+				<p>For example:</p>
+				<p>Name: myCustomer   Type: CustomerType  Verbalization: the customer</p>
+				
+				<p>To add one or more parameters, click on the 'Add parameters' button to bring up the selection dialog.</p>
+                <p>To delete a parameter, place the mouse cursor in a table cell, and click on the 'Delete parameter' button.</p>				
+			    <p>To edit a value, click the cell in the table.  For the "Name" and "Verbalization" cells, type a value; for the  "Type" cell, select a value from the selection dialog.</p>				
+			</description>
+		</fieldHelp>
+
+	    <!-- 
+	       Progressive Disclosure field help for the 'Parameters' table on the Parameters page of the editor
+	       for a decision service created when importing an ODM archive
+	     -->	
+
+		<fieldHelp id="DecisionServiceEditor_decisionServiceParametersODMRuleAppJAR">
+			<title>Parameters</title>
+			<description>
+				<p>The parameters of the decision service.</p>
+				<ul>
+					<li> <b>Name:</b> The unique name of the parameter.  </li>
+					<li> <b>Type:</b> The type of the parameter . </li>
+					<li> <b>Direction:</b> The direction of the parameter : IN, OUT, INOUT . </li>					
+					<li> <b>Verbalization:</b> A natural language name (or alias) for the parameter; for example, "the customer". This value is used to refer to the parameter when a writing a rule. It is not visible in this table because the rules were not authored in the IBM Integration toolkit.  </li>
+				</ul>
+				
+			</description>
+		</fieldHelp>
+		
+		<!-- 
+	       Progressive Disclosure field help for the 'Container' field on the 1st page of the 'Import ODM Rule Application archive' wizard
+	     -->	
+
+		<fieldHelp id="SelectODMArchiveWizardPage_container">
+			<title>Container</title>
+			<description>
+				<p>Specify an application, library or integration service in which to store the new Decision Service.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- 
+	       Progressive Disclosure field help for the 'Overwrite ...' field on the 1st page of the 'Import ODM Rule Application archive' wizard
+	     -->	
+
+		<fieldHelp id="SelectODMArchiveWizardPage_overwrite">
+			<title>Overwrite existing Decision Service in specified container</title>
+			<description>
+				<p>A Decision Service with the same name already exist in the specified container. You must select this option in order to overwrite the Decision Service.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- 
+	       Progressive Disclosure field help for the 'Copy import file ...' field on the 1st page of the 'Import ODM Rule Application archive' wizard
+	     -->	
+
+		<fieldHelp id="SelectODMArchiveWizardPage_copyimportfile">
+			<title>Copy import file into the "importFiles" directory of the specified container</title>
+			<description>
+				<p>Select this option in order to copy the selected IBM Operational Decision Manager (ODM) Rule Application archive into the specified container under the "importFiles" directory. If the "importFiles" directory does not exist, it will be created.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- 
+	       Progressive Disclosure field help for the 'Rule sets that will be imported ...' field on the 2nd page of the 'Import ODM Rule Application archive' wizard
+	     -->	
+
+		<fieldHelp id="ReviewODMArchiveWizardPage_validrulesets">
+			<title>Rule sets that will be imported</title>
+			<description>
+				<p>The rule sets listed will be imported from the selected IBM Operational Decision Manager (ODM) Rule Application archive. The rule sets are valid for use with a Decision Service node.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- 
+	       Progressive Disclosure field help for the 'Rule sets that will not be imported ...' field on the 2nd page of the 'Import ODM Rule Application archive' wizard
+	     -->	
+
+		<fieldHelp id="ReviewODMArchiveWizardPage_invalidrulesets">
+			<title>Rule sets that will not be imported</title>
+			<description>
+				<p>The rule sets listed will not be imported from the selected IBM Operational Decision Manager (ODM) Rule Application archive. The rule sets are not valid for use with a Decision Service node. Click on an individual rule set to see the reason why that rule set is not valid for use with a Decision Service node.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- 
+	       Progressive Disclosure field help for the 'Container' field on the 1st page of the 'Extract XML Schema files' wizard
+	     -->	
+
+		<fieldHelp id="XSDExtractWizardPage_container">
+			<title>Container</title>
+			<description>
+				<p>Specify an application or library in which to store the XML Schema files. When you specify parameters for a rule set on a Decision Service node, you can only use the XML Schema types and elements in the scope of the selected container.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- 
+	       Progressive Disclosure field help for the 'Rule set' field on the 1st page of the 'Extract XML Schema files' wizard
+	     -->	
+
+		<fieldHelp id="XSDExtractWizardPage_ruleset">
+			<title>Rule set</title>
+			<description>
+				<p>Specify the rule set in the Decision Service to extract the XML Schema files from. You can only extract XML Schemas from one rule set at a time.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- 
+	       Progressive Disclosure field help for the 'Parameters' field on the 1st page of the 'Extract XML Schema files' wizard
+	     -->	
+
+		<fieldHelp id="XSDExtractWizardPage_parameters">
+			<title>Parameters</title>
+			<description>
+				<p>Review the list of parameters for the selected rule set.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- 
+	       Progressive Disclosure field help for the 'XML Schema files' field on the 1st page of the 'Extract XML Schema files' wizard
+	     -->	
+
+		<fieldHelp id="XSDExtractWizardPage_xmlschemas">
+			<title>XML Schema files</title>
+			<description>
+				<p>Review the list of XML Schema files contained within the selected rule set. All of the XML Schema files listed will be extracted to the selected container.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- 
+	       Progressive Disclosure field help for the 'Overwrite ...' field on the 1st page of the 'Extract XML Schema files' wizard
+	     -->	
+
+		<fieldHelp id="XSDExtractWizardPage_overwrite">
+			<title>Overwrite existing XML Schema files in specified container</title>
+			<description>
+				<p>One or more of the XML Schema files in the selected rule set may already exist in the specified container. You must select this option in order to overwrite these files.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		
+	</pluginCategory>
+
+ 
+
+ 
+</pdHelp>

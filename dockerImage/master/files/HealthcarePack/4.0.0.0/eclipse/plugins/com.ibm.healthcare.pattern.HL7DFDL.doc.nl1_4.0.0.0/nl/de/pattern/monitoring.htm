@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2013, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>Muster 'Healthcare: HL7 an HL7 DFDL' überwachen</title>
+</head>
+<body role="main">
+<a name="links"></a>
+<div class="section">
+    <h1 class="topictitle1">Muster 'Healthcare: HL7 an HL7 DFDL' überwachen</h1>
+    <p class="shortdesc">
+    Die vom Muster "Healthcare: HL7 an HL7" generierten Nachrichtenflüsse werden von der webbasierten Überwachung überwacht.
+Die Überwachungsansicht zeigt die von den Nachrichtenflüssen veröffentlichten TCP/IP-Statistikdaten an. Diese Statistiken
+    werden durch Informationen ergänzt, die in benutzerdefinierten Eigenschaften in den Nachrichtenflüssen
+    gespeichert sind. In diesem Thema wird erläutert, wie die benutzerdefinierten Eigenschaften heißen und welche Informationen sie enthalten.
+</p>
+    <p>
+    Wenn Sie die HL7-Knoten außerhalb des Musters für die Erstellung angepasster Integrationen verwenden, können Sie Ihre Nachrichtenflüsse in die Überwachungsansicht  integrieren, indem Sie dieselben benutzerdefinierten Eigenschaften konfigurieren. </p>
+</div>
+<div>
+    <h2>Benutzerdefinierte Eigenschaften</h2>
+    <p>
+    Dieses Muster verfügt immer über einen einzelnen Receiver-Nachrichtenfluss und mindestens ein Ziel. Daher sind die Kennung und die Einrichtung der Quellenanwendung für alle Ziele unveränderlich festgelegt. Die Zielkennung und -einrichtung variieren hingegen abhängig vom überprüften Zielnachrichtenfluss.
+</p>
+    <div class="tablenoborder">
+        <table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+            <thead align="left">
+            <tr>
+                <th class="firstcol" align="left" valign="top" width="20%">Eigenschaftsname</th>
+                <th class="invisible" valign="top" width="40%">Wert</th>
+                <th class="invisible" valign="top" width="40%">Beispiele</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th align="left" valign="top" width="*" class="firstcol">Identifier1</th>
+                <td valign="top" width="*" class="invisible">Der Name der Musterinstanz</td>
+                <td valign="top" width="*" class="invisible"><span class="msobjpropval">    ADT
+    </span></td>
+            </tr>
+            <tr>
+                <th align="left" valign="top" width="*" class="firstcol">Identifier2</th>
+                <td valign="top" width="*" class="invisible">Eine Literalzeichenfolge, die davon abhängt, ob es sich um einen Receiver- oder Sender-Nachrichtenfluss handelt</td>
+                <td valign="top" width="*" class="invisible"><span class="msobjpropval">Quelle</span> oder <span class="msobjpropval">Ziel</span></td>
+            </tr>
+            <tr>
+                <th align="left" valign="top" width="*" class="firstcol">Identifier3</th>
+                <td valign="top" width="*" class="invisible">Die HL7-Kennung der Quelle oder des Ziels, die davon abhängt, ob es sich um einen Receiver- oder Sender-Nachrichtenfluss handelt</td>
+                <td valign="top" width="*" class="invisible"><span class="msobjpropval">Patientenregistrierung</span></td>
+            </tr>
+            <tr>
+                <th align="left" valign="top" width="*" class="firstcol">Identifier4</th>
+                <td valign="top" width="*" class="invisible">Die HL7-Einrichtung der Quelle oder des Ziels, die davon abhängt, ob es sich um einen Receiver- oder Sender-Nachrichtenfluss handelt</td>
+                <td valign="top" width="*" class="invisible"><span class="msobjpropval">Krankenhaus in der Weststadt</span></td>
+            </tr>
+            <tr>
+                <th align="left" valign="top" width="*" class="firstcol">TCPIPNode</th>
+                <td valign="top" width="*" class="invisible">Der Knotenname und die TCP/IP-Adresse für den vom Nachrichtenfluss verwendeten HL7-Knoten</td>
+                <td valign="top" width="*" class="invisible"><span class="msobjpropval">HL7 In/localhost:1111</span> oder <span class="msobjpropval">HL7
+                Out/localhost:2222</span></td>
+            </tr>
+            <tr>
+                <th align="left" valign="top" width="*" class="firstcol">SourceIdentifier</th>
+                <td valign="top" width="*" class="invisible">Die HL7-Kennung der Quellenanwendung</td>
+                <td valign="top" width="*" class="invisible"><span class="msobjpropval">Patientenregistrierung</span></td>
+            </tr>
+            <tr>
+                <th align="left" valign="top" width="*" class="firstcol">SourceFacility</th>
+                <td valign="top" width="*" class="invisible">Die HL7-Einrichtung der Quellenanwendung</td>
+                <td valign="top" width="*" class="invisible"><span class="msobjpropval">Krankenhaus in der Weststadt</span></td>
+            </tr>
+            <tr>
+                <th align="left" valign="top" width="*" class="firstcol">DestinationIdentifier</th>
+                <td valign="top" width="*" class="invisible">Die HL7-Kennung der Zielanwendung</td>
+                <td valign="top" width="*" class="invisible"><span class="msobjpropval">Apotheke</span></td>
+            </tr>
+            <tr>
+                <th align="left" valign="top" width="*" class="firstcol">DestinationFacility</th>
+                <td valign="top" width="*" class="invisible">Die HL7-Einrichtung der Zielanwendung</td>
+                <td valign="top" width="*" class="invisible"><span class="msobjpropval">Anderes Stadtkrankenhaus</span></td>
+            </tr>
+            <tr>
+                <th align="left" valign="top" width="*" class="firstcol">QueuePrefix</th>
+                <td valign="top" width="*" class="invisible">Das Warteschlangenpräfix für diesen Nachrichtenfluss oder keine Angabe - erfolgt für das Warteschlangenpräfix keine Angabe, bedeutet dies, dass der Name der Musterinstanz als Warteschlangenpräfix verwendet wird</td>
+                <td valign="top" width="*" class="invisible"><span class="msobjpropval">ADTQ</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="overview.htm#anchorBack" title="Zurück">Zurück zur Spezifikation des Musters 'Healthcare: HL7 an HL7 DFDL'</a>
+</div>
+</body>
+</html>

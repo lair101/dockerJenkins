@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<repository name='WESB Convert Tool for IIB 10' type='org.eclipse.equinox.p2.artifact.repository.simpleRepository' version='1'>
+  <properties size='3'>
+    <property name='p2.compressed' value='false'/>
+    <property name='p2.timestamp' value='1443109577897'/>
+    <property name='publishPackFilesAsSiblings' value='true'/>
+  </properties>
+  <mappings size='5'>
+    <rule filter='(&amp; (classifier=osgi.bundle) (format=packed))' output='${repoUrl}/plugins/${id}_${version}.jar.pack.gz'/>
+    <rule filter='(&amp; (classifier=osgi.bundle))' output='${repoUrl}/plugins/${id}_${version}.jar'/>
+    <rule filter='(&amp; (classifier=binary))' output='${repoUrl}/binary/${id}_${version}'/>
+    <rule filter='(&amp; (classifier=org.eclipse.update.feature) (format=packed))' output='${repoUrl}/features/${id}_${version}.jar.pack.gz'/>
+    <rule filter='(&amp; (classifier=org.eclipse.update.feature))' output='${repoUrl}/features/${id}_${version}.jar'/>
+  </mappings>
+  <artifacts size='7'>
+    <artifact classifier='osgi.bundle' id='com.ibm.etools.mft.conversion.esb.doc' version='1.0.0.v20150806_0832'>
+      <properties size='3'>
+        <property name='artifact.size' value='750536'/>
+        <property name='download.size' value='750536'/>
+        <property name='download.md5' value='1ee2c6397811b8a7b504a4bcbd482fa5'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='com.ibm.etools.mft.conversion.esb.feature' version='10.0.0.v20150924-1628'>
+      <properties size='4'>
+        <property name='download.contentType' value='application/zip'/>
+        <property name='download.size' value='6137'/>
+        <property name='artifact.size' value='6137'/>
+        <property name='download.md5' value='c38a940667f02da7a0000fb605e3fd09'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='com.ibm.etools.mft.conversion.esb.nl2' version='10.0.0.v20150924-1628'>
+      <properties size='3'>
+        <property name='artifact.size' value='59734'/>
+        <property name='download.size' value='59734'/>
+        <property name='download.md5' value='f8f76df8a3d74a041e330718bf0eac90'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='com.ibm.etools.mft.conversion.esb' version='10.0.0.v20150924-1628'>
+      <properties size='3'>
+        <property name='artifact.size' value='963487'/>
+        <property name='download.size' value='963487'/>
+        <property name='download.md5' value='1ca0fc14bf8a2c58daba6e5a6a368817'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='com.ibm.etools.mft.conversion.esb.eflowsimplifier' version='10.0.0.v20150924-1628'>
+      <properties size='3'>
+        <property name='artifact.size' value='1116349'/>
+        <property name='download.size' value='1116349'/>
+        <property name='download.md5' value='132852ca6453a594f8165977c167020a'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='com.ibm.etools.mft.conversion.esb.nl1' version='10.0.0.v20150924-1628'>
+      <properties size='3'>
+        <property name='artifact.size' value='210300'/>
+        <property name='download.size' value='210300'/>
+        <property name='download.md5' value='62d58810146974150046532b05146ea4'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='com.ibm.etools.mft.conversion.esb.nl2a' version='10.0.0.v20150924-1628'>
+      <properties size='3'>
+        <property name='artifact.size' value='28380'/>
+        <property name='download.size' value='28380'/>
+        <property name='download.md5' value='b0ef6810d4b4d624ffb52b24d101b387'/>
+      </properties>
+    </artifact>
+  </artifacts>
+</repository>

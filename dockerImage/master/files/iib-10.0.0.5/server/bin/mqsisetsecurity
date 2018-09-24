@@ -1,0 +1,36 @@
+#!/bin/bash
+##-----------------------------------------------------------------------------
+##
+##
+##  Licensed Materials - Property of IBM
+##  5724-A82,5765-D66 (c) Copyright IBM Corp. 2011
+##  All Rights Reserved
+##  US Government Users Restricted Rights - use,
+##  duplication or disclosure restricted by GSA
+##  ADP Schedule Contract with IBM Corp.
+##
+## Version %Z% %I% %W% %E% %U% [%H% %T%]
+##
+##-----------------------------------------------------------------------------
+
+GROUP=mqbrkrs
+
+# We check whether or not the group already exists by creating a test file
+# and trying to change it to that group.  If that operation fails then we
+# assume that the group doesn't already exist.
+
+FILE=/tmp/${$}.mqsigrptst
+touch ${FILE}
+chgrp ${GROUP} ${FILE} 2>/dev/null
+RC=${?}
+rm -f $FILE
+
+if [ ${RC} -eq "0" ]; then
+  # Group already exists
+  exit 0
+else
+  # Need to run the right command to create a group
+  /usr/sbin/groupadd ${GROUP}
+  exit ${?}
+fi
+

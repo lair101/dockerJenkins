@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="policy">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="policyProperties" minOccurs="0" />
+      </xsd:sequence>
+      <xsd:attribute name="type" type="xsd:string" fixed="MQEndpoint" />
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="policyProperties">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="mqConnectionDetailsPolicy" minOccurs="0" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="mqConnectionDetailsPolicy">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="connection" type="xsd:string" />
+        <xsd:element name="destinationQueueManagerName" type="xsd:string" minOccurs="0" />
+        <xsd:element name="queueManagerHostname" type="xsd:string" minOccurs="0" />
+        <xsd:element name="listenerPortNumber" type="xsd:string" minOccurs="0" />
+        <xsd:element name="channelName" type="xsd:string" minOccurs="0" />
+        <!-- xsd:element name="ccdtURI" type="xsd:string" minOccurs="0" / -->
+        <xsd:element name="securityIdentity" type="xsd:string" minOccurs="0" />
+        <xsd:element name="useSSL" type="xsd:boolean" minOccurs="0" />
+        <xsd:element name="SSLPeerName" type="xsd:string" minOccurs="0" />
+        <xsd:element name="SSLCipherSpec" type="xsd:string" minOccurs="0" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="discoveries">
+    <xsd:complexType>
+      <xsd:sequence />
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="policyGroups">
+    <xsd:complexType>
+      <xsd:sequence />
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
+

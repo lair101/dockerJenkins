@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:discoveries xmlns:p="http://www.ibm.com/mb/connector" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ibm.com/mb/connector connectors.xsd ">
+	<resourceBundleTemplate>nl/Model.properties</resourceBundleTemplate>
+	<modelVersion></modelVersion>
+	<writeSensitiveData>false</writeSensitiveData>
+	<discovery>
+		<id>BPM_TWX_DISCOVERY1.0</id>
+		<discoveryType>unstructured</discoveryType>
+		
+		<discoveryGroups>
+			<discoveryProperties>
+				<id>discoveryProperties</id>
+				<groups>
+					<group>
+						<id>connectionProperties</id>
+						<displayName></displayName>
+						<generateDocumentation>true</generateDocumentation>
+						<description nlKey="connectionProperties_Description">Not Translated: Specify the connection to the TWX file</description>
+						<expand>true</expand>
+						<visible>true</visible>
+						<parameters>
+							<parameter>
+									<id>urlProperty</id>
+									<groupId>connectionProperties</groupId>
+									<displayName nlKey="urlProperty">Not Translated: TWX File Path</displayName>
+									<mandatory>true</mandatory>
+									<configurable></configurable>
+									<visible>true</visible>
+									<sensitive>false</sensitive>
+									<schema>
+										<maxOccurs>1</maxOccurs>
+										<minOccurs>1</minOccurs>
+										<type>file</type>
+										<values>
+  											<name>extEnum</name>
+            								<enumValues>
+               									<enumValue>
+                  										<valueName>twx</valueName>
+                  										<displayName>twx</displayName>
+               									</enumValue>
+		            						</enumValues>
+			           					</values>
+									</schema>
+									<helpText nlKey="urlProperty_Description">Not Translated: Enter the full TWX file path</helpText>										
+							</parameter>
+						</parameters>
+					</group>	
+				</groups>
+			</discoveryProperties>				
+  			<selectedObjectProperties>
+		  		<id>token</id>
+				<nodeType>TWXPackage</nodeType>
+				<nodeType>IntegrationService</nodeType>
+				<dataConfiguration>
+					<id>selectedObjectConfig</id>
+					<displayName nlKey="selectedObjectConfig">Not Translated: Version Configuration:Hidden property</displayName>
+					<generateDocumentation>
+		  					true
+					</generateDocumentation>
+					<description>token</description>
+					<expand>true</expand>
+					<visible>false</visible>
+					<parameters>
+						<parameter>
+							<id>version</id>
+							<groupId>selectedObjectConfig</groupId>
+		  					<displayName nlKey="version">Not Translated: Selected object configuration property</displayName>
+		  					<mandatory>false</mandatory>
+		  					<configurable>true</configurable>
+		  					<visible>false</visible>
+		  					<sensitive>false</sensitive>
+		  					<schema>
+		  						<maxOccurs>0</maxOccurs>
+		  						<minOccurs>0</minOccurs>
+		  						<type>string</type>
+		  					</schema>
+		  					<helpText nlKey="version_Description">Not Translated: Object configuration</helpText>
+		  				</parameter>	  				
+						<parameter>
+							<id>name</id>
+							<groupId>selectedObjectConfig</groupId>
+		  					<displayName nlKey="name">Not Translated: Selected object configuration property</displayName>
+		  					<mandatory>false</mandatory>
+		  					<configurable>true</configurable>
+		  					<visible>false</visible>
+		  					<sensitive>false</sensitive>
+		  					<schema>
+		  						<maxOccurs>0</maxOccurs>
+		  						<minOccurs>0</minOccurs>
+		  						<type>string</type>
+		  					</schema>
+		  					<helpText nlKey="name_Description">Not Translated: Object configuration</helpText>
+		  				</parameter>	  
+		  			</parameters>
+		  		</dataConfiguration>
+			</selectedObjectProperties>
+  			<outputGenerationProperties>
+  				<id>token</id>
+				<containerType>library</containerType>
+  			</outputGenerationProperties>
+		</discoveryGroups>
+	</discovery>
+</p:discoveries>

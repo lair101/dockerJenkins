@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <!-- XPath Model Handler -->
+   <!-- d113314 Update MB code to handle Common XPath plugin changes -->
+   <extension
+         point="com.ibm.msl.mapping.xpathModelHandler">
+      <handler
+            class="com.ibm.etools.mft.xpath.internal.MFTXPathModelExtensionHandler"
+            handlerId="mft"/>
+   </extension>
+   
+   <!-- XPath Model UI Handler -->   
+   <!-- d113314 Update MB code to handle Common XPath plugin changes -->
+   <extension
+         point="com.ibm.msl.mapping.xml.ui.xpathModelUIHandler">
+      <handler
+            class="com.ibm.etools.mft.xpath.internal.MFTXPathModelUIExtensionHandler"
+            handlerId="mft"/>
+   </extension>
+   
+	<!-- =============================================================== -->
+	<!-- XPath Preference Page  - org.eclipse.ui.preferencePages         -->
+	<!-- =============================================================== -->
+	<extension point="org.eclipse.ui.preferencePages">
+		<page name="%XPathPreference_Name"
+			class="com.ibm.msl.xml.ui.xpath.internal.preferences.XPathPreferencePage"
+			id="com.ibm.msl.xml.ui.internal.preferences.XPathPreferencePage.mb"
+			category="com.ibm.etools.mft.flow.preference.broker">
+		</page>
+	</extension>
+	
+	<extension point="org.eclipse.ui.preferencePages">
+		<page name="%Grammar_Name"
+			class="com.ibm.etools.mft.xpath.internal.preferences.MFTXPathGrammarPreferencePage"
+			id="com.ibm.etools.mft.xpath.preferences.MFTXPathPreferencePage"
+			category="com.ibm.msl.xml.ui.internal.preferences.XPathPreferencePage.mb">
+		</page>
+		<page name="%XPathPreferenceValidation_Name"
+			class="com.ibm.etools.mft.xpath.internal.preferences.MFTXPathValidationPreferencePage"
+			id="com.ibm.etools.mft.xpath.internal.preferences.MFTXPathValidationPreferencePage"
+			category="com.ibm.msl.xml.ui.internal.preferences.XPathPreferencePage.mb">
+		</page>				
+	</extension>   
+	
+   	<!-- Preference Page  - org.eclipse.core.runtime.preferences   -->
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer
+			class="com.ibm.etools.mft.xpath.internal.preferences.MFTXPathPreferenceInitializer" />
+	</extension>	
+</plugin>

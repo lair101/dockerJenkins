@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-Vendor: %provider
+Bundle-Localization: plugin
+Fragment-Host: com.ibm.datatools.externalservices;bundle-version="[2.0
+ .0,3.0.0)"
+Bundle-Name: %win64FragmentName
+Bundle-SymbolicName: com.ibm.datatools.externalservices.win64
+Bundle-Version: 1.0.0.v20140816_0930
+Bundle-ManifestVersion: 2
+

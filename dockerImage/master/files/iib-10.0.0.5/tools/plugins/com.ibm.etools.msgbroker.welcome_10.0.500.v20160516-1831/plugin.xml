@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+     <extension
+         id="intro"
+         point="org.eclipse.ui.intro.config">
+      <config
+            introId="com.ibm.etools.msgbroker.welcome.intro"
+            id="com.ibm.etools.msgbroker.welcome.introConfig"
+            content="$nl$/introContent.xml">
+         <presentation
+               home-page-id="root"
+               standby-page-id="standby">
+             <implementation style="css/shared.css" kind="html" os="win32" /> 
+ 			 <implementation style="css/root_swt.properties" kind="swt" /> 
+         </presentation>
+      </config>
+   </extension>	
+</plugin>

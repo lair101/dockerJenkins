@@ -1,0 +1,38 @@
+Manifest-Version: 1.0
+Export-Package: com.ibm.etools.mft.broker.runtime,com.ibm.etools.mft.b
+ roker.runtime.actions,com.ibm.etools.mft.broker.runtime.model,com.ibm
+ .etools.mft.broker.runtime.preferences,com.ibm.etools.mft.broker.runt
+ ime.views,com.ibm.etools.mft.broker.runtime.wizards,com.ibm.etools.mf
+ t.broker.runtime.wizards.steps
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,com.ibm.etools
+ .mft.config;bundle-version="[10.0.0,11.0.0)",org.eclipse.emf.edit.ui;
+ bundle-version="2.4.2",org.eclipse.ui.ide;bundle-version="3.4.2",org.
+ eclipse.core.resources;bundle-version="3.4.2",com.ibm.etools.mft.bar;
+ bundle-version="[10.0.0,11.0.0)",com.ibm.etools.mft.navigator;bundle-
+ version="[10.0.0,11.0.0)";visibility:=reexport,org.eclipse.debug.core
+ ;bundle-version="3.4.1",com.ibm.etools.mft.debug;bundle-version="[10.
+ 0.0,11.0.0)",org.eclipse.debug.ui;bundle-version="3.4.2",com.ibm.etoo
+ ls.mft.util;bundle-version="[10.0.0,11.0.0)",com.ibm.icu;bundle-versi
+ on="4.2.1",com.ibm.etools.mft.flow;bundle-version="[10.0.0,11.0.0)",c
+ om.ibm.etools.mft.applib,com.ibm.etools.mft.util.ui;bundle-version="[
+ 10.0.0,11.0.0)",com.ibm.etools.wmadmin.broker.policysets.provider;bun
+ dle-version="[10.0.0,11.0.0)",com.ibm.etools.wmadmin.broker.policyset
+ s.trace;bundle-version="[10.0.0,11.0.0)",com.ibm.etools.mft.uri;bundl
+ e-version="10.0.0",org.eclipse.equinox.security;bundle-version="[1.1.
+ 100,2.0.0)",com.ibm.etools.mft.fcb;bundle-version="10.0.0",com.ibm.et
+ ools.mft.pattern.capture.annotation;bundle-version="10.0.0",org.eclip
+ se.ui.forms;bundle-version="3.5.201"
+Bundle-Vendor: IBM
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Bundle-Version: 10.0.500.v20160516-1831
+Bundle-Localization: plugin
+Bundle-Name: Runtime Plug-in
+Bundle-Activator: com.ibm.etools.mft.broker.runtime.BrokerRuntimePlugi
+ n
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ibm.etools.mft.broker.runtime; singleton:=tru
+ e
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+
+

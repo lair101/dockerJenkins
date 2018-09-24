@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-SymbolicName: com.ibm.bdsl.editor;singleton:=true
+Bundle-Activator: com.ibm.bdsl.editor.IntelliTextPlugin
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.co
+ re.resources,org.eclipse.jface.text,org.eclipse.ui.editors,org.eclips
+ e.search,org.eclipse.ui.views,org.eclipse.ui.forms,ilog.rules.brl.brl
+ df;bundle-version="[8.5.1,8.5.2)",ilog.rules.vocabulary.model;bundle-
+ version="[8.5.1,8.5.2)",ilog.rules.brl.ui;bundle-version="[8.5.1,8.5.
+ 2)",ilog.rules.brl.parsing;bundle-version="[8.5.1,8.5.2)",ilog.rules.
+ language.shared;bundle-version="[8.5.1,8.5.2)",com.ibm.bdsl.viewer;bu
+ ndle-version="[8.5.1,8.5.2)"
+Bundle-Version: 8.5.1.201310300945
+Export-Package: com.ibm.bdsl.editor,com.ibm.bdsl.editor.contentoutline
+ ,com.ibm.bdsl.editor.document,com.ibm.bdsl.editor.marker,com.ibm.bdsl
+ .editor.preferences,com.ibm.bdsl.editor.problem,com.ibm.bdsl.editor.s
+ ource,com.ibm.bdsl.editor.views
+Bundle-ClassPath: intellitext.jar
+Bundle-Vendor: IBM
+Bundle-ActivationPolicy: lazy
+Bundle-Name: BDSL IntelliText Plug-in
+Bundle-ManifestVersion: 2
+Import-Package: org.eclipse.ui
+
+

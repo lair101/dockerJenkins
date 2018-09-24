@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+
+<pdHelp xmlns="http://www.ibm.com/visualutils/pdhelpcontent"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ibm.com/visualutils/pdhelpcontent http://www.ibm.com/visualutils/pdhelpcontent">
+
+	<pluginCategory id="com.ibm.etools.mft.broker.runtime">
+	
+		<!-- For the 'Connect to a Remote Integration Node' wizard, 'Changed Saved Connection Password' dialog, and 'Password Required' dialog -->
+
+		<fieldHelp id="RemoteIntegrationNode_nodeName">
+			<title>Integration node name</title>
+			<description><p>The name of a specific remote integration node that you want to connect to.</p></description>
+		</fieldHelp>
+		
+		<fieldHelp id="RemoteIntegrationNode_userName">
+			<title>User name</title>
+			<description><p>If authentication security is enabled on the remote integration node, you must specify a user name. The user name must match a valid web administration account for the remote integration node.</p></description>
+		</fieldHelp>
+		
+		<fieldHelp id="RemoteIntegrationNode_password">
+			<title>Password</title>
+			<description><p>If authentication security is enabled on the remote integration node, you must specify a password. The password must be the valid password for the specified user name.</p></description>
+		</fieldHelp>
+		
+		<fieldHelp id="RemoteIntegrationNode_savePassword">
+			<title>Save password</title>
+			<description><p>If enabled, the password is encrypted in Eclipse secure storage, which is a local file that is shared by Eclipse based products such as IBM Integration Toolkit. For more information, see Window -> Preferences -> General -> Security -> Secure Storage.</p></description>
+		</fieldHelp>
+		
+		<fieldHelp id="RemoteIntegrationNode_useSsl">
+			<title>Use SSL</title>
+			<description><p>If enabled, the connection to the remote Integration bus uses the Hypertext Transfer Protocol (HTTP) on top of the Secure Sockets Layer.</p></description>
+		</fieldHelp>
+		
+		<fieldHelp id="RemoteIntegrationNode_changeSavedPassword">
+			<title>Change saved password</title>
+			<description><p>Change the password that is used to connect to the remote integration node, and is encrypted in Eclipse secure storage. To remove the password from Eclipse secure storage, leave the password field empty, and click OK.</p></description>
+		</fieldHelp>
+	
+	</pluginCategory>
+</pdHelp>

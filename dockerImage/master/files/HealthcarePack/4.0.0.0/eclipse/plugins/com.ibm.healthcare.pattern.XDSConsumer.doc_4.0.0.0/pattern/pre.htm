@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+        <title>Tasks to complete before using the pattern</title>
+    </head>
+    <body>
+        <h1 class="topictitle1">Tasks to complete before applying the Healthcare: Cross-Enterprise Document Sharing Consumer pattern</h1>
+        <div>
+            <p class="shortdesc">If required, complete one or both of the following tasks before using the <span>Healthcare: Cross-Enterprise Document Sharing Consumer</span> 
+            pattern.</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="sectiontitle">Secure endpoint connection to your document registry and document repository</h2>
+        </div>
+		<p>
+		Use SSL to access your document registry and document repository by associating the SSL certificates with the integration node either at the 
+        integration node level or at the integration server level, and then specify the HTTPS address as your endpoint.
+		For more information, see <a href="http://www.ibm.com/support/knowledgecenter/SSMKHH_10.0.0/com.ibm.etools.mft.doc/ap34020_.htm">Setting up a public key infrastructure</a>.
+		</p>
+		
+        <div class="section">
+            <h2 class="sectiontitle">Use shared libraries or a shared class loader to handle the pattern <span class="filepath">.jar</span> file dependencies</h2>
+        </div>
+		<p>
+		Use a shared class loader or shared library to speed up deployment times. If you use a shared class loader or shared library, you do not need to deploy 
+        all of the supplied <span class="filepath">.jar</span> files when you deploy your BAR file.
+		For more information, see <a href="http://www.ibm.com/support/knowledgecenter/SSMKHH_10.0.0/com.ibm.etools.mft.doc/ac37125_.htm">JavaCompute node class 
+		loading</a> and <a href="http://www.ibm.com/support/knowledgecenter/SSMKHH_10.0.0/com.ibm.etools.mft.doc/bk58220_.htm">JavaCompute node class loading by using 
+		a configurable service</a>.
+		</p>
+
+		<div>
+			<a href="overview.htm">Back to the Healthcare: Cross-Enterprise Document Sharing Consumer pattern</a>
+		</div>
+    </body>
+</html>

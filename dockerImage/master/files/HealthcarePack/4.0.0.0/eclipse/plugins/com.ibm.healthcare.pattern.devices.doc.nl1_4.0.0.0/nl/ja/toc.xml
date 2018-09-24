@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS  TYPE="org.eclipse.help.toc"?>
+<toc link_to="../com.ibm.healthcare.doc/ha00000.xml#mb_devices_pattern_hl7" label="「Healthcare: Medical devices to EMR」パターン" topic="pattern/overview.htm">
+    <topic label="「Healthcare: Medical devices to EMR」パターン" href="pattern/overview.htm">
+  		<topic label="患者 ID データベースのクリーンアップ" href="pattern/remove.htm"/>
+  		<topic label="パターン・インスタンスのカスタマイズ" href="pattern/customizing.htm"/>
+  		<topic label="パターンの設計" href="pattern/design.htm"/>
+  		<topic label="パターン・インスタンスの管理" href="pattern/management.htm"/>
+  		<topic label="パターン・パラメーター" href="pattern/parameters.htm"/>
+  		<topic label="パターンのリソース" href="pattern/resources.htm"/>
+  		<topic label="患者 ID データベースのセットアップ" href="pattern/create.htm"/>
+  		<topic label="パターンのテスト" href="pattern/testing.htm"/>
+    </topic>
+</toc>

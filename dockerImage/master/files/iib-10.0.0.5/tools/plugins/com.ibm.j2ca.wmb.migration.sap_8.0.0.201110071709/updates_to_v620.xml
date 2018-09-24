@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Licensed Materials - Property of IBM
+ 5724-L79
+ © Copyright IBM Corporation 2008.  All Rights Reserved.
+ US Government Users Restricted Rights - Use, duplication or disclosure
+ restricted by GSA ADP Schedule Contract with IBM Corp. 
+-->
+
+<tns:adapter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://www.ibm.com/xmlns/prod/websphere/j2ca/migration" xsi:schemaLocation="http://www.ibm.com/xmlns/prod/websphere/j2ca/migration j2caMigration.xsd" name="(IBM WebSphere Adapter for SAP Software)|(IBM WebSphere Adapter for SAP Software with transaction support)" version="(6\.2)|(6\.2.*)">
+	<update type="migration" version="(6\.0\.*.*)|(UNDEFINED)">
+		<tasks>
+			<task description="%JCA.SAPConnectorMigrationTask.Description" name="%JCA.SAPConnectorMigrationTask.Name">
+				<function name="com.ibm.j2ca.wmb.migration.sap.v602_to_v620.SAPConnectorMigrationTask"/>
+			</task>
+			<task description="%JCA.SAPModuleMigrationTask.Description" name="%JCA.SAPModuleMigrationTask.Name">
+				<function name="com.ibm.j2ca.wmb.migration.sap.v602_to_v620.SAPModuleMigrationTask"/>
+			</task>
+			<task description="%JCA.SAPAdapterNameValidationTask.Description" name="%JCA.SAPAdapterNameValidationTask.Name">
+				<function name="com.ibm.j2ca.wmb.migration.sap.v602_to_v620.SAPAdapterNameValidationTask"/>
+			</task>
+			<task description="%JCA.SAPFunctionSelectorValidationTask.Description" name="%JCA.SAPFunctionSelectorValidationTask.Name">
+				<function name="com.ibm.j2ca.wmb.migration.sap.v602_to_v620.SAPFunctionSelectorValidationTask"/>
+			</task>
+		</tasks>
+	</update>
+	
+	<update type="migration" version="(6\.1\.*.*)">
+		<tasks>
+			<task description="%JCA.SAPConnectorMigrationTask.Description" name="%JCA.SAPConnectorMigrationTask.Name">
+				<function name="com.ibm.j2ca.wmb.migration.sap.v610_to_v620.SAPConnectorMigrationTask"/>
+			</task>
+			<task description="%JCA.SAPModuleMigrationTask.Description" name="%JCA.SAPModuleMigrationTask.Name">
+				<function name="com.ibm.j2ca.wmb.migration.sap.v610_to_v620.SAPModuleMigrationTask"/>
+			</task>
+		</tasks>
+	</update>
+	
+	<update type="migration" version="WBI">
+		<tasks>
+			<task description="%WBIA.SAPModuleMigrationTask.Description" name="%WBIA.SAPModuleMigrationTask.Name">
+				<function name="com.ibm.j2ca.wmb.migration.sap.wbi_to_v620.SAPModuleMigrationTask"/>
+			</task>
+		</tasks>
+	</update>
+	
+</tns:adapter>

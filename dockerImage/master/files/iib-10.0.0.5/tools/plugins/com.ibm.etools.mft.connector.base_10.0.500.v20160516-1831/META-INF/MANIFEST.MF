@@ -1,0 +1,33 @@
+Manifest-Version: 1.0
+Export-Package: com.ibm.etools.mft.connector.base; uses:="org.osgi.fra
+ mework,  com.ibm.mb.connector.discovery.framework.impl,  org.eclipse.
+ core.resources,  com.ibm.mb.connector.discovery.framework",com.ibm.et
+ ools.mft.connector.base.beangenerator,com.ibm.etools.mft.connector.ba
+ se.registry,com.ibm.etools.mft.connector.base.xpath;uses:="javax.xml.
+ namespace,javax.xml.xpath",com.ibm.etools.mft.service,com.ibm.mb.conn
+ ector.discovery.framework; uses:="org.w3c.dom,  com.ibm.mb.connector.
+ discovery.model.descriptor,  com.ibm.mb.common.model,  javax.wsdl,  c
+ om.ibm.mb.connector.discovery.framework.messages",com.ibm.mb.connecto
+ r.discovery.framework.impl; uses:="com.ibm.mb.connector.discovery.mod
+ el.descriptor,  com.ibm.mb.common.model,  javax.crypto,  com.ibm.mb.c
+ onnector.discovery.framework.messages,  com.ibm.mb.connector.discover
+ y.framework",com.ibm.mb.connector.discovery.framework.messages;uses:=
+ "com.ibm.mb.common.model",com.ibm.mb.connector.discovery.framework.mo
+ del.configuration.internal,com.ibm.mb.connector.discovery.framework.r
+ esources,com.ibm.mb.connector.discovery.framework.resources.impl
+Require-Bundle: org.eclipse.core.runtime,org.jdom;bundle-version="1.0.
+ 0",org.eclipse.core.resources,org.eclipse.osgi.util;bundle-version="3
+ .2.100",org.eclipse.ui.workbench;bundle-version="3.6.2",com.ibm.etool
+ s.mft.util;bundle-version="[10.0.0,11.0.0)",com.ibm.etools.mft.config
+ ;bundle-version="[10.0.0,11.0.0)";visibility:=reexport
+Bundle-Vendor: %Bundle-Vendor
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: jars/service_jaxb.jar,jars/model.jar,.
+Bundle-Version: 10.0.500.v20160516-1831
+Bundle-Name: %Bundle-Name
+Bundle-Activator: com.ibm.etools.mft.connector.base.Activator
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ibm.etools.mft.connector.base;singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+
+

@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: openxml4j-beta.jar
+Bundle-Vendor: IBM
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: Openxml4j (repackaged for IBM WODM)
+Bundle-SymbolicName: com.ibm.rules.thirdparty.openxml4j
+Require-Bundle: com.ibm.rules.thirdparty.dom4j;bundle-version="1.6.1",
+ com.ibm.rules.thirdparty.log4j;bundle-version="1.2.8"
+Export-Package: org.openxml4j.document;uses:="org.apache.log4j,org.ope
+ nxml4j.opc",org.openxml4j.document.wordprocessing; uses:="org.openxml
+ 4j.document,  org.apache.log4j,  org.openxml4j.document.wordprocessin
+ g.model.table,  org.openxml4j.opc,  org.openxml4j.opc.internal,  org.
+ dom4j",org.openxml4j.document.wordprocessing.model.table;uses:="org.o
+ penxml4j.document.wordprocessing,org.dom4j",org.openxml4j.exceptions,
+ org.openxml4j.opc; uses:="org.apache.log4j,  org.openxml4j.util,  org
+ .dom4j,  org.openxml4j.opc.internal",org.openxml4j.opc.internal; uses
+ :="org.apache.log4j,  org.openxml4j.util,  org.openxml4j.opc,  org.do
+ m4j,  org.openxml4j.opc.internal.unmarshallers",org.openxml4j.opc.int
+ ernal.marshallers;uses:="org.openxml4j.opc,org.dom4j,org.openxml4j.op
+ c.internal",org.openxml4j.opc.internal.signature;uses:="org.openxml4j
+ .opc",org.openxml4j.opc.internal.unmarshallers;uses:="org.openxml4j.o
+ pc,org.openxml4j.opc.internal,org.dom4j",org.openxml4j.opc.signature;
+ uses:="org.openxml4j.opc",org.openxml4j.samples;uses:="org.apache.log
+ 4j",org.openxml4j.samples.opc;uses:="org.openxml4j.opc",org.openxml4j
+ .samples.wordprocessingml,org.openxml4j.util
+Bundle-Version: 0.0.20080410.beta
+Bundle-ManifestVersion: 2
+
+

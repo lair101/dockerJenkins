@@ -1,0 +1,2168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:msl="http://www.ibm.com/2008/ccl/Mapping" elementFormDefault="unqualified"
+	targetNamespace="http://www.ibm.com/2008/ccl/Mapping">
+
+	<xsd:annotation>
+		<xsd:documentation>
+			********************************************************************
+			* Licensed Materials - Property of IBM
+			*
+			* (C) Copyright IBM Corp. 2008,2015
+			*
+			* US Government Users Restricted Rights - Use, duplication, or
+			* disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+			********************************************************************
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://www.ibm.com/2008/ccl/Mapping msl.xsd"
+
+			IBM Graphical Data Mapper Map Specification Language, "msl" Version: 1050
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:element name="mappingRoot" type="msl:MappingRoot">
+		<xsd:annotation>
+			<xsd:documentation>
+				There will be one and only one
+				&lt;i&gt;mappingRoot&lt;/i&gt; per &lt;b&gt;msl&lt;/b&gt; document.
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+
+  <xsd:complexType name="MappingRoot">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;MappingRoot&lt;/i&gt; represents the root of an &lt;b&gt;msl&lt;/b&gt; document. 
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;domainID&lt;/i&gt;
+A &lt;i&gt;domainID&lt;/i&gt; identifies the domain under which this mapping was developed. 
+Set the IBM Graphical Data Mapper plugin ID 'com.ibm.msl.mapping.xml' that implements the domain.
+All validators and generators will be resolved via this extension.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;domainIDExtension&lt;/i&gt;
+A &lt;i&gt;domainIDExtension&lt;/i&gt; attribute identifies an extension of a domain.
+Optionally set the IBM Integration Bus Graphical Data Mapper domain extension ID 'mb'
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;targetNamespace&lt;/i&gt;
+A &lt;i&gt;targetNamespace&lt;/i&gt; attribute identifies the namespace under which the 
+elements developed in this map will be associated.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;version&lt;/i&gt;
+A &lt;i&gt;version&lt;i&gt;attribute identifies the version of the mapping tool that 
+serialized the msl document. The IBM Graphical Data Mapper v1050 inserts '8.0.5.0'
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;mainMap&lt;/i&gt;
+A &lt;i&gt;mainMap&lt;i&gt;attribute identifies the map as a top level or sub map.
+&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+       <xsd:element ref="msl:documentation" minOccurs="0"/>
+       <xsd:element ref="msl:inlinedXMLSchema" minOccurs="0" maxOccurs="unbounded"/>
+       <xsd:element ref="msl:input" minOccurs="0" maxOccurs="unbounded"/>
+       <xsd:element ref="msl:output" minOccurs="0" maxOccurs="unbounded"/>
+       <xsd:element ref="msl:imports" minOccurs="0"/>
+       <xsd:element ref="msl:namespaces" minOccurs="0"/>
+       <xsd:element ref="msl:generation" minOccurs="0"/> 
+       <xsd:element ref="msl:policy" minOccurs="0"/>
+       <xsd:element ref="msl:mappingDeclaration" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="domainID" type="xsd:string"/>
+    <xsd:attribute name="domainIDExtension" type="xsd:string"/>
+    <xsd:attribute name="targetNamespace" type="xsd:string" use="required"/>
+    <xsd:attribute name="version" type="xsd:string"/>
+    <xsd:attribute name="mainMap" type="xsd:boolean"/>
+  </xsd:complexType>
+  
+  <xsd:element name="policy" type="msl:Policy">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;policy&lt;/i&gt; represents an XML policy.
+Use only when '&lt;i&gt;generation/@engine&lt;/i&gt;' is XSLT. 
+      </xsd:documentation>
+    </xsd:annotation>  
+  </xsd:element>
+
+  <xsd:complexType name="Policy">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Policy&lt;/i&gt; represents an XML policy to apply to mappings.
+Use only when '&lt;i&gt;generation/@engine&lt;/i&gt;' is XSLT. 
+      </xsd:documentation>
+    </xsd:annotation>
+	<xsd:sequence>
+		<xsd:group ref="msl:policy" minOccurs="0" maxOccurs="unbounded"/>
+	</xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:group name="policy">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;policy&lt;/i&gt; represents an XML policy.
+Use only when '&lt;i&gt;generation/@engine&lt;/i&gt;' is XSLT. 
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice>
+       <xsd:element form="qualified" name="missingSource" minOccurs="0" maxOccurs="1">
+			<xsd:complexType>
+				<xsd:attribute name="auto" type="xsd:boolean" />	
+				<xsd:attribute name="default" type="xsd:boolean" />	
+				<xsd:attribute name="default_reqOnly" type="xsd:boolean" />	
+				<xsd:attribute name="empty" type="xsd:boolean" />
+				<xsd:attribute name="reqonly" type="xsd:boolean" />
+				<xsd:attribute name="nothing" type="xsd:boolean" />
+				<xsd:attribute name="empty_reqOnly" type="xsd:boolean" />
+				<xsd:attribute name="nil_reqOnly" type="xsd:boolean" />
+				<xsd:attribute name="nil" type="xsd:boolean" />
+			</xsd:complexType>
+       </xsd:element>
+       <xsd:element form="qualified" name="emptySource" minOccurs="0" maxOccurs="1">
+			<xsd:complexType>
+				<xsd:attribute name="auto" type="xsd:boolean" />
+				<xsd:attribute name="default" type="xsd:boolean" />	
+				<xsd:attribute name="default_reqOnly" type="xsd:boolean" />	
+				<xsd:attribute name="empty" type="xsd:boolean" />
+				<xsd:attribute name="nil_reqOnly" type="xsd:boolean" />
+				<xsd:attribute name="nil" type="xsd:boolean" />
+				<xsd:attribute name="nothing" type="xsd:boolean" />
+				<xsd:attribute name="empty_reqOnly" type="xsd:boolean" />				
+			</xsd:complexType>
+       </xsd:element>     
+       <xsd:element form="qualified" name="nilSource" minOccurs="0" maxOccurs="1">
+			<xsd:complexType>
+				<xsd:attribute name="auto" type="xsd:boolean" />
+				<xsd:attribute name="default" type="xsd:boolean" />	
+				<xsd:attribute name="default_reqOnly" type="xsd:boolean" />	
+				<xsd:attribute name="empty" type="xsd:boolean" />
+				<xsd:attribute name="nothing" type="xsd:boolean" />
+				<xsd:attribute name="empty_reqOnly" type="xsd:boolean" />	
+				<xsd:attribute name="nil" type="xsd:boolean" />
+				<xsd:attribute name="nil_reqOnly" type="xsd:boolean" />
+			</xsd:complexType>
+       </xsd:element>      
+       <xsd:element form="qualified" name="unmappedTarget" minOccurs="0" maxOccurs="1">
+			<xsd:complexType>
+				<xsd:attribute name="auto" type="xsd:boolean" />
+				<xsd:attribute name="default" type="xsd:boolean" />	
+				<xsd:attribute name="default_reqOnly" type="xsd:boolean" />	
+				<xsd:attribute name="empty" type="xsd:boolean" />
+				<xsd:attribute name="nothing" type="xsd:boolean" />
+				<xsd:attribute name="empty_reqOnly" type="xsd:boolean" />
+				<xsd:attribute name="nil" type="xsd:boolean" />
+				<xsd:attribute name="nil_reqOnly" type="xsd:boolean" />
+			</xsd:complexType>
+       </xsd:element>      
+       <xsd:element form="qualified" name="defaultValues" minOccurs="0" maxOccurs="1">
+			<xsd:complexType>
+				<xsd:anyAttribute processContents="lax"></xsd:anyAttribute>
+			</xsd:complexType>
+       </xsd:element>          
+    </xsd:choice>
+  </xsd:group>
+
+  
+
+  <xsd:element name="documentation">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;documentation&lt;/i&gt; element provides user level documentation for a mapping.
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;ref&lt;/i&gt;
+A &lt;i&gt;ref&lt;i&gt;attribute identifies optional URI reference to a resource.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;description&lt;/i&gt;
+A &lt;i&gt;description&lt;i&gt;attribute identifies optional description.
+&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+    	<xsd:simpleContent>
+    		<xsd:extension base="xsd:string">
+			    <xsd:attribute name="ref" type="xsd:anyURI"/>
+			    <xsd:attribute name="description" type="xsd:string"/>
+		    </xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="imports" type="msl:Imports">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;imports&lt;/i&gt; element provides a list of &lt;i&gt;import&lt;/i&gt; elements. 
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Imports">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;Imports&lt;/i&gt; provides a list of &lt;i&gt;import&lt;/i&gt; elements. 
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+       <xsd:element ref="msl:import" minOccurs="1" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="import" type="msl:Import">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;Import&lt;/i&gt; defines a resource file from which the defined
+kind of referenced resource is being made available in the map. 
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Import">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;import&lt;/i&gt; element defines a resource file from which the defined
+kind of referenced resource is being made available in the map. 
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;namespace&lt;/i&gt;
+The namespace under which the elements in the imported file are associated.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;location&lt;/i&gt;
+The location is a relative URI to imported file.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;kind&lt;/i&gt;
+The kind is the resource type in the imported file.
+Core types are: "map", "xml", "java"
+Domain extensions may allow for additional types.
+&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="kind" type="xsd:string"/>
+    <xsd:attribute name="namespace" type="xsd:string"/>
+    <xsd:attribute name="location" type="xsd:string"/>
+  </xsd:complexType>
+
+
+
+
+  <xsd:element name="inlinedXMLSchema" type="msl:InlinedXMLSchema">
+    <xsd:annotation>
+      <xsd:documentation>
+From v1050, an &lt;i&gt;inlinedXMLSchema&lt;/i&gt; element contains a CDATA section containing
+an XML schema that provides the definitions of user defined elements and attributes in the map. 
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="InlinedXMLSchema">
+    <xsd:annotation>
+      <xsd:documentation>
+From v1050, an &lt;i&gt;inlinedXMLSchema&lt;/i&gt; provides the definitions of user defined
+elements and attributes in the map. This schema must be provided in a a CDATA section.
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;targetNamespace&lt;/i&gt;
+The targetNamespace of the inline schema if not the default empty namespace.
+&lt;/li&gt;
+&lt;/ul&gt;
+
+The InlineSchema is referenced from a input or output &lt;i&gt;MappingDesignator&lt;/i&gt;
+with a &lt;i&gt;inlinedXMLSchema&lt;/i&gt; attribute set to 'true', and possible coresponding
+&lt;i&gt;targetNamespace&lt;/i&gt; attribute.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+    	<xsd:extension base="xsd:string">
+    		<!-- Only contain a CDATA with the user-defined schema -->
+            <xsd:attribute name="targetNamespace" type="xsd:anyURI"/>
+    	</xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+
+
+  <xsd:element name="namespaces" type="msl:Namespaces">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;namespace&lt;/i&gt; element contains the set of namespace prefix to
+URI pairings used in the map. 
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Namespaces">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Namespace&lt;/i&gt; defines set of namespace prefix to
+URI pairings for use in the map. 
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+       <xsd:element ref="msl:namespace" minOccurs="1" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:element name="namespace" type="msl:Namespace">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;namespace&lt;/i&gt; element defines a namespace prefix to
+URI pairing for use in the map. 
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Namespace">
+    <xsd:annotation>
+      <xsd:documentation>
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;prefix&lt;/i&gt;
+The namespace prefix.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;uri&lt;/i&gt;
+The namespace uri.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;kind&lt;/i&gt;
+The namespace kind. Use 'supplement' for user level definitions.
+&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="prefix" type="xsd:string"/>
+    <xsd:attribute name="uri" type="xsd:string"/>
+    <xsd:attribute name="kind">          
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:token">
+          <xsd:enumeration value="core"/>
+          <xsd:enumeration value="extension"/>
+          <xsd:enumeration value="supplement"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:element name="generation" type="msl:Generation">
+    <xsd:annotation>
+      <xsd:documentation>
+The &lt;i&gt;generation&lt;/i&gt; element indicates properties of the
+target execution engine of the map. 
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Generation">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Generation&lt;/i&gt; provides properties of the
+target execution engine for the map. 
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+       <xsd:element ref="msl:options" minOccurs="0"/>
+    </xsd:sequence>
+    <xsd:attribute name="availableEngines" type="xsd:string" />
+    <xsd:attribute name="engine" type="xsd:string" />
+    <xsd:attribute name="schemaAware" type="xsd:boolean" />
+	<xsd:attribute name="derived" type="xsd:boolean" />
+  </xsd:complexType>
+
+  <xsd:element name="options" type="msl:Options">
+    <xsd:annotation>
+      <xsd:documentation>
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Options">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;Options&lt;/i&gt; provides properties of the
+&lt;i&gt;Generation&lt;/i&gt;. 
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="indent" type="xsd:string"/>
+    <xsd:attribute name="indent-amount" type="xsd:string"/>
+    <xsd:attribute name="strip-space" type="xsd:string"/>          
+  </xsd:complexType>
+
+  <xsd:element name="mappingDeclaration" type="msl:MappingDeclaration">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;mappingDeclaration&lt;/i&gt; is the top-level named mapping.
+It is the only mapping allowed directly underneath the &lt;i&gt;mappingRoot&lt;/i&gt;.
+
+Note that it is only top-level mappings that can be reused or 
+referenced, via a combination of '&lt;i&gt;mappingRoot/@targetNamespace&lt;/i&gt;'
+and '&lt;i&gt;mappingDeclaration/@name&lt;/i&gt; outside the map file in
+which they are defined.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="MappingDeclaration">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;mappingDeclaration&lt;/i&gt; is the top-level named mapping.
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;name&lt;/i&gt;
+The name used to reference this named mapping.
+Qualify with '&lt;i&gt;mappingRoot/@targetNamespace&lt;/i&gt;'
+&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+       <xsd:element ref="msl:documentation" minOccurs="0"/>
+       <xsd:element ref="msl:input"  minOccurs="0" maxOccurs="unbounded"/>
+       <xsd:element ref="msl:output" minOccurs="1" maxOccurs="unbounded"/>
+       <xsd:element ref="msl:variables" minOccurs="0" maxOccurs="1"></xsd:element>
+       <xsd:group ref="msl:nested" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <xsd:group name="nested">
+  	<xsd:choice>
+      <xsd:element ref="msl:move"/>
+      <xsd:element ref="msl:convert"/>
+      <xsd:element ref="msl:assign"/>
+      <xsd:element ref="msl:remove"/>
+      <xsd:element ref="msl:local"/>
+      <xsd:element ref="msl:custom"/>
+      <xsd:element ref="msl:expression"/>
+      <xsd:element ref="msl:function"/>
+      <xsd:element ref="msl:submap"/>
+      <xsd:element ref="msl:lookup"/>
+      <xsd:element ref="msl:group"/>
+      <xsd:element ref="msl:foreach"/>
+      <xsd:element ref="msl:append"/>
+      <xsd:element ref="msl:join"/>
+      <xsd:element ref="msl:if"/>
+      <xsd:element ref="msl:condition"/>
+      <xsd:element ref="msl:customFunction" />
+      <xsd:element ref="msl:create" />
+      <xsd:element ref="msl:task" />
+      <xsd:element ref="msl:passthrough" />
+      <xsd:element ref="msl:transaction" />
+      <xsd:element ref="msl:select" />
+      <xsd:element ref="msl:insert" />
+      <xsd:element ref="msl:update" />
+      <xsd:element ref="msl:delete" />
+      <xsd:element ref="msl:rdbcall" />
+      <!-- Cache Transforms -->
+      <xsd:element ref="msl:cacheGet" minOccurs="0" maxOccurs="1"/>
+      <xsd:element ref="msl:cachePut" minOccurs="0" maxOccurs="1"/>
+      <xsd:element ref="msl:cacheRemove" minOccurs="0" maxOccurs="1"/>
+    </xsd:choice>
+  </xsd:group>
+
+  <xsd:element name="variables" type="msl:Variables">
+    <xsd:annotation>
+      <xsd:documentation>
+Global Variables. Use only when '&lt;i&gt;generation/@engine&lt;/i&gt;' is XSLT.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="Variables">
+    <xsd:annotation>
+      <xsd:documentation>
+      </xsd:documentation>
+    </xsd:annotation>
+  	<xsd:sequence>
+		<xsd:element ref="msl:variable" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+  	</xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:element name="variable" type="msl:Variable">
+    <xsd:annotation>
+      <xsd:documentation>
+Global Variable. Use only when '&lt;i&gt;generation/@engine&lt;/i&gt;' is XSLT.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="Variable">
+    <xsd:annotation>
+      <xsd:documentation>
+      </xsd:documentation>
+    </xsd:annotation>
+  	    <xsd:attribute name="as" type="xsd:string"/>
+  	    <xsd:attribute name="value" type="xsd:string"/>
+  	    <xsd:attribute name="var" type="xsd:string"/>
+  </xsd:complexType>
+  
+  <xsd:element name="cast" type="msl:Cast">
+    <xsd:annotation>
+      <xsd:documentation>
+Mapping &lt;i&gt;cast&lt;i&gt;, use to cast schema wildcard, substitution and derived types.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  
+  <xsd:complexType name="Cast">
+    <xsd:annotation>
+      <xsd:documentation>
+Mapping &lt;i&gt;cast&lt;i&gt;, is used to cast schema wildcard; any, anyType, anyAttribute
+or substitution and derivedTypes.
+Identifies a particular source or target wildcard, head element in a substitution group, or a base type
+that is to be replaced or substituted with an valid alternative concrete element or attribute or
+derived type within that source or target.
+
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;path&lt;/i&gt;
+A string designating an actual source or target component.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;var&lt;/i&gt;
+A &lt;i&gt;var&lt;/i&gt; is a serialized string providing a variable name
+to identify this cast instance when a node has multiple casts applied.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;qualifier&lt;/i&gt;
+A QName used to identify the global element, attribute or named type that will replace
+the original component.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;castType&lt;/i&gt;
+From v1050, set to 'userDefined' to indicate the cast is to a user-defined element or
+attribute from an &lt;i&gt;InlinedXMLSchema&lt;/i&gt;.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;derivedFrom&lt;/i&gt;
+From v1050 this attribute is only set when the cast is derived from some other specification, e.g. JSON schema.
+&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="path" type="xsd:string"/>
+    <xsd:attribute name="qualifier" type="xsd:string"/>
+    <xsd:attribute name="ref" type="xsd:string"/>
+    <xsd:attribute name="var" type="xsd:string"/>
+    <xsd:attribute name="castType" type="xsd:string"/>
+   <xsd:attribute name="derivedFrom" type="xsd:string"/>
+  </xsd:complexType>
+    
+  <xsd:element name="input" type="msl:MappingDesignator">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;input&lt;/i&gt; element is an relative component designator which identifies a particular
+source component relative to some parent source component. On the &lt;i&gt;mappingRoot&lt;/i&gt; element,
+an &lt;i&gt;input&lt;/i&gt; is a relative URI to a source resource. 
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  
+  <xsd:element name="output" type="msl:MappingDesignator">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;output&lt;/i&gt; element is an relative component designator which 
+identifies a particular target component relative to some parent 
+target component. On the &lt;/i&gt;mappingRoot&lt;/i&gt; element, an &lt;i&gt;output&lt;/i&gt; is
+a relative URI to a target resource. 
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  
+  <xsd:complexType name="MappingDesignator">
+    <xsd:annotation>
+      <xsd:documentation>
+A MappingDesignator is an relative component designator which 
+identifies a particular source or target component relative to
+some parent source or target component. On the mappingRoot
+element, a MappingDesignator is a relative URI to a source or
+target resource. 
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;path&lt;/i&gt;
+A &lt;i&gt;path&lt;/i&gt; is a serialized string designating an 
+actual source or target component. Format maybe defined specifically
+dependent on the &lt;/i&gt;mappingRoot/@domainIDExtension&lt;/i&gt;
+Used in the serialization path to reference parent designators. Also used
+to resolve ambiguities such as multiple inputs referencing the same named 
+type which are actually different.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;var&lt;/i&gt;
+A &lt;i&gt;var&lt;/i&gt; is a serialized string providing a variable name
+to identify this input or output designator instance when a mapping container
+has multiple designators.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;overrideDelimiter&lt;/i&gt;
+This attribute is ONLY  used on the inputs of a &lt;i&gt;concat &lt;/i&gt; transform.
+The &lt;i&gt;overrideDelimiter&lt;/i&gt; is a constant string value that can be added after
+the string section (represented by this designator) on a concatenation. This 
+override delimiter overrides any default delimiter specified on the &lt;i&gt;concat&lt;/i&gt; 
+transform itself.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;inlinedXMLSchema&lt;/i&gt;
+From v1050 this attribute can be set to 'true' to indicate that this MappingDesignator
+refers to an &lt;i&gt;inlinedXMLSchema&lt;/i&gt; element containing user-defined elements
+and attributes schema definitions.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;targetNamespace&lt;/i&gt;
+From v1050 this attribute is set when the &lt;i&gt;inlinedXMLSchema&lt;/i&gt; attribute
+is set and the target inlinedXMLSchema has a targetNamespace.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;derivedFrom&lt;/i&gt;
+From v1050 this attribute is only set when the input or output is derived from some other specification, e.g. JSON schema.
+&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+    	<xsd:element ref="msl:cast" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="namespace" type="xsd:string" use="optional">
+    	<xsd:annotation>
+    		<xsd:documentation>
+    			This namespace attribute is only used when it is set directly under a mappingDeclaration
+    		</xsd:documentation>
+    	</xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="auxiliary" type="xsd:boolean">
+       <xsd:annotation>
+   		<xsd:documentation>
+   			auxiliary attribute only applies to input
+   		</xsd:documentation>
+   	   </xsd:annotation>
+    </xsd:attribute>       
+    <xsd:attribute name="path" type="xsd:string"/>
+    <xsd:attribute name="var" type="xsd:string"/>
+    <xsd:attribute name="overrideDelimiter" type="xsd:string"/>
+    <xsd:attribute name="inlinedXMLSchema" type="xsd:boolean"/>
+    <xsd:attribute name="targetNamespace" type="xsd:anyURI"/>
+    <xsd:attribute name="derivedFrom" type="xsd:string"/>
+  </xsd:complexType>
+
+    <xsd:complexType name="Mapping" abstract="true" >
+    <xsd:annotation>
+      <xsd:documentation>
+A Mapping is used to associate one or more sources (inputs) with
+one or more targets (outputs) in order to define a transformation.
+
+Mappings can be categorized into the following:
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;General Transforms:&lt;/b&gt; Move Submap Custom Assign Local&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Control Flow Mechanisms:&lt;/b&gt; Foreach Append Join Group If Elseif Else&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Built-in Functions:&lt;/b&gt; Concat Substring Normalize&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Database Operations:&lt;/b&gt; Select Insert Update Delete Routine&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Cache Operations:&lt;/b&gt; Put Get Remove&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;automap&lt;/i&gt;
+The Mapping was generated as a reult of using auto map action.
+.&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;msgmap&lt;/i&gt;
+The Mapping was generated as a reult of using .msgmap to .map convert.
+.&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="automap" type="xsd:boolean" />
+    <xsd:attribute name="msgmap" type="xsd:string" />
+  </xsd:complexType>
+
+    <xsd:complexType name="MappingGroup" abstract="true" >
+    <xsd:annotation>
+      <xsd:documentation>
+A Mapping Group is used to associate one or &lt;i&gt;Mappings&lt;/i&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:complexType>
+    
+  <!-- general transforms -->
+  <xsd:element name="move" type="msl:Move">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;move&lt;/i&gt; is a general transform (mapping). 
+A &lt;i&gt;move&lt;/i&gt; copies the data from a
+source node to a target node. For structured nodes (nodes with attribute and/or 
+element content), a &lt;i&gt;move&lt;/i&gt; copies the entire content from the source to the
+target.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Move">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Move&lt;/i&gt; copies the data from a source.
+Has exactly one &lt;i&gt;input&lt;/i&gt; and one &lt;i&gt;output&lt;/i&gt; defined on it.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+		<xsd:sequence>
+		  <xsd:element ref="msl:documentation" minOccurs="0"/>		
+          <xsd:element ref="msl:input" minOccurs="1" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="1"/>
+          <xsd:element ref="msl:policy" minOccurs="0" maxOccurs="1"/>
+          <xsd:element ref="msl:sort" minOccurs="0" maxOccurs="unbounded"/>          
+          <xsd:choice>  
+            <xsd:element ref="msl:test" minOccurs="0" maxOccurs="1"/>
+            <xsd:element ref="msl:filter" minOccurs="0" maxOccurs="1"/>
+          </xsd:choice>
+          <xsd:element ref="msl:override" minOccurs="0" maxOccurs="1" />
+	    </xsd:sequence>
+	  </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <xsd:element name="override" type="msl:Override">
+      <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;override&lt;/i&gt; is a container mapping.
+It allows certain Mappings to be applied to children of the input
+and output of the parent mapping.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  
+  <xsd:complexType name="Override">
+    <xsd:annotation>
+      <xsd:documentation>
+Override allows certain Mappings to be applied to children of the input
+and output of the parent Mapping.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+    	<xsd:group   ref="msl:nested" minOccurs="0" maxOccurs="unbounded"/>  
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+
+
+
+  <xsd:element name="passthrough" type="msl:Passthrough">
+      <xsd:annotation>
+      <xsd:documentation>
+From v1050, a &lt;i&gt;passthrough&lt;/i&gt; provides a container mapping for elements
+that are implicitly copied from source to target without any mapping. 
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+
+
+  <xsd:complexType name="Passthrough">
+    <xsd:annotation>
+      <xsd:documentation>
+From v1050, a &lt;i&gt;Passthrough&lt;/i&gt; provides a container mapping for elements
+that are implicitly copied from source to target without any mapping. 
+
+Has exactly one &lt;i&gt;input&lt;/i&gt; and one &lt;i&gt;output&lt;/i&gt; defined on it.
+
+Can contain an &lt;i&gt;updates&lt;/i&gt; to provide mapping to "override" the implicit
+data copy with specific mappings that determine the target output.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+		<xsd:sequence>
+		  <xsd:element ref="msl:documentation" minOccurs="0"/>		
+          <xsd:element ref="msl:input" minOccurs="1" maxOccurs="1"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="1"/>
+          <xsd:element ref="msl:updates" minOccurs="0" maxOccurs="1" />
+	    </xsd:sequence>
+	  </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+
+  <xsd:element name="updates" type="msl:Updates">
+      <xsd:annotation>
+      <xsd:documentation>
+From v1050, an &lt;i&gt;updates&lt;/i&gt; is a container Mapping that allows certain
+Mappings to be applied between children of the input and output of the parent
+&lt;i&gt;passthrough&lt;/i&gt; to "override" the implicit data copy with specific mappings
+that determine the target output.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  
+  <xsd:complexType name="Updates">
+    <xsd:annotation>
+      <xsd:documentation>
+From v1050, an &lt;i&gt;Updates&lt;/i&gt; is a container Mapping that allows certain
+Mappings to be applied between children of the input and output of the parent
+&lt;i&gt;passthrough&lt;/i&gt; to "override" the implicit data copy with specific mappings
+that determine the target output.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+    	<xsd:group   ref="msl:nested" minOccurs="0" maxOccurs="unbounded"/>  
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+
+
+
+
+
+  			
+  <xsd:element name="convert" type="msl:Convert">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;convert&lt;/i&gt; is a general transform (mapping). 
+A &lt;i&gt;convert&lt;/i&gt; copies the data from a
+simple type source node to a target node applying type
+convertion.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Convert">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Convert&lt;/i&gt; mapping copies data from a
+simple type source node to a simple type target node
+applying type convertion.
+Has exactly one &lt;i&gt;input&lt;/i&gt; and one &lt;i&gt;output&lt;/i&gt; defined on it.
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;defaultValue&lt;/i&gt;
+Provide a default if conversion is not possible.
+Use only when '&lt;i&gt;generation/@engine&lt;/i&gt;' is XSLT. 
+&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+		<xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0"/>
+          <xsd:element ref="msl:input" minOccurs="1" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="1"/>
+           <xsd:element ref="msl:policy" minOccurs="0" maxOccurs="1"/>
+          <xsd:choice>  
+            <xsd:element ref="msl:test" minOccurs="0" maxOccurs="1"/>
+            <xsd:element ref="msl:filter" minOccurs="0" maxOccurs="1"/>
+          </xsd:choice>
+	    </xsd:sequence>
+	        <xsd:attribute name="defaultValue" type="xsd:string" />
+	  </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="submap" type="msl:Submap">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;submap&lt;/i&gt; is a general transform (mapping).
+A &lt;i&gt;submap&lt;/i&gt; invokes a &lt;i&gt;mappingDeclaration&lt;/i&gt;,
+typically from a separate map file, to perform work for this mapping. 
+It is the mechanism for reusing existing mappings.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Submap">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Submap&lt;/i&gt; mapping allows for invoking a
+&lt;i&gt;mappingDeclaration&lt;/i&gt; to perform work for this mapping.
+
+Has one or more &lt;i&gt;inputs&lt;/i&gt; and one &lt;i&gt;output&lt;/i&gt; defined on it.
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;ref&lt;/i&gt;
+The &lt;i&gt;ref&lt;/i&gt; is the reference to the MappingDeclaration this submap is using. 
+Note the value is a qualified name: the local name representing the name 
+of the mapping declaration; and the prefix indicating the namespace where
+the mapping declaration resides.&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0"/>
+          <xsd:element ref="msl:input" minOccurs="1" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="1"/>
+          <xsd:element ref="msl:sort" minOccurs="0" maxOccurs="unbounded"/>          
+          <xsd:choice>  
+            <xsd:element ref="msl:test" minOccurs="0" maxOccurs="1"/>
+            <xsd:element ref="msl:filter" minOccurs="0" maxOccurs="1"/>
+          </xsd:choice>          
+        </xsd:sequence>
+        <xsd:attribute name="ref" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+
+  <xsd:element name="custom" type="msl:Custom">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;custom&lt;/i&gt; is a general transform (mapping).
+A &lt;i&gt;custom&lt;/i&gt; represents custom coding of the
+logic to be used to perform this mapping.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Custom">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Custom&lt;/i&gt; represents custom coding of the
+logic to be used to perform this mapping. The custom code can be internal, in 
+which case the snippet is stored and serialized within the custom element itself;
+or it can be external, in which case the custom element provides means of storing
+a reference to the external code.
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;kind&lt;/i&gt;
+A &lt;i&gt;kind&lt;/i&gt; attribute indicates whether the external custom
+transform includes the generation of the target element or whether it includes
+the generation of the target element's content only.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;isJava&lt;/i&gt;
+An &lt;i&gt;isJava&lt;/i&gt; attribute, when present, indicates that the internal custom transform
+includes a java call.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;anyAttribute&lt;/i&gt;
+The attributes on a &lt;i&gt;custom&lt;/i&gt; element provides a domain specific means to access
+external custom code.&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0"/>
+          <xsd:element ref="msl:input" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="1"/>
+          <xsd:element ref="msl:code" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="kind" default="type">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:token">
+              <xsd:enumeration value="type"/>
+              <xsd:enumeration value="element"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="isJava">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:token">
+              <xsd:enumeration value="isJava"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+         </xsd:attribute>
+         <xsd:anyAttribute namespace="##any" processContents="lax" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+ 
+  <xsd:element name="expression" type="msl:Expression">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;expression&lt;/i&gt; is a general transform (mapping).
+A &lt;i&gt;expression&lt;/i&gt; represents custom coding of the
+logic to be used to perform this mapping.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Expression">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Expression&lt;/i&gt; represents custom coding of the
+logic to be used to perform this mapping. The custom code snippet is stored and
+serialized within the &lt;i&gt;code&lt;/i&gt; child element of the Expression itself.
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+        <xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0"/>
+          <xsd:element ref="msl:input" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="1"/>
+          
+          <!-- Note: Avoid usage of annotation, used for backward compatibility only  -->
+          <xsd:element name="annotation" minOccurs="0" maxOccurs="unbounded" form="qualified">
+          	<xsd:complexType>
+          		<xsd:attribute name="key" type="xsd:string"></xsd:attribute>
+          		<xsd:attribute name="value" type="xsd:string"></xsd:attribute>
+          	</xsd:complexType>
+          </xsd:element>
+          <xsd:element ref="msl:code" minOccurs="0"/>
+          <xsd:element ref="msl:policy" minOccurs="0" maxOccurs="1"/>
+          <xsd:choice>  
+            <xsd:element ref="msl:test" minOccurs="0" maxOccurs="1"/>
+            <xsd:element ref="msl:filter" minOccurs="0" maxOccurs="1"/>
+          </xsd:choice>           
+        </xsd:sequence>
+        <xsd:attribute name="lang" type="xsd:string"></xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="lookup" type="msl:Lookup">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;lookup&lt;/i&gt; is a general transform (mapping). 
+A &lt;i&gt;lookup&lt;/i&gt; represents domain extension logic to be used to perform this mapping.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Lookup">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Lookup&lt;/i&gt; represents domain extension logic to be used to perform this mapping.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0"/>
+          <xsd:element ref="msl:input" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="1"/>
+          <xsd:element ref="msl:code" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="LookupEngineCustomPropertiesKey" type="xsd:string"></xsd:attribute>
+        <xsd:attribute name="LookupPropertyEngineUniqueKey" type="xsd:string"></xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+    
+  <xsd:element name="assign" type="msl:Assign">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;assign&lt;/i&gt; is a general transform (mapping). 
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Assign">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;Assign&lt;/i&gt; mapping assigns a constant to a target node. 
+Note that an assign does not have &lt;i&gt;input&lt;/i&gt; designators 
+defined on it. 
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;value&lt;/i&gt;
+The &lt;i&gt;value&lt;/i&gt; attribute holds the string constant that is to be assigned.&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+	      <xsd:element ref="msl:documentation" minOccurs="0" maxOccurs="1"/>
+      	  <xsd:element ref="msl:input" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="1"/>
+	      <xsd:choice>  
+	        <xsd:element ref="msl:test" minOccurs="0" maxOccurs="1"/>
+	        <xsd:element ref="msl:filter" minOccurs="0" maxOccurs="1"/>
+	      </xsd:choice>  
+        </xsd:sequence>       
+        <xsd:attribute name="value" type="xsd:string"/>
+       </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+
+
+  <xsd:element name="create" type="msl:Create">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;create&lt;/i&gt; is a general transform (mapping).
+A &lt;i&gt;create&lt;/i&gt; transform creates a target object.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Create">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Create&lt;/i&gt; mapping creates target node according to it's schema definition. 
+Note that a create does not have &lt;i&gt;input&lt;/i&gt; designators 
+defined on it. 
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;empty&lt;/i&gt;
+The target is created empty.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;defaultValue&lt;/i&gt;
+The target is created and assigned the schema define default value.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;nil&lt;/i&gt;
+The target is created in the nilled state.
+&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0"/>
+      	  <xsd:element ref="msl:input" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="1"/>
+          <xsd:element ref="msl:policy" minOccurs="0" maxOccurs="1"/>
+	      <xsd:choice>  
+	        <xsd:element ref="msl:test" minOccurs="0" maxOccurs="1"/>
+	        <xsd:element ref="msl:filter" minOccurs="0" maxOccurs="1"/>
+	      </xsd:choice>  
+          <xsd:group ref="msl:nested" minOccurs="0" maxOccurs="unbounded"/>	      
+        </xsd:sequence>       
+        <xsd:attribute name="empty" type="xsd:boolean"/>
+        <xsd:attribute name="defaultValue" type="xsd:boolean" />
+        <xsd:attribute name="nil" type="xsd:boolean" />
+       </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+
+
+  <xsd:element name="remove" type="msl:Remove">
+    <xsd:annotation>
+      <xsd:documentation>
+From v1050 a &lt;i&gt;remove&lt;/i&gt; is a general transform (mapping). 
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Remove">
+    <xsd:annotation>
+      <xsd:documentation>
+From v1050, a &lt;i&gt;Remove&lt;/i&gt; mapping removes a target node. 
+Note that a remove should be used with in a &lt;i&gt;Override&lt;/i&gt; or
+&lt;i&gt;Updates&lt;/i&gt; container mapping.
+Also a remove does not have &lt;i&gt;input&lt;/i&gt; designators 
+defined on it. 
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;value&lt;/i&gt;
+The &lt;i&gt;value&lt;/i&gt; attribute holds the string constant that is to be assigned.&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+	      <xsd:element ref="msl:documentation" minOccurs="0" maxOccurs="1"/>
+      	  <xsd:element ref="msl:input" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="1"/>
+	      <xsd:choice>  
+	        <xsd:element ref="msl:test" minOccurs="0" maxOccurs="1"/>
+	        <xsd:element ref="msl:filter" minOccurs="0" maxOccurs="1"/>
+	      </xsd:choice>  
+        </xsd:sequence>       
+        <xsd:attribute name="value" type="xsd:string"/>
+       </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+
+
+  <xsd:element name="local" type="msl:Local"> 
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;local&lt;/i&gt; is a general transform (mapping). 
+A &lt;i&gt;local&lt;/i&gt; represents a container or 
+an abstract mapping that contains finer grained mapping information. 
+All &lt;i&gt;input&lt;/i&gt; and &lt;i&gt;output&lt;/i&gt; designators
+of the nested mappings are directly or indirectly relative to the
+corresponding &lt;i&gt;input&lt;/i&gt; and &lt;i&gt;output&lt;/i&gt;
+designators of this local mapping.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Local">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Local&lt;/i&gt; mapping provides a container mapping that contains
+finer grained mapping information.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0"/>
+          <xsd:element ref="msl:input" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="unbounded"/>
+          <xsd:choice>  
+            <xsd:element ref="msl:test" minOccurs="0" maxOccurs="1"/>
+            <xsd:element ref="msl:filter" minOccurs="0" maxOccurs="1"/>
+          </xsd:choice>          
+          <xsd:group   ref="msl:nested" minOccurs="0" maxOccurs="unbounded"/>  
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <xsd:element name="customFunction" type="msl:CustomFunction">
+      <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;customFunction&lt;/i&gt; mapping provides the mechanism for calling
+custom and built-in functions. 
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  
+  <xsd:complexType name="CustomFunction">
+      <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;CustomFunction&lt;/i&gt; mapping provides the mechanism for calling
+custom and built-in functions. 
+      </xsd:documentation>
+    </xsd:annotation>
+	<xsd:sequence>
+      <xsd:element ref="msl:documentation" minOccurs="0" maxOccurs="1"/>
+      <xsd:element ref="msl:input" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element ref="msl:output" minOccurs="1" maxOccurs="unbounded"/>
+      <xsd:element ref="msl:param" minOccurs="0" maxOccurs="unbounded"/>		
+      <xsd:choice>  
+        <xsd:element ref="msl:test" minOccurs="0" maxOccurs="1"/>
+        <xsd:element ref="msl:filter" minOccurs="0" maxOccurs="1"/>
+      </xsd:choice>     
+	</xsd:sequence>
+	<xsd:attribute name="value" type="xsd:string"></xsd:attribute>
+	<xsd:attribute name="lang" type="xsd:string"></xsd:attribute>
+	<xsd:attribute name="location" type="xsd:string"></xsd:attribute>
+	<xsd:attribute name="ref" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="kind" default="type">
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:token">
+          <xsd:enumeration value="type"/>
+          <xsd:enumeration value="element"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+  </xsd:complexType>
+
+
+  <xsd:element name="task" type="msl:Task">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;task&lt;/i&gt; is a general transform (mapping), 
+that performs no transform to the optional source or target nodes,
+it just provides a placeholder for the user to associate
+documentation and marker to nodes. 
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Task">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;Task&lt;/i&gt; mapping performs no transform to the optional
+source or target nodes, it just provides a placeholder for the user to
+associate documentation and a todo - error marker. 
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;type&lt;/i&gt;
+The &lt;i&gt;type&lt;/i&gt; attribute holds marker type.&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+	      <xsd:element ref="msl:documentation" minOccurs="0" maxOccurs="1"/>
+      	  <xsd:element ref="msl:input" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>       
+		<xsd:attribute name="type" default="error" >
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:token">
+					<xsd:enumeration value="error"/>
+					<xsd:enumeration value="warning"/>
+					<xsd:enumeration value="info"/>
+					<xsd:enumeration value="todo"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+       </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+
+
+  <!-- control flow mechanisms -->
+  <xsd:element name="foreach" type="msl:Foreach">  
+    <xsd:annotation>
+      <xsd:documentation>
+A foreach is the mapping for iterating over source nodes producing
+target nodes.
+
+A &lt;i&gt;foreach&lt;/i&gt; transform is not tightly coupled to any actual
+mapping that moves data or structured content from the source to the target.
+Instead it serves solely as a container mapping controlling the flow of
+mapping execution of a repeating source and target(s). 
+
+Note all input and output designators of the nested mappings are directly or 
+indirectly relative to the corresponding input and output designators of 
+this &lt;i&gt;foreach&lt;/i&gt; transform.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+
+  <xsd:complexType name="Foreach">
+    <xsd:annotation>
+      <xsd:documentation>
+A Foreach is the mapping for iterating over source nodes producing
+target nodes.
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;filter&lt;/i&gt;
+A &lt;i&gt;filter&lt;/i&gt; expression represents filtering logic
+to be applied to each iteration in the &lt;i&gt;foreach&lt;/i&gt; operation.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;language&lt;/i&gt;
+The mapping model is language neutral. The language attribute allows users of the 
+model to identify the coding language used to specify the filter expression.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;allowEmpty&lt;/i&gt;
+The allowEmpty flag signifies the nested mapping be entered
+once with index 0 in the case were there are no matches on the 
+filter expression.
+&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0"/>
+          <xsd:element ref="msl:input" minOccurs="1" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:sort" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:choice>  
+            <xsd:element ref="msl:test" minOccurs="0" maxOccurs="1"/>
+            <xsd:element ref="msl:filter" minOccurs="0" maxOccurs="1"/>
+          </xsd:choice>            
+          <xsd:group ref="msl:nested" minOccurs="0" maxOccurs="unbounded"/>  
+        </xsd:sequence>
+   	    <xsd:attribute name="allowEmpty" type="xsd:boolean"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="append" type="msl:Append">  
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;append&lt;/i&gt; is a mapping for iterating over a set
+of different source nodes to produce ordered instances of a target node.
+
+An &lt;i&gt;append&lt;/i&gt; transform is not tightly coupled to any actual
+mapping that moves data or structured content from the source to the target.
+Instead it serves solely as a container mapping controlling the flow of
+mapping execution. 
+
+Note all input and output designators of the nested mappings are directly or 
+indirectly relative to the corresponding input and output designators of 
+this &lt;i&gt;append&lt;/i&gt; transform.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Append">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;Append&lt;/i&gt; is a mapping for iterating over a set
+of different source nodes to produce ordered instances of a target node.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0"/>
+          <xsd:element ref="msl:input" minOccurs="2" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="unbounded"/>
+          <xsd:choice>  
+            <xsd:element ref="msl:test" minOccurs="0" maxOccurs="1"/>
+            <xsd:element ref="msl:filter" minOccurs="0" maxOccurs="1"/>
+          </xsd:choice>          
+          <xsd:group   ref="msl:nested" minOccurs="0" maxOccurs="unbounded"/>  
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="join" type="msl:Join">  
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;join&lt;/i&gt; is an Mapping that joins data from two or more
+different repeatable source nodes into a single repeatable target node.
+
+A &lt;i&gt;join&lt;/i&gt; transform is not tightly coupled to any actual mapping that moves data
+or structured content from the source to the target. Instead it serves solely as a
+container mapping controlling the flow of mapping execution.  
+
+Note all input and output designators of the nested mappings are directly or 
+indirectly relative to the corresponding input and output designators of 
+this &lt;i&gt;join&lt;/i&gt; transform.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Join">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Join&lt;/i&gt; is an Mapping that joins data from two or more
+different repeatable source nodes into a single repeatable target node.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0"/>
+          <xsd:element ref="msl:input" minOccurs="2" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="unbounded"/> 
+          <xsd:choice>  
+            <xsd:element ref="msl:test" minOccurs="0" maxOccurs="1"/>
+            <xsd:element ref="msl:filter" minOccurs="0" maxOccurs="1"/>
+          </xsd:choice>   
+          <xsd:group   ref="msl:nested" minOccurs="0" maxOccurs="unbounded"/>                   
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="group" type="msl:Group">  
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;group&lt;/i&gt; is a mapping that takes a repeatable
+source node (a flat list) and groups that list based on some attribute
+or element in the content of that node creating a nested list in the target.
+
+Note all input and output designators of the nested mappings are directly or 
+indirectly relative to the corresponding input and output designators of 
+this &lt;i&gt;group&lt;/i&gt; transform.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Group">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Group&lt;/i&gt; is a mapping that takes a repeatable
+source node (a flat list) and groups that list based on some attribute
+or element in the content of that node creating a nested list in the target.
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;groupBy&lt;/i&gt;
+A &lt;i&gt;groupBy&lt;/i&gt;attribute identifies the attribute or element that the 
+grouping will be based on.
+&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0"/>
+          <xsd:element ref="msl:input" minOccurs="1" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:field" minOccurs="0"></xsd:element>
+          <xsd:element ref="msl:sort" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:group   ref="msl:nested" minOccurs="0" maxOccurs="unbounded"/>  
+        </xsd:sequence>
+        <xsd:attribute name="groupBy" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+
+
+  <xsd:element name="condition" type="msl:Condition">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;condition&lt;/i&gt; mapping is an aggregated transform
+made up of an ordered set of &lt;i&gt;if&lt;/i&gt;,
+&lt;i&gt;elseif&lt;/i&gt; and &lt;i&gt;else&lt;/i&gt; transforms:
+&lt;ul&gt;
+&lt;li&gt;a single &lt;i&gt;if&lt;/i&gt; transform followed by&lt;/li&gt;
+&lt;li&gt;zero or more &lt;i&gt;elseif&lt;/i&gt; transforms followed by&lt;/li&gt;
+&lt;li&gt;an optional &lt;i&gt;else&lt;/i&gt; transform.&lt;/li&gt;
+&lt;/ul&gt;
+A &lt;i&gt;condition&lt;/i&gt; transform is not tightly coupled to any actual
+mapping that conditionally tests and moves data or structured content from the
+source to the target. Instead it serves solely as a container mapping controlling
+the flow of mapping execution.
+
+Note all input and output designators of the nested mappings are directly or 
+indirectly relative to the corresponding input and output designators of 
+this &lt;i&gt;condition&lt;/i&gt; transform.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  
+  <xsd:complexType name="Condition">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Condition&lt;/i&gt; mapping is an aggregated transform
+made up of an ordered set of &lt;i&gt;if&lt;/i&gt;,
+&lt;i&gt;elseif&lt;/i&gt; and &lt;i&gt;else&lt;/i&gt; transforms.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:MappingGroup">
+        <xsd:sequence>
+          <xsd:element ref="msl:if" minOccurs="1" maxOccurs="1"/>
+          <xsd:element ref="msl:elseif" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:else" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+     </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="if" type="msl:If">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;if&lt;/i&gt; is part of a &lt;i&gt;condition&lt;/i&gt; mapping.
+An &lt;i&gt;if&lt;/i&gt; transform is not tightly coupled to any actual
+mapping that conditionally moves data or structured content from the source to
+the target. Instead it serves solely as a container for nested mappings
+and having an expression controlling the flow of mapping execution. 
+
+Note all input and output designators of the nested mappings are directly or 
+indirectly relative to the corresponding input and output designators of 
+this &lt;i&gt;if&lt;/i&gt; transform.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+   <xsd:complexType name="If">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;If&lt;/i&gt; is part of a &lt;i&gt;condition&lt;/i&gt; mapping
+providing a container for nested mappings
+and having a 'test' expression controlling the flow of mapping execution. 
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;test&lt;/i&gt;
+The &lt;i&gt;test&lt;/i&gt; attribute provides a means of storing the contents of the boolean 
+expression.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;lang&lt;/i&gt;
+The lang attribute identifies the coding language used to specify the expression.
+&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0"/>
+          <xsd:element ref="msl:input" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="unbounded"/>
+          <xsd:choice>  
+            <xsd:element ref="msl:test" minOccurs="0" maxOccurs="1"/>
+            <xsd:element ref="msl:filter" minOccurs="0" maxOccurs="1"/>
+          </xsd:choice> 
+          <xsd:group   ref="msl:nested" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="test" type="xsd:string"/>
+        <xsd:attribute name="lang" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <xsd:element name="elseif" type="msl:If">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;elseif&lt;/i&gt; is part of a &lt;i&gt;condition&lt;/i&gt; mapping.
+An &lt;i&gt;elseif&lt;/i&gt; transform is not tightly coupled to any actual
+mapping that conditionally moves data or structured content from the source to
+the target. Instead it serves solely as a container for nested mappings
+and having an expression controlling the flow of mapping execution. 
+
+Note all input and output designators of the nested mappings are directly or 
+indirectly relative to the corresponding input and output designators of 
+this &lt;i&gt;elseif&lt;/i&gt; transform.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  
+  <xsd:element name="else" type="msl:Else">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;else&lt;/i&gt; is part of a &lt;i&gt;condition&lt;/i&gt; mapping.
+An &lt;i&gt;else&lt;/i&gt; transform is not tightly coupled to any actual
+mapping that conditionally moves data or structured content from the source to
+the target. Instead it serves solely as a container for nested mappings
+controlling the flow of mapping execution. 
+
+Note all input and output designators of the nested mappings are directly or 
+indirectly relative to the corresponding input and output designators of 
+this &lt;i&gt;else&lt;/i&gt; transform.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  
+  <xsd:complexType name="Else">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;Else&lt;/i&gt; mapping is part of a &lt;i&gt;Condition&lt;/i&gt; mapping,
+and provides a container for nested mappings to control the flow of mapping execution. 
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0"/>
+          <xsd:element ref="msl:input" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="unbounded"/>
+          <xsd:group ref="msl:nested" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+       </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+
+  <xsd:element name="function" type="msl:Function">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;function&lt;/i&gt; mapping provides a way to specify
+a built-in function invocation.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  
+<xsd:complexType name="Function">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Function&lt;/i&gt; mapping provides a way to specify
+a built-in function invocation.
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;i&gt;lang&lt;/i&gt;
+The language attribute identifies the coding language used to specify the expression.
+&lt;/li&gt;
+&lt;li&gt;
+&lt;i&gt;ref&lt;/i&gt;
+The &lt;i&gt;ref&lt;/i&gt; provides the reference to the function.  
+&lt;/li&gt;
+&lt;/ul&gt;   
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0" maxOccurs="1"/>
+          <xsd:element ref="msl:input" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="1" maxOccurs="1"/>
+          <xsd:element ref="msl:param" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:property" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:policy" minOccurs="0" maxOccurs="1"/>
+          <xsd:choice>  
+            <xsd:element ref="msl:test" minOccurs="0" maxOccurs="1"/>
+            <xsd:element ref="msl:filter" minOccurs="0" maxOccurs="1"/>
+          </xsd:choice>
+        </xsd:sequence>
+        <xsd:attribute name="lang" type="xsd:string" />
+        <xsd:attribute name="ref" type="xsd:string" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="property" type="msl:Property">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;"property"&lt;/i&gt; element provides properties for
+a &lt;i&gt;function&lt;/i&gt; transform.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Property">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Property&lt;/i&gt; provides key-value properties for
+a &lt;i&gt;function&lt;/i&gt; transform.
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;key&lt;/i&gt;&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;value&lt;/i&gt;&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="key" type="xsd:string"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+   </xsd:complexType>
+
+  <xsd:element name="code" type="msl:Code">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;code&lt;/i&gt; element provides a means of storing a 
+reference to external code or the "code" contents itself for mappings
+such as an &lt;i&gt;expression&lt;/i&gt;.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Code" mixed="true">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Code&lt;/i&gt; provides a means of storing a 
+reference to external code or the "code" contents itself for mappings
+such as an &lt;i&gt;expression&lt;/i&gt;.
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;i&gt;lang&lt;/i&gt;
+The language attribute identifies the coding language used to specify the expression.
+&lt;/li&gt;
+&lt;li&gt;
+&lt;i&gt;ref&lt;/i&gt;
+The &lt;i&gt;ref&lt;/i&gt; provides the reference to the function.  
+&lt;/li&gt;
+&lt;/ul&gt;   
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="lang" type="xsd:string"/>
+   </xsd:complexType>
+
+  <xsd:element name="sort" type="msl:Sort">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;sort&lt;/i&gt; element provides a means of defining a
+sorting to a list of source nodes before 
+iterating over them in a &lt;i&gt;foreach&lt;/i&gt; 
+or &lt;i&gt;group&lt;/i&gt; transform.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="Sort">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Sort&lt;/i&gt; provides a means of defining a
+sorting to a list of source nodes before 
+iterating over them in a &lt;i&gt;foreach&lt;/i&gt; 
+or &lt;i&gt;group&lt;/i&gt; transform.
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;caseOrder&lt;/i&gt;
+The &lt;i&gt;caseOrder&lt;/i&gt; attribute specifies whether upper-case letters should sort 
+before lower-case letters or vice-versa. The default value is language
+dependent.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;dataOrder&lt;/i&gt;
+The &lt;i&gt;dataOrder&lt;/i&gt; attribute specifies whether the source nodes should be sorted
+lexicographically or according to the numeric value. The default value is 
+&lt;i&gt;lexical&lt;/li&gt;.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;modifier&lt;/i&gt;
+The &lt;i&gt;modifer&lt;/i&gt; attribute specifies whether the source nodes should be sorted
+in ascending or descending order. The default value is &lt;i&gt;ASC&lt;/i&gt;.
+&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;path&lt;/i&gt;
+The &lt;i&gt;path&lt;/i&gt; attribute represents the source element or attribute that will 
+act as the sort key.&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+	<xsd:sequence>
+		<xsd:element ref="msl:field" minOccurs="0"></xsd:element>
+	</xsd:sequence> 
+   </xsd:complexType>
+   
+  <xsd:element name="param" type="msl:Param"/>
+  
+  <xsd:complexType name="Param" >
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Param&lt;/i&gt; provides a means of defining a 
+parameter in a mapping such as an &lt;i&gt;expression&lt;/i&gt;.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="name" type="xsd:string"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+  </xsd:complexType>
+        
+  <xsd:element name="test" type="msl:Test"/>
+  
+  <xsd:complexType name="Test" mixed="true">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Test&lt;/i&gt; provides a mapping with a
+expression controlling the flow of mapping execution.
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;scope&lt;/i&gt;&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;lang&lt;/i&gt;&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="scope" type="xsd:string" />
+    <xsd:attribute name="lang" type="xsd:string"/>
+  </xsd:complexType>
+  
+  <xsd:element name="field" type="msl:Field"/>
+  
+  <xsd:complexType name="Field" mixed="true">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Field&lt;/i&gt; is used within the definition of a &lt;i&gt;sort&lt;/i&gt; mapping.
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;caseOrder&lt;/i&gt;&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;dataOrder&lt;/i&gt;&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;modifier&lt;/i&gt;&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;path&lt;/i&gt;&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="caseOrder">
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:token">
+          <xsd:enumeration value="lowerFirst"/>
+          <xsd:enumeration value="upperFirst"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+    <xsd:attribute name="dataOrder" default="lexical">
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:token">
+          <xsd:enumeration value="lexical"/>
+          <xsd:enumeration value="numerical"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+    <xsd:attribute name="modifier" default="ASC">
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:token">
+          <xsd:enumeration value="ASC"/>
+          <xsd:enumeration value="DESC"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+    <xsd:attribute name="path" type="xsd:string"/>   
+  </xsd:complexType>
+
+  
+  <xsd:element name="filter" type="msl:Filter"/>
+  
+  <xsd:complexType name="Filter" mixed="true">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Filter&lt;/i&gt; provides a mapping with a
+expression controlling the flow of mapping execution against
+each instance of a repeating input.
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;scope&lt;/i&gt;&lt;/li&gt;
+&lt;li&gt;&lt;i&gt;lang&lt;/i&gt;&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="scope" type="xsd:string" />
+    <xsd:attribute name="lang" type="xsd:string"/>
+  </xsd:complexType>
+
+
+<!-- Database and Cache Transforms. Note These are only available if a specific domainIDExtension implements them -->
+
+
+  <xsd:element name="transaction" type="msl:Transaction">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;transaction&lt;/i&gt; mapping is a container
+to bound an external operation, which can be
+&lt;ul&gt;
+&lt;li&gt;A database mapping and it's return and failure &lt;/li&gt;
+&lt;li&gt;A cache mapping and it's return and failure &lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+
+  <xsd:complexType name="Transaction">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;Transaction&lt;/i&gt; provides a container
+to bound an external Database or Cache operation, and grouped return and failure.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:MappingGroup">
+        <xsd:sequence>
+          <!-- DataBase Transforms -->
+          <xsd:element ref="msl:select" minOccurs="0" maxOccurs="1"/>
+          <xsd:element ref="msl:insert" minOccurs="0" maxOccurs="1"/>
+          <xsd:element ref="msl:update" minOccurs="0" maxOccurs="1"/>
+          <xsd:element ref="msl:delete" minOccurs="0" maxOccurs="1"/>
+          <xsd:element ref="msl:return" minOccurs="0" maxOccurs="1"/>
+          <xsd:element ref="msl:rdbcall" minOccurs="0" maxOccurs="1"/>
+          <xsd:element ref="msl:rdbreturn" minOccurs="0" maxOccurs="1"/>
+          <xsd:element ref="msl:failure" minOccurs="0" maxOccurs="1"/>
+          <!-- Cache Transforms -->
+          <xsd:element ref="msl:cacheGet" minOccurs="0" maxOccurs="1"/>
+          <xsd:element ref="msl:cachePut" minOccurs="0" maxOccurs="1"/>
+          <xsd:element ref="msl:cacheRemove" minOccurs="0" maxOccurs="1"/>
+          <xsd:element ref="msl:cacheReturn" minOccurs="0" maxOccurs="1"/>
+          <xsd:element ref="msl:cacheFailure" minOccurs="0" maxOccurs="1"/>         
+        </xsd:sequence>
+     </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="cacheGet" type="msl:CacheMapping">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;cacheGet&lt;/i&gt; mapping is a nested mapping
+of data defining the parameters of a cache get operation.
+An output &lt;i&gt;MappingDesignator&lt;/i&gt;
+with &lt;i&gt;inlinedXMLSchema&lt;/i&gt; attribute set to 'true', and coresponding
+&lt;i&gt;targetNamespace&lt;/i&gt; attribute typically defines the parameters for the operation.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="cachePut" type="msl:CachePutMapping">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;cachePut&lt;/i&gt; mapping is a nested mapping
+of data to the parameters of a cache put operation.
+An output &lt;i&gt;MappingDesignator&lt;/i&gt;
+with &lt;i&gt;inlinedXMLSchema&lt;/i&gt; attribute set to 'true', and coresponding
+&lt;i&gt;targetNamespace&lt;/i&gt; attribute typically defines the parameters for the operation.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="cacheRemove" type="msl:CacheMapping">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;cacheRemove&lt;/i&gt; mapping is a nested mapping
+of data to the parameters of a cache remove operation.
+An output &lt;i&gt;MappingDesignator&lt;/i&gt; defines the parameters for the operation.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="cacheReturn" type="msl:CacheMapping">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;cacheReturn&lt;/i&gt; mapping is a nested mapping
+of data returned from a successful cache operation.
+The input data is defined by an input &lt;i&gt;MappingDesignator&lt;/i&gt;, typically
+with &lt;i&gt;inlinedXMLSchema&lt;/i&gt; attribute set to 'true', and coresponding
+&lt;i&gt;targetNamespace&lt;/i&gt; attribute.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="cacheFailure" type="msl:CacheMapping">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;cacheFailure&lt;/i&gt; mapping is a nested mapping
+of data returned from a cache operation which failed with an exception.
+The input exception data is defined by an input &lt;i&gt;MappingDesignator&lt;/i&gt;.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+
+   <xsd:complexType name="CacheMapping">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;CacheMapping&lt;/i&gt; is the operation part
+of a &lt;i&gt;transaction&lt;/i&gt; mapping container
+providing a cache action. 
+     </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0"/>
+          <xsd:element ref="msl:input" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:group   ref="msl:nested" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+   <xsd:complexType name="CachePutMapping">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;CachePutMapping&lt;/i&gt; is the operation part
+of a &lt;i&gt;transaction&lt;/i&gt; mapping container
+providing a cache put action. 
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;mode&lt;/i&gt;
+The &lt;i&gt;mode&lt;/i&gt; attribute defines the semantics of the put operation. Possible values 'insert', 'update' or 'upsert'.
+&lt;/li&gt;
+&lt;/ul&gt;
+     </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0"/>
+          <xsd:element ref="msl:input" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:group   ref="msl:nested" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+  		<xsd:attribute default="insert" name="mode">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="insert"/>
+					<xsd:enumeration value="update"/>
+					<xsd:enumeration value="upsert"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+  		</xsd:attribute>
+        
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+
+
+
+  <xsd:element name="select" type="msl:DatabaseMapping">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;select&lt;/i&gt; mapping is a nested mapping
+of the result set produced by the special input designator
+identified in the &lt;i&gt;ref&lt;/i&gt; attribute.
+The special input designator defines the database select operation.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="insert" type="msl:DatabaseMapping">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;insert&lt;/i&gt; mapping is a nested mapping
+of the data to a database column defined by the special 
+output designator identified in the &lt;i&gt;ref&lt;/i&gt; attribute.
+The special output designator defines the database insert operation.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="update" type="msl:DatabaseMapping">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;update&lt;/i&gt; mapping is a nested mapping
+of the data to a database column defined by the special 
+output designator identified in the &lt;i&gt;ref&lt;/i&gt; attribute.
+The special output designator defines the database update operation.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="delete" type="msl:DatabaseMapping">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;delete&lt;/i&gt; mapping is a mapping
+to delete a database column defined by the special 
+output designator identified in the &lt;i&gt;ref&lt;/i&gt; attribute.
+The special output designator defines the database delete operation.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="return" type="msl:DatabaseMapping">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;return&lt;/i&gt; mapping is a nested mapping
+that will be entered on successful completion of a
+database operation.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="rdbcall" type="msl:DatabaseMapping">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;rdbcall&lt;/i&gt; mapping is a nested mapping
+of data to the input parameters of a database routine that
+is defined by a special output designator.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="rdbreturn" type="msl:DatabaseMapping">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;rdbreturn&lt;/i&gt; mapping is a nested mapping
+that will be entered on successful completion of a
+database routine &lt;i&gt;rdbcall&lt;/i&gt; mapping.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="failure" type="msl:DatabaseMapping">
+    <xsd:annotation>
+      <xsd:documentation>
+A &lt;i&gt;failure&lt;/i&gt; mapping is a nested mapping
+that will be entered on failure of a
+database operation.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+   <xsd:complexType name="DatabaseMapping">
+    <xsd:annotation>
+      <xsd:documentation>
+An &lt;i&gt;DatabaseMapping&lt;/i&gt; is the operation part
+of a &lt;i&gt;transaction&lt;/i&gt; mapping container
+providing a database action. 
+
+&lt;b&gt;attributes&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;ref&lt;/i&gt;
+The &lt;i&gt;ref&lt;/i&gt; attribute provides a reference to the
+specialised input or output .
+&lt;/li&gt;
+&lt;/ul&gt;
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="msl:Mapping">
+      <xsd:sequence>
+          <xsd:element ref="msl:documentation" minOccurs="0"/>
+          <xsd:element ref="msl:input" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="msl:output" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:group   ref="msl:nested" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="ref" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  
+</xsd:schema>

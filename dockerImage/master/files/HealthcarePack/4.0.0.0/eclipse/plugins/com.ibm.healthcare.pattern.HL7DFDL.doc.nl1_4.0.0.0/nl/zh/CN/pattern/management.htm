@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="copyright" content="Copyright IBM Corporation 2013, 2014" />
+<link rel="stylesheet" type="text/css" href="./css/pattern.css" />
+<!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    -->
+<title>管理“Healthcare：从 HL7 到 HL7 DFDL”模式实例</title>
+</head>
+<body role="main">
+	<a name="links"></a>
+	<h1 class="topictitle1">管理“Healthcare：从 HL7 到 HL7 DFDL”模式实例</h1>
+	<p class="shortdesc">您可以使用模式参数来生成模式实例并使其具有您为自己的模式实例设置的值。但是，您还必须部署和管理此模式实例，并且还可能需要针对特定操作环境进行更改。</p>
+	<p>此模式假设了一个简单的拓扑，其所有消息流都在单个集成节点上运行。本主题提供了有关部署和管理使用这个简单拓扑的模式实例的信息，并提供了有关如何管理此模式实例的信息。</p>
+	<p>此模式提供了一些特定定制点，您可以使用这些定制点来添加自己的更改。</p>
+	<p>本主题包含下列各节：</p>
+	<div>
+				<a href="management.htm#setup">设置</a>
+	</div>
+	<div>
+				<a href="management.htm#messageset">准备 HL7 DFDL 库</a>
+	</div>
+	<div>
+		<a href="management.htm#customize">定制</a>
+	</div>
+	<div>
+				<a href="management.htm#deployment">模式部署</a>
+	</div>
+	<div>
+				<a href="management.htm#errors">监视和错误处理</a>
+	</div>
+	<div class="section">
+		<a name="setup"></a>
+		<h2 class="sectiontitle">设置</h2>
+		<h4>队列</h4>
+		<p>
+			    通过在“<span class="uicontrol">配置模式参数</span>”选项卡的“<span class="uicontrol">常规</span>”部分中选中“<span class="msobjpropval">生成脚本</span>”复选框，您可以选择在生成模式实例前生成 MQSC 脚本，用于定义此模式所需的队列。此脚本（名为 <tt>queues.mqsc</tt>）位于模式实例项目的根目录中，用于定义基本队列和主题。</p>
+		<p>通过使用以下命令，可以运行这个 MQSC 脚本：</p>
+		<pre>runmqsc <var>queue_manager</var> &lt; queues.mqsc</pre>
+				其中，<var>queue_manager</var> 是集成节点的队列管理器的名称。
+		<p>您可以编辑此 MQSC 脚本，以添加环境描述以及设置适当的队列深度。</p>
+		<p>
+			    特别是，您必须检查 flowprefix.DUPID 队列的深度，此队列用于存放重复数据存储。此队列存储所有用于重复检查的数据。如果启用了重复检查，那么此队列的所需深度通过将接收方最大消息速率乘以到期持续时间设置进行计算。例如，如果最大速率为每秒 10 条消息，并且到期设置为 24 小时（86,400 秒），那么所需深度为 <span class="msobjpropval">864000</span>。</p>
+		<p>其他队列应该受监视并定期进行清除。这些队列以缺省大小进行创建，但您必须复查其使用情况并确保深度足够。</p>
+		<p>您必须先运行此 MQSC 脚本，然后再部署模式实例。</p>
+		<h4>可配置服务</h4>
+		<p>如果启用了排序，并且选择了用于分隔排序队列的选项，那么此模式将生成一个可配置服务文件。生成此模式的实例时，将在生成的消息流所在容器对象的根目录中创建此文件。这个可配置服务向 Resequence 节点提供关于排序信息的存储位置的信息。必须先将这个可配置服务部署到集成节点，然后再部署此模式。</p>
+	</div>
+	<div class="section">
+		<a name="messageset"></a>
+		<h2 class="sectiontitle">准备 HL7 DFDL 库</h2>
+		<p>
+			下载其中一个 HL7 DFDL 库，请参阅<a
+				href="resources.htm#resources">“<span>Healthcare：从 HL7 到 HL7 DFDL</span>”模式的资源</a>。
+		</p>
+		<p>缺省情况下，该模式生成的应用程序使用 HL7 V2.7 DFDL 模型。
+如果您不想使用 HL7 V2.6 或 HL7 V2.5.1 DFDL 模型，请完成以下步骤：<ol>
+			<li>在模式生成的应用程序更新引用，以便它引用所需的 HL7 库。要更改引用，右键单击生成的应用程序并单击“<span class="uicontrol">管理库引用</span>”。</li>
+			<li>在 <span class="filepath">Receiver.esql</span> 文件中，编辑 <span class="filepath">ReceiverMessageSet</span> 常量的值：<ul>
+					 <li>要使用 HL7 V2.5.1 DFDL 模型，将值更改为 <span class="filepath">HL7v251DFDL</span></li> 
+					 <li>要使用 HL7 V2.6 DFDL 模型，将值更改为 <span class="filepath">HL7v26DFDL</span></li>
+				</ul></li>
+			<li>使用 <span class="filepath">-clean</span> 选项重新启动 IBM Integration Toolkit。指定 <span class="filepath">-clean</span> 选项，方法是编辑您用于启动 IBM Integration Toolkit 的快捷方式或者从命令提示符处启动 IBM Integration Toolkit。</li>
+		</ol>
+    
+		</p>
+		<p>
+						DFDL 库符合 HL7 V2.5.1、V2.6 和 V2.7 标准中制定的标准。此模式使用的消息是
+<span class="msobjpropval">segments.xsd</span> 消息定义文件中的 HL7 消息。如果源或目标应用程序对此标准进行了修改，那么这些修改必须反映在消息模型中。最常见的修改如下所示：</p>
+		<ul>
+			<li>通过更改<span class="msobjprop">“最小发生次数”</span>或<span class="msobjprop">“最大发生次数”</span>参数值，对消息模型中定义的字段的必需设置进行修改。</li>
+			<li>创建由源或目标应用程序使用的所有 Z 段。Z 段用于对 HL7 DFDL 库中未定义的特定于应用程序的数据进行建模。</li>
+			<li>对标准进行特定于供应商的修改或新增。</li>
+		</ul>
+				<b>新建 Z 段</b>
+		<p>应用程序可以使用 Z 段来发送或接收已定义但不符合 HL7 规范的数据。您可以对自己的
+Z 段进行建模并将其用于应用程序。每个 DFDL 模型库都包含 Z_Segments.xsd 文件，您可以通过添加自己的 Z 段定义来定制此文件。</p>
+		<p>添加到 Z_Segments.xsd 文件中的 Z_Group 定义选项组的
+Z 段定义用于对所有未建模的段进行解析。缺省情况下，将向这个组添加名为
+Zxx 的元素。Zxx 元素没有段的特定发起者定义，因此所有段内容都由“其余”字段建模。</p>
+		<p>要创建新的 Z 段定义，请完成下列步骤。</p>
+		<ol>
+			<li>在 DFDL 模型库中，使用 DFDL 编辑器打开消息定义文件 Z_Segments.xsd。</li>
+			<li>创建一个新元素，用于未按 HL7 规范定义的段。您可以创建新的全局元素并在 Z_Group 定义选项组中添加对此元素的引用，也可以向 Z_Group 定义选项组直接添加局部元素。</li>
+			<li>删除缺省 Zxx 元素（如果存在），或者确保 Zxx 元素是 Z_Group 定义选项组中的最后一个条目。</li>
+		</ol>
+				<b>向 HL7 标准添加特定于供应商的内容</b><p>通过向段的末尾添加附加字段，HL7 实现可以对 HL7 所定义的标准段添加新内容。这些新增内容通常由每个段定义末尾的“其余”字段进行建模。但是，您可以在“其余”字段之前添加供应商需要的其他字段。</p>
+	</div>
+	<div class="section">
+		<a name="customize"></a>
+		<h2 class="sectiontitle">定制</h2>
+		<p>模式用户可以使用 3 个主要定制点，但还可以使用其他定制点。</p>
+		<h4>源定制</h4>
+		<p>将消息分发到其他目标以及创建消息的规范格式之前，主 TransformAndRoute 消息流将根据需要调用 SubCustomize 子流。</p>
+		<p>
+			    缺省 SubCustomize 子流对消息没有任何影响，但您可以使用此定制点使来自源的数据标准化，从而满足您的要求。例如，您可能有采用
+<span class="msobjpropval">YYYY-MM-DD</span> 格式的日期标准，但源使用另一日期格式。您可以使用此定制点修改任何源数据。另外，在此定制点还可以选择来自其他来源（例如数据库）的数据。
+</p>
+		<h4>目标定制</h4>
+		<p>
+						对于每个目标，存在一个缺省定制子流（名为 Dest<var>n</var>，其中 <var>n</var> 是目标的编号），这个子流对消息没有任何影响，但您可以使用这个子流来构建一条满足该目标所要求的规范的输出消息。例如，目标可能要求进行下列更改：</p>
+		<ul>
+			<li>添加 Z 段中需要的数据</li>
+			<li>修改源的数据；例如，根据目标日期格式要求对患者的出生日期进行格式编排</li>
+			<li>删除目标不需要或不支持的数据</li>
+		</ul>
+		<h4>使用源订阅源或规范订阅源</h4>
+		<p>如果您已选择生成源订阅源或规范订阅源，那么“接收方”流所处理的每条消息都将为源消息或规范化后的消息生成副本。这些消息将写入 WebSphere MQ 队列或进行发布，具体由模式参数确定。</p>
+		<p>您可能希望将消息发送到与此模式不兼容的目标，例如数据仓库、非 HL7 目标或使用其他传输机制的目标。通过编写集成解决方案以处理来自源订阅源或规范订阅源的消息，可以将这些消息发送到与此模式不兼容的目标。</p>
+	</div>
+	<div class="section">
+		<a name="deployment"></a>
+		<h2 class="sectiontitle">模式部署</h2>
+		<p>部署所生成的应用程序，此应用程序引用了 HL7 DFDL 库和子流库。</p>
+		<ol>
+			<li>为了在构建流后提高性能，您可能希望对所有没有排序要求的流增大<span class="msobjprop">“附加实例数”</span>设置。<ol>
+					<li>单击“<span class="uicontrol">管理</span>”选项卡。</li>
+					<li>选择要配置的流属性，并设置您的实现所需的值。</li>
+				</ol></li>
+		</ol>
+		<p></p>
+	</div>
+	<div class="section">
+		<a name="errors"></a>
+		<h2 class="sectiontitle">监视和错误处理</h2>
+		<p>对于此模式中的所有消息流，错误通知将写入错误队列。另外，还将向模式生成期间定义的位置输出队列跟踪。错误消息的 MQRFH2 头中包含的信息指示了发生错误的位置。本节详细说明了每个消息流的行为的相关详细信息。</p>
+		<h3>“接收方”流中的错误</h3>
+		<p>“接收方”流作为事务运行，此消息流成功完成时，将落实所有输出消息。如果需要应答，那么“接收方”流的最后一项操作是发送应答 (ACK)。处理应答成功完成时，此流将结束并落实消息。</p>
+		<p>对于“接收方”流中的每项操作：</p>
+		<ul>
+			<li><span class="msobjprop">FlowMilestoneReached</span> 参数在操作启动前进行设置；此参数指示流中发生错误的部分。</li>
+			<li>ErrorCondition 消息提供了所发生错误的详细信息。</li>
+		</ul>
+		<p>如果出错，那么将发生下列事件：</p>
+		<ul>
+			<li>错误由 ReceiverExceptionHandler 子流捕获并处理。这个子流向消息添加 MQMD 和 MQRFH2 头，并将该消息写入事务外部的错误队列。MQRFH2 头包含关于错误发生位置的详细信息。<p>根据需要，将生成否定应答回复 (NACK) 并将其发送到源应用程序。</p></li>
+			<li>抛出异常，这将回滚所有消息，并在需要按顺序到达时分配序号。				此回滚还将触发异常信息输出到事件日志。</li>
+			<li>此流的行为就像未接收到任何消息一样，并且将重新提交更正后的消息或者在目标应用程序中处理信息。</li>
+			<li>发送到接收应用程序的 NACK 指示未处理消息。</li>
+		</ul>
+		<p>管理员必须监视错误队列和事件日志，以确定接收方队列何时未处理消息，并执行必要的补救操作以更正此错误。</p>
+		<h3>TransformAndRoute 流中的错误</h3>
+		<p>TransformAndRoute 流作为单一事务运行。此消息流成功完成时，所有输出消息都将落实到下列位置：</p>
+		<ul>
+			<li>每个目标的“发送方”流的输入队列</li>
+			<li>“其余”报告（如果选中了此项）</li>
+			<li>规范消息订阅源的队列</li>
+		</ul>
+		<p>如果出错，那么将发生下列事件：</p>
+		<ul>
+			<li>错误由 TransformationExceptionHandler 子流捕获并处理。这个子流向消息添加 MQRFH2 头，并将该消息写入事务外部的错误队列。MQRFH2 头包含关于错误发生位置的详细信息。</li>
+			<li>抛出异常，此异常将输入消息放回到队列中，回滚所有写入队列的消息，并触发异常信息输出到事件日志。</li>
+		</ul>
+		<p></p>
+		<p>管理员必须检查错误队列和事件日志，以确定发生的错误。错误队列和回退队列都包含信息，并且处理完已更正的消息后必须清除此信息，以避免队列填满。
+</p>
+		<p>管理员必须为输入队列配置回退队列。</p>
+		<p>即使“路由并变换”流回滚了一条消息，后续消息也仍将进行处理并传递到“发送方”流。但是，对于任何实现了宽松或严格排序的目标，此操作可能会影响其“发送方”流，这是因为缺少出错消息的序号，从而导致消息在顺序队列中进行排队，直至接收到序号正确的消息或者（仅对于宽松排序的情况）消息超时为止，从而允许跳过缺少的序号。因此，必须尽快更正 TransformAndRoute 流中的错误。</p>
+		<p>下面是两个用于更正 TransformAndRoute 流中的错误的选项：</p>
+		<ul>
+			<li>可以将更正后的消息提交到 TransformAndRoute 流。您可以对写入错误队列或回退队列的消息进行编辑，然后重新提交此消息。此操作将确保序号正确。</li>
+			<li>错误消息中的信息可以直接应用于目标应用程序。如果对目标进行了严格排序，那么必须向该目标发送一条伪消息，以允许消息流继续：<ol>
+					<li>创建 XML 消息。例如：<pre>&lt;sup:MaintainSequence xmlns:sup=http://ibm/healthcare/support&gt;
+    &lt;MessageGeneratedToMaintainSequence&gt;true&lt;/ 
+    MessageGeneratedToMaintainSequence&gt;
+&lt;/sup:MaintainSequence&gt;</pre></li>
+					<li>将此 XML 消息放入所需的目标队列。您必须为 MQRFH2 头用户文件夹设置下列两个值，其中序号元素包含要跳过的消息序列，而序列组元素指定消息所引用的目标。例如：<pre>&lt;SequenceNumber&gt;2&lt;/SequenceNumber&gt;
+&lt;SequenceGroup&gt;DEST1&lt;/SequenceGroup&gt;</pre></li>
+				</ol></li>
+		</ul>
+		<h3>“发送方”流中的错误</h3>
+		<p>支持排序的“发送方”流包含名为“维护序列”的 Resequence 节点。Resequence 节点将此流划分为两个事务。如果在 Resequence 节点之前发生了异常，那么一条消息将写入事务外部的错误队列，并且输入消息将回滚到“发送方”流的输入队列。必须为输入队列配置回退队列。</p>
+		<p>在“发送方”流不进行排序时，此类错误处理也适用。</p>
+		<p>使用下列其中一种解决方案可更正此错误：</p>
+		<ul>
+			<li>更正并重新提交消息。</li>
+			<li>将事件直接应用于目标应用程序，并提交伪消息。</li>
+		</ul>
+		<p>在流中的此位置发生的错误表示缺少序号。如果对“发送方”流进行了排序，那么管理员必须查看错误队列并尽快更正此错误。序列中的后续消息将保存在内部序列队列中；因此，错误可能会导致消息积累。</p>
+		<p>如果在 Resequence 节点后但在消息发送到目标应用程序之前发生了错误，那么将编写一条错误消息，并且此消息将回退到内部序列队列。要更正此类错误，管理员必须确保目标应用程序可用且已连接。Resequence 节点将继续尝试交付此消息，以便在连接建立后交付此消息，在严格排序情况下，后续消息在先前的交付成功后才会进行交付。
+</p>
+		<p>另外，交付消息后也可能会发生错误。此类错误在目标应用程序无法处理消息并发送 NACK 时发生。在这种情况下，流不会将消息回退到 Resequence 节点，因为此消息可能会重复引起同一错误。而是，将一条消息写入错误队列。管理员必须检查此错误消息，并解决目标应用程序中的问题。在这种情况下，序号较高的消息将继续流动。</p>
+		<p>错误队列和回退队列中的消息所包含的信息是可供负责更正错误的管理员使用的主要信息。但是，还提供了
+SEQNOS 队列，用于存储当前序列信息的状态。您可以使用此队列来提供到达各个模式目标的消息流的概述。</p>
+	</div>
+		<a href="overview.htm#anchorBack" title="返回">返回到“Healthcare：从 HL7 到 HL7 DFDL”模式规范</a>
+	<p></p>
+</body>
+</html>

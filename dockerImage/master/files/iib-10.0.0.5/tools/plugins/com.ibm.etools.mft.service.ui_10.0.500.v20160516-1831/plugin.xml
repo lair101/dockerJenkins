@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+        point="org.eclipse.ui.editors">
+        <editor
+            class="com.ibm.etools.mft.service.ui.editor.ServiceEditor"
+            contributorClass="org.eclipse.ui.part.EditorActionBarContributor"
+            default="true"
+            filenames="service.descriptor"
+            icon="icons/obj16/service_editor.gif"
+            id="com.ibm.etools.mft.service.editor"
+            name="%Service.editor.name" />
+   </extension>
+   
+   <extension
+         point="com.ibm.wbit.mb.visual.utils.embeddedEditors">
+        <editor
+			class="com.ibm.etools.mft.service.ui.editor.ServiceOverviewEditor"
+			id="com.ibm.etools.mft.service.ServiceOverviewEditor"
+			contributorClass="com.ibm.etools.mft.service.ui.editor.ServiceOverviewEditorActionBarContributor" />			
+		<editor
+			class="com.ibm.etools.mft.service.ui.editor.EmbeddedFlowEditor"
+			id="com.ibm.etools.mft.service.flow.editor"
+			contributorClass="com.ibm.etools.mft.flow.editor.MFTActionBarContributor" />
+		<editor
+            class="com.ibm.etools.mft.service.ui.editor.EmbeddedInterfaceEditor"
+            id="com.ibm.etools.mft.service.interface.editor"
+            contributorClass="com.ibm.etools.msg.wsdl.ui.graphicaleditor.InterfaceEditorActionBarContributor" />
+   </extension>
+   
+   <extension
+        point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+        <propertyContributor
+            contributorId="com.ibm.etools.mft.service.editor"
+            typeMapper="com.ibm.etools.mft.service.ui.properties.ServiceTypeMapper"
+            labelProvider="com.ibm.etools.mft.service.ui.properties.ServicePropertiesLabelProvider">
+            <propertyCategory category="description" />
+            <propertyCategory category="details" />
+        </propertyContributor>
+    </extension>
+    
+    <extension
+        point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+        <propertyTabs
+            contributorId="com.ibm.etools.mft.service.editor">
+            <!-- Service overview -->
+            <propertyTab
+                label="%properties_tab_description"
+                category="description"
+                id="tab.description" />
+            <propertyTab
+                  afterTab="tab.description"
+                  category="description"
+                  id="tab.documentation"
+                  label="%properties_tab_documentation">
+            </propertyTab>
+            <propertyTab
+                label="%properties_tab_basic"
+                category="details"
+                id="tab.basic"
+                afterTab="tab.description" />
+            <propertyTab
+                label="%properties_tab_advanced"
+                category="details"
+                id="tab.advanced"
+                afterTab="tab.basic" />
+        </propertyTabs>
+    </extension>
+    
+    <extension
+        point="org.eclipse.ui.views.properties.tabbed.propertySections">
+        <propertySections
+            contributorId="com.ibm.etools.mft.service.editor">
+			<!-- Service overview -->
+<!--            <propertySection
+                tab="tab.description"
+                enablesFor="1"
+                class="com.ibm.etools.mft.service.ui.properties.DescriptionSection"
+                id="section.descriptionSection">
+                <input
+                    type="com.ibm.etools.mft.service.ui.model.ServiceInputNode">
+                </input>
+            </propertySection> -->
+            <propertySection
+                tab="tab.basic"
+                class="com.ibm.etools.mft.service.ui.properties.BasicSection"
+                id="section.basicSection">
+                <input
+                    type="com.ibm.etools.mft.service.ui.model.SOAPHTTPBinding">
+                </input>
+            </propertySection>
+<!--            <propertySection
+                tab="tab.advanced"
+                class="com.ibm.etools.mft.service.ui.properties.AdvancedSection"
+                id="section.advancedSection">
+                <input
+                    type="com.ibm.etools.mft.service.ui.model.ServiceInputNode">
+                </input>
+            </propertySection> -->
+        </propertySections>
+    </extension>
+    <extension
+          point="org.eclipse.ui.views.properties.tabbed.propertySections">
+       <propertySections
+             contributorId="com.ibm.etools.mft.service.editor">
+          <propertySection
+                class="com.ibm.etools.msg.wsdl.ui.internal.properties.PortTypeSection"
+                enablesFor="1"
+                id="com.ibm.etools.msg.wsdl.ui.section.porttype"
+                tab="tab.description">
+             <input
+                   type="org.eclipse.wst.wsdl.PortType">
+             </input>
+          </propertySection>
+
+          <propertySection
+                class="com.ibm.etools.msg.wsdl.ui.internal.properties.DocumentationSection"
+                enablesFor="1"
+                id="com.ibm.etools.msg.wsdl.ui.section.documentation"
+                tab="tab.documentation">
+             <input
+                   type="org.eclipse.wst.wsdl.WSDLElement">
+             </input>
+            	<input
+            		type="org.eclipse.xsd.XSDElementDeclaration">
+            	</input>
+          </propertySection>
+
+
+          <propertySection
+                class="com.ibm.etools.msg.wsdl.ui.internal.properties.NameSection"
+                enablesFor="1"
+                id="com.ibm.etools.msg.wsdl.ui.section.name"
+                tab="tab.description">
+             <input
+                   type="org.eclipse.wst.wsdl.Operation">
+             </input>
+           		<input
+           			type="org.eclipse.wst.wsdl.Part">
+           		</input>
+           		<input
+           			type="org.eclipse.wst.wsdl.Fault">
+           		</input>
+            	<input
+            		type="org.eclipse.xsd.XSDElementDeclaration">
+           		</input>
+          </propertySection>
+<!--          
+          <propertySection
+                afterSection="com.ibm.etools.msg.wsdl.ui.section.name"
+                class="com.ibm.etools.msg.wsdl.ui.internal.properties.OperationTypeSection"
+                enablesFor="1"
+                id="com.ibm.etools.msg.wsdl.ui.section.operation"
+                tab="tab.description">
+             <input
+                   type="org.eclipse.wst.wsdl.Operation">
+             </input>
+          </propertySection>
+-->
+            <propertySection
+            	tab="tab.description"
+            	class="com.ibm.etools.msg.wsdl.ui.internal.properties.TypeSection"
+            	id="com.ibm.etools.msg.wsdl.ui.section.type"
+            	afterSection="com.ibm.etools.msg.wsdl.ui.section.name"
+            	enablesFor="1">
+            	<input
+            		type="org.eclipse.wst.wsdl.Part">
+            	</input>
+            	<input
+            		type="org.eclipse.xsd.XSDElementDeclaration">
+            	</input>
+           		<input
+           			type="org.eclipse.wst.wsdl.Fault">
+           		</input>
+           	</propertySection>
+           	
+        </propertySections>
+    </extension>
+            
+    <extension
+         id="serviceApplicationBuilder"
+         name="%ServiceApplication.builder.name"
+         point="org.eclipse.core.resources.builders">
+      <builder>
+         <run
+               class="com.ibm.etools.mft.service.ui.builders.ServiceApplicationBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+   		 id="serviceApplicationBuilder"
+   		 name="%ServiceApplication.referential.builder.name"
+   		 point="com.ibm.etools.mft.uri.referentialbuilders">
+   		 <nature natureId="com.ibm.etools.msgbroker.tooling.serviceApplicationNature"/>
+   </extension>
+   <extension
+         id="serviceApplicationReferentialValidator"
+         name="%ServiceApplication.referential.validator.name"
+         point="com.ibm.etools.mft.uri.referentialvalidator">
+      <validator 
+            class="com.ibm.etools.mft.service.ui.builders.ServiceApplicationReferentialValidator" 
+            fileExtension="descriptor"/>
+   </extension>
+   
+   <extension
+         id="serviceDescriptorProblemMarker"
+         name="%ServiceDescriptorMarker.problemMarker"
+         point="org.eclipse.core.resources.markers">
+      <super type="org.eclipse.core.resources.problemmarker"/>
+      <persistent value="true"/>
+   </extension>
+   
+</plugin>

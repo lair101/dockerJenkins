@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2013, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>Patrón Servicio sanitario: Servicio web a DICOM</title>
+</head>
+<body role="main">
+<h1 class="topictitle1">Patrón Servicio sanitario: Servicio web a DICOM</h1>
+<p>
+Puede utilizar el patrón
+<span>
+Servicio sanitario: Servicio web a DICOM</span>
+para integrar una aplicación creada utilizando servicios web con
+aplicaciones DICOM que admiten operaciones C-FIND y C-MOVE. Puede
+utilizar el patrón para consultar pacientes, estudios, series e
+imágenes de un archivo DICOM (PACS) utilizando un servicio web
+implementado por IBM Integration Bus.
+</p>
+<div class="image">
+    <img src="DICOM.png" alt="Diagrama que muestra el comportamiento del patrón Servicio sanitario: Servicio web a DICOM"/>
+</div>
+<h2>Solución</h2>
+<p>
+Se configura una instancia del patrón
+<span>
+Servicio sanitario: Servicio web a DICOM
+</span>
+con los detalles de conexión DICOM del PACS. La información de
+conexión incluye el nombre de host y el puerto del PACS. Las
+aplicaciones DICOM se identifican cuando se conectan. Por lo
+tanto el patrón se configura con los títulos de entidad de aplicación
+(AETs - Application Entity Titles) de la instancia de patrón de IBM
+Integration Toolkit y el PACS.
+</p>
+<p>
+El patrón
+<span>
+Servicio sanitario: Servicio web a DICOM
+</span>
+utiliza el nodo DICOMFindMove como interfaz con el PACS. El nodo
+DICOMFindMove tiene dos prestaciones que están estrechamente relacionadas. La
+primera es la de realizar una consulta de pacientes, estudios, series
+e imágenes a un PACS. Los criterios de búsqueda se especifican en un
+mensaje XML que se propaga al terminal de entrada del nodo. Los
+resultados de las consultas DICOM se propagan desde el terminal de
+salida del nodo.
+</p>
+<p>
+La segunda prestación del nodo DICOMFindMove
+consiste en mover los resultados de una consulta a una aplicación
+DICOM utilizando un mandato C-MOVE. El destino de un mandato C-MOVE
+podría ser un nodo DICOMInput configurado en IBM
+Integration Bus, esto permite configurar topologías de
+direccionamiento muy flexibles. El destino del mandato C-MOVE
+se especifica como un título de entidad de aplicación (AET) en el
+mensaje XML. 
+El PACS se debe preconfigurar con el destino C-MOVE de forma que sepa
+dónde enviar las instancias de objeto DICOM.
+</p>
+<p>
+La aplicación solicitante envía los criterios de búsqueda como un cuerpo XML en el mensaje de solicitud de SOAP. El
+flujo de mensajes principal generado por la instancia de patrón
+Servicio sanitario: Servicio web a DICOM extrae el cuerpo y lo pasa
+al nodo DICOMFindMove. Los resultados XML que propaga el nodo
+DICOMFindMove se devuelven a la aplicación solicitante en una
+respuesta SOAP.
+</p>
+<p>
+Si se produce algún error durante un mandato C-FIND o C-MOVE,
+el flujo de mensajes emite una excepción. La lista de excepciones
+contiene inserciones que describen el problema. El patrón proporciona
+un manejo de errores opcional basado en una cola de errores. Si el
+manejo de errores está habilitado y se emite una excepción, se
+registra el error en una cola de errores y se devuelve un mensaje de
+respuesta HTTP de error a la aplicación solicitante.
+</p>
+<h5>Raíces de consulta</h5>
+<p>
+DICOM define varios tipos de consultas C-FIND, que se denominan
+raíces de consulta. Las raíces que admite el nodo DICOMFindMove son
+paciente y estudio. Hay otras raíces de consulta pero se han
+retirado en el estándar DICOM.
+</p>
+<p>
+La raíz de paciente permite cuatro tipos de consulta: paciente, estudio,
+serie e imagen. 
+La consulta a nivel de paciente se utiliza para
+consultar a un PACS sobre pacientes. Tiene un número reducido de
+atributos permisibles que se pueden utilizar en la consulta, tales
+como el nombre del paciente, el sexo y la fecha de nacimiento. La
+consulta a nivel de estudio se utiliza para consultar a un PACS sobre
+los estudios de un paciente determinado. La
+consulta a nivel de estudio debe incluir el atributo de ID de paciente y cero o más atributos opcionales para refinar
+la búsqueda, como por ejemplo la fecha del estudio. La consulta a
+nivel de serie se utiliza para consultar a un PACS sobre las series de
+un estudio específico. La
+consulta a nivel de serie debe incluir el ID de usuario del estudio y
+cero o varios atributos opcionales para refinar la búsqueda, como por ejemplo la modalidad. Finalmente, la consulta a nivel de imagen se utiliza para realizar
+consultas
+sobre imágenes específicas de una serie. Se utiliza poco. Una
+consulta a nivel de imagen debe incluir el ID de usuario de la serie.
+</p>
+<p>
+La
+raíz de estudio es similar a la raíz de paciente y esta similitud
+a menudo provoca confusiones. No hay consulta a nivel de paciente
+en la raíz de estudio. El primer nivel admitido es la consulta a
+nivel de estudio. Esta consulta tiene un mayor conjunto de
+atributos
+permitidos que se pueden utilizar. Los atributos admitidos incluyen la
+fecha del estudio, la hora del estudio y también atributos de
+paciente tales como el nombre del paciente, el ID de
+paciente y el sexo del paciente. Por lo tanto, esta consulta a nivel
+de estudio se
+puede considerar una fusión de las consultas a nivel de estudio
+y de paciente de la raíz de paciente. La consulta a nivel de estudio
+resulta muy útil porque se pueden consultar de una sola vez todos los
+estudios de un paciente dados unos criterios de búsqueda básicos como
+nombre del paciente y fecha del estudio. 
+Las consultas a nivel
+de serie y a nivel de imagen son idénticas en la raíz de estudio y en
+la raíz de paciente.
+</p>
+<p>
+El nodo DICOMFindMove admite las dos raíces y los siete niveles
+de consulta descritos arriba (cuatro en la raíz de paciente y tres en
+la raíz de estudio). Para cada combinación de raíz y nivel, el nodo
+define los atributos de búsqueda admitidos y un conjunto de
+atributos mínimo que devuelve el PACS. Tenga en cuenta que una
+consulta puede devolver muchos mensajes de resultados; éstos se
+propagan como un solo mensaje desde el nodo DICOMFindMove y, por lo
+tanto, se devuelven como un solo mensaje XML en la respuesta SOAP.
+</p>
+<p>
+Los proveedores puede admitir atributos adicionales que se pueden
+utilizar como criterios de búsqueda en el mensaje de consulta XML, o
+devolverse en los mensajes de resultados. El nodo permite
+configurarlos en el mensaje de consulta XML, pero no están
+documentados en el patrón Servicio sanitario: Servicio web a DICOM
+porque son específicos de cada proveedor. DICOM requiere que
+los atributos de búsqueda que se proporcionen en los criterios de
+búsqueda también se devuelvan en las respuestas.
+</p>
+<h5>Servicios web generados</h5>
+<p>
+La instancia de patrón genera flujos de mensajes que implementan un
+servicio web. La instancia de patrón también genera un archivo
+WSDL que representa la interfaz de servicio web entre una aplicación
+solicitante e IBM Integration Bus.
+</p>
+<p>
+El archivo WSDL generado por la instancia de patrón configura el nodo
+SOAPInput en los flujos de mensajes generados. Los archivos WSDL
+también pueden ser utilizados por las aplicaciones solicitantes para
+asegurar que las solicitudes SOAP se envían y se reciban en el formato
+correcto.
+</p>
+<p>
+El archivo WSDL es una descripción de servicios web compatible con
+WS-I. El archivo WSDL contiene una definición de tipo de puerto WSDL
+y una sola operación para enviar solicitudes C-FIND y C-MOVE. La
+operación tiene un mensaje de entrada y un mensaje de salida. 
+El
+mensaje de solicitud es muy flexible porque admite los siete
+tipos diferentes de mensaje de consulta para las dos raíces de
+consulta. La instancia de patrón también genera un archivo de esquema
+XML. El esquema XML representa los tipos de datos para los mensajes
+de solicitud y de respuesta. El archivo de esquema se incluye en el
+archivo WSDL mediante una sentencia <code>include</code> estándar de
+WSDL.
+</p>
+<h5>Despliegue de servicios web</h5>
+<p>
+El WSDL y el esquema deben desplegarse en IBM Integration Bus
+junto con los flujos de mensajes generados. A partir de WebSphere
+Message Broker Versión 8.0, no es necesario importar el
+archivo WSDL y el archivo de esquema XML a un conjunto de mensajes
+antes de desplegarlos en un nodo de integración. IBM Integration
+Toolkit empaqueta automáticamente el WSDL y el esquema en un archivo BAR.
+</p>
+<div>
+    <div class="familylinks">
+        <a name="anchor"></a>
+        <div class="section">
+            <h2 class="sectiontitle">Tareas relacionadas</h2>
+        </div>
+        <p>
+        Consulte la sección siguiente para obtener información sobre
+cómo aplicar y utilizar este patrón.
+        </p>
+    </div>
+    <div>
+        <a href="constraints.htm" title="Restricciones en el uso del patrón.">Restricciones en el uso del patrón</a>
+    </div>
+    <div>
+        <a href="before.htm" title="Detalles sobre lo que necesita saber y los recursos que debe tener antes de poder utilizar el patrón.">Tareas que deben completarse antes de aplicar el patrón</a>
+    </div>
+    <div>
+        <a href="parameters.htm" title="Parámetros para el patrón">Parámetros para el patrón</a>
+    </div>
+    <div>
+        <a href="examples.htm" title="">Mensajes de ejemplo para solicitudes C-FIND y C-MOVE</a>
+    </div>
+    <div>
+        <a href="after.htm" title="">Tareas que se deben completar después de generar el patrón</a>
+    </div>
+    <p>
+    </p>
+</div>
+</body>
+</html>

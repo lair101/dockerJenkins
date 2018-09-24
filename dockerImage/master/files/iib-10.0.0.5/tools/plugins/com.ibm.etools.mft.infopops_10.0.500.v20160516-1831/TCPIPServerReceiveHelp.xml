@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<contexts>
+	<context id="ComIbmTCPIPServerReceive">
+		<description><b>TCPIPServerReceive node</b>
+Use the TCPIPServerReceive node to receive data over a server TCP/IP connection.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm" label="TCPIPServerReceive node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac00330_.htm" label="Deciding which nodes to use"/>			
+    </context>
+        	
+  	<context id="ComIbmTCPIPServerReceive_properties">
+		<description><b>Properties navigator</b>
+This displays the node properties. Configure the node by selecting the properties and setting their values. Mandatory properties are marked with an asterisk.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm" label="TCPIPServerReceive node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm#ac67350_cfg" label="TCPIPServerReceive node - Configuring the TCPIPServerReceive node"/>		
+    </context>
+        	
+  	<context id="ComIbmTCPIPServerReceive_description">
+		<description><b>Description page</b>
+If you want to describe the purpose of the node in the message flow, use these fields to enter a short description, a long description, or both</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm" label="TCPIPServerReceive node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm#ac67350_cfg" label="TCPIPServerReceive node - Configuring the TCPIPServerReceive node"/>
+    </context>
+        	
+  	<context id="ComIbmTCPIPServerReceive_basic">
+		<description><b>Basic page</b>
+Enter the host name, port number and timeout information for the TCPIPServerReceive node.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm" label="TCPIPServerReceive node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm#ac67350_cfg" label="TCPIPServerReceive node - Configuring the TCPIPServerReceive node"/>
+    </context>
+      	  
+  	<context id="ComIbmTCPIPServerReceive_advanced">
+		<description><b>Advanced page</b>
+Enter advanced configuration information for the TCPIPServerReceive node: for example, whether the TCP/IP connection is closed after a record is received.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm" label="TCPIPServerReceive node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm#ac67350_cfg" label="TCPIPServerReceive node - Configuring the TCPIPServerReceive node"/>
+    </context>
+    
+  	<context id="ComIbmTCPIPServerReceive_request">
+		<description><b>Request page</b>
+Enter the location in the message tree of the request data, host name and port number for the TCPIPServerReceive node.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm" label="TCPIPServerReceive node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm#ac67350_cfg" label="TCPIPServerReceive node - Configuring the TCPIPServerReceive node"/>
+    </context>
+    
+  	<context id="ComIbmTCPIPServerReceive_result">
+		<description><b>Result page</b>
+Enter the location in the message tree where the result data is placed by the TCPIPServerReceive node.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm" label="TCPIPServerReceive node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm#ac67350_cfg" label="TCPIPServerReceive node - Configuring the TCPIPServerReceive node"/>
+    </context>
+    
+    <context id="ComIbmTCPIPServerReceive_inboundMessageParsing">
+		<description><b>Input Message Parsing page</b>
+Set values for the properties that the node uses to determine how to parse the incoming message.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm" label="TCPIPServerReceive node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm#ac67350_cfg" label="TCPIPServerReceive node - Configuring the TCPIPServerReceive node"/>
+    </context>
+        	
+    <context id="ComIbmTCPIPServerReceive_parserOptions">
+		<description><b>Parsing Options page</b>
+Edit the timing properties on this page to control when and how messages are parsed and validated. Select one of the XMLNSC options.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm" label="TCPIPServerReceive node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm#ac67350_cfg" label="TCPIPServerReceive node - Configuring the TCPIPServerReceive node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac21000_.htm" label="Specifying opaque elements for the XMLNSC parser"/>
+    </context>
+        
+    <context id="ComIbmTCPIPServerReceive_recordsAndElements">
+		<description><b>Records and Elements page</b>
+Specify how and to what extent you want your TCPIP records and elements to be processed.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm" label="TCPIPServerReceive node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm#ac67350_cfg" label="TCPIPServerReceive node - Configuring the TCPIPServerReceive node"/>
+    </context>
+        	
+    <context id="ComIbmTCPIPServerReceive_validation">
+		<description><b>Validation page</b>
+Set these properties if you want the MRM parser to validate the body of messages using the dictionary generated from the message set, and choose the failure action to be taken.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm" label="TCPIPServerReceive node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67350_.htm#ac67350_cfg" label="TCPIPServerReceive node - Configuring the TCPIPServerReceive node"/>
+    </context>
+</contexts>

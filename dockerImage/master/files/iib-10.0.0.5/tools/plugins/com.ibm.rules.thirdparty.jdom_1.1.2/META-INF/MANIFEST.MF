@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: jdom-1.1.2.jar
+Bundle-Vendor: IBM
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: JDOM (repackaged for IBM WODM)
+Bundle-SymbolicName: com.ibm.rules.thirdparty.jdom
+Export-Package: org.jdom;uses:="org.jdom.filter",org.jdom.adapters;use
+ s:="org.w3c.dom,org.jdom",org.jdom.filter;uses:="org.jdom",org.jdom.i
+ nput; uses:="org.xml.sax.helpers,  org.w3c.dom,  org.jdom,  org.xml.s
+ ax,  org.xml.sax.ext",org.jdom.output; uses:="org.xml.sax.helpers,  o
+ rg.w3c.dom,  org.jdom,  org.xml.sax,  org.xml.sax.ext",org.jdom.trans
+ form; uses:="org.jdom,  javax.xml.transform.sax,  org.xml.sax,  org.x
+ ml.sax.ext",org.jdom.xpath;uses:="org.jdom"
+Bundle-Version: 1.1.2
+Import-Package: javax.xml.transform.sax,org.w3c.dom,org.xml.sax,org.xm
+ l.sax.ext,org.xml.sax.helpers
+Bundle-ManifestVersion: 2
+
+

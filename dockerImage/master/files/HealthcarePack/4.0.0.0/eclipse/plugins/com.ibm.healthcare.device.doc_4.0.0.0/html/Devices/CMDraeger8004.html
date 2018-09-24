@@ -1,0 +1,399 @@
+<html>  
+<head> 
+<title>CMDraeger8004 Driver Help</title>
+<!--CMDraeger8004 Driver  - Copyright Cain Medical Ltd 2012 - www.cainmedcial.com-->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+tr.head1 {
+	background-color: #CCCCCC;
+}
+tr.head2 {
+	background-color: #EEEEEE;
+}
+td.head2 {
+	background-color: #EEEEEE;
+}
+h3 {
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../css/general.css"/>
+</head>
+
+<body>
+<h1>CMDraeger 8004 </h1>
+<p><strong>Supported devices:</strong> Draeger Babytherm 8004, Babytherm 8010<br>
+  Release 1.10.0.0<br>
+  Document reference: 1a</p>
+<p>Known issues:</p>
+<ul>
+  <li>None</li>
+  </ul>
+  <h1>Computer Connection</h1>
+  
+<!-- <p><img src="Pic-Front.JPG" > 
+ ## <img src="Pic-Rear.JPG" width="401" height="142"> </p> -->
+
+<p>The driver supports the RS232 connection.</p>
+<p>Please read the following description carefully and ensure the cable in use matches the monitor. </p>
+  <p>Computer connection location: rear side of Babytherm 8004/8010 Label: Baby Link  </p>
+  
+<p>The cable is a straight-through cable and should be wired as follows: </p>
+  <tr>
+    <p>Type RSR232-C with 9 pin Sub D (female) connectors</p>
+    <td> </td>
+  </tr>
+  <tr>
+  <table border="0">
+  <tr> 
+    <td class="head2">Housing</td>
+    <td>1</td>
+  </tr>
+  <tr> 
+    <td class="head2">RxD</td>
+    <td>2</td>
+  </tr>  
+  <tr> 
+    <td class="head2">TxD</td>
+    <td>3</td>
+  </tr>
+  <tr> 
+    <td class="head2">GND</td>
+    <td>5</td>
+  </tr>
+  <tr> 
+    <td class="head2">Cable</td>
+    <td>1.5kV galvanic isolation</td>
+  </tr>
+</tr>
+    </table>
+  <p>Using the "Medi-Cable" 83 06 488 is recommended. </p>
+
+<h2>Supported communication parameters: </h2>
+
+<table border="0">
+  <tr> 
+    <td class="head2">Baud rate</td>
+    <td>9600</td>
+  </tr>
+  <tr> 
+    <td class="head2">Parity</td>
+    <td>N</td>
+  </tr>
+  <tr> 
+    <td class="head2">Data bits</td>
+    <td>8</td>
+  </tr>
+  <tr> 
+    <td class="head2">Stop bits</td>
+    <td>1</td>
+  </tr>
+</table>
+<h1>Supported Data Parameters </h1>
+
+<!-- Inset Parameter HTML Code -->
+  
+<table >
+  <tr class="head1"> 
+    <td colspan="2">ID</td>
+    <td>Sources</td>
+    <td>Acronym</td>
+    <td>Common Term</td>
+    <td>Description</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Primary</td>
+    <td>112::211-244:261</td>
+    <td rowspan='2'></td>
+    <td>VT</td>
+    <td>Respiration Tidal Volume</td>
+    <td>Volume of gas during each breath</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:::823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Device Setting</td>
+    <td>Device Setting</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>112::211-244:261</td>
+    <td>VT</td>
+    <td>Respiration Tidal Volume</td>
+    <td>Volume of gas during each breath</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>84:609:197:261</td>
+    <td></td>
+    <td>Respir. Minute Volume</td>
+    <td>Total volume of gas breathed in one minute during spontaneous respiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>84:609:197:261</td>
+    <td></td>
+    <td>Respir. Minute Volume</td>
+    <td>Total volume of gas breathed in one minute during spontaneous respiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:::823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Device Setting</td>
+    <td>Device Setting</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>112::250:271</td>
+    <td></td>
+    <td>Ventilator Trigger Sensitivity</td>
+    <td>Sensitivity of trigger in ventilator, a volume value</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:::823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Device Setting</td>
+    <td>Device Setting</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:133-679:197:259</td>
+    <td>PIP</td>
+    <td>Maximum Inspiratory Airway Pressure (Peak inspiratory pressure)</td>
+    <td>Maximum pressure of gas in airway during inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:133-679:197:259</td>
+    <td rowspan='2'></td>
+    <td>PIP</td>
+    <td>Maximum Inspiratory Airway Pressure (Peak inspiratory pressure)</td>
+    <td>Maximum pressure of gas in airway during inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:::823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Device Setting</td>
+    <td>Device Setting</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>81::167:261</td>
+    <td>A</td>
+    <td>Apnea Duration</td>
+    <td>Duration of apnea - no flow measured</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:::823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Device Setting</td>
+    <td>Device Setting</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:336-674:197:271</td>
+    <td>PEEP</td>
+    <td>Positive end expiratory pressure, applied</td>
+    <td>Positive End Expiratory Pressure applied to the airway during mechanical ventilation</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:::823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Device Setting</td>
+    <td>Device Setting</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>102:1066-1067:197:261</td>
+    <td>I:E</td>
+    <td>Inspiratory Expiratory ratio</td>
+    <td>Ratio between Inspiratory Expiratory flow</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:::823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Device Setting</td>
+    <td>Device Setting</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>85:365-592:197:271</td>
+    <td>IMV</td>
+    <td>Intermittent Mandatory Ventilation</td>
+    <td>Intermittent Mandatory Ventilation (Frequency)</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>1076:862-925-980:1053:1063</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Inoperable flow measurement</td>
+    <td>The flow measurement in a ventilator is inoperable</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:::823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Device Setting</td>
+    <td>Device Setting</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-219:259</td>
+    <td>%O2 ins</td>
+    <td>Concentration Airway O2 Inspiratory</td>
+    <td>Concentration of O2 in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:826:846:859</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Sensor inoperable</td>
+    <td>Warning, sensor inoperable</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-219:259</td>
+    <td>%O2 ins</td>
+    <td>Concentration Airway O2 Inspiratory</td>
+    <td>Concentration of O2 in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:197-219:259</td>
+    <td rowspan='2'></td>
+    <td>%O2 ins</td>
+    <td>Concentration Airway O2 Inspiratory</td>
+    <td>Concentration of O2 in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>101:455:173:261</td>
+    <td rowspan='2'></td>
+    <td>RR (interval)</td>
+    <td>Respiration Rate</td>
+    <td>Rate of breathing, method not specified</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>84:609:197:271</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Ventilation Minute Volume</td>
+    <td>Total volume of gas delivered by ventilator during mechanical ventilation</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:336-674:197:271</td>
+    <td rowspan='2'></td>
+    <td>PEEP</td>
+    <td>Positive end expiratory pressure, applied</td>
+    <td>Positive End Expiratory Pressure applied to the airway during mechanical ventilation</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:137:173-197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Mean breathing pressure</td>
+    <td>Mean breathing pressure</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr></table>
+  
+<!-- End Parameter HTML Code -->
+  
+
+</body>
+</html>

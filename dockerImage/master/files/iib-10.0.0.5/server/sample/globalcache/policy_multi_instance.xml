@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+	Sample global cache policy for connecting the caches of three brokers together
+	in a high-availability scenario. The catalog servers are hosted in a pair of brokers
+	(CATBRK1 and CATBRK2), whilst container servers are hosted in a	multi-instance broker
+	(MIBRK). Multi-instance brokers cannot currently host catalog servers.
+	Customize this policy file for your installation.
+
+-->
+<cachePolicy xmlns="http://www.ibm.com/xmlns/prod/websphere/messagebroker/globalcache/policy-1.0">
+
+	<!--
+		The broker "CATBRK1" runs on "host1.ibm.com".
+	-->
+	<broker name="CATBRK1" listenerHost="host1.ibm.com">
+	
+		<!--
+			This broker hosts one catalog server.
+		-->
+		<catalogs>1</catalogs>
+		
+		<!--
+			This broker uses ports between 3000-3019.
+		-->		
+		<portRange>
+			<startPort>3000</startPort>
+			<endPort>3019</endPort>
+		</portRange>
+		
+	</broker>
+
+	<!--
+		The broker "CATBRK2" runs on "host2.ibm.com".
+	-->
+	<broker name="CATBRK2" listenerHost="host2.ibm.com">
+	
+		<!--
+			This broker hosts one catalog server.
+		-->
+		<catalogs>1</catalogs>
+			
+		<!--
+			This broker uses ports between 3000-3019.
+		-->	
+		<portRange>
+			<startPort>3000</startPort>
+			<endPort>3019</endPort>
+		</portRange>
+		
+	</broker>
+
+	<!--
+		The multi-instance broker "MIBRK" runs on "host1.ibm.com" and "host2.ibm.com".
+	-->
+	<broker name="MIBRK">
+
+		<!--
+			This broker runs on "host1.ibm.com" and "host2.ibm.com".
+		-->
+		<listenerHost>host1.ibm.com</listenerHost>
+		<listenerHost>host2.ibm.com</listenerHost>
+
+		<!--
+			This broker hosts no catalog servers.
+		-->
+		<catalogs>0</catalogs>
+			
+		<!--
+			This broker uses ports between 3020-3039.
+		-->	
+		<portRange>
+			<startPort>3020</startPort>
+			<endPort>3039</endPort>
+		</portRange>
+		
+	</broker>
+
+</cachePolicy>

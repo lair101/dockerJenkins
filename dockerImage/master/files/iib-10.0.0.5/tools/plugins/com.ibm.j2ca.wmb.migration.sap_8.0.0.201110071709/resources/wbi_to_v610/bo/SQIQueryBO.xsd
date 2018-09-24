@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/SQIquerybo" xmlns:sapasi="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/metadata"
+xmlns:sapbusinessobjectmetadata="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/metadata">
+<import namespace="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/metadata" schemaLocation="../CWYAP_SAPAdapter_Tx/connectorModule/SapBusinessObjectMetadata.xsd"/>
+
+<annotation xml:space="preserve">
+<appinfo source="http://www.ibm.com/xmlns/prod/j2ca/versionCompatability">
+<info:resourceAdapter xmlns:info="http://www.ibm.com/xmlns/prod/j2ca/versionCompatability" version="6.2.0.0"/>
+</appinfo>
+</annotation>
+
+<annotation xml:space="preserve">
+<appinfo source="commonj.connector.asi">
+<asi:annotationSet xmlns:asi="commonj.connector.asi" asiNSURI="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/metadata"/>
+</appinfo>
+</annotation>
+<complexType name="SQIQuerybo">
+<annotation xml:space="preserve">
+<appinfo source="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/metadata">
+<sapasi:sapSQIBusinessObjectTypeMetadata xmlns:sapasi="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/metadata">
+</sapasi:sapSQIBusinessObjectTypeMetadata>	
+</appinfo>
+</annotation>
+<sequence minOccurs="1" maxOccurs="1">
+<element name="sapWhereClause" type="string" nillable="true" minOccurs="0" maxOccurs="1" default="">
+<annotation xml:space="preserve">
+<appinfo source="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/metadata">
+<sapasi:sapSQIPropertyTypeMetadata xmlns:sapasi="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/metadata">
+<sapasi:ColumnName>sapWhereClause</sapasi:ColumnName>
+<sapasi:PrimaryKey>false</sapasi:PrimaryKey>
+<sapasi:ForeignKey></sapasi:ForeignKey>
+<sapasi:MaxLength>0</sapasi:MaxLength>
+</sapasi:sapSQIPropertyTypeMetadata>
+</appinfo>
+</annotation>
+</element>
+<element name="sapRowsSkip" type="integer" nillable="true" minOccurs="0" maxOccurs="1" default="0">
+<annotation xml:space="preserve">
+<appinfo source="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/metadata">
+<sapasi:sapSQIPropertyTypeMetadata xmlns:sapasi="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/metadata">
+<sapasi:ColumnName>sapRowsSkip</sapasi:ColumnName>
+<sapasi:PrimaryKey>false</sapasi:PrimaryKey>
+<sapasi:ForeignKey></sapasi:ForeignKey>
+<sapasi:MaxLength>0</sapasi:MaxLength>
+</sapasi:sapSQIPropertyTypeMetadata>
+</appinfo>
+</annotation>
+</element>
+<element name="sapMaxRows" type="integer" nillable="true" minOccurs="0" maxOccurs="1" default="100">
+<annotation xml:space="preserve">
+<appinfo source="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/metadata">
+<sapasi:sapSQIPropertyTypeMetadata xmlns:sapasi="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/metadata">
+<sapasi:ColumnName>sapMaxRows</sapasi:ColumnName>
+<sapasi:PrimaryKey>false</sapasi:PrimaryKey>
+<sapasi:ForeignKey></sapasi:ForeignKey>
+<sapasi:MaxLength>0</sapasi:MaxLength>
+</sapasi:sapSQIPropertyTypeMetadata>
+</appinfo>
+</annotation>
+</element>
+</sequence>
+</complexType>
+</schema>

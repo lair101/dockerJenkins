@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.emf.commonj.sdo;bundle-version="[2.1.0,3.0
+ .0)";visibility:=reexport,org.eclipse.core.runtime;bundle-version="[3
+ .2.0,4.0.0)",org.eclipse.core.resources;bundle-version="[3.2.0,4.0.0)
+ "
+Export-Package: commonj.connector.metadata,commonj.connector.metadata.
+ build,commonj.connector.metadata.build.tool,commonj.connector.metadat
+ a.description,commonj.connector.metadata.discovery,commonj.connector.
+ metadata.discovery.connection,commonj.connector.metadata.discovery.mu
+ table,commonj.connector.metadata.discovery.properties,commonj.connect
+ or.metadata.discovery.properties.extensions,commonj.connector.runtime
+ ,commonj.connector.tool,javax.resource,javax.resource.cci,javax.resou
+ rce.spi,javax.resource.spi.endpoint,javax.resource.spi.security,javax
+ .resource.spi.work
+Bundle-Vendor: %providerName
+Bundle-ClassPath: runtime/commonj.connector.jar,runtime/j2ee.jar
+Bundle-Version: 1.4.0.v20130926_1959
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ibm.ccl.commonj.connector.metadata; singleton
+ :=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+
+

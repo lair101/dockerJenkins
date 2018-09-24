@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="JMSTransport_type">
+	 <xsd:sequence>
+	  <xsd:element name="Transport_Folders">
+	   <xsd:complexType>
+		<xsd:sequence  maxOccurs="1" minOccurs="1">
+			<xsd:element name="Message_MetaData">
+				<xsd:complexType>
+					<xsd:sequence maxOccurs="1" minOccurs="1">
+						<xsd:element name="PayloadType" type="xsd:string" />
+						<xsd:element name="MessagePersistence" type="xsd:string" /> 
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Header_Values">
+				<xsd:complexType>
+					<xsd:all maxOccurs="1" minOccurs="1">
+						<xsd:element name="JMSDestination" type="xsd:string" />
+						<xsd:element name="JMSDeliveryMode" type="xsd:int" />
+						<xsd:element name="JMSExpiration" type="xsd:float" />
+						<xsd:element name="JMSPriority" type="xsd:int" />
+						<xsd:element name="JMSTimestamp" type="xsd:float" />
+						<xsd:element name="JMSMessageID" type="xsd:string" />
+						<xsd:element name="JMSCorrelationID" type="xsd:string" />
+						<xsd:element name="JMSReplyTo" type="xsd:string" />
+						<xsd:element name="JMSType" type="xsd:string" />
+						<xsd:element name="JMSRedelivered" type="xsd:boolean" />
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Application_Properties">
+				<xsd:complexType>
+					<xsd:sequence maxOccurs="1" minOccurs="1">
+						<xsd:any maxOccurs="unbounded" minOccurs="0" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Provider_Properties">
+				<xsd:complexType>
+					<xsd:group ref="JMS_IBM_Properties_group" maxOccurs="1" minOccurs="0" />
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Standard_Properties">
+				<xsd:complexType>
+					<xsd:all maxOccurs="1" minOccurs="1">
+						<xsd:element name="JMSXUserID" type="xsd:string" />
+						<xsd:element name="JMSXAppID" type="xsd:string" />
+						<xsd:element name="JMSXDeliveryCount" type="xsd:int" />
+						<xsd:element name="JMSXGroupID" type="xsd:string" />
+						<xsd:element name="JMSXGroupSeq" type="xsd:int" />
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	   </xsd:complexType>
+	  </xsd:element>
+	 </xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="JMSTransport" type="JMSTransport_type">
+		<xsd:annotation>
+			<xsd:appinfo source="WMQI_APPINFO">
+				<MRMessage
+					messageDefinition="/0/JMSTransport;XSDElementDeclaration$MRObject" />
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:group name="JMS_IBM_Properties_group">
+		<xsd:all>
+			<xsd:annotation>
+				<xsd:appinfo source="WMQI_APPINFO">
+					<MRComplexType composition="unorderedSet" />
+				</xsd:appinfo>
+			</xsd:annotation>
+			<xsd:element minOccurs="0" name="JMS_IBM_Report_Exception" type="xsd:int" />
+			<xsd:element minOccurs="0" name="JMS_IBM_Report_Expiration" type="xsd:int" />
+			<xsd:element minOccurs="0" name="JMS_IBM_Report_COA" type="xsd:int" />
+			<xsd:element minOccurs="0" name="JMS_IBM_Report_COD" type="xsd:int" />
+			<xsd:element minOccurs="0" name="JMS_IBM_Report_PAN" type="xsd:int" />
+			<xsd:element minOccurs="0" name="JMS_IBM_Report_NAN" type="xsd:int" />
+			<xsd:element minOccurs="0" name="JMS_IBM_Report_Pass_Msg_ID" type="xsd:int" />
+			<xsd:element minOccurs="0" name="JMS_IBM_Report_Pass_Correl_ID" type="xsd:int" />
+			<xsd:element minOccurs="0" name="JMS_IBM_Report_Discard_Msg" type="xsd:int" />
+			<xsd:element minOccurs="0" name="JMS_IBM_MsgType" type="xsd:int" />
+			<xsd:element minOccurs="0" name="JMS_IBM_Feedback" type="xsd:int" />
+			<xsd:element minOccurs="0" name="JMS_IBM_Format" type="xsd:string" />
+			<xsd:element minOccurs="0" name="JMS_IBM_PutApplType" type="xsd:int" />
+			<xsd:element minOccurs="0" name="JMS_IBM_Encoding" type="xsd:int" />
+			<xsd:element minOccurs="0" name="JMS_IBM_Character_Set" type="xsd:string" />
+			<xsd:element minOccurs="0" name="JMS_IBM_PutDate" type="xsd:string" />
+			<xsd:element minOccurs="0" name="JMS_IBM_PutTime" type="xsd:string" />
+			<xsd:element minOccurs="0" name="JMS_IBM_Last_Msg_In_Group"
+				type="xsd:boolean" />
+		</xsd:all>
+	</xsd:group>
+</xsd:schema>

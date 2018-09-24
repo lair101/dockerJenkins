@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension point="org.eclipse.datatools.connectivity.ui.driverUIContributor">
+      <driverUIContributor
+            class="com.ibm.datatools.db2.zseries.internal.ui.connection.dialogs.DB2ZSeriesWinLDAPDriverUIContributor"
+            driverTemplateID="com.ibm.datatools.db2.zseries.ldapDriverTemplate"
+            id="com.ibm.datatools.db2.zseries.internal.ui.connection.dialogs.DB2ZSeriesWinLDAPDriverUIContributor">
+      </driverUIContributor>
+   </extension>
+
+   <extension point="org.eclipse.datatools.connectivity.ui.driverUIContributor">
+      <driverUIContributor
+            class="com.ibm.datatools.db2.zseries.internal.ui.connection.dialogs.DB2ZSeriesWinLDAPDriverUIContributor"
+            driverTemplateID="com.ibm.datatools.db2.zseries.jdbc4.ldapDriverTemplate"
+            id="com.ibm.datatools.db2.zseries.internal.ui.connection.dialogs.jdbc4.DB2ZSeriesWinLDAPDriverUIContributor">
+      </driverUIContributor>
+   </extension>
+
+   <extension
+         point="org.eclipse.datatools.connectivity.ui.driverPropertyEditor">
+      <propertyEditor
+            customPropertyDescriptor="org.eclipse.datatools.connectivity.ui.PasswordTextPropertyDescriptor"
+            driverPropertyID="org.eclipse.datatools.connectivity.db.password"
+            driverTemplateID="com.ibm.datatools.db2.zseries.ldapDriverTemplate"
+            id="com.ibm.datatools.db2.zseries.ldap.propertyEditor.password">
+      </propertyEditor>
+  </extension> 	
+  
+   <extension
+         point="org.eclipse.datatools.connectivity.ui.driverPropertyEditor">
+      <propertyEditor
+            customPropertyDescriptor="org.eclipse.datatools.connectivity.ui.PasswordTextPropertyDescriptor"
+            driverPropertyID="org.eclipse.datatools.connectivity.db.password"
+            driverTemplateID="com.ibm.datatools.db2.zseries.jdbc4.ldapDriverTemplate"
+            id="com.ibm.datatools.db2.zseries.ldap.jdbc4.propertyEditor.password">
+      </propertyEditor>
+  </extension> 	
+</plugin>

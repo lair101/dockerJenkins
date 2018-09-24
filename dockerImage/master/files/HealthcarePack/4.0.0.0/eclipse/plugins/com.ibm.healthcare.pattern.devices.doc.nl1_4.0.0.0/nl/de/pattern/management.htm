@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+        (C) COPYRIGHT International Business Machines Corporation., 2011, 2014
+        All Rights Reserved * Licensed Materials - Property of IBM
+    --> <title>Muster 'Healthcare: Medizinische Geräte an EKA' verwalten</title>
+</head>
+<body role="main">
+<a name="links"></a> <h1 class="topictitle1">Muster 'Healthcare: Medizinische Geräte an EKA' verwalten</h1>
+<p>
+Bei dem Muster wird von einer einfachen Topologie ausgegangen, in der alle Nachrichtenflüsse in einem einzigen Integrationsknoten ausgeführt werden. Dieses Thema enthält Informationen zur Implementierung und Verwaltung einer Musterinstanz, die diese einfache Topologie verwendet. Außerdem erfahren Sie, wie Sie die Musterinstanz verwalten können.
+</p>
+<p>
+Dieses Thema enthält folgende Abschnitte:
+</p>
+<div>
+    <a href="management.htm#setup">Einrichtung</a>
+</div>
+<div>
+    <a href="management.htm#deployment">Musterimplementierung</a>
+</div>
+<div>
+    <a href="management.htm#errors">Überwachung und Fehlerbehandlung</a>
+</div>
+<div class="section">
+    <a name="setup"></a> <h2 class="sectiontitle">Einrichtung</h2> <h4>Warteschlangen</h4>
+    <p>
+    Sie können ein MQSC-Script zum Definieren der Warteschlangen generieren, die für das Muster erforderlich sind, indem Sie das Kontrollkästchen
+    <span class="msobjpropval">
+    Generieren von Scripts
+    </span>
+    im Abschnitt
+    <span class="uicontrol">
+    Allgemein
+    </span>
+    der Registerkarte
+    <span class="uicontrol">
+    Musterparameter konfigurieren
+    </span>
+    auswählen, bevor Sie die Musterinstanz generieren. Dieses Script mit der Bezeichnung <tt>queues.mqsc</tt> befindet sich im Stammverzeichnis des Musterinstanzprojekts; es definiert grundlegende Warteschlangen und Themen.
+</p>
+    <p>
+    Sie können das MQSC-Script mit dem folgenden Befehl ausführen; dabei ist <var>MBQMGR</var> der Name des Warteschlangenmanagers für Ihren Integrationsknoten:
+    </p>
+    <pre>runmqsc <var>MBQMGR</var> &lt; queues.mqsc</pre>
+    <p>
+    Sie können dieses MQSC-Script bearbeiten, um Beschreibungen für Ihre Umgebung hinzuzufügen und geeignete Warteschlangenlängen festzulegen. Es wird erwartet, dass andere Warteschlangen überwacht werden und deren Inhalt in regelmäßigen Abständen gelöscht wird. Da diese Warteschlangen mit einer Standardgröße erstellt werden, müssen Sie deren Verwendung überprüfen und sicherstellen, dass ihre Länge ausreicht.
+</p>
+    <p>
+    Sie müssen das MQSC-Script vor der Implementierung der Musterinstanz ausführen.
+</p>
+</div>
+<div class="section">
+    <a name="deployment"></a> <h2 class="sectiontitle">Musterimplementierung </h2>
+    <p>
+    Erstellen Sie an der Position, an der Sie diese Ressourcen speichern möchten, eine BAR-Datei:
+</p>
+    <p>
+    Die HL7v25P-Nachrichtengruppe muss in einer eigenen BAR-Datei gepackt werden:
+    </p>
+    <ol>
+        <li>
+            Wählen Sie die HL7v25P-Nachrichtengruppe aus und erstellen Sie die BAR-Datei.
+</li>
+        <li>
+            Implementieren Sie die BAR-Datei auf allen Integrationsservern, auf denen das Muster oder Teile des Musters ausgeführt werden sollen.
+</li>
+        <li>
+            Vergewissern Sie sich nach der Implementierung der HL7v25P-Nachrichtengruppe, dass alle erforderlichen Warteschlangen definiert und die Dateien eventueller konfigurierbarer Services implementiert sind.
+</li>
+        <li>
+            Erstellen Sie mindestens eine BAR-Datei mit den Nachrichtenflüssen, die auf einem bestimmten Integrationsserver ausgeführt werden sollen. Im einfachsten Fall, bei dem alles in einer einzelnen Laufzeitumgebung ausgeführt wird, müssen Sie die Receiver-
+und Processor-Nachrichtenflüsse einschließen.
+</li>
+    </ol>
+    <p>
+    </p>
+</div>
+<div class="section">
+    <a name="errors"></a> <h2 class="sectiontitle">Überwachung und Fehlerbehandlung</h2>
+    <p>
+    Bei allen Nachrichtenflüssen im Muster werden Fehlerbenachrichtigungen in eine Fehlerwarteschlange geschrieben. Darüber hinaus wird ein Warteschlangentrace an der Position ausgegeben, die Sie während der Generierung des Musters definiert haben. Der MQRFH2-Header der Fehlernachricht enthält Informationen, die angeben, wo der Fehler aufgetreten ist. In diesem Abschnitt finden Sie Details zum Verhalten der einzelnen Nachrichtenflüsse.
+</p>
+    <h3>Fehler im Nachrichtenfluss 'Medical Devices'</h3>
+    <p>
+    Der Nachrichtenfluss 'Medical Devices' wird als Transaktion ausgeführt und sämtliche Ausgabenachrichten werden beim erfolgreichen Abschluss des Nachrichtenflusses festgeschrieben.
+</p>
+    <p>
+    Falls ein Fehler auftritt, geschieht Folgendes:
+    </p>
+    <ul>
+        <li>
+            Der Fehler wird abgefangen und vom untergeordneten Nachrichtenfluss 'MedicalDevicesExceptionHandler' verarbeitet. 
+            Dieser untergeordnete Nachrichtenfluss fügt der Nachricht MQMD- und MQRFH2-Header hinzu und schreibt die Nachricht außerhalb der Transaktion in die Fehlerwarteschlange. Der MQRFH2-Header enthält Details darüber, wo der Fehler auftrat. Der Hauptteil der Fehlernachricht enthält die Gerätemessung.
+</li>
+        <li>
+            Eine Ausnahmebedingung wird ausgelöst, die für alle Nachrichten einen Rollback durchführt. Der Rollback löst außerdem die Ausgabe der Ausnahmebedingungsinformationen im Ereignisprotokoll aus.
+</li>
+        <li>
+            Die Gerätemessung wird gelöscht, wenn die Ausnahmebedingung einen Rollback auf den MedicalDeviceInput-Knoten durchführt.
+</li>
+    </ul>
+    <p>
+    Der Administrator muss die Fehlerwarteschlange und das Ereignisprotokoll überwachen, um festzustellen, wann Nachrichten nicht von der Musterinstanz verarbeitet werden können. Auf diese Weise kann er erforderliche Korrekturmaßnahmen ergreifen, um den Fehler zu beheben.
+</p>
+    <h3>Fehler im Nachrichtenfluss 'Transform and Route'</h3>
+    <p>
+    Der Nachrichtenfluss 'Transform and Route' wird als einzelne Transaktion ausgeführt. Sobald der Nachrichtenfluss erfolgreich abgeschlossen wurde, werden sämtliche Ausgabenachrichten an folgenden Positionen festgeschrieben:
+    </p>
+    <ul>
+        <li>
+            in der Eingabewarteschlange für den Nachrichtenfluss 'Sender' jedes Ziels
+        </li>
+        <li>
+            in der Warteschlange für den kanonischen Nachrichtenfeed
+        </li>
+    </ul>
+    <p>
+    Falls ein Fehler auftritt, geschieht Folgendes:
+    </p>
+    <ul>
+        <li>
+            Der Fehler wird abgefangen und vom untergeordneten Nachrichtenfluss 'TransformAndRouteExceptionHandler' verarbeitet. Dieser untergeordnete Nachrichtenfluss fügt der Nachricht einen MQRFH2-Header hinzu und schreibt die Nachricht außerhalb der Transaktion in die Fehlerwarteschlange. Der MQRFH2-Header enthält Details darüber, wo der Fehler auftrat. </li>
+        <li>
+            Eine Ausnahmebedingung wird ausgelöst, die die Eingabenachricht wieder in die Warteschlange stellt, für alle Nachrichten, die in Warteschlangen geschrieben wurden, einen Rollback durchführt und die Ausgabe der Ausnahmebedingungsinformationen im Ereignisprotokoll auslöst.
+</li>
+    </ul>
+    <p>
+    </p>
+    <p>
+    Der Administrator muss die Fehlerwarteschlange und das Ereignisprotokoll überprüfen, um festzustellen, welche Fehler aufgetreten sind. Sowohl die Fehlerwarteschlange als auch die Rücksetzwarteschlangen enthalten Informationen. Nach der Verarbeitung einer korrigierten Nachricht müssen diese Informationen gelöscht werden, um ein Ansteigen der Daten in der Warteschlange zu verhindern.
+</p>
+    <p>
+    Der Administrator muss eine Rücksetzwarteschlange für die Eingabewarteschlange konfigurieren.
+</p>
+    <h3>Fehler im Nachrichtenfluss 'Sender'</h3>
+    <p>
+    Eine Nachricht wird in die Fehlerwarteschlange außerhalb der Transaktion geschrieben und für die Eingabenachricht wird ein Rollback zur Eingabewarteschlange für den Nachrichtenfluss 'Sender' durchgeführt.
+</p>
+    <p>
+    Die Eingabewarteschlange muss mit einer Rücksetzwarteschlange konfiguriert werden.
+</p>
+    <p>
+    Ein Fehler kann auch nach der Zustellung einer Nachricht auftreten. Diese Art von Fehler tritt auf, wenn die Zielanwendung die Nachricht nicht verarbeiten kann und eine NACK-Meldung sendet. In diesem Fall wird eine Nachricht in die Fehlerwarteschlange geschrieben. Der Administrator muss die Fehlerwarteschlange überprüfen und das Problem bei der Zielanwendung beheben.
+</p>
+</div>
+<a href="overview.htm#anchorBack" title="Zurück">Zurück zur Spezifikation des Musters 'Healthcare: Medizinische Geräte an EKA'</a>
+<p>
+</p>
+</body>
+</html>

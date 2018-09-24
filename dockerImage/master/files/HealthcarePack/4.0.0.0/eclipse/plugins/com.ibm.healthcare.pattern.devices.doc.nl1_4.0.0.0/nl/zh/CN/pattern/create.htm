@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <title>设置患者标识数据库</title>
+    <!-- 
+       (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+       All Rights Reserved * Licensed Materials - Property of IBM
+      -->
+</head>
+<body role="main">
+<div>
+    <h1 class="topictitle1">设置患者标识数据库</h1>
+    <p class="shortdesc">
+    “<span>Healthcare：医疗设备到 EMR</span>”模式可以选择性地查询数据库以获取患者标识。患者标识用于使设备测量与正确的患者相关联，因此非常重要。此数据库用于使设备标识与患者标识相关联。设备标识在来自 MedicalDeviceInput 节点的消息中进行传播。患者标识由模式实例添加到已发送至目标应用程序的 HL7 V2 观察结果消息 (ORU R01) 中。</p>
+    <p>
+    您需要一个其中包含一个表的数据库以及 ODBC 定义，以便查找患者标识。要访问此数据库，必须为集成节点配置用户标识和密码。</p>
+</div>
+<h2>设置数据库表</h2>
+<p>
+要设置数据库表，请完成以下任务：</p>
+<ol>
+    <li>
+        创建数据库<p>
+        按照与数据库管理器相关的指示信息执行操作：</p>
+        <ul>
+            <li>
+                <a href="create_db2.htm">设置 DB2</a></li>
+            <li>
+                <a href="create_oracle.htm">设置 Oracle</a></li>
+        </ul>
+    </li>
+</ol>
+<h2>为集成节点设置数据库环境</h2>
+<p>
+要为集成节点设置数据库环境，请完成下列任务：</p>
+<ol>
+    <li>
+        为 PATSDB 数据库创建使用 <span class="input">PATIENTSDSN</span> 作为数据源名称 (DSN) 的 ODBC 定义；请参阅 IBM Integration Bus 文档中的“启用与数据库的 ODBC 连接”。</li>
+    <li>
+        指定与数据源名称 <span class="input">PATIENTSDSN</span> 相关联的用户标识和密码。<p>
+        使用 <span class="uicontrol">mqsisetdbparms</span> 命令指定可供集成节点用于 <span class="input">PATIENTSDSN</span>
+数据源的用户标识和密码。此用户标识必须是您在上一步中创建数据库时使用的用户标识。此用户标识确定了数据库模式名，集成节点在访问表时，必须使用同一用户标识。
+        例如，如果您的用户标识为 <span class="input">USERID</span>，那么 PATSDB 表的标准名称为 <span class="filepath">USERID.PATSDB</span>。</p>
+        <ol>
+            <li>
+                打开命令控制台窗口，您可以从中运行 IBM Integration Bus 命令。请输入以下命令以指定用户标识和密码：<pre>mqsisetdbparms <var>integration node</var> -n PATIENTSDSN -u &lt;user ID&gt; -p &lt;password&gt;</pre>
+            </li>
+            <li>
+                输入以下命令以重新装入集成服务器：<pre>mqsireload <var>integration node</var> -e <var>integration server name</var></pre>
+            其中，<var>integration node</var> 是集成节点的名称，而 <var>integration server name</var> 是集成服务器的名称。</li>
+        </ol>
+    </li>
+</ol>
+<p>
+</p>
+<a href="overview.htm#anchorBack" title="返回">返回到“Healthcare：医疗设备到 EMR”模式规范</a>
+<p>
+</p>
+</body>
+</html>

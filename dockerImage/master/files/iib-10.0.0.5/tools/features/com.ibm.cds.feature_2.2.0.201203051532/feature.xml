@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ibm.cds.feature"
+      label="Shared Classes Support Feature"
+      version="2.2.0.201203051532"
+      provider-name="IBM">
+
+   <description>
+      This feature enables the use of J9 Shared Classes technology.
+   </description>
+
+   <copyright>
+      (C) Copyright IBM Corp. 2012
+   </copyright>
+
+   <license>
+      Use of this feature is subject to the same terms and conditions which govern the use of the IBM Product which included this feature.
+   </license>
+
+   <plugin
+         id="com.ibm.cds"
+         download-size="0"
+         install-size="0"
+         version="2.2.0.201203051532"
+         fragment="true"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<introContent>
+	<!-- *****************************************************************
+	  * The root page for this welcome.  This is the page that is shown
+	  * when the Welcome initially opens.  It defines the navigation links 
+	  * to the main pages of the welcome.  
+	  ***************************************************************** -->
+	<page id="root" style-id="page" style="css/root.css" 
+		alt-style="css/root_swt.properties">
+		<!-- The main title for this page of the intro -->
+		<title style-id="intro-header" filteredFrom="html">Welcome to IBM Integration Bus</title>
+		<group id="links-background">
+			<!-- *****************************************************************
+	          	  ** The page-links section defines the navigation links displayed
+			  ** in the root page. These are the links to the main pages of
+			  ** the welcome.
+			  ***************************************************************** -->
+			  
+			<group id="page-links">
+				<text id="title">Welcome to&lt;br/&gt;IBM Integration&lt;br/&gt;&lt;br/&gt;</text>
+			
+				<!-- Getting Started - Tutorials -->			
+				<link label="Get Started" 
+					url="http://org.eclipse.ui.intro/runAction?pluginId=com.ibm.etools.mft.tutorials&amp;class=com.ibm.etools.mft.tutorials.views.OpenTutorialsGallery&amp;productID=com.ibm.etools.msgbroker.tooling.ide"  
+					id="tutorials" style-id="right">
+					<img id="samples_img" style-id="content-img" 
+						
+						alt="Tutorials"></img>
+					<text>Learn about IBM Integration Bus by using tutorials</text>
+				</link>
+
+				<!-- Whats New and Migration Link -->
+				<link label="What's New" 
+					url="http://org.eclipse.ui.intro/showHelpTopic?id=/com.ibm.etools.mft.doc/bb23850_.htm" 
+					id="news" style-id="left" filteredFrom="swt">
+					<img id="news" style-id="content-img" 
+						
+						alt="What's New"></img>
+					<text>See what's new in&lt;br/&gt;IBM Integration Bus V10.0</text>
+				</link>
+
+				<!-- Whats New Linux -->
+				<link label="What's New" 
+					url="http://org.eclipse.ui.intro/showHelpTopic?id=/com.ibm.etools.mft.doc/bb23850_.htm" 
+					id="newsLinux" style-id="left" filteredFrom="html">
+					<img id="newsLinux" style-id="content-img" 
+						
+						alt="What's New"></img>
+					<text>See what's new in IBM Integration Bus V10.0</text>
+				</link>
+				
+				<!-- Install Language  Link -->
+				<link label="Language Pack" 
+					url="http://org.eclipse.ui.intro/showHelpTopic?id=/com.ibm.iib.langpacks.doc/bh25997_.htm" 
+					id="LanguagePack" style-id="left">
+					<img id="overview_img" style-id="content-img" 
+						
+						alt="Language Pack"></img>
+					<text>Install language packs for the Integration Toolkit</text>
+				</link>
+
+				
+			</group>
+		</group>
+		<!-- Go to Workbench action -->
+		<group id="action-links">
+			<link url="http://org.eclipse.ui.intro/close" label="" 
+				id="workbench">
+				<text>Go to the Integration Toolkit</text>
+			</link>
+		</group>
+		<group id="logo">
+			<img id="ibm-logo" style-id="content-img" 
+				src="css/graphics/rootpage/IBM_logo.gif" alt="IBM"></img>
+		</group>
+	</page>
+</introContent>

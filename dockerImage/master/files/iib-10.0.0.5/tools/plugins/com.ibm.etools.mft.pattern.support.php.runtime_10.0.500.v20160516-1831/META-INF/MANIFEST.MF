@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Export-Package: com.ibm.phpj.logging,com.ibm.phpj.reflection,com.ibm.p
+ hpj.resources,com.ibm.phpj.sapi,com.ibm.phpj.session,com.ibm.phpj.str
+ eams,com.ibm.phpj.xapi,com.ibm.phpj.xapi.annotations,com.ibm.phpj.xap
+ i.array,com.ibm.phpj.xapi.types
+Bundle-Vendor: IBM
+Bundle-ClassPath: icu4j-4_0.jar,p8.jar,p8api.jar
+Bundle-Version: 10.0.500.v20160516-1831
+Eclipse-BuddyPolicy: global
+Bundle-Localization: plugin
+Bundle-Name: %Plugin.name
+Bundle-NativeCode: /php/win32/loader.dll; osname=win32;osname="Windows
+  Server 2008";osname="Windows Server 2008 R2";osname="Windows 7";osna
+ me="Windows 8";osname="Windows Server 2012";osname="Windows Server 20
+ 12 R2";processor=x86,/php/win64/loader.dll; osname=win32;osname="Wind
+ ows Server 2008";osname="Windows Server 2008 R2";osname="Windows 7";o
+ sname="Windows 8";osname="Windows Server 2012";osname="Windows Server
+  2012 R2";processor=x86_64,/php/linux/libloader.so; osname=linux; pro
+ cessor=x86,/php/linux64/libloader.so; osname=linux; processor=x86_64
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ibm.etools.mft.pattern.support.php.runtime;si
+ ngleton:=true
+
+

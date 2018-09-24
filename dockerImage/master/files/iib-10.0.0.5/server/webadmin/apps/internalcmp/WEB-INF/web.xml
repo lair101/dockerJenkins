@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<copyright 
+ notice="lm-source" 
+ pids="5724-J06,5724-J05,5724-J04,5697-J09,5655-M74,5655-M75,5648-C63,5655-IBC,5655-IBB,5655-AB1,5655-AB2" 
+ years="2011,2016" 
+ crc="1041114207" > 
+ Licensed Materials - Property of IBM  
+  
+ 5724-J06,5724-J05,5724-J04,5697-J09,5655-M74,5655-M75,5648-C63,5655-IBC,5655-IBB,5655-AB1,5655-AB2 
+  
+ (C) Copyright IBM Corp. 2011, 2016 All Rights Reserved.  
+ </copyright> 
+-->
+<!-- 
+ Java Servlet 3.0 annotations will NOT be scanned for because metadata-complete is set to true.
+ This is done for startup performance reasons.
+-->
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0" metadata-complete="true">
+	<absolute-ordering/>
+
+    <!-- Servlet definitions -->
+     <servlet>
+        <servlet-name>CMPWebSocketServlet</servlet-name>
+        <servlet-class>com.ibm.broker.internal.webadmin.CMPWebSocketServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CMPWebSocketServlet</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+    <!-- authentication -->
+    <login-config>
+        <auth-method>BASIC</auth-method>
+    </login-config>
+    
+    <!-- Security enablement for authentication -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Default access</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>webui</role-name>
+        </auth-constraint>
+    </security-constraint>
+</web-app>

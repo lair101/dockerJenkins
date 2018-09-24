@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <title>Set up Oracle</title>
+    <!-- 
+       (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+       All Rights Reserved * Licensed Materials - Property of IBM
+      -->
+</head>
+<body class="sampcont" role="main">
+<h1>Set up Oracle</h1>
+<p>
+These instructions assume that you are using an Oracle database and guide you 
+through the following tasks:
+</p>
+<ul>
+    <li>
+        Create a database called PATSDB
+    </li>
+    <li>
+        Create a table, PATIENTS, to store the patient and device associations
+    </li>
+</ul>
+<p>
+<b>Note.</b> When you create and access the database tables, be aware of the 
+following issues:
+</p>
+<ul>
+    <li>
+        When you run the script that creates the table in the database, the user 
+        identifier from which you run the script determines the database schema name. 
+        For example, if your user identifier is
+        <span class="input">USERID</span>, 
+        the fully qualified name of the PATIENTS table is USERID.PATIENTS.
+    </li>
+    <li>
+        Configure your pattern instance to use the same user identifier to access the 
+        database that you used when you created the database and tables, include the 
+        schema name in the configuration. For example,
+        <span class="filepath">Database.USERID.PATIENTS</span>.
+    </li>
+</ul>
+<p>
+Complete the following steps:
+</p>
+<ol>
+    <li>
+        Create a database called PATSDB.
+    </li>
+    <li>
+        Open a new document in a text editor, copy and paste the following script, which 
+        creates the PATIENTS table, into the document, name the file
+        <span class="filepath">
+        patients_create_tables_oracle.sql
+        </span>
+        and save the file.
+        <pre>
+DROP TABLE "PATIENTS";
+CREATE TABLE "PATIENTS" (
+    "DEVICEID" VARCHAR(50) NOT NULL PRIMARY KEY,
+    "PATIENTID" VARCHAR(50) NOT NULL
+);
+        </pre>
+    </li>
+    <li>
+        In a command window that you have opened to access your database, move to the 
+        folder that contains
+        <span class="filepath">
+        patients_create_tables_oracle.sql
+        </span>
+        and enter the following command:
+        <pre>sqlplus &lt;uid&gt;/&lt;password&gt; @patients_create_tables_oracle.sql</pre>
+        <p>
+        Wait for the script to finish running. If you are running the script for the 
+        first time, the following message is displayed:
+        </p>
+        <pre>ORA-00942: table or view does not exist</pre>
+        Ignore this message. The message is displayed because the script attempts to 
+        remove the existing table, PATIENTS, before it creates a new table, but if you 
+        have not run the script before, the table does not exist.
+    </li>
+</ol>
+<p>
+</p>
+<a href="create.htm" title="Back">Back to Setting up the patient identifier database</a>
+<p>
+</p>
+</body>
+</html>

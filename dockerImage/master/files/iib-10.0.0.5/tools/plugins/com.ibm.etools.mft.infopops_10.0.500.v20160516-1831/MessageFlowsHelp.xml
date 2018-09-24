@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<contexts>
+	<context id="MFTEditorPropertiesTab">
+		<description><b>Message Flow editor - User Defined Properties page</b>
+You can modify the initial value of a user-defined property at design time or deployment time by the Message Flow editor.
+You can, for example, use user-defined properties to hold configuration data. You can then configure a message flow for a particular machine, task, or environment at deployment time, without having to change the code at the node level.</description>
+		<topic href="../com.ibm.etools.mft.doc/ak01015_.htm"  label="User-defined properties in ESQL"/>
+		<topic href="../com.ibm.etools.mft.doc/ac06007_.htm"  label="Configuring a message flow at deployment time using UDPs"/>
+		<topic href="../com.ibm.etools.mft.doc/ab00050_.htm"  label="Message Flow editor"/>
+	</context>    
+	<context id="NewMessageFlowProjectWizard">
+		<description><b>New Message Flow Project wizard</b>
+Use this wizard to create a new message flow project. When you have created the project, you can create a message flow and other message flow resources.</description>
+		<topic href="../com.ibm.etools.mft.doc/ac02200_.htm"  label="Creating a message flow"/>
+		<topic href="../com.ibm.etools.mft.doc/ac02180_.htm"  label="Creating a message flow project"/>
+	</context>
+	<context id="NewMessageFlowSchemaWizard">
+		<description><b>New Broker Schema wizard</b>
+Use this wizard to create a new broker schema. You can create a broker schema in a message flow project to organize the resources (such as message flows, ESQL files, and mapping files) within that project.
+The name of the broker schema becomes part of a resource's fully-qualified file name. For example, if you create a broker schema called "common", the names of all the message flows and other resources within that schema are prefixed with "common".
+This means that you can have more than one message flow (or other resource) of the same name within the same project, as long as each of the message flows is in a different broker schema. The broker schema called "(default)" is automatically created when you create the message flow project.</description>
+		<topic href="../com.ibm.etools.mft.doc/ac02205_.htm"  label="Creating a broker schema"/>
+		<topic href="../com.ibm.etools.mft.doc/ak01100_.htm"  label="Broker schemas"/>
+	</context>    
+	<context id="NewMessageFlowWizard">
+		<description><b>New Message Flow wizard</b>
+Use this wizard to create a new message flow. You can create a message flow in an application, a library, or an Integration project.</description>
+		<topic href="../com.ibm.etools.mft.doc/bc23160_.htm"  label="Creating a message flow"/>
+		<topic href="../com.ibm.etools.mft.doc/bc23080_.htm"  label="Creating an application"/>
+		<topic href="../com.ibm.etools.mft.doc/bc23090_.htm"  label="Creating a library"/>
+		<topic href="../com.ibm.etools.mft.doc/bc23120_.htm"  label="Creating an Integration project"/>
+	</context>
+	<context id="NewMessageSubflowWizard">
+        <description><b>New Subflow wizard</b>
+Use this wizard to create a new deployable subflow. You can create a subflow in an application, a library, or an Integration project.</description>
+		<topic href="../com.ibm.etools.mft.doc/bc31700_.htm"  label="Creating a deployable subflow"/>
+		<topic href="../com.ibm.etools.mft.doc/bc23080_.htm"  label="Creating an application"/>
+		<topic href="../com.ibm.etools.mft.doc/bc23090_.htm"  label="Creating a library"/>
+		<topic href="../com.ibm.etools.mft.doc/bc23120_.htm"  label="Creating an Integration project"/>
+    </context>
+</contexts>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!-- Defect 39679: Ensure elements and their order match the broker's tree -->
+<!--   No StrucId or StrucLength -->
+<!--   Version/Format/Encoding/CodedCharSetId are first 4 elements -->
+    <xsd:complexType name="MQRFH_TYPE">
+        <xsd:annotation>
+            <xsd:documentation source="WMQI_DOCUMENTATION">MQRFH_TYPE.\s</xsd:documentation>
+            <xsd:appinfo source="WMQI_APPINFO">
+                <MRComplexType composition="unorderedSet" content="open"/>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="Version"
+                nillable="false" type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation source="WMQI_DOCUMENTATION">Version.\s</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="Format" nillable="false">
+                <xsd:annotation>
+                    <xsd:documentation source="WMQI_DOCUMENTATION">Format.\s</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="8"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="Encoding"
+                nillable="false" type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation source="WMQI_DOCUMENTATION">Encoding.\s</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1"
+                name="CodedCharSetId" nillable="false" type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation source="WMQI_DOCUMENTATION">CodedCharSetId.\s</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="Flags"
+                nillable="false" type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation source="WMQI_DOCUMENTATION">Flags.\s</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="MQRFH" type="MQRFH_TYPE">
+        <xsd:annotation>
+            <xsd:documentation source="WMQI_DOCUMENTATION">MQRFH.\s</xsd:documentation>
+            <xsd:appinfo source="WMQI_APPINFO">
+                <MRMessage messageDefinition="/0/MQRFH;XSDElementDeclaration$MRObject"/>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:element>
+</xsd:schema>

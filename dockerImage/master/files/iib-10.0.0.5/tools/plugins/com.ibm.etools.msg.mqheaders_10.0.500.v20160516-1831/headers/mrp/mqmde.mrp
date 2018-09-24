@@ -1,0 +1,518 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE XMI SYSTEM "mqsi.dtd" [<!ENTITY P "MRM/4e7b951a-db00-0000-0080-80aecc225c3b"><!ENTITY PMRProject "MRM/MRProject/"><!ENTITY PMRTransaction "&P;/MRTransaction/"><!ENTITY PMRMessage "&P;/MRMessage/"><!ENTITY PMRContextTag "&P;/MRContextTag/"><!ENTITY PMRElement "&P;/MRElement/"><!ENTITY PMRCompound "&P;/MRCompound/"><!ENTITY PMRSimple "&P;/MRSimple/"><!ENTITY PMRValidValue "&P;/MRValidValue/"><!ENTITY PMRLength "&P;/MRLength/">]>
+<XMI>
+ <XMI.header/>
+ <XMI.content>
+  <MRProject baseMode="false" readOnly="false" xmi.uuid="4e7b951a-db00-0000-0080-80aecc225c3b" xmi.label="MQMDE (MQSeries message descriptor extension)" inheritMode="false" repositoryName="MQSeries Headers" longDescription="" shortDescription="" versionTimestamp="1999-10-28T12.38.58Z" creationTimestamp="1999-10-27T18.04.51Z" repositoryOrganization="IBM">
+   <MRProject_level value="1"/>
+   <MRProject_finalized value="true"/>
+   <AttributeGroup xmi.label="Custom Wire Format">
+    <Attribute type="string" value="CWF" xmi.label="Custom Wire Format Identifier" valueMandatory="true">
+     <XMI.extension xmi.extender="MRM">AttributeMetaData<MetaData>
+       <MetaDataItem value="524288" xmi.label="AttrFlags"/>
+       <MetaDataItem value="1" xmi.label="MinLength"/>
+       <MetaDataItem value="8" xmi.label="MaxLength"/>
+       <MetaDataItem value="Custom Wire Format Extension" xmi.label="hAttrPlugin"/>
+       <MetaDataItem value="1" xmi.label="AttrKey"/>
+       <MetaDataItem value="DG45P98072001" xmi.label="DefProject"/>
+       <MetaDataItem value="DG45P98072001" xmi.label="ModProject"/>
+       <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="CreationDate"/>
+       <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="LastModDate"/>
+       <MetaDataItem value="0" xmi.label="Status"/>
+      </MetaData>
+     </XMI.extension>
+    </Attribute>
+    <Attribute type="enum" value="850" xmi.label="Code Page" valueMandatory="true">
+     <XMI.extension xmi.extender="MRM">AttributeMetaData<MetaData>
+       <MetaDataItem value="524288" xmi.label="AttrFlags"/>
+       <MetaDataItem value="1" xmi.label="MinLength"/>
+       <MetaDataItem value="10" xmi.label="MaxLength"/>
+       <MetaDataItem value="Custom Wire Format Extension" xmi.label="hAttrPlugin"/>
+       <MetaDataItem value="2" xmi.label="AttrKey"/>
+       <MetaDataItem value="DG45P98072001" xmi.label="DefProject"/>
+       <MetaDataItem value="DG45P98072001" xmi.label="ModProject"/>
+       <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="CreationDate"/>
+       <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="LastModDate"/>
+       <MetaDataItem value="0" xmi.label="Status"/>
+      </MetaData>
+     </XMI.extension>
+    </Attribute>
+    <Attribute type="enum" value="B" xmi.label="Byte Order" valueMandatory="true">
+     <XMI.extension xmi.extender="MRM">AttributeMetaData<MetaData>
+       <MetaDataItem value="524288" xmi.label="AttrFlags"/>
+       <MetaDataItem value="1" xmi.label="MinLength"/>
+       <MetaDataItem value="1" xmi.label="MaxLength"/>
+       <MetaDataItem value="Custom Wire Format Extension" xmi.label="hAttrPlugin"/>
+       <MetaDataItem value="3" xmi.label="AttrKey"/>
+       <MetaDataItem value="DG45P98072001" xmi.label="DefProject"/>
+       <MetaDataItem value="DG45P98072001" xmi.label="ModProject"/>
+       <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="CreationDate"/>
+       <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="LastModDate"/>
+       <MetaDataItem value="0" xmi.label="Status"/>
+      </MetaData>
+     </XMI.extension>
+    </Attribute>
+    <Attribute type="enum" value="S" xmi.label="Float Format" valueMandatory="true">
+     <XMI.extension xmi.extender="MRM">AttributeMetaData<MetaData>
+       <MetaDataItem value="524288" xmi.label="AttrFlags"/>
+       <MetaDataItem value="1" xmi.label="MinLength"/>
+       <MetaDataItem value="1" xmi.label="MaxLength"/>
+       <MetaDataItem value="Custom Wire Format Extension" xmi.label="hAttrPlugin"/>
+       <MetaDataItem value="4" xmi.label="AttrKey"/>
+       <MetaDataItem value="DG45P98072001" xmi.label="DefProject"/>
+       <MetaDataItem value="DG45P98072001" xmi.label="ModProject"/>
+       <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="CreationDate"/>
+       <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="LastModDate"/>
+       <MetaDataItem value="0" xmi.label="Status"/>
+      </MetaData>
+     </XMI.extension>
+    </Attribute>
+    <Attribute type="string" value="SPACE" xmi.label="Byte Alignment Pad" valueMandatory="true">
+     <XMI.extension xmi.extender="MRM">AttributeMetaData<MetaData>
+       <MetaDataItem value="524288" xmi.label="AttrFlags"/>
+       <MetaDataItem value="1" xmi.label="MinLength"/>
+       <MetaDataItem value="8" xmi.label="MaxLength"/>
+       <MetaDataItem value="Custom Wire Format Extension" xmi.label="hAttrPlugin"/>
+       <MetaDataItem value="6" xmi.label="AttrKey"/>
+       <MetaDataItem value="DG45P98072001" xmi.label="DefProject"/>
+       <MetaDataItem value="DG45P98072001" xmi.label="ModProject"/>
+       <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="CreationDate"/>
+       <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="LastModDate"/>
+       <MetaDataItem value="0" xmi.label="Status"/>
+      </MetaData>
+     </XMI.extension>
+    </Attribute>
+   </AttributeGroup>
+   <AttributeGroup xmi.label="Run Time">
+    <Attribute type="string" value="MQMDE" xmi.label="Parser" valueMandatory="false">
+     <XMI.extension xmi.extender="MRM">AttributeMetaData<MetaData>
+       <MetaDataItem value="524288" xmi.label="AttrFlags"/>
+       <MetaDataItem value="0" xmi.label="MinLength"/>
+       <MetaDataItem value="254" xmi.label="MaxLength"/>
+       <MetaDataItem value="WebDav Plug-in Extension" xmi.label="hAttrPlugin"/>
+       <MetaDataItem value="1" xmi.label="AttrKey"/>
+       <MetaDataItem value="DG45P98072001" xmi.label="DefProject"/>
+       <MetaDataItem value="DG45P98072001" xmi.label="ModProject"/>
+       <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="CreationDate"/>
+       <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="LastModDate"/>
+       <MetaDataItem value="0" xmi.label="Status"/>
+      </MetaData>
+     </XMI.extension>
+    </Attribute>
+   </AttributeGroup>
+   <MRProject_freezeTimestamp value="1999-10-28T12.38.58Z"/>
+   <MRCategoryCollection collectionPath="&P;"/>
+   <MRConstantDefCollection collectionPath="&P;"/>
+   <MRContextTagCollection collectionPath="&P;"/>
+   <MRElementCollection collectionPath="&P;"/>
+   <MRLengthCollection collectionPath="&P;"/>
+   <MRMessageCollection collectionPath="&P;"/>
+   <MRProject_identifier value="DG45P98072001"/>
+   <MRTransactionCollection collectionPath="&P;"/>
+   <MRTypeCollection collectionPath="&P;"/>
+   <MRValidValueCollection collectionPath="&P;"/>
+   <MRProjectDepMember status="internal" definedProject="NONE" lastModProject="NONE" versionTimestamp="1999-10-27T18.04.51Z" creationTimestamp="1999-10-27T18.04.51Z">
+    <MRProjectDepMember_depFinal value="true"/>
+    <MRHistory_descoped value="false"/>
+    <MRProjectRef href="&PMRProject;4e7b951a-db00-0000-0080-80aecc225c3b" title="DG45P98072001"/>
+   </MRProjectDepMember>
+   <XMI.extension xmi.extender="MRM">MRRegPluginMember<MetaData>
+     <MetaDataItem value="C Language Extension" xmi.label="xmi.label"/>
+     <MetaDataItem value="1.00" xmi.label="PluginRelease"/>
+     <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="creationTimestamp"/>
+     <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="versionTimestamp"/>
+     <MetaDataItem value="1" xmi.label="Active"/>
+     <MetaDataItem value="1" xmi.label="LayerFinal"/>
+     <MetaDataItem value="1999-10-28T12.38.58Z" xmi.label="FreezeDate"/>
+     <MetaDataItem value="internal" xmi.label="status"/>
+    </MetaData>
+   </XMI.extension>
+   <XMI.extension xmi.extender="MRM">MRRegPluginMember<MetaData>
+     <MetaDataItem value="COBOL Language Extension" xmi.label="xmi.label"/>
+     <MetaDataItem value="1.00" xmi.label="PluginRelease"/>
+     <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="creationTimestamp"/>
+     <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="versionTimestamp"/>
+     <MetaDataItem value="1" xmi.label="Active"/>
+     <MetaDataItem value="1" xmi.label="LayerFinal"/>
+     <MetaDataItem value="1999-10-28T12.38.58Z" xmi.label="FreezeDate"/>
+     <MetaDataItem value="internal" xmi.label="status"/>
+    </MetaData>
+   </XMI.extension>
+   <XMI.extension xmi.extender="MRM">MRRegPluginMember<MetaData>
+     <MetaDataItem value="Custom Wire Format Extension" xmi.label="xmi.label"/>
+     <MetaDataItem value="1.00" xmi.label="PluginRelease"/>
+     <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="creationTimestamp"/>
+     <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="versionTimestamp"/>
+     <MetaDataItem value="1" xmi.label="Active"/>
+     <MetaDataItem value="1" xmi.label="LayerFinal"/>
+     <MetaDataItem value="1999-10-28T12.38.58Z" xmi.label="FreezeDate"/>
+     <MetaDataItem value="internal" xmi.label="status"/>
+    </MetaData>
+   </XMI.extension>
+   <XMI.extension xmi.extender="MRM">MRRegPluginMember<MetaData>
+     <MetaDataItem value="Documentation" xmi.label="xmi.label"/>
+     <MetaDataItem value="1.00" xmi.label="PluginRelease"/>
+     <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="creationTimestamp"/>
+     <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="versionTimestamp"/>
+     <MetaDataItem value="1" xmi.label="Active"/>
+     <MetaDataItem value="1" xmi.label="LayerFinal"/>
+     <MetaDataItem value="1999-10-28T12.38.58Z" xmi.label="FreezeDate"/>
+     <MetaDataItem value="internal" xmi.label="status"/>
+    </MetaData>
+   </XMI.extension>
+   <XMI.extension xmi.extender="MRM">MRRegPluginMember<MetaData>
+     <MetaDataItem value="WebDav Plug-in Extension" xmi.label="xmi.label"/>
+     <MetaDataItem value="1.00" xmi.label="PluginRelease"/>
+     <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="creationTimestamp"/>
+     <MetaDataItem value="1999-10-27T18.04.51Z" xmi.label="versionTimestamp"/>
+     <MetaDataItem value="1" xmi.label="Active"/>
+     <MetaDataItem value="1" xmi.label="LayerFinal"/>
+     <MetaDataItem value="1999-10-28T12.38.58Z" xmi.label="FreezeDate"/>
+     <MetaDataItem value="internal" xmi.label="status"/>
+    </MetaData>
+   </XMI.extension>
+   <XMI.extension xmi.extender="MRM">MRProjectMetaData<MetaData>
+     <MetaDataItem value="100017" xmi.label="NextIDValue"/>
+     <MetaDataItem value="DG45P98072001" xmi.label="ProjectIdentity"/>
+    </MetaData>
+   </XMI.extension>
+  </MRProject>
+  <MRConstantDef status="external" xmi.id="40100" xmi.uuid="MRM-DG45P98072001-00009ca4" constInfo="0" xmi.label="Category" constClass="constClass" constValue="100" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="CATEGORY"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="40202" xmi.uuid="MRM-DG45P98072001-00009d0a" constInfo="0" xmi.label="ConstAttrlen" constClass="constClass" constValue="201" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="CONST_ATTRLEN"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="40200" xmi.uuid="MRM-DG45P98072001-00009d08" constInfo="0" xmi.label="ConstClass" constClass="constClass" constValue="200" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="CONST_CLASS"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="40201" xmi.uuid="MRM-DG45P98072001-00009d09" constInfo="0" xmi.label="ConstMessagemode" constClass="constClass" constValue="201" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="CONST_MESSAGEMODE"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="40105" xmi.uuid="MRM-DG45P98072001-00009ca9" constInfo="0" xmi.label="ContextTag" constClass="constClass" constValue="105" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="CONTEXTTAG"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="40103" xmi.uuid="MRM-DG45P98072001-00009ca7" constInfo="0" xmi.label="Element" constClass="constClass" constValue="103" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="ELEMENT"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="40107" xmi.uuid="MRM-DG45P98072001-00009cab" constInfo="0" xmi.label="LengthID" constClass="constClass" constValue="107" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="LENGTHID"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="40102" xmi.uuid="MRM-DG45P98072001-00009ca6" constInfo="0" xmi.label="Message" constClass="constClass" constValue="102" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="MESSAGE"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="40002" xmi.uuid="MRM-DG45P98072001-00009c42" constInfo="0" xmi.label="Plugin" constClass="constClass" constValue="2" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="PLUGIN"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="40001" xmi.uuid="MRM-DG45P98072001-00009c41" constInfo="0" xmi.label="Project" constClass="constClass" constValue="1" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="PROJECT"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="40101" xmi.uuid="MRM-DG45P98072001-00009ca5" constInfo="0" xmi.label="Transaction" constClass="constClass" constValue="101" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="TRANSACTION"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="40104" xmi.uuid="MRM-DG45P98072001-00009ca8" constInfo="0" xmi.label="Type" constClass="constClass" constValue="104" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="TYPE"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="40003" xmi.uuid="MRM-DG45P98072001-00009c43" constInfo="0" xmi.label="User" constClass="constClass" constValue="3" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="USER"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="40106" xmi.uuid="MRM-DG45P98072001-00009caa" constInfo="0" xmi.label="ValidValue" constClass="constClass" constValue="106" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="VALIDVALUE"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="42001" xmi.uuid="MRM-DG45P98072001-0000a411" constInfo="0" xmi.label="Max Category Identifier Length" constClass="constAttrLen" constValue="254" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="MRM_MAX_CATG_IDENT_LEN"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="42009" xmi.uuid="MRM-DG45P98072001-0000a419" constInfo="0" xmi.label="Max ConstDef Identifier Length" constClass="constAttrLen" constValue="254" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="MRM_MAX_CNST_IDENT_LEN"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="42006" xmi.uuid="MRM-DG45P98072001-0000a416" constInfo="0" xmi.label="Max ContextTag Identifier Length" constClass="constAttrLen" constValue="254" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="MRM_MAX_CTAG_IDENT_LEN"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="42004" xmi.uuid="MRM-DG45P98072001-0000a414" constInfo="0" xmi.label="Max Element Identifier Length" constClass="constAttrLen" constValue="254" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="MRM_MAX_ELM_IDENT_LEN"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="42008" xmi.uuid="MRM-DG45P98072001-0000a418" constInfo="0" xmi.label="Max LengthID Identifier Length" constClass="constAttrLen" constValue="254" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="MRM_MAX_LENID_IDENT_LEN"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="42003" xmi.uuid="MRM-DG45P98072001-0000a413" constInfo="0" xmi.label="Max Message Identifier Length" constClass="constAttrLen" constValue="254" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="MRM_MAX_MSG_IDENT_LEN"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="42002" xmi.uuid="MRM-DG45P98072001-0000a412" constInfo="0" xmi.label="Max Transaction Identifier Length" constClass="constAttrLen" constValue="254" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="MRM_MAX_TXN_IDENT_LEN"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="42005" xmi.uuid="MRM-DG45P98072001-0000a415" constInfo="0" xmi.label="Max Type Identifier Length" constClass="constAttrLen" constValue="254" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="MRM_MAX_TYPE_IDENT_LEN"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="42007" xmi.uuid="MRM-DG45P98072001-0000a417" constInfo="0" xmi.label="Max ValidValue Identifier Length" constClass="constAttrLen" constValue="254" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="MRM_MAX_VV_IDENT_LEN"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="41001" xmi.uuid="MRM-DG45P98072001-0000a029" constInfo="0" xmi.label="Request" constClass="constMessageMode" constValue="5001" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="REQUEST"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRConstantDef status="external" xmi.id="41002" xmi.uuid="MRM-DG45P98072001-0000a02a" constInfo="0" xmi.label="Response" constClass="constMessageMode" constValue="5002" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" shortDescription="" versionTimestamp="1999-01-01T12.00.00Z" creationTimestamp="1999-01-01T12.00.00Z">
+   <MRBase_identifier value="RESPONSE"/>
+   <MRHistory_descoped value="false"/>
+  </MRConstantDef>
+  <MRLength status="internal" xmi.id="100000" xmi.uuid="MRM-DG45P98072001-000186a0" xmi.label="DEFAULT_CHAR_LEN" collectionPath="&P;" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z">
+   <MRLength_maxLength value="1"/>
+   <MRBase_identifier value="DEFAULT_CHAR_LEN"/>
+   <MRHistory_descoped value="false"/>
+  </MRLength>
+  <MRLength status="internal" xmi.id="100007" xmi.uuid="MRM-DG45P98072001-000186a7" xmi.label="FORMAT_LEN" collectionPath="&P;" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z">
+   <MRLength_maxLength value="8"/>
+   <MRBase_identifier value="FORMAT_LEN"/>
+   <MRHistory_descoped value="false"/>
+  </MRLength>
+  <MRLength status="internal" xmi.id="100001" xmi.uuid="MRM-DG45P98072001-000186a1" xmi.label="STRUCID_LEN" collectionPath="&P;" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z">
+   <MRLength_maxLength value="4"/>
+   <MRBase_identifier value="STRUCID_LEN"/>
+   <MRHistory_descoped value="false"/>
+  </MRLength>
+  <MRSimple status="external" xmi.id="50109" xmi.uuid="MRM-SIMPLETYPE-0000c3bd" xmi.label="BINARY" isPrimitive="true" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" lengthRequired="false" longDescription="" shortDescription="" versionTimestamp="1996-06-07T00.00.00Z" creationTimestamp="1996-06-07T00.00.00Z" stringAsValidValue="false" integerAsValidValue="false" validValueElementUnique="false">
+   <MRSimple_logicalType value="10"/>
+   <MRBase_identifier value="BINARY"/>
+   <MRHistory_descoped value="false"/>
+  </MRSimple>
+  <MRSimple status="external" xmi.id="50213" xmi.uuid="MRM-SIMPLETYPE-0000c425" xmi.label="BOOLEAN" isPrimitive="true" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" lengthRequired="false" longDescription="" shortDescription="" versionTimestamp="1998-05-07T00.00.00Z" creationTimestamp="1998-05-07T00.00.00Z" stringAsValidValue="false" integerAsValidValue="false" validValueElementUnique="false">
+   <MRSimple_logicalType value="12"/>
+   <MRBase_identifier value="BOOLEAN"/>
+   <MRHistory_descoped value="false"/>
+  </MRSimple>
+  <MRSimple status="external" xmi.id="50105" xmi.uuid="MRM-SIMPLETYPE-0000c3b9" xmi.label="STRING" isPrimitive="true" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" lengthRequired="true" longDescription="" shortDescription="" versionTimestamp="1996-06-07T00.00.00Z" creationTimestamp="1996-06-07T00.00.00Z" stringAsValidValue="true" integerAsValidValue="false" validValueElementUnique="false">
+   <MRSimple_logicalType value="2"/>
+   <MRBase_identifier value="STRING"/>
+   <MRHistory_descoped value="false"/>
+  </MRSimple>
+  <MRSimple status="external" xmi.id="50107" xmi.uuid="MRM-SIMPLETYPE-0000c3bb" xmi.label="FLOAT" isPrimitive="true" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" lengthRequired="false" longDescription="" shortDescription="" versionTimestamp="1996-06-07T00.00.00Z" creationTimestamp="1996-06-07T00.00.00Z" stringAsValidValue="true" integerAsValidValue="false" validValueElementUnique="false">
+   <MRSimple_logicalType value="6"/>
+   <MRBase_identifier value="FLOAT"/>
+   <MRHistory_descoped value="false"/>
+  </MRSimple>
+  <MRSimple status="external" xmi.id="50106" xmi.uuid="MRM-SIMPLETYPE-0000c3ba" xmi.label="INTEGER" isPrimitive="true" collectionPath="&P;" definedProject="NONE" lastModProject="NONE" lengthRequired="false" longDescription="" shortDescription="" versionTimestamp="1996-06-07T00.00.00Z" creationTimestamp="1996-06-07T00.00.00Z" stringAsValidValue="false" integerAsValidValue="true" validValueElementUnique="false">
+   <MRSimple_logicalType value="4"/>
+   <MRBase_identifier value="INTEGER"/>
+   <MRHistory_descoped value="false"/>
+  </MRSimple>
+  <MRCompound status="internal" xmi.id="100015" xmi.uuid="MRM-DG45P98072001-000186af" xmi.label="MQMDE_TYPE" isPrimitive="false" collectionPath="&P;" definedProject="" lastModProject="" lengthRequired="false" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z" stringAsValidValue="false" integerAsValidValue="false" validValueElementUnique="false">
+   <MRBase_identifier value="MQMDE_TYPE"/>
+   <MRHistory_descoped value="false"/>
+   <MRTypeMember status="internal" contextTagHint="StrucIdCxTg" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z">
+    <MRTypeMember_mandatoryInd value="true"/>
+    <MRTypeMember_repeatInd value="false"/>
+    <MRHistory_descoped value="false"/>
+    <MRElementRef href="&PMRElement;MRM-DG45P98072001-000186a2" title="StrucId"/>
+   </MRTypeMember>
+   <MRTypeMember status="internal" contextTagHint="VersionCxTg" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z">
+    <MRTypeMember_mandatoryInd value="true"/>
+    <MRTypeMember_repeatInd value="false"/>
+    <MRHistory_descoped value="false"/>
+    <MRElementRef href="&PMRElement;MRM-DG45P98072001-000186a3" title="Version"/>
+   </MRTypeMember>
+   <MRTypeMember status="internal" contextTagHint="StrucLengthCxTg" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z">
+    <MRTypeMember_mandatoryInd value="true"/>
+    <MRTypeMember_repeatInd value="false"/>
+    <MRHistory_descoped value="false"/>
+    <MRElementRef href="&PMRElement;MRM-DG45P98072001-000186a4" title="StrucLength"/>
+   </MRTypeMember>
+   <MRTypeMember status="internal" contextTagHint="EncodingCxTg" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z">
+    <MRTypeMember_mandatoryInd value="true"/>
+    <MRTypeMember_repeatInd value="false"/>
+    <MRHistory_descoped value="false"/>
+    <MRElementRef href="&PMRElement;MRM-DG45P98072001-000186a5" title="Encoding"/>
+   </MRTypeMember>
+   <MRTypeMember status="internal" contextTagHint="CodedCharSetIdCxTg" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z">
+    <MRTypeMember_mandatoryInd value="true"/>
+    <MRTypeMember_repeatInd value="false"/>
+    <MRHistory_descoped value="false"/>
+    <MRElementRef href="&PMRElement;MRM-DG45P98072001-000186a6" title="CodedCharSetId"/>
+   </MRTypeMember>
+   <MRTypeMember status="internal" contextTagHint="FormatCxTg" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z">
+    <MRTypeMember_mandatoryInd value="true"/>
+    <MRTypeMember_repeatInd value="false"/>
+    <MRHistory_descoped value="false"/>
+    <MRElementRef href="&PMRElement;MRM-DG45P98072001-000186a8" title="Format"/>
+   </MRTypeMember>
+   <MRTypeMember status="internal" contextTagHint="FlagsCxTg" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z">
+    <MRTypeMember_mandatoryInd value="true"/>
+    <MRTypeMember_repeatInd value="false"/>
+    <MRHistory_descoped value="false"/>
+    <MRElementRef href="&PMRElement;MRM-DG45P98072001-000186a9" title="Flags"/>
+   </MRTypeMember>
+   <MRTypeMember status="internal" contextTagHint="GroupIdCxTg" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z">
+    <MRTypeMember_mandatoryInd value="true"/>
+    <MRTypeMember_repeatInd value="false"/>
+    <AttributeGroup xmi.label="Custom Wire Format">
+     <Attribute type="integer" value="24" xmi.label="Length" valueMandatory="false">
+      <XMI.extension xmi.extender="MRM">AttributeMetaData<MetaData>
+        <MetaDataItem value="1074266112" xmi.label="AttrFlags"/>
+        <MetaDataItem value="0" xmi.label="MinLength"/>
+        <MetaDataItem value="10" xmi.label="MaxLength"/>
+        <MetaDataItem value="Custom Wire Format Extension" xmi.label="hAttrPlugin"/>
+        <MetaDataItem value="2" xmi.label="AttrKey"/>
+        <MetaDataItem value="DG45P98072001" xmi.label="DefProject"/>
+        <MetaDataItem value="DG45P98072001" xmi.label="ModProject"/>
+        <MetaDataItem value="1999-10-27T18.31.27Z" xmi.label="CreationDate"/>
+        <MetaDataItem value="1999-10-27T18.31.27Z" xmi.label="LastModDate"/>
+        <MetaDataItem value="0" xmi.label="Status"/>
+       </MetaData>
+      </XMI.extension>
+     </Attribute>
+    </AttributeGroup>
+    <MRHistory_descoped value="false"/>
+    <MRElementRef href="&PMRElement;MRM-DG45P98072001-000186aa" title="GroupId"/>
+   </MRTypeMember>
+   <MRTypeMember status="internal" contextTagHint="MsgSeqNumberCxTg" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z">
+    <MRTypeMember_mandatoryInd value="true"/>
+    <MRTypeMember_repeatInd value="false"/>
+    <MRHistory_descoped value="false"/>
+    <MRElementRef href="&PMRElement;MRM-DG45P98072001-000186ab" title="MsgSeqNumber"/>
+   </MRTypeMember>
+   <MRTypeMember status="internal" contextTagHint="OffsetCxTg" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z">
+    <MRTypeMember_mandatoryInd value="true"/>
+    <MRTypeMember_repeatInd value="false"/>
+    <MRHistory_descoped value="false"/>
+    <MRElementRef href="&PMRElement;MRM-DG45P98072001-000186ac" title="Offset"/>
+   </MRTypeMember>
+   <MRTypeMember status="internal" contextTagHint="MsgFlagsCxTg" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z">
+    <MRTypeMember_mandatoryInd value="true"/>
+    <MRTypeMember_repeatInd value="false"/>
+    <MRHistory_descoped value="false"/>
+    <MRElementRef href="&PMRElement;MRM-DG45P98072001-000186ad" title="MsgFlags"/>
+   </MRTypeMember>
+   <MRTypeMember status="internal" contextTagHint="OriginalLengthCxTg" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z">
+    <MRTypeMember_mandatoryInd value="true"/>
+    <MRTypeMember_repeatInd value="false"/>
+    <MRHistory_descoped value="false"/>
+    <MRElementRef href="&PMRElement;MRM-DG45P98072001-000186ae" title="OriginalLength"/>
+   </MRTypeMember>
+  </MRCompound>
+  <MRElement status="internal" xmi.id="100006" xmi.uuid="MRM-DG45P98072001-000186a6" xmi.label="CodedCharSetId" collectionPath="&P;" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z" contextTagHintDefault="">
+   <MRBase_identifier value="CodedCharSetId"/>
+   <MRHistory_descoped value="false"/>
+   <MRSimpleRef href="&PMRSimple;MRM-SIMPLETYPE-0000c3ba" title="INTEGER"/>
+  </MRElement>
+  <MRElement status="internal" xmi.id="100005" xmi.uuid="MRM-DG45P98072001-000186a5" xmi.label="Encoding" collectionPath="&P;" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z" contextTagHintDefault="">
+   <MRBase_identifier value="Encoding"/>
+   <MRHistory_descoped value="false"/>
+   <MRSimpleRef href="&PMRSimple;MRM-SIMPLETYPE-0000c3ba" title="INTEGER"/>
+  </MRElement>
+  <MRElement status="internal" xmi.id="100009" xmi.uuid="MRM-DG45P98072001-000186a9" xmi.label="Flags" collectionPath="&P;" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z" contextTagHintDefault="">
+   <MRBase_identifier value="Flags"/>
+   <MRHistory_descoped value="false"/>
+   <MRSimpleRef href="&PMRSimple;MRM-SIMPLETYPE-0000c3ba" title="INTEGER"/>
+  </MRElement>
+  <MRElement status="internal" xmi.id="100008" xmi.uuid="MRM-DG45P98072001-000186a8" xmi.label="Format" collectionPath="&P;" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z" contextTagHintDefault="">
+   <AttributeGroup xmi.label="COBOL Language">
+    <Attribute type="string" value="FORMAT-CBL" xmi.label="COBOL Language Name" valueMandatory="true">
+     <XMI.extension xmi.extender="MRM">AttributeMetaData<MetaData>
+       <MetaDataItem value="524288" xmi.label="AttrFlags"/>
+       <MetaDataItem value="1" xmi.label="MinLength"/>
+       <MetaDataItem value="30" xmi.label="MaxLength"/>
+       <MetaDataItem value="COBOL Language Extension" xmi.label="hAttrPlugin"/>
+       <MetaDataItem value="7" xmi.label="AttrKey"/>
+       <MetaDataItem value="DG45P98072001" xmi.label="DefProject"/>
+       <MetaDataItem value="DG45P98072001" xmi.label="ModProject"/>
+       <MetaDataItem value="1999-10-28T12.38.57Z" xmi.label="CreationDate"/>
+       <MetaDataItem value="1999-10-28T12.38.57Z" xmi.label="LastModDate"/>
+       <MetaDataItem value="0" xmi.label="Status"/>
+      </MetaData>
+     </XMI.extension>
+    </Attribute>
+   </AttributeGroup>
+   <MRBase_identifier value="Format"/>
+   <MRHistory_descoped value="false"/>
+   <MRLengthRef href="&PMRLength;MRM-DG45P98072001-000186a7" title="FORMAT_LEN"/>
+   <MRSimpleRef href="&PMRSimple;MRM-SIMPLETYPE-0000c3b9" title="STRING"/>
+  </MRElement>
+  <MRElement status="internal" xmi.id="100010" xmi.uuid="MRM-DG45P98072001-000186aa" xmi.label="GroupId" collectionPath="&P;" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z" contextTagHintDefault="">
+   <MRBase_identifier value="GroupId"/>
+   <MRHistory_descoped value="false"/>
+   <MRSimpleRef href="&PMRSimple;MRM-SIMPLETYPE-0000c3bd" title="BINARY"/>
+  </MRElement>
+  <MRElement status="internal" xmi.id="100013" xmi.uuid="MRM-DG45P98072001-000186ad" xmi.label="MsgFlags" collectionPath="&P;" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z" contextTagHintDefault="">
+   <MRBase_identifier value="MsgFlags"/>
+   <MRHistory_descoped value="false"/>
+   <MRSimpleRef href="&PMRSimple;MRM-SIMPLETYPE-0000c3ba" title="INTEGER"/>
+  </MRElement>
+  <MRElement status="internal" xmi.id="100011" xmi.uuid="MRM-DG45P98072001-000186ab" xmi.label="MsgSeqNumber" collectionPath="&P;" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z" contextTagHintDefault="">
+   <MRBase_identifier value="MsgSeqNumber"/>
+   <MRHistory_descoped value="false"/>
+   <MRSimpleRef href="&PMRSimple;MRM-SIMPLETYPE-0000c3ba" title="INTEGER"/>
+  </MRElement>
+  <MRElement status="internal" xmi.id="100012" xmi.uuid="MRM-DG45P98072001-000186ac" xmi.label="Offset" collectionPath="&P;" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z" contextTagHintDefault="">
+   <MRBase_identifier value="Offset"/>
+   <MRHistory_descoped value="false"/>
+   <MRSimpleRef href="&PMRSimple;MRM-SIMPLETYPE-0000c3ba" title="INTEGER"/>
+  </MRElement>
+  <MRElement status="internal" xmi.id="100014" xmi.uuid="MRM-DG45P98072001-000186ae" xmi.label="OriginalLength" collectionPath="&P;" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z" contextTagHintDefault="">
+   <MRBase_identifier value="OriginalLength"/>
+   <MRHistory_descoped value="false"/>
+   <MRSimpleRef href="&PMRSimple;MRM-SIMPLETYPE-0000c3ba" title="INTEGER"/>
+  </MRElement>
+  <MRElement status="internal" xmi.id="100002" xmi.uuid="MRM-DG45P98072001-000186a2" xmi.label="StrucId" collectionPath="&P;" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z" contextTagHintDefault="">
+   <MRBase_identifier value="StrucId"/>
+   <MRHistory_descoped value="false"/>
+   <MRLengthRef href="&PMRLength;MRM-DG45P98072001-000186a1" title="STRUCID_LEN"/>
+   <MRSimpleRef href="&PMRSimple;MRM-SIMPLETYPE-0000c3b9" title="STRING"/>
+  </MRElement>
+  <MRElement status="internal" xmi.id="100004" xmi.uuid="MRM-DG45P98072001-000186a4" xmi.label="StrucLength" collectionPath="&P;" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z" contextTagHintDefault="">
+   <MRBase_identifier value="StrucLength"/>
+   <MRHistory_descoped value="false"/>
+   <MRSimpleRef href="&PMRSimple;MRM-SIMPLETYPE-0000c3ba" title="INTEGER"/>
+  </MRElement>
+  <MRElement status="internal" xmi.id="100003" xmi.uuid="MRM-DG45P98072001-000186a3" xmi.label="Version" collectionPath="&P;" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.31.27Z" creationTimestamp="1999-10-27T18.31.27Z" contextTagHintDefault="">
+   <MRBase_identifier value="Version"/>
+   <MRHistory_descoped value="false"/>
+   <MRSimpleRef href="&PMRSimple;MRM-SIMPLETYPE-0000c3ba" title="INTEGER"/>
+  </MRElement>
+  <MRMessage status="internal" xmi.id="100016" xmi.uuid="c9d8ae1a-db00-0000-0080-80aecc225c3b" xmi.label="MQMDE" collectionPath="&P;" definedProject="" lastModProject="" longDescription="" shortDescription="" versionTimestamp="1999-10-27T18.32.21Z" creationTimestamp="1999-10-27T18.32.21Z">
+   <MRMessage_mode value="null"/>
+   <AttributeGroup xmi.label="COBOL Language">
+    <Attribute type="string" value="MQMDE.CPY" xmi.label="Message Copy Book Name" valueMandatory="false">
+     <XMI.extension xmi.extender="MRM">AttributeMetaData<MetaData>
+       <MetaDataItem value="524288" xmi.label="AttrFlags"/>
+       <MetaDataItem value="0" xmi.label="MinLength"/>
+       <MetaDataItem value="12" xmi.label="MaxLength"/>
+       <MetaDataItem value="COBOL Language Extension" xmi.label="hAttrPlugin"/>
+       <MetaDataItem value="5" xmi.label="AttrKey"/>
+       <MetaDataItem value="DG45P98072001" xmi.label="DefProject"/>
+       <MetaDataItem value="DG45P98072001" xmi.label="ModProject"/>
+       <MetaDataItem value="1999-10-27T18.32.21Z" xmi.label="CreationDate"/>
+       <MetaDataItem value="1999-10-27T18.32.21Z" xmi.label="LastModDate"/>
+       <MetaDataItem value="0" xmi.label="Status"/>
+      </MetaData>
+     </XMI.extension>
+    </Attribute>
+   </AttributeGroup>
+   <MRBase_identifier value="MQMDE"/>
+   <MRHistory_descoped value="false"/>
+   <MRCompoundRef href="&PMRCompound;MRM-DG45P98072001-000186af" title="MQMDE_TYPE"/>
+   <MRMessagePathList/>
+  </MRMessage>
+ </XMI.content>
+</XMI>
+

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    <copyright 
+    notice="oco-source" 
+    pids="5725-C18" 
+    years="2015" 
+    crc="486487780" > 
+    IBM Confidential 
+     
+    OCO Source Materials 
+     
+    5725-C18 
+     
+    (C) Copyright IBM Corp. 2015 
+     
+    The source code for the program is not published 
+    or otherwise divested of its trade secrets, 
+    irrespective of what has been deposited with the 
+    U.S. Copyright Office. 
+    </copyright> 
+-->
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+    <display-name>Integration Bus Healthcare Pack</display-name>
+    <servlet>
+        <servlet-name>default</servlet-name>
+        <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>0</param-value>
+        </init-param>
+        <init-param>
+            <param-name>listings</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!-- default mime types -->
+    <mime-mapping>
+        <extension>css</extension>
+        <mime-type>text/css</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>htm</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>html</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>js</extension>
+        <mime-type>application/javascript</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>json</extension>
+        <mime-type>application/json</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>ico</extension>
+        <mime-type>image/x-icon</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>gif</extension>
+        <mime-type>image/gif</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>png</extension>
+        <mime-type>image/png</mime-type>
+    </mime-mapping>
+    <!-- Default welcome page -->
+    <welcome-file-list>
+        <welcome-file>/index.html</welcome-file>
+    </welcome-file-list>
+    <!-- The security model for accessing the site is to require authentication for all -->
+    <!-- content and then relax for the specific dependencies required to render the login page -->
+    <!-- Where authentication is required re-direct to our login form  -->
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/login.html</form-login-page>
+            <form-error-page>/login.html</form-error-page>
+        </form-login-config>
+    </login-config>
+    <!-- Default rule - authentication required for all areas and to secure using SSL -->
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>webui</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <!-- Remove authentication for pre-reqs  -->
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/dojo/*</url-pattern>
+            <url-pattern>/dijit/*</url-pattern>
+            <url-pattern>/gridx/*</url-pattern>
+            <url-pattern>/idx/*</url-pattern>
+            <url-pattern>/webui/*</url-pattern>
+            <url-pattern>/healthcare/*</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+
+    <!-- All security is hinged on a single admin user role -->
+    <security-role>
+        <role-name>webui</role-name>
+    </security-role>
+
+    <!-- Set expiry filter -->
+    <filter>
+        <filter-name>ExpiresFilter</filter-name>
+        <filter-class>org.apache.catalina.filters.ExpiresFilter</filter-class>
+        <!-- do not cache html as if we cache the main or login pages then security goes wonky -->
+        <init-param>
+            <param-name>ExpiresByType text/html</param-name>
+            <param-value>now plus 0 second</param-value>
+        </init-param>
+        <!-- everything else, one month -->
+        <init-param>
+            <param-name>ExpiresDefault</param-name>
+            <param-value>access plus 1 month</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ExpiresExcludedResponseStatusCodes</param-name>
+            <param-value>302, 304, 500, 503</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>ExpiresFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <!-- Don't cache the login redirect -->
+    <filter-mapping>
+        <filter-name>ExpiresFilter</filter-name>
+        <url-pattern>/login/index.html</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+</web-app>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <title>Limpieza de la base de datos de identificadores de pacientes</title>
+    <!-- 
+       (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+       All Rights Reserved * Licensed Materials - Property of IBM
+      -->
+</head>
+<body role="main">
+<div>
+    <h1 class="topictitle1">Limpieza de la base de datos de identificadores de pacientes</h1>
+    <p class="shortdesc">
+    Cuando haya acabado con el ejemplo de nodo
+MedicalMedicalDeviceInput, puede eliminar la base de datos, su
+definición de ODBC y los valores de identificador de usuario y
+contraseña asociados al nombre del origen de datos.
+    </p>
+</div>
+<p>
+Lleve a cabo las tareas siguientes para limpiar el entorno de base de
+datos:
+</p>
+<ol>
+    <li>
+        Elimine la base de datos y la definición ODBC.
+        <p>
+        Siga las instrucciones relevantes para su gestor de base de datos:
+        </p>
+        <ul>
+            <li>
+                <a href="remove_db2.htm">Limpieza de DB2</a>
+            </li>
+            <li>
+                <a href="remove_oracle.htm">Limpieza de Oracle</a>
+            </li>
+        </ul>
+        
+    </li>
+    <li>
+        Elimine el identificador de usuario y la contraseña asociados al
+nombre del origen de datos
+        <span class="msobjpropval">
+        PATIENTSDSN
+        </span>
+        .
+        <p>
+        Abra una ventana de consola de mandatos donde pueda
+ejecutar mandatos de IBM Integration
+                Bus. Especifique el mandato
+siguiente para eliminar el identificador de usuario y la contraseña:
+        </p>
+        <pre>mqsisetdbparms <var>nodo_integración</var> -n
+PATIENTSDSN -d</pre>
+    </li> donde <var>nodo_integración</var> es el nombre del nodo de
+integración.
+</ol>
+<a href="overview.htm#anchorBack" title="Atrás">Volver a
+la especificación del patrón Servicio sanitario: Dispositivos médicos
+a EMR</a>
+
+</body>
+</html>

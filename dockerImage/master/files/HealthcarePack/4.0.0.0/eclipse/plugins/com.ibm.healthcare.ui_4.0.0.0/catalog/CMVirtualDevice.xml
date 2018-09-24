@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CMDriverDescription>
+<SupportedDevices model="Cain Medical Virtual Device" type="Monitor">
+ <CMLLC type="CMLLCRS232">
+ 	<CMLLCCfg port="" baud="9600,2400,4800,19200,115000" parity="E,N,O" data="7,8" stopbit="1" rtscts="No" />
+ </CMLLC>
+ </SupportedDevices>
+ <Variables>
+	<Discrete>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="79:331-660:302:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:ArterialBlood:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_FLUIDTYPE_ARTERIALBLOOD:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="" 
+ 					abbreviation="SaO2" 
+ 					shortdesc="None" 
+ 					longdesc="arterial oxygen saturation" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="84:583-598:187-196:537" 
+ 					CMidtext="Flow:Delivery-Mass:Drug-Fluid:Pump" 
+ 					idref="M_BASE_FLOW:M_SPEC_DELIVERY-M_SPEC_MASS:M_CONCERNS_DRUG-M_CONCERNS_FLUID:M_PERTAINS_PUMP" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Drug delivery rate" 
+ 					longdesc="Drug delivery rate to patient" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="109::169:260" 
+ 					CMidtext="Temperature::Blood:Body" 
+ 					idref="M_BASE_TEMPERATURE::M_CONCERNS_BLOOD:M_CONTEXT_BODY" 
+ 					defaultunits="" 
+ 					abbreviation="T" 
+ 					shortdesc="Blood temperature" 
+ 					longdesc="Blood temperature" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:667:203:263" 
+ 					CMidtext="Rate:Beats:Heart:CVS" 
+ 					idref="M_BASE_RATE:M_TIMECRIT_BEATS:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="HR" 
+ 					shortdesc="heart rate" 
+ 					longdesc="Rate of cardiac beats" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:667:203:263" 
+ 					CMidtext="Rate:Beats:Heart:CVS" 
+ 					idref="M_BASE_RATE:M_TIMECRIT_BEATS:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="HR" 
+ 					shortdesc="heart rate" 
+ 					longdesc="Rate of cardiac beats" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:667:203:263" 
+ 					CMidtext="Rate:Beats:Heart:CVS" 
+ 					idref="M_BASE_RATE:M_TIMECRIT_BEATS:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="HR" 
+ 					shortdesc="heart rate" 
+ 					longdesc="Rate of cardiac beats" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="84:609:197:261" 
+ 					CMidtext="Flow:OneMinute:Gas:Breathing" 
+ 					idref="M_BASE_FLOW:M_SPEC_ONEMINUTE:M_CONCERNS_GAS:M_CONTEXT_BREATHING" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Respir. Minute Volume" 
+ 					longdesc="Total volume of gas breathed in one minute during spontaneous respiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:455:173:261" 
+ 					CMidtext="Rate:NOS:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_NOS:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, method not specified" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:344-378:197:259" 
+ 					CMidtext="Pressure:Continuous-Positive:Gas:Airway" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_CONTINUOUS-M_METHOD_POSITIVE:M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="CPAP" 
+ 					shortdesc="CPAP pressure" 
+ 					longdesc="Continuous press. in airway during spontaneous respiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:346-371-671:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Noninvasive-Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE-M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="NIBP (dia)" 
+ 					shortdesc="Discontinuous, Noninvasive Diastolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the diastolic phase, measured discontinuously and noninvasively (cuff)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:137-346-371:169:263" 
+ 					CMidtext="Pressure:Mean-Discontinuous-Noninvasive:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN-M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="NIBP (mean)" 
+ 					shortdesc="Discontinuous, Noninvasive Mean Blood Pressure" 
+ 					longdesc="Pressure of the blood computed as mean value between systolic and diastolic Pressures, measured discontinuously and noninvasively (cuff)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:346-371-712:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Noninvasive-Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE-M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="NIBP (sys)" 
+ 					shortdesc="Discontinuous, Noninvasive Systolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the systolic phase, measured discontinuously and noninvasively (cuff)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 	</VarGroup>
+ </Discrete>
+	<Waveform>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="111:889::" 
+ 					CMidtext="Type:Waveform::" 
+ 					idref="M_BASE_TYPE:CM_CONCERNSMEASUREMENT_WAVEFORM::" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Waveform" 
+ 					longdesc="Waveform measurement" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99::197:259" 
+ 					CMidtext="Pressure::Gas:Airway" 
+ 					idref="M_BASE_PRESSURE::M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="PAW" 
+ 					shortdesc="Respir. Airway Pressure" 
+ 					longdesc="pressure of gas in airway" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="111:889::" 
+ 					CMidtext="Type:Waveform::" 
+ 					idref="M_BASE_TYPE:CM_CONCERNSMEASUREMENT_WAVEFORM::" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Waveform" 
+ 					longdesc="Waveform measurement" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:434-667:203:263" 
+ 					CMidtext="Rate:ECG-Beats:Heart:CVS" 
+ 					idref="M_BASE_RATE:M_ORIGIN_ECG-M_TIMECRIT_BEATS:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="uV" 
+ 					abbreviation="HR" 
+ 					shortdesc="Heart rate (ECG)" 
+ 					longdesc="Heart rate measured from ECG" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 	</VarGroup>
+ </Waveform>
+	<Waveform>
+		<VarGroup> 
+			<Variable> 
+ 				<Primary 
+ 					CMid="99:889:177-197:259"
+ 					CMidtext="Pressure:Waveform:CO2-Gas:Airway"
+ 					idref="M_BASE_PRESSURE:CM_CONCERNSMEASUREMENT_WAVEFORM:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY"
+ 					defaultunits="mmHg"
+ 					abbreviation="CO2wave"
+ 					shortdesc="Airway CO2 pressure waveform"
+ 					longdesc="Pressure of CO2 in airway gas measured at the end of expiration (waveform)"
+ 				/>
+ 				<Secondary 
+ 					CMid=""
+ 					CMidtext=""
+ 					idref=""
+ 					defaultunits=""
+ 					abbreviation=""
+ 					shortdesc=""
+ 					longdesc=""
+ 				/>
+ 				<Sources list="" />
+ 			</Variable>
+		</VarGroup> 
+	</Waveform>
+</Variables></CMDriverDescription>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+  <contexts>
+
+    <context id="UI0000">
+      <description><b>Brokers view</b>
+Use this view to create and work with brokers. Right-click on the Brokers folder to create a new local broker and add a remote broker.
+You can start, stop, and delete brokers and deployed resources from this view.</description>
+      <topic href="../com.ibm.etools.mft.doc/be44400_.htm" label="Creating a development environment"/>
+      <topic href="../com.ibm.etools.mft.doc/an03990_.htm" label="Administering brokers and broker resources"/>
+      <topic href="../com.ibm.etools.mft.doc/af35100_.htm" label="Deploying a message flow application"/>
+      <topic href="../com.ibm.etools.mft.doc/ag11186_.htm" label="Attaching the flow debugger to an integration server"/>
+      
+    </context> 
+    
+     <context id="UI0001">
+      <description><b>Create Local Broker wizard</b>
+Use this wizard to create a broker on your local system.</description>
+      <topic href="../com.ibm.etools.mft.doc/be44410_.htm" label="Creating a broker for a development environment"/>
+      
+    </context> 
+    
+     <context id="UI0002">
+      <description><b>Connect to a Remote Broker wizard</b>
+Use this wizard to connect to a broker on another system.</description>
+    <topic href="../com.ibm.etools.mft.doc/be10200_.htm" label="Connect to a remote broker"/>
+      <topic href="../com.ibm.etools.mft.doc/be10200_.htm" label="Connect to a remote broker on z/OS"/>
+      
+    </context> 
+    
+  </contexts>

@@ -1,0 +1,474 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>Prueba del patrón Servicio sanitario: HL7 a HL7</title>
+</head>
+<body role="main">
+<a name="links"></a>
+<div class="section">
+    <h1 class="topictitle1">Prueba del patrón Servicio sanitario: HL7  a HL7</h1>
+    <p class="shortdesc">
+    Utilice la información siguiente para probar el patrón
+    <span>
+    Servicio sanitario: HL7 a HL7
+    </span>
+    .
+    </p>
+    
+        <p>
+        Este tema contiene las secciones siguientes:
+        </p>
+        <ul><li>
+            <a href="testing.htm#test">Aplicación de prueba</a>
+        </li>
+        <li>
+            <a href="testing.htm#messages">Mensajes HL7</a>
+        </li>
+        <li>
+            <a href="testing.htm#setup">Configuración de instancia de
+patrón básica</a>
+        </li>
+        <li>
+            <a href="testing.htm#flow">Flujo de información a través
+de la instancia de patrón</a>
+        </li>
+        <li>
+            <a href="testing.htm#options">Opciones adicionales</a>
+       </li>
+    </ul>
+</div>
+<div class="section">
+    <a name="test"></a> <h2 class="sectiontitle">Flujos de prueba</h2>
+    <p>
+    Puede utilizar este patrón para interconectar aplicaciones HL7 y
+direccionar mensajes filtrados de una aplicación emisora a muchas
+aplicaciones de destino. Descubra cómo empezar a trabajar con la
+instancia de
+patrón utilizando los flujos de mensajes para simular
+aplicaciones clínicas de origen y de
+destino.
+    </p>
+    <p>
+    El proyecto
+    <span class="msobjpropval">
+    TestApplication
+    </span>
+    que se incluye en este patrón, consulte
+<a href = "resources.htm#resources">Recursos para el patrón <span>
+    Servicio sanitario: HL7 a HL7
+    </span></a>, incluye un flujo de origen denominado
+SourceApplication y seis flujos de destino denominados
+DestinationApplication. Los
+seis flujos de aplicación de destino son iguales excepto en los
+detalles de conexión. Los flujos de aplicación de destino están
+configurados para utilizar el
+    <span class="msobjpropval">
+    localhost
+    </span>
+    con el número de puerto que se especifique en el nombre de flujo. Por lo tanto, por ejemplo, DestinationApplicationListensOnPort2222
+tiene los detalles de conexión definidos como
+<span class="msobjpropval"> localhost:2222
+    </span>
+    .
+    </p>
+    <p>
+    Los detalles de conexión de los flujos de proyecto <span class="msobjpropval">
+    TestApplication
+    </span>
+    coinciden con los detalles de conexión predeterminados de la
+instancia de patrón. Si cambia los detalles de conexión de la
+configuración de la instancia de patrón, debe cambiar también los
+detalles de conexión de los flujos de la aplicación de prueba.
+    </p>
+    <h3 class="sectiontitle">Prueba del patrón utilizando el depurador de flujos</h3>
+    <p>
+    Para probar el patrón utilizando el depurador de flujos, lea el
+apartado "Prueba y depuración de las aplicaciones de flujo de
+mensajes" en la documentación de IBM Integration Bus. Para utilizar
+el depurador de flujos con los nodos GenericHL7Input y GenericHL7Output
+HL7Output, debe importar los subflujos que utilizan estos nodos;
+consulte <a href = "resources.htm#resources">Recursos para el
+patrón <span>
+    Servicio sanitario: HL7 a HL7
+    </span></a>.
+    </p>
+</div>
+<div class="section">
+    <a name="test"></a> <h2 class="sectiontitle">Aplicación de prueba de HL7</h2>
+    <p>
+    La Aplicación de prueba de HL7 permite enviar y recibir mensajes HL7 en el nodo de integración utilizando MLLP. La aplicación puede simular una
+aplicación clínica con un solo origen y destino. La prueba
+proporciona opciones para simular distintas configuraciones MLLP y
+distintas secuenciaciones de mensajes. Los mensajes HL7 se
+proporcionan en los recursos del patrón para utilizarlos como datos
+de prueba; consulte <a href = "resources.htm#resources">Recursos
+para el patrón <span>
+    Servicio sanitario: HL7 a HL7</span></a>.
+    </p>
+    <p>
+   	Para iniciar la aplicación de prueba de HL7, realice los pasos siguientes:<ol>
+    	<li>Pulse <span class="uicontrol">Archivo > Nuevo > Otro</span>.</li>
+    	<li>En la carpeta <span class="uicontrol">Healthcare</span>, seleccione
+    		<span class="uicontrol">Aplicación de prueba de HL7</span> y pulse <span class="uicontrol">Siguiente</span>.</li>
+    	<li>Especifique un contenedor y nombre de archivo para los valores de la aplicación de prueba y pulse <span class="uicontrol">Finalizar</span>.
+    		La aplicación de prueba de HL7 se inicia.</li>
+    </ol>
+    </p>
+</div>
+<div class="section">
+    <a name="messages"></a> <h2 class="sectiontitle">Mensajes HL7</h2>
+    <p>
+    Un mensaje HL7 se divide en segmentos y campos. El límite entre
+segmentos puede variar en función de la aplicación emisora. Los
+mensajes de ejemplo que se utilizan en la aplicación de prueba
+utilizan los caracteres hexadecimales <span class="msobjpropval">0D
+    </span>
+    y
+    <span class="msobjpropval">
+    0A
+    </span>
+    . Los campos dentro de un segmento se separan mediante el carácter
+declarado en el segmento MSH al inicio de cada mensaje HL7, el valor
+predeterminado es el carácter de barra vertical (|). Los segmentos se
+identifican por el primer campo; el ejemplo siguiente tiene
+cuatro segmentos: MSH, EVN, PID y PV1. El segmento MSH es la cabecera
+del mensaje y tiene diversos campos que se explican en este tema
+    </p>
+    <p>
+    En el ejemplo siguiente se muestra un mensaje HL7 típico (ADT
+A01) (se han añadido saltos de línea para hacerlo más fácil de leer):
+    </p>
+    <pre>MSH|^~\&amp;|HL7ABLAB|HNA500|HNAM|HNAM|20090911132151||ADT^A01|
+Q30235031T29347435X328970|A|2.3|123
+EVN|A01|20090911132100|||^DRONE_PM1^DRONE_PM^^^^^^^Personnel
+PID|1||1357920591||IntFace1101A^WinTask^^^^^Current||19801117|M||||||||||
+10000476524^^^FIN^FIN NBR|100000451||||||0
+PV1|1|Inpatient|CD:16067689^CD:16067691^CD:16067741^Uniontown Hospit^^Bed(s)
+^Uniontown Hospit||||||||||||||501455^Orr^Maggi^^^^^^External ID^Personnel^^^
+External
+Identifier~25584^Orr^Maggi^^^^^^PERSONNEL PRIMARY
+IDENTIFIER^Personnel^^^Personnel Primary Identifier|Inpatient|||||||||||||||||||
+||
+Uniontown Hospit||Active|||20090911132100
+    </pre>
+</div>
+<div class="section">
+    <a name="setup"></a> <h2 class="sectiontitle">Configuración de
+la instancia de patrón básica</h2>
+    <p>
+    Los flujos de mensajes principales de la instancia de patrón son:
+    </p>
+    <ul>
+        <li>
+            Receiver
+        </li>
+        <li>
+            TransformAndRoute<var>n</var>
+        </li>
+        <li>
+            Dest<var>n</var>Sender
+        </li>
+    </ul>
+    <p>
+    Si elige crear una instancia de patrón con más destinos, se
+crean más flujos Dest<var>n</var>Sender, donde <var>n</var> es el
+número del destino.
+    </p>
+    <p>
+    Debe asegurarse de que tiene todas las colas configuradas para la
+instancia de patrón,
+    consulte la sección &quot;Colas&quot; en
+<a href="management.htm">Gestión de una instancia de patrón Servicio sanitario: HL7 a HL7</a>.
+    </p>
+</div>
+<div class="section">
+    <a name="flow"></a> <h2 class="sectiontitle">Flujo de información
+a través de la instancia de patrón</h2>
+    <p>
+    Cuando se envía un mensaje con la aplicación de prueba, la
+información fluye a través de una instancia de patrón con la secuencia
+siguiente :
+    </p>
+    <ol>
+        <li>
+            El mensaje se coloca en la cola HL7_TEST_IN y lo recoge el flujo
+SourceApplication.
+        </li>
+        <li>
+            El flujo SourceApplication añade bytes MLLP al mensaje y
+lo envía por
+            TCP/IP a la instancia de patrón.
+        </li>
+        <li>
+            El mensaje llega al flujo de mensajes Receiver donde se
+recortan los bytes MLLP.
+        </li>
+        <li>
+            El segmento MSH del mensaje se analiza.
+        </li>
+        <li>
+            Si se activan las opciones de mensajes duplicados y de
+secuenciación en
+la configuración de la instancia de patrón, se comprueban los mensajes
+duplicados se configura la secuenciación.
+        </li>
+        <li>
+            Se devuelve un mensaje de respuesta de acuse de
+recibo (ACK) al flujo SourceApplication.
+        </li>
+        <li>
+            El mensaje se envía a la cola RFX<var>n</var>, donde
+<var>n</var> es el número de destino. El flujo de mensajes
+TransformAndRoute<var>n</var> coge el mensaje de la cola
+RXF<var>n</var>, donde <var>n</var> es el número de destino.
+            <p>
+            Si configura el filtrado de mensajes o de segmentos, el
+filtrado se lleva a cabo en este flujo. Según la configuración de la
+instancia de patrón, este flujo también puede contener nodos que
+publiquen restos en el mensaje y en el formato canónico del mensaje.
+            </p>
+        </li>
+        <li>
+            El mensaje se transforma a XML y se envía a cada uno de los flujos de
+destino.
+        </li>
+        <li>
+            En los flujos de destino, los mensajes se envían a los
+flujos DestinationApplication, que responden con un mensaje ACK.
+        </li>
+        <li>
+            El flujo de destino procesa el mensaje ACK.
+        </li>
+        <li>
+            Según la configuración de instancia de patrón, se puede volver a secuenciar
+los mensajes y volver a enviarlos al destino.
+        </li>
+    </ol>
+    <p>
+    Todos los flujos tienen también un subflujo de manejo de
+excepciones que maneja los problemas que capte el flujo.
+    </p>
+</div>
+<div class="section">
+    <a name="options"></a> <h2 class="sectiontitle">Opciones adicionales</h2> <h3>Secuenciación</h3>
+    <p>
+    Puede configurar la secuenciación de la instancia de patrón en el
+grupo de parámetros <span class="msobjprop"> Opciones
+    </span>. Si se ha seleccionado la opción
+    <span class="msobjpropval">
+    Basado en llegada
+    </span>
+    para la secuenciación, el orden correcto de los mensajes se basa
+en el orden en que llegan a la instancia de patrón. Si se ha seleccionado la opción
+    <span class="msobjpropval">
+    Basado en contenido
+    </span>
+    para la secuenciación, se utiliza el valor del treceavo campo
+(<code>123</code>
+    en el ejemplo) del segmento MSH del mensaje como número de
+secuencia.
+    El flujo de mensajes Receiver configura la secuenciación de la
+instancia de patrón y coge el número de secuencia de los mensajes.
+    </p>
+    <p>
+    Los mensajes se vuelven a secuenciar en cada uno de los flujos de
+destino. Para cada destino puede elegir entre secuenciación
+estricta o laxa. Si elige secuenciación estricta y falta un mensaje,
+los demás mensajes se retienen hasta que llega el mensaje que falta,
+lo cual puede bloquear el flujo indefinidamente. Si elige
+secuenciación laxa y falta un mensaje, el usuario decide cuánto
+tiempo puede transcurrir hasta dejar de esperar el mensaje que falta y
+continuar procesando los mensajes.
+    </p>
+    <p>
+    Para ejercer las opciones de secuencia, puede manipular el orden en
+que se envían los mensajes a la instancia de patrón, cambiar el
+número de secuencia del mensaje o quitar mensajes de las colas durante
+el proceso.
+    </p>
+    <h3>Proceso de duplicados</h3>
+    <p>
+    Si el parámetro
+    <span class="msobjprop">
+    Comprobar duplicados
+    </span>
+    está seleccionado, el flujo de mensajes Receiver contiene nodos
+adicionales para comprobar los duplicados. El décimo campo del
+segmento MSH (<code>Q30235031T29347435X328970</code> en el ejemplo)
+del mensaje contiene el ID de control del mensaje, que se utiliza
+para comprobar los mensajes duplicados. Una vez que el flujo ha
+procesado un mensaje, éste se guarda en una cola que se puede
+comprobar. El subflujo
+    <span class="msobjprop">
+    Comprobar duplicados
+    </span>
+    mira si el mensaje está duplicado; si el mensaje no está
+duplicado, el proceso continúa normalmente. Sin embargo, si
+se descubre que el mensaje está duplicado y la opción de
+mensajes ACK está activada, se devuelve el mensaje ACK original a
+la aplicación emisora. Si la opción de
+mensajes ACK está desactivada, el mensaje duplicado se procesa igual
+que un mensaje nuevo que llegue al flujo.
+    </p>
+    <p>
+    Para ejercitar el procesamiento de duplicados, puede manipular
+el décimo campo del segmento MSH de los mensajes.
+    </p>
+    <h3>Envío de mensajes ACK y NACK</h3>
+    <p>
+    Si el parámetro
+    <span class="msobjprop">
+    Enviar acuse de recibo
+    </span>
+    está seleccionado, una vez que el flujo de mensajes Receiver ha
+procesado el mensaje, la instancia de patrón envía un mensaje ACK a
+la aplicación emisora. Esta acción notifica a la aplicación emisora
+que el mensaje se ha procesado satisfactoriamente. El flujo de
+mensajes SourceApplication tiene nodos que están configurados para
+manejar mensajes ACK y mensajes de respuesta de
+acuse de recibo negativo (NACK). 
+    Si se produce algún problema al
+procesar los mensajes, se envía un mensaje NACK a la aplicación
+emisora.
+    </p>
+    <p>
+    Los flujos de destino también contienen nodos para gestionar los
+mensajes ACK que se devuelven a la instancia de patrón desde la
+aplicación de destino una vez que ésta ha recibido el mensaje
+satisfactoriamente.
+    </p>
+    <h3>Registrar por diario</h3>
+    <p>
+    Diversos parámetros del grupo
+    <span class="msobjprop">
+    Opciones
+    </span>
+    de la configuración de la instancia de patrón permiten elegir qué
+información se registra sobre los mensajes cuando se procesan.
+    </p>
+    <ul>
+        <li>
+            <span class="msobjprop">
+            Registro por diario
+            </span>
+            . Este parámetro se puede estar activado o desactivado. El
+Registro por diario graba una copia del mensaje de origen en una cola
+de mensajes, o publica el mensaje en un tema. El mensaje se graba
+con metadatos adicionales que describen el flujo de mensajes de
+origen, el nombre del nodo de integración y el nombre de la
+instancia de patrón. Puede utilizar el registro por diario para
+conservar una copia de cada uno de los mensajes de entrada que se
+envían a un nodo de integración. Conservar mensajes resulta útil
+para posibles auditorías. Puede configurar la cola de diario de
+forma que los mensajes caduquen al cabo de una semana, por ejemplo,
+de forma que la cola no crezca indefinidamente.
+        </li>
+        <li>
+            <span class="msobjprop">
+            Publicar
+            </span>
+            . Si el
+            <span class="msobjprop">
+            Registro por diario
+            </span>
+            está seleccionado, puede cambiar el parámetro <span class="msobjprop">
+            Publicar
+            </span>
+            para determinar si el mensaje se publicará en un tema o en
+una cola.
+        </li>
+        <li>
+            <span class="msobjprop">
+            Canal de información canónico
+            </span>
+            y
+            <span class="msobjprop">
+            Canal de información de origen
+            </span>
+            . Puede elegir si el mensaje se registra.
+        </li>
+        <li>
+            <span class="msobjprop">
+            Informar de restos
+            </span>
+            . Puede elegir si los restos se registran. Los
+restos son campos que no están modelados en el conjunto de
+mensajes HL7v25P.
+        </li>
+    </ul>
+    <h3>Filtrado de mensajes y de segmentos</h3>
+    <p>
+    <span class="msobjprop">
+    El filtrado de mensajes
+    </span>
+    permite filtrar mensajes según el tipo de suceso, el noveno campo
+ (<code>ADT^A01</code>
+    en el ejemplo) del segmento MSH del mensaje. No todos los
+mensajes de una aplicación de origen son necesarios para todos los
+destinos. Puede utilizar filtros para excluir mensajes específicos de
+determinados
+destinos de mensajes. El filtrado de mensajes se configura por
+destino.
+    </p>
+    <p>
+    Al especificar filtros, el campo noveno proporciona valores para <span class="msobjprop">
+    Código
+    </span>
+    y
+    <span class="msobjprop">
+    Suceso
+    </span>
+    . Los dos valores están separados por el carácter circunflejo (^). En
+el mensaje de ejemplo que aparece al principio de este documento, <span class="msobjprop">
+    Código
+    </span>
+    es
+    <span class="msobjpropval">
+    ADT
+    </span>
+    y
+    <span class="msobjprop">
+    Suceso
+    </span>
+    es
+    <span class="msobjpropval">
+    A01
+    </span>
+    . Si la secuenciación está activada y se filtra un mensaje, se envía un
+mensaje ficticio en su lugar para que la secuencia se
+mantenga.
+    </p>
+    <p>
+    <span class="msobjprop">
+    El Filtrado de segmentos
+    </span>
+    permite especificar los segmentos que se eliminarán de un mensaje
+cuando se envía a un destino. Puede utilizar el filtrado de
+segmentos para
+eliminar estos segmentos de un mensaje antes de que se
+pase a un destino. Si el destino no admite todos los segmentos
+de mensaje que envía la aplicación de origen, es posible que
+desee utilizar esta opción para filtrar los segmentos, por ejemplo,
+extensiones para mensajes HL7 denominados segmentos Z. El filtrado de
+segmentos se activa según el destino.
+    </p>
+    <p>
+    Los segmentos se especifican mediante un código de tres letras
+(MSH, EVN, PID y PV1 en el mensaje de ejemplo). El segmento MSH es la
+cabecera del mensaje, que no se puede filtrar, aunque lo haya
+especificado el usuario.
+    </p>
+</div>
+<a href="overview.htm#anchorBack" title="Atrás">Volver a
+la especificación del patrón Servicio sanitario: HL7 a HL7</a>
+<p>
+</p>
+</body>
+</html>

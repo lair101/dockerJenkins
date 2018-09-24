@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.ibm.etools.mft.unittest.core">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="com.ibm.etools.mft.unittest.core" id="testControllerDescriptionExtension" name="testControllerDescriptionExtension"/>
+      </appInfo>
+      <documentation>
+         Define an extension to the Test Controller.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <complexType>
+         <sequence>
+            <element ref="testControllerDescriptionExtension" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="testControllerDescriptionExtension">
+      <annotation>
+         <documentation>
+            Define an extension to the EETS Test Controller.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="testControllerId" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The id of the Test Controller that this extension refers to.  The base J2EE Test Controller has ID &quot;J2EETestController&quot; and the base J2SE Test Controller has ID &quot;J2SETestController&quot;.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Fully qualified class name that must implement &lt;i&gt;the com.ibm.wbit.common.framework .ITestControllerDescriptionExtension&lt;/i&gt; interface.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         &lt;pre&gt;
+  &lt;!--
+   Define an extension to the J2SE runtime.  This puts us in the classpath of the
+   J2SE JVM.
+   --&gt;
+   &lt;extension
+         point=&quot;com.ibm.etools.mft.unittest.core.testControllerDescriptionExtension&quot;&gt;
+      &lt;testControllerDescriptionExtension
+            testControllerId=&quot;J2SETestController&quot;
+            class=&quot;MyEETSControllerExtensions.extensions.J2EEControllerDescriptionExtension&quot;/&gt;
+   &lt;/extension&gt;
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         The class attribute must define a class that implements the &lt;i&gt;the com.ibm.wbit.common.framework .ITestControllerDescriptionExtension&lt;/i&gt; interface.  The interface is as follow:
+
+&lt;pre&gt;
+
+package com.ibm.etools.mft.unittest.common.framework;
+
+import java.util.List;
+
+public interface ITestControllerDescriptionExtension
+{
+    /**
+     * Additional  archives that need to be deployed to the 
+     * server to support the Test Controller. 
+     * 
+     * @return A list of IPath that describes the archive locations.
+     */
+    public List getAdditionalTestControllerArchives();
+}
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+</schema>

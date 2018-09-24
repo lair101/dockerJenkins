@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+  <contexts>
+    <context id="adapterSelection">
+      <description><b>Select an Enterprise Service Resource Adapter</b>
+Select the resource adapter you want to use to import a new instance into the workspace. Selecting a connector project allows you to edit any settings on the adapter and to use that instance. Selecting a connection pre-populates the specified connection information into the wizard and allows you to modify it.</description>
+      <topic href="../com.ibm.etools.mft.doc/ac37160_.htm" label="WebSphere Adapters nodes"/>
+		</context>
+  </contexts>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<discriminatorRule>SELF</discriminatorRule>
+	<xsdSchema>
+		<location>BookSeries.xsd</location>
+		<namespace-uri>http://www.ibm.com/book-ns</namespace-uri>
+		<include-default-attribute>false</include-default-attribute>
+		<elementFormDefault>qualified</elementFormDefault>
+		<attributeFormDefault>unqualified</attributeFormDefault>
+	</xsdSchema>
+	<discriminatorSet>
+		<discriminator id="1">
+			<name>Section</name>
+			<codeSystem>BookCodes</codeSystem>
+			<attribute type="key">secType</attribute>
+		</discriminator>
+		<discriminator id="2">
+			<name>Media</name>
+			<codeSystem>BookCodes</codeSystem>
+			<attribute>mediaType</attribute>
+		</discriminator>
+ 	</discriminatorSet>
+</configuration>

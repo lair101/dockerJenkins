@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MRMessageSet id="DG45P98074001" name="MQRFH" parser="MQRFH">
+  <MRMsgCollection
+    href="platform:/plugin/com.ibm.etools.msg.mqheaders/MQRFH/mqrfh.mxsd"
+    prefix="" targetNamespace="">
+    <message
+      href="platform:/plugin/com.ibm.etools.msg.mqheaders/MQRFH/mqrfh.mxsd#/0/MQRFH;XSDElementDeclaration$MRMessage" name="MQRFH"/>
+    <element
+      href="platform:/plugin/com.ibm.etools.msg.mqheaders/MQRFH/mqrfh.mxsd#/0/MQRFH;XSDElementDeclaration"
+      name="MQRFH" type="mset://MQRFH#/-/complexType{}MQRFH_TYPE"/>
+    <complexType
+      baseType="mset://MQRFH#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType"
+      href="platform:/plugin/com.ibm.etools.msg.mqheaders/MQRFH/mqrfh.mxsd#/0/MQRFH_TYPE;XSDComplexTypeDefinition" name="MQRFH_TYPE"/>
+  </MRMsgCollection>
+</MRMessageSet>

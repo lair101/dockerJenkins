@@ -1,0 +1,2619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+
+<pdHelp xmlns="http://www.ibm.com/visualutils/pdhelpcontent"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ibm.com/visualutils/pdhelpcontent http://www.ibm.com/visualutils/pdhelpcontent">
+
+	<pluginCategory id="com.ibm.etools.mft.ibmnodes">
+    	
+	  <!--  SOAPInput Node Help -->	    
+		
+		<!-- Basic tab -->
+		
+		<pageHelp id="ComIbmSOAPInput_soap">
+			<title>Basic tab</title>
+			<shortDescription>Settings for working with the SOAPInput node.</shortDescription>
+			<moreDescription>
+				<p>Set the WSDL properties, or configure the node to act in gateway mode.</p>
+				<ul>
+				<li>"WSDL file name" specifies the location of the deployable WSDL to configure the node.</li>
+				<li>Select the "Port type", "Imported binding", and "Service port" from the available values specified in the WSDL file.</li>
+				<li>"Target namespace" and "Transport" are set automatically from the WSDL file. You can choose to override the "Transport" setting.</li>
+				</ul>
+			</moreDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_soap_isWSDLGateway">
+			<title>Operation Mode</title>
+			<description>
+				<p>The Operation mode allows you to configure your flow in gateway mode to handle generic SOAP request/response and one-way messages, or to act as a facade between multiple web services clients and multiple back-end web services providers.</p>
+			</description>
+		</fieldHelp>
+		
+		<!--  AKR - Use separate ID for each radio button option -->
+		<fieldHelp id="ComIbmSOAPInput_soap_isWSDLGateway_nonGatewaySingle">
+			<title>Operation Mode - Single Output Terminal</title>
+			<description>
+				<p>Configure the node with a deployable WSDL by setting the WSDL file name property or by dragging a WSDL onto the node.</p>
+			</description>
+		</fieldHelp>
+		<fieldHelp id="ComIbmSOAPInput_soap_isWSDLGateway_gateway">
+			<title>Operation Mode - Gateway mode</title>
+			<description>
+				<p>Gateway mode allows you to configure your flow to handle generic SOAP request/response and one-way messages, or to act as a facade between multiple web services clients and multiple back-end web services providers.</p>
+				<ul>
+				  <li>When in gateway mode, you cannot use WSDL to configure the node, and therefore some WSDL-related properties are disabled. These properties are enabled if you switch the Operation mode out of gateway mode.</li>
+				  <li>Validation of messages is not possible in gateway mode and therefore you cannot set a message model for the node.</li> 
+				  <li>The Transport node property on the Basic tab is enabled so that you can set which transport the node listens on for messages.</li>
+				</ul>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_soap_wsdlFileName">
+			<title>WSDL file name</title>
+			<description>
+				<p>The WSDL file name property indicates the location of the WSDL file that you want to use to configure the node.  Type the full path to the WSDL file, or click Browse to locate the WSDL file in your workspace.  For example: path/to/a/WSDL/example.wsdl</p>
+				<p>To use a WSDL file in a shared library, the container that contains your message flow must reference that shared library. When the SOAPInput node uses a WSDL file in a shared library, the shared library name is specified; for example:<br/>OrderService.wsdl in Shared Library MySharedLibrary</p>
+			</description>
+		</fieldHelp>	
+		
+		<!-- HTTP tab -->
+		
+		<fieldHelp id="ComIbmSOAPInput_httpTransport_urlSelector">
+			<title>Path suffix for URL</title>
+			<description>
+				<p>The HTTP path selector on which the node accepts inbound messages. This is set automatically from the &lt;soap:address&gt; element of the selected Service port.</p>
+				<p>If you choose to override this property, you must specify the [&lt;path&gt;].</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_httpTransport_useHTTPS">
+			<title>Use HTTPS</title>
+			<description>
+				<p>This property is configured automatically from the &lt;soap:address&gt; element of the selected Service port. However, if you manually override this property value, it is no longer updated from the corresponding service port.</p>
+				<p>For a full list of steps to enable SSL, see the reference help for this property.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_httpTransport_maxClientWaitTime">
+			<title>Maximum client wait time</title>
+			<description>
+				<p>The length of time, in seconds, that the client waits for a remote server to respond with a "message received" acknowledgment.</p>
+				<p>The valid range is from zero (a short wait) through (2^31)-1.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_httpTransport_allowQueryWSDL">
+			<title>Enable support for ?wsdl</title>
+			<description>
+				<p>If you enable ?wsdl support, the broker returns WSDL and XML Schema information relating to this endpoint in response to an HTTP GET request with a ?wsdl query string.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- JMS tab -->
+		
+		<fieldHelp id="ComIbmSOAPInput_jmsTransport_jmsSource">
+			<title>Source</title>
+			<description>
+				<p>The name of the queue from which the node receives incoming messages.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_jmsTransport_jmsProviderName">
+			<title>JMS Provider name</title>
+			<description>
+				<p>Select a JMS vendor name from the list, or enter a name of your choice.</p>
+				<p>If you enter your own JMS provider name, you must also enter a value for the Initial context factory. The name must match the name of a configurable service that is defined for the broker to which you deploy the message flow.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_jmsTransport_initialContextFactory">
+			<title>Initial context factory</title>
+			<description>
+				<p>The starting point for a JNDI namespace. A JMS application uses the initial context to obtain and look up the connection factory and queue or topic objects for the JMS provider.</p>
+				<p>The default value is com.sun.jndi.fscontext.RefFSContextFactory, which defines the file-based Initial context factory for the WebSphere MQ JMS provider.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_jmsTransport_locationJndiBindings">
+			<title>JNDI URL bindings location</title>
+			<description>
+				<p>The system path or the LDAP location for the bindings file. The bindings file contains definitions for the JNDI administered objects that are used by the SOAPInput node.</p>
+				<p>This property is disabled when the Initial context factory is com.ibm.mq.jms.Nojndi.</p>
+				<p>For information about constructing the JNDI administered objects bindings file, see the JMS provider documentation.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_jmsTransport_connectionFactoryName">
+			<title>Connection factory name</title>
+			<description>
+				<p>The name of the connection factory that is used by the SOAPInput node to create a connection to the JMS provider. This name must exist in the bindings file, and reference a JMS QueueConnectionFactory.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_jmsTransport_backoutDestination">
+			<title>Backout destination</title>
+			<description>
+				<p>The SOAPInput node sends input messages to this destination when errors prevent the message flow from processing the message, and the message must be removed from the input destination. The backout destination name must exist in the bindings file.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_jmsTransport_backoutThreshold">
+			<title>Backout threshold</title>
+			<description>
+				<p>The value that controls when a message is put to the backout destination. For example, if the value is 3, the JMS provider attempts to deliver the message to the input destination three times. After the third attempted delivery, the message is not rolled back to the input destination and is sent to the Backout destination.</p>
+				<p>This property is disabled if the Transaction mode property is set to No.</p>
+			</description>
+			<topic href="../com.ibm.etools.mft.doc/bc19020_.htm">
+				<label>Configuring the backout threshold</label>
+			</topic>
+		</fieldHelp>
+
+		<fieldHelp id="ComIbmSOAPInput_jmsTransport_jndiContextParameters">
+			<title>JNDI context parameters</title>
+			<description>
+				<p>This table maps JNDI context parameters to their type. These properties are initially configured from the imported WSDL.</p>
+				<p>These properties take their initial values from any W3C-style WSDL properties starting with jndi-. IBM-style WSDL URIs do not support JNDI context parameters, but you can set these properties on the node.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Message selectors tab -->
+					
+		<pageHelp id="ComIbmSOAPInput_messageSelectors">
+			<title>Message selectors panel</title>
+			<shortDescription>Settings for working with the message selectors.</shortDescription>
+			<moreDescription>
+				<p>Use the message selectors to filter messages by the message properties and headers listed here. Only messages that match the filters are processed by the node. Leave fields blank if you do not want the node to make a selection based on those criteria.</p>
+			</moreDescription>
+			<topic href="../com.ibm.etools.mft.doc/ac24876_.htm">
+				<label>JMS message selector</label>
+			</topic>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_messageSelectors_propertySelector">
+			<title>Application property</title>
+			<description>
+				<p>Filter messages by the application property value, for example, <b>OrderValue &gt; 200</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_messageSelectors_timeStampSelector">
+			<title>Timestamp</title>
+			<description>
+				<p>Filter messages by the JMSTimestamp specified in unqualified Java millisecond time, for example, <b>BETWEEN 1057576423231 AND 10575788993265</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_messageSelectors_messageDeliveryModeSelector">
+			<title>Delivery mode</title>
+			<description>
+				<p>Filter messages by the message delivery mode, for example, <b>PERSISTENT</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_messageSelectors_messagePrioritySelector">
+			<title>Priority</title>
+			<description>
+				<p>Filter messages by their priority, for example, <b>&gt;= 5 AND &lt;= 8</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_messageSelectors_messageIDSelector">
+			<title>Message ID</title>
+			<description>
+				<p>Filter messages by the application property value, for example, <b>&gt; WMBRK123456</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_messageSelectors_messageRedeliveredSelector">
+			<title>Redelivered</title>
+			<description>
+				<p>Filter redelivered messages, for example, <b>TRUE</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_messageSelectors_messageCorrelationIDSelector">
+			<title>Correlation ID</title>
+			<description>
+				<p>Filter messages by the correlation ID, for example, <b>='WMBRKABCDEFG'</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_messageSelectors_targetService">
+			<title>Target service</title>
+			<description>
+				<p>Filter messages by the target service value.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Transaction mode tab -->
+		
+		<fieldHelp id="ComIbmSOAPInput_transactions_transactionMode">
+			<title>Transaction mode</title>
+			<description>
+				<p>Control whether the message is received under a JMS transaction.</p>
+				<p>To use a global transaction, rather than a local transaction, you must also select the message flow property Coordinated Transaction in the BAR file properties.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Advanced -->
+		
+		<fieldHelp id="ComIbmSOAPInput_advanced_soapRole">
+			<title>SOAP 1.1 actor (SOAP 1.2 role)</title>
+			<description>
+				<p>Configure the SOAP actor or role that is performed by this node. You can enter any predefined or user-defined value.</p>
+				<p>Predefined roles are specified in the respective SOAP 1.1 or SOAP 1.2 specifications, and are used to process SOAP headers that are targeted at the specific role.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_advanced_setDestinationList">
+			<title>Set destination list</title>
+			<description>
+				<p>Specify whether to add the method binding name to the route-to-label destination list.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_advanced_labelPrefix">
+			<title>Label prefix</title>
+			<description>
+				<p>This prefix name is added to the method name when routing to label. Add a specific label prefix when including multiple input nodes in the same message flow to avoid a clash of corresponding Label nodes.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_advanced_mustUnderstandHeadersWSDLDefined">
+			<title>WSDL defined SOAP headers</title>
+			<description>
+				<p>This read-only table is populated by the SOAP headers defined in the output part of the selected operations.</p>
+				<p>You must select the check boxes for the headers that you want to add to the must understand headers list. These are then incorporated into the flow rather than causing a SOAP fault.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_advanced_mustUnderstandHeadersUserDefined">
+			<title>User-defined SOAP headers</title>
+			<description>
+				<p>Add custom SOAP headers in this table.</p>
+				<p>You must select the check boxes for the headers that you want to add to the must understand headers list. These are then incorporated into the flow rather than causing a SOAP fault.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- WS Extensions tab -->
+		
+		<fieldHelp id="ComIbmSOAPInput_wsStar_usingWsAddressing">
+			<title>Use WS-Addressing</title>
+			<description>
+				<p>Specify whether to use WS-Addressing on this node. Selecting this property enables a reply to be sent back to a different web service client as specified in the WS-Addressing properties.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_wsStar_populateLocalEnvWithWSAInfo">
+			<title>Place WS-Addressing headers into LocalEnvironment</title>
+			<description>
+				<p>Specify whether the node puts WS-Addressing headers received in the message into the local environment tree. By default, all headers are processed and removed.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_wsStar_wsSecurity">
+			<title>WS-Security</title>
+			<description>
+				<p>Add XPath expressions with an associated Alias value to this table. The Alias is resolved in a policy set that is created by the Administrator.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Input message parsing -->
+		
+		<pageHelp id="ComIbmSOAPInput_parser">
+			<title>Input message parsing</title>
+			<shortDescription>Settings for working with the input message parsers.</shortDescription>
+			<moreDescription>
+				<p>Specify properties relating to the input message parsing. These properties are disabled if you configure the node to act in gateway mode.</p>
+			</moreDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_parser_messageDomainProperty">
+			<title>Message Domain</title>
+			<description>
+				<p>The domain used to parse the incoming message. Select from the drop-down list or specify a user-defined parser.</p>
+				<ul>
+					<li>If parsing an XML message, use the XMLNSC parser.</li>
+					<li>For binary or text messages with a Data Format Description Language schema model, use the DFDL parser.</li>
+					<li>To access the byte data without parsing, use the BLOB parser.</li>
+					<li>If you do not specify a parser, the BLOB parser is used, and the binary data can be accessed directly within the flow.</li>
+				</ul>
+				<p>The data can be reparsed with a different parser at any point in the flow by either using the ResetContentDescriptor node, or a parse clause in a Compute node.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_parser_messageSetProperty">
+			<title>Message Model</title>
+			<description>
+				<p>Specify the name of the schema file, or the name or identifier of the message model, in which the incoming message is modeled.</p> 
+				<p>To enable this property, set the Message Domain property to "DFDL" or "XMLNSC" and select a schema file, or set it to,"MRM" or "IDOC" and select a message set.</p> 
+				<p>Only message models that are contained in your Integration project, or are contained in a referenced application or library, are available for selection.</p>
+				<p>Qualify this property by specifying a library name if the name of your schema file, or the qualified message name that you have selected in the Message property, is not unique within the referenced resources.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmSOAPInput_parser_messageTypeProperty">
+			<title>Message</title>
+			<description>
+				<p>The namespace qualified name of the incoming message.</p>
+				<p> To enable this property, set the Message domain property to "DFDL" or "MRM" and select a message model.</p>
+				<p>Only message names from the selected message model are available for selection.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmSOAPInput_parser_messageFormatProperty">
+			<title>Physical Format</title>
+			<description>
+				<p>The physical format name for the incoming message, specified in the message set. To enable this property, set the Message domain property to "MRM" or "IDOC".</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Parser options -->
+		
+		<fieldHelp id="ComIbmSOAPInput_parserOptions_validateTiming">
+			<title>Parse timing</title>
+			<description>
+				<p>Specify when an input message should be parsed.</p>
+				<ul>
+					<li>On Demand: parse an input message bit stream only as far as is necessary to satisfy the current reference (referred to as partial parsing).</li>
+					<li>Immediate: parse the entire message, including any message headers.</li>
+					<li>Complete: parse the entire message, including any message headers.</li>
+				</ul>
+				<p>The only difference in behavior between Immediate and Complete occurs when MRM validation is enabled.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_parserOptions_parserXmlnscBuildTreeUsingXMLSchema">
+			<title>Build tree using XML Schema data types</title>
+			<description>
+				<p>Select this property to create syntax elements in the message tree with data types taken from the XML Schema. To enable this property, set the Validate property on the Validation tab to "Content" or "Content and Value".</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_parserOptions_parserXmlnscMixedContentRetainMode">
+			<title>Retain mixed content</title>
+			<description>
+				<p>Select this property to create elements in the message tree when the parser finds mixed text in an input message. If you clear the check box, mixed text is ignored and no elements are created.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_parserOptions_parserXmlnscCommentsRetainMode">
+			<title>Retain comments</title>
+			<description>
+				<p>Select this property to create elements in the message tree when the parser finds comments in an input message. If you clear the check box, comments are ignored and no elements are created.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_parserOptions_parserXmlnscProcessingInstructionsRetainMode">
+			<title>Retain processing instructions</title>
+			<description>
+				<p>Select this property to create elements in the message tree when the parser finds processing instructions in an input message. If you clear the check box, processing instructions are ignored and no elements are created.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_parserOptions_parserXmlnscOpaqueElements">
+			<title>Opaque elements</title>
+			<description>
+				<p>Add a list of elements in the input message that are to be opaquely parsed by the XMLNSC parser. Opaque parsing is performed only if validation is not enabled (that is, if the Validate property on the Validation tab is set to "None"); entries that are specified in Opaque Elements are ignored if validation is enabled.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Validation -->
+		
+		<pageHelp id="ComIbmSOAPInput_validation">
+			<title>Validation tab</title>
+			<shortDescription>Optionally validate the output message, and choose what to do if the message fails.</shortDescription>
+			<moreDescription>
+				<p>Optionally validate the output message, and choose what to do if the message fails.</p>
+				<p>Validation is disabled if you configure the node to act in gateway mode.</p>
+			</moreDescription>
+		</pageHelp> 
+		
+		<fieldHelp id="ComIbmSOAPInput_validation_validateMaster">
+			<title>Validate</title>
+			<description>
+				<ul>
+					<li>Select "None" to perform no validation on the message. </li>
+					<li>Select "Content" to validate the content and message composition. </li>
+					<li>Select "Content and Value" to perform validation of the message content and value checks, such as whether the value conforms to data type, length, range, and enumeration.</li>
+				</ul>
+				<p>Validation is disabled if you configure the node to act in gateway mode.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmSOAPInput_validation_validateFailureAction">
+			<title>Failure Action</title>
+			<description>
+				<p>Specify the action to take if validation fails. To enable this property, set the Validate property to "Content" or "Content and Value". </p>
+				<ul>
+					<li>Select "Exception" to throw an exception on the first validation failure. The failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt as soon as a failure happens.</li>
+					<li>Select "Exception List" to throw an exception if validation failures happen, but only when the current parsing or writing operation has completed. Each failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt if a validation failure occurs, but you want to see the full list of failures. This property is affected by the Parse Timing property; when partial parsing is selected, the current parsing operation parses only a portion of an input message, so only the validation failures in that portion of the message are reported.</li>
+					<li>Select "User Trace" to log all validation failures to user trace, even if you have not asked for user tracing of the message flow. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+					<li>Select "Local Error Log" to log all validation failures to the system log. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+				</ul>
+				<p>Validation is disabled if you configure the node to act in gateway mode.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Instances -->
+		
+		<fieldHelp id="ComIbmSOAPInput_administration_componentLevel">
+			<title>Additional instances pool</title>
+			<description>
+				<p>Select the pool from which additional instance threads for the input node are obtained.</p>
+				<p>If you select "Use Pool Associated with Message Flow", additional instances are obtained from the message flow pool.</p>
+				<p>If you select "Use Pool Associated with Node", additional instances are allocated from the additional instances of the node based on the component level number specified in the Additional instances property.</p>
+			</description>
+			<topic href="../com.ibm.etools.mft.doc/ac09055_.htm">
+				<label>Configurable message flow properties</label>
+			</topic>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_administration_additionalInstances">
+			<title>Additional instances</title>
+			<description>
+				<p>The number of additional instances that the node can start if the Additional instances pool property is set to "Use Pool Associated with Node".</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Monitoring -->
+		
+		<pageHelp id="ComIbmSOAPInput_monitoring">
+	    	<title>Monitoring tab</title>
+	    	<shortDescription>Configure monitoring events.</shortDescription>
+	    </pageHelp>
+		
+		<!--  SOAPReply Node Help -->
+		
+		<!-- Transaction tab -->
+		
+		<fieldHelp id="ComIbmSOAPReply_transactions_transactionMode">
+			<title>Transaction mode</title>
+			<description>
+				<p>Control whether the message is handled under a JMS transaction.</p>
+				<p>To use a global transaction, rather than a local transaction, you must also select the message flow property Coordinated Transaction in the BAR file properties.</p>
+				<p>Select "Automatic" if you want the message transactionality to be inherited from the Transaction mode setting on the Input node at the start of the flow.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- WS Extensions -->
+		
+		<fieldHelp id="ComIbmSOAPReply_wsStar_allowMTOM">
+			<title>Allow MTOM</title>
+			<description>
+				<p>Control whether MTOM is enabled for the parser.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Validation -->
+		
+		<pageHelp id="ComIbmSOAPReply_validation">
+			<title>Validation tab</title>
+			<shortDescription>Optionally validate the output message, and choose what to do if the message fails.</shortDescription>
+			<moreDescription>
+				<p>Optionally validate the output message, and choose what to do if the message fails.</p>
+				<p>Validation is disabled if you configure the node to act in gateway mode.</p>
+			</moreDescription>
+		</pageHelp> 
+		
+		<fieldHelp id="ComIbmSOAPReply_validation_validateMaster">
+			<title>Validate</title>
+			<description>
+				<ul>
+					<li>Select "None" to perform no validation on the message. </li>
+					<li>Select "Content" to validate the content and message composition. </li>
+					<li>Select "Content and Value" to perform validation of the message content and value checks, such as whether the value conforms to data type, length, range, and enumeration.</li>
+					<li>Select "Inherit" to use all the validation options that are provided with the input message tree in preference to any supplied on the node. "Inherit" therefore resolves to None, Content, or Content And Value. If Inherit is selected, the other validation properties on the tab are not available.</li>
+				</ul>
+				<p>Validation is disabled if you configure the node to act in gateway mode.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmSOAPReply_validation_validateFailureAction">
+			<title>Failure Action</title>
+			<description>
+				<p>Specify the action to take if validation fails. To enable this property, set the Validate property to "Content" or "Content and Value". </p>
+				<ul>
+					<li>Select "Exception" to throw an exception on the first validation failure. The failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt as soon as a failure happens.</li>
+					<li>Select "Exception List" to throw an exception if validation failures happen, but only when the current parsing or writing operation has completed. Each failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt if a validation failure occurs, but you want to see the full list of failures. This property is affected by the Parse Timing property; when partial parsing is selected, the current parsing operation parses only a portion of an input message, so only the validation failures in that portion of the message are reported.</li>
+					<li>Select "User Trace" to log all validation failures to user trace, even if you have not asked for user tracing of the message flow. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+					<li>Select "Local Error Log" to log all validation failures to the system log. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+				</ul>
+				<p>Validation is disabled if you configure the node to act in gateway mode.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Monitoring -->
+		
+		<pageHelp id="ComIbmSOAPReply_monitoring">
+	    	<title>Monitoring tab</title>
+	    	<shortDescription>Configure monitoring events.</shortDescription>
+	    </pageHelp>
+		
+		
+		<!--  SOAPRequest Node Help -->
+		
+		<!-- Basic tab -->
+		
+		<pageHelp id="ComIbmSOAPRequest_soap">
+			<title>Basic tab</title>
+			<shortDescription>Settings for working with the SOAPRequest node.</shortDescription>
+			<moreDescription>
+				<p>Set the WSDL properties, or configure the node to act in gateway mode.</p>
+				<ul>
+				<li>"WSDL file name" specifies the location of the deployable WSDL to configure the node.</li>
+				<li>Select the "Port type", "Imported binding", and "Service port" from the available values specified in the WSDL file.</li>
+				<li>"Target namespace" and "Transport" are set automatically from the WSDL file. You can choose to override the "Transport" setting.</li>
+				</ul>
+			</moreDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmSOAPInput_soap_isWSDLGateway_nonGatewayRequest">
+			<title>Operation Mode - Specify operation to invoke</title>
+			<description>
+				<p>Configure the node with a deployable WSDL by setting the WSDL file name property or by dragging a WSDL onto the node. The node invokes the specified binding operation.</p>
+			</description>
+		</fieldHelp>
+		<fieldHelp id="ComIbmSOAPInput_soap_isWSDLGateway_gatewayRequest">
+			<title>Operation Mode - Invoke a generic operation</title>
+			<description>
+				<p>Gateway mode allows you to configure your flow to handle generic SOAP request/response and one-way messages, or to act as a facade between multiple web services clients and multiple back-end web services providers. The node can invoke any binding operation.</p>
+				<ul>
+				  <li>When in gateway mode, you cannot use WSDL to configure the node, and therefore some WSDL-related properties are disabled. These properties are enabled if you switch the Operation mode out of gateway mode.</li>
+				  <li>Validation of messages is not possible in gateway mode and therefore you cannot set a message model for the node.</li> 
+				  <li>The Transport node property on the Basic tab is enabled so that you can set which transport the node listens on for messages.</li>
+				</ul>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_soap_wsdlFileName">
+			<title>WSDL file name</title>
+			<description>
+				<p>The WSDL file name property indicates the location of the WSDL file that you want to use to configure the node.  Type the full path to the WSDL file, or click Browse to locate the WSDL file in your workspace.  For example: path/to/a/WSDL/example.wsdl</p>
+				<p>To use a WSDL file in a shared library, the container that contains your message flow must reference that shared library. When the SOAPInput node uses a WSDL file in a shared library, the shared library name is specified; for example:<br/>OrderService.wsdl in Shared Library MySharedLibrary</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- HTTP tab -->
+		
+		<fieldHelp id="ComIbmSOAPRequest_httpTransport_webServiceURL">
+			<title>Web service URL</title>
+			<description>
+				<p>The URL of the SOAP address selected. This is set automatically from the &lt;soap:address&gt; element of the selected Service port.</p>
+				<p>If you choose to override this property, you must specify it in the form http://&lt;hostname&gt;[:&lt;port&gt;]/[&lt;path&gt;], where:</p>
+				<ul>
+				  <li>http://&lt;hostname&gt; must be specified.</li>
+				  <li>&lt;port&gt; has a default value of 80. If you specify a value, you must include the colon : before the port number.</li>
+				  <li>&lt;path&gt; has a default value of /. If you specify a value, you must include the / before the path.</li>
+				</ul>
+			</description>
+			<topic href="../com.ibm.etools.mft.doc/ac16862_.htm">
+				<label>Changing the default URL for a SOAPRequest node or a SOAPAsyncRequest node request</label>
+			</topic>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_httpTransport_requestTimeout">
+			<title>Request timeout (in seconds)</title>
+			<description>
+				<p>The number of seconds that the client waits for a remote server to respond with a 'message received' acknowledgment. The timeout might take up to one second longer than the value specified.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_httpTransport_httpProxyLocation">
+			<title>HTTP(S) proxy location</title>
+			<description>
+				<p>The location of the proxy server to which requests are sent.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_httpTransport_sslProtocol">
+			<title>Protocol (if using SSL)</title>
+			<description>
+				<p>The selected protocol if you use SSL. The following options are available:</p>
+				<ul>
+				  <li><b>SSL</b>: This option attempts to connect by using the SSLv3 protocol first, but allows the handshake to fall back to the SSLv2 protocol where the SSLv2 protocol is supported by the underlying JSSE provider.</li>
+				  <li><b>SSLv3</b>: This option attempts to connect with the SSLv3 protocol only. Fallback to SSLv2 is not allowed.</li>
+				  <li><b>TLS</b>: The default. This option attempts to connect with the TLS protocol only. Fallback to SSLv3 or SSLv2 is not allowed. Both ends of an SSL connection must agree on the protocol to use; therefore, the chosen protocol must be one that the remote server can accept.</li> 
+				</ul>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_httpTransport_allowedSSLCiphers">
+			<title>Allowed SSL ciphers (if using SSL)</title>
+			<description>
+				<p>The specific SSL cipher, or ciphers, you are using. This setting allows you to specify a single cipher (such as SSL_RSA_FIPS_WITH_3DES_EDE_CBC_SHA) or a list of ciphers that are the only ones used by the connection. This set of ciphers must include one or more that are accepted by the remote server.</p>
+				<p>Use a comma as a separator between the ciphers. The default value is an empty string, which allows the node to use any, or all, of the available ciphers during the SSL connection handshake. This method allows the greatest scope for making a successful SSL connection.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_httpTransport_requestCompressionType">
+			<title>Use compression</title>
+			<description>
+				<p>Control whether the content of the HTTP request is compressed. Valid values are "none", "gzip", "zlib (deflate)" and "deflate". If the request is compressed, the Content-Encoding header is set to indicate that the content is compressed.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_httpTransport_requestCompressionType">
+			<title>Use compression</title>
+			<description>
+				<p>Control whether the content of the HTTP request is compressed. Valid values are "none", "gzip", "zlib (deflate)" and "deflate". If the request is compressed, the Content-Encoding header is set to indicate that the content is compressed.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_httpTransport_acceptCompressedResponses">
+			<title>Accept compressed responses by default</title>
+			<description>
+				<p>Control whether the request accepts compressed responses. If you select this option, the request can receive responses with a Content-Encoding of gzip or deflate. If such a response is received, the content is decoded and the Content-Encoding header is removed.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- JMS transport -->
+		
+		<fieldHelp id="ComIbmSOAPRequest_jmsTransport_jmsDestination">
+			<title>Destination</title>
+			<description>
+				<p>The destination to which the node sends outgoing messages. If the SOAPRequest node is to be used to send point-to-point messages, enter the Destination queue name for the JMS queue name that is listed in the bindings file.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_jmsTransport_jmsReplyToDestination">
+			<title>Reply To Destination</title>
+			<description>
+				<p>The name of the JMS destination to which the receiving application must send a reply message. For a reply message to be returned to this JMS destination, the JMS destination name must be known to the domain of the JMS provider that is used by the receiving client.</p>
+				<p>If you do not specify a reply-to destination, a temporary dynamic queue is used as the reply-to destination. If you do not specify a reply-to destination and you are using the WebSphere MQ JMS provider, you must configure JMS temporary dynamic queues.</p>
+				<p>This property is not used if the JMS operation is one way.</p>
+			</description>
+			<topic href="../com.ibm.etools.mft.doc/bc37520_.htm">
+				<label>Configuring JMS temporary dynamic queues for the WebSphere MQ JMS provider</label>
+			</topic>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_jmsTransport_requestTimeoutJMS">
+			<title>Request timeout (in seconds)</title>
+			<description>
+				<p>The time the client waits for a remote server to send a response message before timing out.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_jmsTransport_jmsProviderName">
+			<title>JMS provider name</title>
+			<description>
+				<p>Select a JMS vendor name from the list, or enter a name of your choice. The name must match the name of a configurable service that is defined for the broker to which you deploy the message flow. </p>
+				<p>When you select a name from the list, the Initial context factory property is updated automatically with the relevant Java class. If you enter your own JMS provider name, you must also enter a value for the Initial context factory.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_jmsTransport_initialContextFactory">
+			<title>Initial context factory</title>
+			<description>
+				<p>The starting point for a JNDI namespace. A JMS application uses the initial context to obtain and look up the connection factory and queue or topic objects for the JMS provider.</p> 
+				<p>If you select a JMS provider name from the list in JMS provider name, the Initial context factory property is updated automatically with the relevant Java class. If you enter your own JMS provider name, you must also enter a value for the Initial context factory.</p> 
+				<p>The default value is com.sun.jndi.fscontext.RefFSContextFactory, which defines the file-based Initial context factory for the WebSphere MQ JMS provider.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_jmsTransport_locationJndiBindings">
+			<title>JNDI URL bindings location</title>
+			<description>
+				<p>The system path or the LDAP location for the bindings file. The bindings file contains definitions for the JNDI administered objects that are used by the SOAPRequest node. This property is disabled when the Initial context factory is com.ibm.mq.jms.Nojndi.</p> 
+				<p>When you enter a value for JNDI URL bindings location, ensure that it complies with the following instructions:</p>
+				<ul>
+    				<li>Construct the bindings file before you deploy a message flow that contains a SOAPRequest node.</li>
+    				<li>Do not include the file name of the bindings file in this field.</li>
+    				<li>If you have specified an LDAP location that requires authentication, configure the LDAP principal (userid) and LDAP credentials (password) separately. These values are configured at broker level. For information about configuring these values, see mqsicreatebroker command and mqsichangebroker command.</li>
+					<li>The string value must include a supported URL prefix that has a URL handler that is available on the class path.</li>
+				</ul>
+				<p>For information about constructing the JNDI administered objects bindings file, see the JMS provider documentation.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_jmsTransport_connectionFactoryName">
+			<title>Connection factory name</title>
+			<description>
+				<p>The name of the connection factory that is used by the SOAPRequest node to create a connection to the JMS provider. This property is initially configured from the imported WSDL. This name must exist in the bindings file. The Connection factory name must be a JMS QueueConnectionFactory.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_jmsTransport_userContext">
+			<title>User Parameters</title>
+			<description>
+				<p>This table describes user properties that have been defined in the request. The properties are name-value pairs that exist in the WSDL and are not used by other properties of the SOAPRequest node.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_jmsTransport_jndiContextParameters">
+			<title>JNDI Parameters</title>
+			<description>
+				<p>This table maps JNDI context parameters to their type. These properties are initially configured from the imported WSDL.</p>
+				<p>These properties take their initial values from any W3C-style WSDL properties starting with jndi-. IBM-style WSDL URIs do not support JNDI context parameters, but you can set these properties on the node.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Message delivery -->
+		
+		<fieldHelp id="ComIbmSOAPRequest_messageDelivery_targetService">
+			<title>Target service</title>
+			<description>
+				<p>Used by the SOAPRequest node when dispatching the service request.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_messageDelivery_deliveryMode">
+			<title>Delivery mode</title>
+			<description>
+				<p>Control the persistence mode that a JMS provider uses for a message. Valid values are:</p>
+				<ul>
+					<li><b>Persistent</b>: the message survives if the JMS provider has a system failure.</li>
+					<li><b>Non Persistent</b>: the message is lost if the JMS provider has a system failure.</li>
+				</ul>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_messageDelivery_messagePriority">
+			<title>Message Priority</title>
+			<description>
+				<p>Assign relative importance to the message and can be used for message selection by a receiving web service.</p>
+				<p>Select a value between 0 (lowest priority) and 9 (highest priority). The default value is 4, which indicates medium priority.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_messageDelivery_messageExpiration">
+			<title>Message Expiration (ms)</title>
+			<description>
+				<p>This property controls the length of time, in milliseconds, for which the JMS provider keeps the output JMS message. The default value, 0, is used to indicate that the message must not expire. </p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_messageDelivery_messageType">
+			<title>Message Type</title>
+			<description>
+				<p>Configure the type of JMS message that is produced by the SOAPRequest node. </p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Transactions -->
+		
+		<fieldHelp id="ComIbmSOAPRequest_transactions_transactionMode">
+			<title>Transaction mode</title>
+			<description>
+				<p>Control whether the message is handled under a JMS transaction.</p>
+				<p>To use a global transaction, rather than a local transaction, you must also select the message flow property Coordinated Transaction in the BAR file properties.</p>
+				<p>Select "Automatic" if you want the message transactionality to be inherited from the Transaction mode setting on the Input node at the start of the flow.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Advanced -->
+		
+		<fieldHelp id="ComIbmSOAPRequest_advanced_mustUnderstandResponseHeadersWSDLDefined">
+			<title>WSDL defined SOAP headers</title>
+			<description>
+				<p>This read-only table is populated by the SOAP headers defined in the output part of the selected operations.</p>
+				<p>You must select the check boxes for the headers that you want to add to the must understand headers list. These are then incorporated into the flow rather than causing a SOAP fault.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_advanced_mustUnderstandResponseHeadersUserDefined">
+			<title>User-defined SOAP headers</title>
+			<description>
+				<p>Add custom SOAP headers in this table.</p>
+				<p>You must select the check boxes for the headers that you want to add to the must understand headers list. These are then incorporated into the flow rather than causing a SOAP fault.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- WS Extensions -->
+		
+		<fieldHelp id="ComIbmSOAPRequest_wsStar_usingWsAddressing">
+			<title>Use WS-Addressing</title>
+			<description>
+				<p>Specify whether to use WS-Addressing on this node. Selecting this property enables a reply to be sent back to a different web service client as specified in the WS-Addressing properties.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_wsStar_populateLocalEnvWithWSAInfo">
+			<title>Place WS-Addressing headers into LocalEnvironment</title>
+			<description>
+				<p>Specify whether the node puts WS-Addressing headers received in the message into the local environment tree. By default, all headers are processed and removed.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_wsStar_allowMTOM">
+			<title>Allow MTOM</title>
+			<description>
+				<p>Control whether MTOM is enabled for the parser.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_wsStar_wsSecurity">
+			<title>WS-Security</title>
+			<description>
+				<p>Add XPath expressions with an associated Alias value to this table. The Alias is resolved in a policy set that is created by the Administrator.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Response message parsing -->
+		
+		<pageHelp id="ComIbmSOAPRequest_parser">
+			<title>Response message parsing</title>
+			<shortDescription>Settings for working with the response message parsers.</shortDescription>
+			<moreDescription>
+				<p>Specify properties relating to the response message parsing. These properties are disabled if you configure the node to act in gateway mode.</p>
+			</moreDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_parser_messageDomainProperty">
+			<title>Message Domain</title>
+			<description>
+				<p>The domain used to parse the incoming message. Select from the drop-down list or specify a user-defined parser.</p>
+				<ul>
+					<li>If parsing an XML message, use the XMLNSC parser.</li>
+					<li>For binary or text messages with a Data Format Description Language schema model, use the DFDL parser.</li>
+					<li>To access the byte data without parsing, use the BLOB parser.</li>
+					<li>If you do not specify a parser, the BLOB parser is used, and the binary data can be accessed directly within the flow.</li>
+				</ul>
+				<p>The data can be reparsed with a different parser at any point in the flow by using the ResetContentDescriptor node, or by using a parse clause in a Compute node.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_parser_messageSetProperty">
+			<title>Message Model</title>
+			<description>
+				<p>Specify the name of the schema file, or the name or identifier of the message model, in which the incoming message is modeled.</p> 
+				<p>To enable this property, set the Message Domain property to "DFDL" or "XMLNSC" and select a schema file, or set it to,"MRM" or "IDOC" and select a message set.</p> 
+				<p>Only message models that are contained in your Integration project, or are contained in a referenced application or library, are available for selection.</p>
+				<p>Qualify this property by specifying a library name if the name of your schema file, or the qualified message name that you have selected in the Message property, is not unique within the referenced resources.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmSOAPRequest_parser_messageTypeProperty">
+			<title>Message</title>
+			<description>
+				<p>The namespace qualified name of the incoming message.</p>
+				<p> To enable this property, set the Message domain property to "DFDL" or "MRM" and select a message model.</p>
+				<p>Only message names from the selected message model are available for selection.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmSOAPRequest_parser_messageFormatProperty">
+			<title>Physical Format</title>
+			<description>
+				<p>The physical format name for the incoming message, specified in the message set. To enable this property, set the Message domain property to "MRM" or "IDOC".</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_parserOptions_validateTiming">
+			<title>Parse timing</title>
+			<description>
+				<p>Specify when a response message should be parsed.</p>
+				<ul>
+					<li>On Demand: parse a response message bit stream only as far as is necessary to satisfy the current reference (referred to as partial parsing).</li>
+					<li>Immediate: parse the entire message, including any message headers.</li>
+					<li>Complete: parse the entire message, including any message headers.</li>
+				</ul>
+				<p>The only difference in behavior between Immediate and Complete occurs when MRM validation is enabled.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_parserOptions_parserXmlnscBuildTreeUsingXMLSchema">
+			<title>Build tree using XML Schema data types</title>
+			<description>
+				<p>Select this property to create syntax elements in the message tree with data types taken from the XML Schema. To enable this property, set the Validate property on the Validation tab to "Content" or "Content and Value".</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_parserOptions_parserXmlnscMixedContentRetainMode">
+			<title>Retain mixed content</title>
+			<description>
+				<p>Select this property to create elements in the message tree when the parser finds mixed text in a response message. If you clear the check box, mixed text is ignored and no elements are created.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_parserOptions_parserXmlnscCommentsRetainMode">
+			<title>Retain comments</title>
+			<description>
+				<p>Select this property to create elements in the message tree when the parser finds comments in a response message. If you clear the check box, comments are ignored and no elements are created.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_parserOptions_parserXmlnscProcessingInstructionsRetainMode">
+			<title>Retain processing instructions</title>
+			<description>
+				<p>Select this property to create elements in the message tree when the parser finds processing instructions in a response message. If you clear the check box, processing instructions are ignored and no elements are created.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_parserOptions_parserXmlnscOpaqueElements">
+			<title>Opaque elements</title>
+			<description>
+				<p>Add a list of elements in the response message that are to be opaquely parsed by the XMLNSC parser. Opaque parsing is performed only if validation is not enabled (that is, if the Validate property on the Validation tab is set to "None"); entries that are specified in Opaque Elements are ignored if validation is enabled.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Validation -->
+		
+		<pageHelp id="ComIbmSOAPRequest_validation">
+			<title>Validation tab</title>
+			<shortDescription>Optionally validate the output message, and choose what to do if the message fails.</shortDescription>
+			<moreDescription>
+				<p>Optionally validate the output message, and choose what to do if the message fails.</p>
+				<p>Validation is disabled if you configure the node to act in gateway mode.</p>
+			</moreDescription>
+		</pageHelp> 
+		
+		<fieldHelp id="ComIbmSOAPRequest_validation_validateMaster">
+			<title>Validate</title>
+			<description>
+				<ul>
+					<li>Select "None" to perform no validation on the message. </li>
+					<li>Select "Content" to validate the content and message composition. </li>
+					<li>Select "Content and Value" to perform validation of the message content and value checks, such as whether the value conforms to data type, length, range, and enumeration.</li>
+					<li>Select "Inherit" to use all the validation options that are provided with the input message tree in preference to any supplied on the node. "Inherit" therefore resolves to None, Content, or Content And Value. If Inherit is selected, the other validation properties on the tab are not available.</li>
+				</ul>
+				<p>Validation is disabled if you configure the node to act in gateway mode.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmSOAPRequest_validation_validateFailureAction">
+			<title>Failure Action</title>
+			<description>
+				<p>Specify the action to take if validation fails. To enable this property, set the Validate property to "Content" or "Content and Value". </p>
+				<ul>
+					<li>Select "Exception" to throw an exception on the first validation failure. The failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt as soon as a failure happens.</li>
+					<li>Select "Exception List" to throw an exception if validation failures happen, but only when the current parsing or writing operation has completed. Each failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt if a validation failure occurs, but you want to see the full list of failures. This property is affected by the Parse Timing property; when partial parsing is selected, the current parsing operation parses only a portion of an input message, so only the validation failures in that portion of the message are reported.</li>
+					<li>Select "User Trace" to log all validation failures to user trace, even if you have not asked for user tracing of the message flow. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+					<li>Select "Local Error Log" to log all validation failures to the system log. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+				</ul>
+				<p>Validation is disabled if you configure the node to act in gateway mode.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Monitoring -->
+		
+		<pageHelp id="ComIbmSOAPRequest_monitoring">
+	    	<title>Monitoring tab</title>
+	    	<shortDescription>Configure monitoring events.</shortDescription>
+	    </pageHelp>
+		
+		<!--  SOAPASyncRequest Node Help -->
+		
+		<pageHelp id="ComIbmSOAPAsyncRequest_soap">
+			<title>Basic tab</title>
+			<shortDescription>Settings for working with the SOAPAsyncRequest node.</shortDescription>
+			<moreDescription>
+				<p>Set the WSDL properties, or configure the node to act in gateway mode.</p>
+				<ul>
+				<li>"WSDL file name" specifies the location of the deployable WSDL to configure the node.</li>
+				<li>Select the "Port type", "Imported binding", and "Service port" from the available values specified in the WSDL file.</li>
+				<li>"Target namespace" and "Transport" are set automatically from the WSDL file. You can choose to override the "Transport" setting.</li>
+				</ul>
+			</moreDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_basic_wsdlFileName">
+			<title>WSDL file name</title>
+			<description>
+				<p>The WSDL file name property indicates the location of the WSDL file that you want to use to configure the node.  Type the full path to the WSDL file, or click Browse to locate the WSDL file in your workspace.  For example: path/to/a/WSDL/example.wsdl</p>
+				<p>To use a WSDL file in a shared library, the container that contains your message flow must reference that shared library. When the SOAPInput node uses a WSDL file in a shared library, the shared library name is specified; for example:<br/>OrderService.wsdl in Shared Library MySharedLibrary</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_basic_asyncResponseCorrelator">
+			<title>Unique identifier</title>
+			<description>
+				<p>This property is the unique identifier that links a pair of SOAPAsyncRequest and SOAPAsyncResponse nodes.</p>
+				<p>When using HTTP transport, this identifier is used as a unique URL fragment to identify incoming response messages for the SOAPAsyncResponse node.</p>
+				<p>When using JMS transport, this property is used as a unique identifier only if the Get Response By Correl ID property is checked. If the Get Response By Correl ID property is cleared and JMS transport is used, the Reply To Destination queue acts as the unique identifier instead, and therefore must be unique to this pair of nodes.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- HTTP tab -->
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_httpTransport_webServiceURL">
+			<title>Web service URL</title>
+			<description>
+				<p>The URL of the SOAP address selected. This is set automatically from the &lt;soap:address&gt; element of the selected Service port.</p>
+				<p>If you choose to override this property, you must specify it in the form http://&lt;hostname&gt;[:&lt;port&gt;]/[&lt;path&gt;], where:</p>
+				<ul>
+				  <li>http://&lt;hostname&gt; must be specified.</li>
+				  <li>&lt;port&gt; has a default value of 80. If you specify a value, you must include the colon : before the port number.</li>
+				  <li>&lt;path&gt; has a default value of /. If you specify a value, you must include the / before the path.</li>
+				</ul>
+			</description>
+			<topic href="../com.ibm.etools.mft.doc/ac16862_.htm">
+				<label>Changing the default URL for a SOAPRequest node or a SOAPAsyncRequest node request</label>
+			</topic>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_httpTransport_requestTimeout">
+			<title>Request timeout (in seconds)</title>
+			<description>
+				<p>The number of seconds that the client waits for a remote server to respond with a 'message received' acknowledgment. The timeout might take up to one second longer than the value specified.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_httpTransport_httpProxyLocation">
+			<title>HTTP(S) proxy location</title>
+			<description>
+				<p>The location of the proxy server to which requests are sent.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_httpTransport_sslProtocol">
+			<title>Protocol (if using SSL)</title>
+			<description>
+				<p>The selected protocol if you use SSL. The following options are available:</p>
+				<ul>
+				  <li><b>SSL</b>: This option attempts to connect by using the SSLv3 protocol first, but allows the handshake to fall back to the SSLv2 protocol where the SSLv2 protocol is supported by the underlying JSSE provider.</li>
+				  <li><b>SSLv3</b>: This option attempts to connect with the SSLv3 protocol only. Fallback to SSLv2 is not allowed.</li>
+				  <li><b>TLS</b>: The default. This option attempts to connect with the TLS protocol only. Fallback to SSLv3 or SSLv2 is not allowed. Both ends of an SSL connection must agree on the protocol to use; therefore, the chosen protocol must be one that the remote server can accept.</li> 
+				</ul>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_httpTransport_allowedSSLCiphers">
+			<title>Allowed SSL ciphers (if using SSL)</title>
+			<description>
+				<p>The specific SSL cipher, or ciphers, you are using. This setting allows you to specify a single cipher (such as SSL_RSA_FIPS_WITH_3DES_EDE_CBC_SHA) or a list of ciphers that are the only ones used by the connection. This set of ciphers must include one or more that are accepted by the remote server.</p>
+				<p>Use a comma as a separator between the ciphers. The default value is an empty string, which allows the node to use any, or all, of the available ciphers during the SSL connection handshake. This method allows the greatest scope for making a successful SSL connection.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPRequest_httpTransport_requestCompressionType">
+			<title>Use compression</title>
+			<description>
+				<p>Control whether the content of the HTTP request is compressed. Valid values are "none", "gzip", "zlib (deflate)" and "deflate". If the request is compressed, the Content-Encoding header is set to indicate that the content is compressed.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_httpTransport_requestCompressionType">
+			<title>Use compression</title>
+			<description>
+				<p>Control whether the content of the HTTP request is compressed. Valid values are "none", "gzip", "zlib (deflate)" and "deflate". If the request is compressed, the Content-Encoding header is set to indicate that the content is compressed.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_httpTransport_acceptCompressedResponses">
+			<title>Accept compressed responses by default</title>
+			<description>
+				<p>Control whether the request accepts compressed responses. If you select this option, the request can receive responses with a Content-Encoding of gzip or deflate. If such a response is received, the content is decoded and the Content-Encoding header is removed.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_httpTransport_hostnameChecking">
+			<title>Enable SSL certificate host name checking</title>
+			<description>
+				<p>This property specifies if the host name of the server that is receiving the request must match the host name in the SSL certificate.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_httpTransport_useAsyncSocket">
+			<title>Use HTTP asynchronous request-response</title>
+			<description>
+				<p>Setting this property specifies that the SOAPAsyncRequest node passes the socket to the paired SOAPAsyncResponse node to allow the backend server to reply using the same socket.</p>
+				<p>This property configures the node to use asynchronous HTTP socket handling instead of asynchronous WS-Addressing. When Use HTTP asynchronous request-response is selected, the WS-Addressing headers are not marked as mustUnderstand, and the replyTo header is set to anonymous.</p>
+				<p>Select this option if your backend server cannot make outbound requests on a new connection.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- JMS transport -->
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_jmsTransport_jmsDestination">
+			<title>Destination</title>
+			<description>
+				<p>The destination to which the node sends outgoing messages. If the SOAPRequest node is to be used to send point-to-point messages, enter the Destination queue name for the JMS queue name that is listed in the bindings file.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_jmsTransport_jmsReplyToDestination">
+			<title>Reply To Destination</title>
+			<description>
+				<p>The name of the JMS destination to which the receiving application must send a reply message. For a reply message to be returned to this JMS destination, the JMS destination name must be known to the domain of the JMS provider that is used by the receiving client.</p>
+				<p>If you do not specify a reply-to destination, a temporary dynamic queue is used as the reply-to destination. If you do not specify a reply-to destination and you are using the WebSphere MQ JMS provider, you must configure JMS temporary dynamic queues.</p>
+				<p>This property is not used if the JMS operation is one way.</p>
+			</description>
+			<topic href="../com.ibm.etools.mft.doc/bc37520_.htm">
+				<label>Configuring JMS temporary dynamic queues for the WebSphere MQ JMS provider</label>
+			</topic>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_jmsTransport_jmsProviderName">
+			<title>JMS provider name</title>
+			<description>
+				<p>Select a JMS vendor name from the list, or enter a name of your choice. The name must match the name of a configurable service that is defined for the broker to which you deploy the message flow. </p>
+				<p>When you select a name from the list, the Initial context factory property is updated automatically with the relevant Java class. If you enter your own JMS provider name, you must also enter a value for the Initial context factory.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_jmsTransport_initialContextFactory">
+			<title>Initial context factory</title>
+			<description>
+				<p>The starting point for a JNDI namespace. A JMS application uses the initial context to obtain and look up the connection factory and queue or topic objects for the JMS provider.</p> 
+				<p>If you select a JMS provider name from the list in JMS provider name, the Initial context factory property is updated automatically with the relevant Java class. If you enter your own JMS provider name, you must also enter a value for the Initial context factory.</p> 
+				<p>The default value is com.sun.jndi.fscontext.RefFSContextFactory, which defines the file-based Initial context factory for the WebSphere MQ JMS provider.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_jmsTransport_locationJndiBindings">
+			<title>JNDI URL bindings location</title>
+			<description>
+				<p>The system path or the LDAP location for the bindings file. The bindings file contains definitions for the JNDI administered objects that are used by the SOAPRequest node. This property is disabled when the Initial context factory is com.ibm.mq.jms.Nojndi.</p> 
+				<p>When you enter a value for JNDI URL bindings location, ensure that it complies with the following instructions:</p>
+				<ul>
+    				<li>Construct the bindings file before you deploy a message flow that contains a SOAPRequest node.</li>
+    				<li>Do not include the file name of the bindings file in this field.</li>
+    				<li>If you have specified an LDAP location that requires authentication, configure the LDAP principal (userid) and LDAP credentials (password) separately. These values are configured at broker level. For information about configuring these values, see mqsicreatebroker command and mqsichangebroker command.</li>
+					<li>The string value must include a supported URL prefix that has a URL handler that is available on the class path.</li>
+				</ul>
+				<p>For information about constructing the JNDI administered objects bindings file, see the JMS provider documentation.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_jmsTransport_connectionFactoryName">
+			<title>Connection factory name</title>
+			<description>
+				<p>The name of the connection factory that is used by the SOAPAsyncRequest node to create a connection to the JMS provider. This property is initially configured from the imported WSDL. This name must exist in the bindings file. The Connection factory name must be a JMS QueueConnectionFactory.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_jmsTransport_userContext">
+			<title>User Parameters</title>
+			<description>
+				<p>This table describes user properties that have been defined in the request. The properties are name-value pairs that exist in the WSDL and are not used by other properties of the SOAPAsyncRequest node.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_jmsTransport_jndiContextParameters">
+			<title>JNDI Parameters</title>
+			<description>
+				<p>This table maps JNDI context parameters to their type. These properties are initially configured from the imported WSDL.</p>
+				<p>These properties take their initial values from any W3C-style WSDL properties starting with jndi-. IBM-style WSDL URIs do not support JNDI context parameters, but you can set these properties on the node.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_jmsTransport_backoutDestination">
+			<title>Backout destination</title>
+			<description>
+				<p>The SOAPAsyncResponse node sends response messages to this destination when errors prevent the response message flow from processing the response message. The message is removed from the reply to destination. The backout destination name must exist in the bindings file.</p>
+				<p>The backout properties are set by the SOAPAsyncRequest node, but are used only by its paired SOAPAsyncResponse node.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_jmsTransport_backoutThreshold">
+			<title>Backout threshold</title>
+			<description>
+				<p>This value controls when a message is put to the backout destination. For example, if the value is 3, the JMS provider attempts to deliver the message to the input destination three times. After the third attempted delivery, the message is not rolled back to the input destination and is sent to the Backout destination.</p>
+				<p>This property is disabled if the Transaction mode property is set to No.</p>
+			</description>
+			<topic href="../com.ibm.etools.mft.doc/bc19020_.htm">
+				<label>Configuring the backout threshold</label>
+			</topic>
+		</fieldHelp>
+		
+		
+		
+		<!-- Message delivery -->
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_messageDelivery_targetService">
+			<title>Target service</title>
+			<description>
+				<p>Used by the SOAPRequest node when dispatching the service request.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_messageDelivery_deliveryMode">
+			<title>Delivery mode</title>
+			<description>
+				<p>Control the persistence mode that a JMS provider uses for a message. Valid values are:</p>
+				<ul>
+					<li><b>Persistent</b>: the message survives if the JMS provider has a system failure.</li>
+					<li><b>Non Persistent</b>: the message is lost if the JMS provider has a system failure.</li>
+				</ul>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_messageDelivery_messagePriority">
+			<title>Message Priority</title>
+			<description>
+				<p>Assign relative importance to the message and can be used for message selection by a receiving web service.</p>
+				<p>Select a value between 0 (lowest priority) and 9 (highest priority). The default value is 4, which indicates medium priority.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_messageDelivery_messageExpiration">
+			<title>Message Expiration (ms)</title>
+			<description>
+				<p>This property controls the length of time, in milliseconds, for which the JMS provider keeps the output JMS message. The default value, 0, is used to indicate that the message must not expire. </p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_messageDelivery_messageType">
+			<title>Message Type</title>
+			<description>
+				<p>Configure the type of JMS message that is produced by the SOAPAsyncRequest node. </p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_messageDelivery_getResponseByCorrelId">
+			<title>Get Response By Correl ID</title>
+			<description>
+				<p>If set, the AsyncRequest node sends the request message with a specific Correl ID, and the AsyncResponse node receives only response messages that match that Correl ID.</p>
+				<p>A single Reply Destination queue can therefore be shared between several pairs of AsyncRequest and AsyncResponse nodes, if they all set this option.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Transactions -->
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_transactions_transactionMode">
+			<title>Transaction mode</title>
+			<description>
+				<p>Control whether the message is handled under a JMS transaction.</p>
+				<p>To use a global transaction, rather than a local transaction, you must also select the message flow property Coordinated Transaction in the BAR file properties.</p>
+				<p>Select "Automatic" if you want the message transactionality to be inherited from the Transaction mode setting on the Input node at the start of the flow.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Advanced -->
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_advanced_mustUnderstandResponseHeadersWSDLDefined">
+			<title>WSDL defined SOAP headers</title>
+			<description>
+				<p>This read-only table is populated by the SOAP headers defined in the output part of the selected operations.</p>
+				<p>You must select the check boxes for the headers that you want to add to the must understand headers list. These are then incorporated into the flow rather than causing a SOAP fault.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_advanced_mustUnderstandResponseHeadersUserDefined">
+			<title>User-defined SOAP headers</title>
+			<description>
+				<p>Add custom SOAP headers in this table.</p>
+				<p>You must select the check boxes for the headers that you want to add to the must understand headers list. These are then incorporated into the flow rather than causing a SOAP fault.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- WS Extensions -->
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_wsStar_usingWsAddressing">
+			<title>Use WS-Addressing</title>
+			<description>
+				<p>Specify whether to use WS-Addressing on this node. Selecting this property enables a reply to be sent back to a different web service client as specified in the WS-Addressing properties.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_wsStar_allowMTOM">
+			<title>Allow MTOM</title>
+			<description>
+				<p>Control whether MTOM is enabled for the parser.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncRequest_wsStar_wsSecurity">
+			<title>WS-Security</title>
+			<description>
+				<p>Add XPath expressions with an associated Alias value to this table. The Alias is resolved in a policy set that is created by the Administrator.</p>
+			</description>
+		</fieldHelp>
+			
+		<!-- Monitoring -->
+		
+		<pageHelp id="ComIbmSOAPAsyncRequest_monitoring">
+	    	<title>Monitoring tab</title>
+	    	<shortDescription>Configure monitoring events.</shortDescription>
+	    </pageHelp>
+	    
+   <!-- SOAPAsyncResponse node -->
+   
+        <!-- Basic tab -->
+        
+		<fieldHelp id="ComIbmSOAPAsyncResponse_basic_asyncRequestCorrelator">
+			<title>Unique identifier</title>
+			<description>
+				<p>Specify the unique URL fragment or JMS queue that is common to this pair of SOAPAsyncRequest and SOAPAsyncResponse nodes.</p>
+			</description>
+		</fieldHelp>
+	
+		<!-- Transaction mode tab -->
+		
+		<fieldHelp id="ComIbmSOAPAsyncResponse_transactions_transactionMode">
+			<title>Transaction mode</title>
+			<description>
+				<p>Control whether the message is handled under a JMS transaction.</p>
+				<p>To use a global transaction, rather than a local transaction, you must also select the message flow property Coordinated Transaction in the BAR file properties.</p>
+				<p>Select As Request if you want the message transactionality to be derived from what was specified by the paired SOAPAsyncRequest node that shares the same Unique identifier.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Advanced mode tab -->		
+		
+		<fieldHelp id="ComIbmSOAPAsyncResponse_advanced_setDestinationList">
+			<title>Set destination list</title>
+			<description>
+				<p>Specify whether to add the method binding name to the route-to-label destination list.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncResponse_advanced_labelPrefix">
+			<title>Label prefix</title>
+			<description>
+				<p>This prefix name is added to the method name when routing to label. Add a specific label prefix when including multiple SOAPAsyncResponse nodes in the same message flow to avoid a clash of corresponding Label nodes.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- WS Extensions mode tab -->		
+		
+		<fieldHelp id="ComIbmSOAPAsyncResponse_wsStar_populateLocalEnvWithWSAInfo">
+			<title>Place WS-Addressing headers into LocalEnvironment</title>
+			<description>
+				<p>Specify whether the node puts WS-Addressing headers from the response message into the local environment tree. WS-Addressing headers are not accessible to the flow if this check box is cleared because by default, all headers are processed and removed.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Instances -->
+		
+		<fieldHelp id="ComIbmSOAPAsyncResponse_administration_componentLevel">
+			<title>Additional instances pool</title>
+			<description>
+				<p>Select the pool from which additional instance threads for the input node are obtained.</p>
+				<p>If you select "Use Pool Associated with Message Flow", additional instances are obtained from the message flow pool.</p>
+				<p>If you select "Use Pool Associated with Node", additional instances are allocated from the additional instances of the node based on the component level number specified in the Additional instances property.</p>
+			</description>
+			<topic href="../com.ibm.etools.mft.doc/ac09055_.htm">
+				<label>Configurable message flow properties</label>
+			</topic>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncResponse_administration_additionalInstances">
+			<title>Additional instances</title>
+			<description>
+				<p>The number of additional instances that the node can start if the Additional instances pool property is set to "Use Pool Associated with Node".</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Response message parsing -->
+		
+		<pageHelp id="ComIbmSOAPAsyncResponse_parser">
+			<title>Response message parsing</title>
+			<shortDescription>Settings for working with the response message parsers.</shortDescription>
+			<moreDescription>
+				<p>Specify properties relating to the response message parsing. These properties are disabled if you configure the node to act in gateway mode.</p>
+			</moreDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncResponse_parser_messageDomainProperty">
+			<title>Message Domain</title>
+			<description>
+				<p>The domain used to parse the incoming message. Select from the drop-down list or specify a user-defined parser.</p>
+				<ul>
+					<li>If parsing an XML message, use the XMLNSC parser.</li>
+					<li>For binary or text messages with a Data Format Description Language schema model, use the DFDL parser.</li>
+					<li>To access the byte data without parsing, use the BLOB parser.</li>
+					<li>If you do not specify a parser, the BLOB parser is used, and the binary data can be accessed directly within the flow.</li>
+				</ul>
+				<p>The data can be reparsed with a different parser at any point in the flow by using the ResetContentDescriptor node, or by using a parse clause in a Compute node.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncResponse_parser_messageSetProperty">
+			<title>Message Model</title>
+			<description>
+				<p>Specify the name of the schema file, or the name or identifier of the message model, in which the incoming message is modeled.</p> 
+				<p>To enable this property, set the Message Domain property to "DFDL" or "XMLNSC" and select a schema file, or set it to,"MRM" or "IDOC" and select a message set.</p> 
+				<p>Only message models that are contained in your Integration project, or are contained in a referenced application or library, are available for selection.</p>
+				<p>Qualify this property by specifying a library name if the name of your schema file, or the qualified message name that you have selected in the Message property, is not unique within the referenced resources.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmSOAPAsyncResponse_parser_messageTypeProperty">
+			<title>Message</title>
+			<description>
+				<p>The namespace qualified name of the incoming message.</p>
+				<p> To enable this property, set the Message domain property to "DFDL" or "MRM" and select a message model.</p>
+				<p>Only message names from the selected message model are available for selection.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmSOAPAsyncResponse_parser_messageFormatProperty">
+			<title>Physical Format</title>
+			<description>
+				<p>The physical format name for the incoming message, specified in the message set. To enable this property, set the Message domain property to "MRM" or "IDOC".</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncResponse_parserOptions_validateTiming">
+			<title>Parse timing</title>
+			<description>
+				<p>Specify when a response message should be parsed.</p>
+				<ul>
+					<li>On Demand: parse a response message bit stream only as far as is necessary to satisfy the current reference (referred to as partial parsing).</li>
+					<li>Immediate: parse the entire message, including any message headers.</li>
+					<li>Complete: parse the entire message, including any message headers.</li>
+				</ul>
+				<p>The only difference in behavior between Immediate and Complete occurs when MRM validation is enabled.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncResponse_parserOptions_parserXmlnscBuildTreeUsingXMLSchema">
+			<title>Build tree using XML Schema data types</title>
+			<description>
+				<p>Select this property to create syntax elements in the message tree with data types taken from the XML Schema. To enable this property, set the Validate property on the Validation tab to "Content" or "Content and Value".</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncResponse_parserOptions_parserXmlnscMixedContentRetainMode">
+			<title>Retain mixed content</title>
+			<description>
+				<p>Select this property to create elements in the message tree when the parser finds mixed text in a response message. If you clear the check box, mixed text is ignored and no elements are created.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmSOAPAsyncResponse_parserOptions_parserXmlnscCommentsRetainMode">
+			<title>Retain comments</title>
+			<description>
+				<p>Select this property to create elements in the message tree when the parser finds comments in a response message. If you clear the check box, comments are ignored and no elements are created.</p>
+			</description>
+		</fieldHelp>
+				
+		<fieldHelp id="ComIbmSOAPAsyncResponse_parserOptions_parserXmlnscOpaqueElements">
+			<title>Opaque elements</title>
+			<description>
+				<p>Add a list of elements in the response message that are to be opaquely parsed by the XMLNSC parser. Opaque parsing is performed only if validation is not enabled (that is, if the Validate property on the Validation tab is set to "None"); entries that are specified in Opaque Elements are ignored if validation is enabled.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Validation -->
+		
+		<pageHelp id="ComIbmSOAPAsyncResponse_validation">
+			<title>Validation tab</title>
+			<shortDescription>Optionally validate the output message, and choose what to do if the message fails.</shortDescription>
+			<moreDescription>
+				<p>Optionally validate the output message, and choose what to do if the message fails.</p>
+				<p>Validation is disabled if you configure the node to act in gateway mode.</p>
+			</moreDescription>
+		</pageHelp> 
+		
+		<fieldHelp id="ComIbmSOAPAsyncResponse_validation_validateMaster">
+			<title>Validate</title>
+			<description>
+				<ul>
+					<li>Select "None" to perform no validation on the message. </li>
+					<li>Select "Content" to validate the content and message composition. </li>
+					<li>Select "Content and Value" to perform validation of the message content and value checks, such as whether the value conforms to data type, length, range, and enumeration.</li>
+				</ul>
+				<p>Validation is disabled if you configure the node to act in gateway mode.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmSOAPAsyncResponse_validation_validateFailureAction">
+			<title>Failure Action</title>
+			<description>
+				<p>Specify the action to take if validation fails. To enable this property, set the Validate property to "Content" or "Content and Value". </p>
+				<ul>
+					<li>Select "Exception" to throw an exception on the first validation failure. The failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt as soon as a failure happens.</li>
+					<li>Select "Exception List" to throw an exception if validation failures happen, but only when the current parsing or writing operation has completed. Each failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt if a validation failure occurs, but you want to see the full list of failures. This property is affected by the Parse Timing property; when partial parsing is selected, the current parsing operation parses only a portion of an input message, so only the validation failures in that portion of the message are reported.</li>
+					<li>Select "User Trace" to log all validation failures to user trace, even if you have not asked for user tracing of the message flow. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+					<li>Select "Local Error Log" to log all validation failures to the system log. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+				</ul>
+				<p>Validation is disabled if you configure the node to act in gateway mode.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Monitoring -->
+		
+		<pageHelp id="ComIbmSOAPAsyncResponse_monitoring">
+	    	<title>Monitoring tab</title>
+	    	<shortDescription>Configure monitoring events.</shortDescription>
+	    </pageHelp>
+		<!-- end Monitoring tab -->
+        
+      <!-- end SOAPAsyncResponse node help -->
+      
+      
+       <!--  JMSReceive Node Help -->	    
+		
+		<!-- Basic tab -->		
+		<pageHelp id="ComIbmJMSClientReceive_basic">
+			<title>Basic tab</title>
+			<shortDescription>Settings for working with the JMSReceive node.</shortDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReceive_basic_sourceQueueName">
+			<title>Source Queue</title>
+			<description>
+				<p>Set the name of the queue from which the node receives incoming messages.</p>
+			</description>
+		</fieldHelp>    
+        <!-- end Basic tab --> 
+        
+      <!-- JMS Connection tab -->		
+		<pageHelp id="ComIbmJMSClientReceive_jmsconnection">
+			<title>JMS Connection tab</title>
+			<shortDescription>JMS connection settings for working with the JMSReceive node.</shortDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReceive_jmsconnection_jmsProviderName">
+			<title>JMS provider name</title>
+			<description>
+				<p>Select a JMS vendor name from the list, or enter a name of your choice.</p>
+				<p>If you enter your own JMS provider name, you must also enter a value for the Initial context factory. The name must match the name of a configurable service that is defined for the broker to which you deploy the message flow.</p>
+				<p>Alternatively, you can specify the JMSProviders configurable service.</p>				
+			</description>
+			<topic href="../com.ibm.etools.mft.doc/an60170_.htm">
+				<label>Configurable services properties</label>
+			</topic>
+		</fieldHelp>  
+        
+        <fieldHelp id="ComIbmJMSClientReceive_jmsconnection_initialContextFactory">
+			<title>Initial context factory</title>
+			<description>
+				<p>The starting point for a JNDI namespace. A JMS application uses the initial context to obtain and look up the connection factory and queue or topic objects for the JMS provider.</p>
+				<p>The default value is com.sun.jndi.fscontext.RefFSContextFactory, which defines the file-based Initial context factory for the WebSphere MQ JMS provider.</p>
+				<p>If you have specified the JMSProviders configurable service as the JMS provider, the value of the configurable service property <code>initialContextFactory</code> is used.</p>
+			</description>
+		</fieldHelp>
+        
+        <fieldHelp id="ComIbmJMSClientReceive_jmsconnection_locationJndiBindings">
+			<title>Location JNDI bindings</title>
+			<description>
+				<p>The system path or the LDAP location for the bindings file. The bindings file contains definitions for the JNDI administered objects that are used by the JMSReceive node.</p>
+				<p>For information about constructing the JNDI administered objects bindings file, see the JMS provider documentation.</p>
+				<p>If you have specified the JMSProviders configurable service as the JMS provider, the value of the configurable service property <code>jndiBindingsLocation</code> is used.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReceive_jmsconnection_connectionFactoryName">
+			<title>Connection factory name</title>
+			<description>
+				<p>The name of the connection factory that is used by the JMSReceive node to create a connection to the JMS provider. This name must exist in the bindings file, and reference a JMS QueueConnectionFactory.</p>
+				<p>If you have specified the JMSProviders configurable service as the JMS provider, the value of the configurable service property <code>connectionFactoryName</code> is used.</p>
+			</description>
+		</fieldHelp>
+        
+        <fieldHelp id="ComIbmJMSClientReceive_jmsconnection_receiveTimeOut">
+			<title>Timeout</title>
+			<description>
+				<p>Specify how many milliseconds to wait for a message to be received.</p>
+				<p>The Timeout value cannot be negative. A value of 0 means the node does not wait for a message to be available, and receives the next message only if one is immediately available. If you do not provide a value, the default value of 2000 milliseconds is used.</p>
+			</description>
+		</fieldHelp>        
+        <!-- end JMS Connection tab --> 
+        
+        <!-- Response Message Parsing tab --> 
+        <fieldHelp id="ComIbmJMSClientReceive_inputMessageParsing_messageDomainProperty">
+			<title>Message domain</title>
+			<description>
+				<p>Set the domain that is used to parse the message from the supplied bit stream of the external resource.</p>
+			</description>
+		</fieldHelp>  
+
+        <fieldHelp id="ComIbmJMSClientReceive_inputMessageParsing_messageSetProperty">
+			<title>Message Model</title>
+			<description>
+				<p>Specify the name of the schema file, or the name or identifier of the message model, in which the response message is modeled.</p> 
+				<p>To enable this property, set the Message Domain property to "DFDL" or "XMLNSC" and select a schema file, or set it to,"MRM" or "IDOC" and select a message set.</p> 
+				<p>Only message models that are contained in your Integration project, or are contained in a referenced application or library, are available for selection.</p>
+				<p>Qualify this property by specifying a library name if the name of your schema file, or the qualified message name that you have selected in the Message property, is not unique within the referenced resources.</p>
+			</description>
+		</fieldHelp>        
+        
+        <fieldHelp id="ComIbmJMSClientReceive_inputMessageParsing_messageTypeProperty">
+			<title>Message</title>
+			<description>
+				<p>The namespace qualified name of the response message.</p>
+				<p> To enable this property, set the Message domain property to "DFDL" or "MRM" and select a message model.</p>
+				<p>Only message names from the selected message model are available for selection.</p>
+			</description>
+		</fieldHelp>  
+        
+        <fieldHelp id="ComIbmJMSClientReceive_inputMessageParsing_messageFormatProperty">
+			<title>Physical Format</title>
+			<description>
+				<p>The physical format name for the response message, specified in the message set. To enable this property, set the Message domain property to "MRM" or "IDOC".</p>
+			</description>
+		</fieldHelp>          
+        <!-- end Response Message Parsing tab --> 
+        
+          <!-- Parser Options tab --> 
+        
+        <fieldHelp id="ComIbmJMSClientReceive_parserOptions_validateTiming">
+			<title>Parse timing</title>
+			<description>
+				<p>Specify when a response message should be parsed.</p>
+				<ul>
+					<li>On Demand: parse an input message bit stream only as far as is necessary to satisfy the current reference (referred to as partial parsing).</li>
+					<li>Immediate: parse the entire message, including any message headers.</li>
+					<li>Complete: parse the entire message, including any message headers.</li>
+				</ul>
+				<p>The only difference in behavior between Immediate and Complete occurs when MRM validation is enabled.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReceive_parserOptions_parserXmlnscBuildTreeUsingXMLSchema">
+			<title>Build tree using XML Schema data types</title>
+			<description>
+				<p>Select this property to create syntax elements in the message tree with data types taken from the XML Schema. To enable this property, set the Validate property on the Validation tab to "Content" or "Content and Value".</p>
+			</description>
+		</fieldHelp>
+        
+        <fieldHelp id="ComIbmJMSClientReceive_parserOptions_parserXmlnscUseForXmlnsDomain">
+			<title>Use XMLNSC compact parser for XMLNS domain</title>
+			<description>
+				<p>Select this property to use the XMLNSC Compact Parser for messages in the XMLNS Domain. If you set this property, the response message data is displayed under XMLNSC in nodes that are connected to the output terminal when the input MQRFH2 header or Input Message Parsing properties Message domain is XMLNS.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReceive_parserOptions_parserXmlnscMixedContentRetainMode">
+			<title>Retain mixed content</title>
+			<description>
+				<p>Select this property to create elements in the message tree when the parser finds mixed text in an input message. If you clear the check box, mixed text is ignored and no elements are created.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReceive_parserOptions_parserXmlnscCommentsRetainMode">
+			<title>Retain comments</title>
+			<description>
+				<p>Select this property to create elements in the message tree when the parser finds comments in an input message. If you clear the check box, comments are ignored and no elements are created.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReceive_parserOptions_parserXmlnscProcessingInstructionsRetainMode">
+			<title>Retain processing instructions</title>
+			<description>
+				<p>Select this property to create elements in the message tree when the parser finds processing instructions in an input message. If you clear the check box, processing instructions are ignored and no elements are created.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReceive_parserOptions_parserXmlnscOpaqueElements">
+			<title>Opaque elements</title>
+			<description>
+				<p>Add a list of elements in the input message that are to be opaquely parsed by the XMLNSC parser. Opaque parsing is performed only if validation is not enabled (that is, if the Validate property on the Validation tab is set to "None"); entries that are specified in Opaque Elements are ignored if validation is enabled.</p>
+			</description>
+		</fieldHelp>
+        <!-- end Parser Options tab --> 
+        
+         <!--  Message Selectors tab --> 
+         
+         <pageHelp id="ComIbmJMSClientReceive_messageSelectors">
+			<title>Message selectors panel</title>
+			<shortDescription>Settings for working with the message selectors.</shortDescription>
+			<moreDescription>
+				<p>Use the message selectors to filter messages by the message properties and headers listed here. Only messages that match the filters are processed by the node. Leave fields blank if you do not want the node to make a selection based on those criteria.</p>
+			</moreDescription>
+			<topic href="../com.ibm.etools.mft.doc/ac24876_.htm">
+				<label>JMS message selector</label>
+			</topic>
+		</pageHelp>
+        
+        <fieldHelp id="ComIbmJMSClientReceive_messageSelectors_propertySelector">
+			<title>Application property</title>
+			<description>
+				<p>Filter messages by the application property value, for example, <b>OrderValue &gt; 200</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReceive_messageSelectors_messageTimeStampSelector">
+			<title>Timestamp</title>
+			<description>
+				<p>Filter messages by the JMSTimestamp specified in unqualified Java millisecond time, for example, <b>BETWEEN 1057576423231 AND 10575788993265</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReceive_messageSelectors_messageDeliveryModeSelector">
+			<title>Delivery mode</title>
+			<description>
+				<p>Filter messages by the message delivery mode, for example, <b>PERSISTENT</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReceive_messageSelectors_messagePrioritySelector">
+			<title>Priority</title>
+			<description>
+				<p>Filter messages by their priority, for example, <b>&gt;= 5 AND &lt;= 8</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReceive_messageSelectors_messageIDSelector">
+			<title>Message ID</title>
+			<description>
+				<p>Filter messages by the application property value, for example, <b>&gt; WMBRK123456</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReceive_messageSelectors_messageRedeliveredSelector">
+			<title>Redelivered</title>
+			<description>
+				<p>Filter redelivered messages, for example, <b>TRUE</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReceive_messageSelectors_messageCorrelationIDSelector">
+			<title>Correlation ID</title>
+			<description>
+				<p>Filter messages by the correlation ID, for example, <b>='WMBRKABCDEFG'</b>.</p>
+			</description>
+		</fieldHelp>
+        <!-- end Message Selectors tab -->
+        
+         <!-- Transactions tab -->
+        <fieldHelp id="ComIbmJMSClientReceive_transactionality_transactionMode">
+			<title>Transaction mode</title>
+			<description>
+				<p>Control whether the message is received under a JMS transaction.</p>
+				<p>To use a global transaction, rather than a local transaction, you must also select the message flow property Coordinated Transaction in the BAR file properties.</p>
+			</description>
+		</fieldHelp>
+        
+        <fieldHelp id="ComIbmJMSClientReceive_advanced_transactionMode">
+			<title>Transaction mode</title>
+			<description>
+				<p>Control whether the message is received under a JMS transaction.</p>
+				<p>To use a global transaction, rather than a local transaction, you must also select the message flow property Coordinated Transaction in the BAR file properties.</p>
+			</description>
+		</fieldHelp>
+        <!-- end Transactions tab -->
+        
+        <!-- Request tab -->
+        <fieldHelp id="ComIbmJMSClientReceive_request_browse">
+			<title>Browse Only</title>
+			<description>
+				<p>Only browse JMS message from the queue. Messages are not consumed, leaving them available for other clients to consume if required.</p>
+                <p>If this is checked then Transaction Mode property will be disabled under Transactionality tab.</p>
+			</description>
+		</fieldHelp>
+        
+        <fieldHelp id="ComIbmJMSClientReceive_request_browseFirst">
+			<title>Reset Browse</title>
+			<description>
+				<p>Reset the browse location in the queue.</p>
+                <p>If this option is false, subsequent browse actions browse the next message from the queue.</p>
+                <p>If this is true, messages are browsed from the front of the queue, browsing the same message as would be consumed from the queue.</p>
+			</description>
+		</fieldHelp>
+        <!-- end Request tab -->
+        
+        <!-- Result tab -->
+        <fieldHelp id="ComIbmJMSClientReceive_result_outputDataLocation">
+			<title>Output data location</title>
+			<description>
+				<p>The location on the output message tree to which the JMSReceive node sends output. The input root is first copied to the output root, and then the result data is copied to the location on the output tree specified by Output data location.</p>
+                <p>The default value, $OutputRoot, replaces the copied message tree with the result data, and propagates none of the input message.</p>
+                <p>For example, a value of $OutputRoot/XMLNS/MyData inserts the result message data into the output message tree, by merging or overwriting the message tree.</p>
+			</description>
+		</fieldHelp>
+        
+        <fieldHelp id="ComIbmJMSClientReceive_result_resultDataLocation">
+			<title>Result data location</title>
+			<description>
+				<p>The location in the message received from the JMS queue that is copied to the Output data location field in the output message.</p>
+				<p>For example, the default, $ResultRoot, inserts the result message into the output tree at the location specified by the Output data location.</p>
+				<p>A value of $ResultRoot/JMSMap/map/MyMapItem puts only MyMapItem from a JMSMap message into the location specified by the Output data location.</p>
+				<p>You can specify Result data location as an ESQL or an XPATH expression.</p>
+			</description>
+		</fieldHelp>
+        
+        <fieldHelp id="ComIbmJMSClientReceive_result_copyLocalEnvironment">
+			<title>Copy local environment</title>
+			<description>
+				<p>This property specifies whether the local environment is copied to the output message.</p>
+				<p>If this property is selected, a new copy of the local environment is created in the tree, and it is populated with the contents of the local environment from the preceding node. Therefore, if a node changes the local environment, those changes are not visible to the upstream nodes in the event of a message rollback, because they have their own copies. This value is the default.</p>
+				<p>If this property is cleared, the node does not generate its own copy of the local environment, but uses the local environment that is passed to it by the preceding node. Therefore, if a node changes the local environment, the changes are reflected by the upstream nodes in the event of a message rollback.</p>    
+			</description>
+		</fieldHelp>
+        <!-- end Result tab -->
+        
+        <!-- Validation -->		
+		<pageHelp id="ComIbmJMSClientReceive_validation">
+			<title>Validation tab</title>
+			<shortDescription>Optionally validate the output message, and choose what to do if the message fails.</shortDescription>
+			<moreDescription>
+				<p>Optionally validate the output message, and choose what to do if the message fails.</p>
+				<p>Validation is disabled if you configure the node to act in gateway mode.</p>
+			</moreDescription>
+		</pageHelp> 
+		
+		<fieldHelp id="ComIbmJMSClientReceive_validation_validateMaster">
+			<title>Validate</title>
+			<description>
+				<ul>
+					<li>Select "None" to perform no validation on the message. </li>
+					<li>Select "Content" to validate the content and message composition. </li>
+					<li>Select "Content and Value" to perform validation of the message content and value checks, such as whether the value conforms to data type, length, range, and enumeration.</li>
+				</ul>
+				<p>Validation is disabled if you configure the node to act in gateway mode.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmJMSClientReceive_validation_validateFailureAction">
+			<title>Failure Action</title>
+			<description>
+				<p>Specify the action to take if validation fails. To enable this property, set the Validate property to "Content" or "Content and Value". </p>
+				<ul>
+					<li>Select "Exception" to throw an exception on the first validation failure. The failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt as soon as a failure happens.</li>
+					<li>Select "Exception List" to throw an exception if validation failures happen, but only when the current parsing or writing operation has completed. Each failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt if a validation failure occurs, but you want to see the full list of failures. This property is affected by the Parse Timing property; when partial parsing is selected, the current parsing operation parses only a portion of an input message, so only the validation failures in that portion of the message are reported.</li>
+					<li>Select "User Trace" to log all validation failures to user trace, even if you have not asked for user tracing of the message flow. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+					<li>Select "Local Error Log" to log all validation failures to the system log. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+				</ul>
+				<p>Validation is disabled if you configure the node to act in gateway mode.</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Monitoring -->
+		
+		<pageHelp id="ComIbmJMSClientReceive_monitoring">
+	    	<title>Monitoring tab</title>
+	    	<shortDescription>Configure monitoring events.</shortDescription>
+	    </pageHelp>
+    
+    <!-- end JMSReceive node help -->
+    
+    <!--  JMSInput Node Help -->	    
+		
+		<!-- Basic tab -->		
+		<pageHelp id="ComIbmJMSClientInput_basic">
+			<title>Basic tab</title>
+			<shortDescription>Settings for working with the JMSInput node.</shortDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_basic_sourceQueueName">
+			<title>Source Queue</title>
+			<description>
+				<p>Set the name of the queue from which the node receives incoming messages.</p>
+			</description>
+		</fieldHelp> 
+
+        <fieldHelp id="ComIbmJMSClientInput_basic_topic">
+			<title>Subscription topic</title>
+			<description>
+				<p>Set the name of the topic to which the node is subscribed.</p>
+			</description>
+		</fieldHelp>    
+
+        <fieldHelp id="ComIbmJMSClientInput_basic_durableSubscriptionID">
+			<title>Durable subscription ID</title>
+			<description>
+				<p>If the node is to receive publications from a durable subscription topic, set an identifier for a durable subscription topic.</p>
+                <p>This property is valid only when a Subscription topic string has been specified.</p>
+			</description>
+		</fieldHelp>        
+        <!-- end Basic tab --> 
+        
+      <!-- JMS Connection tab -->		
+		<pageHelp id="ComIbmJMSClientInput_jmsconnection">
+			<title>JMS Connection tab</title>
+			<shortDescription>JMS connection settings for working with the JMSInput node.</shortDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_connection_jmsProviderName">
+			<title>JMS provider name</title>
+			<description>
+				<p>Select a JMS vendor name from the list, or enter a name of your choice.</p>
+				<p>If you enter your own JMS provider name, you must also enter a value for the Initial context factory. The name must match the name of a configurable service that is defined for the broker to which you deploy the message flow.</p>
+			<p>Alternatively, you can specify the JMSProviders configurable service.</p>				
+			</description>
+			<topic href="../com.ibm.etools.mft.doc/an60170_.htm">
+				<label>Configurable services properties</label>
+			</topic>
+		</fieldHelp>  
+        
+        <fieldHelp id="ComIbmJMSClientInput_connection_initialContextFactory">
+			<title>Initial context factory</title>
+			<description>
+				<p>The starting point for a JNDI namespace. A JMS application uses the initial context to obtain and look up the connection factory and queue or topic objects for the JMS provider.</p>
+				<p>The default value is com.sun.jndi.fscontext.RefFSContextFactory, which defines the file-based Initial context factory for the WebSphere MQ JMS provider.</p>
+				<p>If you have specified the JMSProviders configurable service as the JMS provider, the value of the configurable service property <code>initialContextFactory</code> is used.</p>
+			</description>
+		</fieldHelp>
+        
+        <fieldHelp id="ComIbmJMSClientInput_connection_locationJndiBindings">
+			<title>Location JNDI bindings</title>
+			<description>
+				<p>The system path or the LDAP location for the bindings file. The bindings file contains definitions for the JNDI administered objects that are used by the JMSInput node.</p>
+				<p>For information about constructing the JNDI administered objects bindings file, see the JMS provider documentation.</p>
+				<p>If you have specified the JMSProviders configurable service as the JMS provider, the value of the configurable service property <code>jndiBindingsLocation</code> is used.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_connection_connectionFactoryName">
+			<title>Connection factory name</title>
+			<description>
+				<p>The name of the connection factory that is used by the JMSInput node to create a connection to the JMS provider. This name must exist in the bindings file, and reference a JMS QueueConnectionFactory.</p>
+				<p>If you have specified the JMSProviders configurable service as the JMS provider, the value of the configurable service property <code>connectionFactoryName</code> is used.</p>
+			</description>
+		</fieldHelp>
+        
+        <fieldHelp id="ComIbmJMSClientInput_connection_backoutDestination">
+			<title>Backout destination</title>
+			<description>
+				<p>The JMSInput node sends input messages to this destination when errors prevent the message flow from processing the message, and the message must be removed from the input destination. The backout destination name must exist in the bindings file.</p>
+			</description>
+		</fieldHelp>  
+
+        <fieldHelp id="ComIbmJMSClientInput_connection_backoutThreshold">
+			<title>Backout threshold</title>
+			<description>
+				<p>The value that controls when a redelivered message is put to the backout destination. For example, if the value is 3, the JMS provider attempts to deliver the message to the input destination three times. After the third attempted delivery, the message is removed from the input destination and is sent to the Backout destination.</p>
+			</description>
+            <topic href="../com.ibm.etools.mft.doc/bc19020_.htm">
+				<label>Configuring the backout threshold</label>
+			</topic>
+		</fieldHelp>         
+        <!-- end JMS Connection tab --> 
+        
+        <!-- Input Message Parsing tab --> 
+        <pageHelp id="ComIbmJMSClientInput_default">
+			<title>Input message parsing</title>
+			<shortDescription>Settings for working with the input message parsers.</shortDescription>
+			<moreDescription>
+				<p>Specify properties relating to the input message parsing.</p>
+			</moreDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_default_messageDomainProperty">
+			<title>Message Domain</title>
+			<description>
+				<p>The domain used to parse the incoming message. Select from the drop-down list or specify a user-defined parser.</p>
+				<ul>
+					<li>If parsing an XML message, use the XMLNSC parser.</li>
+					<li>For binary or text messages with a Data Format Description Language schema model, use the DFDL parser.</li>
+					<li>To access the byte data without parsing, use the BLOB parser.</li>
+					<li>If you do not specify a parser, the BLOB parser is used, and the binary data can be accessed directly within the flow.</li>
+				</ul>
+				<p>The data can be reparsed with a different parser at any point in the flow by using the ResetContentDescriptor node, or by using a parse clause in a Compute node.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_default_messageSetProperty">
+			<title>Message Model</title>
+			<description>
+				<p>Specify the name of the schema file, or the name or identifier of the message model, in which the incoming message is modeled.</p> 
+				<p>To enable this property, set the Message Domain property to "DFDL" or "XMLNSC" and select a schema file, or set it to,"MRM" or "IDOC" and select a message set.</p> 
+				<p>Only message models that are contained in your Integration project, or are contained in a referenced application or library, are available for selection.</p>
+				<p>Qualify this property by specifying a library name if the name of your schema file, or the qualified message name that you have selected in the Message property, is not unique within the referenced resources.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmJMSClientInput_default_messageTypeProperty">
+			<title>Message</title>
+			<description>
+				<p>The namespace qualified name of the incoming message.</p>
+				<p> To enable this property, set the Message domain property to "DFDL" or "MRM" and select a message model.</p>
+				<p>Only message names from the selected message model are available for selection.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmJMSClientInput_default_messageFormatProperty">
+			<title>Physical Format</title>
+			<description>
+				<p>The physical format name for the incoming message, specified in the message set. To enable this property, set the Message domain property to "MRM" or "IDOC".</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- Parser options -->
+		
+		<fieldHelp id="ComIbmJMSClientInput_parserOptions_validateTiming">
+			<title>Parse timing</title>
+			<description>
+				<p>Specify when an input message should be parsed.</p>
+				<ul>
+					<li>On Demand: parse an input message bit stream only as far as is necessary to satisfy the current reference (referred to as partial parsing).</li>
+					<li>Immediate: parse the entire message, including any message headers.</li>
+					<li>Complete: parse the entire message, including any message headers.</li>
+				</ul>
+				<p>The only difference in behavior between Immediate and Complete occurs when MRM validation is enabled.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_parserOptions_parserXmlnscBuildTreeUsingXMLSchema">
+			<title>Build tree using XML Schema data types</title>
+			<description>
+				<p>Select this property to create syntax elements in the message tree with data types taken from the XML Schema. To enable this property, set the Validate property on the Validation tab to "Content" or "Content and Value".</p>
+			</description>
+		</fieldHelp>
+        
+        <fieldHelp id="ComIbmJMSClientInput_parserOptions_parserXmlnscUseForXmlnsDomain">
+			<title>Use XMLNSC compact parser for XMLNS domain</title>
+			<description>
+				<p>Control whether the XMLNSC Compact Parser is used for messages in the XMLNS Domain. If you set this property, the message data is displayed under XMLNSC in nodes that are connected to the output terminal when the input MQRFH2 header or Input Message Parsing properties Message domain is XMLNS.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_parserOptions_parserXmlnscMixedContentRetainMode">
+			<title>Retain mixed content</title>
+			<description>
+				<p>Select this property to create elements in the message tree when the parser finds mixed text in an input message. If you clear the check box, mixed text is ignored and no elements are created.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_parserOptions_parserXmlnscCommentsRetainMode">
+			<title>Retain comments</title>
+			<description>
+				<p>Select this property to create elements in the message tree when the parser finds comments in an input message. If you clear the check box, comments are ignored and no elements are created.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_parserOptions_parserXmlnscProcessingInstructionsRetainMode">
+			<title>Retain processing instructions</title>
+			<description>
+				<p>Select this property to create elements in the message tree when the parser finds processing instructions in an input message. If you clear the check box, processing instructions are ignored and no elements are created.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_parserOptions_parserXmlnscOpaqueElements">
+			<title>Opaque elements</title>
+			<description>
+				<p>Add a list of elements in the input message that are to be opaquely parsed by the XMLNSC parser. Opaque parsing is performed only if validation is not enabled (that is, if the Validate property on the Validation tab is set to "None"); entries that are specified in Opaque Elements are ignored if validation is enabled.</p>
+			</description>
+		</fieldHelp>
+        <!-- end Parser Options tab -->
+        
+        <!--  Message Selectors tab --> 
+        
+        <pageHelp id="ComIbmJMSClientInput_messageSelectors">
+			<title>Message selectors panel</title>
+			<shortDescription>Settings for working with the message selectors.</shortDescription>
+			<moreDescription>
+				<p>Use the message selectors to filter messages by the message properties and headers listed here. Only messages that match the filters are processed by the node. Leave fields blank if you do not want the node to make a selection based on those criteria.</p>
+			</moreDescription>
+			<topic href="../com.ibm.etools.mft.doc/ac24876_.htm">
+				<label>JMS message selector</label>
+			</topic>
+		</pageHelp>
+        
+        <fieldHelp id="ComIbmJMSClientInput_messageSelectors_propertySelector">
+			<title>Application property</title>
+			<description>
+				<p>Filter messages by the application property value, for example, <b>OrderValue &gt; 200</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_messageSelectors_messageTimeStampSelector">
+			<title>Timestamp</title>
+			<description>
+				<p>Filter messages by the JMSTimestamp specified in unqualified Java millisecond time, for example, <b>BETWEEN 1057576423231 AND 10575788993265</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_messageSelectors_messageDeliveryModeSelector">
+			<title>Delivery mode</title>
+			<description>
+				<p>Filter messages by the message delivery mode, for example, <b>PERSISTENT</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_messageSelectors_messagePrioritySelector">
+			<title>Priority</title>
+			<description>
+				<p>Filter messages by their priority, for example, <b>&gt;= 5 AND &lt;= 8</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_messageSelectors_messageIDSelector">
+			<title>Message ID</title>
+			<description>
+				<p>Filter messages by the application property value, for example, <b>&gt; WMBRK123456</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_messageSelectors_messageRedeliveredSelector">
+			<title>Redelivered</title>
+			<description>
+				<p>Filter redelivered messages, for example, <b>TRUE</b>.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_messageSelectors_messageCorrelationIDSelector">
+			<title>Correlation ID</title>
+			<description>
+				<p>Filter messages by the correlation ID, for example, <b>='WMBRKABCDEFG'</b>.</p>
+			</description>
+		</fieldHelp>
+        <!-- end Message Selectors tab -->
+                
+        <!-- Advanced tab -->
+		
+		<fieldHelp id="ComIbmJMSClientInput_advanced_transactionMode">
+			<title>Transaction mode</title>
+			<description>
+				<p>Control whether the message is received under a JMS transaction.</p>
+				<p>To use a global transaction, rather than a local transaction, you must also select the message flow property Coordinated Transaction in the BAR file properties.</p>
+			</description>
+		</fieldHelp>        
+        <!-- end Advanced tab -->
+		
+		<!-- Validation -->
+		
+		<pageHelp id="ComIbmJMSClientInput_validation">
+			<title>Validation</title>
+			<shortDescription>Optionally validate the output message, and choose what to do if the message fails.</shortDescription>
+			<moreDescription>
+				<p>Optionally validate the output message, and choose what to do if the message fails.</p>
+			</moreDescription>
+		</pageHelp> 
+		
+		<fieldHelp id="ComIbmJMSClientInput_validation_validateMaster">
+			<title>Validate</title>
+			<description>
+				<ul>
+					<li>Select "None" to perform no validation on the message. </li>
+					<li>Select "Content" to validate the content and message composition. </li>
+					<li>Select "Content and Value" to perform validation of the message content and value checks, such as whether the value conforms to data type, length, range, and enumeration.</li>
+				</ul>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientInput_validation_validateFailureAction">
+			<title>Failure Action</title>
+			<description>
+				<p>Specify the action to take if validation fails. To enable this property, set the Validate property to "Content" or "Content and Value". </p>
+				<ul>
+					<li>Select "Exception" to throw an exception on the first validation failure. The failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt as soon as a failure happens.</li>
+					<li>Select "Exception List" to throw an exception if validation failures happen, but only when the current parsing or writing operation has completed. Each failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt if a validation failure occurs, but you want to see the full list of failures. This property is affected by the Parse Timing property; when partial parsing is selected, the current parsing operation parses only a portion of an input message, so only the validation failures in that portion of the message are reported.</li>
+					<li>Select "User Trace" to log all validation failures to user trace, even if you have not asked for user tracing of the message flow. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+					<li>Select "Local Error Log" to log all validation failures to the system log. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+				</ul>
+			</description>
+		</fieldHelp>
+		<!-- end Validation tab -->
+		
+		<!-- Monitoring -->
+		
+		<pageHelp id="ComIbmJMSClientInput_monitoring">
+	    	<title>Monitoring tab</title>
+	    	<shortDescription>Configure monitoring events.</shortDescription>
+	    </pageHelp>
+        <!-- end Monitoring tab -->
+    
+    <!-- end JMSInput node help -->
+    
+    
+    <!-- JMSOutput node help -->
+    
+    <!-- Basic tab -->		
+		<pageHelp id="ComIbmJMSClientOutput_basic">
+			<title>Basic tab</title>
+			<shortDescription>Settings for working with the JMSOutput node.</shortDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmJMSClientOutput_basic_destinationQueueName">
+			<title>Source Queue</title>
+			<description>
+				<p>Set the name of the queue to which the node sends outgoing messages.</p>
+			</description>
+		</fieldHelp> 
+
+        <fieldHelp id="ComIbmJMSClientOutput_basic_topic">
+			<title>Subscription topic</title>
+			<description>
+				<p>Set the name of the topic to which the node publishes messages.</p>
+			</description>
+		</fieldHelp>  
+
+        <fieldHelp id="ComIbmJMSClientOutput_basic_replyToDestination">
+			<title>Reply to destination</title>
+			<description>
+				<p>Set the name of the JMS destination to which the receiving application must send a reply message. For a reply message to be returned, the JMS destination name must be known to the domain of the JMS provider that is used by the receiving client.</p>
+                <p>If the field is blank, the JMSOutput node does not expect a reply from the receiving JMS client.</p>
+			</description>
+		</fieldHelp> 
+
+        <fieldHelp id="ComIbmJMSClientOutput_basic_useDistList">
+			<title>Send to destination list in local environment</title>
+			<description>
+				<p>When you have built a list of JMS destinations in the local environment, select this check box to use the destination list.</p>
+                <p>If you do not select this check box, or if you select this check box but you have not built a list of JMS destination in the local environment, the node uses the configured JMS destination.</p>
+			</description>
+		</fieldHelp>         
+ 
+        <!-- end Basic tab --> 
+    
+        <!-- JMS Connection tab -->		
+		<pageHelp id="ComIbmJMSClientOutput_jmsconnection">
+			<title>JMS Connection tab</title>
+			<shortDescription>JMS connection settings for working with the JMSOutput node.</shortDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmJMSClientOutput_connection_jmsProviderName">
+			<title>JMS provider name</title>
+			<description>
+				<p>Select a JMS vendor name from the list, or enter a name of your choice.</p>
+				<p>If you enter your own JMS provider name, you must also enter a value for the Initial context factory. The name must match the name of a configurable service that is defined for the broker to which you deploy the message flow.</p>
+			<p>Alternatively, you can specify the JMSProviders configurable service.</p>				
+			</description>
+			<topic href="../com.ibm.etools.mft.doc/an60170_.htm">
+				<label>Configurable services properties</label>
+			</topic>
+		</fieldHelp>  
+        
+        <fieldHelp id="ComIbmJMSClientOutput_connection_initialContextFactory">
+			<title>Initial context factory</title>
+			<description>
+				<p>The starting point for a JNDI namespace. A JMS application uses the initial context to obtain and look up the connection factory and queue or topic objects for the JMS provider.</p>
+				<p>The default value is com.sun.jndi.fscontext.RefFSContextFactory, which defines the file-based Initial context factory for the WebSphere MQ JMS provider.</p>
+				<p>If you have specified the JMSProviders configurable service as the JMS provider, the value of the configurable service property <code>initialContextFactory</code> is used.</p>
+			</description>
+		</fieldHelp>
+        
+        <fieldHelp id="ComIbmJMSClientOutput_connection_locationJndiBindings">
+			<title>Location JNDI bindings</title>
+			<description>
+				<p>The system path or the LDAP location for the bindings file. The bindings file contains definitions for the JNDI administered objects that are used by the JMSOutput node.</p>
+				<p>For information about constructing the JNDI administered objects bindings file, see the JMS provider documentation.</p>
+				<p>If you have specified the JMSProviders configurable service as the JMS provider, the value of the configurable service property <code>jndiBindingsLocation</code> is used.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientOutput_connection_connectionFactoryName">
+			<title>Connection factory name</title>
+			<description>
+				<p>The name of the connection factory that is used by the JMSOutput node to create a connection to the JMS provider. This name must exist in the bindings file, and reference a JMS QueueConnectionFactory.</p>
+				<p>If you have specified the JMSProviders configurable service as the JMS provider, the value of the configurable service property <code>connectionFactoryName</code> is used.</p>
+			</description>
+		</fieldHelp>
+        <!-- end JMS Connection tab --> 
+        
+        <!-- Advanced tab -->
+        
+        <fieldHelp id="ComIbmJMSClientOutput_advanced_newCorrelationId">
+			<title>New correlation ID</title>
+			<description>
+				<p>If you select this check box, the JMSOutput node generates a new Correlation ID for the message. If you leave the check box cleared, the Correlation ID of the output message is taken from the JMSCorrelationID field in the JMSTransport_Header_Values section of the message tree.</p>
+			</description>
+		</fieldHelp>  
+        
+        <fieldHelp id="ComIbmJMSClientOutput_advanced_transactionMode">
+			<title>Transaction mode</title>
+			<description>
+				<p>Control whether the message is received under a JMS transaction.</p>
+				<p>To use a global transaction, rather than a local transaction, you must also select the message flow property Coordinated Transaction in the BAR file properties.</p>
+			</description>
+		</fieldHelp>  
+        
+        <fieldHelp id="ComIbmJMSClientOutput_advanced_messageDeliveryMode">
+			<title>Delivery mode</title>
+			<description>
+				<p>Control the persistence mode that a JMS provider uses for a message:</p>
+                <ul>
+                  <li>Select Automatic to inherit the mode from the input message.</li>
+                  <li>Select Persistent for the the message to survive if the JMS provider has a system failure.</li>
+                  <li>Select Non Persistent for the message to be lost if the JMS provider has a system failure.</li>
+                </ul>
+			</description>
+		</fieldHelp>  
+        
+        <fieldHelp id="ComIbmJMSClientOutput_advanced_messageExpiration">
+			<title>Message expiration (ms)</title>
+			<description>
+				<p>Control the length of time, in milliseconds, for which the JMS provider keeps the output JMS message. The default value, 0, indicates that the message must not expire.</p>
+                <p>If you select Inherit from header, the property inherits the value of the JMSExpiry field in the JMS message.</p>
+			</description>
+		</fieldHelp>  
+        
+        <fieldHelp id="ComIbmJMSClientOutput_advanced_messagePriority">
+			<title>Message priority</title>
+			<description>
+				<p>Assign relative importance to the message. The priority can be used for message selection by a receiving web service.</p>
+				<p>Select a value between 0 (lowest priority) and 9 (highest priority). The default value is 4, which indicates medium priority.</p>
+			</description>
+		</fieldHelp>  
+        
+        <fieldHelp id="ComIbmJMSClientOutput_advanced_messageType">
+			<title>Message root</title>
+			<description>
+				<p>Configure the type of JMS message that is produced by the JMSOutput node. If you do not set a value for this property, the node assumes the output type from the metadata PayLoadType field in the JMS message tree.</p>
+			</description>
+		</fieldHelp>  
+        
+        <!-- end Advanced tab -->
+        
+        <!-- Validation -->
+		
+		<pageHelp id="ComIbmJMSClientOutput_validation">
+			<title>Validation</title>
+			<shortDescription>Optionally validate the output message, and choose what to do if the message fails.</shortDescription>
+			<moreDescription>
+				<p>Optionally validate the output message, and choose what to do if the message fails.</p>
+			</moreDescription>
+		</pageHelp> 
+		
+		<fieldHelp id="ComIbmJMSClientOutput_validation_validateMaster">
+			<title>Validate</title>
+			<description>
+				<ul>
+					<li>Select "None" to perform no validation on the message. </li>
+					<li>Select "Content" to validate the content and message composition. </li>
+					<li>Select "Content and Value" to perform validation of the message content and value checks, such as whether the value conforms to data type, length, range, and enumeration.</li>
+				</ul>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientOutput_validation_validateFailureAction">
+			<title>Failure Action</title>
+			<description>
+				<p>Specify the action to take if validation fails. To enable this property, set the Validate property to "Content" or "Content and Value". </p>
+				<ul>
+					<li>Select "Exception" to throw an exception on the first validation failure. The failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt as soon as a failure happens.</li>
+					<li>Select "Exception List" to throw an exception if validation failures happen, but only when the current parsing or writing operation has completed. Each failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt if a validation failure occurs, but you want to see the full list of failures. This property is affected by the Parse Timing property; when partial parsing is selected, the current parsing operation parses only a portion of an input message, so only the validation failures in that portion of the message are reported.</li>
+					<li>Select "User Trace" to log all validation failures to user trace, even if you have not asked for user tracing of the message flow. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+					<li>Select "Local Error Log" to log all validation failures to the system log. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+				</ul>
+			</description>
+		</fieldHelp>
+		<!-- end Validation tab -->
+		
+		<!-- Monitoring -->
+		
+		<pageHelp id="ComIbmJMSClientOutput_monitoring">
+	    	<title>Monitoring tab</title>
+	    	<shortDescription>Configure monitoring events.</shortDescription>
+	    </pageHelp>
+        <!-- end Monitoring tab -->
+    
+    <!-- end JMSOutput node help -->
+    
+    <!-- JMSReply node help -->
+    
+     <!-- Basic tab -->		
+		<pageHelp id="ComIbmJMSClientReply_basic">
+			<title>Basic tab</title>
+			<shortDescription>Settings for working with the JMSReply node.</shortDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReply_basic_useDistList">
+			<title>Send to destination list in local environment</title>
+			<description>
+				<p>When you have built a list of JMS destinations in the local environment, select this check box to use the destination list.</p>
+                <p>If you do not select this check box, or if you select this check box but you have not built a list of JMS destination in the local environment, the node uses the configured JMS destination.</p>
+			</description>
+		</fieldHelp>  
+        <!-- end Basic tab --> 
+    
+       <!-- JMS Connection tab -->		
+		<pageHelp id="ComIbmJMSClientReply_connection">
+			<title>JMS Connection tab</title>
+			<shortDescription>JMS connection settings for working with the JMSReply node.</shortDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReply_connection_jmsProviderName">
+			<title>JMS provider name</title>
+			<description>
+				<p>Select a JMS vendor name from the list, or enter a name of your choice.</p>
+				<p>If you enter your own JMS provider name, you must also enter a value for the Initial context factory. The name must match the name of a configurable service that is defined for the broker to which you deploy the message flow.</p>
+			<p>Alternatively, you can specify the JMSProviders configurable service.</p>				
+			</description>
+			<topic href="../com.ibm.etools.mft.doc/an60170_.htm">
+				<label>Configurable services properties</label>
+			</topic>
+		</fieldHelp>  
+        
+        <fieldHelp id="ComIbmJMSClientReply_connection_initialContextFactory">
+			<title>Initial context factory</title>
+			<description>
+				<p>The starting point for a JNDI namespace. A JMS application uses the initial context to obtain and look up the connection factory and queue or topic objects for the JMS provider.</p>
+				<p>The default value is com.sun.jndi.fscontext.RefFSContextFactory, which defines the file-based Initial context factory for the WebSphere MQ JMS provider.</p>
+				<p>If you have specified the JMSProviders configurable service as the JMS provider, the value of the configurable service property <code>initialContextFactory</code> is used.</p>
+			</description>
+		</fieldHelp>
+        
+        <fieldHelp id="ComIbmJMSClientReply_connection_locationJndiBindings">
+			<title>Location JNDI bindings</title>
+			<description>
+				<p>The system path or the LDAP location for the bindings file. The bindings file contains definitions for the JNDI administered objects that are used by the JMSReply node.</p>
+				<p>For information about constructing the JNDI administered objects bindings file, see the JMS provider documentation.</p>
+				<p>If you have specified the JMSProviders configurable service as the JMS provider, the value of the configurable service property <code>jndiBindingsLocation</code> is used.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReply_connection_connectionFactoryName">
+			<title>Connection factory name</title>
+			<description>
+				<p>The name of the connection factory that is used by the JMSReply node to create a connection to the JMS provider. This name must exist in the bindings file, and reference a JMS QueueConnectionFactory.</p>
+				<p>If you have specified the JMSProviders configurable service as the JMS provider, the value of the configurable service property <code>connectionFactoryName</code> is used.</p>
+			</description>
+		</fieldHelp>
+        <!-- end JMS Connection tab --> 
+        
+        <!-- Advanced tab -->
+        
+        <fieldHelp id="ComIbmJMSClientReply_advanced_newCorrelationId">
+			<title>New correlation ID</title>
+			<description>
+				<p>If you select this check box, the JMSReply node generates a new Correlation ID for the message. If you leave the check box cleared, the Correlation ID of the output message is taken from the JMSCorrelationID field in the JMSTransport_Header_Values section of the message tree.</p>
+			</description>
+		</fieldHelp>  
+        
+        <fieldHelp id="ComIbmJMSClientReply_advanced_transactionMode">
+			<title>Transaction mode</title>
+			<description>
+				<p>Control whether the message is received under a JMS transaction.</p>
+				<p>To use a global transaction, rather than a local transaction, you must also select the message flow property Coordinated Transaction in the BAR file properties.</p>
+			</description>
+		</fieldHelp>  
+        
+        <fieldHelp id="ComIbmJMSClientReply_advanced_messageDeliveryMode">
+			<title>Delivery mode</title>
+			<description>
+				<p>Control the persistence mode that a JMS provider uses for a message:</p>
+                <ul>
+                  <li>Select Automatic to inherit the mode from the input message.</li>
+                  <li>Select Persistent for the the message to survive if the JMS provider has a system failure.</li>
+                  <li>Select Non Persistent for the message to be lost if the JMS provider has a system failure.</li>
+                </ul>
+			</description>
+		</fieldHelp>  
+        
+        <fieldHelp id="ComIbmJMSClientReply_advanced_messageExpiration">
+			<title>Message expiration (ms)</title>
+			<description>
+				<p>Control the length of time, in milliseconds, for which the JMS provider keeps the output JMS message. The default value, 0, indicates that the message must not expire.</p>
+                <p>If you select Inherit from header, the property inherits the value of the JMSExpiry field in the JMS message.</p>
+			</description>
+		</fieldHelp>  
+        
+        <fieldHelp id="ComIbmJMSClientReply_advanced_messagePriority">
+			<title>Message priority</title>
+			<description>
+				<p>Assign relative importance to the message. The priority can be used for message selection by a receiving web service.</p>
+				<p>Select a value between 0 (lowest priority) and 9 (highest priority). The default value is 4, which indicates medium priority.</p>
+			</description>
+		</fieldHelp>  
+        
+        <fieldHelp id="ComIbmJMSClientReply_advanced_messageType">
+			<title>Message root</title>
+			<description>
+				<p>Configure the type of JMS message that is produced by the JMSReply node. If you do not set a value for this property, the node assumes the output type from the metadata PayLoadType field in the JMS message tree.</p>
+			</description>
+		</fieldHelp>  
+        <!-- end Advanced tab -->
+        
+        <!-- Validation -->
+		
+		<pageHelp id="ComIbmJMSClientReply_validation">
+			<title>Validation</title>
+			<shortDescription>Optionally validate the output message, and choose what to do if the message fails.</shortDescription>
+			<moreDescription>
+				<p>Optionally validate the output message, and choose what to do if the message fails.</p>
+			</moreDescription>
+		</pageHelp> 
+		
+		<fieldHelp id="ComIbmJMSClientReply_validation_validateMaster">
+			<title>Validate</title>
+			<description>
+				<ul>
+					<li>Select "None" to perform no validation on the message. </li>
+					<li>Select "Content" to validate the content and message composition. </li>
+					<li>Select "Content and Value" to perform validation of the message content and value checks, such as whether the value conforms to data type, length, range, and enumeration.</li>
+				</ul>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSClientReply_validation_validateFailureAction">
+			<title>Failure Action</title>
+			<description>
+				<p>Specify the action to take if validation fails. To enable this property, set the Validate property to "Content" or "Content and Value". </p>
+				<ul>
+					<li>Select "Exception" to throw an exception on the first validation failure. The failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt as soon as a failure happens.</li>
+					<li>Select "Exception List" to throw an exception if validation failures happen, but only when the current parsing or writing operation has completed. Each failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt if a validation failure occurs, but you want to see the full list of failures. This property is affected by the Parse Timing property; when partial parsing is selected, the current parsing operation parses only a portion of an input message, so only the validation failures in that portion of the message are reported.</li>
+					<li>Select "User Trace" to log all validation failures to user trace, even if you have not asked for user tracing of the message flow. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+					<li>Select "Local Error Log" to log all validation failures to the system log. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+				</ul>
+			</description>
+		</fieldHelp>
+		<!-- end Validation tab -->
+		
+		<!-- Monitoring -->
+		
+		<pageHelp id="ComIbmJMSClientReply_monitoring">
+	    	<title>Monitoring tab</title>
+	    	<shortDescription>Configure monitoring events.</shortDescription>
+	    </pageHelp>
+        <!-- end Monitoring tab -->
+    
+    <!-- end JMSReply node help -->
+    
+    
+    <!-- JMSHeader node help -->
+    
+    	<!-- JMSTransport tab -->
+    
+    	<pageHelp id="ComIbmJMSHeader_jms">
+			<title>JMS Transport</title>
+			<shortDescription>Control the JMSTransport header as a whole.</shortDescription>
+			<moreDescription>				
+				<p>Options are:</p>
+				<ul>
+				  <li><b>Carry forward</b>: Carry forward any values that are present in an incoming message.</li>
+				  <li><b>Add header</b>: Add a new header using the specified property values. If a header already exists, the header is modified using the specified property values. If Inherit from header is specified as a property value and the header does not exist, the default value for the property is used.</li>
+				  <li><b>Modify header</b>: Change an existing header using the specified property values. If a header does not exist, a new header is added first. If Inherit from header is specified as a property value and the header does not exist, the default value for the property is used.</li>
+				  <li><b>Delete header</b>: Delete the header, if it exists.</li>
+				</ul>
+				<p>Add header and Modify header both add a header if it does not exist, and change a header if it does exist.</p>
+			</moreDescription>
+		</pageHelp>
+		<!-- end JMSTransport tab -->
+		
+		<!-- Header Values tab -->
+    
+    	<fieldHelp id="ComIbmJMSHeader_Header_Values_jmsDeliveryMode">
+			<title>JMS Delivery Mode</title>
+			<description>
+				<p>Filter messages by the message delivery mode, for example, PERSISTENT.</p>				
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSHeader_Header_Values_jmsExpiration">
+			<title>JMS Message Expiration</title>
+			<description>
+				<p>Ask the JMS provider to keep the output JMS message for a specified time. Values are in milliseconds; the default value 0 means that the message should not expire.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSHeader_Header_Values_jmsPriority">
+			<title>JMS Message Priority</title>
+			<description>
+				<p>Assign relative importance to the message. A receiving JMS client application or a JMSOutput node can use this value.</p>
+				<p>JMS defines a ten-level priority value, with 0 as the lowest priority and 9 as the highest.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSHeader_Header_Values_jmsCorrelationID">
+			<title>JMS Correlation Identifier</title>
+			<description>
+				<p>A client can use the JMS Correlation Identifier header field to link one message with another. A typical use is to link a response message with its request message.  </p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSHeader_Header_Values_jmsReplyTo">
+			<title>JMS Reply To</title>
+			<description>
+				<p>The JMS Reply To header field contains a destination supplied by a client when a message is sent. It is the destination where a reply message should be sent to.</p>
+			</description>
+		</fieldHelp>
+		<!-- end Header Values tab -->
+		
+		<!-- Application Properties tab -->
+    
+    	<fieldHelp id="ComIbmJMSHeader_JMS_Application_Properties_application_Property">
+			<title>Application Properties</title>
+			<description>
+				<p>This table is enabled only if you chose Add header or Modify header for JMS Transport header. The table has no predefined properties; use it to create custom properties and values.</p>
+				<p>Use the property table to add new properties, or modify or delete existing properties, for the header. There is no limit to the number of properties.</p>
+				<p>Each property must have a name, and a type qualifier. The type qualifier can be Value, XPath, or Delete:</p>
+				<ul>
+				  <li><b>Value</b>: Enter a new valid value for the selected property. A null value or empty string is also considered as a valid value.</li>
+				  <li><b>XPath</b>: Specify a valid XPath expression. IBM Integration Bus supports XPath definitions that start with an XPath variable such as $Root or $LocalEnvironment. Only the first occurrence is returned if there are multiple values for the XPath expression. (Examples of valid XPath expressions are: $LocalEnvironment/Host, and $Root/HTTPRequest/Content-Type).</li>
+				  <li><b>Delete</b>: Specify the property to be deleted from the incoming message. The value associated with the selected property is also deleted.</li>
+				</ul> 
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmJMSHeader_JMS_Application_Properties_clearIncoming">
+			<title>Clear incoming values</title>
+			<description>
+				<p>This option, which is is enabled only if you choose Modify header, removes all property names and associated values from the incoming message if present.</p>
+			</description>
+		</fieldHelp>
+		<!-- end Application Properties tab -->
+		
+		<!-- Monitoring -->
+		
+		<pageHelp id="ComIbmJMSHeader_monitoring">
+	    	<title>Monitoring tab</title>
+	    	<shortDescription>Configure monitoring events.</shortDescription>
+	    </pageHelp>
+        <!-- end Monitoring tab -->
+    
+    <!--  end JMSHeader node help -->    	
+	</pluginCategory>
+</pdHelp>

@@ -1,0 +1,26 @@
+#!/bin/bash
+##-----------------------------------------------------------------------------
+##
+##
+##  (c) Copyright International Business Machines Corp. 1999, 2005
+##  All Rights Reserved
+##
+## Version  %Z% %I% %W% %E% %U% [%H% %T%]
+##
+##-----------------------------------------------------------------------------
+
+parms=$@
+np=$#
+i=0;
+while (( $i < $np ))
+do
+  if [[ -n ${1%%-*} ]]
+  then
+    break
+  fi
+  shift
+  (( i = i + 1 ))
+done
+
+
+"mqsistop.bin" $parms

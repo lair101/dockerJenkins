@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Export-Package: com.ibm.etools.mft.connector.mq,com.ibm.etools.mft.con
+ nector.mq.constants,com.ibm.etools.mft.connector.mq.model.beans
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,com.ibm.etools
+ .mft.wizard.editor,com.ibm.etools.mft.connector.ui.editor,com.ibm.mq.
+ runtime;bundle-version="[10.0.0,11.0.0)",com.ibm.etools.mft.connector
+ .base,com.ibm.etools.mft.connector.policy,org.eclipse.ui.forms,org.ec
+ lipse.core.resources,com.ibm.etools.mft.util.ui
+Bundle-Vendor: %Bundle-Vendor
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,wsdl4j.jar,descriptor/,nl/
+Bundle-Version: 10.0.500.v20160516-1831
+Bundle-Name: %Bundle-Name
+Bundle-Activator: com.ibm.etools.mft.connector.mq.Activator
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ibm.etools.mft.connector.mq;singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+
+

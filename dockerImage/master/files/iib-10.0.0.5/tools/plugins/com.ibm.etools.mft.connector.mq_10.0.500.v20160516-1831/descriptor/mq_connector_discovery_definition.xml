@@ -1,0 +1,3257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:discoveries xmlns:p="http://www.ibm.com/mb/connector"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ibm.com/mb/connector connectors.xsd">
+	<resourceBundleTemplate>nl/Model.properties</resourceBundleTemplate>
+	<modelVersion>1.0.0</modelVersion>
+	<writeSensitiveData>true</writeSensitiveData>
+	<discovery>
+		<id>mq_discovery</id>
+		<testConnectionEnabled>true</testConnectionEnabled>
+		<discoveryType>structured</discoveryType>
+		<discoveryGroups>
+			<discoveryProperties>
+				<id>MQQueueManagerConnectionDetails</id>
+				<displayName nlKey="connectionStepDispName">connectionStepDispName</displayName>
+				<description></description>
+				<groups>
+					<group>
+						<id>mqConnectionDetails</id>
+						<displayName nlKey="mqConnectionDetailsDispName">Enter the connection details for
+							the MQ Queue Manager</displayName>
+						<generateDocumentation>true</generateDocumentation>
+						<description></description>
+						<expand>true</expand>
+						<visible>true</visible>
+						<parameters>
+							<parameter>
+								<id>mqConnectionType</id>
+								<groupId>mqConnectionDetails</groupId>
+								<displayName nlKey="mqConnectionTypeDisplayName">Type of connection</displayName>
+								<default>LOCAL</default>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+									<values>
+										<name>mqConnectionTypeEnum</name>
+										<enumValues>
+											<enumValue>
+												<valueName>LOCAL</valueName>
+												<displayName nlKey="localBindingDispName">Local binding connection</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>REMOTE_CCDT</valueName>
+												<displayName nlKey="remoteCCDTDisplayName">Remote client connection
+													using CCDT file</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>REMOTE_NOT_CCDT</valueName>
+												<displayName nlKey="remoteNonCCDTDisplayName">Remote client connection
+													specifying details</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="mqConnectionTypeDescription">Select the type of connection to be
+									used</helpText>
+								<master>
+									<slave>
+										<parameterId>queueManagerName</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>queueManagerHost</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>listenerPort</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>channelName</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>ccdtURI</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									
+									
+									<slave>
+										<parameterId>securityIdentity</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>useSSL</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>SSLPeerName</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>SSLCipherSpec</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									
+									<slave>
+										<parameterId>mqConnectionType</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>					
+								</master>
+							</parameter>
+							<parameter>
+								<id>queueManagerName</id>
+								<groupId>mqConnectionDetails</groupId>
+								<displayName nlKey="queueManagerNameDispName">Queue Manager Name</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="queueManagerNameDescription">Name of the queue manager to connect to
+									for discovery</helpText>
+								<master>
+									<slave>
+										<parameterId>queueManagerName</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>									
+								</master>
+								<!-- actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('mqConnectionType') !=
+											'REMOTE_NOT_CCDT'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions -->
+							</parameter>
+							<parameter>
+								<id>ccdtURI</id>
+								<groupId>mqConnectionDetails</groupId>
+								<displayName nlKey="urlCCDTDispName">CCDT URL</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="urlCCDTDescription">The URL of the CCDT file containing MQ
+									connection details.</helpText>
+								<master>
+									<slave>
+										<parameterId>ccdtURI</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>									
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('mqConnectionType') =
+											'REMOTE_CCDT'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+								<customEditor>MQConnectorFileSelector</customEditor>
+							</parameter>
+							<parameter>
+								<id>queueManagerHost</id>
+								<groupId>mqConnectionDetails</groupId>
+								<displayName nlKey="hostIPDispName">Host or IP</displayName>
+								<default>localhost</default>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="hostIPDescription">Host name or IP address where the queue
+									manger is
+									running</helpText>
+								<master>
+									<slave>
+										<parameterId>queueManagerHost</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>									
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('mqConnectionType') =
+											'REMOTE_NOT_CCDT'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>listenerPort</id>
+								<groupId>mqConnectionDetails</groupId>
+								<displayName nlKey="portDispName">Port</displayName>
+								<default>1414</default>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>integer</type>
+								</schema>
+								<helpText nlKey="portDescription">tcpip port number of the mq listener</helpText>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('mqConnectionType') =
+											'REMOTE_NOT_CCDT'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>channelName</id>
+								<groupId>mqConnectionDetails</groupId>
+								<displayName nlKey="channelNameDispName">Channel Name</displayName>
+								<default>SYSTEM.BKR.CONFIG</default>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="channelNameDescription">channelNameDescription</helpText>
+								<master>
+									<slave>
+										<parameterId>channelName</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>									
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('mqConnectionType') =
+											'REMOTE_NOT_CCDT'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							
+							<parameter>
+								<id>securityIdentity</id>
+								<groupId>mqConnectionDetails</groupId>
+								<displayName nlKey="securityIdentityDisplayName">Security Identity</displayName>
+								<default></default>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="securityIdentityDescription">The alias name of an identity defined with mqsisetdbparms. Do not include the "mq::" prefix when setting this.</helpText>
+								<master>
+									<slave>
+										<parameterId>securityIdentity</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>									
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('mqConnectionType') !=
+											'REMOTE_CCDT'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							
+							<parameter>
+								<id>useSSL</id>
+								<groupId>mqConnectionDetails</groupId>
+								<displayName nlKey="useSSLDisplayName">Use SSL</displayName>
+								<default></default>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>boolean</type>
+								</schema>
+								<helpText nlKey="useSSLDescription">If selected then SSL will be used for connections to the remote MQ manager, and the following properties may be set.</helpText>
+								<master>
+									<slave>
+										<parameterId>useSSL</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>									
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('mqConnectionType') !=
+											'LOCAL'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							
+							
+							
+							<parameter>
+								<id>SSLPeerName</id>
+								<groupId>mqConnectionDetails</groupId>
+								<displayName nlKey="SSLPeerNameDisplayName">SSL Peer Name</displayName>
+								<default></default>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="SSLPeerNameDescription">The name will be passed to the remote MQ manager when making the connection where it must be matched by a configured positive match for the connection to succeeded.</helpText>
+								<master>
+									<slave>
+										<parameterId>SSLPeerName</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>									
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('mqConnectionType') =
+											'REMOTE_NOT_CCDT'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							
+							
+							<parameter>
+								<id>SSLCipherSpec</id>
+								<groupId>mqConnectionDetails</groupId>
+								<displayName nlKey="SSLCipherSpecDisplayName">SSL Cipher Specification</displayName>
+								<default></default>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="SSLCipherSpecDescription">The name of the symmetric key cryptography algorithm that the remote queue manager is secured with.</helpText>
+								<master>
+									<slave>
+										<parameterId>SSLCipherSpec</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>									
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('mqConnectionType') =
+											'REMOTE_NOT_CCDT'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							
+							
+						</parameters>
+					</group>
+				</groups>
+			</discoveryProperties>
+			<filterProperties>
+				<id>filterProperty</id>
+				<displayName nlKey="selectResourcesStepDispName">selectResourcesStepDispName</displayName>
+				<description></description>
+				<groups>
+					<group>
+						<id>messageFormatProperties</id>
+						<displayName nlKey="messageExchangeFormatDispName">Message Exchange Format and
+							Filtering</displayName>
+						<generateDocumentation>true</generateDocumentation>
+						<description nlKey="messageExchangeFormatDescription">Filter Properties</description>
+						<expand>true</expand>
+						<visible>true</visible>
+						<parameters>
+							<parameter>
+								<id>messageExchangePattern</id>
+								<groupId>messageFormatProperties</groupId>
+								<displayName nlKey="messageExchangePattern">Message Exchange Pattern</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+									<values>
+										<name>operationDirections</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Request-Response</valueName>
+												<displayName nlKey="reqRespOperationDisplayName">Select resources for
+													Request-Response operation</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>One-Way</valueName>
+												<displayName nlKey="oneWayOperationDisplayName">Select resources for One-Way
+													operation</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>								
+								<master>
+									<slave>
+										<parameterId>outputCCSID</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>outputFormat</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>UserProperties</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>inMessageType</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>outMessageType</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>Persistence</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>MessageID</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>CorrelationID</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>outputExpiry</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>outputPriority</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>SpecifyOutputEncoding</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>OutputInteger</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>OutputDecimal</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>OutputFloat</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>SpecifyOutputReportOptions</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>OutputMessageID</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>OutputCorrelationID</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+								</master>
+							</parameter>
+							<parameter>
+								<id>includePattern</id>
+								<groupId>messageFormatProperties</groupId>
+								<displayName nlKey="filterText">Filter Text</displayName>
+								<default>*</default>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="filterTextDescription">Enter text to filter the queues</helpText>
+							</parameter>
+							<parameter>
+								<id>includeSystemObjects</id>
+								<groupId>messageFormatProperties</groupId>
+								<displayName nlKey="includeSystemResources">Include system resources</displayName>
+								<default>false</default>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>boolean</type>
+								</schema>
+								<helpText nlKey="includeSystemResourcesDescription">includeSystemResourcesDescription</helpText>
+								<customEditor>MQSystemObjectFilterPropertyEditor</customEditor>
+							</parameter>
+							<parameter>
+								<id>includeTempObjects</id>
+								<groupId>messageFormatProperties</groupId>
+								<displayName nlKey="includeTempResources">Include temporary dynamic
+									resources</displayName>
+								<default>false</default>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>boolean</type>
+								</schema>
+								<helpText nlKey="includeTempResourcesDescription">Include temporary dynamic resources</helpText>
+							</parameter>
+						</parameters>
+					</group>
+					<!-- <group> -->
+					<!-- <id>resourceType</id> -->
+					<!-- <displayName nlKey="resourceTypeDisplayName">Resource Type</displayName> -->
+					<!-- <generateDocumentation>true</generateDocumentation> -->
+					<!-- <description nlKey="resourceTypeDescription">Filter Properties</description> -->
+					<!-- <expand>true</expand> -->
+					<!-- <visible>true</visible> -->
+					<!-- <parameters> -->
+					<!-- <parameter> -->
+					<!-- <id>includeQueues</id> -->
+					<!-- <groupId>resourceType</groupId> -->
+					<!-- <displayName nlKey="queueDisplayName">Queue</displayName> -->
+					<!-- <default>true</default> -->
+					<!-- <mandatory>false</mandatory> -->
+					<!-- <configurable>true</configurable> -->
+					<!-- <visible>true</visible> -->
+					<!-- <sensitive>false</sensitive> -->
+					<!-- <schema> -->
+					<!-- <maxOccurs>1</maxOccurs> -->
+					<!-- <minOccurs>1</minOccurs> -->
+					<!-- <type>boolean</type> -->
+					<!-- </schema> -->
+					<!-- <helpText nlKey="queueDescription">Discover Queues</helpText> -->
+					<!-- </parameter> -->
+					<!-- <parameter> -->
+					<!-- <id>includeTopics</id> -->
+					<!-- <groupId>resourceType</groupId> -->
+					<!-- <displayName nlKey="topicDisplayName">Topic</displayName> -->
+					<!-- <default>true</default> -->
+					<!-- <mandatory>false</mandatory> -->
+					<!-- <configurable>true</configurable> -->
+					<!-- <visible>true</visible> -->
+					<!-- <sensitive>false</sensitive> -->
+					<!-- <schema> -->
+					<!-- <maxOccurs>1</maxOccurs> -->
+					<!-- <minOccurs>1</minOccurs> -->
+					<!-- <type>boolean</type> -->
+					<!-- </schema> -->
+					<!-- <helpText nlKey="topicDescription">Discover Topics</helpText> -->
+					<!-- </parameter> -->
+					<!-- </parameters> -->
+					<!-- </group> -->
+				</groups>
+			</filterProperties>
+			<selectedObjectProperties>
+				<id>selectedObjectPropertiesQueue</id>
+				<nodeName>Queue</nodeName>
+				<nodeType>Queue</nodeType>
+				<!-- <dataConfiguration> -->
+				<!-- <id>destinationProperties</id> -->
+				<!-- <displayName nlKey="configDestTypeDisplayName">Configure the destination 
+					type</displayName> -->
+				<!-- <generateDocumentation>true</generateDocumentation> -->
+				<!-- <description>token Config dest types</description> -->
+				<!-- <expand>true</expand> -->
+				<!-- <visible>false</visible> -->
+				<!-- <parameters> -->
+				<!-- <parameter> -->
+				<!-- <id>destinationType</id> -->
+				<!-- <groupId>destinationProperties</groupId> -->
+				<!-- <displayName nlKey="destTypeDisplayName">Destination Type</displayName> -->
+				<!-- <mandatory>true</mandatory> -->
+				<!-- <configurable>true</configurable> -->
+				<!-- <visible>false</visible> -->
+				<!-- <sensitive>false</sensitive> -->
+				<!-- <schema> -->
+				<!-- <maxOccurs>1</maxOccurs> -->
+				<!-- <minOccurs>1</minOccurs> -->
+				<!-- <type>string</type> -->
+				<!-- <values> -->
+				<!-- <name>destinationType</name> -->
+				<!-- <enumValues> -->
+				<!-- <enumValue> -->
+				<!-- <valueName>Input</valueName> -->
+				<!-- <displayName nlKey="inputDisplayName">Input</displayName> -->
+				<!-- </enumValue> -->
+				<!-- <enumValue> -->
+				<!-- <valueName>Output</valueName> -->
+				<!-- <displayName nlKey="outputDisplayName">Output</displayName> -->
+				<!-- </enumValue> -->
+				<!-- </enumValues> -->
+				<!-- </values> -->
+				<!-- </schema> -->
+				<!-- <helpText nlKey="destTypeDescription">Enter the service name</helpText> -->
+				<!-- </parameter> -->
+				<!-- </parameters> -->
+				<!-- </dataConfiguration> -->
+			</selectedObjectProperties>
+			<!-- <selectedObjectProperties> -->
+			<!-- <id>selectedObjectPropertiesTopic</id> -->
+			<!-- <nodeName>Topic</nodeName> -->
+			<!-- <nodeType>Topic</nodeType> -->
+			<!-- <dataConfiguration> -->
+			<!-- <id>destinationProperties</id> -->
+			<!-- <displayName nlKey="configDestTypeDisplayName">Configure the destination 
+				type</displayName> -->
+			<!-- <generateDocumentation>true</generateDocumentation> -->
+			<!-- <description>token</description> -->
+			<!-- <expand>true</expand> -->
+			<!-- <visible>true</visible> -->
+			<!-- <parameters> -->
+			<!-- <parameter> -->
+			<!-- <id>destinationType</id> -->
+			<!-- <groupId>destinationProperties</groupId> -->
+			<!-- <displayName nlKey="destTypeDisplayName">Destination Type</displayName> -->
+			<!-- <mandatory>true</mandatory> -->
+			<!-- <configurable>true</configurable> -->
+			<!-- <visible>true</visible> -->
+			<!-- <sensitive>false</sensitive> -->
+			<!-- <schema> -->
+			<!-- <maxOccurs>1</maxOccurs> -->
+			<!-- <minOccurs>1</minOccurs> -->
+			<!-- <type>string</type> -->
+			<!-- <values> -->
+			<!-- <name>destinationType</name> -->
+			<!-- <enumValues> -->
+			<!-- <enumValue> -->
+			<!-- <valueName>Input</valueName> -->
+			<!-- <displayName nlKey="inputDisplayName">Input</displayName> -->
+			<!-- </enumValue> -->
+			<!-- <enumValue> -->
+			<!-- <valueName>Output</valueName> -->
+			<!-- <displayName nlKey="outputDisplayName">Output</displayName> -->
+			<!-- </enumValue> -->
+			<!-- </enumValues> -->
+			<!-- </values> -->
+			<!-- </schema> -->
+			<!-- <helpText nlKey="destTypeDescription">Enter the service name</helpText> -->
+			<!-- </parameter> -->
+			<!-- </parameters> -->
+			<!-- </dataConfiguration> -->
+			<!-- </selectedObjectProperties> -->
+			<selectionProperties>
+				<id>selectionProperties</id>
+				<displayName></displayName>
+				<description></description>
+				<groups>
+					<group>
+						<id>interfaceProperties</id>
+						<displayName>en_US: Interface properties</displayName>
+						<generateDocumentation>true</generateDocumentation>
+						<description>token</description>
+						<expand>true</expand>
+						<visible>true</visible>
+						<parameters>
+							<parameter>
+								<id>portTypeName</id>
+								<groupId>interfaceProperties</groupId>
+								<displayName nlKey="portTypeNameDisplayName">portTypeName</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="portTypeNameDesc">Enter the name of the port type</helpText>
+							</parameter>
+							<parameter>
+								<id>nsProperty</id>
+								<groupId>interfaceProperties</groupId>
+								<displayName nlKey="namespaceDisplayName">en_US: Namespace</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="namespaceDescription">en_US: Specify the namespace</helpText>
+							</parameter>
+							<!-- this parameter is used to capture the default message configuration 
+								style -->
+							<parameter>
+								<id>defaultMessageConfig</id>
+								<groupId>interfaceProperties</groupId>
+								<displayName nlKey="defaultMessageTypesDispName">defaultMessageTypes</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+									<values>
+										<name>operationDirections</name>
+										<enumValues>
+											<enumValue>
+												<valueName>element</valueName>
+												<displayName nlKey="elementsDisplayName">elementsDisplayName</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>type</valueName>
+												<displayName nlKey="typesDisplayName">typesDisplayName</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="defaultMessageTypesDesc">defaultMessageTypesDesc</helpText>
+							</parameter>
+						</parameters>
+					</group>
+					<!--<group> -->
+					<!-- We still need these to store the user's choice of the data types 
+						and operation name -->
+					<!-- Service name is specified by the user when creating a new service. 
+						No need to keep this info -->
+					<!-- WSDL file name is also dervived from the service name. No need 
+						to keep this info -->
+					<!-- Duplicated namespace -->
+					<!-- <id>serviceDefinitionProperties</id> -->
+					<!-- <displayName nlKey="serviceInformationDescriptionDisplayName">Service 
+						Definition</displayName> -->
+					<!-- <generateDocumentation>true</generateDocumentation> -->
+					<!-- <description nlKey="serviceInformationDescriptionDesc">Enter the 
+						following information about the service to be described</description> -->
+					<!-- <expand>true</expand> -->
+					<!-- <visible>true</visible> -->
+					<!-- <parameters> -->
+					<!-- <parameter> -->
+					<!-- <id>Namespace</id> -->
+					<!-- <groupId>serviceDefinitionProperties</groupId> -->
+					<!-- <displayName nlKey="namespaceDisplayName">Namespace</displayName> -->
+					<!-- <mandatory>false</mandatory> -->
+					<!-- <configurable>true</configurable> -->
+					<!-- <visible>true</visible> -->
+					<!-- <sensitive>false</sensitive> -->
+					<!-- <schema> -->
+					<!-- <maxOccurs>1</maxOccurs> -->
+					<!-- <minOccurs>1</minOccurs> -->
+					<!-- <type>string</type> -->
+					<!-- </schema> -->
+					<!-- <helpText nlKey="namespaceDescription">Enter the service namespace</helpText> -->
+					<!-- </parameter> -->
+					<!-- </parameters> -->
+					<!-- </group> -->
+					<group>
+						<!-- Need to store the operation name as it may be set by the user -->
+						<id>serviceOperationProperties</id>
+						<displayName nlKey="serviceOpInfoDisplayName">Service Operation Configuration</displayName>
+						<generateDocumentation>true</generateDocumentation>
+						<description nlKey="serviceOpInfoDesc">Enter the following information
+							about the service operation</description>
+						<expand>true</expand>
+						<visible>true</visible>
+						<parameters>
+							<parameter>
+								<id>ServiceOperationName</id>
+								<groupId>serviceOperationProperties</groupId>
+								<displayName nlKey="serviceOpNameDisplayName">Service Operation Name</displayName>
+								<mandatory>true</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="serviceOpNameDescription">Enter the service operation name</helpText>
+							</parameter>
+						</parameters>
+					</group>
+					<group>
+						<id>serviceOperationMessagesProperties</id>
+						<displayName nlKey="serviceOpMsgInfoDisplayName">Service Operation Messages</displayName>
+						<generateDocumentation>true</generateDocumentation>
+						<description nlKey="serviceOpMsgInfoDesc">Enter the following information
+							about the messages
+							used by the service operation</description>
+						<expand>true</expand>
+						<visible>true</visible>
+						<parameters>
+							<parameter>
+								<id>RequestImportSchema</id>
+								<groupId>serviceOperationMessagesProperties</groupId>
+								<displayName nlKey="requestImportSchemaFileDisplayName">Request Message Schema File</displayName>
+								<mandatory>true</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="requestImportSchemaFileDescription">Project relative path for the XSD file
+									that defines the request message</helpText>
+							</parameter>
+							<parameter>
+								<id>ResponseImportSchema</id>
+								<groupId>serviceOperationMessagesProperties</groupId>
+								<displayName nlKey="responseImportSchemaFileDisplayName">Response Message Schema File</displayName>
+								<mandatory>true</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="responseImportSchemaFileDescription">Project relative path for the XSD file
+									that defines the response message</helpText>
+							</parameter>
+						</parameters>
+					</group>
+					<group>
+						<id>InputMessageProperties</id>
+						<displayName nlKey="inputMsgDisplayName">Input Message</displayName>
+						<generateDocumentation>true</generateDocumentation>
+						<description nlKey="inputMsgDescription">Specify the Input Message
+							properties</description>
+						<expand>true</expand>
+						<visible>true</visible>
+						<parameters>
+							<parameter>
+								<id>inputMessageName</id>
+								<groupId>InputMessageProperties</groupId>
+								<displayName nlKey="nameDisplayName">Name</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="inputMsgNameDescription">Enter the name that represents the
+									input message</helpText>
+							</parameter>
+							<parameter>
+								<id>inputMessageNamespace</id>
+								<groupId>InputMessageProperties</groupId>
+								<displayName nlKey="namespaceDisplayName">Namespace</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="msgNamespaceDescription">Enter the namespace for the message</helpText>
+							</parameter>
+							<parameter>
+								<id>inputMessageType</id>
+								<groupId>InputMessageProperties</groupId>
+								<displayName nlKey="typeDisplayName">Type</displayName>
+								<mandatory>true</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+									<values>
+										<name>destinationType</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Type</valueName>
+												<displayName nlKey="TypeDispName">Type</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>Element</valueName>
+												<displayName nlKey="ElementDisplayName">Element</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="inputMsgTypeDescription">Enter the XSD type that represents the
+									input message</helpText>
+							</parameter>
+						</parameters>
+					</group>
+					<group>
+						<id>OutputMessageProperties</id>
+						<displayName nlKey="outputMsgDisplayName">Output Message</displayName>
+						<generateDocumentation>true</generateDocumentation>
+						<description nlKey="outputMsgDescription">Specify the Output Message
+							properties</description>
+						<expand>true</expand>
+						<visible>true</visible>
+						<parameters>
+							<parameter>
+								<id>outputMessageName</id>
+								<groupId>OutputMessageProperties</groupId>
+								<displayName nlKey="nameDisplayName">Name</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="outputMsgNameDescription">Enter the name that represents the
+									output message</helpText>
+							</parameter>
+							<parameter>
+								<id>outputMessageNamespace</id>
+								<groupId>OutputMessageProperties</groupId>
+								<displayName nlKey="namespaceDisplayName">Namespace</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="msgNamespaceDescription">Enter the namespace for the message</helpText>
+							</parameter>
+							<parameter>
+								<id>outputMessageType</id>
+								<groupId>OutputMessageProperties</groupId>
+								<displayName nlKey="typeDisplayName">Type</displayName>
+								<mandatory>true</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+									<values>
+										<name>destinationType</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Type</valueName>
+												<displayName nlKey="TypeDispName">Type</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>Element</valueName>
+												<displayName nlKey="ElementDisplayName">Element</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="outputMsgTypeDescription">Enter the XSD type that represents the
+									output
+									message</helpText>
+							</parameter>
+						</parameters>
+					</group>
+				</groups>
+			</selectionProperties>
+			<runtimeConnectionProperties>
+				<id>endpointProperties</id>
+				<displayName nlKey="configureEndpointStepDispName">configureEndpointStepDispName</displayName>
+				<description nlKey="configureEndpointStepDesc">configureEndpointStepDesc</description>
+				<groups>
+					<!-- I don't think we need a target action as we don't use SOAP binding -->
+					<!-- <group> -->
+					<!-- <id>runtimeProperties</id> -->
+					<!-- <displayName nlKey="runtimePropsDisplayName">Runtime Properties</displayName> -->
+					<!-- <generateDocumentation>true</generateDocumentation> -->
+					<!-- <description nlKey="runtimePropsDescription">Runtime Properties</description> -->
+					<!-- <expand>true</expand> -->
+					<!-- <visible>true</visible> -->
+					<!-- <parameters> -->
+					<!-- <parameter> -->
+					<!-- <id>TargetAction</id> -->
+					<!-- <groupId>runtimeProperties</groupId> -->
+					<!-- <displayName nlKey="targetActionDisplayName">Target Action</displayName> -->
+					<!-- <mandatory>false</mandatory> -->
+					<!-- <configurable>true</configurable> -->
+					<!-- <visible>true</visible> -->
+					<!-- <sensitive>false</sensitive> -->
+					<!-- <schema> -->
+					<!-- <maxOccurs>1</maxOccurs> -->
+					<!-- <minOccurs>0</minOccurs> -->
+					<!-- <type>string</type> -->
+					<!-- </schema> -->
+					<!-- <helpText nlKey="targetActionDescription">Enter the target action</helpText> -->
+					<!-- </parameter> -->
+					<!-- </parameters> -->
+					<!-- </group> -->
+					<group>
+						<id>InputMessageHeaderProperties</id>
+						<!-- Use the text matching the text from the resource bundle -->
+						<displayName nlKey="inputMsgHeaderPropsDisplayName">Request Message Headers</displayName>
+						<generateDocumentation>true</generateDocumentation>
+						<description nlKey="inputMsgHeaderPropsDescription">Request message header properties.
+							These properties are used when the request message is put on the
+							MQ request queue.</description>
+						<!-- Don't need to expand the group by default as all of these are 
+							advanced properties -->
+						<expand>false</expand>
+						<visible>true</visible>
+						<parameters>
+							<parameter>
+								<id>inputCCSID</id>
+								<groupId>InputMessageHeaderProperties</groupId>
+								<displayName nlKey="ccsidDisplayName">CCSID</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+									<values>
+										<name>CCSIDTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Inherit</valueName>
+												<displayName nlKey="InheritEnumDisplayName">Inherit</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>500</valueName>
+												<displayName>MQCCSI_INTL_EBCIDIC</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>37</valueName>
+												<displayName>MQCCSI_US_EBCIDIC</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>1200</valueName>
+												<displayName>MQCCSI_UNICODE_1200</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>1208</valueName>
+												<displayName>MQCCSI_UNICODE_1208</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>13488</valueName>
+												<displayName>MQCCSI_UNICODE_13488</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>17584</valueName>
+												<displayName>MQCCSI_UNICODE_17584</displayName>
+											</enumValue>	
+										</enumValues>
+									</values>
+								</schema>								
+								<helpText nlKey="ccsidDescription">Enter the CCSID</helpText>
+								<master>
+									<slave>
+										<parameterId>inputCCSID</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+								</master>
+								<actions>
+								<action>
+									<type>validate</type>
+									<default>false</default>
+									<conditionExpression>((number(pp:getValue('inputCCSID')) = pp:getValue('inputCCSID') and pp:getValue('inputCCSID') &gt; 0) or pp:getValue('inputCCSID') = 'Inherit' or pp:getValue('inputCCSID') = '') != true()</conditionExpression>
+									<valueExpression>CCSID should be a positive number or 'Inherit'</valueExpression>
+									</action>	
+								</actions>
+							</parameter>
+							<parameter>
+								<id>inputFormat</id>
+								<groupId>InputMessageHeaderProperties</groupId>
+								<displayName nlKey="formatDisplayName">Format</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+									<values>
+										<name>FormatTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Inherit</valueName>
+												<displayName nlKey="InheritEnumDisplayName">Inherit</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_NONE</valueName>
+												<displayName>MQFMT_NONE</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_ADMIN</valueName>
+												<displayName>MQFMT_ADMIN</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_CHANNEL_COMPLETED</valueName>
+												<displayName>MQFMT_CHANNEL_COMPLETED</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_CICS</valueName>
+												<displayName>MQFMT_CICS</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_COMMAND_1</valueName>
+												<displayName>MQFMT_COMMAND_1</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_COMMAND_2</valueName>
+												<displayName>MQFMT_COMMAND_2</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_DEAD_LETTER_HEADER</valueName>
+												<displayName>MQFMT_DEAD_LETTER_HEADER</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_DIST_HEADER</valueName>
+												<displayName>MQFMT_DIST_HEADER</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_EVENT</valueName>
+												<displayName>MQFMT_EVENT</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_IMS</valueName>
+												<displayName>MQFMT_IMS</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_IMS_VAR_STRING</valueName>
+												<displayName>MQFMT_IMS_VAR_STRING</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_MD_EXTENSION</valueName>
+												<displayName>MQFMT_MD_EXTENSION</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_PCF</valueName>
+												<displayName>MQFMT_PCF</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_REF_MSG_HEADER</valueName>
+												<displayName>MQFMT_REF_MSG_HEADER</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_RF_HEADER_1</valueName>
+												<displayName>MQFMT_RF_HEADER_1</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_RF_HEADER_2</valueName>
+												<displayName>MQFMT_RF_HEADER_2</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_STRING</valueName>
+												<displayName>MQFMT_STRING</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_TRIGGER</valueName>
+												<displayName>MQFMT_TRIGGER</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_WORK_INFO_HEADER</valueName>
+												<displayName>MQFMT_WORK_INFO_HEADER</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_XMIT_Q_HEADER</valueName>
+												<displayName>MQFMT_XMIT_Q_HEADER</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="formatDescription">Enter the format</helpText>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('connection') =
+											'SOAP'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>UserProperties</id>
+								<groupId>InputMessageHeaderProperties</groupId>
+								<displayName nlKey="userPropsDisplayName">User properties</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<!-- make it invisible as it is not supported by MQ Header Node -->
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="userPropsDescription">Enter the user properties</helpText>
+							</parameter>
+							<parameter>
+								<id>inMessageType</id>
+								<groupId>InputMessageHeaderProperties</groupId>
+								<displayName nlKey="msgTypeDisplayName">Message type</displayName>
+								<!-- Can not set default as the default value is different for the one way and request-response -->
+								<default>MQMT_REQUEST</default>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+									<values>
+										<name>messageTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName>MQMT_REQUEST</valueName>
+												<displayName nlKey="requestEnumDisplayName">Request</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>Inherit</valueName>
+												<displayName nlKey="InheritEnumDisplayName">Inherit</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQMT_DATAGRAM</valueName>
+												<displayName nlKey="datagramEnumDisplayName">Datagram</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQMT_REPLY</valueName>
+												<displayName nlKey="replyEnumDisplayName">Reply</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQMT_REPORT</valueName>
+												<displayName nlKey="reportEnumDisplayName">Report</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="msgTypeDescription">Enter the message type</helpText>
+								<actions>
+									<action>
+										<type>setValue</type>
+										<default>MQMT_REQUEST</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>string('')</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>Persistence</id>
+								<groupId>InputMessageHeaderProperties</groupId>
+								<displayName nlKey="persistenceDisplayName">Persistence</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+									<values>
+										<name>PersistenceTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Inherit</valueName>
+												<displayName nlKey="InheritEnumDisplayName">Inherit</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQPER_NOT_PERSISTENT</valueName>
+												<displayName nlKey="notPersistentEnumDisplayName">Not persistent</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQPER_PERSISTENT</valueName>
+												<displayName nlKey="persistentEnumDisplayName">Persistent</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQPER_PERSISTENCE_AS_Q_DEF</valueName>
+												<displayName nlKey="queueDefaultEnumDisplayName">Queue default</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="persistenceDescription">Enter the persistence type</helpText>
+							</parameter>
+							<parameter>
+								<id>MessageID</id>
+								<groupId>InputMessageHeaderProperties</groupId>
+								<displayName nlKey="msgIdDisplayName">Message ID</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="msgIdDescription">Enter the message ID</helpText>
+							</parameter>
+							<parameter>
+								<id>CorrelationID</id>
+								<groupId>InputMessageHeaderProperties</groupId>
+								<displayName nlKey="correlationIdDisplayName">CorrelationID</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="correlationIdDescription">Enter the correlation ID</helpText>
+							</parameter>
+							<parameter>
+								<id>inputExpiry</id>
+								<groupId>InputMessageHeaderProperties</groupId>
+								<displayName nlKey="expiryDisplayName">Expiry</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>integer</type>
+								</schema>								
+								<helpText nlKey="expiryDescription">Enter the expiry. -1 for Unlimited</helpText>
+								<master>
+									<slave>
+										<parameterId>inputExpiry</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+								</master>
+								<actions>
+									<action>
+										<type>validate</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('inputExpiry') &lt; -1</conditionExpression>
+										<valueExpression>Enter a value of -1 or higher for the Expiry property</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>inputPriority</id>
+								<groupId>InputMessageHeaderProperties</groupId>
+								<displayName nlKey="priorityDisplayName">Priority</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>integer</type>
+									<values>
+										<name>PriorityTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Inherit</valueName>
+												<displayName nlKey="InheritEnumDisplayName">Inherit</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>-1</valueName>
+												<displayName>MQPRI_PRIORITY_AS_Q_DEF</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>0</valueName>
+												<displayName>0</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>1</valueName>
+												<displayName>1</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>2</valueName>
+												<displayName>2</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>3</valueName>
+												<displayName>3</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>4</valueName>
+												<displayName>4</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>5</valueName>
+												<displayName>5</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>6</valueName>
+												<displayName>6</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>7</valueName>
+												<displayName>7</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>8</valueName>
+												<displayName>8</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>9</valueName>
+												<displayName>9</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>								
+								<helpText nlKey="priorityDescription">Enter the priority. -1 to set the
+									priority as
+									destination</helpText>
+								<master>
+									<slave>
+										<parameterId>inputPriority</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+								</master>
+								<actions>
+								<action>
+									<type>validate</type>
+									<default>false</default>
+									<conditionExpression>pp:getValue('inputPriority') &lt; -1</conditionExpression>
+									<valueExpression>Enter a value of -1 or higher for the Priority property</valueExpression>
+									</action>
+								</actions>		
+							</parameter>
+							<parameter>
+								<id>SpecifyInputEncoding</id>
+								<groupId>InputMessageHeaderProperties</groupId>
+								<displayName nlKey="specifyEncodingDisplayName">Specify encoding</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<!-- make it invisible as it is not supported by MQ Header Node -->
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>boolean</type>
+								</schema>
+								<helpText nlKey="specifyEncodingDescription">Specify encoding</helpText>
+								<master>
+									<slave>
+										<parameterId>InputInteger</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>InputDecimal</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>InputFloat</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+								</master>
+							</parameter>
+							<parameter>
+								<id>InputInteger</id>
+								<groupId>InputMessageHeaderProperties</groupId>
+								<displayName nlKey="integerDisplayName">Integer</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<!-- make it invisible as it is not supported by MQ Header Node -->
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+									<values>
+										<name>IntegerEncodingTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Normal</valueName>
+												<displayName nlKey="normalEnumDisplayName">Normal</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>Reversed</valueName>
+												<displayName nlKey="reversedEnumDisplayName">Reversed</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="integerDescription">Select the integer encoding type</helpText>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('SpecifyInputEncoding') =
+											'true'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>InputDecimal</id>
+								<groupId>InputMessageHeaderProperties</groupId>
+								<displayName nlKey="decimalDisplayName">Decimal</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<!-- make it invisible as it is not supported by MQ Header Node -->
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+									<values>
+										<name>DecimalEncodingTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Normal</valueName>
+												<displayName nlKey="normalEnumDisplayName">Normal</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>Reversed</valueName>
+												<displayName nlKey="reversedEnumDisplayName">Reversed</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="decimalDescription">Select the decimal encoding type</helpText>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('SpecifyInputEncoding') =
+											'true'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>InputFloat</id>
+								<groupId>InputMessageHeaderProperties</groupId>
+								<displayName nlKey="floatDisplayName">Float</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<!-- make it invisible as it is not supported by MQ Header Node -->
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+									<values>
+										<name>FloatEncodingTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Normal</valueName>
+												<displayName nlKey="normalEnumDisplayName">Normal</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>Reversed</valueName>
+												<displayName nlKey="reversedEnumDisplayName">Reversed</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>S390</valueName>
+												<displayName nlKey="s390EnumDisplayName">S390</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="floatDescription">Select the float encoding type</helpText>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('SpecifyInputEncoding') =
+											'true'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>SpecifyInputReportOptions</id>
+								<groupId>InputMessageHeaderProperties</groupId>
+								<displayName nlKey="specifyReportDisplayName">Specify report options</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<!-- make it invisible as it is not supported by MQ Header Node -->
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>boolean</type>
+								</schema>
+								<helpText nlKey="specifyReportDescription">Specify report options</helpText>
+								<master>
+									<slave>
+										<parameterId>InputMessageID</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>InputCorrelationID</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+								</master>
+							</parameter>
+							<parameter>
+								<id>InputMessageID</id>
+								<groupId>InputMessageHeaderProperties</groupId>
+								<displayName nlKey="msgIdROSettingDisplayName">Input Message ID</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<!-- make it invisible as it is not supported by MQ Header Node -->
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+									<values>
+										<name>MessageIDTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName></valueName>
+												<displayName nlKey="unspecifiedEnumDisplayName">Unspecified</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>New Message ID</valueName>
+												<displayName nlKey="newMsgIdEnumDisplayName">New Message ID</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>Pass Message ID</valueName>
+												<displayName nlKey="passMsgIdEnumDisplayName">Pass Message ID</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="msgIdROSettingDesc">Specify Message ID</helpText>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('SpecifyInputReportOptions')
+											=
+											'true'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>InputCorrelationID</id>
+								<groupId>InputMessageHeaderProperties</groupId>
+								<displayName nlKey="correlationIdROSettingDisplayName">Correlation ID</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<!-- make it invisible as it is not supported by MQ Header Node -->
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+									<values>
+										<name>CorrelationIDType</name>
+										<enumValues>
+											<enumValue>
+												<valueName></valueName>
+												<displayName nlKey="unspecifiedEnumDisplayName">Unspecified</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>Copy Message ID to Correlation ID</valueName>
+												<displayName nlKey="copyMsgIdToCorrelIdEnumDisplayName">Copy Message ID to
+													Correlation ID</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>Pass Correlation ID</valueName>
+												<displayName nlKey="passCorrelIdEnumDisplayName">Pass Correlation ID</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="correlationIdROSettingDesc">Select the Correlation ID</helpText>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('SpecifyInputReportOptions')
+											=
+											'true'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+						</parameters>
+					</group>
+					<group>
+						<id>OutputMessageHeaderProperties</id>
+						<displayName nlKey="outputMsgHeaderPropsDisplayName">Output Message Header Properties</displayName>
+						<generateDocumentation>true</generateDocumentation>
+						<description nlKey="outputMsgHeaderPropsDescription">Specify the Output Message Header
+							properties</description>
+						<expand>false</expand>
+						<visible>true</visible>
+						<parameters>
+							<parameter>
+								<id>outputCCSID</id>
+								<groupId>OutputMessageHeaderProperties</groupId>
+								<displayName nlKey="ccsidDisplayName">CCSID</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+									<values>
+										<name>CCSIDTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Inherit</valueName>
+												<displayName nlKey="InheritEnumDisplayName">Inherit</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>500</valueName>
+												<displayName>MQCCSI_INTL_EBCIDIC</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>37</valueName>
+												<displayName>MQCCSI_US_EBCIDIC</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>1200</valueName>
+												<displayName>MQCCSI_UNICODE_1200</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>1208</valueName>
+												<displayName>MQCCSI_UNICODE_1208</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>13488</valueName>
+												<displayName>MQCCSI_UNICODE_13488</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>17584</valueName>
+												<displayName>MQCCSI_UNICODE_17584</displayName>
+											</enumValue>	
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="ccsidDescription">Enter the CCSID</helpText>
+								<master>
+									<slave>
+										<parameterId>outputCCSID</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>									
+									<action>
+										<type>validate</type>
+										<default>false</default>
+										<conditionExpression>((number(pp:getValue('outputCCSID')) = pp:getValue('outputCCSID') and pp:getValue('outputCCSID') &gt; 0) or pp:getValue('outputCCSID') = 'Inherit' or pp:getValue('outputCCSID') = '') != true()</conditionExpression>
+										<valueExpression>CCSID should be a positive number or 'Inherit'</valueExpression>
+									</action>									
+								</actions>
+							</parameter>
+							<parameter>
+								<id>outputFormat</id>
+								<groupId>OutputMessageHeaderProperties</groupId>
+								<displayName nlKey="formatDisplayName">Format</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+									<values>
+										<name>FormatTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Inherit</valueName>
+												<displayName nlKey="InheritEnumDisplayName">Inherit</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_NONE</valueName>
+												<displayName>MQFMT_NONE</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_ADMIN</valueName>
+												<displayName>MQFMT_ADMIN</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_CHANNEL_COMPLETED</valueName>
+												<displayName>MQFMT_CHANNEL_COMPLETED</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_CICS</valueName>
+												<displayName>MQFMT_CICS</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_COMMAND_1</valueName>
+												<displayName>MQFMT_COMMAND_1</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_COMMAND_2</valueName>
+												<displayName>MQFMT_COMMAND_2</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_DEAD_LETTER_HEADER</valueName>
+												<displayName>MQFMT_DEAD_LETTER_HEADER</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_DIST_HEADER</valueName>
+												<displayName>MQFMT_DIST_HEADER</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_EVENT</valueName>
+												<displayName>MQFMT_EVENT</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_IMS</valueName>
+												<displayName>MQFMT_IMS</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_IMS_VAR_STRING</valueName>
+												<displayName>MQFMT_IMS_VAR_STRING</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_MD_EXTENSION</valueName>
+												<displayName>MQFMT_MD_EXTENSION</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_PCF</valueName>
+												<displayName>MQFMT_PCF</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_REF_MSG_HEADER</valueName>
+												<displayName>MQFMT_REF_MSG_HEADER</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_RF_HEADER_1</valueName>
+												<displayName>MQFMT_RF_HEADER_1</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_RF_HEADER_2</valueName>
+												<displayName>MQFMT_RF_HEADER_2</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_STRING</valueName>
+												<displayName>MQFMT_STRING</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_TRIGGER</valueName>
+												<displayName>MQFMT_TRIGGER</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_WORK_INFO_HEADER</valueName>
+												<displayName>MQFMT_WORK_INFO_HEADER</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQFMT_XMIT_Q_HEADER</valueName>
+												<displayName>MQFMT_XMIT_Q_HEADER</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="formatDescription">Enter the format</helpText>
+								<actions>									
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('connection') =
+											'SOAP'</conditionExpression>
+										<valueExpression>false()</valueExpression>										
+									</action>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>UserProperties</id>
+								<groupId>OutputMessageHeaderProperties</groupId>
+								<displayName nlKey="userPropsDisplayName">User properties</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<!-- make it invisible as it is not supported by MQ Header Node -->
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="userPropsDescription">Enter the user properties</helpText>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>outMessageType</id>
+								<groupId>OutputMessageHeaderProperties</groupId>
+								<displayName nlKey="msgTypeDisplayName">Message type</displayName>
+								<default>Reply</default>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+									<values>
+										<name>messageTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Inherit</valueName>
+												<displayName nlKey="InheritEnumDisplayName">Inherit</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQMT_DATAGRAM</valueName>
+												<displayName nlKey="datagramEnumDisplayName">Datagram</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQMT_REPLY</valueName>
+												<displayName nlKey="replyEnumDisplayName">Reply</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQMT_REPORT</valueName>
+												<displayName nlKey="reportEnumDisplayName">Report</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQMT_REQUEST</valueName>
+												<displayName nlKey="requestEnumDisplayName">Request</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="msgTypeDescription">Enter the message type</helpText>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>Persistence</id>
+								<groupId>OutputMessageHeaderProperties</groupId>
+								<displayName nlKey="persistenceDisplayName">Persistence</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+									<values>
+										<name>PersistenceTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Inherit</valueName>
+												<displayName nlKey="InheritEnumDisplayName">Inherit</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQPER_NOT_PERSISTENT</valueName>
+												<displayName nlKey="notPersistentEnumDisplayName">Not persistent</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQPER_PERSISTENT</valueName>
+												<displayName nlKey="persistentEnumDisplayName">Persistent</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>MQPER_PERSISTENCE_AS_Q_DEF</valueName>
+												<displayName nlKey="queueDefaultEnumDisplayName">Queue default</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="persistenceDescription">Enter the persistence type</helpText>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>MessageID</id>
+								<groupId>OutputMessageHeaderProperties</groupId>
+								<displayName nlKey="msgIdDisplayName">Message ID</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="msgIdDescription">Enter the message ID</helpText>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>CorrelationID</id>
+								<groupId>OutputMessageHeaderProperties</groupId>
+								<displayName nlKey="correlationIdDisplayName">CorrelationID</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="correlationIdDescription">Enter the correlation ID</helpText>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>outputExpiry</id>
+								<groupId>OutputMessageHeaderProperties</groupId>
+								<displayName nlKey="expiryDisplayName">Expiry</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>integer</type>
+								</schema>								
+								<helpText nlKey="correlationIdDescription">Enter the expiry. -1 for Unlimited</helpText>
+								<master>
+									<slave>
+										<parameterId>outputExpiry</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>
+									<action>
+										<type>validate</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('outputExpiry') &lt; -1</conditionExpression>
+										<valueExpression>Enter a value of -1 or higher for the Expiry property</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>outputPriority</id>
+								<groupId>OutputMessageHeaderProperties</groupId>
+								<displayName nlKey="priorityDisplayName">Priority</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>integer</type>
+									<values>
+										<name>PriorityTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Inherit</valueName>
+												<displayName nlKey="InheritEnumDisplayName">Inherit</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>-1</valueName>
+												<displayName>MQPRI_PRIORITY_AS_Q_DEF</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>0</valueName>
+												<displayName>0</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>1</valueName>
+												<displayName>1</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>2</valueName>
+												<displayName>2</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>3</valueName>
+												<displayName>3</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>4</valueName>
+												<displayName>4</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>5</valueName>
+												<displayName>5</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>6</valueName>
+												<displayName>6</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>7</valueName>
+												<displayName>7</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>8</valueName>
+												<displayName>8</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>9</valueName>
+												<displayName>9</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>								
+								<helpText nlKey="priorityDescription">Enter the priority. -1 to set the
+									priority as
+									destination'</helpText>
+								<master>
+									<slave>
+										<parameterId>outputPriority</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+								</master>	
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>
+									<action>
+										<type>validate</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('outputPriority') &lt; -1</conditionExpression>
+										<valueExpression>Enter a value of -1 or higher for the Priority property</valueExpression>
+									</action>										
+								</actions>
+							</parameter>
+							<parameter>
+								<id>SpecifyOutputEncoding</id>
+								<groupId>OutputMessageHeaderProperties</groupId>
+								<displayName nlKey="specifyEncodingDisplayName">Specify encoding</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<!-- make it invisible as it is not supported by MQ Header Node -->
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>boolean</type>
+								</schema>
+								<helpText nlKey="specifyEncodingDescription">Specify encoding</helpText>
+								<master>
+									<slave>
+										<parameterId>OutputInteger</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>OutputDecimal</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>OutputFloat</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>OutputInteger</id>
+								<groupId>OutputMessageHeaderProperties</groupId>
+								<displayName nlKey="integerDisplayName">Integer</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<!-- make it invisible as it is not supported by MQ Header Node -->
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+									<values>
+										<name>IntegerEncodingTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Normal</valueName>
+												<displayName nlKey="normalEnumDisplayName">Normal</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>Reversed</valueName>
+												<displayName nlKey="reversedEnumDisplayName">Reversed</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="integerDescription">Select the integer encoding type</helpText>
+								<actions>									
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('SpecifyOutputEncoding') =
+											'true'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>OutputDecimal</id>
+								<groupId>OutputMessageHeaderProperties</groupId>
+								<displayName nlKey="decimalDisplayName">Decimal</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<!-- make it invisible as it is not supported by MQ Header Node -->
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+									<values>
+										<name>DecimalEncodingTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Normal</valueName>
+												<displayName nlKey="normalEnumDisplayName">Normal</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>Reversed</valueName>
+												<displayName nlKey="reversedEnumDisplayName">Reversed</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="decimalDescription">Select the decimal encoding type</helpText>
+								<actions>									
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('SpecifyOutputEncoding') =
+											'true'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>OutputFloat</id>
+								<groupId>OutputMessageHeaderProperties</groupId>
+								<displayName nlKey="floatDisplayName">Float</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<!-- make it invisible as it is not supported by MQ Header Node -->
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+									<values>
+										<name>FloatEncodingTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName>Normal</valueName>
+												<displayName nlKey="normalEnumDisplayName">Normal</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>Reversed</valueName>
+												<displayName nlKey="reversedEnumDisplayName">Reversed</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>S390</valueName>
+												<displayName nlKey="s390EnumDisplayName">S390</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="floatDescription">Select the float encoding type</helpText>
+								<actions>									
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('SpecifyOutputEncoding') =
+											'true'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>SpecifyOutputReportOptions</id>
+								<groupId>OutputMessageHeaderProperties</groupId>
+								<displayName nlKey="specifyReportOptionsDisplayName">Specify report options</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<!-- make it invisible as it is not supported by MQ Header Node -->
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>boolean</type>
+								</schema>
+								<helpText nlKey="specifyReportOptionsDescription">Specify report options</helpText>
+								<master>
+									<slave>
+										<parameterId>OutputMessageID</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>OutputCorrelationID</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>OutputMessageID</id>
+								<groupId>OutputMessageHeaderProperties</groupId>
+								<displayName nlKey="msgIdROSettingDisplayName">Message ID</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<!-- make it invisible as it is not supported by MQ Header Node -->
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+									<values>
+										<name>MessageIDTypes</name>
+										<enumValues>
+											<enumValue>
+												<valueName></valueName>
+												<displayName nlKey="unspecifiedEnumDisplayName">Unspecified</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>New Message ID</valueName>
+												<displayName nlKey="newMsgIdEnumDisplayName">New Message ID</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>Pass Message ID</valueName>
+												<displayName nlKey="passMsgIdEnumDisplayName">Pass Message ID</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="msgIdROSettingDesc">Specify Message ID</helpText>
+								<actions>									
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('SpecifyOutputReportOptions')
+											=
+											'true'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>OutputCorrelationID</id>
+								<groupId>OutputMessageHeaderProperties</groupId>
+								<displayName nlKey="correlationIdROSettingDisplayName">Correlation ID</displayName>
+								<mandatory>false</mandatory>
+								<configurable>false</configurable>
+								<!-- make it invisible as it is not supported by MQ Header Node -->
+								<visible>false</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+									<values>
+										<name>CorrelationIDType</name>
+										<enumValues>
+											<enumValue>
+												<valueName></valueName>
+												<displayName nlKey="unspecifiedEnumDisplayName">Unspecified</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>Copy Message ID to Correlation ID</valueName>
+												<displayName nlKey="copyMsgIdToCorrelIdEnumDisplayName">Copy Message ID to
+													Correlation ID</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>Pass Correlation ID</valueName>
+												<displayName nlKey="passCorrelIdEnumDisplayName">Pass Correlation ID</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="correlationIdROSettingDesc">Select the Correlation ID</helpText>
+								<actions>									
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('SpecifyOutputReportOptions')
+											=
+											'true'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+									<action>
+										<type>enable</type>
+										<default>true</default>
+										<conditionExpression>pp:getValue('messageExchangePattern') =
+											'One-Way'</conditionExpression>
+										<valueExpression>false()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+						</parameters>
+					</group>
+				</groups>
+			</runtimeConnectionProperties>
+			<outputGenerationProperties>
+				<id>output</id>
+				<containerType>library</containerType>
+				<group>
+					<id>outputPropertiesGroup</id>
+					<displayName nlKey="outputConfigDisplayName">Output Configuration</displayName>
+					<generateDocumentation>true</generateDocumentation>
+					<description nlKey="outputConfigDescription">Output Properties</description>
+					<expand>true</expand>
+					<visible>true</visible>
+					<parameters>
+						<parameter>
+							<id>testProperty</id>
+							<groupId>outputPropertiesGroup</groupId>
+							<displayName nlKey="createNamespaceDirDisplayName">Create directories for namespaces</displayName>
+							<mandatory>false</mandatory>
+							<configurable>true</configurable>
+							<visible>true</visible>
+							<sensitive>false</sensitive>
+							<schema>
+								<maxOccurs>1</maxOccurs>
+								<minOccurs>0</minOccurs>
+								<type>boolean</type>
+							</schema>
+							<helpText nlKey="createNamespaceDirDescription">Create directories for namespaces</helpText>
+						</parameter>
+					</parameters>
+				</group>
+			</outputGenerationProperties>
+		</discoveryGroups>
+		<searchTree>
+			<selectionEnablement>
+				<defaultSelectionLimit>2</defaultSelectionLimit>
+				<valueChange>
+					<groupId>messageFormatProperties</groupId>
+					<parameterId>messageExchangePattern</parameterId>
+					<parameterValue>One-Way</parameterValue>
+					<maxSelectionLimit>1</maxSelectionLimit>
+				</valueChange>
+			</selectionEnablement>
+			<root>
+				<id>Root</id>
+				<displayName nlKey="queueListDisplayName">QueueList</displayName>
+				<selectable>false</selectable>
+				<childElement>
+					<id>queueList</id>
+					<displayName nlKey="queuesDisplayName">Queues</displayName>
+					<selectable>false</selectable>
+				</childElement>
+				<!-- <childElement> -->
+				<!-- <id>topicList</id> -->
+				<!-- <displayName nlKey="topicsDisplayName">Topics</displayName> -->
+				<!-- <selectable>false</selectable> -->
+				<!-- </childElement> -->
+			</root>
+		</searchTree>
+		<specification>
+			<pluginId>com.ibm.etools.mft.connector.mq</pluginId>
+			<relativePath>mqservice.html</relativePath>
+		</specification>
+	</discovery>
+	<policy>
+		<id>MQConnectionDefinition</id>
+		<policyType>MQEndpoint</policyType>
+		<policyGroups>
+			<policyProperties>
+				<id>MQPolicy</id>
+				<description>MQ Policy</description>
+				<groups>
+					<group>
+					<!--This group should reference mqConnectionDetails from discovery as it basically the same-->
+						<id>mqConnectionDetailsPolicy</id>
+						<displayName nlKey="mqConnectionDetailsDispName">Enter the connection details for
+							the MQ Queue Manager</displayName>
+						<generateDocumentation>true</generateDocumentation>
+						<description></description>
+						<expand>true</expand>
+						<visible>true</visible>
+						<parameters>
+							<parameter>
+								<id>connection</id>
+								<groupId>mqConnectionDetailsPolicy</groupId>
+								<displayName nlKey="mqConnectionTypeDisplayName">Type of connection</displayName>
+								<default>SERVER</default>
+								<mandatory>true</mandatory>
+								<configurable>false</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>1</maxOccurs>
+									<minOccurs>1</minOccurs>
+									<type>string</type>
+									<values>
+										<name>bindingTypeEnum</name>
+										<enumValues>
+											<enumValue>
+												<valueName>CLIENT</valueName>
+												<displayName nlKey="remoteNonCCDTDisplayName">Client connection using host, port, channel and queue manager name</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>CCDT</valueName>
+												<displayName nlKey="remoteCCDTDisplayName">Connect using client channel definition table file</displayName>
+											</enumValue>
+											<enumValue>
+												<valueName>SERVER</valueName>
+												<displayName nlKey="localBindingDispName">Connect using local queue manager name</displayName>
+											</enumValue>
+										</enumValues>
+									</values>
+								</schema>
+								<helpText nlKey="mqConnectionTypeDescription">Select the type of connection to be
+									used</helpText>
+								<master>
+									<slave>
+										<parameterId>queueManagerHostname</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>listenerPortNumber</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>channelName</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<!-- slave>
+										<parameterId>ccdtURI</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave -->
+									<slave>
+										<parameterId>securityIdentity</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>useSSL</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>SSLPeerName</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>SSLCipherSpec</parameterId>
+										<events>
+											<event>
+												<type>valueChanged</type>
+											</event>
+										</events>
+									</slave>
+									<slave>
+										<parameterId>connection</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>									
+								</master>
+							</parameter>
+							<parameter>
+								<id>destinationQueueManagerName</id>
+								<groupId>mqConnectionDetailsPolicy</groupId>
+								<displayName nlKey="queueManagerNameDispName">Queue Manager Name</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="queueManagerNameDescription">Name of the queue manager to connect to
+									for discovery</helpText>
+								<master>
+									<slave>
+										<parameterId>destinationQueueManagerName</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>									
+								</master>
+							</parameter>
+							<parameter>
+								<id>queueManagerHostname</id>
+								<groupId>mqConnectionDetailsPolicy</groupId>
+								<displayName nlKey="hostIPDispName">Host or IP</displayName>
+								<!-- <default>localhost</default> -->
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="hostIPDescription">Host name or IP address where the queue
+									manger is
+									running</helpText>
+								<master>
+									<slave>
+										<parameterId>queueManagerHostname</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>									
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('connection') =
+											'CLIENT'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>listenerPortNumber</id>
+								<groupId>mqConnectionDetailsPolicy</groupId>
+								<displayName nlKey="portDispName">Port</displayName>
+								<!-- <default>1414</default> -->
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>integer</type>
+								</schema>
+								<helpText nlKey="portDescription">tcpip port number of the mq listener</helpText>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('connection') =
+											'CLIENT'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<parameter>
+								<id>channelName</id>
+								<groupId>mqConnectionDetailsPolicy</groupId>
+								<displayName nlKey="channelNameDispName">Channel Name</displayName>
+								<!-- <default>SYSTEM.DEF.SVRCONN</default> -->
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="channelNameDescription">channelNameDescription</helpText>
+								<master>
+									<slave>
+										<parameterId>channelName</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>									
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('connection') =
+											'CLIENT'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							<!--  parameter>
+								<id>ccdtURI</id>
+								<groupId>mqConnectionDetailsPolicy</groupId>
+								<displayName nlKey="urlCCDTDispName">CCDT URL</displayName>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="urlCCDTDescription">The URL of the CCDT file containing MQ
+									connection details.</helpText>
+								<master>
+									<slave>
+										<parameterId>ccdtURI</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>									
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('connection') =
+											'CCDT'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+								<customEditor>MQConnectorFileSelector</customEditor>
+							</parameter -->
+							<parameter>
+								<id>securityIdentity</id>
+								<groupId>mqConnectionDetailsPolicy</groupId>
+								<displayName nlKey="securityIdentity">Security Identity</displayName>
+								<default></default>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="securityIdentityDescription">The alias name of an identity defined with mqsisetdbparms. Do not include the "mq::" prefix when setting this.</helpText>
+								<master>
+									<slave>
+										<parameterId>securityIdentity</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>									
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('connection') !=
+											'CCDT'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							
+							<parameter>
+								<id>useSSL</id>
+								<groupId>mqConnectionDetailsPolicy</groupId>
+								<displayName nlKey="useSSLDisplayName">Use SSL</displayName>
+								<default></default>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>boolean</type>
+								</schema>
+								<helpText nlKey="useSSLDescription">If selected then SSL will be used for connections to the remote MQ manager, and the following properties must may be set.</helpText>
+								<master>
+									<slave>
+										<parameterId>useSSL</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>							
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('connection') !=
+											'SERVER'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							
+							<parameter>
+								<id>SSLPeerName</id>
+								<groupId>mqConnectionDetailsPolicy</groupId>
+								<displayName nlKey="SSLPeerNameDisplayName">SSL Peer Name</displayName>
+								<default></default>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="SSLPeerNameDescription">The name will be passed to the remote MQ manager when making the connection where it must be matched by a configured positive match for the connection to succeeded.</helpText>
+								<master>
+									<slave>
+										<parameterId>SSLPeerName</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>									
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('connection') =
+											'CLIENT'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+							
+							<parameter>
+								<id>SSLCipherSpec</id>
+								<groupId>mqConnectionDetailsPolicy</groupId>
+								<displayName nlKey="SSLCipherSpecDisplayName">SSL Cipher Specification</displayName>
+								<default></default>
+								<mandatory>false</mandatory>
+								<configurable>true</configurable>
+								<visible>true</visible>
+								<sensitive>false</sensitive>
+								<schema>
+									<maxOccurs>0</maxOccurs>
+									<minOccurs>0</minOccurs>
+									<type>string</type>
+								</schema>
+								<helpText nlKey="SSLCipherSpecDescription">The name of the symmetric key cryptography algorithm that the remote queue manager is secured with .</helpText>
+								<master>
+									<slave>
+										<parameterId>SSLCipherSpec</parameterId>
+										<events>
+											<event>
+												<type>validateSelection</type>
+											</event>
+										</events>
+									</slave>									
+								</master>
+								<actions>
+									<action>
+										<type>enable</type>
+										<default>false</default>
+										<conditionExpression>pp:getValue('connection') =
+											'CLIENT'</conditionExpression>
+										<valueExpression>true()</valueExpression>
+									</action>
+								</actions>
+							</parameter>
+						</parameters>
+					</group>
+				</groups>
+			</policyProperties>
+		</policyGroups>
+	</policy>
+</p:discoveries>

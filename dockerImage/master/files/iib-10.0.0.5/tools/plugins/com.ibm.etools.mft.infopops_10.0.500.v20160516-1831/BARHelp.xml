@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+
+  <contexts>
+    <context id="NewBrokerArchiveFileWizard">
+		<description><b>New Broker Archive wizard</b>
+Use this wizard to create a broker archive (bar) file. A broker archive is a compressed file to which you can add any number of compiled message flow and message set files, as well as any other files that you want to store with them. You can use the bar file to deploy configurations to the broker and to transfer configurations between systems.
+When you deploy the bar file, it is sent to the Configuration Manager where its contents are extracted and distributed to integration servers on the broker.</description>
+    <topic href="../com.ibm.etools.mft.doc/af03870_.htm"  label="Creating a broker archive"/> 
+		<topic href="../com.ibm.etools.mft.doc/af35100_.htm"  label="Deploying a message flow application"/>
+</context>			
+
+	<context id="PrepareView">
+		<description><b>Broker Archive editor - Prepare page</b>
+Deployable resources in the workspace are listed here. Select a resource to be built in the broker archive and click the Build broker archive button. 
+If you deselect a resource, the existing built or deployed resource will not be rebuilt.
+Customize build behaviors by choosing from the Build options.</description>
+		<topic href="../com.ibm.etools.mft.doc/af03900_.htm"  label="Editing configurable properties"/>
+		<topic href="../com.ibm.etools.mft.doc/af14700_.htm"  label="Broker Archive editor"/>
+	</context>	
+	
+	<context id="ContentView">
+		<description><b>Broker Archive editor - Manage and Configure page</b>
+The files that are currently in the broker archive are displayed. Click the Add or Remove icons to add or remove message flows and message sets to or from your broker archive.
+The configurable properties of your broker archive are also shown here. To edit a property, replace the current value with a new value in the Properties view.</description>
+		<topic href="../com.ibm.etools.mft.doc/af03880_.htm"  label="Adding files to a broker archive"/>
+		<topic href="../com.ibm.etools.mft.doc/af03900_.htm"  label="Editing configurable properties"/>
+		<topic href="../com.ibm.etools.mft.doc/af14700_.htm"  label="Broker Archive editor"/>
+	</context>			
+			
+	 <context id="UserLogView">
+		<description><b>Broker Archive editor - User Log</b>
+The Broker Archive User Log shows information relating to a build, in accordance with the deployable resources that are selected.
+</description>
+		<topic href="../com.ibm.etools.mft.doc/af03900_.htm"  label="Editing configurable properties"/>
+		<topic href="../com.ibm.etools.mft.doc/af14700_.htm"  label="Broker Archive editor"/>
+	</context>
+	
+ <context id="ServiceLogView">
+		<description><b>Broker Archive editor - Service Log</b>
+The Broker Archive Service Log describes the events that happened during a build.</description>
+		<topic href="../com.ibm.etools.mft.doc/af03900_.htm"  label="Editing configurable properties"/>
+		<topic href="../com.ibm.etools.mft.doc/af14700_.htm"  label="Broker Archive editor"/>
+	</context>
+	
+ 
+ </contexts>
+ 

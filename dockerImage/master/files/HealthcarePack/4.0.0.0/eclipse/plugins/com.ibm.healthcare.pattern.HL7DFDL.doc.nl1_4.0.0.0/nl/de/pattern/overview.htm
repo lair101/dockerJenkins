@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2013, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> <title>Muster 'Healthcare: HL7 an HL7 DFDL'</title>
+</head>
+<body role="main">
+<h1 class="topictitle1">Muster 'Healthcare: HL7 an HL7 DFDL'</h1>
+<div>
+    <p class="shortdesc"/>
+    <p>
+    Das Muster <span>
+    Healthcare: HL7 an HL7 DFDL
+    </span>
+    integriert eine Anwendung, die HL7-v2-Nachrichten (Health Level Seven International) senden kann, in eine oder mehrere Anwendungen, die HL7-Nachrichten empfangen können. 
+    Die Anwendungen müssen in der Lage sein, HL7-Nachrichten unter Verwendung des MLLP-Protokolls (MLLP = Minimal Lower Layer Protocol) über TCP/IP zu senden und zu empfangen.
+</p>
+</div>
+<div class="image">
+    <img src="overview.png"
+    alt="Diagramm mit einer Darstellung der drei Bestandteile des Musters 'Healthcare: HL7 an HL7'" />
+</div>
+<div>
+    <h2>Wichtig:</h2>
+    <p>
+    Sie müssen eine HL7-DFDL-Bibliothek in Ihren Arbeitsbereich importieren. Mit dem DFDL-Modell in der Bibliothek werden  HL7-Nachrichten bei der Verarbeitung in den Nachrichtenflüssen analysiert. Ihr Projekt muss einen Verweis auf die HL7-DFDL-Bibliothek enthalten, damit die DFDL-Bibliothek zusammen mit der generierten Anwendung implementiert werden kann. Standardmäßig enthält die vom Muster generierte Anwendung einen Verweis auf die Bibliothek, die das HL7-DFDL-Modell Version 2.7 enthält. Wenn Sie das HL7-DFDL-Modell der Version 2.6 oder 2.5.1 verwenden möchten, lesen Sie den Abschnitt <a href="management.htm#messageset">HL7-DFDL-Bibliothek vorbereiten</a>.
+</p>
+    <p>
+    Sie können die HL7-DFDL-Bibliothek über die Seite <a href="resources.htm"
+    title="Ressourcen für das Muster">Ressourcen für das Muster 'Healthcare: HL7 an HL7 DFDL'</a> in Ihren Arbeitsbereich importieren.
+</p>
+    <p>
+    Die Erstellung und Implementierung der HL7-DFDL-Bibliothek nimmt einige Zeit in Anspruch. Sie können die Erstellung des DFDL-Modells beschleunigen, indem Sie die HL7-Kapitel aus der Nachrichtengruppe löschen. 
+    Die Nachrichtendefinitionsdateien <span class="filepath">GenericHL7.xsd</span>, <span class="filepath">segments.xsd</span>,
+    <span class="filepath">fields.xsd</span> und <span class="filepath">datatypes.xsd</span> müssen in der Nachrichtengruppe verbleiben, da sie vom Muster benötigt werden.
+</p>
+</div>
+<div class = "description">
+    <h2>Optionen</h2>
+    <p>
+    Der Nachrichtenfluss 'Receiver' in diesem Muster unterstützt die folgenden Optionen:
+    </p>
+    <ul>
+        <li>
+            Empfang von HL7-Nachrichten unter Verwendung von MLLP über TCP/IP
+        </li>
+        <li>
+            Validierung und Parsing der Nachrichten
+        </li>
+        <li>
+            Überwachung eingehender Nachrichten
+        </li>
+        <li>
+            Überprüfung und Verarbeitung doppelter Nachrichten
+        </li>
+        <li>
+            Unterstützung von Sequenzbildungsoptionen
+        </li>
+        <li>
+            Veröffentlichung eingehender Nachrichten bzw. Senden der Nachrichten an eine Warteschlange zur Weiterverarbeitung außerhalb des Musters
+        </li>
+        <li>
+            Senden der Ausgabe an eine Warteschlange zur Transformation und Weiterleitung
+        </li>
+        <li>
+            Behandlung von Ausnahmebedingungen
+        </li>
+    </ul>
+    <p>
+    Der Nachrichtenfluss 'TransformAndRoute' in diesem Muster unterstützt die folgenden Optionen:
+    </p>
+    <ul>
+        <li>
+            Transformation in ein kanonisches XML-Format
+        </li>
+        <li>
+            Veröffentlichung eingehender kanonischer Nachrichten bzw. Senden der Nachrichten an eine Warteschlange zur Weiterverarbeitung außerhalb des Musters
+        </li>
+        <li>
+            Auflisten zusätzlicher Felder, die in HL7-Segmenten gefunden werden
+        </li>
+        <li>
+            Verteilung von Nachrichten an mehrere, gesondert konfigurierbare Ziele
+        </li>
+        <li>
+            Filtern der an die einzelnen Ziele zu sendenden Nachrichten
+        </li>
+        <li>
+            Filtern der Segmente, die für jedes Ziel einbezogen werden sollen
+        </li>
+        <li>
+            Anpassungspunkte, damit zielspezifische Änderungen einbezogen werden können, die vom Standard abweichen
+        </li>
+        <li>
+            Transformation in HL7 und Senden der Ausgabe an die Warteschlange für den Nachrichtenfluss 'Sender' für jedes Ziel
+        </li>
+        <li>
+            Behandlung von Ausnahmebedingungen
+        </li>
+    </ul>
+    <p>
+    Jeder Sender-Nachrichtenfluss in diesem Muster unterstützt die folgenden Optionen:
+    </p>
+    <ul>
+        <li>
+            Lesen transformierter Nachrichten für dieses Ziel
+        </li>
+        <li>
+            Validierung transformierter Nachrichten
+        </li>
+        <li>
+            Sicherstellen, dass Nachrichten in Übereinstimmung mit den Sequenzbildungsoptionen der Reihe nach zugestellt werden
+        </li>
+        <li>
+            Benachrichtigung, wenn Nachrichten in falscher Reihenfolge eintreffen
+        </li>
+        <li>
+            Zustellung von HL7-Nachrichten an die Zielanwendung unter Verwendung von MLLP über TCP/IP
+        </li>
+        <li>
+            Behandlung von Ausnahmebedingungen
+        </li>
+    </ul>
+</div>
+<div class="familylinks">
+    <a name="anchorBack"></a>
+    <div class="section">
+        <h2 class="sectiontitle">Weitere Informationen</h2>
+        <div>
+            <a href="design.htm">Konzept des Musters</a>
+        </div>
+        <div>
+            <a href="management.htm">Musterinstanz verwalten</a>
+        </div>
+        <div>
+            <a href="monitoring.htm">Muster überwachen</a>
+        </div>
+        <div>
+            <a href="parameters.htm">Musterparameter</a>
+        </div>
+        <div>
+            <a href="resources.htm" title="Ressourcen für das Muster">Ressourcen für das Muster</a>
+        </div>
+        <div>
+            <a href="running.htm">Muster ausführen</a>
+        </div>
+        <div>
+            <a href="testing.htm">Muster testen</a>
+        </div>
+    </div>
+</div>
+<p>
+</p>
+</body>
+</html>

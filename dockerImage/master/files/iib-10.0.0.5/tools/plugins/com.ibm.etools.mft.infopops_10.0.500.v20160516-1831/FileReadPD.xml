@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<pdHelp xmlns="http://www.ibm.com/visualutils/pdhelpcontent"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.ibm.com/visualutils/pdhelpcontent http://www.ibm.com/visualutils/pdhelpcontent">
+<!--pdHelp xmlns="http://www.ibm.com/visualutils/pdhelpcontent"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.ibm.com/visualutils/pdhelpcontent pdhelpcontent.xsd"-->
+
+	<pluginCategory id="com.ibm.etools.mft.ibmnodes">
+		<pageHelp id="ComIbmFileRead_basic">
+			<title>Basic tab</title>
+			<shortDescription>Enter values to determine which file the node processes and the action to be taken when the file is finished.</shortDescription>
+		</pageHelp>
+
+
+
+		<fieldHelp id="ComIbmFileRead_basic_inputDirectory">
+			<title>Input directory</title>
+			<description>
+				<p>Specify the directory from which the node can process files. This is the 
+				path on the machine that the broker is running on. You cannot use wildcards in 
+				this value. This value can be overriden on a message-by-message basis, using
+				the "Request directory property location" property on the request panel.
+				</p>
+				<ul>
+					<li>This field has no default value.</li>
+					<li>You can give an absolute path, or a path relative to the value stored in 
+					environment variable
+					MQSI_FILENODES_ROOT_DIRECTORY.</li>
+				</ul>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmFileRead_basic_filenamePattern">
+			<title>File name or pattern</title>
+			<description>
+				<p>Specify either a file name, or a character sequence (pattern) that matches a 
+				file name.
+					A pattern contains at least one of the following wildcard characters:</p>
+				<ul>
+					<li>Asterisk (*), representing any sequence of zero or more characters</li>
+					<li>Question mark (?), representing any single character</li>
+				</ul>
+				<p>If more than one file matches the pattern, an exception is thrown.</p>
+				<p>Select the "Use environment wildcard" option if you want to use part of the 
+				file name from the input node in
+				this field.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmFileRead_basic_substituteWildcardMatch">
+			<title>Use environment wildcard</title>
+			<description>
+				<p>Select this option if you want to use part of the file name from the input 
+				node in this field. If you select
+				"Use environment wildcard", the * character is replaced with the value from " 
+				$LocalEnvironment/Wildcard/WildcardMatch".
+				This location might have been populated by an upstream node, such as the 
+				FileInput node. If you select the "Use
+				environment wildcard" option, the file pattern must contain one, and only one, * 
+				character.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmFileRead_basic_fileDispositionAction">
+			<title>Action</title>
+			<description>
+				<p>The action performed to the file after either the end of 
+				the file is reached, or a message is received by the "Finish 
+				file in" terminal. This action occurs in any of the 
+				following circumstances:</p>
+				<ol>
+					<li>When a file is read, if "Record detection" is set to 
+					"Whole file".</li>
+					<li>When the record read is the last record in the file,
+					if "Record detection" is set to anything other than "Whole
+					file".</li>
+					<li>When a message is received by "Finish file out". 
+					In this case no data is read before the action is 
+					performed.</li>
+				</ol>
+				<p>If "Move to Archive" is selected, by default the file is 
+				moved to the mqsiarchive sub directory. To override this default, 
+				set a local environment variable. The 
+				archive file name can also be set by using a local 
+				environment variable.</p>
+				<p>When the local environment override for the archive file 
+				name is set and the finish file action on the node is set to 
+				"Archive with timestamp", the file name is 
+				timestamp_nameYouSpecified. Where timestamp is the date and 
+				time the file is archived and nameYouSpecified is the name 
+				you give to the file.</p>
+				<p>When the local environment override for the archive name 
+				is set and the finish file action on the node is set to 
+				"Delete", the file is deleted.</p>
+				<p>When the local environment override for the archive name 
+				is set and the finish file action on the node is set to "No 
+				action", no action is applied to the file.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmFileRead_basic_replaceDuplicateArchives">
+			<title>Replace duplicate archive files</title>
+			<description>
+				<p>By default, an error occurs if a file is archived and a 
+				file exists with the same name. Set this property to true to 
+				ignore the error and replace the archive file.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<pageHelp id="ComIbmFileRead_request">
+			<title>Request tab</title>
+			<shortDescription>The location in the message tree used to override properties in the node.</shortDescription>
+		</pageHelp>
+		<fieldHelp id="ComIbmFileRead_request_requestDirectoryLocation">
+			<title>Request directory property location</title>
+			<description>
+				<p>The location of the message element that contains the name of the input 
+				directory.</p>
+				<p>If this location exists in the incoming message, it overrides the directory 
+				setting on the basic panel.</p>
+			</description>
+		</fieldHelp>
+
+		<fieldHelp id="ComIbmFileRead_request_requestNameLocation">
+			<title>Request file name property location</title>
+			<description>
+				<p>The location of the message element that contains the pattern for the input 
+				file.</p>
+				<p>If this location exists in the incoming message, it overrides the file 
+				setting on the basic panel. You can use wildcards
+				in this value.</p>
+			</description>
+		</fieldHelp>
+
+		<fieldHelp id="ComIbmFileRead_request_offsetLocation">
+			<title>Offset property location</title>
+			<description>
+				<p>The location in the incoming message that contains the offset from where 
+				the node will read the file. The first byte in the file is at offset 0, the second 
+				at offset 1, and so on.</p>
+				<p>Change the value of this field if the incoming message has a location where 
+				the offset is stored. If the value has already been copied to the local 
+				environment, the field can be left unchanged. The default offset 0 is used if 
+				the offset location does not resolve to a location in the incoming message.</p>
+				<p>To specify the exact bytes to be read from the file, use this override in 
+				conjunction with the length override.</p>
+			</description>
+		</fieldHelp>
+		<fieldHelp id="ComIbmFileRead_request_lengthLocation">
+			<title>Length property location</title>
+			<description>
+				<p>The location in the incoming message that contains the number of bytes to 
+				read from the file. It is used only if the record detection mechanism is set to 
+				fixed length. It overrides the value defined for length on the Record and 
+				Elements panel.</p>
+				<p>Change the value of this field if the incoming message has a location where 
+				the length is stored. If the value has already been copied to the local 
+				environment, the field can be left unchanged. The default length is defined on 
+				the Records and Elements panel, and is used if the length location does not 
+				resolve to a location in the incoming message.</p>
+				<p>To specify the exact bytes to be read from the file, use this override in 
+				conjunction with the offset override.</p>
+			</description>
+		</fieldHelp>
+
+
+
+		<pageHelp id="ComIbmFileRead_result">
+			<title>Result tab</title>
+			<shortDescription>Settings for constructing the output message</shortDescription>
+		</pageHelp>
+
+		<fieldHelp id="ComIbmFileRead_result_resultDataLocation">
+			<title>Result data location</title>
+			<description>
+				<p>The location in the message retrieved from the file to copy to the 
+				Output data location field in the outgoing message.</p>
+				<p>The property can be set to any valid location in the message retrieved 
+				from the file. It must be prefixed by $ResultRoot to identify it as the 
+				message retrieved from the file.
+Set this field if you require only a subset of the data retrieved from the file 
+to be copied to the outgoing message. For example: if you set the property to 
+$ResultRoot/XMLNSC/Doc/Field1, only the contents of Field1 are copied to the 
+output data location.</p>
+				<p>If the field is left to the default value, the entire retrieved record is 
+				copied to the Output data location. If Output data location is also left to its 
+				default value of $OutputRoot, the Output message contains an exact copy of the 
+				record retrieved from the file.</p>
+				<p>For an example, see the Message Routing sample, which uses all the fields on 
+				the request panel.</p>
+			</description>
+		</fieldHelp>
+
+		<fieldHelp id="ComIbmFileRead_result_outputDataLocation">
+			<title>Output data location</title>
+			<description>
+				<p>The location in the outgoing message where the record read from the file is 
+				to be copied to. The part of the record that will be copied to the output data 
+				location is defined in the result data location. By default, the entire record 
+				is copied ($ResultRoot).</p>
+				<p>You can set this property to any valid location in the outgoing message 
+				assembly including $OutputRoot, $OutputLocalEnvironment or $Environment. The 
+				field does not have to exist in the incoming message; it is created if needed.
+If the value is left to the default of $OutputRoot, the incoming message is 
+replaced with the message read from the file.</p>
+				<p>If you want to preserve the incoming message unchanged, set the output data 
+				location to a field in the local environment, such as
+					<br/>
+					<br/>
+$OutputLocalEnvironment/Variables/filecontent
+					<br/>
+					<br/>
+For an example, see the Message Routing sample, which uses all the fields on the 
+request panel.</p>
+			</description>
+		</fieldHelp>
+
+		<fieldHelp id="ComIbmFileRead_result_copyLocalEnvironment">
+			<title>Copy local environment</title>
+			<description>
+				<p>If this is selected, the incoming local 
+				environment is copied to the outgoing local environment. Consider clearing this field 
+                when you want to make the changes to local 
+				environment visible to nodes that precede this node in the message 
+				flow.</p>
+			</description>
+		</fieldHelp>
+
+		<fieldHelp id="ComIbmFileRead_result_propagateRecordExpression">
+			<title>Record selection expression</title>
+			<description>
+				<p>The record selection expression specifies the record to be propagated to the 
+				output terminal. The node starts at the offset specified on the request panel, 
+				and then finds each record using the settings on the record detection panel. It 
+				propagates the first record that matches the record selection expression, and 
+				then stops processing. If no record  matches, the original message is sent to 
+				the "No match" terminal.</p>
+				<p>The expression can be set to any valid XPath expression that returns a 
+				Boolean value. It is possible to access the input message, the result message 
+				for the record from the file, and the possible output message.
+This can be used to select a particular record from the file. For example:</p>
+				<ul>
+					<li>To take the 5th record, set the expression to
+						<br/>
+$OutputLocalEnvironment/File/Read/RecordNumber = 5</li>
+					<li>To match a key from the incoming message set the expression to
+						<br/>
+$ResultRoot/MRM/key=$InputRoot/XMLNSC/Invoice/Name</li>
+				</ul>
+				<p>The default true() means that the first record found will be propagated.
+					<br/>
+For an example, see the Message Routing sample, which uses all the fields on the 
+request panel.
+				</p>
+			</description>
+		</fieldHelp>
+
+		<pageHelp id="ComIbmFileRead_inboundMessageParsing">
+			<title>Input message parsing tab</title>
+			<shortDescription>Determine how the node parses incoming messages</shortDescription>
+		</pageHelp>
+
+		<fieldHelp id="ComIbmFileRead_inboundMessageParsing_messageDomainProperty">
+			<title>Message Domain</title>
+			<description>
+				<p>The domain used to parse the incoming message. Select from the drop-down list or specify a user-defined parser.</p>
+				<ul>
+					<li>If parsing an XML message, use the XMLNSC parser.</li>
+					<li>For binary or text messages with a Data Format Description Language schema model, use the DFDL parser.</li>
+					<li>To access the byte data without parsing, use the BLOB parser.</li>
+					<li>If you do not specify a parser, the BLOB parser is used, and the binary data can be accessed directly within the flow.</li>
+				</ul>
+				<p>The data can be reparsed with a different parser at any point in the flow by using the ResetContentDescriptor node, or by using a parse clause in a Compute node.</p>
+			</description>
+		</fieldHelp>
+
+		<fieldHelp id="ComIbmFileRead_inboundMessageParsing_messageSetProperty">
+			<title>Message Model</title>
+			<description>
+				<p>Specify the name of the schema file, or the name or identifier of the message set, in which the incoming message is modeled.</p> 
+				<p>To enable this property, set the Message Domain property to "DFDL" or "XMLNSC" and select a schema file, or set it to,"MRM" or "IDOC" and select a message set.</p> 
+				<p>Only message models that are contained in your Integration project, or are contained in a referenced application or library, are available for selection.</p>
+				<p>Qualify this property by specifying a library name if the name of your schema file, or the qualified message name that you have selected in the Message property, is not unique within the referenced resources.</p>
+			</description>
+		</fieldHelp>
+
+		<fieldHelp id="ComIbmFileRead_inboundMessageParsing_messageTypeProperty">
+			<title>Message Model</title>
+			<description>
+				<p>Specify the name of the schema file, or the name or identifier of the message set, in which the incoming message is modeled.</p> 
+				<p>To enable this property, set the Message Domain property to "DFDL" or "XMLNSC" and select a schema file, or set it to,"MRM" or "IDOC" and select a message set.</p> 
+				<p>Only message models that are contained in your Integration project, or are contained in a referenced application or library, are available for selection.</p>
+				<p>Qualify this property by specifying a library name if the name of your schema file, or the qualified message name that you have selected in the Message property, is not unique within the referenced resources.</p>
+			</description>
+		</fieldHelp>		
+
+		<fieldHelp id="ComIbmFileRead_inboundMessageParsing_messageFormatProperty">
+			<title>Message Format</title>
+			<description>
+				<p>The physical format name for the incoming message, specified in the message set. To enable this property, set the Message Domain property to "MRM" or "IDOC".</p>
+			</description>
+		</fieldHelp>
+		
+
+
+		<fieldHelp id="ComIbmFileRead_inboundMessageParsing_messageCodedCharSetIdProperty">
+			<title>Message Coded Character Set ID</title>
+			<description>
+				<p>Set the ID of the coded character set used to interpret bytes of the file 
+				being read.</p>
+			</description>
+		</fieldHelp>
+
+
+		<fieldHelp id="ComIbmFileRead_inboundMessageParsing_messageEncodingProperty">
+			<title>Message Encoding</title>
+			<description>
+				<p>Set the encoding scheme for numbers used to interpret bytes of the file being 
+				read.</p>
+				<p>Select "Broker System Determined" or set a numeric encoding value. For 
+				example, on Windows systems,
+				binary integers are encoded as Little Endian. Most other operating systems use 
+				Big Endian. If you do not
+				set this property, the encoding used on the broker is used.</p>
+			</description>
+		</fieldHelp>
+
+
+		<pageHelp id="ComIbmFileRead_parserOptions">
+			<title>Parser Options tab</title>
+			<shortDescription>Determine the behavior of the XMLNSC parser.</shortDescription>
+			<moreDescription>
+				<p>Configure the following options to determine the behaviour of the XMLNSC 
+				parser:</p>
+				<ul>
+					<li>Build tree using XML schema data types: Select this property to create 
+					syntax elements in the
+					message tree with data types taken from the XML Schema. To enable this property, 
+					set the Validate property
+					on the Validation tab to "Content" or "Content and Value".</li>
+					<li>Use XMLNSC compact parser for XMLNS domain: Select this property to format 
+					the response message in XMLNSC
+					for nodes that are connected to the output terminal when the input MQRFH2 header 
+					or Response Message Parsing
+					properties Message Domain is XMLNS.</li>
+					<li>Retain mixed content: Select this property to create elements in the message 
+					tree when the parser finds
+					mixed text in a response message. If you clear the check box, mixed text is 
+					ignored and no elements are created.</li>
+					<li>Retain comments: Select this property to create elements in the message tree 
+					when the parser finds comments in a
+					response message. If you clear the check box,
+					comments are ignored and no elements are created.</li>
+					<li>Retain processing instructions: Select this property to create elements in 
+					the message tree when the parser finds
+					processing instructions in a response message. If
+					you clear the check box, processing instructions are ignored and no elements are 
+					created.</li>
+					<li>Opaque elements: Add a list of elements in the response message that are to 
+					be opaquely parsed by the XMLNSC parser.
+					Opaque parsing is performed only if validation is
+					not enabled (that is, if the Validate property on the Validation tab is set to " 
+					None"); entries that are specified in
+					Opaque Elements are ignored if validation is enabled.</li>
+				</ul>
+			</moreDescription>
+			<topic href="../com.ibm.etools.mft.doc/ac76040_.htm">
+				<label>Manipulating messages in the XMLNSC domain</label>
+			</topic>
+		</pageHelp>
+		
+
+		<fieldHelp id="ComIbmFileRead_parserOptions_validateTiming">
+			<title>Parse timing</title>
+			<description>
+				<p>Specify when an input message should be parsed.</p>
+				<ul>
+					<li>On Demand: parse an input message bit stream only as far as is necessary to 
+					satisfy the current reference (referred
+					to as partial parsing).</li>
+					<li>Immediate: parse the entire message, including any message headers.</li>
+					<li>Complete: parse the entire message, including any message headers.</li>
+				</ul>
+				<p>The only difference in behavior between Immediate and Complete occurs when 
+				MRM validation is enabled.</p>
+			</description>
+			<topic href="../com.ibm.etools.mft.doc/ac20814_.htm">
+				<label>Parsing on demand</label>
+			</topic>
+		</fieldHelp>
+
+		<pageHelp id="ComIbmFileRead_recordsAndElements">
+			<title>Records and elements</title><!-- Copy to record detection field; do the same for FTE -->
+			<shortDescription>Determine how the node identifies a record within the file.</shortDescription>
+			<moreDescription>
+				<ul>
+					<li>&quot;Whole File&quot; specifies that the whole file is a single record. If 
+					you choose this option, none of the
+					other fields on this tab are available.</li>
+					<li>&quot;Fixed Length&quot; specifies that each record is a fixed number of 
+					bytes in length. Each record contains the
+					number of bytes specified in the Length (bytes)
+					property, except possibly a shorter final record in the file.</li>
+					<li>&quot;Delimited&quot; if the records that you are processing are separated, 
+					or terminated, by a DOS or UNIX line end,
+					or by a sequence of user-defined delimiter bytes.
+					Specify the delimiter in the Delimiter, and Delimiter type properties.</li>
+					<li>&quot;Parsed Record Sequence&quot; if the file contains a sequence of one or 
+					more records that are serially
+					recognized by the parser specified in Message domain on
+					the Input Message Parsing panel. The node propagates each recognized record as a 
+					separate message. If you select this
+					option, the parser specified in Message domain must
+					be either XMLNSC or MRM (either CWF or TDS physical format).</li>
+				</ul>
+			</moreDescription>
+		</pageHelp>
+
+
+		<fieldHelp id="ComIbmFileRead_recordsAndElements_recordDetection">
+			<title>Record detection</title>
+			<description>
+				<ul>
+					<li>&quot;Whole File&quot; specifies that the whole file is a single record. If 
+					you choose this option, none of the
+					other fields on this tab are available.</li>
+					<li>&quot;Fixed Length&quot; specifies that each record is a fixed number of 
+					bytes in length. Each record contains the
+					number of bytes specified in the Length (bytes)
+					property, except possibly a shorter final record in the file.</li>
+					<li>&quot;Delimited&quot; if the records that you are processing are separated, 
+					or terminated, by a DOS or UNIX line end,
+					or by a sequence of user-defined delimiter bytes.
+					Specify the delimiter in the Delimiter, and Delimiter type properties.</li>
+					<li>&quot;Parsed Record Sequence&quot; if the file contains a sequence of one or 
+					more records that are serially
+					recognized by the parser specified in Message domain on
+					the Input Message Parsing panel. The node propagates each recognized record as a 
+					separate message. If you select this
+					option, the parser specified in Message domain must
+					be either XMLNSC or MRM (either CWF or TDS physical format).</li>
+				</ul>
+			</description>
+		</fieldHelp>
+
+
+		<fieldHelp id="ComIbmFileRead_recordsAndElements_recordLength">
+			<title>Length</title>
+			<description>
+				<p>The length of each record in bytes. To enable this property, set the Record 
+				detection property to "Fixed Length".
+					<br/>
+				If you specify Whole File, Fixed Length, or Delimited in the Record detection 
+				property, a limit of 100 MB applies to the
+				length of the records. If you specify Parsed Record Sequence in the Record 
+				detection property, the node does not determine
+				or limit the length of a record. Nodes that are downstream in the message flow 
+				might try to determine the record length
+				or process a long record. If you intend to process large records in this way, 
+				ensure that your broker has sufficient memory.
+				You might need to apply flow techniques described in the Large Messaging sample 
+				to make best use of the available memory.</p>
+			</description>
+		</fieldHelp>
+		
+
+
+
+		<fieldHelp id="ComIbmFileRead_recordsAndElements_recordDelimiter">
+			<title>Delimiter</title>
+			<description>
+				<p>The record delimiter that is used when the Record detection property is set 
+				to "Delimited".
+					<br/>
+				"DOS or UNIX Line End" on UNIX systems specifies the line feed character (X'0A'). 
+				On Windows
+				systems it specifies a carriage return character followed by a line feed 
+				character (X'0D0A').
+				The node treats both of these strings as delimiters, irrespective of the system 
+				on which the
+				broker is running. If they are both in the same file, the node recognizes both 
+				as delimiters.
+				The node does not recognize X'15' which, on z/OS systems, is the 'newline' byte; 
+				specify a
+				value of "Custom Delimiter" in this property and a value of "15" in the Custom 
+				delimiter
+				property if your input file is coded using EBCDIC new lines, such as EBCDIC 
+				files from a
+				z/OS system.</p>
+			</description>
+		</fieldHelp>
+	
+
+
+		<fieldHelp id="ComIbmFileRead_recordsAndElements_customDelimiter">
+			<title>Custom delimiter</title>
+			<description>
+				<p>An even-numbered string of hexadecimal digits that defines the delimiter byte 
+				sequence.
+				To enable this property, set the Record detection property to "Delimited ", and 
+				the Delimiter
+				property to "Custom Delimiter".</p>
+			</description>
+		</fieldHelp>
+		
+		
+
+		<fieldHelp id="ComIbmFileRead_recordsAndElements_delimiterType">
+			<title>Delimiter type</title>
+			<description>
+				<p>Specify whether the delimiter is added after each record ("Postfix"), or only 
+				between two
+				adjacent records ("Infix"). To enable this property, set the Record detection 
+				property to
+				"Delimited".</p>
+			</description>
+		</fieldHelp>
+		
+	
+
+
+		<fieldHelp id="ComIbmFileRead_inboundMessageParsing_messageDomainProperty">
+			<title>Message Domain</title>
+			<description>
+				<p>The domain used to parse the incoming message. Select from the drop-down list 
+				or specify a user-defined parser.</p>
+				<ul>
+					<li>If parsing an XML message, use the XMLNSC parser.</li>
+					<li>For custom formats, use the the MRM parsers.</li>
+					<li>To access the byte data without parsing, use the BLOB parser.</li>
+					<li>If you do not specify a parser, the BLOB parser is used, and the binary data 
+					can be accessed directly within the
+					flow.</li>
+				</ul>
+				<p>The data can be reparsed with a different parser at any point in the flow by
+					either using the ResetContentDescriptor node, or a parse clause in a Compute 
+					node.</p>
+			</description>
+		</fieldHelp>
+		
+
+
+
+
+		<pageHelp id="ComIbmFileRead_parserOptions">
+			<title>Parser Options tab</title>
+			<shortDescription>Determine the behavior of the XMLNSC parser.</shortDescription>
+			<moreDescription>
+				<p>Configure the following options to determine the behaviour of the XMLNSC 
+				parser:</p>
+				<ul>
+					<li>Build tree using XML schema data types: Select this property to create 
+					syntax elements in the message tree with data
+					types taken from the XML Schema. To enable this
+					property, set the Validate property on the Validation tab to "Content" or " 
+					Content and Value".</li>
+					<li>Use XMLNSC compact parser for XMLNS domain: Select this property to format 
+					the response message in XMLNSC for nodes
+					that are connected to the output terminal when the
+					input MQRFH2 header or Response Message Parsing properties Message Domain is 
+					XMLNS.</li>
+					<li>Retain mixed content: Select this property to create elements in the message 
+					tree when the parser finds mixed text
+					in a response message. If you clear the check box,
+					mixed text is ignored and no elements are created.</li>
+					<li>Retain comments: Select this property to create elements in the message tree 
+					when the parser finds comments in a
+					response message. If you clear the check box,
+					comments are ignored and no elements are created.</li>
+					<li>Retain processing instructions: Select this property to create elements in 
+					the message tree when the parser finds
+					processing instructions in a response message. If
+					you clear the check box, processing instructions are ignored and no elements are 
+					created.</li>
+					<li>Opaque elements: Add a list of elements in the response message that are to 
+					be opaquely parsed by the XMLNSC parser.
+					Opaque parsing is performed only if validation is
+					not enabled (that is, if the Validate property on the Validation tab is set to " 
+					None"); entries that are specified in
+					Opaque Elements are ignored if validation is enabled.</li>
+				</ul>
+			</moreDescription>
+			<topic href="../com.ibm.etools.mft.doc/ac76040_.htm">
+				<label>Manipulating messages in the XMLNSC domain</label>
+			</topic>
+		</pageHelp>
+		
+
+
+
+
+		<fieldHelp id="ComIbmFileRead_parserOptions_validateTiming">
+			<title>Parse timing</title>
+			<description>
+				<p>Specify when an input message should be parsed.</p>
+				<ul>
+					<li>On Demand: parse an input message bit stream only as far as is necessary to 
+					satisfy the current reference (referred
+					to as partial parsing).</li>
+					<li>Immediate: parse the entire message, including any message headers.</li>
+					<li>Complete: parse the entire message, including any message headers.</li>
+				</ul>
+				<p>The only difference in behavior between Immediate and Complete occurs when 
+				MRM validation is enabled.</p>
+			</description>
+		</fieldHelp>
+		
+		
+
+
+
+
+		<fieldHelp id="ComIbmFileRead_parserOptions_validateTiming">
+			<title>Parse timing</title>
+			<description>
+				<p>Specify when an input message should be parsed.</p>
+				<ul>
+					<li>On Demand: parse an input message bit stream only as far as is necessary to 
+					satisfy the current reference (referred
+					to as partial parsing).</li>
+					<li>Immediate: parse the entire message, including any message headers.</li>
+					<li>Complete: parse the entire message, including any message headers.</li>
+				</ul>
+				<p>The only difference in behavior between Immediate and Complete occurs when 
+				MRM validation is enabled.</p>
+			</description>
+			<topic href="../com.ibm.etools.mft.doc/ac20814_.htm">
+				<label>Parsing on demand</label>
+			</topic>
+		</fieldHelp>
+
+		<pageHelp id="ComIbmFileRead_validation">
+			<title>Validation tab</title><!-- Copy relevant bits to both fields, also on FTE nodes -->
+			<shortDescription>Check the message that has been read against the message model contained in the message set to determine whether it is correctly formatted.</shortDescription>
+			<moreDescription>
+				<p>You can check the message against the message model contained in the message 
+				set to determine whether it is
+				correctly formatted. If it is invalid, you can choose
+				what to do.</p>
+				<p>
+					<b>Validate</b>
+				</p>
+				<ul>
+					<li>Select "None" to perform no validation on the message.</li>
+					<li>Select "Content and Value" to perform validation of the message content and 
+					value checks, such as whether the value
+					conforms to data type, length, range, and
+					enumeration.</li>
+					<li>Select "Content" to validate the content and message composition.</li>
+				</ul>
+				<p>Note: Even if Content is selected, the XMLNSC domain always performs Content 
+				and Value validation.
+					<br/>
+					<br/>
+				</p>
+				<p>
+					<b>Failure action</b>
+				</p>
+				<ul>
+					<li>Select "Exception" to throw an exception on the first validation failure 
+					encountered. The failure is also logged in
+					the user trace if you have asked for user tracing
+					of the message flow, and validation stops. Use this setting if you want 
+					processing of the message to halt as soon as a
+					failure is encountered.</li>
+					<li>Select "Exception List" to throw an exception if validation failures are 
+					encountered, but only when the current
+					parsing or writing operation has completed. Each
+					failure is also logged in the user trace if you have asked for user tracing of 
+					the message flow, and validation stops.
+					Use this setting if you want processing of the
+					message to halt if a validation failure occurs, but you want to see the full 
+					list of failures encountered. This property
+					is affected by the Parse Timing property; when
+					partial parsing is selected the current parsing operation parses only a portion 
+					of an input message, so only the
+					validation failures in that portion of the message are
+					reported.</li>
+					<li>Select "User Trace" to log all validation failures to the user trace, even 
+					if you have not asked for user tracing of
+					the message flow. Use this setting if you want
+					processing of the message to continue regardless of validation failures.</li>
+					<li>Select "Local Error Log" to log all validation failures to the system log. 
+					Use this setting if you want processing
+					of the message to continue regardless of validation
+					failures.</li>
+				</ul>
+			</moreDescription>
+			<topic href="../com.ibm.etools.mft.doc/ac00400_.htm">
+				<label>Validating messages</label>
+			</topic>
+			<topic href="../com.ibm.etools.mft.doc/ac18870_.htm">
+				<label>Validation tab properties</label>
+			</topic>
+		</pageHelp>
+		
+
+
+
+
+		<fieldHelp id="ComIbmFileRead_validation_validateMaster">
+			<title>Validate</title>
+			<description>
+				<ul>
+					<li>Select "None" to perform no validation on the message.</li>
+					<li>Select "Content and Value" to perform validation of the message content and 
+					value checks, such as whether the value
+					conforms to data type, length, range, and enumeration.</li>
+					<li>Select "Content" to validate the content and message composition.</li>
+				</ul>
+				<p>Note: Even if Content is selected, the XMLNSC domain always performs Content 
+				and Value validation.
+					<br/>
+					<br/>
+				</p>
+	
+
+			</description>
+		</fieldHelp>
+		
+		
+
+
+
+
+		<fieldHelp id="ComIbmFileRead_validation_validateFailureAction">
+			<title>Failure action</title>
+			<description>
+				<p>Specify the action to take if validation fails. To enable this property, set 
+				the Validate property to "Content" or "
+				Content and Value".</p>
+				<ul>
+					<li>Select "Exception" to throw an exception on the first validation failure 
+					encountered. The failure is also logged in
+					the user trace if you have asked for user tracing
+					of the message flow, and validation stops. Use this setting if you want 
+					processing of the message to halt as soon as a
+					failure is encountered.</li>
+					<li>Select "Exception List" to throw an exception if validation failures are 
+					encountered, but only when the current
+					parsing or writing operation has completed. Each
+					failure is also logged in the user trace if you have asked for user tracing of 
+					the message flow, and validation stops.
+					Use this setting if you want processing of the
+					message to halt if a validation failure occurs, but you want to see the full 
+					list of failures encountered. This property
+					is affected by the Parse Timing property; when
+					partial parsing is selected the current parsing operation parses only a portion 
+					of an input message, so only the
+					validation failures in that portion of the message are
+					reported.</li>
+					<li>Select "User Trace" to log all validation failures to the user trace, even 
+					if you have not asked for user tracing of
+					the message flow. Use this setting if you want
+					processing of the message to continue regardless of validation failures.</li>
+					<li>Select "Local Error Log" to log all validation failures to the system log. 
+					Use this setting if you want processing
+					of the message to continue regardless of validation
+					failures.</li>
+				</ul>
+			</description>
+		</fieldHelp>
+
+
+
+		<pageHelp id="MonitorEventNodeMonitoringTab">
+			<title>Monitoring tab</title>
+			<shortDescription>Configure monitoring events.</shortDescription>
+		</pageHelp>
+	</pluginCategory>
+	
+
+
+
+
+</pdHelp>

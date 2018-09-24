@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xpath-reference version="1.0" type="mft-opaque-xpath-reference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="xpath-reference.xsd">	
+	<syntax>
+		<!-- The // operator selects the descendant nodes. -->
+		<operator type="node-set" name="//"	description="2slashes_descr" />	
+	</syntax>
+</xpath-reference>

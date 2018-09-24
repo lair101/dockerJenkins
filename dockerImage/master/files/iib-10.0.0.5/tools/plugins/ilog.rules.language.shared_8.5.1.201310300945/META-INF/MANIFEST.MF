@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: languageshared.jar
+Bundle-Vendor: IBM
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: Rule Designer Language Shared
+Bundle-SymbolicName: ilog.rules.language.shared
+Require-Bundle: com.ibm.icu
+Export-Package: ilog.rules.shared.util
+Bundle-Version: 8.5.1.201310300945
+Bundle-ManifestVersion: 2
+
+

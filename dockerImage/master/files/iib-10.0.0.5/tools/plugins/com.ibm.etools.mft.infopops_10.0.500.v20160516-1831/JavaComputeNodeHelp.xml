@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+  <contexts>
+    <context id="NewJCNProjectWizard">
+<description><b>New JavaCompute node project</b>
+Create a new Java project to contain the Java class that you want to associate with a JavaCompute node.</description>
+      <topic href="../com.ibm.etools.mft.doc/ac20805_.htm#ac20805_cfg" label="JavaCompute node - Configuring the JavaCompute node"/>
+    </context>    
+	
+    <context id="NewJCNClassWizard">
+<description><b>New JavaCompute node class</b>
+Create a new Java class to associate with a JavaCompute node in your message flow applications. You can add any valid Java code to the class to make use of the Java plug-in API.</description>
+      <topic href="../com.ibm.etools.mft.doc/ac20805_.htm#ac20805_cfg" label="JavaCompute node - Configuring the JavaCompute node"/>
+	</context>
+
+  </contexts>

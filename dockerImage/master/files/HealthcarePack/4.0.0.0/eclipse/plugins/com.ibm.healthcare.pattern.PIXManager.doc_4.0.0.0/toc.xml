@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS  TYPE="org.eclipse.help.toc"?>
+<toc label="Healthcare: Patient Identifier Cross-reference Manager" topic="pattern/overview.htm">
+    <topic label="Healthcare: Patient Identifier Cross-reference Manager pattern" href="pattern/overview.htm">
+       <topic href="pattern/constraints.htm" label="Constraints on the use of the pattern" />
+       <topic href="pattern/before.htm" label="Tasks to complete before using the pattern" />
+       <topic href="pattern/parameters.htm" label="Pattern parameters" />
+	</topic>
+</toc>

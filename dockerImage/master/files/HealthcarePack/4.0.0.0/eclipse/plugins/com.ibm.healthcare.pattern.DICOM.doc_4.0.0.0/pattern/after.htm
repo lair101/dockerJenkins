@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2013, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    -->
+    <title>Tasks to complete after applying the Healthcare: Web service to DICOM pattern</title>
+</head>
+<body role="main">
+    <h1 class="topictitle1">Tasks to complete after generating the <span>Healthcare: Web service to DICOM</span> pattern</h1>
+    <p class="shortdesc">Tasks that you must complete after you have generated the pattern.</p>
+    <h2>IBM Integration Bus Deployment</h2>
+
+    <ol>
+        <li>
+            Create the BAR file and add your message flow to it:
+            <ol>
+                <li>
+                    Click <span class="uicontrol">File &gt; New &gt; BAR file</span>.
+                </li>
+                <li>
+                    Enter the name of your application or select one from the displayed list. The 
+                    list is filtered to show only projects in the active working set.
+                </li>
+                <li>
+                    Enter a name for the BAR file that you are creating.
+                </li>
+                <li>
+                    Click <span class="uicontrol">Finish</span>.
+                    A file with a <span class="filepath">.bar</span> extension is created and is displayed in the 
+                    Application Development view, under the <span class="filepath">BARs</span> folder. The BAR file editor opens.
+                </li>
+                <li>
+                    On the Prepare tab, select the generated application to add it to your BAR file.  
+                </li>
+                <li>
+                    Select <span class="uicontrol">Compile and in-line resources</span> and then click <span class="uicontrol">Build and Save</span> to create your BAR file.
+                </li>
+            </ol>
+        </li>
+        <li>
+            Configure the BAR file. Further configuration of the message flow in the broker archive  
+            file is not required before you deploy the message flows for your
+            <span>Healthcare: Web service to DICOM</span> pattern instance, 
+            but you might want to review some of the default options and configure changes for your environment.
+            
+            In the BAR file editor, on the Manage tab:
+            
+            <ol>
+                <li>
+                    <span>Optional: Use the <span class="msobjprop">LoggingOn</span> user-defined 
+                    property to select whether logging is on or off for the web service message flow.</span>
+                </li>
+                <li>Optional: Use the <span class="msobjprop">ErrorLoggingOn</span>
+                    user-defined property to select whether error messages are generated.
+                </li>
+                <li>Optional: You can change any of the configurable properties in the BAR file,
+                     for example, properties for security or creating additional instances.                 
+                    <p>You must ensure that any values that you change do not affect the behavior 
+                    of the pattern instance.</p>
+                </li>
+            </ol>
+        </li>
+        <li>
+            Create queues. <span>WebSphere MQ</span> queues must be created if they do not already exist for the error
+            and log messages.
+            <ol>
+                <li>Create <span>WebSphere MQ</span> queues. You can create <span>WebSphere MQ</span>
+                    resources either on the command line by using programs and 
+                    utilities such as <span class="cmdname">runmqsc</span>, or by using the
+                    <span>WebSphere MQ</span> graphical interface. For more information about creating
+                    <span>WebSphere MQ</span> resources, see the 
+                    <span>WebSphere MQ</span> product documentation, available on the 
+                    <a href="http://www.ibm.com/software/integration/wmq/library/" target="_blank">WebSphere 
+                    MQ library</a> web page.
+                    
+                </li>
+            </ol>
+        </li>
+        <li>Deploy the BAR file to an integration server.</li>
+    </ol>
+    <p>
+    After you have created a BAR file that contains your pattern, you can test it by using the DICOM test application. 
+    You can use the DICOM test application to send and receive DICOM messages, and to send and receive web service messages. 
+    For more information about using the DICOM test application, see "Using the DICOM test application" in the IBM Integration Bus 
+    Healthcare Pack documentation.
+    </p>
+    <p>
+        <a href="overview.htm#anchor1" title="Back">Back to the Healthcare: Web service to DICOM pattern specification</a>
+    </p>
+</body>
+</html>
+

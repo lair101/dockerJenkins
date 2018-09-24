@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: translator.jar
+Bundle-Vendor: %provider
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Eclipse-LazyStart: true
+Bundle-SymbolicName: com.ibm.datatools.sqlj.translator
+Require-Bundle: org.eclipse.core.runtime
+Bundle-Activator: com.ibm.datatools.sqlj.translator.TranslatorPlugin
+Export-Package: com.ibm.datatools.sqlj.translator
+Bundle-Version: 2.1.400.v20140816_0930
+Bundle-ManifestVersion: 2
+

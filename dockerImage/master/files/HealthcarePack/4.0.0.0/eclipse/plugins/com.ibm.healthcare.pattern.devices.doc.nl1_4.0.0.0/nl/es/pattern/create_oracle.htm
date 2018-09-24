@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <title>Configuración de Oracle</title>
+    <!-- 
+       (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+       All Rights Reserved * Licensed Materials - Property of IBM
+      -->
+</head>
+<body class="sampcont" role="main">
+<h1>Configuración de Oracle</h1>
+<p>
+Estas instrucciones dan por supuesto que utiliza una base de datos
+Oracle y
+le guían por las tareas siguientes:
+</p>
+<ul>
+    <li>
+        Creación de una base de datos denominada PATSDB
+    </li>
+    <li>
+        Creación de una tabla PATIENTS, donde almacenar las
+asociaciones de pacientes y dispositivos
+    </li>
+</ul>
+<p>
+<b>Nota.</b> Al crear y acceder a las tablas de base de datos, tenga
+en cuenta lo siguiente:
+</p>
+<ul>
+    <li>
+        Al ejecutar el script que crea la tabla en la base de datos,
+el identificador de usuario
+        desde el que ejecuta el script determina el nombre del
+esquema de base de datos. 
+        Por ejemplo, su su identificador de usuario
+es <span class="input">USERID</span>,
+        el nombre completo de la tabla PATIENTS será USERID.PATIENTS.
+    </li>
+    <li>
+        Configure su instancia de patrón de forma que utilice el
+mismo identificador de usuario para acceder a la base de datos que ha
+utilizado al crear la base de datos y las tablas, incluya el nombre
+de esquema en la configuración. Por ejemplo,
+        <span class="filepath">Database.USERID.PATIENTS</span>.
+    </li>
+</ul>
+<p>
+Lleve a cabo los siguientes pasos:
+</p>
+<ol>
+    <li>
+        Cree una base de datos denominada PATSDB.
+    </li>
+    <li>
+        Abra un nuevo documento en un editor de texto,copie y pegue
+el siguiente script, que crea la tabla PATIENTS, en el documento.
+Utilice el nombre <span class="filepath">
+        patients_create_tables_oracle.sql
+        </span>
+        y guarde el archivo.
+        <pre>
+DROP TABLE "PATIENTS";
+CREATE TABLE "PATIENTS" (
+    "DEVICEID" VARCHAR(50) NOT NULL PRIMARY KEY,
+    "PATIENTID" VARCHAR(50) NOT NULL
+);
+        </pre>
+    </li>
+    <li>
+        En una ventana de mandatos que haya abierto para acceder a la
+base de datos, vaya a la carpeta que contiene
+        <span class="filepath">
+        patients_create_tables_oracle.sql
+        </span>
+        y escriba el mandato siguiente:
+        <pre>sqlplus &lt;uid&gt;/&lt;password&gt; @patients_create_tables_oracle.sql</pre>
+        <p>
+        Espere a que el script termine de ejecutarse. Si ejecuta el
+script por primera vez, aparece el siguiente mensaje:
+        </p>
+        <pre>ORA-00942: la tabla o la vista no existe</pre>
+        Ignore este mensaje. El mensaje se visualiza porque el script
+intenta eliminar la tabla existente, PATIENTS, antes de crear una
+nueva tabla, pero si no ha ejecutado el script antes, la tabla no
+existe.
+    </li>
+</ol>
+<p>
+</p>
+<a href="create.htm" title="Atrás">Volver a Configuración
+de la base de datos de identificadores de pacientes</a>
+<p>
+</p>
+</body>
+</html>

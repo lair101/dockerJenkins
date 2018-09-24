@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+        (C) COPYRIGHT International Business Machines Corporation., 2011, 2014
+        All Rights Reserved * Licensed Materials - Property of IBM
+    --> <title>定制“Healthcare：从 HL7 到报告”模式实例</title>
+</head>
+<body role="main">
+<a name="links"></a> <h1 class="topictitle1">定制“Healthcare：医疗设备到 EMR”模式实例</h1>
+<div class="section">
+    <a name="customize"></a> <h2 class="sectiontitle">定制子流</h2>
+    <p>
+    模式用户可以使用 10 个主要定制点。MedicalDeviceInput 节点传播设备消息时，将在各个处理阶段调用这些子流，将其变换为
+HL7 并交付给 EMR。
+    最常见的要求是定制 HL7 观察结果消息，您最好通过更改
+<tt>OnDestination</tt> 子流实现此定制。
+</p>
+    <h3>“医疗设备”流</h3> 
+    <div class="image">
+        <img src="devices.png" alt="此图显示“医疗设备”流" /></div>
+    <h4>状态定制</h4>
+    <p>
+    从 MedicalDeviceInput 节点传播状态消息时，将调用 <tt>OnStatus</tt>
+子流。状态消息包含设备状态信息、警告和错误。错误消息的一个示例为，MedicalDeviceInput
+节点报告无法连接到医疗设备。这个子流的一种常见用法是，在医疗设备报告错误情况时发送警报。</p>
+    <h3>“变换并路由”流</h3> 
+    <div class="image">
+        <img src="transform.png" alt="此图显示“变换并路由”流" /></div>
+    <h4>“测量无效”定制</h4>
+    <p>
+    传播有效性并非 <span class="msobjpropval">CM_VALID</span> 的设备测量时，将调用
+<tt>OnInvalid</tt> 子流。设备消息中的有效性元素提供来自医疗设备的测量的置信度。此模式仅变换并交付有效的设备消息。</p>
+    <h4>“无匹配项”定制</h4>
+    <p>
+    在处理不含患者标识的设备消息时，将调用 <tt>OnNoMatch</tt> 子流。仅当“<span class="msobjprop">患者标识</span>”模式参数设置为“<span class="msobjpropval">观察结果中没有患者标识</span>”以外的其他内容的情况下才会调用该子流。设备消息没有相关联的患者标识并不一定表示这是错误情况。例如，设备可以保持开启状态并持续生成设备消息，但是患者关联可能已从数据库中除去。</p>
+    <h4>测量定制</h4>
+    <p>
+    对于由 MedicalDeviceInput 节点传播的每项设备测量，将调用 <tt>OnMeasure</tt>
+子流。将在设备消息变换为 HL7 之前调用这个子流，以使该消息包含来自
+MedicalDeviceInput 节点的未更改测量。这个子流的一种用途是，将消息中的
+<span class="msobjprop">PrimaryId</span> 调整为 EMR 的正确代码（例如 LOINC 代码）。</p>
+    <h3>“发送方”流</h3> 
+    <div class="image">
+        <img src="sender.png" alt="此图显示“发送方”流" /></div>
+    <h4>目标定制</h4>
+    <p>
+    在设备消息变换为 HL7 之后，将调用 <tt>OnDestination</tt>
+子流。调用这个子流后，消息将写入目标队列，并准备好交付给 EMR。这个子流通常用于定制 HL7 观察结果消息，以满足任何特定于站点的消息需求。</p>
+    <h4>到期定制</h4>
+    <p>
+“<span class="msobjprop">到期时间</span>”模式参数确保不会将过期的消息交付给 EMR。到期检查正好在变换后的 HL7 消息发送到目标应用程序之前进行。已到期的消息将写入到期队列并被废弃。将变换后的 HL7 消息写入到期队列前，将针对该消息调用这个子流。</p>
+    <h4>完成定制</h4>
+    <p>
+    交付变换后的 HL7 消息并接收到目标应用程序的应答后，将调用 <tt>OnFinished</tt> 子流。
+</p>
+    <h4>发送方定制</h4>
+    <p>
+    将变换后的 HL7 消息发送到目标 HL7 应用程序之前，将调用 <tt>OnSend</tt>
+子流。这个子流提供了在 HL7 消息发送到 EMR 之前进行任何最终更改的机会。</p>
+    <h3>Web 服务流</h3> 
+    <div class="image">
+        <img src="service.png" alt="此图显示 Web 服务流" /></div>
+    <h4>服务定制</h4>
+    <p>
+    此模式提供用于管理患者标识数据库的 Web 服务。
+    将为每个针对此 Web 服务的请求都调用 <tt>OnService</tt> 子流。</p>
+    <h3>错误处理</h3> 
+    <p>
+    此模式中的每个主流都有自己的错误处理子流。
+    错误消息将写入此模式的公共错误队列。</p>
+    <h4>错误定制</h4>
+    <p>
+    检测到错误并将错误消息写入错误队列时，将调用 <tt>OnErrorQueue</tt>。缺省定制子流对此消息没有任何影响，但您可以使用这个子流来构建一条满足环境所要求的规范的错误消息。</p>
+</div>
+<a href="overview.htm#anchorBack" title="返回">返回到“Healthcare：医疗设备到 EMR”模式规范</a>
+<p>
+</p>
+</body>
+</html>

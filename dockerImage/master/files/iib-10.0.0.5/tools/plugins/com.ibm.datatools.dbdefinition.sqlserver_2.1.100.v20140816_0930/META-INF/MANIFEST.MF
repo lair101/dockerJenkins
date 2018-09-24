@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Eclipse-LazyStart: true
+Bundle-SymbolicName: com.ibm.datatools.dbdefinition.sqlserver; singlet
+ on:=true
+Bundle-Version: 2.1.100.v20140816_0930
+Bundle-ManifestVersion: 2
+

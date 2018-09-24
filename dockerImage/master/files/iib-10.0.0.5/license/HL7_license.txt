@@ -1,0 +1,10 @@
+This product includes all or a portion of the HL7 Vocabulary database, or is derived from the HL7
+Vocabulary database, subject to a license from Health Level Seven International. Your use of the
+HL7 Vocabulary database and HL7 codes also is subject to this license, a copy of which is
+accessible through the following link: http://www.hl7.org/permalink/?VocabTables. The current
+complete HL7 Vocabulary database is also available through this link. The HL7 Vocabulary
+database and HL7 codes are copyright ? 1989-2008, Health Level Seven International. All rights
+reserved. THE HL7 VOCABULARY DATABASE IS PROVIDED "AS IS." ANY EXPRESS OR
+IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+

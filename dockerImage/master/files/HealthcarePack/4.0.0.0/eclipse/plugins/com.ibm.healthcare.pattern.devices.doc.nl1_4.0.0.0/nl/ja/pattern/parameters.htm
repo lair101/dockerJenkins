@@ -1,0 +1,942 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+	<!--
+		(c) Copyright IBM Corporation 2011, 2014. All rights reserved.
+		All Rights Reserved * Licensed Materials - Property of IBM 
+	-->
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="abstract" content="「Medical devices to EMR」パターン用のパターン・パラメーターの詳細を示す表"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+	<title>「Medical devices to EMR」パターンのパターン・パラメーター</title>	
+	<script language="JavaScript" src="../help/actions.js"></script>
+	
+	<!-- START NON-TRANSLATABLE -->
+	<script language="JavaScript">
+	<!--
+
+	function getParameter(location, name) {
+		name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+		var search = "[\\?&]" + name + "=([^&#]*)";
+		var regex = new RegExp(search);
+		var results = regex.exec(location);
+		return (results == null ? true : (results[1] == "false" ? false : true));
+	}
+	
+	function addStyleSheet() {
+		if (getParameter(window.location.href, "everything") == false) {
+			var headId = document.getElementsByTagName("head")[0];         
+			var cssNode = document.createElement("link");
+			cssNode.type = "text/css";
+			cssNode.rel = "stylesheet";
+			cssNode.href = "../css/patterns.css";
+			cssNode.media = "screen";
+			headId.appendChild(cssNode);
+		}
+	}
+		
+	addStyleSheet(); // Depends on the query string!
+	
+	function getElementsByStyleClass (className) {
+  		var all = document.all ? document.all :
+    	document.getElementsByTagName('*');
+  		var elements = new Array();
+  		
+  		for (var e = 0; e < all.length; e++) {
+    		if (all[e].className == className) {
+      			elements[elements.length] = all[e];
+      		}
+      	}
+ 		return elements;
+	}
+	
+	function collapseAll() {
+		var elements = getElementsByStyleClass('twisty');
+		for (var e = 0; e < elements.length; e++) {
+			changeTwisty(elements[e], 'TWISTIE.COLLAPSEALL');
+		}
+	}
+	
+	function expandAll() {
+		var elements = getElementsByStyleClass('twisty');
+		for (var e = 0; e < elements.length; e++) {
+			changeTwisty(elements[e], 'TWISTIE.EXPANDALL');
+		}
+	}
+	
+	function toggleTwisty(group) {
+		changeTwisty(group, 'TWISTIE.TOGGLE');
+		// Make KC adjust content area for change of content height
+		if (typeof kc === "object" && typeof kc.resize === "function") kc.resize();
+	}
+
+	function changeTwisty(group, mode) {		
+		whichGroupId = group.parentNode.id;
+
+		whichGroupContainerId = whichGroupId + "Container";
+		whichGroupTwistyId = whichGroupId + "Twisty";
+		whichGroupTwistyImageId = whichGroupId + "Arrow";
+		groupContainerObj = document.getElementById(whichGroupContainerId);
+		twistyArrowContainerObj = document.getElementById(whichGroupTwistyId);
+		twistyArrowImageObj = document.getElementById(whichGroupTwistyImageId);
+		group.parentNode.style.height = "auto";
+
+		var toShow = false;
+		
+		if (mode == 'TWISTIE.TOGGLE') {
+			if (groupContainerObj.style.display == "none" || groupContainerObj.style.display == "") {
+				toShow = true;
+			} else {
+				toShow = false;
+			}
+		} else if (mode == 'TWISTIE.EXPANDALL') {
+			toShow = true;
+		}
+		
+		if (toShow) {
+			groupContainerObj.style.visibility = "visible";
+			groupContainerObj.style.display = "block";
+			twistyArrowImageObj.src = '../images/twistyopen.png'
+			group.parentNode.style.height = (groupContainerObj.offsetHeight + 30) +'px'; 
+	
+		} else {
+			groupContainerObj.style.visibility = "hidden";
+			groupContainerObj.style.display = "none";
+			twistyArrowImageObj.src = '../images/twistyclosed.png'
+		}
+	
+	}
+	//-->
+	</script>
+	<!-- END NON-TRANSLATABLE -->
+</head>
+<body id="com.ibm.healthcare.pattern.devices.pattern.parametertable" role="main">
+	<!-- Page main title -->
+  	<div id="title" class="invisible">
+		<h1 class="patterns-title"><span>「医療デバイスから EMR へ」</span>パターンのパラメーター</h1>
+  	</div>
+
+
+	
+		
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="Id135e491d19dc7e704a75d03f313">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="Id135e491d19dc7e704a75d03f313Twisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="Id135e491d19dc7e704a75d03f313Arrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">検査結果</div>
+							
+							
+
+									
+
+									
+
+									
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="Id135e491d19dc7e704a75d03f313Container">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">パターン・パラメーター</th>
+													  <th class="invisible" valign="top" width="*">デフォルト
+</th>
+													  <th valign="top" width="*">説明</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																有効期限 (秒)
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				60
+															</td>
+															<td valign="top" width="*">
+																<p>測定時に各医療デバイス・メッセージに設定される、秒単位で表した時間です。
+デバイス・メッセージは、この時間が経過するまでに処理されなかった場合に、破棄される対象となります。</p>
+<p>このパラメーターを空にすると、デバイス・メッセージはタイムアウトしなくなります。
+古いデバイス・メッセージが、後続の処理時に間違った患者と偶発的に関連付けられることがないように、メッセージの有効期限を設定することをお勧めします。</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																ソース ID
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				メッセージ・ブローカー
+</td>
+															<td valign="top" width="*">
+																																このパラメーターは、エラー・メッセージ、通知、および標準のジャーナル・メッセージ内でのソースの記述に使用される ID を定義します。
+</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																ソース・ファシリティー
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																																このパラメーターは、エラー・メッセージ、通知、および標準のジャーナル・メッセージに含まれるソース・ファシリティーを定義します。
+</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																患者 ID
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				デバイスからの患者 ID を使用します</td>
+															<td valign="top" width="*">
+																<p>このパラメーターは、患者 ID をデバイス・メッセージと関連付ける方法を定義します。
+患者 ID を使用して、HL7 検査結果メッセージの PID (患者 ID) セグメントにデータを設定します。
+<ol>
+<li><span class="msobjpropval">検査結果に患者 ID がありません</span> - HL7 検査結果メッセージに PID セグメントが不要であることを指定します。</li>
+<li><span class="msobjpropval">デバイスからの患者 ID を使用します</span> - デバイスのために構成された患者 ID が、HL7 検査結果メッセージの PID セグメントに直接コピーされます。</li>
+<li><span class="msobjpropval">データベース内での患者 ID のルックアップ</span>  - デバイス・メッセージ内のデバイス ID をデータベース表へのキーとして使用することで、関連付けられた患者 ID を検索します。
+そして患者 ID が、HL7 検査結果メッセージの PID セグメントにコピーされます。</li>
+</ol>
+</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																メッセージ ID
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				現在の日付と時刻
+</td>
+															<td valign="top" width="*">
+																<p>このパラメーターは、HL7 検査結果 (ORU) メッセージ内で MSH.10 メッセージ ID フィールドが作成される方法を定義します。</p>
+
+<p><span class="msobjpropval">「現在の日付と時刻」</span>では、現在の日付と時刻を結合して、一連の数字にします。
+この日付と時刻は、現行マシンで <span class="msobjpropval">0.000001</span> 秒の精度です。
+複数の Integration ノードが検査結果を同じ宛先アプリケーションに送信できるような高可用性の構成では、<span class="msobjpropval">「現在の日付と時刻」</span>は適していません。</p>
+
+<p><span class="msobjpropval">「グローバル固有 ID」</span>では、現在のタイム・スタンプと、現行マシンのネットワーク MAC アドレスなどの追加情報とに基づいて、英数字の ID を作成します。
+<span class="msobjpropval">「グローバル固有 ID」</span>では、HL7 標準で推奨されている 20 文字制限より長い ID を作成します。</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																患者クラス
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				入院患者 I
+</td>
+															<td valign="top" width="*">
+																<p>患者クラスは、患者を場所別に分類するためにシステムで使用されます。
+業界全体にわたる一貫性のある定義はありません。
+現場固有の相違に左右されます。
+選択されたパラメーター値は、HL7 ORU R01 Patient Visit Segment (PV1) の Patient Class フィールド (PV1-2) にデータを設定するために使用されます。</p>
+
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	
+		
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="Id135e90e6810e068ec174ba9cf7e">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="Id135e90e6810e068ec174ba9cf7eTwisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="Id135e90e6810e068ec174ba9cf7eArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">患者 ID のルックアップ</div>
+							
+							
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="Id135e90e6810e068ec174ba9cf7eContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">パターン・パラメーター</th>
+													  <th class="invisible" valign="top" width="*">デフォルト
+</th>
+													  <th valign="top" width="*">説明</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Web サービスの作成
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				選択
+															</td>
+															<td valign="top" width="*">
+																<p>このパラメーターがチェックされている場合、患者 ID データベースを管理する Web サービスを実装するために、追加のフローが生成されます。</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																データ・ソース
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				PATIENTSDSN
+															</td>
+															<td valign="top" width="*">
+																<p>このパラメーターは、患者 ID が照会されるデータ・ソースの名前を定義します。</p>
+<p>このパラメーターは読み取り専用です。
+パターン用に構成する必要がある ODBC データ・ソース名を明らかにするために提供されます。</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																患者 ID テーブル
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				PATIENTS
+															</td>
+															<td valign="top" width="*">
+																<p>このパラメーターは、患者 ID とデバイス ID が含まれるテーブルを定義します。
+パターン・インスタンスでは、デバイス・メッセージからのデバイス ID を使用して、このテーブルを照会します。
+このテーブルでは、患者が関連付けられているデバイスごとに行が存在する必要があります。</p>
+<p>このパラメーターは読み取り専用です。
+パターン用に構成する必要があるデータベース表を明らかにするために提供されます。</p>
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	
+		
+
+			
+
+			
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="destination1">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="destination1Twisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="destination1Arrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">宛先 EMR</div>
+							
+							
+
+									
+
+									
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="destination1Container">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">パターン・パラメーター</th>
+													  <th class="invisible" valign="top" width="*">デフォルト
+</th>
+													  <th valign="top" width="*">説明</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																宛先タイプ
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				Generic
+															</td>
+															<td valign="top" width="*">
+																このパラメーターは、宛先アプリケーションのタイプを定義します。
+このパラメーターは、送信側フローで GenericHL7Output ノードを選択するために使用します。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																宛先 ID
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				EMR
+															</td>
+															<td valign="top" width="*">
+																このパラメーターは、宛先の ID を定義します。
+この ID は、宛先に関連したエラー、報告、および通知メッセージで使用されます。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																宛先ファシリティー
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																このパラメーターは、宛先のファシリティーを定義します。
+このファシリティーは、宛先に関連したエラー、報告、および通知メッセージで使用されます。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																接続の詳細
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				localhost:2222</td>
+															<td valign="top" width="*">
+																このパラメーターは、宛先用の TCP/IP 接続を <span class="msobjpropval">hostname:port</span> 形式で定義します。
+</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																標準 MLLP
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				選択
+															</td>
+															<td valign="top" width="*">
+																このパラメーターは、TCP/IP および MLLP についてデフォルトの構成を使用するかどうかを決定します。
+デフォルト構成の値は以下のとおりです。
+<ul>
+<li>タイムアウト: <span class="msobjpropval">60 秒</span></li>
+<li>先頭の MLLP バイト: <span class="msobjpropval">0B</span></li>
+<li>区切り文字: <span class="msobjpropval">適用外</span></li>
+<li>再試行限界: <span class="msobjpropval">3</span></li>
+<li>再試行をログに記録: <span class="msobjpropval">true</span></li>
+<li>検証: <span class="msobjpropval">false</span></li>
+</ul>
+<p>このパラメーターの選択を解除すると、標準以外の値を定義するためのパラメーター・グループが表示されます。
+</p>
+
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	
+		
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="destinationCommunications1">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="destinationCommunications1Twisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="destinationCommunications1Arrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">宛先通信</div>
+							
+							
+
+									
+
+									
+
+									
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="destinationCommunications1Container">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">パターン・パラメーター</th>
+													  <th class="invisible" valign="top" width="*">デフォルト
+</th>
+													  <th valign="top" width="*">説明</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																タイムアウト (秒)
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				60
+															</td>
+															<td valign="top" width="*">
+																このパラメーターは、宛先のタイムアウトを秒単位で定義します。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																先頭の MLLP バイト
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				0B
+															</td>
+															<td valign="top" width="*">
+																このパラメーターは、出力レコードに追加される、先頭の MLLP バイトを定義します。
+</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																末尾の MLLP バイト
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				1C0D
+															</td>
+															<td valign="top" width="*">
+																このパラメーターは、区切り文字が何であるかを定義します。
+この値は 16 進数で指定する必要があります。
+</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																再試行限界
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				3
+															</td>
+															<td valign="top" width="*">
+																このパラメーターは、送信側フローが宛先アプリケーションへの HL7 メッセージの送信を試行する回数を定義します。
+</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																再試行をログに記録
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				選択
+															</td>
+															<td valign="top" width="*">
+																このパラメーターは、メッセージの送達試行をそれぞれログに記録するかどうかを決定します。
+</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																検証
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				なし
+															</td>
+															<td valign="top" width="*">
+																このパラメーターは、HL7 メッセージ・セットに照らしてメッセージを検証するかどうかを指定します。
+</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	
+		
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="Options">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="OptionsTwisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="OptionsArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">オプション</div>
+							
+							
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="OptionsContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">パターン・パラメーター</th>
+													  <th class="invisible" valign="top" width="*">デフォルト
+</th>
+													  <th valign="top" width="*">説明</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																ジャーナリング
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				標準
+															</td>
+															<td valign="top" width="*">
+																																このパラメーターは、ジャーナリングのオプションを決定します。有効な値は以下のとおりです。<ul>
+<li><span class="msobjpropval">なし</span>: ジャーナリングはありません。
+このオプションは、パターンのユーザーが、自身の要件に対するジャーナリングの実行のためにソース・フィードを使用する場合に使用することもできます。</li>
+<li><span class="msobjpropval">標準</span>: 各メッセージのコピーが、パターンで定義された標準ヘッダー情報とともに生成されます。
+このコピーは、<span class="msobjpropval">「パブリッシュ」</span>パラメーターの指定に従って、トピック <span class="filepath"><i>PatternInstance</i>/Journal</span> にパブリッシュされるか、またはジャーナル・キューに書き込まれます。</li>
+</ul>
+
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																正規のフィード
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				クリア
+															</td>
+															<td valign="top" width="*">
+																このパラメーターは、正規の形式でメッセージのコピーが生成されるかどうかを指定します。
+選択された場合、<span class="msobjprop">「パブリッシュ」</span>パラメーターによって、このメッセージのコピーが <span class="filepath"><i>PatternInstance</i>.CAN</span> キューに送信されるか、それともトピック <span class="filepath"><i>PatternInstance</i>/Canonical</span> に送信されるかが決まります。
+</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																パブリッシュ
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				パブリッシュ
+															</td>
+															<td valign="top" width="*">
+																このパラメーターは、ジャーナル・メッセージ、剰余メッセージ、およびその他のレポートが、パブリッシュされるか、キューに書き込まれるかを決定します。
+</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	
+		
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="Id12a383eb725f0e18b3e15d717fa">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="Id12a383eb725f0e18b3e15d717faTwisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="Id12a383eb725f0e18b3e15d717faArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">その他
+</div>
+							
+							
+
+									
+
+									
+
+									
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="Id12a383eb725f0e18b3e15d717faContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">パターン・パラメーター</th>
+													  <th class="invisible" valign="top" width="*">デフォルト
+</th>
+													  <th valign="top" width="*">説明</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																説明
+															</th>
+															<td valign="top" width="2*" class="invisible">
+																				医療デバイスから EMR へのパターン</td>
+															<td valign="top" width="*">
+																																このパラメーターは、生成されるフローの目的と必要に応じた任意の詳細を定義します。
+</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																キュー接頭部
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																																このパラメーターは、キュー名の接頭部のストリングを定義します。標準キューは、この接頭部と一連の標準の接尾部付きで作成されます。<p>このパラメーターをブランクのままにすると、パターン・インスタンス名から非英数字を削除する処理が行われ、その処理されたパターン・インスタンス名がキューの接頭部として使用されます。</p>
+
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																フロー接頭部
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																																このパラメーターは、生成されるパターン・インスタンスの各メイン・メッセージ・フロー名の先頭に追加するストリングを定義します。このストリングは、レポート内およびモニターにおいて、パターン・インスタンスのコンポーネントを識別するのに役立ちます。<p>このパラメーターをブランクのままにすると、パターン・インスタンス名から非英数字を削除する処理が行われ、その処理されたパターン・インスタンス名がフローの接頭部として使用されます。</p>
+
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																構成可能サービス接頭部
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																このパラメーターは、構成可能サービス名の接頭部のストリングを定義します。
+<p>このパラメーターをブランクのままにすると、パターン・インスタンス名から非英数字を削除する処理が行われ、その処理されたパターン・インスタンス名が構成可能サービス名として使用されます。</p>
+
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																スクリプトの生成
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				選択
+															</td>
+															<td valign="top" width="*">
+																																このパラメーターは、MQSC デプロイメント・スクリプトを生成するかどうかを決定します。
+
+</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																トレース・ファイル名
+</th>
+															<td valign="top" width="2*" class="invisible">
+																				tracefile.txt
+															</td>
+															<td valign="top" width="*">
+																																このパラメーターは、トレース出力の送信先であるファイルの名前 (パスを含む) を定義します。パスを指定しない場合、トレース・ファイルは、IBM Integration Bus のインストール済み環境のマシン全体の作業パス・ディレクトリーに書き込まれます。Windows でのデフォルトの作業パス・ディレクトリーは <span class="filepath">C:&#xa5;ProgramData&#xa5;Application Data&#xa5;IBM&#xa5;MQSI</span> です。Linux でのデフォルトの作業パス・ディレクトリーは <span class="filepath">/var/mqsi</span> です。
+</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	<div id="footnotes" class="invisible">
+		<div class="box first">
+			<div class="TitleBox"><!-- --></div>
+			<div class="FooterBox"><!-- --></div>
+			<div class="TL"><!-- --></div>
+			<div class="TR"><!-- --></div>
+			<div class="BL"><!-- --></div>
+			<div class="BR"><!-- --></div>
+			<div class="ContentBox">
+				<div class="invisible" >
+					<p class="shortdesc">すべてのパターン・パラメーターとそのデフォルト値をリストします。
+デフォルトが示されていない場合、デフォルト値は空ストリングです。</p>
+				</div>
+				<a href="overview.htm#anchorBack" title="戻る">「Medical devices to EMR」パターンの仕様に戻る</a>
+<p></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

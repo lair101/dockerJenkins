@@ -1,0 +1,57 @@
+msgid "Welcome to IBM Integration Bus Healthcare Pack %HEALTHCARE_VERSION%"
+msgstr "Bienvenue dans IBM Integration Bus Healthcare Pack %HEALTHCARE_VERSION%"
+
+msgid "Close the IBM Integration Toolkit and stop any integration nodes that are running before you continue."
+msgstr "Fermez IBM Integration Toolkit et arrêtez les noeuds d'intégration en cours d'exécution avant de continuer."
+
+msgid "Stop any integration nodes that are running before you continue."
+msgstr "Arrêtez les noeuds d'intégration en cours d'exécution avant de continuer."
+
+msgid "Before installing IBM Integration Bus Healthcare Pack, make sure you have permission to write to your IBM Integration Bus installation directory."
+msgstr "Avant d'installer IBM Integration Bus Healthcare Pack, vérifiez que vous avez des droits d'accès en écriture sur le répertoire d'installation d'IBM Integration Bus."
+
+msgid "You must accept the IBM Integration Bus license before you can install IBM Integration Bus Healthcare Pack."
+msgstr "Vous devez accepter la licence IBM Integration Bus pour pouvoir installer IBM Integration Bus Healthcare Pack."
+
+msgid "Unable to install IBM Integration Bus Healthcare Pack.\nYou must specify an IBM Integration Bus V10 installation directory as the first parameter to this installer."
+msgstr "Impossible d'installer IBM Integration Bus Healthcare Pack.\nVous devez spécifier un répertoire d'installation IBM Integration Bus V10 comme premier paramètre dans ce programme d'installation."
+
+msgid "You do not have permission to accept the license. See your system administrator to obtain write permissions to the IBM Integration Bus Healthcare Pack installation directory."
+msgstr "Vous n'êtes pas autorisé à accepter la licence. Pour obtenir des droits d'accès en écriture sur le répertoire d'installation d'IBM Integration Bus Healthcare Pack, prenez contact avec votre administrateur système."
+
+msgid "The IBM Integration Bus Healthcare Pack use restriction was not accepted.\nBefore using IBM Integration Bus Healthcare Pack you must first accept the use restriction.\nTo view and accept the use restriction, run 'HealthcarePack_install.sh' again."
+msgstr "Les restrictions d'utilisation d'IBM Integration Bus Healthcare Pack n'ont pas été acceptées.\nProcédez à cette opération avant d'utiliser IBM Integration Bus Healthcare Pack.\nPour afficher et accepter les restrictions d'utilisation, exécutez à nouveau 'HealthcarePack_install.sh'."
+
+msgid "License accepted.\nSetting up IBM Integration Bus Healthcare Pack."
+msgstr "Licence acceptée.\nInstallation d'IBM Integration Bus Healthcare Pack."
+
+msgid "IBM Integration Bus Healthcare Pack is already installed.\nUninstall any previous installations of IBM Integration Bus Healthcare Pack and run this installer again."
+msgstr "IBM Integration Bus Healthcare Pack est déjà installé.\nDésinstallez les installations précédentes d'IBM Integration Bus Healthcare Pack et exécutez à nouveau le programme d'installation."
+
+msgid "Unable to install IBM Integration Bus Healthcare Pack because files could not be created in the IBM Integration Bus registry directory.\nCheck you have the right permissions to write to this directory before running the installer again."
+msgstr "Impossible d'installer IBM Integration Bus Healthcare Pack car les fichiers n'ont pas pu être créés dans le répertoire de registre d'IBM Integration Bus.\nVérifiez que vous disposez des droits nécessaires pour écrire dans ce répertoire avant d'exécuter à nouveau le programme d'installation."
+
+msgid "Unable to install IBM Integration Bus Healthcare Pack because files could not be created in the IBM Integration Bus installation directory.\nCheck you have the right permissions to write to this directory before running the installer again."
+msgstr "Impossible d'installer IBM Integration Bus Healthcare Pack car les fichiers n'ont pas pu être créés dans le répertoire d'installation d'IBM Integration Bus.\nVérifiez que vous disposez des droits nécessaires pour écrire dans ce répertoire avant d'exécuter à nouveau le programme d'installation."
+
+msgid "IBM Integration Bus Healthcare Pack is installed.\nFor each integration node to which you want to deploy Healthcare nodes or patterns, complete the following steps:\n1. Start the integration node.\n2. Complete one of the following steps:\n\t- If your license entitles you to use all the functionality except the MedicalDeviceInput node, run the following command\n\t\tmqsimode <NODENAME> -x healthcare\n\t- If your license entitles you to use only the MedicalDeviceInput node, run the following command:\n\t\tmqsimode <NODENAME> -x medicalDevices\n\t- If your license entitles you to use all the functionality including the MedicalDeviceInput node, run the following command:\n\t\tmqsimode <NODENAME> -x \"healthcare,medicalDevices\""
+msgstr "IBM Integration Bus Healthcare Pack est installé.\nPour chaque noeud d'intégration sur lequel vous souhaitez déployer des noeuds ou des modèles Healthcare, procédez comme suit :\n1. Démarrez le noeud d'intégration.\n2. Effectuez l'une des étapes suivantes :\n\t- Si votre licence vous autorise à utiliser toutes les fonctionnalités, sauf le noeud MedicalDeviceInput, exécutez la commande suivante :\n\t\tmqsimode <NODENAME> -x healthcare\n\t- Si votre licence vous autorise à utiliser seulement le noeud MedicalDeviceInput, exécutez la commande suivante :\n\t\tmqsimode <NODENAME> -x medicalDevices\n\t- Si votre licence vous autorise à utiliser toutes les fonctionnalités y compris le noeud MedicalDeviceInput, exécutez la commande suivante :\n\t\tmqsimode <NODENAME> -x \"healthcare,medicalDevices\""
+
+msgid "The IBM Integration Bus Healthcare Pack license was not accepted.\nBefore using IBM Integration Bus Healthcare Pack you must first accept the license agreement.\nTo view and accept the license agreement, stop and run this installer again."
+msgstr "La licence IBM Integration Bus Healthcare Pack n'a pas été acceptée.\nAvant d'utiliser IBM Integration Bus Healthcare Pack, vous devez accepter le contrat de licence.\nPour afficher et accepter ce dernier, arrêtez et exécutez à nouveau ce programme d'installation."
+
+msgid "Unsupported parameters provided.\nSee IBM Integration Bus Healthcare Pack documentation for supported options for the installer."
+msgstr "Des paramètres non pris en charge ont été fournis.\nPour connaître les options prises en charge par le programme d'installation, consultez la documentation IBM Integration Bus Healthcare Pack."
+
+
+msgid "IBM Integration Bus Healthcare Pack %HEALTHCARE_VERSION% Uninstallation"
+msgstr "Désinstallation d'IBM Integration Bus Healthcare Pack %HEALTHCARE_VERSION%"
+
+msgid "Unable to uninstall IBM Integration Bus Healthcare Pack.\nYou must specify an IBM Integration Bus V10 installation directory as the first parameter to this uninstaller."
+msgstr "Impossible de désinstaller IBM Integration Bus Healthcare Pack.\nVous devez spécifier un répertoire d'installation IBM Integration Bus V10 comme premier paramètre dans ce programme de désinstallation."
+
+msgid "It was not possible to remove one or more files. Remove the files listed in the error(s) above to complete uninstallation of IBM Integration Bus Healthcare Pack."
+msgstr "Un ou plusieurs fichiers n'ont pas pu être supprimés. Supprimez les fichiers répertoriés dans les erreurs ci-dessus pour terminer la désinstallation d'IBM Integration Bus Healthcare Pack."
+
+msgid "Uninstallation successful."
+msgstr "Désinstallation réussie."

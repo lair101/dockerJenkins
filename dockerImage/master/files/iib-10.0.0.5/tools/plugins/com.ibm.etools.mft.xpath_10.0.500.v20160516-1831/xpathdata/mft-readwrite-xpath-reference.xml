@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xpath-reference version="1.0" type="mft-readwrite-xpath-reference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="xpath-reference.xsd">
+	<syntax>
+		<!-- Contains the attributes of the context node. -->
+		<axis-specifier name="attribute::" description="axis_attribute_descr" />
+		
+		<!-- Contains the children of the context node. -->
+		<axis-specifier name="child::" description="axis_child_descr" />
+
+		<!-- Selects all nodes located by the preceding path. -->
+		<node-test name="*" description="star_descr" />
+
+		<!-- The | operator computes the union of its operands. -->
+		<operator type="node-set" name="|" description="union_descr" />
+		
+		<!-- The / operator selects the child nodes. -->
+		<operator type="node-set" name="/" description="slash_descr" />
+
+		<!-- Less than or equal to -->
+		<operator type="boolean" name="&lt;=" description="lte_descr" />
+		
+		<!-- Less than -->
+		<operator type="boolean" name="&lt;" description="lt_descr" />
+		
+		<!-- Greater than or equal to -->
+		<operator type="boolean" name=">=" description="gte_descr" />
+		
+		<!-- Greater than -->
+		<operator type="boolean" name=">" description="gt_descr" />
+		
+		<!-- Equals  -->
+		<operator type="boolean" name="=" description="equ_descr" />
+		
+		<!-- Not equal  -->
+		<operator type="boolean" name="!=" description="nequ_descr" />
+		
+		<!-- Boolean and -->
+		<operator type="boolean" name="and" description="and_descr" />
+		
+		<!-- Boolean or -->
+		<operator type="boolean" name="or" description="or_descr" />
+
+		<!-- The + operator performs addition. -->
+		<operator type="number" name="+" description="plus_descr" />
+		
+		<!-- The - operator performs subtraction. -->
+		<operator type="number" name="-" description="minus_descr" />
+		
+		<!-- The * operator performs multiplication. -->
+		<operator type="number" name="*" description="multi_descr" />
+		
+		<!-- The div operator performs floating point division. -->
+		<operator type="number" name="div" description="div_descr" />
+		
+		<!-- Enter the predicate expression between the square brackets to filter the node-set. -->
+		<symbol name="[]" description="predicate_descr" />
+		
+		<!-- This location step is short for self::node(). -->
+		<symbol name="." description="ab_dot_descr" />
+		
+		<!-- This location step is short for parent::node(). -->
+		<symbol name=".." description="ab_2dot_descr" />
+		
+		<!-- This location step is short for attribute::. -->
+		<symbol name="@" description="ab_attr_descr" />
+		
+		<!-- This location step selects the root node of the document. -->
+		<symbol name="/" description="ab_slash_descr" />
+	</syntax>
+</xpath-reference>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+     <extension
+         point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http:///c.ecore"
+            class="com.ibm.etools.c.CPackage">
+      </package>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http:///c/datatypes.ecore"
+            class="com.ibm.etools.c.datatypes.DatatypesPackage">
+      </package>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="c"
+            class="com.ibm.etools.c.importer.CImporter">
+      </parser>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="h"
+            class="com.ibm.etools.c.importer.CImporter">
+      </parser>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="ccs"
+            class="com.ibm.etools.c.importer.CImporter">
+      </parser>
+   </extension>
+   
+</plugin>

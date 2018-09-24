@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<copyright 
+ notice="lm-source" 
+ pids="5724-J06,5724-J05,5724-J04,5697-J09,5655-M74,5655-M75,5648-C63,5655-IBC,5655-IBB,5655-AB1,5655-AB2" 
+ years="2011,2016" 
+ crc="1041114207" > 
+ Licensed Materials - Property of IBM  
+  
+ 5724-J06,5724-J05,5724-J04,5697-J09,5655-M74,5655-M75,5648-C63,5655-IBC,5655-IBB,5655-AB1,5655-AB2 
+  
+ (C) Copyright IBM Corp. 2011, 2016 All Rights Reserved.  
+ </copyright> 
+-->
+<!-- 
+ Java Servlet 3.0 annotations will NOT be scanned for because metadata-complete is set to true.
+ This is done for startup performance reasons.
+-->
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0" metadata-complete="true">
+	<absolute-ordering/>
+
+    <!-- Servlet definitions -->
+  
+    <servlet>
+        <description></description>
+        <servlet-name>BrokerRestHandler</servlet-name>
+        <servlet-class>com.ibm.broker.admin.RestHandler</servlet-class>
+        <enabled>true</enabled>
+        <async-supported>false</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BrokerRestHandler</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- authentication -->
+    <login-config>
+        <auth-method>BASIC</auth-method>
+    </login-config>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Default access</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>webui</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <!-- All security is hinged on a single admin user role -->
+    <security-role>
+        <role-name>webui</role-name>
+    </security-role>
+
+    <!-- Make sure we don't cache api responses -->
+    <filter>
+        <filter-name>ExpiresFilter</filter-name>
+        <filter-class>org.apache.catalina.filters.ExpiresFilter</filter-class>
+        <init-param>
+            <param-name>ExpiresByType application/xml</param-name>
+            <param-value>access plus 0 seconds</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ExpiresByType application/json</param-name>
+            <param-value>access plus 0 seconds</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ExpiresByType text/xml</param-name>
+            <param-value>access plus 0 seconds</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ExpiresDefault</param-name>
+            <param-value>now plus 0 second</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ExpiresExcludedResponseStatusCodes</param-name>
+            <param-value>302, 304, 500, 503</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>ExpiresFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+</web-app>

@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+<title>Tareas que deben completarse después de generar el patrón Servicio sanitario: Salud en el hogar</title>
+<!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    -->
+</head>
+
+<body role="main">
+	<h1 class="topictitle1">Tareas que deben completarse después de
+generar el patrón Servicio sanitario: Salud en el hogar</h1>
+
+
+	<p>Después de generar una instancia del patrón Servicio sanitario:
+Salud en el hogar, siga los pasos siguientes:</p>
+
+	<ul class="ul steps-unordered">
+		<li class="li step stepexpand">Implemente el subflujo definido por
+el usuario en el patrón Servicio sanitario: Salud en el hogar
+			<ul>
+				<li>El patrón Servicio sanitario: Salud en el hogar utiliza
+<span class="msobjpropval">UserDefinedFunction.subflow</span>
+                para procesar sus mensajes HL7 v2.6. Si desea
+personalizar la forma en que el patrón procesa estos mensajes, vaya
+a Subflows/UserDefinedFunction.subflow.
+				<p> Una vez completado el proceso del mensaje entrante, se
+devuelve un acuse de recibo a la aplicación o dispositivo de
+llamada.</p> </li>
+			</ul>
+		</li>
+
+		<li class="li step stepexpand"><b>Opcional:</b> Si se espera
+que el patrón Servicio sanitario: Salud en el hogar reciba un número
+elevado de solicitudes, configure el sistema para que utilice una
+topología HTTP adecuada. Consulte <cite>Configuración de la topología
+HTTP</cite> en la documentación de IBM Integration Bus.
+		</li>
+		
+		<li class="li step stepexpand"><b>Opcional:</b> Si configura el
+patrón Servicio sanitario: Salud en el hogar para habilitar el paso a
+través de señal SAML 2.0, siga los pasos siguientes:
+            <ol>
+                <li class="li step stepexpand">Modifique y ejecute
+los scripts de servicio configurable que se proporcionan en la
+carpeta
+                <span class="filepath">SecurityProfile scripts</span>
+para definir un perfil de seguridad para un Servicio SAML de token
+seguro. 
+					Para obtener más información, consulte <cite>Posibilidades de
+autenticación y autorización de las señales SAML</cite> en la
+documentación de IBM Integration Bus. 
+                </li>
+                <li class="li step stepexpand">Cree un archivo BAR que contenga la aplicación Servicio sanitario: Salud en el hogar.
+                </li>
+                <li class="li step stepexpand">En el editor de archivos BAR, configure el nodo SecurityPEP con el
+perfil de seguridad que ha definido en el paso 1.
+                Para obtener más información, consulte
+<cite>Configuración de la extracción de una señal de
+identidad o de seguridad
+</cite> en la
+documentación de IBM Integration Bus.
+                </li>
+            </ol>
+        </li>
+			
+      </ul>
+
+	<p>
+		<a href="overview.htm" title="Atrás">Volver a
+la especificación del patrón Servicio sanitario: Salud en el hogar</a>
+	</p>
+
+</body>
+</html>

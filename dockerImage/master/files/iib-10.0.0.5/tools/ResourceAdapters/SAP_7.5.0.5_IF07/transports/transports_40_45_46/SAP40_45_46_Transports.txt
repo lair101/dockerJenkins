@@ -1,0 +1,29 @@
+Connector Transport Files for the ABAP Extension Module
+
+
+The following is a list of the SAP R/3 version 4.0, 4.5 or 4.6 transport files
+necessary to support this module. To ensure that all necessary tables are created
+before the data for those tables is added, you must install the transports in the
+order listed. These files can be found in the directory
+\J2CA_Components\SAPAdapter\AepTransports\transports_40_45_46
+
+
+File Name			Transport Number
+---------			----------------
+
+1. 40_45_46_Primary		CWDK900333
+
+2. 40_45_46_Infrastructure	BBYK900052
+
+3. 40_45_46_Infrastructure_1  	BBYK900055
+
+4. 40_45_46_Infrastructure_2  	BBYK900061
+
+5. 40_45_46_Infrastructure_3  	BBYK900064
+
+6. 40_45_46_Infrastructure_4  	BBYK900068
+   
+    
+
+Refer to the Adapter for mySAP.com (SAP R/3 V. 4.X) User Guide for detailed information about
+installing the transport files. 

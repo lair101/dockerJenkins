@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2013, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    -->
+    <title>应用“Healthcare：Web 服务到 DICOM”模式前需要完成的任务</title>
+</head>
+<body role="main">
+    <h1 class="topictitle1">应用“<span>Healthcare：Web 服务到 DICOM</span>”模式前需要完成的任务</h1>
+    <div class="p">
+        <p class="shortdesc">如果有需要，在应用此模式以生成模式实例之前，请完成下列一项或多项任务：</p>
+    </div>
+    <ul>
+        <li>
+            确定“Healthcare：Web 服务到 DICOM”模式满足您的业务需求，并且同时受请求者应用程序和 PACS 支持。
+</li>
+        <li>
+            定义或确定 DICOM PACS 应用程序，并确保其支持 C-FIND 和 C-MOVE 命令。
+</li>
+        <li>
+            对模式实例进行命名。请确定模式应用程序的用途，以便选择合适的名称。
+</li>
+        <li>
+            确定是否需要日志记录和错误消息。如果需要其中任何一项，您必须确定要将消息发送到哪个队列管理器和队列。可以将消息发送到由多个消息流使用的常规队列，也可以使用特定于此模式实例的队列。
+</li>
+    </ul>
+    <p>
+        <a href="overview.htm#anchor1" title="返回">返回到“Healthcare：Web 服务到 DICOM”模式规范</a></p>
+</body>
+</html>

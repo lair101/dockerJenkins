@@ -1,0 +1,6 @@
+        Identification division.
+         Program-id. xmi.
+         Data division.
+         Working-Storage section.
+         COPY "{0}".
+        End program xmi.

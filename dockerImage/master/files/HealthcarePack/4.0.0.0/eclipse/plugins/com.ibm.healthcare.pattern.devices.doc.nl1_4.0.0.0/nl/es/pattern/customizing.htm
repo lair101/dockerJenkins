@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+        (C) COPYRIGHT International Business Machines Corporation., 2011, 2014
+        All Rights Reserved * Licensed Materials - Property of IBM
+    --> <title>Personalización de una instancia de patrón Servicio
+sanitario: de HL7 a informes</title>
+</head>
+<body role="main">
+<a name="links"></a> <h1 class="topictitle1">Personalización de una instancia
+de patrón Servicio sanitario: Dispositivos médicos a EMR</h1>
+<div class="section">
+    <a name="customize"></a> <h2 class="sectiontitle">Subflujos de
+personalización</h2>
+    <p>
+    Hay diez puntos de personalización principales disponibles para los
+usuarios del patrón. Estos subflujos se invocan en diversas etapas del proceso a
+medida que el nodo MedicalDeviceInput propaga los mensajes de
+dispositivo, transformados a HL7 y entregados al EMR. 
+    Los requisitos más comunes son personalizar el mensaje de
+resultados de observación. La mejor forma de conseguirlo es cambiando
+el subflujo <tt>OnDestination</tt>.
+    </p>
+    <h3>Flujo Dispositivos médicos</h3> 
+    <div class="image">
+        <img src="devices.png" alt="Diagrama que muestra el flujo Dispositivos médicos" />
+    </div>
+    <h4>Personalización del estado</h4>
+    <p>
+    El subflujo <tt>OnStatus</tt> se invoca cuando se propaga un
+mensaje de estado desde el nodo MedicalDeviceInput. Los mensajes
+de estado contienen información del estado del dispositivo, avisos
+y errores. Un ejemplo de un mensaje de error sería cuando el nodo
+MedicalDeviceInput notifica que no puede establecer conexión con un
+dispositivo médico. Este subflujo se utiliza a menudo para enviar una
+alerta si un dispositivo médico informa de una condición de error.
+    </p>
+    <h3>Flujo Transformación y direccionamiento</h3> 
+    <div class="image">
+        <img src="transform.png" alt="Diagrama que muestra el flujo Transformación y direccionamiento" />
+    </div>
+    <h4>Personalización de medición no válida</h4>
+    <p>
+    El subflujo <tt>OnInvalid</tt> se invoca si se propaga una
+medición de dispositivo con una validez distinta a
+    <span class="msobjpropval">
+    CM_VALID
+    </span>
+    . El elemento de validez del mensaje de dispositivo
+proporcionar una confianza en la medición del dispositivo médico. El
+patrón sólo transforma y entrega mensajes de dispositivo válidos.
+    </p>
+    <h4>Personalización de no coincidencia</h4>
+    <p>
+    El subflujo <tt>OnNoMatch</tt> se invoca cuando se procesa un
+mensaje de dispositivo que no tiene identificador de paciente. Este
+subflujo solo se invoca si el parámetro de patrón <span class="msobjprop">
+    Identificadores de pacientes
+    </span>
+    está establecido en un valor distinto de <span class="msobjpropval">
+    No hay identificadores de pacientes en los resultados de la observación</span>. Tener mensajes de dispositivo que no tengan un identificador de
+paciente asociado no es necesariamente una condición de error. Por
+ejemplo se puede haber dejado un dispositivo conectado que continúe
+generando mensajes de dispositivo, pero para el cual se haya
+eliminado la asociación de paciente de la base de datos.
+    </p>
+    <h4>Personalización de las mediciones</h4>
+    <p>
+    El subflujo <tt>OnMeasure</tt> se invoca para cada medición de
+dispositivo que propaga el nodo MedicalDeviceInput. Este subflujo se
+invoca antes de que el mensaje de dispositivo se transforme a HL7, de
+forma que contiene la medición sin cambiar procedente del nodo MedicalDeviceInput. Uno
+de los usos de este subflujo es para ajustar el <span class="msobjprop"> PrimaryId
+    </span>
+    del mensaje para que sea el código correcto para el EMR (por
+ejemplo, un código LOINC).
+    </p>
+    <h3>Flujo Sender</h3> 
+    <div class="image">
+        <img src="sender.png" alt="Diagrama que muestra el flujo Sender" />
+    </div>
+    <h4>Personalización del destino</h4>
+    <p>
+    El subflujo <tt>OnDestination</tt> se invoca después de que el
+mensaje de dispositivo se haya transformado a HL7. Después de
+invocar a esta subflujo, el mensaje se graba en la cola de destino a
+punto para entregarlo al EMR. Este subflujo se suele utilizar para
+personalizar el mensaje de resultado de observación HL7 para unos
+requisitos de mensaje específicos de un sitio.
+    </p>
+    <h4>Personalización de caducidad</h4>
+    <p>
+    El parámetro de patrón
+    <span class="msobjprop">
+    Tiempo de caducidad
+    </span>
+    garantiza que no se entregan mensajes antiguos al EMR. La
+comprobación de caducidad se realiza justo antes de enviar el mensaje
+HL7 transformado a la aplicación de destino. Los mensajes caducados
+se graban en una cola de caducidad y se descartan. Este subflujo se
+invoca con el mensaje HL7 transformado antes de grabarlo en la
+cola de caducidad.
+    </p>
+    <h4>Personalización de la finalización</h4>
+    <p>
+    El subflujo <tt>OnFinished</tt> se invoca después de que la
+aplicación de destino haya entregado y acusado de un mensaje HL7
+transformado.
+    </p>
+    <h4>Personalización del emisor</h4>
+    <p>
+    El subflujo <tt>OnSend</tt> se invoca antes de enviar el
+el mensaje HL7 transformado a la aplicación de destino. El subflujo
+proporciona una oportunidad para realizar cambios finales antes
+de enviar el mensaje HL7 al EMR.
+    </p>
+    <h3>Flujo de servicios web</h3> 
+    <div class="image">
+        <img src="service.png" alt="Diagrama que muestra el flujo de servicios web" />
+    </div>
+    <h4>Personalización del servicio</h4>
+    <p>
+    El patrón proporciona un servicio web para gestionar la
+base de datos de identificadores de pacientes. 
+    El subflujo <tt>OnService</tt> se invoca para cada solicitud a
+este servicio web.
+    </p>
+    <h3>Manejo de errores</h3> 
+    <p>
+    Cada flujo principal en el patrón tiene su propio subflujo de manejo
+de errores. 
+    Los mensajes de error se graban en una cola de errores común para
+todo el patrón. 
+    </p>
+    <h4>Personalización de errores</h4>
+    <p>
+    Se llama a <tt>OnErrorQueue</tt> cuando se ha detectado un error y se ha grabado un mensaje de
+error en la cola de errores. El subflujo de personalización
+predeterminado no tiene ningún efecto sobre el mensaje, pero puede
+utilizar este subflujo para crear un mensaje de error que cumpla las
+especificaciones que requiere su entorno.
+    </p>
+</div>
+<a href="overview.htm#anchorBack" title="Atrás">Volver a
+la especificación del patrón Servicio sanitario: Dispositivos médicos
+a EMR</a>
+<p>
+</p>
+</body>
+</html>

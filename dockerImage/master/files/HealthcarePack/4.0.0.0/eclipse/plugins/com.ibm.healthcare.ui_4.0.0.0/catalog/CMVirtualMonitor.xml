@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CMDriverDescription>
+<SupportedDevices model="Cain Medical Virtual Monitor 1" type="Monitor">
+ <CMLLC type="CMLLCRS232">
+ 	<CMLLCCfg port="" baud="9600,2400,4800,19200,115000" parity="E,N,O" data="7,8" stopbit="1" rtscts="No" />
+ </CMLLC>
+ </SupportedDevices>
+ <SupportedDevices model="Cain Medical Virtual Monitor 2" type="Monitor">
+ <CMLLC type="CMLLCRS232">
+ 	<CMLLCCfg port="" baud="9600,2400,4800,19200,115000" parity="E,N,O" data="7,8" stopbit="1" rtscts="No" />
+ </CMLLC>
+ </SupportedDevices>
+ <SupportedDevices model="Cain Medical Virtual Monitor 3" type="Monitor">
+ <CMLLC type="CMLLCSOCKET">
+ 	<CMLLCCfg type="TCP" ipaddress="" port="8000" />
+ </CMLLC>
+ </SupportedDevices>
+<Variables>
+	<Discrete>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="99:346-371-712:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Noninvasive-Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE-M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="NIBP (sys)" 
+ 					shortdesc="Discontinuous, Noninvasive Systolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the systolic phase, measured discontinuously and noninvasively (cuff)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:137-346-371:169:263" 
+ 					CMidtext="Pressure:Mean-Discontinuous-Noninvasive:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN-M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="NIBP (mean)" 
+ 					shortdesc="Discontinuous, Noninvasive Mean Blood Pressure" 
+ 					longdesc="Pressure of the blood computed as mean value between systolic and diastolic Pressures, measured discontinuously and noninvasively (cuff)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:346-371-671:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Noninvasive-Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE-M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="NIBP (dia)" 
+ 					shortdesc="Discontinuous, Noninvasive Diastolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the diastolic phase, measured discontinuously and noninvasively (cuff)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:331-660:302:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:ArterialBlood:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_FLUIDTYPE_ARTERIALBLOOD:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="" 
+ 					abbreviation="SaO2" 
+ 					shortdesc="None" 
+ 					longdesc="arterial oxygen saturation" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="109::169:260" 
+ 					CMidtext="Temperature::Blood:Body" 
+ 					idref="M_BASE_TEMPERATURE::M_CONCERNS_BLOOD:M_CONTEXT_BODY" 
+ 					defaultunits="" 
+ 					abbreviation="T" 
+ 					shortdesc="Blood temperature" 
+ 					longdesc="Blood temperature" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="Probe1,Probe2" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:667:203:263" 
+ 					CMidtext="Rate:Beats:Heart:CVS" 
+ 					idref="M_BASE_RATE:M_TIMECRIT_BEATS:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="HR" 
+ 					shortdesc="heart rate" 
+ 					longdesc="Rate of cardiac beats" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:667:203:263" 
+ 					CMidtext="Rate:Beats:Heart:CVS" 
+ 					idref="M_BASE_RATE:M_TIMECRIT_BEATS:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="HR" 
+ 					shortdesc="heart rate" 
+ 					longdesc="Rate of cardiac beats" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:667:203:263" 
+ 					CMidtext="Rate:Beats:Heart:CVS" 
+ 					idref="M_BASE_RATE:M_TIMECRIT_BEATS:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="HR" 
+ 					shortdesc="heart rate" 
+ 					longdesc="Rate of cardiac beats" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 	</VarGroup>
+ </Discrete>
+</Variables></CMDriverDescription>

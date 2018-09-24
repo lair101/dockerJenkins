@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<contexts>
+	<context id="MappingEditor">
+		<description><b>Mapping Editor</b>
+This is the default editor provided by the Application Development perspective for editing mapping (.msgmap) files.
+Expand the source and target structures, and then connect elements from the source message or database to elements in the target message or database to create a basic mapping. You can use the Edit and Spreadsheet panes to refine the mapping relationships.</description>
+		<topic href="../com.ibm.etools.mft.doc/ar25140_.htm" label="Map editor"/>
+		<topic href="../com.ibm.etools.mft.doc/ar02940_.htm" label="Developing mappings"/>
+		<topic href="../com.ibm.etools.mft.doc/ar25256_.htm" label="Edit pane"/>
+		<topic href="../com.ibm.etools.mft.doc/ar25257_.htm" label="Spreadsheet pane"/>
+	</context>
+	<context id="CallExistingEsqlDialog">
+		<description><b>Call Existing ESQL Routine</b>
+If you want to perform some processing that is not supported by mapping, you can write your own ESQL routine to perform the processing, and then call the ESQL from a mapping. For example, if a message's structure is not defined, you can write ESQL that treats the message as a BLOB message.
+To use an existing ESQL routine in the selected mapping, select the routine from this dialog. The ESQL routine must already exist in your workspace.</description>
+	<topic href="../com.ibm.etools.mft.doc/ar02940_.htm" label="Developing mappings"/>
+	<topic href="../com.ibm.etools.mft.doc/ar25189_.htm" label="Calling an ESQL routine"/>
+	<topic href="../com.ibm.etools.mft.doc/ak00990_.htm" label="ESQL"/>
+	<topic href="../com.ibm.etools.mft.doc/ac00590_.htm" label="BLOB parser and domain"/>
+	</context>
+	<context id="CallExistingJavaDialog">
+		<description><b>Call Existing Java Method</b>
+If you want to perform some processing that is not supported by mapping, you can write your own Java method to perform the processing, and then call the Java method from a mapping. To use an existing Java method in the selected mapping, select the method from this dialog. The Java method must already exist in your workspace.</description>
+	<topic href="../com.ibm.etools.mft.doc/ar02940_.htm" label="Developing mappings"/>
+	<topic href="../com.ibm.etools.mft.doc/ar60090_.htm" label="Calling a Java method"/>
+	<topic href="../com.ibm.etools.mft.doc/ac30200_.htm" label="Developing Java"/>
+	</context>
+	<context id="CallExistingSubmapDialog">
+		<description><b>Call Existing Submap Function</b>
+To use or reuse an existing submap in the selected mapping, select the submap from this dialog. The submap must already exist in your workspace.</description>
+		<topic href="../com.ibm.etools.mft.doc/ar02940_.htm" label="Developing mappings"/>
+		<topic href="../com.ibm.etools.mft.doc/ar25159_1_.htm" label="Creating and calling submaps and subroutines"/>
+	</context>
+	<!--V6FP2-->
+	<context id="InsertXSDDialog">
+		<description><b>Insert Message Statement</b>
+Select the element or attribute to insert. If you are adding repeating elements, enter the number of instances that you want to insert; the maximum number of instances is shown.</description>
+	<topic href="../com.ibm.etools.mft.doc/ar25257_.htm" label="Message Mapping editor Spreadsheet pane"/>
+	<topic href="../com.ibm.etools.mft.doc/ar25280_.htm" label="Configuring a non-repeating source and a repeating target"/>
+	</context>
+	<!--V6FP2-->
+	<!--Can't find this dialog-->
+	<context id="InsertRDBDialog">
+		<description><b>Insert RDB Statement</b> 
+Select the statement to insert.</description>
+	<topic href="../com.ibm.etools.mft.doc/ar25257_.htm" label="Message Mapping editor Spreadsheet pane"/>
+	<topic href="../com.ibm.etools.mft.doc/ar25280_.htm" label="Configuring a non-repeating source and a repeating target"/>
+	</context>
+	<!--V6FP2-->
+	<context id="ReplaceXSDElementDialog">
+		<description><b>Replace Statement</b> 
+To subsitute one element for another in the message, select the element that replaces the existing element.</description>
+	<topic href="../com.ibm.etools.mft.doc/ar25257_.htm" label="Message Mapping editor Spreadsheet pane"/>
+	<topic href="../com.ibm.etools.mft.doc/ar25280_.htm" label="Configuring a non-repeating source and a repeating target"/>
+	</context>
+	<!--V6FP2-->
+	<context id="ReplaceXSDAttributeDialog">
+		<description><b>Replace Statement</b> 
+To subsitute one attribute for another in the message, select the attribute that will replace the existing attribute.</description>
+	<topic href="../com.ibm.etools.mft.doc/ar25257_.htm" label="Message Mapping editor Spreadsheet pane"/>
+	<topic href="../com.ibm.etools.mft.doc/ar25280_.htm" label="Configuring a non-repeating source and a repeating target"/>
+	</context>
+	<!--V6FP2-->
+	<context id="ReplaceRDBDialog">
+		<description><b>Replace Statement</b> 
+To subsitute one item for another, select the item that will replace the existing item.</description>
+	<topic href="../com.ibm.etools.mft.doc/ar25257_.htm" label="Message Mapping editor Spreadsheet pane"/>
+	<topic href="../com.ibm.etools.mft.doc/ar25280_.htm" label="Configuring a non-repeating source and a repeating target"/>
+	</context>
+	<context id="AddMappablesWizard">
+		<description><b>Add Sources and Targets wizard</b>
+Select the sources and targets to add to the Map editor.
+In a message map, you can have only one source but one or more targets; in a submap, you can have multiple sources but only one target.
+The sources and targets can be either messages or databases or both, depending on the node that references the map.</description>
+		<topic href="../com.ibm.etools.mft.doc/ar25140_.htm" label="Map editor"/>
+		<topic href="../com.ibm.etools.mft.doc/ar02940_.htm" label="Developing mappings"/>
+		<topic href="../com.ibm.etools.mft.doc/ar25183_.htm" label="Deleting a source or target element"/>
+	</context>
+	<context id="NewNodeMapDialog">
+		<description><b>New Message Map for Mapping Node dialog</b>
+Use this dialog to create a new message map file for the selected mapping node.</description>
+	<topic href="../com.ibm.etools.mft.doc/ar37610_.htm" label="Creating a message map file from a Mapping node"/>
+	<topic href="../com.ibm.etools.mft.doc/ar00840_.htm" label="Mappings"/>
+	<topic href="../com.ibm.etools.mft.doc/ar02940_.htm" label="Developing mappings"/>
+	</context>
+	<context id="SelectDSNWizard">
+		<description><b>Select Database as Mapping Source wizard</b>
+Select the database from which you want to add information to the target message. You must already have a connection to the database in your workspace.</description>
+		<topic href="../com.ibm.etools.mft.doc/ar37660_.htm" label="Adding database definitions to the IBM Integration Toolkit"/>
+		<topic href="../com.ibm.etools.mft.doc/ar25267_.htm" label="Mapping a target element from database tables"/>
+	</context>
+	<context id="CreateNewSubmapDialog">
+		<description><b>Wildcard Specification wizard</b>
+A wildcard element represents an element that does not appear in the message model, but could appear at the same position as the wildcard element in the input message. You cannot map wildcard elements, so you must specify an element to be used in place of the wildcard element.
+For each wildcard element in the map, select the element to be used in place of the wildcard element.</description>
+		<topic href="../com.ibm.etools.mft.doc/ar25158_.htm" label="Creating a new submap for a wildcard source"/>
+		<topic href="../com.ibm.etools.mft.doc/ad10390_.htm" label="Wildcard elements"/>
+		<topic href="../com.ibm.etools.mft.doc/ar25140_.htm" label="Map editor"/>
+	</context>
+	<context id="CreateNewRDBSubmapDialog">
+		<description><b>Create New Database submap</b>
+Select the database map targets for the submap to be created.
+If a wildcard mapping source is selected, you must specify an element to be used in place of the wildcard element.
+A wildcard element represents an element that does not appear in the message model, but could appear at the same position as the wildcard element in the input message.</description>
+		<topic href="../com.ibm.etools.mft.doc/ar25158_.htm" label="Creating a new submap for a wildcard source"/>
+		<topic href="../com.ibm.etools.mft.doc/ar37650_.htm" label="Creating a submap to modify a database"/>
+		<topic href="../com.ibm.etools.mft.doc/ar25140_.htm" label="Map editor"/>
+	</context>
+	<context id="NewMapWizard">
+		<description><b>New Message Map wizard</b>
+Use this wizard to create a new message map file. Create a message map file if you want to transform a message or information in a database using the graphical Map editor.  
+You can also use this wizard to create a submap, which is a message map file that is called from another message map file, instead of being called from a message flow node.</description>
+	<topic href="../com.ibm.etools.mft.doc/ar25262_.htm" label="Creating a message map file"/>
+	<topic href="../com.ibm.etools.mft.doc/ar02940_.htm" label="Developing mappings"/>
+	<topic href="../com.ibm.etools.mft.doc/ar00840_.htm" label="Mappings"/>
+	</context>
+	<context id="RuntimeSchemaDialog">
+		<description><b>Specify Runtime Data Source and Schema</b>
+Use this dialog to define the runtime data source and schema. Runtime data source can be the same as the build time data source, or it can be set to use the data source specified in the flow property. If the mapping refers to a database that has a different schema at run time, specify the runtime schema in this dialog. This might be necessary if the database is installed on a different computer, or if you use a different user account at run time.</description>
+<!--Task topic to be added here <topic href="" label=""/>-->
+	</context>
+	<!--VEA1-->
+	<context id="MapByNameDialog">
+		<description><b>Map by Name</b>
+Use this dialog to map complex elements based on their names. For example, you can map all the child elements of the selected target to source elements that have the same name.
+You can also map elements with similar names, or using word pairs that are defined in a synonym file. When the mappings are complete, verify that they are correct; manually edit them if necessary.</description>
+<topic href="../com.ibm.etools.mft.doc/ar37510_.htm" label="Mapping from source: by name"/>
+<topic href="../com.ibm.etools.mft.doc/ar02940_.htm" label="Developing mappings"/>
+	</context>
+	<context id="PopulateDialog">
+		<description><b>Insert Children</b>
+	<!--VEA1-->
+Use this dialog to add child objects of the selected parent field to the spreadsheet pane. The dialog shows the child objects that are valid for the field that you have selected.
+The child objects that must be included are already selected in the dialog; you can select others.</description>
+<topic href="../com.ibm.etools.mft.doc/ar37520_.htm" label="Populating a message map"/>
+<topic href="../com.ibm.etools.mft.doc/ar25257_.htm" label="Message Mapping editor Spreadsheet pane"/>
+	</context>
+	<context id="SelectRDBOperationDialog">
+		<description><b>Select Database Operation</b>
+Use this dialog to change the database operation of the target mapping. Select the database operation to perform, Insert, Update or Delete. If you convert between Insert and Update, the mappings you have already created are preserved.</description>
+	<topic href="../com.ibm.etools.mft.doc/ar37590_.htm" label="Change database operation of a message map"/>
+	<topic href="../com.ibm.etools.mft.doc/ar02940_.htm" label="Developing mappings"/>
+	</context>
+	<context id="SelectMessageHeadersDialog">
+		<description><b>Select Message Headers</b>
+Use this dialog to add or remove headers from a message. If you select only Properties and LocalEnvironment for the target message, all the other headers are copied from the source to the target message. If you remove all the headers, only the XSD component that defines the message is copied to the target; selecting no headers is usually used for submaps.</description>
+	<topic href="../com.ibm.etools.mft.doc/ar37530_.htm" label="Mapping headers and folders"/>
+	<topic href="../com.ibm.etools.mft.doc/ar02940_.htm" label="Developing mappings"/>
+	</context>
+	<context id="SelectMessageParserDialog">
+		<description><b>Set Message Domain Parser</b>
+Use this dialog to change the message domain parser for the target message. Select the target message domain parser from the list.
+You can enable other parsers by opening the target message set using the Message Set Editor, and selecting the parser types from Supported message domains on the Details pane.</description>
+	<topic href="../com.ibm.etools.mft.doc/ar02940_.htm" label="Developing mappings"/>
+	<topic href="../com.ibm.etools.mft.doc/ac70570_.htm" label="Parsers"/>
+	</context>
+	<context id="DefineResultSetColumnDialog">
+		<description><b>Define Stored Procedure Result Set Columns</b>
+Use this dialog to define the columns of a stored procedure result set, by adding or removing database table columns, or define your own columns.</description>
+	</context>
+	<context id="ShowDerivedTypesDialog">
+		<description><b>Show Derived Types dialog</b>
+Use this dialog to show or hide the derived types of this element's type. You cannot hide the element with a given derived type if it is used in the Map Script.
+This preference, on which derived types will be shown, will be stored in your workspace.
+	<topic href="../com.ibm.etools.mft.doc/ar25133_.htm#ar25133_derived" label="Derived types"/>
+		</description>
+	</context>	
+	<context id="ShowSubstitutingElementsDialog">
+		<description><b>Show Substituting Elements dialog</b>
+Use this dialog to show or hide the substituting elements of this head element. You cannot hide a substituting element if it is used in the Map Script.
+This preference, on which elements will be shown, will be stored in your workspace.
+	<topic href="../com.ibm.etools.mft.doc/ar25133_.htm#ar25133_sub" label="Substitution groups"/>
+		</description>
+	</context>		
+</contexts>

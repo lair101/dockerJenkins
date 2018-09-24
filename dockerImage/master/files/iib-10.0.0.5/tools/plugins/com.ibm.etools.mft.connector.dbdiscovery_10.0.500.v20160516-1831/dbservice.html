@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css">
+	<title>Database Service Overview</title>
+</head>
+
+<p>
+A Database Service defines a business service that is available in a database. Use the service editor to discover information from the database, such as tables, views, and the logical business operations they represent. You can then combine this information with the required database interaction (SELECT, INSERT, UPDATE, DELETE) to create a Database Service. 
+</p>
+
+<p>
+<img src="DBService_IntegrationService.png">
+</p>
+
+<p>When you save the Database Service, the following artifacts are generated:</p>
+<ul>
+<li> <i>&lt;DatabaseService&gt;</i>.wsdl: This file describes the logical service interface and the database binding that captures the SQL operations on the database. 
+<li> <i>&lt;DatabaseService&gt;</i>.xsd: This file describes the inputs and outputs of the database operations. 
+<li> <i>&lt;DatabaseService&gt;</i>.service: This file captures other information that is used during the discovery process. 
+</ul>
+<p>
+Use the Database Service in a message flow by dragging the Database Service onto a Compute node in the flow editor, to automatically configure connectivity to a database. In your ESQL module, call the Database Service operation by supplying the required parameters.
+</p>
+Click <a href="/com.ibm.etools.mft.doc/bc46200_.htm">here</a> for additional information on Database Services.
+</html>

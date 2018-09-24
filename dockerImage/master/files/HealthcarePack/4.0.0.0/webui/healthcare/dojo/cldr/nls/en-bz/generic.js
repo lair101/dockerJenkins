@@ -1,0 +1,2 @@
+//>>built
+define("dojo/cldr/nls/en-bz/generic",{"dateFormat-medium":"dd-MMM-y G","dateFormatItem-yMMMEd":"E dd MMM y","dateFormatItem-yMMMd":"dd MMM y","dateFormatItem-MMMd":"dd MMM","dateFormatItem-MMMEd":"E dd MMM"});

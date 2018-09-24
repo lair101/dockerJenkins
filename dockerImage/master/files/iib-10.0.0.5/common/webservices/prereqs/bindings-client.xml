@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<securityBindings xmlns="http://www.ibm.com/xmlns/prod/websphere/200608/ws-securitybinding">
+    <securityBinding name="application">
+        <securityOutboundBindingConfig>
+	        <tokenGenerator name="gen_unametoken" classname="com.ibm.ws.wssecurity.wssapi.token.impl.CommonTokenGenerator">
+	          <valueType localName="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#UsernameToken" uri="" name="Username Token"/>
+	          <securityTokenReference reference="request:uname_token"/>
+              <callbackHandler classname="com.ibm.websphere.wssecurity.callbackhandler.UNTGenerateCallbackHandler">
+	            <basicAuth userid="user1" password="password"/>
+	          </callbackHandler>
+	          <jAASConfig configName="system.wss.generate.unt"/>
+	        </tokenGenerator>
+        </securityOutboundBindingConfig>
+    </securityBinding>
+</securityBindings>
+

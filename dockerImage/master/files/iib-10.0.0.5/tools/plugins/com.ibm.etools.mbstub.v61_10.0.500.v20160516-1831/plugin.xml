@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension point="org.eclipse.wst.server.core.serverTypes">
+      <serverType
+            id="com.ibm.etools.mbstub.v61"
+            name="%com.ibm.etools.mbstub"
+            description="%com.ibm.etools.mbstub"
+            runtime="true"
+            startBeforePublish="true"
+            supportsRemoteHosts="true"
+            startTimeout="300000"
+            stopTimeout="120000"
+            launchConfigId="com.ibm.etools.mbstub.v61.core.launchConfigurationType"
+            runtimeTypeId="com.ibm.etools.mbstub.v61"
+            class="com.ibm.etools.mbstub.v61.internal.WASServer">
+      </serverType>
+   </extension>
+
+   
+    <extension point="org.eclipse.wst.server.core.runtimeTypes">  
+    <runtimeType
+       id="com.ibm.ws.ast.st.runtime.v61.mb" 
+       name="%runtimeTypeWAS61Label"
+       description="%runtimeTypeWAS61Description"
+       vendor="%runtimeTypeVendor"
+       version="6.1"
+       class="com.ibm.etools.mbstub.v61.internal.WASRuntime">
+       <moduleType
+         types="jst.connector"
+         versions="1.0, 1.5"/>
+    </runtimeType>
+  </extension>
+
+  <extension point="org.eclipse.jst.server.core.runtimeClasspathProviders">
+     <runtimeClasspathProvider
+        id="com.ibm.etools.mbstub.runtime.runtimeTarget.v61"
+        runtimeTypeIds="com.ibm.ws.ast.st.runtime.v61.mb"
+        class="com.ibm.etools.mbstub.v61.internal.WASRuntimeClasspathProvider61"/>
+  </extension>
+
+  <extension point="org.eclipse.jst.server.core.runtimeFacetMappings">
+    <runtimeFacetMapping
+      runtimeTypeId="com.ibm.ws.ast.st.runtime.v61.mb"
+      runtime-component="com.ibm.etools.mbstub.runtime"
+      version="6.1"/>
+  </extension>
+
+<extension point="org.eclipse.wst.common.project.facet.core.runtimes">
+    <adapter>
+      <runtime-component
+         id="com.ibm.etools.mbstub.runtime"/>
+      <factory
+         class="com.ibm.etools.mbstub.v61.internal.WASRuntimeClasspathProvider2$Factory"/>
+      <type
+         class="org.eclipse.jst.common.project.facet.core.IClasspathProvider"/>
+    </adapter>
+</extension>
+
+  <extension point="org.eclipse.wst.common.project.facet.core.runtimes">
+    <runtime-component-version
+       type="com.ibm.etools.mbstub.runtime"
+       version="6.1"/>
+    <runtime-component-type
+       id="com.ibm.etools.mbstub.runtime">
+      <!-- <icon>images/wasRuntime.gif</icon> -->
+    </runtime-component-type>
+
+    <supported>
+      <runtime-component
+         id="com.ibm.etools.mbstub.runtime"
+         version="6.1"/>
+      <facet
+         id="jst.connector"
+         version="1.5"/>
+    </supported>
+
+    <supported>
+      <runtime-component
+         id="com.ibm.etools.mbstub.runtime"
+         version="6.1"/>
+      <facet
+         id="jst.connector"
+         version="1.0"/>
+    </supported>
+
+  </extension>
+
+  <extension point="org.eclipse.wst.server.core.internalStartup">
+    <startup
+      id="com.ibm.etools.mbstub.v61"
+        class= "com.ibm.etools.mbstub.v61.internal.Startup"/>
+  </extension>
+
+   <extension
+         point="org.eclipse.wst.server.ui.serverImages">
+      <image
+            icon="icons/obj16/serverV61_obj.gif"
+            typeIds="com.ibm.etools.mbstub.v61, com.ibm.ws.ast.st.runtime.v61.mb"
+            id="com.ibm.etools.mbstub.v61"/>
+   </extension>
+
+</plugin>

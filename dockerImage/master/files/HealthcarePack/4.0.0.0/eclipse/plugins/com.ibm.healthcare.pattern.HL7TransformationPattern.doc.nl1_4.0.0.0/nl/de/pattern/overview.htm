@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="copyright" content="Copyright IBM Corporation 2014" />
+<meta name="DC.Rights.Owner" content="© Copyright IBM Corporation 2014" />
+<meta name="dc.date" scheme="iso8601" content="2013-12-13"/>
+<meta name="IBM.Effective" scheme="W3CDTF" content="2013-12-13"/>
+<meta name="description" content="Muster 'Healthcare: HL7-Transformation'"/>
+<meta name="IBM.Country" content="ZZ" />
+<meta name="keywords" content="Healthcare,HL7"/>
+<meta name="Robots" content="Index,Fortsetzung" />
+<meta name="DC.Type" content="Konzept" />
+<meta name="security" content="Öffentlich"/>
+<link rel="stylesheet" type="text/css" href="./css/pattern.css" />
+<!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    -->
+<title>Muster 'Healthcare: HL7-Transformation'</title>
+</head>
+<body role="main">
+	<h1 class="topictitle1">Muster 'Healthcare: HL7-Transformation'</h1>
+	<div>
+		<p class="shortdesc"></p>
+	</div>
+	<p>Das Muster 'Healthcare: HL7-Transformation' generiert grafische
+		Datenzuordnungen, mit denen Sie HL7-Nachrichten assemblieren können.</p>
+	<p>HL7-Nachrichten enthalten für gewöhnlich viele Datensegmente. Die Segmente selbst enthalten wiederum eine große Anzahl einzelner Felder. Wenn Sie eine neue
+		HL7-Nachricht erstellen, müssen Sie die HL7-Nachrichtenhierarchie
+		erstellen. Diese Hierarchie kann unter Umständen Hunderte oder Tausende von
+		Feldern enthalten. Ihre Erstellung kann recht zeitaufwändig sein, selbst wenn Sie
+		ein grafisches Mapping-Tool verwenden. Das Muster 'Healthcare: HL7-Transformation'
+		hilft, dieses Problem zu lösen, indem grafische Datenzuordnungen generiert werden,
+  die allen Feldern in den von Ihnen ausgewählten HL7-Nachrichten
+		einen Standardwert zuweisen.</p>
+
+		<img src="MapGeneration1.png" alt="Abbildung mit der Lösung 'HL7-Transformation'"/>
+
+	<div class="section">
+		<h2 class="sectiontitle">Lösung</h2>
+	</div>
+
+	<p>Das Muster 'Healthcare: HL7-Transformation' kann wie folgt
+		verwendet werden:</p>
+	<ul>
+		<li>Wählen Sie bestimmte HL7-Nachrichten aus. Bei jeder Auswahl werden folgende
+			Artefakte generiert:
+			<ul>
+				<li>Eine grafische Datenzuordnung</li>
+				<li>Eine untergeordnete Zuordnung für jede HL7-Segmentdefinition</li>
+			</ul> Alle generierten Artefakte werden in einer Bibliothek namens <span
+			class="msobjpropval"><var>Musterinstanzname_</var>HL7v27TransformLibrary</span> gespeichert, wobei <var>Musterinstanzname_</var> den Namen Ihrer Musterinstanz angibt.
+
+			Sie können die untergeordneten HL7-Segmentzuordnungen aus mehreren übergeordneten
+			Zuordnungen abrufen.</li>
+		<li>Wählen Sie bestimmte HL7-Segmente aus. Jede Auswahl generiert eine untergeordnete Zuordnung der grafischen Datenzuordnung, die in der Bibliothek<span class="msobjpropval"><var>Musterinstanzname_</var>HL7v27TransformLibrary</span> gespeichert wird. Sie können diese	untergeordneten Segmentzuordnungen aus Ihren eigenen grafischen Datenzuordnungen abrufen, die Sie außerhalb des Bereichs dieses Musters erstellen.</li>
+	</ul>
+
+	<p>Die Musterparameter bieten folgende Optionen:</p>
+	<ul>
+		<li>Sie können grafische Datenzuordnungen oder
+			Transformationslogik für Compute-Knoten (ESQL) generieren.</li>
+		<li>Sie können den Wert auswählen, der einzelnen Feldern in
+			der HL7-Nachricht zugeordnet werden soll.</li>
+		<li>Sie können einzelne Werte für die Felder im HL7-
+			Nachrichtenheadersegment (Message Header, MSH) festlegen.</li>
+		<li>Sie können einen Beispielnachrichtenfluss erstellen, der die Verwendung der Transformationslogik veranschaulicht.</li>			
+	</ul>
+	
+	<p>Wenn Sie eine Instanz des Musters 'Healthcare: HL7-Transformation' generieren, wird das HL7-Nachrichtenmodell automatisch in Ihren Arbeitsbereich in der Bibliothek <span class="msobjpropval">HL7v27DFDLLibrary</span> importiert. 
+	Falls diese Bibliothek bereits vorhanden ist, wird eine Warnung angezeigt. Falls Sie sich für die Fortsetzung des Vorgangs entscheiden, wird die bestehende Bibliothek überschrieben. Wenn Sie Ihr HL7-Nachrichtenmodell anpassen möchten, nehmen Sie Ihre Änderungen vor, nachdem Sie eine Instanz des Musters generiert haben.</p>
+
+	<p>Wenn Sie den Musterparameter für die Erstellung eines Beispielnachrichtenflusses auswählen, enthält er drei Knoten:</p>
+	<ul>
+		<li>Einen MQInput-Knoten, der Eingabenachrichten aus einer Warteschlange namens <span	class="msobjpropval"><var>Musterinstanzname</var>.RXF1</span> entnimmt. Dabei steht <var>Musterinstanzname</var> für den Namen Ihrer Musterinstanz.</li>		
+		<li>Entweder einen Mapping- oder Compute-Knoten, je nachdem, welche Auswahl Sie für den Musterparameter <span class="uicontrol">Generate</span> (Generieren) getroffen haben.</li>
+		<li>Einen MQOutput-Knoten, der Ausgabenachrichten in eine Warteschlange namens <span	class="msobjpropval"><var>Musterinstanzname</var>.DEST1</span> schreibt. Dabei steht <var>Musterinstanzname</var> für den Namen Ihrer Musterinstanz.</li>		
+	</ul>	
+	
+	<p>Ein Script wird generiert, das Sie zur Erstellung der vom Nachrichtenfluss verwendeten Warteschlangen ausführen können.</p>
+	
+	<p>Wenn das Muster 'Healthcare: HL7-Transformation' für die Generierung der Transformationslogik zur Erstellung von HL7-Nachrichten verwendet wird, die eine Auswahlstruktur enthalten, stellen die generierten grafischen Datenzuordnungen oder Extended SQL (ESQL) eine untergeordnete Zuordnung bzw. einen Prozeduraufruf zur Verfügung. Die untergeordnete Zuordnung bzw. der Prozeduraufruf erstellt das erste untergeordnete Element der Auswahlstruktur. 
+	Bei den grafischen Datenzuordnungen werden mithilfe von Task-Transformationen Platzhalter für andere Auswahloptionen bereitgestellt.
+	Bei Extended SQL (ESQL) werden mithilfe von kommentierten Prozeduraufrufen Platzhalter für andere Auswahloptionen bereitgestellt.</p>
+	
+	<div>
+					<a href="parameters.htm">Parameter für das Muster</a>
+		</div>
+	
+</body>
+</html>

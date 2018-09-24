@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Data Discovery (deprecated)" default="default">
+
+	<property name="debug" value="true"/>
+	<property name="project" value="Test"/>
+	
+	<!-- 
+		- If the importResource is a file than it must have either a workspace 
+		relative path or a full file system path.
+		- The order in which import or write properties are set should be consistent with
+		the order in which they are displayed within the UI.
+	 -->
+ 	<target name="default">
+
+		<!-- perform import -->
+		<discoveryAgent type="com/ibm/adapter:CobolDiscoveryAgent">
+			<importResource name="CobolFile" value="/${project}/taderc99.ccp"/>
+			<importProperties>
+				<propertyElement name="Platform" value="Win32"/>
+			</importProperties>
+			<searchParameters>
+				<propertyElement name="DFHCOMMAREA"/>
+			</searchParameters>
+		</discoveryAgent>
+
+		<command commandID="com.ibm.adapter.command.PerformImportCommand">
+			<fileset dir="." includes="**/dataType.xml"/>
+		</command>
+
+		<!-- write to workspace -->
+		<workspaceResourceWriter type="com/ibm/adapter/cobol/writer:JAVA_WRITER">
+			<propertyElement name="Java Type Name/Overwrite existing class" value="true"/>
+			<propertyElement name="Java Type Name/Project Name" value="${project}"/>
+			<propertyElement name="Java Type Name/Package Name" value="com.ibm.test"/>
+			<propertyElement name="Java Type Name/Class Name" value="Taderc99"/>
+		</workspaceResourceWriter>
+
+		<command commandID="com.ibm.adapter.command.WriteToWorkspaceCommand">
+			<fileset dir="." includes="**/dataType.xml"/>
+		</command>
+	</target>
+
+</project>

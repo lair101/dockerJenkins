@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CMDriverDescription>
+<SupportedDevices model="Cain Medical Virtual Ventilator" type="Ventilator">
+ <CMLLC type="CMLLCRS232">
+ 	<CMLLCCfg port="" baud="9600,2400,4800,19200,115000" parity="E,N,O" data="7,8" stopbit="1" rtscts="No" />
+ </CMLLC>
+ </SupportedDevices>
+ <SupportedDevices model="Cain Medical Virtual Ventilator 2" type="Ventilator">
+ <CMLLC type="CMLLCRS232">
+ 	<CMLLCCfg port="" baud="9600,2400" parity="N" data="8" stopbit="1" rtscts="No" />
+ </CMLLC>
+ </SupportedDevices>
+<Variables>
+	<Discrete>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="99:359-674:197:259" 
+ 					CMidtext="Pressure:Intrinsic-Endexpiratory:Gas:Airway" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_INTRINSIC-M_TIMECRIT_ENDEXPIRATORY:M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="PEEP" 
+ 					shortdesc="Intrinsic positive end expiratory pressure (Auto PEEP)" 
+ 					longdesc="Physiologically generated positive airway pressure" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="84:609:197:261" 
+ 					CMidtext="Flow:OneMinute:Gas:Breathing" 
+ 					idref="M_BASE_FLOW:M_SPEC_ONEMINUTE:M_CONCERNS_GAS:M_CONTEXT_BREATHING" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Respir. Minute Volume" 
+ 					longdesc="Total volume of gas breathed in one minute during spontaneous respiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:455:173:261" 
+ 					CMidtext="Rate:NOS:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_NOS:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, method not specified" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 	</VarGroup>
+ </Discrete>
+</Variables></CMDriverDescription>

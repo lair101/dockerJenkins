@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS  TYPE="org.eclipse.help.toc"?>
+<toc link_to="../com.ibm.healthcare.doc/ha00000.xml#mb_healthcare_pattern_hl7" label="Healthcare: HL7 to HL7 pattern" topic="pattern/overview.htm">
+    <topic label="Healthcare: HL7 to HL7 pattern" href="pattern/overview.htm">
+  		<topic label="Design of the pattern" href="pattern/design.htm"/>
+  		<topic label="Managing a pattern instance" href="pattern/management.htm"/>
+  		<topic label="Monitoring the pattern" href="pattern/monitoring.htm"/>
+  		<topic label="Pattern parameters" href="pattern/parameters.htm"/>
+  		<topic label="Resources for the pattern" href="pattern/resources.htm"/>
+  		<topic label="Running the pattern" href="pattern/running.htm"/>
+  		<topic label="Testing the pattern" href="pattern/testing.htm"/>
+    </topic>
+</toc>
+

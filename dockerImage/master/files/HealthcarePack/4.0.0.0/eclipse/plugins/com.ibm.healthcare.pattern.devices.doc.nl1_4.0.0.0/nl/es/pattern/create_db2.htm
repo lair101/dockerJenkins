@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <title>Configuración de DB2</title>
+    <!-- 
+       (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+       All Rights Reserved * Licensed Materials - Property of IBM
+      -->
+</head>
+<body role="main">
+<h1>Configuración de DB2</h1>
+<p>
+Estas instrucciones dan por supuesto que utiliza DB2
+Universal Database y le guían por las tareas siguientes:
+</p>
+<ul>
+    <li>
+        Creación de una base de datos denominada PATSDB
+    </li>
+    <li>
+        Enlace de los paquetes CLI de DB2
+    </li>
+    <li>
+        Creación de una tabla PATIENTS, donde almacenar las
+asociaciones de pacientes y dispositivos
+    </li>
+</ul>
+<p>
+<b>Nota.</b> Al crear y acceder a las tablas de base de datos, tenga
+en cuenta lo siguiente:
+</p>
+<ul>
+    <li>
+        Al ejecutar el script que crea la tabla en la base de datos,
+el identificador de usuario
+        desde el que ejecuta el script determina el nombre del esquema
+de base de datos. 
+        Por ejemplo, su su identificador de usuario es <span class="input">USERID</span>,
+        el nombre completo de la tabla PATIENTS será USERID.PATIENTS.
+    </li>
+    <li>
+        Configure su instancia de patrón de forma que utilice
+el mismo identificador de usuario para acceder a la base de
+datos que ha utilizado al crear la base de datos y las tablas,
+incluya el nombre de esquema en la configuración. Por ejemplo,
+        <span class="filepath">Database.USERID.PATIENTS</span>.
+    </li>
+</ul>
+<p>
+Lleve a cabo los siguientes pasos:
+</p>
+<ol>
+    <li>
+        En una ventana de mandatos de DB2, escriba el mandato
+siguiente para asegurarse de que se inicia DB2:
+        <pre>db2start</pre>
+    </li>
+    <li>
+        Cree una base de datos denominada PATSDB.
+    </li>
+    <li>
+        Abra un nuevo documento en un editor de texto,copie y pegue
+el siguiente script, que
+        establece conexión con la base de datos PATSDB y ejecuta el
+programa de utilidad BIND, en el documento. Utilice el nombre <span class="filepath">
+        PATSDB.sql
+        </span>
+        y guarde el archivo.
+        <ul>
+            <li>
+                <p>
+                En
+                <span>Windows</span>:
+                </p>
+                Debe sustituir dir_instalación por la vía de acceso de subdirectorio de instalación del producto DB2, como por ejemplo
+                <span class="filepath">C:\PROGRA~1\IBM\SQLLIB</span>. 
+                Puede encontrar esta ubicación utilizando el mandato db2level:
+                <pre>
+CONNECT TO PATSDB
+BIND 'dir_instalación\bnd\@db2cli.lst' blocking all grant public
+TERMINATE
+                </pre>
+            </li>
+            <li>
+                <p>
+                en
+                <span>Linux</span>:
+                </p>
+                Debe sustituir dir_instalación por la vía de acceso
+de subdirectorio de instalación del producto DB2. Puede encontrar
+esta ubicación utilizando el mandato db2level:
+                <pre>
+CONNECT TO PATSDB
+BIND dir_instalación/bnd/@db2cli.lst grant public CLIPKG 5
+TERMINATE
+                </pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        En una ventana de mandatos de DB2, vaya a la carpeta que
+contiene <span class="filepath">
+        PATSDB.sql
+        </span>
+        y especifique el mandato siguiente:
+        <pre>db2 -vf PATSDB.sql</pre>
+    </li>
+    <li>
+        Abra un nuevo documento en un editor de texto,copie y pegue
+el siguiente script, que crea la tabla PATIENTS, en el documento.
+Utilice el nombre <span class="filepath">
+        patients_create_tables_db2.sql
+        </span>
+        y guarde el archivo.
+        <pre>
+CONNECT TO PATSDB@
+DROP TABLE "PATIENTS"@
+CREATE TABLE "PATIENTS" (
+    "DEVICEID" VARCHAR(50) NOT NULL PRIMARY KEY,
+    "PATIENTID" VARCHAR(50)
+)
+DATA CAPTURE NONE@
+TERMINATE@
+        </pre>
+    </li>
+    <li>
+        Asegúrese de que la base de datos está en ejecución y conectada.
+    </li>
+    <li>
+        Abra una ventana de mandatos para acceder a la base de datos, vaya a la carpeta que contiene
+        <span class="filepath">
+        patients_create_tables_db2.sql
+        </span>
+        y escriba el mandato siguiente:
+        <pre>db2 -td@ -vf patients_create_tables_db2.sql</pre>
+        <p>
+        Espere a que el script termine de ejecutarse. Si ejecuta el
+script por primera vez, aparece el siguiente mensaje:
+        </p>
+        <pre>
+DB21034E  The command was processed as an SQL statement because it was not a
+valid Command Line Processor command.  During SQL processing it returned:
+SQL0204N  &quot;DB2ADMIN.PATIENTS&quot; is an undefined name.  SQLSTATE=42704
+        </pre>
+        Ignore este mensaje. El mensaje se visualiza porque el script
+intenta eliminar la tabla existente, PATIENTS, antes de crear la
+nueva tabla, pero si no ha ejecutado el script antes, el script no
+podrá encontrar la tabla existente.
+    </li>
+</ol>
+<p>
+</p>
+<a href="create.htm" title="Atrás">Volver a Configuración de la base de datos de
+identificadores de pacientes</a>
+<p>
+</p>
+</body>
+</html>

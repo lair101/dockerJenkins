@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="verbalizers" name="Verbalizers" schema="schema/verbalizers.exsd"/>
+   <extension-point id="com.ibm.bdsl.languageProvider" name="BDSL Language" schema="schema/com.ibm.bdsl.language.exsd"/>
+   <extension-point id="com.ibm.bdsl.vocabularyProvider" name="VocabularyProvider" schema="schema/com.ibm.bdsl.vocabularyProvider.exsd"/>
+
+   <extension id="com.ibm.bdsl.runtime.eclipse.verbalization.french" name="French verbalizer" point="com.ibm.bdsl.runtime.eclipse.verbalizers">
+     <verbalizer class="ilog.rules.vocabulary.verbalization.french.IlrFrenchVerbalizer" locale="fr,fr_FR" /> 
+   </extension>
+   
+   <extension id="com.ibm.bdsl.runtime.eclipse.verbalization.spanish" name="Spanish Verbalizer" point="com.ibm.bdsl.runtime.eclipse.verbalizers">
+         <verbalizer class="ilog.rules.vocabulary.verbalization.spanish.IlrSpanishVerbalizer" locale="es,es_ES"/>
+   </extension>
+   
+   <extension id="com.ibm.bdsl.runtime.eclipse.verbalization.german" name="German Verbalizer" point="com.ibm.bdsl.runtime.eclipse.verbalizers">
+         <verbalizer class="ilog.rules.vocabulary.verbalization.german.IlrGermanVerbalizer" locale="de,de_DE"/>
+   </extension>
+   
+   <extension id="com.ibm.bdsl.runtime.eclipse.verbalization.dutch" name="Dutch Verbalizer" point="com.ibm.bdsl.runtime.eclipse.verbalizers">
+         <verbalizer class="ilog.rules.vocabulary.verbalization.dutch.IlrDutchVerbalizer" locale="nl,nl_NL"/>
+   </extension>
+   
+   <extension id="com.ibm.bdsl.runtime.eclipse.verbalization.portuguese" name="Portuguese (Brazilian) verbalizer" point="com.ibm.bdsl.runtime.eclipse.verbalizers">
+         <verbalizer class="ilog.rules.vocabulary.verbalization.portuguese.IlrPortugueseVerbalizer" locale="pt,pt_BR,pt_PT"/>
+   </extension>
+
+   <extension id="com.ibm.bdsl.runtime.eclipse.verbalization.italian" name="Italian Verbalizer" point="com.ibm.bdsl.runtime.eclipse.verbalizers">
+         <verbalizer class="ilog.rules.vocabulary.verbalization.italian.IlrItalianVerbalizer" locale="it,it_IT"/>
+   </extension>
+   
+   <extension id="com.ibm.bdsl.runtime.eclipse.verbalization.japanese" name="Japanese Verbalizer" point="com.ibm.bdsl.runtime.eclipse.verbalizers">
+         <verbalizer class="ilog.rules.vocabulary.verbalization.japanese.IlrJapaneseVerbalizer" locale="ja,ja_JP"/>
+   </extension>
+   
+   <extension id="com.ibm.bdsl.runtime.eclipse.verbalization.korean" name="Korean Verbalizer" point="com.ibm.bdsl.runtime.eclipse.verbalizers">
+         <verbalizer class="ilog.rules.vocabulary.verbalization.korean.IlrKoreanVerbalizer" locale="ko,ko_KR"/>
+   </extension>
+   
+   <extension id="com.ibm.bdsl.runtime.eclipse.verbalization.chinese" name="Chinese Verbalizer" point="com.ibm.bdsl.runtime.eclipse.verbalizers">
+         <verbalizer class="ilog.rules.vocabulary.verbalization.chinese.IlrChineseVerbalizer" locale="zh,zh_CN"/>
+   </extension>
+   
+   <extension id="com.ibm.bdsl.runtime.eclipse.verbalization.chinese_taiwan" name="Traditional Chinese Verbalizer" point="com.ibm.bdsl.runtime.eclipse.verbalizers">
+         <verbalizer class="ilog.rules.vocabulary.verbalization.chinese_taiwan.IlrChineseVerbalizer" locale="zh_TW"/>
+   </extension>
+   
+   <extension id="com.ibm.bdsl.runtime.eclipse.verbalization.russian" name="Russian Verbalizer" point="com.ibm.bdsl.runtime.eclipse.verbalizers">
+         <verbalizer class="ilog.rules.vocabulary.verbalization.russian.IlrRussianVerbalizer" locale="ru,ru_RU"/>
+   </extension>
+   
+   <extension id="com.ibm.bdsl.runtime.eclipse.verbalization.hebrew" name="Hebrew Verbalizer" point="com.ibm.bdsl.runtime.eclipse.verbalizers">
+         <verbalizer class="ilog.rules.vocabulary.verbalization.hebrew.IlrHebrewVerbalizer" locale="iw,iw_IL"/>
+   </extension>
+   
+   <extension id="com.ibm.bdsl.runtime.eclipse.verbalization.arabic" name="Arabic Verbalizer" point="com.ibm.bdsl.runtime.eclipse.verbalizers">
+         <verbalizer class="ilog.rules.vocabulary.verbalization.arabic.IlrArabicVerbalizer" locale="ar"/>
+   </extension>
+   
+   <extension id="com.ibm.bdsl.runtime.eclipse.verbalization.polish" name="Polish Verbalizer" point="com.ibm.bdsl.runtime.eclipse.verbalizers">
+         <verbalizer class="ilog.rules.vocabulary.verbalization.polish.IlrPolishVerbalizer" locale="pl,pl_PL"/>
+   </extension>
+</plugin>

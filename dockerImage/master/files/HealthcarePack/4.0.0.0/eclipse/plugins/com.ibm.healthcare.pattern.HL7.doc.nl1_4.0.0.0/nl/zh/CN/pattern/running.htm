@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>运行“Healthcare：HL7 到 HL7”模式</title>
+</head>
+<body role="main">
+<div class="section">
+    <h1 class="topictitle1">运行“Healthcare：HL7 到 HL7”模式</h1>
+    <p class="shortdesc">
+    “Healthcare：HL7 到 HL7”模式可以将入局消息分发到任意数目的目标，但为了便于开发和管理，每个模式实例最多包含 6 个目标。
+</p>
+    <p>
+    <b>准备工作：</b> </p>
+    <p>
+    阅读 IBM Integration Bus 文档中的“使用模式”。
+</p>
+</div>
+<div class="image">
+    <img src="running.png" alt="此图显示如何在模式实例项目之间分配目标。" />
+</div>
+<div class = "description">
+    <p>
+    第一个模式实例确定目标总数，并配置除特定于特定目标的参数外的所有参数。对于其中包含要使用的 6 个目标的目标组，必须创建新的模式实例。例如，要创建包含 16 个目标的模式，那么必须有三个模式实例。
+</p>
+    <p>
+    为了便于监视，每个模式实例名称的结尾都应该具有数字。每次创建新模式实例时，请将此数字增加 1，并确保<span class="msobjprop">
+            Part
+           </span>
+    参数的值与模式实例的编号匹配。例如，如果模式实例具有编号<span class="msobjpropval">
+    3
+   </span>
+    ，那么模式实例名称为 PatternInstance3，并且<span class="msobjprop">
+            Part
+           </span>
+    参数中的值也应该是 <span class="msobjpropval">
+    3
+   </span>
+.
+    </p>
+</div>
+<div class="section">
+    <a name="config"></a> <h2 class="sectiontitle">配置模式</h2> <h3>配置最多具有 6 个目标的模式</h3>
+    <p>
+    要配置最多包含 6 个目标的模式，请完成下列步骤：</p>
+    <ol>
+        <li>
+            在“<span class="uicontrol">模式规范</span>”选项卡中，单击“<span class="uicontrol">创建新实例</span>”。“<span>新建模式实例</span>”窗口将打开。</li>
+        <li>
+            输入第一个模式实例的模式实例名称。为了便于监视，请在名称末尾包括
+            <span class="msobjpropval">
+            1
+           </span>
+            ，例如 PatternInstance1。单击“<span class="uicontrol">确定</span>”。“<span class="uicontrol">配置模式参数</span>”选项卡将打开。</li>
+        <li>
+            确保 <span class="msobjprop">Part</span> 参数将设置为 <span class="msobjpropval">1</span>
+            ，并且输入要使用的目标数，例如，<span class="msobjpropval">6</span>。将自动为每个目标创建“<span class="uicontrol">目标 <var>n</var> 参数</span>”部分，其中 <var>n</var> 是目标的数量。</li>
+        <li>
+            可选：查看各个目标的参数，并编辑要为该目标配置的任何参数。</li>
+        <li>
+                    单击“<span class="uicontrol">生成</span>”。</li>
+        <li>
+            现在，已准备好部署流。
+</li>
+    </ol>
+    <h3>配置具有 6 个以上目标的模式</h3>
+    <p>
+    要配置包含 6 个以上目标的模式，请完成下列步骤：</p>
+    <ol>
+        <li>
+            在“<span class="uicontrol">模式规范</span>”选项卡中，单击“<span class="uicontrol">创建新实例</span>”。“<span>新建模式实例</span>”窗口将打开。</li>
+        <li>
+            输入第一个模式实例的模式实例名称。为了便于监视，请在名称末尾包括
+            <span class="msobjpropval">
+            1
+           </span>
+            ，例如 PatternInstance1。单击“<span class="uicontrol">确定</span>”。“<span class="uicontrol">配置模式参数</span>”选项卡将打开。</li>
+        <li>
+            确保 <span class="msobjprop">Part</span> 参数将设置为 <span class="msobjpropval">1</span>
+            ，并且输入要使用的总目标数，例如，<span class="msobjpropval">16</span>。这将为第一个包含 6 个目标的组中的每个目标创建<span class="uicontrol">“目标 <var>n</var> 参数”</span>部分，其中
+<var>n</var> 表示目标的编号。
+</li>
+        <li>
+            可选：查看各个目标的参数，并编辑要为该目标配置的任何参数。</li>
+        <li>
+                    单击“<span class="uicontrol">生成</span>”。</li>
+        <li>
+            返回到“<span class="uicontrol">模式规范</span>”选项卡，单击“<span class="uicontrol">创建新实例</span>”。“<span>新建模式实例</span>”窗口将打开。</li>
+        <li>
+            输入下一个模式实例的模式实例名称，请记住使名称末尾的数字递增 1，例如
+PatternInstance2。单击“<span class="uicontrol">确定</span>”。“<span class="uicontrol">配置模式参数</span>”选项卡将打开。</li>
+        <li>
+            通过单击“<span class="uicontrol">模式参数</span>”表顶部的“<span class="uicontrol">打开现有配置</span>”文件夹图标，从第一个模式实例中导入配置文件。此操作确保第一个模式实例中设置的所有参数均可用于正确配置下一组目标。
+</li>
+        <li>
+            将 <span class="msobjprop">Part</span> 参数设置为 <span class="msobjpropval">2
+            </span>
+. 这将为第二个包含 6 个目标的组中的每个目标（每个目标都有其自己的标识编号 7 - 12）创建<span class="uicontrol">“目标 <var>n</var> 参数”</span>部分，其中 <var>n</var> 表示目标的编号。
+</li>
+        <li>
+            可选：查看各个目标的参数，并编辑要为该目标配置的任何参数。如果模式参数从第一个模式实例继承其配置，那么此参数将禁用。
+</li>
+        <li>
+                    单击“<span class="uicontrol">生成</span>”。</li>
+        <li>
+            针对需要创建的每个模式实例重复步骤 6 - 11，并适当地替换模式实例编号和 <span class="msobjprop">Part</span> 参数值，直到每个目标都有模式实例为止。
+</li>
+        <li>
+            现在，已准备好部署流。
+</li>
+    </ol>
+    <h3>队列和流名称</h3>
+    <p>
+    生成模式时，将自动创建流和队列的名称：</p>
+    <ol>
+        <li>
+            每个“发送方”流和“目标”子流都被命名为反映其目标编号。例如，如果目标编号为 8，那么流名称也将包含数字 8。</li>
+        <li>
+            TransformAndRoute 流的队列名称反映了 <span class="msobjprop">Part</span> 参数值。例如，包含第二组目标的模式实例的队列名称为 QueuePrefix.RXF2。</li>
+        <li>
+            各个“发送方”流的队列名称还包含目标的编号。
+</li>
+        <li>
+            其他队列在模式实例项目之间进行共享，这是因为，尽管每个模式实例都独立地进行标识，但这些模式实例作为从单一源应用程序驱动的单一模式实例进行管理。
+</li>
+    </ol>
+</div>
+<div class="section">
+    <a name="deploying"></a> <h2 class="sectiontitle">部署流</h2>
+    <p>
+    要部署流，请完成下列步骤：</p>
+    <ol>
+        <li>
+            在“<span>应用程序开发</span>”视图中，对于此模式的第 1 部分，将“接收方”流、TransformAndRoute 流以及各个“发送方”流拖动到“<span>集成节点</span>”视图中的集成服务器上。
+</li>
+        <li>
+            对于此模式的其他各个部分，将 TransformAndRoute 流以及各个“发送方”流和“目标”流拖动到“<span>集成节点</span>”视图中的集成服务器上。
+</li>
+    </ol>
+    <p>
+    此模式现处于运行状态，并且可以发送消息。
+</p>
+</div>
+<a href="overview.htm#anchorBack" title="返回">返回到“Healthcare：从 HL7 到 HL7”模式规范</a>
+<p>
+</p>
+</body>
+</html>

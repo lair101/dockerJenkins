@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-Vendor: IBM
+Bundle-Version: 10.0.500.v20160516-1831
+Bundle-Localization: plugin
+Bundle-Name: %Plugin.name
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ibm.etools.msgbroker.welcome; singleton:=true
+
+

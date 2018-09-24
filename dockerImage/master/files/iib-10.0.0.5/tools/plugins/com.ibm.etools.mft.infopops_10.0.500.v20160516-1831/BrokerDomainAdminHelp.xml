@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+  <contexts>
+
+	<context id="NewDomainWizard">
+		<description><b>Domain wizard</b>
+Use this wizard to create a connection between the IBM Integration Toolkit and the Configuration Manager. You must have already created a Configuration Manager, and created and started a listener for the Configuration Manager. When the connection has been made you can view and edit the broker domain that is managed by the Configuration Manager.
+</description>
+		<topic href="../com.ibm.etools.mft.doc/ae03370_.htm"  label="Creating a domain connection"/>
+		<topic href="../com.ibm.etools.mft.doc/ae24300_.htm"  label="Creating a Configuration Manager"/>
+	</context>
+
+	<context id="NewBrokerWizard">	
+		<description><b>Broker wizard</b>
+Use this wizard to add a broker to the broker topology in the IBM Integration Toolkit. The broker must already exist and belong to the broker domain before you run this wizard. The wizard just creates a reference to the broker in the configuration repository; it does not create the actual broker. </description>
+		<topic href="../com.ibm.etools.mft.doc/ae03390_.htm"  label="Adding a broker to a broker domain"/>
+		<topic href="../com.ibm.etools.mft.doc/ae03280_.htm"  label="Creating a broker"/>
+	</context>
+
+	<context id="NewExecutionGroupWizard">
+		<description><b>Integration Server wizard</b>
+Use this wizard to create additional integration servers on the broker. The broker must already exist and belong to a broker domain. 
+ </description>
+		<topic href="../com.ibm.etools.mft.doc/ae03440_.htm"  label="Adding an integration server to a broker"/>
+		<topic href="../com.ibm.etools.mft.doc/ae00270_.htm"  label="Integration servers"/>
+	</context>
+
+    <context id="CreateTopicWizard">
+      <description><b>Create Topic wizard</b>
+Use this wizard to create a topic explicitly. You can also define a new topic implicitly by sending to the broker a Publish command that specifies the new topic.</description>
+		<topic href="../com.ibm.etools.mft.doc/aq03530_.htm"  label="Adding a new topic"/>
+		<topic href="../com.ibm.etools.mft.doc/aq01130_.htm"  label="Topics"/>
+	</context>
+
+	<context id="ManagePoliciesWizard">
+      <description><b>Manage Policies wizard</b>
+Use this wizard to enable topic-based security to control which applications in your publish/subscribe system can access information on which topics. </description>
+ 
+    </context>   
+
+    <context id="BAResourcesNavigator">
+      <description><b>Broker Administration Navigator view</b>
+This is where you view and work with broker domain resource files. You can also deploy and delete any resource file that has been created in the Broker Application Development perspective. Double-click a file to open it in an editor.</description>
+    	<topic href="../com.ibm.etools.mft.doc/ab00090_.htm"  label="Broker Administration perspective"/>
+        <topic href="../org.eclipse.platform.doc.user/tasks/tasks-1b.htm"  label="See also: Working with views and editors"/>
+    </context>
+
+    <context id="BADomainsNavigator">
+      <description><b>Domains view</b>
+This is where you view and work with broker domain objects (Broker Topology, Topics, Subscriptions, and Event Log entries) when a broker domain is connected to a Configuration Manager. You can manage deployed configurations in this view. Double-click an object to open the appropriate editor in the Editor view. You can also deploy broker archive (bar) files on integration servers, and start and stop message flows.</description>
+    	<topic href="../com.ibm.etools.mft.doc/ab00090_.htm"  label="Broker Administration perspective"/>
+  	    <topic href="../org.eclipse.platform.doc.user/tasks/tasks-1b.htm"  label="See also: Working with views and editors"/>
+    </context>
+
+	<context id="TopologyEditor">
+		<description><b>Broker Topology editor</b>
+This is the default editor provided by the Broker Administration perspective for managing brokers and collectives and for saving topology changes to the Configuration Manager in a single step. Use the Broker Topology editor to create, rename, or delete brokers, and to change broker properties. You can also use it to connect brokers to collectives, remove connections between brokers and collectives, and delete collectives.</description>
+			</context>	
+
+	<context id="TopicsEditor">
+		<description><b>Topics Hierarchy editor</b>
+This is the default editor provided by the Broker Administration perspective for managing the publish/subscribe topic hierarchy. In this editor, you can create, modify, and delete topics. You can also define and modify the topic Access Control Lists.</description>
+			</context>		
+
+	<context id="SubscriptionsEditor">
+		<description><b>Subscriptions Query editor</b>
+This is the default editor provided by the Broker Administration perspective for viewing and deleting subscriptions in the publish/subscribe system. Use this editor to set query parameters, submit subscription queries, and delete subscriptions.</description>
+				
+	</context>
+
+	<context id="EventLogEditor">
+		<description><b>Event Log editor</b>
+The event messages are stored in the configuration repository and managed by the Configuration Manager. You can view the messages in the Event Log editor following configuration deployments. The Logs pane displays a summary of each event in the Event Log editor. The Details pane displays the complete message, and any corrective action, for the log entry selected in the Logs pane.</description>
+		<topic href="../com.ibm.etools.mft.doc/ab00130_.htm"  label="Event Log editor"/>
+		<topic href="../com.ibm.etools.mft.doc/an18390_.htm"  label="Changing Event Log editor preferences"/>
+	</context>
+
+    <context id="AlertViewer">
+      <description><b>Alerts view</b>
+An alert is displayed in this view when a domain object is connected to a Configuration Manager but is not in a normal running state. The Alerts view is updated continuously while the workbench is connected to a Configuration Manager.</description>
+    	<topic href="../com.ibm.etools.mft.doc/ab00090_.htm"  label="Broker Administration perspective"/>
+    </context>
+
+    <context id="DomainConnectionEditor">
+      <description><b>Domain Connection editor</b>
+Use this editor to modify domain connection properties. The Security Exit property must be a valid Java class name, but it is not mandatory and can be left blank if it is not applicable to your domain connection.</description>
+        <topic href="../com.ibm.etools.mft.doc/ae03375_.htm"  label="Modifying domain connection properties"/>
+		<topic href="../com.ibm.etools.mft.doc/ae18890_.htm"  label="Changing Broker Administration preferences"/>
+    </context>
+
+    <context id="SecurityProfiles">
+      <description><b>Security</b>
+Use this editor to add, delete, or modify the Security Profiles held on the broker.</description>
+        <topic href="../com.ibm.etools.mft.doc/ap20220_.htm"  label="Security"/>
+        <topic href="../com.ibm.etools.mft.doc/ap04070_.htm"  label="Security profiles"/>
+        <topic href="../com.ibm.etools.mft.doc/ap04140_.htm"  label="Creating a security profile"/>
+       <!-- <topic href="../com.ibm.etools.mft.doc/ap04140_.htm"  label="Configuring a Security Profile"/> -->
+        
+    </context>
+
+    <context id="PolicySets">
+      <description><b>Policy Sets</b>
+Use this editor to add, delete, or modify the Policy Sets held on the broker.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac60110_.htm"  label="Policy sets"/>
+        <topic href="../com.ibm.etools.mft.doc/ac55630_.htm"  label="WS-Security"/>
+        <topic href="../com.ibm.etools.mft.doc/ac56170_.htm"  label="SOAPInput node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac56190_.htm"  label="SOAPRequest node"/>
+        
+    </context>
+
+  </contexts>

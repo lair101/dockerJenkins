@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<contexts>
+
+	<context id="WsdlDragDrop">
+		<description><b>Web service usage</b>
+Use this wizard to configure Web service usage from a message flow. Web services can be invoked from the message flow, or a Web service can be exposed from a flow. You can choose the parameters from the WSDL file to set up the Web service. 
+</description>
+		<topic href="../com.ibm.etools.mft.doc/ad64200_.htm" label="Configure New Web Service Usage wizard"/>		
+	</context>   
+	<context id="DBBindingWsdlDragDrop">
+		<description><b>Configure New Database Service</b>
+Select one or more database service operations that you want to invoke in Compute node, and ESQL procedure declarations will be generated.
+</description>
+	</context>    	 	
+</contexts>

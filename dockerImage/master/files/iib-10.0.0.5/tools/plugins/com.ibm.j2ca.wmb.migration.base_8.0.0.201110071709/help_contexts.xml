@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Licensed Materials - Property of IBM
+ 5724-N40, 5724-N41, 5724-N42, 5724-N43, 5724-L77, 5724-L78, 5724-L79, 5724-L80, 5724-L81, 5724-L82
+ © Copyright IBM Corporation 2007, 2009.  All Rights Reserved.
+ US Government Users Restricted Rights - Use, duplication or disclosure
+ restricted by GSA ADP Schedule Contract with IBM Corp. 
+-->
+
+<contexts>
+	<context id="CWPAD0001">
+		<description>
+<b>CWPAD0001</b>
+<b>Explanation:</b> To use the latest adapter features, the connector version should match the latest adapter version.
+<b>User Action:</b> Run the migration wizard on the connector project to migrate the connector project to the latest adapter version.</description>
+	</context>
+	<context id="CWPAD0002">
+		<description>
+<b>CWPAD0002</b>
+<b>Explanation:</b> To use the latest adapter features, the module artifact version should match the latest adapter version.
+<b>User Action:</b> Run the migration wizard on the connector project to migrate the module to the latest adapter version.</description>
+	</context>
+	<context id="CWPAD0003">
+		<description>
+<b>CWPAD0003</b>
+<b>Explanation:</b> To use the latest adapter features, the module artifact version should match the latest adapter version.
+<b>User Action:</b> Run the migration wizard on the connector project to migrate the module to the latest adapter version.</description>
+	</context>
+	<context id="CWPAD0004">
+		<description>
+<b>CWPAD0004</b>
+<b>Explanation:</b> The service descriptor and the referenced schema versions should match.
+<b>User Action:</b> The project might be corrupt. Restore the current project from a backup version.</description>
+
+	</context>
+	
+<context id="CWPAD0005">
+	<description>
+		<b>CWPAD0005</b>
+		<b>Explanation:</b> The module and adapter cannot be migrated because they are not supported by the WebSphere Adapter Migration tool.
+		<b>User Action:</b> For more information about migrating the module and adapter, see the migration section of your adapter documentation.
+	</description>
+</context>
+	
+</contexts>

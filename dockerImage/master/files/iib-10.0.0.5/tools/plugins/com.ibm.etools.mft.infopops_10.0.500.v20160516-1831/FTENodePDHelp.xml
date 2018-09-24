@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+
+<pdHelp xmlns="http://www.ibm.com/visualutils/pdhelpcontent"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ibm.com/visualutils/pdhelpcontent http://www.ibm.com/visualutils/pdhelpcontent">
+
+	<pluginCategory id="com.ibm.etools.mft.ibmnodes">
+	
+ 		<pageHelp id="MonitorEventNodeMonitoringTab">
+	    	<title>Monitoring tab</title>
+	    	<shortDescription>Configure monitoring events.</shortDescription>
+	    </pageHelp>
+	
+		<!--  FTE OUTPUT NODE HELP -->	
+	
+	    <pageHelp id="ComIbmFTEOutput_basic">
+	    	<title>Basic tab</title>
+	    	<shortDescription>Settings for working with WebSphere MQ File Transfer Edition.</shortDescription>
+	    </pageHelp>
+		
+		<pageHelp id="ComIbmFTEOutput_request">
+			<title>Request tab</title>
+			<shortDescription>The location in the message tree of the record to be written.</shortDescription>
+		</pageHelp>
+		
+		<pageHelp id="ComIbmFTEOutput_validation">
+			<title>Validation tab</title>
+			<shortDescription>Optionally validate the output message, and choose what to do if the message fails.</shortDescription>
+		</pageHelp> 
+		
+		<pageHelp id="ComIbmFTEOutput_recordsAndElements">
+			<title>Records and Elements tab</title>
+			<shortDescription>Define how the FileOutput node writes the record derived from the message.</shortDescription>
+			<moreDescription>
+				<p>Set the "Record definition" property to one of the following values:</p>
+				<ul>
+				<li>"Record is Whole File" specifies that the file is to contain a single record. The file is finished immediately after the record is written; the FileOutput node does not wait for a message on the Finish File terminal. If you choose this option, none of the other fields on this tab are available.</li>
+				<li>"Record is Unmodified Data" specifies that records are accumulated in a file with neither padding or delimiters applied. The file is finished only when a message is received on the Finish File terminal. If you choose this option, none of the other fields on this tab are available.</li>
+				<li>"Record is Fixed Length Data" specifies that records are padded to a given length if necessary and accumulated in a file by concatenation. You specify this length in the Length property. If the record is longer than the value specified in Length, the node produces an exception. Use the Padding byte property to specify the byte to be used for padding the message to the required length. Records are added to this file until a message is received on the Finish File terminal.</li>
+				<li>"Record is Delimited Data" specifies that records are separated by a delimiter and accumulated by concatenation. The delimiter is specified by the Delimiter, Custom delimiter, and Delimiter type properties. Records are added to this file until a message is received on the Finish File terminal.</li>
+				</ul>
+			</moreDescription>
+		</pageHelp>
+		
+		<!-- FTE OUTPUT NODE - BASIC PAGE -->
+		
+		<fieldHelp id="ComIbmFTEOutput_basic_jobName">
+			<title>Job name</title>
+			<description>
+				<p>The job name appears in transfer logs and the metadata for the transfer. It marks the transfer with a piece of user-defined information.</p>
+				<p>It is not directly used by the agent in any processing. You might use it in request and reply patterns where you need reply to context stored in the transfers so that a remote application knows where to send the response.</p>
+				<p>You can also set other user-defined metadata tags in the transfer meta detail using the Userdefined folder in the LocalEnvironment.Destination.FTE.Userdefined.(name of required properties) element.</p>
+				<p>You can leave the Job name property blank, in which case the job name metadata properties do not appear in the transfer logs, but the transfer otherwise behaves as normal.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEOutput_basic_destinationAgent">
+			<title>Agent</title>
+			<description>
+				<p>The name of the destination agent to send the file to.</p>
+				<p>In most cases, apart from unit testing, set this field to a valid remote agent name. 
+    				The destination agent could be another integration server in this or another broker or a standalone FTE agent.
+    				This agent must be reachable over the MQ network either by MQ channels directly or through its queue manager being in an MQ cluster.
+    				The combination of agent name and queue manager name are required to send a transfer to the agent. 
+					Make sure the destination queue manager property is also set if the agent is not using the broker queue manager.</p>
+				<p>If the field is left blank, the integration server agent is used. 
+					In production this makes little sense because the transfer is from the integration server agent to itself. It might be 
+					useful when first using the nodes or when unit-testing logic in message flows.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEOutput_basic_destinationQMgr">
+			<title>Queue manager</title>
+			<description>
+				<p>The name of the destination queue manager to send the file to.</p>
+				<p>The destination queue manager must be the queue manager that the destination agent is listening on for transfers. 
+					Ensure that the destination agent and queue manager name are correct, because the node does not check that they exist. 
+					Requests are sent over MQ, and any errors on reaching the agent are reported in the MQ logs.
+					The queue manager must be reachable over the MQ network either by MQ channels directly or through its queue 
+					manager being in an MQ cluster.</p>
+				<p>The combination of agent name and queue manager name are required to send a transfer to the agent. 
+				If the field is left blank, the broker queue manager is used.</p> 
+				<p>In a production system, many agents might use the broker queue manager by connecting in from remote machines using MQ client connections.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmFTEOutput_basic_destinationDirectory">
+			<title>File directory</title>
+			<description>
+				<p>The remote directory that the destination agent writes the file to.
+					The file can either be an absolute filepath or a relative filepath on the remote machine.
+					Avoid using absolute file paths, which require platform-dependent information such as  c:\temp\filein or /tmp/filein.
+					You can use forward slashes as path separators on Windows systems. For example, /temp/filein maps to: c:\temp\filein.</p>
+				<p>Relative file paths are relative to the agent's default transfer directory.
+					IBM Integration Bus initializes this to</p> 
+				<p>&lt;workpath&gt;/common/FTE/&lt;broker name&gt;/&lt;integration server name&gt;/Inbox on broker agents.</p>
+				<p>A relative path, such as branch/Number1, causes the file to be written to</p> 
+				<p>&lt;workpath&gt;/common/FTE/&lt;broker name&gt;/&lt;integration server name&gt;/Inbox/branch/Number1.</p>
+				<p>Other remote agents might have different default transfer directories, depending on how you have configured them. 
+					The normal default is the user directory of the user starting the agent.</p>
+				<p>If the property is left blank, the file is transferred directly to the default transfer path. 
+					You can leave this property blank, and always transfer to the default directory.
+					You might use different directories if more 
+					than one application consumes the transferred data. 
+					Each application can have its own assigned directory.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEOutput_basic_destinationFileName">
+			<title>File name</title>
+			<description>
+				<p>The name of the file to be created by the destination agent. 
+					The File name can be a pattern that contains a single wildcard. 
+					The wildcard value is taken from the Wildcard value in the local environment folder called 
+					LocalEnvironment.Wildcard.WildcardMatch.
+					This value is normally set by FTEInput or FileInput nodes.</p> 
+				<p>For example: if the FTEInput node sets its file pattern to *.in, 
+					it would match the file test.in as "test".</p>
+				<p>If the FTEOutput node's file pattern is set to *.out, 
+					the "test" would be substituted in to make a file name of test.out.</p>
+				<p>The file name must be set but can be overridden using the local environment field: 
+					LocalEnvironment.Destination.FTE.Name.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmFTEOutput_basic_checkSumDisabled">
+			<title>Disable computation of MD5 check sum</title>
+			<description>
+				<p>The MD5 checksum is used to check the integrity of the transferred file. 
+					Select this check box to disable this function.</p> 
+				<p>Selecting this check box might reduce performance costs, 
+					at the cost of not knowing that the file has transferred correctly.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmFTEOutput_basic_overwriteDestination">
+			<title>Overwrite files on destination system</title>
+			<description>
+				<p>Specifies whether files on the destination system can be overwritten when the destination 
+					agent moves files of the same name there. </p>
+				<p>If the destination agent fails to overwrite the file, the transfer fails and the transfer logs report the failure. 
+					The FTEOutput node does not throw or log any errors.
+					This does not cause any transfers already in progress to be cancelled or overridden.
+					Allow files to be overridden if possible, because it is difficult to recover from the failed transfer.
+					You probably want to overwrite files when you are sending exactly the same data 
+					(retry), or when the latest version of the data is always the best.</p>
+				<p>If the data is different and each separate instance of the file must be processed,  
+					use unique names for each transfer (using LocalEnvironment.Destination.FTE.Name).
+					To enable unique names, add a timestamp or some other unique identifier to the local environment in a 
+					compute node before the FTEOutput node.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<!--  FTE Output Node - Request Page -->
+		
+		<fieldHelp id="ComIbmFTEOutput_request_dataLocation">
+			<title>Data location</title>
+			<description>
+				<p>The location in the input message tree that contains the record to be written to the output file. 
+					The default value, $Body, means the data portion of the message without any headers.
+					It can be used to just send part of the incoming message out like $Body.Top.Part1 when using a parser which supports partial serialization like the XMLNSC parser.
+					It can also be used to get the message data from the LocalEnvironment tree which has been created in a previous node.
+					In most cases the default behavior of using the body of the message should be acceptable.</p> 
+				<p>Click in the field and then press Ctrl+Space to use content assist, or click Edit.</p>
+			</description>
+		</fieldHelp>
+
+		<!--  FTE Output Node - Records and Elements Page -->
+		
+		
+		<fieldHelp id="ComIbmFTEOutput_recordsAndElements_recordDefinition">
+			<title>Record definition</title>
+			<description>
+				<p>How records are placed in the output file.</p> 
+				<p>If the property is set to "Whole file", messages sent to the In terminal are written to a staging file 
+					and then sent to FTE straight away. The "Finish File" terminal has no effect and should not be 
+					used in this mode.</p>
+				<p>For the other modes, messages sent to the In terminal are written to the file using the following rules:</p>
+				<ul>
+					<li>Unmodified: only the content of the message is written, without any extra data to specify the record.</li>
+					<li>Fixed length: the message is padded to the correct length and then written to the file. If it is too big, an error occurs. </li>
+					<li>Delimited: the message is written to the file with a delimiter attached (see options below for types of delimiter possible).</li>
+				</ul>
+				<p>The transfer takes place only when a message is sent to the "Finish File" terminal.<br/>
+					Set this field if you want to build up a file containing several records from different messages 
+					before a transfer is started.</p>
+				<p>The default behavior is valid if all the required data is in one message. 
+					Consider splitting the data into smaller parts, 
+					so that the system can scale for very large data sizes.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEOutput_recordsAndElements_recordLength">
+			<title>Length (bytes)</title>
+			<description>
+				<p>The required length of the output record. To enable this property, set the Record definition property to "Record is Fixed Length Data". 
+					This value is used to construct a fixed-size record. </p>
+				<ul>
+    				<li>If the record is smaller that the required size, it is padded using "Padding byte" property. </li>
+    				<li>If it is too large, an exception is thrown.</li>
+				</ul>
+				<p>For example: if the length is 10 with padding "_", the message "TEST1" becomes "TEST1_____". Message "TEST2222222" causes an exception.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEOutput_recordsAndElements_recordPadding">
+			<title>Padding byte (hexadecimal)</title>
+			<description>
+				<p>A 2-digit hexadecimal byte that pads short messages. To enable this property, set the Record definition property to "Record is Fixed Length Data".</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmFTEOutput_recordsAndElements_recordDelimiter">
+			<title>Delimiter</title>
+			<description>
+				<p>The record delimiter that is used when the Record definition property is set to "Record is Delimited Data".
+					The delimiter can be either a new line, or a custom delimiter consisting of any hex data for the delimiter.
+					The new line delimiter is most commonly used. To change it, set the delimiter to "Custom" and specify the required bytes in the "Custom delimiter" property.</p>
+			</description>
+		</fieldHelp>
+
+
+		<fieldHelp id="ComIbmFTEOutput_recordsAndElements_customDelimiter">
+			<title>Custom delimiter (hexadecimal)</title>
+			<description>
+				<p>An even-numbered string of hexadecimal digits that defines the delimiter byte sequence. 
+					To enable this property, set the Record Definition property to "Record is Delimited Data", 
+					and the Delimiter property to "Custom Delimiter". </p>
+				<p>For example: to specify that all records are delimited by a null character set the value to 00.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmFTEOutput_recordsAndElements_delimiterType">
+			<title>Delimiter type</title>
+			<description>
+				<p>Specify whether the delimiter is added after each record ("Postfix"), or only between two adjacent records ("Infix").</p>
+				<p>To enable this property, set the Record Definition property to "Record is Delimited Data".</p>
+				<p>If the last record has a delimiter, use "Postfix", otherwise use "Infix".</p>
+			</description>
+		</fieldHelp>
+		
+		<!-- FTE Output Node - Validation Page -->
+		
+		<fieldHelp id="ComIbmFTEOutput_validation_validateMaster">
+			<title>Validate</title>
+			<description>
+				<ul>
+					<li>Select "None" to perform no validation on the message. </li>
+					<li>Select "Content" to validate the content and message composition. </li>
+					<li>Select "Content and Value" to perform validation of the message content and value checks, such as whether the value conforms to data type, length, range, and enumeration.</li>
+					<li>Select "Inherit" to use all the validation options that are provided with the input message tree in 
+						preference to any supplied on the node. "Inherit" therefore resolves to None, Content, or Content And Value. 
+						If Inherit is selected, the other validation properties on the tab are not available.</li>
+				</ul>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEOutput_validation_validateFailureAction">
+			<title>Failure Action</title>
+			<description>
+				<p>Specify the action to take if validation fails. To enable this property, set the Validate 
+					property to "Content" or "Content and Value". </p>
+				<ul>
+					<li>Select "Exception" to throw an exception on the first validation failure. 
+						The failure is also logged in the user trace if you have asked for user tracing of the message flow, 
+						and validation stops. Use this setting if you want processing of the message to halt as soon as a failure 
+						happens.</li>
+					<li>Select "Exception List" to throw an exception if validation failures happen, but only when the 
+						current parsing or writing operation has completed. Each failure is also logged in the user trace if you 
+						have asked for user tracing of the message flow, and validation stops. Use this setting if you want 
+						processing of the message to halt if a validation failure occurs, but you want to see the full list 
+						of failures. This property is affected by the Parse Timing property; when partial parsing 
+						is selected, the current parsing operation parses only a portion of an input message, so only 
+						the validation failures in that portion of the message are reported.</li><li>
+						Select "User Trace" to log all validation failures to user trace, even if you have not asked 
+						for user tracing of the message flow. Use this setting if you want processing of the message to 
+						continue regardless of validation failures.</li><li>
+						Select "Local Error Log" to log all validation 
+						failures to the system log. Use this setting if you want processing of the message to continue 
+						regardless of validation failures.</li>
+				</ul>
+			</description>
+		</fieldHelp>
+		
+		<!-- FTEInput Node -->
+		
+		<pageHelp id="ComIbmFTEInput_basic">
+			<title>Basic tab</title>
+			<shortDescription>Enter values to determine how the node connects to WebSphere MQ File Transfer Edition.</shortDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmFTEInput_basic_inputDirectory">
+			<title>Directory filter</title>
+			<description>
+				<p>Specify the WebSphere MQ File Transfer Edition destination directory 
+					from which the node can process files. If this property is left blank, the node processes files from all directories. 
+					If multiple FTEInput nodes are deployed to the same integration server, files will be distributed randomly between the 
+					nodes unless filtering is defined. Relative path are taken relative to the default transfer directory of agent. 
+					By default this is set to: <br/>
+					&lt;workpath&gt;/common/FTE/&lt;broker name&gt;/&lt;integration server name&gt;/Inbox</p>
+				<p>For example: branch/number1 resolves to<br/> 
+					&lt;workpath&gt;/common/FTE/&lt;broker name&gt;/&lt;integration server name&gt;/Inbox/branch/number1.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmFTEInput_basic_filenamePattern">
+			<title>File name filter</title>
+			<description>
+				<p>Specify either a file name, or a character sequence (pattern) that matches a file name. 
+					A pattern must contain at least one of the following wildcard characters:</p>
+				<ul>
+    				<li>* (any sequence of zero or more characters)</li>
+    				<li>? (any single character)</li>
+				</ul>
+				<p>By default the node processes all files. If multiple FTEInput nodes are deployed to the same integration server, 
+					files are distributed randomly between the nodes unless filtering is defined.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmFTEInput_basic_processedFileAction">
+			<title>Action on successful processing</title>
+			<description>
+				<p>Select the action to take once the node has successfully processed the file.</p>
+				<p>You might choose to leave the file in the input directory if other processes also need access to the file. 
+					In this case the notification from FTE is deleted, and the file is left in place.
+					Deleting files prevents the build up of processed files. You can also use this option if a transfer will fail if a file already exists 
+					(for example, if the same file name is used  repeatedly.)
+					Use the timestamp option if an archive of the file is required to record all transfers made.</p>
+			</description>
+		</fieldHelp>
+		
+		<!--  FTE Input Node - Parsing Tab -->
+		
+		<pageHelp id="ComIbmFTEInput_inboundMessageParsing">
+			<title>Input message parsing tab</title>
+			<shortDescription>Determine how the node parses incoming messages.</shortDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmFTEInput_inboundMessageParsing_messageDomainProperty">
+			<title>Message Domain</title>
+			<description>
+				<p>The domain used to parse the incoming message. Select from the drop-down list or specify a user-defined parser.</p>
+				<ul>
+					<li>If parsing an XML message, use the XMLNSC parser.</li>
+					<li>For binary or text messages with a Data Format Description Language schema model, use the DFDL parser.</li>
+					<li>To access the byte data without parsing, use the BLOB parser.</li>
+					<li>If you do not specify a parser, the BLOB parser is used, and the binary data can be accessed directly within the flow.</li>
+				</ul>
+				<p>The data can be reparsed with a different parser at any point in the flow by using the ResetContentDescriptor node, or by using a parse clause in a Compute node.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEInput_inboundMessageParsing_messageSetProperty">
+			<title>Message Model</title>
+			<description>
+				<p>Specify the name of the schema file, or the name or identifier of the message model, in which the incoming message is modeled.</p> 
+				<p>To enable this property, set the Message Domain property to "DFDL" or "XMLNSC" and select a schema file, or set it to,"MRM" or "IDOC" and select a message set.</p> 
+				<p>Only message models that are contained in your Integration project, or are contained in a referenced application or library, are available for selection.</p>
+				<p>Qualify this property by specifying a library name if the name of your schema file, or the qualified message name that you have selected in the Message property, is not unique within the referenced resources.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEInput_inboundMessageParsing_messageTypeProperty">
+			<title>Message</title>
+			<description>
+				<p>The namespace qualified name of the incoming message.</p>
+				<p> To enable this property, set the Message domain property to "DFDL" or "MRM" and select a message model.</p>
+				<p>Only message names from the selected message model are available for selection.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEInput_inboundMessageParsing_messageFormatProperty">
+			<title>Physical Format</title>
+			<description>
+				<p>The physical format name for the incoming message, specified in the message set. To enable this property, set the Message domain property to "MRM" or "IDOC".</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEInput_inboundMessageParsing_messageCodedCharSetIdProperty">
+			<title>Message Coded Character Set ID</title>
+			<description>
+				<p>Set the ID of the coded character set used to interpret bytes of the file being read.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEInput_inboundMessageParsing_messageEncodingProperty">
+			<title>Message Encoding</title>
+			<description>
+				<p>Set the encoding scheme for numbers used to interpret bytes of the file being read. </p>
+				<p>Select "Broker System Determined" or set a numeric encoding value. For example, on Windows systems, binary integers are encoded as Little Endian. Most other operating systems use Big Endian. If you do not set this property, the encoding used on the broker is used.</p>
+			</description>
+		</fieldHelp>
+		
+		<!--  FTE Input Node - Input Message Parsing > Parser Options Sub Tab -->
+		
+		<pageHelp id="ComIbmFTEInput_parserOptions">
+			<title>Parser Options tab</title>
+			<shortDescription>Determine the behavior of the XMLNSC parser.</shortDescription>
+			<moreDescription>
+				<p>Configure the following options to determine the behavior of the XMLNSC parser:</p>
+				<ul>
+					<li>Build tree using XML schema data types: Select this property to create syntax elements in the message tree with data types taken from the XML Schema. To enable this property, set the Validate property on the Validation tab to "Content" or "Content and Value".</li>
+					<li>Use XMLNSC compact parser for XMLNS domain: Select this property to format the response message in XMLNSC for nodes that are connected to the output terminal when the input MQRFH2 header or Response Message Parsing properties Message Domain is XMLNS.</li>
+					<li>Retain mixed content: Select this property to create elements in the message tree when the parser finds mixed text in a response message. If you clear the check box, mixed text is ignored and no elements are created.</li>
+					<li>Retain comments: Select this property to create elements in the message tree when the parser finds comments in a response message. If you clear the check box, comments are ignored and no elements are created.</li>
+					<li>Retain processing instructions: Select this property to create elements in the message tree when the parser finds processing instructions in a response message. If you clear the check box, processing instructions are ignored and no elements are created.</li>
+					<li>Opaque elements: Add a list of elements in the response message that are to be opaquely parsed by the XMLNSC parser. Opaque parsing is performed only if validation is not enabled (that is, if the Validate property on the Validation tab is set to "None"); entries that are specified in Opaque Elements are ignored if validation is enabled. </li>
+				</ul>
+			</moreDescription>
+			<topic href="../com.ibm.etools.mft.doc/ac76040_.htm">
+				<label>Manipulating messages in the XMLNSC domain</label>
+			</topic>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmFTEInput_parserOptions_validateTiming">
+			<title>Parse timing</title>
+			<description>
+				<p>Specify when an input message should be parsed.</p>
+				<ul>
+					<li>On Demand: parse an input message bit stream only as far as is necessary to satisfy the current reference (referred to as partial parsing).</li>
+					<li>Immediate: parse the entire message, including any message headers.</li>
+					<li>Complete: parse the entire message, including any message headers.</li>
+				</ul>
+				<p>The only difference in behavior between Immediate and Complete occurs when MRM validation is enabled.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEInput_parserOptions_validateTiming">
+			<title>Parse timing</title>
+			<description>
+				<p>Specify when an input message should be parsed.</p>
+				<ul>
+					<li>On Demand: parse an input message bit stream only as far as is necessary to satisfy the current reference (referred to as partial parsing).</li>
+					<li>Immediate: parse the entire message, including any message headers.</li>
+					<li>Complete: parse the entire message, including any message headers.</li>
+				</ul>
+				<p>The only difference in behavior between Immediate and Complete occurs when MRM validation is enabled.</p>
+			</description>
+			<topic href="../com.ibm.etools.mft.doc/ac20814_.htm">
+				<label>Parsing on demand</label>
+			</topic>
+		</fieldHelp>
+		
+		<!-- FTEInput Node - Retry Tab -->
+		
+		<pageHelp id="ComIbmFTEInput_retry">
+			<title>Retry tab</title>
+			<shortDescription>Determine what happens if a message fails.</shortDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmFTEInput_retry_retryMechanism">
+			<title>Retry mechanism</title>
+			<description>
+				<p>Specify how the node handles a flow failure.</p>
+				<ul>
+					<li>Failure: the node reports a failure without any retry attempts.</li>
+					<li>Short retry: the node tries to process the flow transaction again before reporting a failure. Use the Retry threshold property to set the number of times to try the flow transaction.</li>
+					<li>Short and long retry: the node tries to process the flow transaction again, first using the value in the Retry threshold property as the number of attempts to make. If the condition persists, the node uses the Long retry interval setting between further attempts.</li>
+				</ul>
+				<p>The default option, Failure, means that a record in the file is tried only once before failing the file. 
+					Use this option if you expect failures down the flow to be caused by a permanent problem such as invalid data in the message.</p>
+				<p>If you think that transient problems such as data base connections or queues being full might cause failures, select one of the other options
+					so that a record is retried a number of time.</p>
+				<ul>
+    				<li>The short retry processing is best if you want a set number of retries followed by failure. This is most useful when you expect a mixture of recoverable and non-recoverable errors.</li>
+    				<li>The long retry processing is useful when you expect all errors to be recoverable but you want to wait for a longer period of time before doing retries.</li>
+				</ul>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmFTEInput_retry_retryThreshold">
+			<title>Retry threshold</title>
+			<description>
+				<p>The number of times to try the flow transaction again when the value of the Retry mechanism property is Short Retry, or Short and Long Retry.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEInput_retry_shortRetryInterval">
+			<title>Short retry interval (seconds)</title>
+			<description>
+				<p>The interval between each retry if the Retry threshold property is not zero, and the Retry mechanism property is set to Short Retry.</p>
+			</description>
+		</fieldHelp>
+	
+		
+		<fieldHelp id="ComIbmFTEInput_retry_longRetryInterval">
+			<title>Long retry interval (seconds)</title>
+			<description>
+				<p>The interval between long retry attempts until a message is successful, the message flow is stopped, or the message flow is redeployed.<br/>
+					The property MinLongRetryInterval defines the minimum value the Long retry interval property can take. If the value of this field is lower than the minimum, the broker value is used.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmFTEInput_retry_failedFileAction">
+			<title>Action on failing file</title>
+			<description>
+				<p>Specify what action the node takes with the input file if all attempts to process its contents fail.</p>
+				<ul>
+					<li>No action: leave file in Input directory. <br/>This is the default action. Select this to leave the file in place, and discard the notification. The FTEOutput node does not process the 
+						message after the notification is discarded. This option is best when you expect other processes to also process the message.</li>
+					<li>Delete: file is deleted after processing fails.<br/>Deleting the file on error is useful if you do not want data left stranded after a failure and you know that the data will 
+						be resent later when the problem is resolved. </li>
+					<li>Add Time Stamp: the current date and time are added to the file name and file left in Input directory.<br/>The timestamp option allows for archiving the failed file but without it leaving a file with the orignal name. 
+						This is particularly important if FTE is configured to fail transfers when files already exist.</li>
+				</ul>
+			</description>
+		</fieldHelp>
+		
+		
+		<!--  FTE Input Node - Record & Elements Tab -->
+		
+		<pageHelp id="ComIbmFTEInput_recordsAndElements">
+			<title>Records and elements</title>
+			<shortDescription>Determine how each file is split into records, each of which generates a single message.</shortDescription>
+			<moreDescription>
+				<ul>
+    				<li>&quot;Whole File&quot; specifies that the whole file is a single record. If you choose this option, none of the other fields on this tab are available.</li>
+    				<li>&quot;Fixed Length&quot; specifies that each record is a fixed number of bytes in length. Each record contains the number of bytes specified in the Length (bytes) property, except possibly a shorter final record in the file.</li> 
+    				<li>&quot;Delimited&quot; if the records that you are processing are separated, or terminated, by a DOS or UNIX line end, or by a sequence of user-defined delimiter bytes. Specify the delimiter in the Delimiter, and Delimiter type properties.</li> 
+    				<li>&quot;Parsed Record Sequence&quot; if the file contains a sequence of one or more records that are serially recognized by the parser specified in Message domain on the Input Message Parsing panel. The node propagates each recognized record as a separate message. If you select this option, the parser specified in Message domain must be either XMLNSC or MRM (either CWF or TDS physical format).</li>
+				</ul>
+			</moreDescription>
+		</pageHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEInput_recordsAndElements_recordDetection">
+			<title>Record detection</title>
+			<description>
+				<ul>
+    				<li>&quot;Whole File&quot; specifies that the whole file is a single record. If you choose this option, none of the other fields on this tab are available.</li>
+    				<li>&quot;Fixed Length&quot; specifies that each record is a fixed number of bytes in length. Each record contains the number of bytes specified in the Length (bytes) property, except possibly a shorter final record in the file.</li> 
+    				<li>&quot;Delimited&quot; if the records that you are processing are separated, or terminated, by a DOS or UNIX line end, or by a sequence of user-defined delimiter bytes. Specify the delimiter in the Delimiter, and Delimiter type properties.</li> 
+    				<li>&quot;Parsed Record Sequence&quot; if the file contains a sequence of one or more records that are serially recognized by the parser specified in Message domain on the Input Message Parsing panel. The node propagates each recognized record as a separate message. If you select this option, the parser specified in Message domain must be either XMLNSC or MRM (either CWF or TDS physical format).</li>
+				</ul>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEInput_recordsAndElements_recordLength">
+			<title>Length</title>
+			<description>
+				<p>The length of each record in bytes. To enable this property, set the Record detection property to "Fixed Length". <br/>
+					If you specify Whole File, Fixed Length, or Delimited in the Record detection property, a limit of 100 MB applies to the length of the records. If you specify Parsed Record Sequence in the Record detection property, the FTEInput node does not determine or limit the length of a record. Nodes that are downstream in the message flow might try to determine the record length or process a long record. If you intend to process large records in this way, ensure that your broker has sufficient memory. You might need to apply flow techniques described in the Large Messaging sample to make best use of the available memory.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmFTEInput_recordsAndElements_recordDelimiter">
+			<title>Delimiter</title>
+			<description>
+				<p>The record delimiter that is used when the Record detection property is set to "Delimited". <br/>"DOS or UNIX Line End" on UNIX systems specifies the line feed character (X'0A'). On Windows systems it specifies a carriage return character followed by a line feed character (X'0D0A'). The node treats both of these strings as delimiters, irrespective of the system on which the broker is running. If they are both in the same file, the node recognizes both as delimiters. The node does not recognize X'15' which, on z/OS systems, is the 'newline' byte; specify a value of "Custom Delimiter" in this property and a value of "15" in the Custom delimiter property if your input file is coded using EBCDIC new lines, such as EBCDIC files from a z/OS system.</p>
+			</description>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmFTEInput_recordsAndElements_customDelimiter">
+			<title>Custom delimiter</title>
+			<description>
+				<p>An even-numbered string of hexadecimal digits that defines the delimiter byte sequence. To enable this property, set the Record detection property to "Delimited ", and the Delimiter property to "Custom Delimiter".</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEInput_recordsAndElements_delimiterType">
+			<title>Delimiter type</title>
+			<description>
+				<p>Specify whether the delimiter is added after each record ("Postfix"), or only between two adjacent records ("Infix"). To enable this property, set the Record detection property to "Delimited", and the Delimiter property to "Custom Delimiter".</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<!-- FTE Input Node - Validation Tab -->
+		
+		<pageHelp id="ComIbmFTEInput_validation">
+			<title>Validation tab</title>
+			<shortDescription>Check the input message against the message model contained in the message set to determine whether it is correctly formatted.</shortDescription>
+			<moreDescription>
+				<p>You can check the input message against the message model contained in the message set to determine whether it is correctly formatted. If it is invalid, you can choose what to do.</p>
+				<p><b>Validate</b></p>
+				<ul>
+					<li>Select "None" to perform no validation on the message. </li>
+					<li>Select "Content and Value" to perform validation of the message content and value checks, such as whether the value conforms to data type, length, range, and enumeration.</li>
+					<li>Select "Content" to validate the content and message composition. </li>
+				</ul>
+				<p>Note: Even if Content is selected, the XMLNSC domain always performs Content and Value validation.<br/><br/>
+					<b>Failure action</b></p>
+				<ul>
+					<li>Select "Exception" to throw an exception on the first validation failure encountered. The failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt as soon as a failure is encountered.</li>
+					<li>Select "Exception List" to throw an exception if validation failures are encountered, but only when the current parsing or writing operation has completed. Each failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt if a validation failure occurs, but you want to see the full list of failures encountered. This property is affected by the Parse Timing property; when partial parsing is selected the current parsing operation parses only a portion of an input message, so only the validation failures in that portion of the message are reported.</li>
+					<li>Select "User Trace" to log all validation failures to the user trace, even if you have not asked for user tracing of the message flow. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+					<li>Select "Local Error Log" to log all validation failures to the system log. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+				</ul>
+			</moreDescription>
+			<topic href="../com.ibm.etools.mft.doc/ac00400_.htm">
+				<label>Validating messages</label>
+			</topic>
+			<topic href="../com.ibm.etools.mft.doc/ac18870_.htm">
+				<label>Validation tab properties</label>
+			</topic>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmFTEInput_validation_validateMaster">
+			<title>Validate</title>
+			<description>
+				<ul>
+					<li>Select "None" to perform no validation on the message. </li>
+					<li>Select "Content and Value" to perform validation of the message content and value checks, such as whether the value conforms to data type, length, range, and enumeration.</li>
+					<li>Select "Content" to validate the content and message composition. </li>
+				</ul>
+				<p>Note: Even if Content is selected, the XMLNSC domain always performs Content and Value validation.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<fieldHelp id="ComIbmFTEInput_validation_validateFailureAction">
+			<title>Failure action</title>
+			<description>
+				<p>Specify the action to take if validation fails. To enable this property, set the Validate property to "Content" or "Content and Value".</p>
+				<ul>
+					<li>Select "Exception" to throw an exception on the first validation failure encountered. The failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt as soon as a failure is encountered.</li>
+					<li>Select "Exception List" to throw an exception if validation failures are encountered, but only when the current parsing or writing operation has completed. Each failure is also logged in the user trace if you have asked for user tracing of the message flow, and validation stops. Use this setting if you want processing of the message to halt if a validation failure occurs, but you want to see the full list of failures encountered. This property is affected by the Parse Timing property; when partial parsing is selected the current parsing operation parses only a portion of an input message, so only the validation failures in that portion of the message are reported.</li>
+					<li>Select "User Trace" to log all validation failures to the user trace, even if you have not asked for user tracing of the message flow. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+					<li>Select "Local Error Log" to log all validation failures to the system log. Use this setting if you want processing of the message to continue regardless of validation failures.</li>
+			</ul>
+			</description>
+		</fieldHelp>
+		
+		
+		<!--  FTE Input Node - Transactions Tab -->
+		
+		<pageHelp id="ComIbmFTEInput_transactions">
+			<title>Transactions tab</title>
+			<shortDescription>Set the transaction mode.</shortDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmFTEInput_transactions_transactionMode">
+			<title>Transaction mode</title>
+			<description>
+				<p>Specify whether the rest of the nodes in the flow are executed under sync point. Select Yes if you want the flow updates to be treated transactionally (possible only if those downstream nodes are configured with transaction=automatic), or No if you do not.</p>
+			</description>
+		</fieldHelp>
+		
+		
+		<!--  FTE Input Node - Instances Tab -->
+		
+		<pageHelp id="ComIbmFTEInput_instances">
+			<title>Instances tab</title>
+			<shortDescription>Set values to control the additional instances (threads) that are available to the node.</shortDescription>
+		</pageHelp>
+		
+		<fieldHelp id="ComIbmFTEInput_instances_componentLevel">
+			<title>Additional instances pool</title>
+			<description>
+				<p>Select the pool from which additional instance threads for the input node are obtained.</p>
+				<p>If you select "Use Pool Associated with Message Flow", additional instances are obtained from the message flow pool.</p>
+				<p>If you select "Use Pool Associated with Node", additional instances are allocated from the additional instances of the node based on the component level number specified in the Additional instances property.</p>
+			</description>
+			<topic href="../com.ibm.etools.mft.doc/ac09055_.htm">
+				<label>Configurable message flow properties</label>
+			</topic>
+		</fieldHelp>
+		
+		<fieldHelp id="ComIbmFTEInput_instances_additionalInstances">
+			<title>Additional instances</title>
+			<description>
+				<p>The number of additional instances that the node can start if the Additional instances pool property is set to "Use Pool Associated with Node".</p>
+			</description>
+		</fieldHelp>
+		
+	</pluginCategory>
+
+
+</pdHelp>

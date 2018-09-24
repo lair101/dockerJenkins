@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ibm.etools.mft.feature.msg"
+      label="%Feature.name"
+      version="10.0.500.v20160516-1831"
+      provider-name="IBM"
+      plugin="com.ibm.etools.msg.editor"
+      image="wsFeatUpdate.jpg">
+
+   <description>
+      %description
+   </description>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="com.ibm.etools.msg.c2msg"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.cobol2msg"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.coremodel"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.coremodel.utilities"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.coremodel.utilities.ui"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.dictionary"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.editor"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.generator"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.generator.wizards"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.importer.c"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.importer.cmdline"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.importer.cobol"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.importer.dtd"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.importer.framework"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.importer.newmsg"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.importer.wsdl"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.importer.xsd"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.mft.cache"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.mqheaders"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"/>
+
+   <plugin
+         id="com.ibm.etools.msg.mrp.importer"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.msgmodel"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.msgmodel.utilities"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.trace"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.trace.eclipse"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.validation"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.validation.mft.builder"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.validation.physical"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.wsdl"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.importer.cmdline.wsdl"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.importer.precannedXsd"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.importer.scdl"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.wsdl.util"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.mft.builder.xsi"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.precanned.definitions"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.reporting.imageprovider"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.reporting.imageutility"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"/>
+
+   <plugin
+         id="com.ibm.etools.msg.reporting.infrastructure"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"/>
+
+   <plugin
+         id="com.ibm.etools.msg.reporting.infrastructure.infopop"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.reporting.reportunit.common"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.reporting.reportunit.esql"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.reporting.reportunit.java"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.reporting.reportunit.mset"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.reporting.reportunit.msgflow"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"/>
+
+   <plugin
+         id="com.ibm.etools.msg.reporting.reportunit.msgmap"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.reporting.reportunit.mxsd"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"/>
+
+   <plugin
+         id="com.ibm.etools.msg.reporting.reportunit.wsdl"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"/>
+
+   <plugin
+         id="com.ibm.etools.msg.adapter.migration"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+         
+   <plugin
+         id="com.ibm.etools.msg.coremodel.corba"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"/>
+
+   <plugin
+         id="com.ibm.etools.msg.importer.dbm"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.dfdlmodel"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.dfdlmodel.utilities"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.validation.dfdl"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.refactor"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.importer.dfdl"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.wsdl.ui"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+
+   <plugin
+         id="com.ibm.etools.msg.importer.corba"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+</feature>

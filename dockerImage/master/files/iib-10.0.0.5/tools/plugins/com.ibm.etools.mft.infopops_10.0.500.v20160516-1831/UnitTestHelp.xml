@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<contexts>
+
+	<context id="EVENTS_PAGE">
+		<description><b>Events page</b>
+Use the Events page of the IBM Integration test client to interact with the message flows that you are testing and view the results.</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+		<topic href="../com.ibm.etools.mft.doc/af52250_.htm" label="Configuring the test settings"/>
+	</context>    
+	
+	<context id="DEPLOYMENT_LOCATION_DIALOG">
+		<description><b>Deployment Location</b>
+Select the name of the server where you want to deploy your message flows. For example, <b>IBM Integration Bus </b>.</description>		
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+		<topic href="../com.ibm.etools.mft.doc/af52220_.htm" label="Selecting the deployment location"/>
+	</context>    
+	
+	<!-- Message Flow invocation event property page -->
+	<context id="EVENTS_INVOCATION">
+		<description><b>Events page - Detailed Properties</b>
+In the Message flow drop-down list, select the name of the message flow that you want to test. Selecting the Message flow link opens the selected message flow in the message flow editor.  
+Use the value editor to specify values for the event definition that you are testing. To specify values for a property or extended data element, position your cursor in the Value column and type a value that is appropriate for the type specified in the Type column. To specify values for arrays, right-click the name of the array in the Name column and select Add Element, then expand the array and specify values for the individual fields for the array elements.</description>
+		<topic href="../com.ibm.etools.mft.doc/af52210_.htm" label="Test Client XML Structure pane"/>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context>
+	  
+		<context id="GENERAL_EVENT">
+		<description><b>General event</b>
+Use the source or value editor to view values that were passed to the message flow that you are testing. The values are displayed in the Value column when the value editor is selected.</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context> 
+	
+	<!-- EVENTS_HTTP_INFO Info -->
+	<context id="EVENTS_HTTP_INFO">
+		<description><b>HTTP Information event</b>
+An HTTP Information Event indicates that the test client has successfully initiated a Send Message operation from the HTTP Input node of a message flow. 
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context> 
+	
+	<context id="EVENTS_HTTP_RESPONSE">
+		<description><b>HTTP Response event</b>
+An HTTP Response Event indicates that the test client has successfully captured the response of the HTTP Reply node of a message flow during test execution. 
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context> 
+	
+	<context id="EVENTS_HTTP_EXCEPTION">
+		<description><b>HTTP Exception event</b>
+This is the name of the HTTP exception class and trace that contain the exception message.</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context>  
+	
+	<context id="EVENTS_MQ_INFO">
+		<description><b>MQ Information event</b>
+An MQ Information Event indicates that the test client has successfully initiated a Send Message operation from the MQ Input node of a message flow.
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context> 
+	
+	<context id="EVENTS_MQ_RESPONSE">
+		<description><b>MQ Response event</b>
+An MQ Response Event indicates that the test client has successfully captured the response in output queues that are being monitored in a message flow during test execution.
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context> 
+	
+		<context id="EVENTS_MQ_EXCEPTION">
+		<description><b>MQ Exception event</b>
+This is the name of the MQ exception class and trace that contain the exception message. </description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context>   
+
+	<context id="EVENTS_JMS_INFO">
+		<description><b>JMS Information event</b>
+A JMS Information Event indicates that the test client has successfully sent a JMS message.
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context> 
+	
+	<context id="EVENTS_JMS_RESPONSE">
+		<description><b>JMS Response event</b>
+A JMS Response Event indicates that the test client has successfully captured the responses in JMS output destinations that are being monitored in a message flow during test execution.
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context> 
+	
+	<context id="EVENTS_JMS_EXCEPTION">
+		<description><b>JMS Exception event</b>
+A JMS Exception Event indicates that when the test client attempts to send JMS message, it encounters an error that cause the flow to stop processing. The detailed properties of an HTTP Exception Event show the exception message and detailed tracing.
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context>    
+
+	<context id="EVENTS_TRACE">
+		<description><b>Trace event</b>
+A Trace Event in the test client follows a message flowing over a connection, within a message flow, during test execution. A Trace Event happens only when tracing is turned on.
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context> 
+	
+	<context id="EVENTS_TRACE_EXCEPTION">
+		<description><b>Trace Exception event</b>
+A Trace Exception Event records errors that happen while a message is being processed by a node within a message flow, during test execution. A Trace Exception event happens only when tracing is turned on.
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context>    
+
+	<context id="EVENTS_ENQUEUE">
+		<description><b>Enqueue event</b>
+An Enqueue Event indicates that the test client has successfully sent a message to the defined queue manager, host, port, and queue.
+		</description>
+	<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context> 
+	
+	<context id="EVENTS_DEQUEUE">
+		<description><b>Dequeue event</b>
+A Dequeue event indicates that the test client has captured the first output message from the defined queue manager, host, port, and queue.
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context>    
+
+	<!-- Data pool: Integration Test Client Data Pool; View and Edit Data Pool COME BACK TO THIS --> 
+	<context id="OBJECT_POOL_DIALOG">
+		<description><b>Data pool</b>
+Select the list to which you want to add the element that is specified in the Name field.</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context> 
+	
+	<context id="CONFIG_PAGE">
+		<description><b>Test configuration</b>
+Use the Configurations page of the IBM Integration test client to edit the test configuration.  Expand the test configuration to view the message flows that are included in the test configuration.</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context>      
+ 
+	<context id="FLOW_SETTINGS">
+		<description><b>Message Flows configuration</b>
+In the Message Flows configuration section, add and remove message flows to be run in the test.
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context>    
+
+	<context id="JMS_SETTINGS">
+		<description><b>JMS Settings</b>
+In the JMS Settings configuration section, define JMS-specific settings to be applied to the test.
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context>    
+
+	<context id="MQ_SETTINGS">
+		<description><b>MQ Settings</b>
+In the MQ Settings configuration section, define MQ-specific settings to be applied to the test.
+		</description>
+			<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context>    
+
+		<context id="DEPLOYMENT_SETTINGS">
+		<description><b>Deployment Settings</b>
+In the Deployment Settings configuration section, define settings that are associated with deployment of the broker archive in the test.
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context>    
+
+		<context id="TEST_ENGINE_SETTINGS">
+		<description><b>Test Engine Settings configuration</b>
+In the test engine settings, customize test behaviors that apply to all test execution.
+		</description>
+		<topic href="../com.ibm.etools.mft.doc/af52240_.htm" label="Testing a message flow"/>
+	</context>    
+
+</contexts>

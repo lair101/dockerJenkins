@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Export-Package: com.ibm.etools.mft.connector.dbdiscovery,com.ibm.etool
+ s.mft.connector.dbdiscovery.model.beans
+Require-Bundle: org.eclipse.ui.ide;bundle-version="[3.6.2,4.0.0)",com.
+ ibm.etools.mft.connector.ui.editor;bundle-version="[10.0.0,11.0.0)",c
+ om.ibm.etools.mft.connector.base;bundle-version="[10.0.0,11.0.0)",com
+ .ibm.etools.mft.wizard.editor;bundle-version="[10.0.0,11.0.0)",com.ib
+ m.etools.mft.connector.dbsqleditor;bundle-version="[10.0.0,11.0.0)",c
+ om.ibm.etools.mft.rdb;bundle-version="[10.0.0,11.0.0)",com.ibm.datato
+ ols.core.ui;bundle-version="[3.1.2,4.0.0)",com.ibm.etools.msg.importe
+ r.dbm;bundle-version="[10.0.0,11.0.0)",com.ibm.etools.mft.uri;bundle-
+ version="[10.0.0,11.0.0)",org.eclipse.core.runtime;bundle-version="3.
+ 8.0",org.eclipse.core.resources;bundle-version="3.8.1",org.eclipse.ui
+ .forms;bundle-version="3.5.201"
+Bundle-Vendor: %Bundle-Vendor
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,descriptor/,nl/
+Bundle-Version: 10.0.500.v20160516-1831
+Bundle-Name: %Bundle-Name
+Bundle-Activator: com.ibm.etools.mft.connector.dbdiscovery.eclipse.Act
+ ivator
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ibm.etools.mft.connector.dbdiscovery;singleto
+ n:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+
+

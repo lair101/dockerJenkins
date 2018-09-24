@@ -1,0 +1,43 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: xmlbeans-2.3.0-IBM.jar
+Bundle-Vendor: IBM
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: Apache XMLBeans (repackaged for IBM WODM)
+Bundle-SymbolicName: com.ibm.rules.thirdparty.xmlbeans
+Export-Package: org.apache.xmlbeans; uses:="org.apache.xmlbeans.xml.st
+ ream,  org.xml.sax,  javax.xml.namespace,  javax.xml.stream,  org.w3c
+ .dom,  org.xml.sax.ext",org.apache.xmlbeans.impl.common,org.apache.xm
+ lbeans.impl.config,org.apache.xmlbeans.impl.inst2xsd,org.apache.xmlbe
+ ans.impl.inst2xsd.util,org.apache.xmlbeans.impl.jam,org.apache.xmlbea
+ ns.impl.jam.annotation,org.apache.xmlbeans.impl.jam.internal,org.apac
+ he.xmlbeans.impl.jam.internal.classrefs,org.apache.xmlbeans.impl.jam.
+ internal.elements,org.apache.xmlbeans.impl.jam.internal.javadoc,org.a
+ pache.xmlbeans.impl.jam.internal.parser,org.apache.xmlbeans.impl.jam.
+ internal.reflect,org.apache.xmlbeans.impl.jam.mutable,org.apache.xmlb
+ eans.impl.jam.provider,org.apache.xmlbeans.impl.jam.visitor,org.apach
+ e.xmlbeans.impl.jam.xml,org.apache.xmlbeans.impl.piccolo.io,org.apach
+ e.xmlbeans.impl.piccolo.util,org.apache.xmlbeans.impl.piccolo.xml,org
+ .apache.xmlbeans.impl.regex,org.apache.xmlbeans.impl.richParser,org.a
+ pache.xmlbeans.impl.schema,org.apache.xmlbeans.impl.soap,org.apache.x
+ mlbeans.impl.store,org.apache.xmlbeans.impl.tool,org.apache.xmlbeans.
+ impl.util,org.apache.xmlbeans.impl.validator,org.apache.xmlbeans.impl
+ .values,org.apache.xmlbeans.impl.xb.ltgfmt,org.apache.xmlbeans.impl.x
+ b.ltgfmt.impl,org.apache.xmlbeans.impl.xb.substwsdl,org.apache.xmlbea
+ ns.impl.xb.substwsdl.impl,org.apache.xmlbeans.impl.xb.xmlconfig,org.a
+ pache.xmlbeans.impl.xb.xmlconfig.impl,org.apache.xmlbeans.impl.xb.xml
+ schema,org.apache.xmlbeans.impl.xb.xmlschema.impl,org.apache.xmlbeans
+ .impl.xb.xsdownload,org.apache.xmlbeans.impl.xb.xsdownload.impl,org.a
+ pache.xmlbeans.impl.xb.xsdschema,org.apache.xmlbeans.impl.xb.xsdschem
+ a.impl,org.apache.xmlbeans.impl.xsd2inst,org.apache.xmlbeans.soap;use
+ s:="javax.xml.namespace,org.apache.xmlbeans.impl.common",org.apache.x
+ mlbeans.xml.stream;uses:="org.apache.xmlbeans.xml.stream.utils",org.a
+ pache.xmlbeans.xml.stream.events,org.apache.xmlbeans.xml.stream.utils
+ ,schemaorg_apache_xmlbeans.system.sXMLCONFIG,schemaorg_apache_xmlbean
+ s.system.sXMLLANG,schemaorg_apache_xmlbeans.system.sXMLSCHEMA,schemao
+ rg_apache_xmlbeans.system.sXMLTOOLS
+Bundle-Version: 2.3.0
+Import-Package: org.xml.sax,org.xml.sax.ext,javax.xml.namespace,javax.
+ xml.stream,org.w3c.dom
+Bundle-ManifestVersion: 2
+
+

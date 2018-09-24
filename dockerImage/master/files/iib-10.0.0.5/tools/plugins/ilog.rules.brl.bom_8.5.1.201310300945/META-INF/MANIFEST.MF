@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: brlbom.jar
+Bundle-Vendor: IBM
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: Rule Designer Business Rule Language BOM plugin
+Bundle-SymbolicName: ilog.rules.brl.bom
+Require-Bundle: ilog.rules.brl.brldf;bundle-version="[8.5.1,8.5.2)",il
+ og.rules.vocabulary.bom;bundle-version="[8.5.1,8.5.2)",ilog.rules.lan
+ guage.shared;bundle-version="[8.5.1,8.5.2)",com.ibm.rules.validation;
+ bundle-version="[8.5.1,8.5.2)";visibility:=reexport
+Export-Package: ilog.rules.brl,ilog.rules.brl.bom,ilog.rules.brl.io,il
+ og.rules.brl.translation,ilog.rules.brl.translation.codegen,ilog.rule
+ s.brl.validation
+Bundle-Version: 8.5.1.201310300945
+Bundle-ManifestVersion: 2
+
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+  <contexts>
+     <context id="XGenSchemaWizard">
+		<description><b>New XML Schema wizard</b>
+Use this wizard to generate XML schema from a message definition file.</description>
+		<topic href="../com.ibm.etools.mft.doc/ad12420_.htm"  label="Generating an XML Schema"/>		
+		<topic href="../com.ibm.etools.mft.doc/ad67200_.htm"  label="Generating information from message sets"/>
+	</context>	
+    <context id="DocGenWizard">
+		<description><b>New Message Set Documentation wizard</b>
+Use this wizard to generate message set information as HTML.</description>
+		<topic href="../com.ibm.etools.mft.doc/ad12410_.htm"  label="Generating message set documentation as HTML"/>		
+		<topic href="../com.ibm.etools.mft.doc/ad67200_.htm"  label="Generating information from message sets"/>		
+	</context>
+    <context id="WSDLGenWizard">
+      <description><b>New WSDL Definition wizard</b>
+Use this wizard to generate a Web Service Definition from a message set.</description>
+		<topic href="../com.ibm.etools.mft.doc/ad18211_.htm"  label="Generating a Web Service Definition from a message set"/>		
+		<topic href="../com.ibm.etools.mft.doc/ad67200_.htm"  label="Generating information from message sets"/>
+    </context>     
+  </contexts>
+
+
+

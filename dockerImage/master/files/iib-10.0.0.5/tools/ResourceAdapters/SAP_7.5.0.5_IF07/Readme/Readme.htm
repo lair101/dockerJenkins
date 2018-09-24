@@ -1,0 +1,2894 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+					body { font-size: 11pt; }
+
+					table, td { border-color: #646464; border-style: solid; }
+
+					table.noborder {font-size: 10pt; border-color: #FFFFFF; }
+					td.noborder { margin: 0; padding: 2px; border-width: 0 0 0 0; }
+					
+					table.withborder { border-width: 0px 0px 0px 0px; border-color: RED; padding: 0px; }
+
+					table.defaulttable { border-width: 0 0 1px 1px; border-spacing:
+					0; border-collapse: collapse; padding: 0px; margin: 0;}					
+
+					td { margin: 0; padding: 4px; border-width: 1px 1px
+					0 0; }
+					
+					td.topborder { margin: 0; padding: 4px; border-width: 1px 0px 0 0; border-color: #666699; }
+
+					td.mediumsize { margin: 0; padding: 4px; border-width: 0 0 0 0;
+					font-size: 12pt; font-weight: normal; color:#000095;}
+
+					table.nopadding { font-size: 11pt; border:0 ; }
+
+					tr.nopadding { margin: 0; padding: 0px; border-width: 0 0 0 0; }
+
+					td.nopadding { margin: 0; padding: 0px; border-width: 0 0 0 0; }
+
+					td.nopaddingwithborder { margin: 0; padding: 0px; }
+					
+					tr.headerrow { background-color: #666699; color:white; font-size:
+					11; font-weight: bold; margin: 0; padding: 4px;
+					border-width: 1px 1px 0 0; text-align: center; }
+
+					tr.toprow { background-color: #000095; color:white; font-size: 32;  margin: 0; padding: 4px;
+					border-width: 1px 1px 0 0; text-align: left; font-weight:bold }
+
+					td.titlerow { color:#000095;
+					font-size: 18pt; font-weight: normal; text-align:
+					center; border-width: 0 0 0 0;}
+					
+					tr.middlerow { background-color: #66cccc; color: rgb(0, 0, 102);
+					font-size: 11; font-weight: bold; margin: 0; padding: 4px;
+					border-width: 1px 1px 0 0; text-align: center; }					
+
+					td.secondheader { color:#000095; font-size: 13pt; font-weight: bold; text-align: left; border-width: 0 0 0 0; }
+
+					a.localanchor:link {color: black; text-decoration: none;} /* unvisited link */
+					a.localanchor:active {color: black; text-decoration: none;}
+					a.localanchor:visited {color: black; text-decoration: none;} /* visited link */
+					a.localanchor:hover {color: black; text-decoration: underline;} /* mouse over link */
+				</style>
+<title>IBM WebSphere Business Integration Adapter for SAP Software, version 7.5.0.5_IF07 notes</title>
+</head>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+					body { font-size: 11pt; }
+
+					table, td { border-color: #646464; border-style: solid; }
+
+					table.noborder {font-size: 10pt; border-color: #FFFFFF; }
+					td.noborder { margin: 0; padding: 2px; border-width: 0 0 0 0; }
+					
+					table.withborder { border-width: 0px 0px 0px 0px; border-color: RED; padding: 0px; }
+
+					table.defaulttable { border-width: 0 0 1px 1px; border-spacing:
+					0; border-collapse: collapse; padding: 0px; margin: 0;}					
+
+					td { margin: 0; padding: 4px; border-width: 1px 1px
+					0 0; }
+					
+					td.topborder { margin: 0; padding: 4px; border-width: 1px 0px 0 0; border-color: #666699; }
+
+					td.mediumsize { margin: 0; padding: 4px; border-width: 0 0 0 0;
+					font-size: 12pt; font-weight: normal; color:#000095;}
+
+					table.nopadding { font-size: 11pt; border:0 ; }
+
+					tr.nopadding { margin: 0; padding: 0px; border-width: 0 0 0 0; }
+
+					td.nopadding { margin: 0; padding: 0px; border-width: 0 0 0 0; }
+
+					td.nopaddingwithborder { margin: 0; padding: 0px; }
+					
+					tr.headerrow { background-color: #666699; color:white; font-size:
+					11; font-weight: bold; margin: 0; padding: 4px;
+					border-width: 1px 1px 0 0; text-align: center; }
+
+					tr.toprow { background-color: #000095; color:white; font-size: 32;  margin: 0; padding: 4px;
+					border-width: 1px 1px 0 0; text-align: left; font-weight:bold }
+
+					td.titlerow { color:#000095;
+					font-size: 18pt; font-weight: normal; text-align:
+					center; border-width: 0 0 0 0;}
+					
+					tr.middlerow { background-color: #66cccc; color: rgb(0, 0, 102);
+					font-size: 11; font-weight: bold; margin: 0; padding: 4px;
+					border-width: 1px 1px 0 0; text-align: center; }					
+
+					td.secondheader { color:#000095; font-size: 13pt; font-weight: bold; text-align: left; border-width: 0 0 0 0; }
+
+					a.localanchor:link {color: black; text-decoration: none;} /* unvisited link */
+					a.localanchor:active {color: black; text-decoration: none;}
+					a.localanchor:visited {color: black; text-decoration: none;} /* visited link */
+					a.localanchor:hover {color: black; text-decoration: underline;} /* mouse over link */
+				</style>
+<title>IBM WebSphere Business Integration Adapter for SAP Software, version 7.5.0.5_IF07 notes</title>
+</head>
+<body>
+<table width="90%" align="center" class="noborder">
+<tr class="nopadding">
+<td class="titlerow">IBM WebSphere Business Integration Adapter for SAP Software, version 7.5.0.5_IF07 notes</td>
+</tr>
+<tr class="nopadding">
+<td class="nopadding"></td>
+</tr>
+</table>
+<br>
+<table width="90%" align="center" class="nopadding">
+<tr>
+<td class="nopadding">This document contains the following sections:</td>
+</tr>
+<tr>
+<td class="nopadding"><a href="#crs">Enhancements and fixes</a></td>
+</tr>
+<tr>
+<td class="nopadding"><a href="#newproperties">New and modified connector properties</a></td>
+</tr>
+<tr>
+<td class="nopadding"><a href="#fileschanged">Files added, changed, and modified</a></td>
+</tr>
+<tr>
+<td class="nopadding"><a href="#upgradenotes">Upgrade notes</a></td>
+</tr>
+</table>
+<br>
+
+<table align="center" width="90%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in interim fix version 7.5.0.5_IF07.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There are no enhancements in this interim fix.</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top"></td><td valign="top">Task 9205</td><td valign="top">Gateway Service needs to be set for outbound support for bluemix application to be able to communicate the request to SAP server via Data Power (solution only for "on-prem DP" flow).</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: For an Outbound to run from blue mix application, gateway service needs to be set on JCO connection properties.</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: It is fixed now and works.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+
+<table align="center" width="90%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in interim fix version 7.5.0.5_IF06.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There are no enhancements in this interim fix.</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top"></td><td valign="top">JR49506</td><td valign="top">Field SEGNAM in data record is default throwing RFC_ERROR_SYSTEM_FAILURE.</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: ALE Pass Through Outbound fails with RFC_ERROR_SYSTEM_FAILURE when delimiter is specified.</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: It is fixed now and works even if delimiters are specified with in a single IDOC.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">2</td><td valign="top"></td><td valign="top">JR48731</td><td valign="top">EMD fails with class cast exception.</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Any new EMD is failing with class cast exception.</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This issue is resolved now.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">3</td><td valign="top"></td><td valign="top">JR48434</td><td valign="top">Module developed on V7 adapters fail to deploy on runtimes using V75 adapters.</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Not able to deploy V7 outbound module on runtime using V75 adapters.</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This issue is resolved now.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+</table>
+<br>
+
+<table align="center" width="90%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in interim fix version 7.5.0.5_IF05.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There are no enhancements in this interim fix.</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top"></td><td valign="top">JR48894</td><td valign="top">LIMITATION IN THE NUMBER OF ATTRIBUTES IN AN IDOC SEGMENT.</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: LIMITATION IN THE NUMBER OF ATTRIBUTES IN AN IDOC SEGMENT FOR ALE PASS THRU DURING PARSING OF DATARECORD LEADS TO ARRAYINDEXOUTOFBOUND EXCEPTION(currently 300 supported)</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: It is fixed now and no limition in number of attributes.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+
+<table align="center" width="90%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in interim fix version 7.5.0.5_IF04.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There are no enhancements in this interim fix.</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top"></td><td valign="top">JR47684</td><td valign="top">In 'Discover IDoc From File', elements are named "NOATTRIBUTENAME" if 'Use SAP field names' is set in Data Record.</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Elements are getting generated as NOATTRIBUTENAME.</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Now the elements are getting generated properly with their respective names.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">2</td><td valign="top"></td><td valign="top">JR39274</td><td valign="top">ALEAUD IS NOT CREATED CORRECTLY, IN CASE OF PACKET IDOCs.</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: DOCNUM field in ALEAUD idoc sent to SAP contains same number for all idocs sent in a packet and hence the idoc status does not get updated correctly.</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: The issue is fixed now.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">3</td><td valign="top"></td><td valign="top">JR47630</td><td valign="top">User not being able to provide an AIX path for SNCLIB on WMB Toolkit running on Windows.</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Not able to provide the AIX SNCLIB path on windows WMB Toolkit.</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Now this parameter is validated so that it accepts non-windows path as well.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">4</td><td valign="top"></td><td valign="top">JR48587</td><td valign="top">Iterative Discovery of the module developed on V7 adapters fail with NPE on Toolkit using V75 adapters.</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Iterative discovery of the module fails with NPE.</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This issue is resolved now.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">5</td><td valign="top"></td><td valign="top">JR46854</td><td valign="top">JCA SAP ADAPTER DOES NOT SUPPORT BAPI DATA TYPE STRING_TABLE.</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: On running the Adapter wizard there is no error, however after the wizard is finished the toolkit shows error 'Element Type reference '....' cannot be resolved.</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: The issue is fixed now.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+
+<table align="center" width="90%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in interim fix version 7.5.0.5_IF03.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There are no enhancements in this interim fix.</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top"></td><td valign="top">JR48608</td><td valign="top">SAP ADAPTER 7.5 THROWS NULLPOINTER ON DATA CONTAINING XSI:NIL="TRUE".</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: If the business object data does contain xsd:nil=true as content in an element, Adapter throws NullPointer exception(only with SAP Adapter v75).</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: It is fixed now.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+
+<table align="center" width="90%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in interim fix version 7.5.0.5_IF02.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There are no enhancements in this interim fix.</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top">RTC Task 9193</td><td valign="top"></td><td valign="top">WebSphere Adapter for SAP to support for NIST SP800-131a Compliance.</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Compliance activity involves changes to be made so that Random Number Generation is secured instead of existing non-secure generation.</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: It is fixed now.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">2</td><td valign="top"></td><td valign="top">JR46639</td><td valign="top">ENABLE SNC/SSO ON CI</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Browsing business object in CI throws exception when SNC or SSO is used in endpoint panel.</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: On the outbound connection Configuration add the SSO/SNC properties to be used while discoverying objects.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+
+<table align="center" width="90%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in interim fix version 7.5.0.5_IF01.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There are no enhancements in this interim fix.</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top"></td><td valign="top">JR44116</td><td valign="top">AFC Upgrade:SAP NODE AND JMS NODE IN SAME EG, WILL RESULT IN JMS NODE GETTING SAP NODES INITIAL CONTEXT.NEED TO PASS INITIALCONTEXT. </td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: SAP NODE AND JMS NODE IN SAME EG, WILL RESULT IN JMS NODE GETTING SAP NODES INITIAL CONTEXT.NEED TO PASS INITIALCONTEXT. </tr>
+<tr>
+<td valign="top" class="topborder">Resolution: It is fixed now.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">2</td><td valign="top"></td><td valign="top">JR45307</td><td valign="top">QRFC SUPPORT IN WMB FOR MQ ONE-WAY PATTERN </td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: When IDOC's are sent via qRFC channel the MB parser and adapter could not read the IDOC correctly in MQ IDOC one way pattern. </tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed in adapter.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">3</td><td valign="top"></td><td valign="top">JR43619</td><td valign="top">WHEN BAPI OUTBOUND IS RUN AFTER ALE OUTBOUND FAILS WITH NPE.</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: When multiple outbound modules are running in WMB, the second flow timeout and in JCo trace we get thread hung exception. </tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Issue is fixed now.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">4</td><td valign="top"></td><td valign="top">JR45248</td><td valign="top">REMOVAL OF HASH CODES OR RANDOM NUMBERS FROM SEGMENT NAMES FOR ALE DISCOVERY </td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: The SAP Adapter appended random number for duplicate segments, but the xsd name generated itself was unique and hence random number appending was removed.  </tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Now adapter wont append random number for ALE segments. </td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">5</td><td valign="top"></td><td valign="top">JR46343</td><td valign="top">Showing Default code page value on discovery screen after changing the code page</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: During Iterative discovery on WMB as well as IID, the codePage is getting set with Default Value </tr>
+<tr>
+<td valign="top" class="topborder">Resolution: codePage Value in Iterative discovery will set with the value in the artifacts</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">6</td><td valign="top"></td><td valign="top">JR46336</td><td valign="top">Full JCO tracing is failing on WMB8</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Error thrown when adapter tries to trace JCo version info in trace file.
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: The issue is fixed now.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">7</td><td valign="top"></td><td valign="top">JR45947</td><td valign="top">	JCO SESSION(IF IDLE) GETS TIMED OUT AFTER 10 OR MORE MINS. </td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Exception thrown while execution. JCo traces shows reset context and rfc gets cancelled. 
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: JCo session does not get timed out after 10 mins.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">8</td><td valign="top"></td><td valign="top">JR45599</td><td valign="top">THROW EVENT WHEN RETRY LIMIT EXHAUSTS.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Correct event is not thrown when retry limit(when the connection between the adapter and SAP server breaks and adapter tries to reconnect) exhausts.</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: The issue is fixed now and correct event is thrown.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">9</td><td valign="top"></td><td valign="top">JR45612</td><td valign="top">Retry Interval and time set on SAP adapter Inbound do not get serialized.</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Changing retry interval while discovering does not come in to effect during runtime.
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: The issue is fixed now.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">10</td><td valign="top"></td><td valign="top">JR45439</td><td valign="top">ISSUES WHEN VALIDATING THE XSD'S GENERATED BY ADAPTER.</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: The xsd generated by adapter when validated for well formedness in external tools fails with errors.
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: The metadata xsd is now corrected to validate and comply to xml schema definition standards.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">11</td><td valign="top"></td><td valign="top">JR44859</td><td valign="top">ENABLE SAP PI FEATURE FOR ALE INTERFACE ON WMB.</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: SAP naming standards feature unavailable on WMB.
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: SAP PI feature is enabled on WMB for ALE interface.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">12</td><td valign="top"></td><td valign="top">Defect 9197</td><td valign="top">Multiple Idocs cannot be selected in ALE when PI is enabled.</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Unable to select more than 1 IDOC when PI is enabled.
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Metadata Selection is corrected.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+</table>
+<br>
+
+<table align="center" width="90%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in interim fix version 7.5.0.5.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There are no enhancements in this interim fix.</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top"></td><td valign="top">JR45095</td><td valign="top">INDEXARRAYOUTOFBOUNDEXCEPTION WHEN USING THE QISS INTERFACE WHEN MORE THAN 1 INPUT ATTRIBUTE IS SPECIFIED. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: 
+The QISS interface was failing if the where clause had empty conditions in the middle of a query. </tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">2</td><td valign="top"></td><td valign="top">JR44574</td><td valign="top">CI: CLEAR ONLY THE RFC THAT IS DISCOVERED FROM THE JCOREPOSITORYCACHE INSTEAD OF CLEARING COMPLETE CACHE DURING DISCOVERY. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: 
+The SAP Adapter on CI will now clear JCO repository only for discovered RFC/BAPI, both clears the cache completely. 
+ </tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+<td valign="top">3</td><td valign="top"></td><td valign="top">JR43875</td><td valign="top">DURING SAP ADAPTER INBOUND, EVENT PERSISTENCE WITH JNDI ALONE DONOT WORK. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: The issue is reported in all versions of SAP Adapter above v7.0 
+ </tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">4</td><td valign="top"></td><td valign="top">JR43182</td><td valign="top">SAP ADAPTER ARTIFACTS GENERATED ON V6.2.X ADAPTER BAPI INTERFACE FAILS TO RUN AS IS ON V7.5.0.0 ADAPTER ON RAD/WAS8. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: SAP adapter BAPI outbound modules generated using 62 adapter fails to run on WAS 8 with 7500 adapter.  
+ </tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">5</td><td valign="top"></td><td valign="top">JR43846</td><td valign="top">NOT ABLE TO MODIFY JCO MAX CONNECTIONS VALUE THROUGH JVM PROPERTY. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: The Jco params set at JVM level was not read by adapter and adapter overwrites it with the value that is set in adapter.  
+ </tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">6</td><td valign="top"></td><td valign="top">JR45332</td><td valign="top">POTENTIAL CACHING ISSUE DURING CI RUNTIME WHEN USING SAP RECEIVEIDOC ACTIVITY. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: On CI success EMD runs should get latest changes on IDOC from SAP. 
+ </tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">7</td><td valign="top"></td><td valign="top">JR45581</td><td valign="top">SAP ADAPTER(INPUT NODE, IDOC PROCESSING) V7.5, WMB V8001 - WORKREJECTEDEXCEPTION IF FLOW GETS RESTARTED. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: SAP adapter was using old endpointmanager object which did not refresh latest workManager from WMB runtime and hence lead to using old object on which no work could be processed.  
+ </tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Adapter endpoint manager object is cleared on each endPointdeactivation call.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+</table>
+
+<br>
+<table align="center" width="90%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in interim fix version 7.5.0.4.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There are no enhancements in this interim fix.</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top">Defect 6830</td><td valign="top"></td><td valign="top">CI Only - CI - PMR 22000,004,000, time datatype of SAP not working properly in CI for SAP connector - JR42189 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only - CI - PMR 22000,004,000, time datatype of SAP not working properly in CI for SAP connector - JR42189 </tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">2</td><td valign="top">Defect 6851</td><td valign="top"></td><td valign="top">CI Only - CI Item not present in the schema for table type parameter - JR41974. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only - CI Item not present in the schema for table type parameter - JR41974.</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">3</td><td valign="top">Defect 7037</td><td valign="top"></td><td valign="top">CI Only - ForwardFit JR 42125 : With DateAsString set, exception is thrown when accessing uninitialised date. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only - ForwardFit JR 42125 : With DateAsString set, exception is thrown when accessing uninitialised date</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">4</td><td valign="top">Defect 7079</td><td valign="top"></td><td valign="top">CI Only - Cast Iron PMR 47804 019 866 receive idoc with control record name issue (migration causes problem) - JR42357. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only - Cast Iron PMR 47804 019 866 receive idoc with control record name issue (migration causes problem) - JR42357</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">5</td><td valign="top">Defect 7098</td><td valign="top"></td><td valign="top">CI Only - JCo Repository cache needs to be cleared when EMD is closed- Fwd Fit of 7035 - JR42187. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only - JCo Repository cache needs to be cleared when EMD is closed- Fwd Fit of 7035 - JR42187</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">6</td><td valign="top">Defect 7113</td><td valign="top"></td><td valign="top">CI Only - Cast Iron  JR39474 :PMR 47765 019 866 send idoc problem (adpter looking for data in the XML even if schema element it is minOccurs=0). 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only - Cast Iron  JR39474 :PMR 47765 019 866 send idoc problem (adpter looking for data in the XML even if schema element it is minOccurs=0)</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">7</td><td valign="top">Defect 7114</td><td valign="top"></td><td valign="top">CI Only - Cast IronJR42351: PMR 48128,019,866 - old projects using extended idoc is not working for send idoc activity. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only - Cast IronJR42351: PMR 48128,019,866 - old projects using extended idoc is not working for send idoc activity</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+<td valign="top">8</td><td valign="top">Defect 7156</td><td valign="top"></td><td valign="top">CI Only - cast iron PMR 48128,019,866 segment names in the idoc has randon number appended to it. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only - cast iron PMR 48128,019,866 segment names in the idoc has randon number appended to it</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">9</td><td valign="top">Defect 7186</td><td valign="top"></td><td valign="top">CI Only - PMR 48828,019,866 CI attributes type in genertaed schemas of the idoc should be xsd:string but it is anySimpleType. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only - PMR 48828,019,866 CI attributes type in genertaed schemas of the idoc should be xsd:string but it is anySimpleType</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">10</td><td valign="top">Defect 7187</td><td valign="top"></td><td valign="top">CI Only - PMR 48828,019,866 CI Default value should be populated for attributes in the generated schemas for idocs. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only - PMR 48828,019,866 CI Default value should be populated for attributes in the generated schemas for idocs</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">11</td><td valign="top">Defect 7255</td><td valign="top"></td><td valign="top">CI Only - CI PMR 49881,019,866 Addtional fields in idoc need to be generated based on a hidden configuration property - JR43091. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only - CI PMR 49881,019,866 Addtional fields in idoc need to be generated based on a hidden configuration property - JR43091</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">12</td><td valign="top">Defect 7537</td><td valign="top"></td><td valign="top">CI Only - CI : SAP Adapter not displaying some rfcs during EMD in Japanese locale - PMR 36658,69C,760 - JR43087. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only - CI : SAP Adapter not displaying some rfcs during EMD in Japanese locale - PMR 36658,69C,760 - JR43087</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">13</td><td valign="top">Defect 7859</td><td valign="top"></td><td valign="top">CI Only - ALE Inbound fails for all idocs on CastIron. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only - ALE Inbound fails for all idocs on CastIron</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">14</td><td valign="top">Defect 8099</td><td valign="top"></td><td valign="top">CI Only - CI : SAP RFC Inbound gives malformed XML 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only - CI : SAP RFC Inbound gives malformed XML</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">15</td><td valign="top">Defect 8148</td><td valign="top"></td><td valign="top">CI: Connections are not getting closed for IDOCs in SAP Adapter for Cast Iron runtime. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI: Connections are not getting closed for IDOCs in SAP Adapter for Cast Iron runtime</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">16</td><td valign="top">Defect 8162</td><td valign="top"></td><td valign="top">CI - TransactionId should not be generated in the schema for synchronous BAPI inbound mode. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI - TransactionId should not be generated in the schema for synchronous BAPI inbound mode</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">17</td><td valign="top">Defect 8677</td><td valign="top"></td><td valign="top">CI Only -Foward Fit - JR41999 The maximum length ASI of the time and date fields should be increased by 2 (7501_IF07). 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only -Foward Fit - JR41999 The maximum length ASI of the time and date fields should be increased by 2 (7501_IF07)</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">18</td><td valign="top">Defect 8678</td><td valign="top"></td><td valign="top">CI Only - ForwardFit - 7976 Cast Iron: JCO_ERROR_ILLEGAL_STATE exception is thrown when multiple Receive IDoc activities connecting to the same endpoint are started simultaneously (7501_IF12). 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only - ForwardFit - 7976 Cast Iron: JCO_ERROR_ILLEGAL_STATE exception is thrown when multiple Receive IDoc activities connecting to the same endpoint are started simultaneously (7501_IF12)</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">19</td><td valign="top">Defect 8979</td><td valign="top"></td><td valign="top">CI Only - ForwardFit - 8147		Cast Iron : The Adapter throws NullPointerException if the TABNAM field in the ControlRecord of a IDoc in the Send ALE is not populated (7501_IF12). 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Only - ForwardFit - 8147		Cast Iron : The Adapter throws NullPointerException if the TABNAM field in the ControlRecord of a IDoc in the Send ALE is not populated (7501_IF12)</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">20</td><td valign="top">Defect 8680</td><td valign="top"></td><td valign="top">ForwardFit - 8016 SAP Adapter prints messages at INFO level during outbound operation. (7501_IF12). 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: ForwardFit - 8016 SAP Adapter prints messages at INFO level during outbound operation. (7501_IF12)</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">21</td><td valign="top">Defect 8747</td><td valign="top"></td><td valign="top">CI 6199 : BAPI Inbound not working. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI 6199 : BAPI Inbound not working</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">22</td><td valign="top">Defect 8761</td><td valign="top"></td><td valign="top">CI ForwardFit  - JR44574 - 7501_IF14 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI ForwardFit  - JR44574 - 7501_IF14</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">23</td><td valign="top">Defect 8762</td><td valign="top"></td><td valign="top">CI only : JCO_ERROR_RESOURCE exception is thrown when multiple Receive IDoc activities connecting to the same endpoint are started simultaneously. 
+</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI only : JCO_ERROR_RESOURCE exception is thrown when multiple Receive IDoc activities connecting to the same endpoint are started simultaneously</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+</tr>
+</table>
+</td>
+</tr>
+
+</table>
+
+<br>
+<table align="center" width="90%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in interim fix version 7.5.0.3.</a></td>
+</tr>
+
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td>
+<td valign="top">Defect 8216</td>
+<td valign="top"></td>
+<td valign="top">Generating schema in SAP PI standards for BAPI inbound</td>
+<td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Generating schema in SAP PI standards for BAPI inbound.</td>
+</tr>
+<tr><td valign="top" class="topborder"></td></tr>
+</table>
+</td>
+</tr>
+
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+
+<tr bgcolor="white">
+	<td valign="top">1</td>
+	<td valign="top">Defect 8222</td>
+	<td valign="top"></td>
+	<td valign="top">send idoc problem (adpter looking for data in the XML even if schema element it is minOccurs=0)</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: send idoc problem (adpter looking for data in the XML even if schema element it is minOccurs=0)</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">2</td>
+	<td valign="top">Defect 7141</td>
+	<td valign="top"></td>
+	<td valign="top">PMR 48896,019,866: BAT: Send Idoc error while sending ALEAUD01</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: Error occurred while trying to execute activity Send IDOC   *
+* Effected Idoc Field Field "ALEAUD01/IDOC/E1ADHDR/E1STATE/DOCNUM" ,  *
+* the type is "string" but when use "MOP1111" and "MOP", there will   *
+* be error .         </td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+</td>
+</tr>
+
+	<td valign="top">3</td>
+	<td valign="top">Defect 7172</td>
+	<td valign="top">JR42301</td>
+	<td valign="top">cast iron PMR 48128,019,866 segment names in the idoc has randon number appended to it</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: cast iron PMR 48128,019,866 segment names in the idoc has randon number appended to it</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue,Originally delivered as 7003_IF23.</td>
+		</tr>
+	</table>
+</td>
+</tr>
+
+</tr>
+
+	<td valign="top">4</td>
+	<td valign="top">Defect 7197</td>
+	<td valign="top"></td>
+	<td valign="top">ALEPT  Inbound  Idoc Data Stream for Packet Idoc does not have complete data.</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: ALEPT  Inbound  Idoc Data Stream for Packet Idoc does not have complete data.</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+	<td valign="top">5</td>
+	<td valign="top">Defect 7199</td>
+	<td valign="top"></td>
+	<td valign="top">Bapi Bank.Change is not working in CastIron </td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: With the bapi, Bank.Change, user is not able to change the bank details of existing bank.
+In castiron ,
+ Activity used is - Invoke BAPI
+Commit transaction option is checked.</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">6</td>
+	<td valign="top">Defect 7208</td>
+	<td valign="top"></td>
+	<td valign="top">ALE Inbound with PI enabled for Extended IDocs throws Exception </td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: ALE Inbound with PI enabled for Extended IDocs throws Exception</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+	<td valign="top">7</td>
+	<td valign="top">Defect 7217</td>
+	<td valign="top"></td>
+	<td valign="top">Extension IDoc SOWMYAEXT does not work in RAD/WAS </td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: ALE Inbound for extension IDoc SOWMYAEXT fails with the following exception:
+Caused by: commonj.connector.runtime.SelectorException: Business object definition for 'SapACwmZAllSapDatatypesSowmyaext' in namespace 'com.ibm.xmlns.prod.websphere.j2ca.sap.sapacwmzallsapdatatypessowmyaext' </td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">8</td>
+	<td valign="top">Defect 7381</td>
+	<td valign="top"></td>
+	<td valign="top">retriveall for QISS table is returning all records irrespective of giving child field column </td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: retriveall for QISS table is returning all records irrespective of giving child field column </td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+</td>
+</tr>
+
+
+
+<tr bgcolor="white">
+	<td valign="top">9</td>
+	<td valign="top">Defect 7619</td>
+	<td valign="top">JR42632</td>
+	<td valign="top">When ALE QRFC with audit update is enabled, status code of AUDIT (ALEAUD) idoc on SAP is 75 instead on 64.  (7004_IF09)</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: When ALE QRFC with audit update is enabled, status code of AUDIT (ALEAUD) idoc on SAP is 75 instead on 64.  (7004_IF09)</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+	<td valign="top">10</td>
+	<td valign="top">Defect 7620</td>
+	<td valign="top">JR42645</td>
+	<td valign="top">JCO Resource error when applications have transactionality set to yes as well as no.  (7003_IF26)</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom:JCO Resource error when applications have transactionality set to yes as well as no.  (7003_IF26)</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+</td>
+</tr>
+<tr bgcolor="white">
+	<td valign="top">11</td>
+	<td valign="top">Defect 7621</td>
+	<td valign="top">JR42462</td>
+	<td valign="top">ALEPT INBOUND IDOC DATA STREAM FOR PACKET IDOC DOES NOT HAVE COMPLETE DATA.  (7501_IF10)</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: ALEPT INBOUND IDOC DATA STREAM FOR PACKET IDOC DOES NOT HAVE COMPLETE DATA.  (7501_IF10)</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+	<td valign="top">12</td>
+	<td valign="top">Defect 7836</td>
+	<td valign="top">JR43029</td>
+	<td valign="top">SYNC BAPI DISCOVERED AS ASYNC IN EMD, FAILS DURING RUNTIME SAYING TID IS NULL.</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom:When a Sync BAPI is discovered as Async in EMD, it fails during
+runtime saying TID is null   </td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">13</td>
+	<td valign="top">Defect 8447</td>
+	<td valign="top"></td>
+	<td valign="top">BAPI Inbound with BOR for SAP Naming Convension (PI) is failing</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: Business object definition for 'BAPI_CUSTOMER_GETDETAIL' in namespace 'urn:sap-com:document:sap:business' not found...</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">14</td>
+	<td valign="top">Defect 8513</td>
+	<td valign="top"></td>
+	<td valign="top">Iterative Discovery (for PI enabled application) on adding RFC to an existing BOR BAPI module fails</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: A module with existing BOR BAPIs added. Do iterative discovery and add RFC.
+The new BAPI added runs however the older ones fail</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">15</td>
+	<td valign="top">Defect 8081</td>
+	<td valign="top"></td>
+	<td valign="top">PI with BAPI BOR fails at EMD step</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: PI with BAPI BOR fails at the discovery EMD step and gives a NullPointerException</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">16</td>
+	<td valign="top">Defect 8236</td>
+	<td valign="top"></td>
+	<td valign="top">Segment names in the idoc has randon number appended to it</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: Segment names in the idoc has randon number appended to it</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">17</td>
+	<td valign="top">Defect 8349</td>
+	<td valign="top"></td>
+	<td valign="top">SAP RFC Inbound gives malformed XML</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: SAP RFC Inbound functionality gives malformed XML whilst running in asynchronous mode</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">18</td>
+	<td valign="top">Defect 8321</td>
+	<td valign="top"></td>
+	<td valign="top">ALE Outbound with SAP Naming Convention Failed to delivery the Idoc if we have more than one IDOC configured in a sinlge module</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: Configure two IDocs  for  ALE Outbound with SAP Naming Convention (PI). Then Execute both the Idocs.<br>
+IDoc with the Xsd generated with random number for IDOC business object will fail</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">19</td>
+	<td valign="top">Defect 8231</td>
+	<td valign="top">JR42189</td>
+	<td valign="top"> Time datatype of SAP not working properly in cast iron for SAP connector</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: Time datatype of SAP not working properly in cast iron for SAP connector</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">20</td>
+	<td valign="top">Defect 8294</td>
+	<td valign="top"></td>
+	<td valign="top">With DateAsString set, exception is thrown when accessing uninitialised date</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: With "Date as a String" property enabled, the Adapter throws an exception "Trying to access row values in a table which does not have any rows yet" when accessing an uninitialized date field</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">21</td>
+	<td valign="top">Defect 8232</td>
+	<td valign="top">JR41974</td>
+	<td valign="top">CI Item not present in the schema for table type parameter</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: CI Item not present in the schema for table type parameter</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">22</td>
+	<td valign="top">Defect 8234</td>
+	<td valign="top">JR42187</td>
+	<td valign="top">JCo Repository cache needs to be cleared when EMD is closed</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: JCo Repository cache needs to be cleared when EMD is closed</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">23</td>
+	<td valign="top">Defect 8233</td>
+	<td valign="top">JR42125</td>
+	<td valign="top">With DateAsString set, exception is thrown when accessing uninitialised date</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: With DateAsString set, exception is thrown when accessing uninitialised date</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">24</td>
+	<td valign="top">Defect 8237</td>
+	<td valign="top"></td>
+	<td valign="top">CI attributes type in genertaed schemas of the idoc should be xsd:string but it is anySimpleType</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: CI attributes type in genertaed schemas of the idoc should be xsd:string but it is anySimpleType</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">25</td>
+	<td valign="top">Defect 8238</td>
+	<td valign="top"></td>
+	<td valign="top">Default value should be populated for attributes in the generated schemas for idocs</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: Default value should be populated for attributes in the generated schemas for idocs</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+	<td valign="top">26</td>
+	<td valign="top">Defect 8235</td>
+	<td valign="top">JR42351</td>
+	<td valign="top">Old projects using extended idoc is not working for send idoc activity</td>
+	<td class="nopaddingwithborder" valign="top">
+
+	<table width="100%" class="withborder">
+		<tr>
+			<td valign="top" class="noborder">Symptom: PMR 48128,019,866 - old projects using extended idoc is not working for send idoc activity</td>
+		</tr>
+		<tr>
+			<td valign="top" class="topborder">Resolution: Fixed the issue</td>
+		</tr>
+	</table>
+
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+</table>
+
+
+<br>
+<table align="center" width="90%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in interim fix version 7.5.0.2.</a></td>
+</tr>
+
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top">CR 76052</td><td valign="top"></td><td valign="top">  Password less authentication (SSO / X509) using SAP adapter</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Support for Password less authentication (SSO / X509) using SAP adapter.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top"></td><td valign="top"></td><td valign="top"> For ALE "SAP Field Names " Options when "Send IDoc with unparsed data record" option is enabled</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: For ALE "SAP Field Names " Options when "Send IDoc with unparsed data record" option is enabled.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now Fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">2</td><td valign="top"></td><td valign="top"></td><td valign="top">For ALE  Invalid IDoc version does not throws the errors, when IDocs are discovered by file</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: For ALE  Invalid IDoc version does not throws the errors, when IDocs are discovered by file.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now Fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">3</td><td valign="top">CR103628</td><td valign="top"></td><td valign="top">During trfc Inbound calls, the events are duplicated or lost. </td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: During trfc Inbound calls, the events are duplicated or lost. </td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now Fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">4</td><td valign="top"></td><td valign="top">JR40936</td><td valign="top"> Data cross over happens when global variables are used in ABAP program. </td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:  Data cross over happens when global variables are used in ABAP program. </td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now Fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">5</td><td valign="top"></td><td valign="top">JR41367</td><td valign="top">Nested structure output schema being generated with CastIron</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Nested structure output schema being generated with CastIron.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now Fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">6</td><td valign="top"></td><td valign="top">JR41368</td><td valign="top">Table types in Import and Export parameters should contain a item field during PI standard artifact generation.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CTable types in Import and Export parameters should contain a item field during PI standard artifact generation.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now Fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">7</td><td valign="top"></td><td valign="top"></td><td valign="top">ALE_Pass_Through is failing for generic idoc</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Ale_Pass_Through with generic idoc is failing with the following error "Business object definition for the BO in namespace not found"..</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now Fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">8</td><td valign="top"></td><td valign="top"></td><td valign="top">Advanced Configuration Properties does not contain explanation for a field</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Advanced Configuration Properties does not contain explanation for a field.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now Fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">9</td><td valign="top"></td><td valign="top"></td><td valign="top">ALE Outbound Fails with Null Pointer Exception</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: During EMD create Outbound -> ALE -> Orders05/Alereq01 -> Fails with Null Pointer Exception.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now Fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">10</td><td valign="top"></td><td valign="top"></td><td valign="top">Language not being considered when used dynamically.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: On using language as one of the dynamic parameter for testing it is observed that a new connection is not made in SAP for new language.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now Fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">11</td><td valign="top"></td><td valign="top"></td><td valign="top">SNC token not getting printed in the traces when the logging is set to finest</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: SNC token not getting printed in the traces when the logging is set to finest.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now Fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">12</td><td valign="top"></td><td valign="top"></td><td valign="top">Optional Parameter information are not sync when we do iterative discovery for BAPI.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Optional Parameter information are not sync when we do iterative discovery for BAPI.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now Fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">13</td><td valign="top"></td><td valign="top">JR41324</td><td valign="top">In case of wrong credential it's not showing proper error message but generating FFDC on RAD/WAS</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: In case of wrong credential it's not showing proper error message but generating FFDC on RAD/WAS.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now Fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">14</td><td valign="top"></td><td valign="top">JR41974</td><td valign="top">The variables with nested table type parameters are not generated correctly during PI style artifact generation</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: The variables in import and export parameters which contain nested table type parameter is not generated correctly during PI generation. The item element is not generated in the schema</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed to include an item element for every table type parameter in the schema.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">15</td><td valign="top"></td><td valign="top">JR42125</td><td valign="top">Exception is thrown by the SAP Adapter when serializing a BAPI response containing an uninitialized date field</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: An exception is thrown when serializing a BAPI response containing an uninitialised date field, if the schemas are generated with date field as a string parameter.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed to read the value from the BAPI table only for initialised fields.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">16</td><td valign="top"></td><td valign="top">JR42645</td><td valign="top">JCO Resource error when applications have transactionality set to yes as well as no. </td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: When applications are deployed with transaction set to yes as well as no we see JCO resource error if the same managed connection is being used from the connection pool. </td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">17</td><td valign="top"></td><td valign="top">JR43619</td><td valign="top">SAP ADAPTER 7502_IF01, WHEN BAPI OUTBOUND IS RUN AFTER ALE 
+OUTBOUND FAILS WITH NPE.    </td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: BAPI outbound run after ALE Outbound fails with NPE as the connection pool size is set to 1.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+</table>
+
+<br>
+<table align="center" width="90%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in interim fix version 7.5.0.1.</a></td>
+</tr>
+
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top">CR102203</td><td valign="top"></td><td valign="top">BAPI schema generated from BOR and RFC discovery has some minor changes.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Adapter to generate all the top level elements in camel case for BAPI. CI code which invoke EMD APIs will notify adapter whether to generate top level eleme.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">2</td><td valign="top">CR102338</td><td valign="top"></td><td valign="top">Different between the generated schema for Idoc typ.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: The artifacts generated when using PI enabled should be the same as in CI.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">3</td><td valign="top">CR102337</td><td valign="top"></td><td valign="top">IDOC - ComplexType names for segment.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Adapter generates a complex type with the name of segment definition name and in camel case. Adapter should generate complex element name as segment type but annotation should have segment definition name so that there is no adapter runtime changes required.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">4</td><td valign="top">CR102336</td><td valign="top"></td><td valign="top">IDOC - MessageType is required for CI UI</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:IDOC - MessageType is required for CI UI .</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">5</td><td valign="top">CR103078</td><td valign="top"></td><td valign="top">SAP Idoc Library to be used for Idoc processing</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:To track the usage of idoc library for idoc processing .</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+<td valign="top">6</td><td valign="top">CR103254</td><td valign="top"></td><td valign="top">Reading additional tables to get number of decimals and computing max length.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:Reading additional tables to get number of decimals and computing max length. Observed to be causing major performance degradation. These values can be retrieved using JCo API. Refer SAP JCo API for more information .</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">7</td><td valign="top">CR103498</td><td valign="top"></td><td valign="top">SAP WMB Events enhancements - Monitoring.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:CEI events are emitted at the following points:
+<br>connection success, connection failure, connection close and authentication failure.</br></td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">8</td><td valign="top">CR102956</td><td valign="top"></td><td valign="top">Submitted Single RFC Program ID support.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:To support Single RFC Program ID </td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">9</td><td valign="top">CR76336</td><td valign="top"></td><td valign="top">SAP EMD adds random numbers to the end of duplicate field names.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:SAP EMD adds random numbers to the end of duplicate field names </td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">10</td><td valign="top">CR102472</td><td valign="top"></td><td valign="top">Provide Control Record structure r Ale Pass through Generic IDoc.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:Provide Control Record structure r Ale Pass through Generic IDoc </td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">11</td><td valign="top">CR102327</td><td valign="top"></td><td valign="top">BAPI discovery UI Changes</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:BOR Discovery UI not same as other discoveries </td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">12</td><td valign="top">CR102329</td><td valign="top"></td><td valign="top">BAPI - generated schema changes for CI</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:when user sets SAP original casing, not only simple element names should be in original casing but also element which are complex should also appear in original case. </td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">13</td><td valign="top">CR102332</td><td valign="top"></td><td valign="top">BAPI namespace changes and table type schema generation changes for CI</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: XXXXX</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">14</td><td valign="top">CR102331</td><td valign="top"></td><td valign="top">BAPI toplevel BO name changes</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: When the "Generate business objects in SAP XI Standard" is switched ON, the top level business object schema will be split into two parts: Request and Response. The request schema will contain the IN parameters, INOUT / changing parameters. The response schema will contain the OUT, INOUT / Changing parameters. </td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">15</td><td valign="top">CR101971</td><td valign="top"></td><td valign="top">Serviceability Enhancement</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:  Support for CPIC traces.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+<td valign="top">16</td><td valign="top">5486(RTC)</td><td valign="top"></td><td valign="top">Serviceability Enhancement</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: JCoAPI traces to be traced into SAP Adpater traces </td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">17</td><td valign="top">CR102400</td><td valign="top"></td><td valign="top">Performance of RFC discovery</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:RFC Discovery will take less time. Run EMD and calculate the time for discovery and compare with previous versions. </td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+<td valign="top">18</td><td valign="top">CR103566</td><td valign="top"></td><td valign="top">In ALE Interface provide an option in EMD to choose the optional segments Submitted</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:In ALE , EMD Discovery panel provided the option to choose the optional segments</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top">5821(RTC)</td><td valign="top"></td><td valign="top">Artifacts generated with 7500 RAR is failing on running with 7501 RAR..</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: The condition to instantiate the handler for older artifacts is wrong.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">2</td><td valign="top">CR103763</td><td valign="top"></td><td valign="top">CI: Filterproperty discovery by name should be default behavior for even negative.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:Filter property value discovery by name should be default value for all positive and negative cases. Even if use input anything other than discovery by name then also it should use discovery by name. Adapter should do discover by description only if user explicitly select it .</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">3</td><td valign="top">5981(RTC)</td><td valign="top"></td><td valign="top">Negative value is being accepted for "Connection Retry Interval.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Negative values are being accepted for "Connection Retry Interval"  of "Additional connection configuration" tab of "Specify the Service Generation and Deployment Properties" screen in inbound ALE scenario.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">4</td><td valign="top">5849(RTC)</td><td valign="top"></td><td valign="top">Iterative Discovery does not shows the Foreign Key relationship for BAPI RS using BOR.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Create a BAPI Result set using BOR for Customer GetList & GetDetail with the foreign key relationship. 
+Complete the EMD and do a iterative discovery for the same VOR module and move to the Config objects Panel. The EMD should show the already selected foreign key, but its doesn't show.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">5</td><td valign="top">CR103693</td><td valign="top"></td><td valign="top">CI: Response schema order is not maintinaed for BAPI and RFC.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: BAPI elements attributes and tables order is not maintained as we read from SAPServer.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">6</td><td valign="top">CR103253</td><td valign="top"></td><td valign="top">When a transactional RAR is used, QRFC qNames are retrieved during EMD. </td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: The queue names have to be retrieved only when qRFC is selected. This degrades performance for non-qRFC scenarios as well and takes a bit longer for schema generation, there by delay in EMD run.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">7</td><td valign="top">CR103251</td><td valign="top"></td><td valign="top">Internationalized strings used as property names.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:Name of Properties should not be internationalized. These names are not presented to the user. Currently, the property names are found to be internationalized.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">8</td><td valign="top">CR102981</td><td valign="top"></td><td valign="top">SAP schema generation is slow for BAPI/RFC.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: SAP BOR discovery has become very fast. But, the time taken to generate schema is bit longer than expected.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">9</td><td valign="top">CR102981</td><td valign="top"></td><td valign="top">Optimized use of SAP ASI Metadata.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:Optimized use of SAP ASI Metadata during discovery and schema generation. This is also a code level optimization which has no functionality impact.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">10</td><td valign="top">CR103303</td><td valign="top"></td><td valign="top">SAP BOR schema generation should generate key fields as xml attributes.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: SAP  adapter while generating schema for BAPI -BOR , the key fields should be generated as xml attributes to the top level complex types.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">11</td><td valign="top">CR103302</td><td valign="top"></td><td valign="top">AFC - XML attribute support in DESPI XML</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: AFC - XML attribute support in DESPI XML.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">12</td><td valign="top">CR103442</td><td valign="top"></td><td valign="top">Primary Key elements to be part of response BO for BOR - PI enabled</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: The primary key elements which are represented as attributes should also be part of the response. Tables KEYFIELDS should be part of request and response..</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">13</td><td valign="top">CR103391</td><td valign="top"></td><td valign="top">** filter does not work with BOR discovery</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: While discovering BOR, add ** to the filter for eg. customer** , nothing is discovered.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">14</td><td valign="top">CR103397</td><td valign="top"></td><td valign="top">In BOR discovery objects with same name appended with a random number.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: In BOR discovery without PI enabled if any object have the description. The second object is appended with a random number.For eg,:In BOR discovery use "customer*" as filter criteria. In the nodes we could see nodes with names as customer and customer1534.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">15</td><td valign="top">CR103444</td><td valign="top"></td><td valign="top">Discovery model for BOR changes when PI is enabled / disabled.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:Discovery model for BOR discovery with "Customer*" filter, changes when PI enabled and disabled.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">16</td><td valign="top">CR103148</td><td valign="top"></td><td valign="top">SAPBapiRecord.getNext() method calling Cursor.completObject() more than once</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:SAPBapiRecord.getNext() method calling Cursor.completObject() more than once .</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">17</td><td valign="top">CR103099</td><td valign="top"></td><td valign="top">BAPI: SAP EMD throw exception during EMD when try to search BAPI from BOR.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: SAP EMD throw exception during EMD when try to search BAPI from BOR</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">18</td><td valign="top">5705(RTC)</td><td valign="top"></td><td valign="top">No full  stack trace exceptions thrown in the trace file for ALE Inbound Idocs.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Exception is not found as expected.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+
+<tr bgcolor="white">
+<td valign="top">19</td><td valign="top">CR103691</td><td valign="top"></td><td valign="top">CI: BAPI Bank.change schema elements order different from SAP GUI.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: BAPI Bank.change elements attributes and tables order is not maintained as we read from SAPServer.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">20</td><td valign="top">CR103692</td><td valign="top"></td><td valign="top">CI: BAPI should differentiate table parameters.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI: BAPI should differentiate table parameters for request , response or both.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">21</td><td valign="top">5612(RTC)</td><td valign="top"></td><td valign="top">Fix for DetectIllegalXMLCharacter Property in AFC 7.5.0.1 - Change needed in SAP adapter</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:In v7.5, AFC allows the detect illegal XML character property to be supported for all runtimes.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">22</td><td valign="top">5613(RTC)</td><td valign="top"></td><td valign="top">Unable to stop RFC traces, if switched from True to False.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Unable to stop RFC traces, if switched from True to False.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">23</td><td valign="top">CR103616</td><td valign="top"></td><td valign="top"> Iterative discovery fails for Non PI BAPI.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: BOR iterative Discovery fails when run iterative discovery for BOR with PI not enabled.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">24</td><td valign="top">CR103617</td><td valign="top"></td><td valign="top">The BOR EMD with wrapper option fails.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: BAPI discovery with generate wrapper enabled fails.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">25</td><td valign="top">5633(RTC)</td><td valign="top"></td><td valign="top">ALE IB throws BO definition not found on WMB8</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: ALE IB throws BO definition not found on WMB8.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">26</td><td valign="top">CR103626</td><td valign="top"></td><td valign="top">qRFC support for idoc inbound - idoc.jar.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: qRFC support for idoc inbound - idoc.jar.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">27</td><td valign="top">CR103621 </td><td valign="top"></td><td valign="top">CI migration order of elements in xsd.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Order of BOR - RFC discovery should be same as that in SAP GUI when PI is enabled.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">28</td><td valign="top">CR103624</td><td valign="top"></td><td valign="top">CI Migration for BOR fails - location issue.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Migration issue. No impact on WPS and WMB users.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">29</td><td valign="top">CR103625</td><td valign="top"></td><td valign="top">For classverb X. Attributes not to be generated.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Only for CI not applicable for non CI users.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">30</td><td valign="top">CR103595</td><td valign="top"></td><td valign="top">Headline:Handlers- ALE inbound scenario</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:Inbound handler implementation is changed. BAPI (RFC, tRFC) ,  ALE (PT, Generic, IDoc)</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">31</td><td valign="top">CR103441</td><td valign="top"></td><td valign="top">LineType enhancement</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:Supoort for fileld type NUMC,DEC,TIMS and INT4 has be implemented, Reference CR103441 .</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">32</td><td valign="top"> </td><td valign="top">JR39757</td><td valign="top">BAPI_TRANSACTION_COMMIT ERROR NOT HANDLED CORRECTLY BY TXMANAGER</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:BAPI_TRANSACTION_COMMIT ERROR NOT HANDLED CORRECTLY BY TXMANAGER .</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">33</td><td valign="top">CR103140</td><td valign="top"></td><td valign="top">CI Leverage IDocHandler functionality singleRFCProgramId Issue childof CR103078</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI Leverage IDocHandler functionality singleRFCProgramId Issue childof CR103078.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">34</td><td valign="top">CR103302</td><td valign="top"></td><td valign="top">CI:XML attribute support in DESPI XML</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: The BAPI schmea generated using BOR discovery should have all key fields as xml attribute to the toplevel complex type. Current XML DESPI implementation does not consider xml attribute for processing. </td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">35</td><td valign="top">CR103303</td><td valign="top"></td><td valign="top">CI:SAP BOR schema generation should generate key fields as xml attributes</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:SAP  adapter while generating schema for BAPI -BOR , the key fields should be generated as xml attributes to the top level complex types. The CR is to do adapter changes for EMD and runtime. .</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">36</td><td valign="top">CR103311</td><td valign="top"></td><td valign="top">CI:IDoc tid information is not returned.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI:IDoc tid information is not returned.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">37</td><td valign="top">CR103420</td><td valign="top"></td><td valign="top">CI: SAP adapter BAPI outbound giving wrong output for table parameter.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:The table parameter should be filled with array of objects instead the output is coming as nested. .</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">38</td><td valign="top">CR103472</td><td valign="top"></td><td valign="top">CI:SalesOrder.GetList - schema difference when compared to CI SAP Connector.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Schema generated for SalesOrder.GetList BAPI has difference in element name 'Material' under Sales Order --> item.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">39</td><td valign="top">CR103510</td><td valign="top"></td><td valign="top">CI: IDoc iterative discovery failing wit...</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:CI: IDoc iterative discovery failing wit...</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">40</td><td valign="top">CR103519</td><td valign="top"></td><td valign="top">CI:IDoc schema having segment defination as element name instead of segment type.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI:IDoc schema having segment defination as element name instead of segment type.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">41</td><td valign="top">CR103568</td><td valign="top"></td><td valign="top">CI: IDoc value returned by inbound idoc adapter is not valid using idoc.jar.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:IDoc delivered by ALE inbound adapter is not valid. Here is the outline of the idoc event received by CI endpoint.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">42</td><td valign="top">CR103569</td><td valign="top"></td><td valign="top">CI: Response BO for RFC  should be rfc.Response.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:currently adapter generating response bo name as rfc.response instead of rfc.Response .</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">43</td><td valign="top">CR103571</td><td valign="top"></td><td valign="top">CI: migration:formatted bo name  for /CWLD/OUTBOUND_REQUEST_MQ generated differe</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:The formatted bo name for RFC /CWLD/OUTBOUND_REQUEST_MQ generated differently compared to existing CI SAP connector.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">44</td><td valign="top">CR103576</td><td valign="top"></td><td valign="top">CI : Not able to generate Schemas for IDOCs with unreleased segments in SAP.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Not able to generate Schemas for IDOCs with unreleased segments in SAP adapter.
+<br>Example for Unrelated segment IDOCs are MATMAS02, /CWM/DELVRY03 and so on.
+<br>For CI, SAP adapter should use blank for idoc release version always. This will fetch latest version of the idoc.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">45</td><td valign="top">CR103577</td><td valign="top"></td><td valign="top">CI : IDoc schemas are not generated with null namespace</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:As per CI requirement, the IDoc schemas should be always generated with null namespace but adapter is setting default namespace for all IDoc schemas .</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">46</td><td valign="top">CR103582</td><td valign="top"></td><td valign="top">CI: MATMAS03 E1MARAM segment has less elements compared to we60</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: The schema generated by the adapter for MATMAS043ver-40A for segment E1MARAM has 99 segment compared to 126 segment when generated from SAP GUI we60 and also from old CI connector.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">47</td><td valign="top">CR103583</td><td valign="top"></td><td valign="top">CI : control record fields DIRECT and IDOCTYP differences.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: As per we60 and CI requirement these fields should be as explained as -
+<br>As per we60 control record DIRECT field has a enum value of 1-outbound and 2-inbound but with 6.1 it is a string with maxlength.
+<br>There is another attribute called IDOCTYP which has a maxlength of 30 in 6.1 but no maxlength value in 5.1 and attribute value fixed is set to select IDOCTYPE.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">48</td><td valign="top">CR103584</td><td valign="top"></td><td valign="top">CI : The segment E1EDL39 should have maxOccurs value to 9 instead of unbounded.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: There is a segment called E1EDL39 under E1EDL37 which has a maxoccurs of 9 when generated with existing CI connector and we60 but schema generated by sap adapter has unbounded value.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">49</td><td valign="top">CR103587</td><td valign="top"></td><td valign="top">NPE exception for second project deployed with different IDoc.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: NPE exception for second project deployed with different IDoc.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="white">
+<td valign="top">50</td><td valign="top">6036(RTC)</td><td valign="top"></td><td valign="top">Not able to create the project module for AEP inbound.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom:Not able to create the Project Module for AEP Inbound in WPS and EMD throws the error msg "The discovery service for resource adapter 'IBM WebSphere Adapter for SAP Software with transaction support' has an error. </td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: This problem is now fixed.</td>
+</tr>
+</table>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+
+</table>
+
+<br>
+<table align="center" style="width: 80%;" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="fileschanged">This table lists new or changed files</a></td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>Version</td><td>Platform</td><td>Add or Remove or Replace</td><td>File (Starting from %INSTALLDIR% directory)</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There is no new file introduced/modified for this version of interim fix.</td>
+</tr>
+</table>
+<br>
+<br>
+<table align="center" style="width: 80%;" class="defaulttable">
+<tr class="toprow">
+<td><a name="upgradenotes">Upgrade notes</a></td>
+</tr>
+<tr bgcolor="white">
+<td>To upgrade to this Interim fix version on WebSphere Process Server, do the following :</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td>1. Ensure that you have followed the "Installation Instructions" section in the download link before proceeding.</td>
+</tr>
+<tr bgcolor="white">
+<td>2. If you need to use the test fix for EMD, delete the connector project in WebSphere Integration Developer, import the new RAR file, and apply the enterprise information system (EIS) specific dependency files.</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td>. a. Open the Java build path for the SCA module and remove the Connector project that is selected on Projects tab.</td>
+</tr>
+<tr bgcolor="white">
+<td>. b. Open the dependency editor and remove the connector project.</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td>. c. Delete the connector project from the workspace</td>
+</tr>
+<tr bgcolor="white">
+<td>. d. Import the new RAR file. Add any dependency files from EIS specific application-specific information as needed.</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td>. e. Open the Java build path for the SCA module and select the Connector project that is selected on the Projects tab.</td>
+</tr>
+<tr bgcolor="white">
+<td>. f. Open the dependency editor and add the connector project if it is not already present and select Deploy with Module.</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td>3. If you need to update deployed applications on WebSphere Process Server, do the following :</td>
+</tr>
+<tr bgcolor="white">
+<td>. a. Select Update for the corresponding application on the WebSphere Process Server administrative console.</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td>. b. Select Single Module with a relative path as name of the RAR file - CWYAP_SAPAdapter.rar, CWYAP_SAPAdapter_Tx.rar.</td>
+</tr>
+<tr bgcolor="white">
+<td>. c. Click Browse on the local file system to select the updated RAR file that has the changes.</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td>. d. Select the default values in the remaining steps and click Finish. This will ensure that existing configurations, for example, are not changed and that only JAR files will be updated.</td>
+</tr>
+<tr bgcolor="white">
+<td>. e. If there is a change in CWYAP_SAPAdapterExt.jar, the jar should placed in the 'lib' directory of WebSphere Process Server and the server has to restarted.</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td>To upgrade to this Interim fix version on Websphere Message Broker (WMB) runtime, do the following :</td>
+</tr>
+<tr bgcolor="white">
+<td>1. Unzip the Package_WMB.zip to your temp local directory , it would create following directory "AdapterPackage".</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td>2. Stop all your Brokers that are using this install.</td>
+</tr>
+<tr bgcolor="white">
+<td>3. Go to "AdapterPackage" directory it should contain the files CWYAP_SAPAdapter.jar, CWYBS_AdapterFoundation.jar and CWYAP_SAPAdapterExt.jar</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td>. a. Backup the existing file CWYAP_SAPAdapter.jar, CWYBS_AdapterFoundation.jar and CWYAP_SAPAdapterExt.jar files.</td>
+</tr>
+<tr bgcolor="white">
+<td>. b. Copy the above files to MQSI_INSTALL_PATH\adapters\prereqs\jar directory , where MQSI_INSTALL_PATH is WMB runtime install path. (eg. C:\Program Files\IBM\MQSI\7.0\adapters\prereqs\jars).</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td>4. Restart your Brokers.</td>
+</tr>
+<tr bgcolor="white">
+<td>To upgrade to this Interim fix version on Websphere Message Broker Toolkit (WMBT), do the following :</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td>1. Unzip the Package_WMBT.zip to your temp local directory , it will create the directory "AdapterPackage".</td>
+</tr>
+<tr bgcolor="white">
+<td>2. Stop your WMB Toolkit.</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td>. a. Backup the existing CWYAP_SAPAdapter_Tx.rar file.</td>
+</tr>
+<tr bgcolor="white">
+<td>. b. Copy the above CWYAP_SAPAdapter_Tx.rar files to WMBT_INSTALL_PATH\ResourceAdapters\SAP_(version_number)\deploy directory , where WMBT_INSTALL_PATH is WMBT runtime install path. (eg. C:\Program Files\IBM\WMBT70\ResourceAdapters\SAP_7.0.0.0\deploy).</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td>3. Restart WMBT.</td>
+</tr>
+</table>
+<br>
+<table border="0" align="center" width="90%" class="noborder">
+<tr>
+<td align="center" class="noborder">
+						Sep 25th, 2012 6:00 PM
+					</td>
+</tr>
+<tr>
+<td align="center" class="noborder">
+						(C) 2011 IBM Corporation. Proprietary and Confidential. All Rights Reserved.
+					</td>
+</tr>
+</table>
+</body>
+</html>

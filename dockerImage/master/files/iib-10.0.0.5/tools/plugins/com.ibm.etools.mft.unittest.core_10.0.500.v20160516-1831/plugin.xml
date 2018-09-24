@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+     <extension-point id="runtimeEnvType" name="Runtime Environment Extension Point" schema="schema/runtimeEnvType.exsd"/>
+   <extension-point id="componentRuntime" name="Runtime environment of a component" schema="schema/componentRuntime.exsd"/>
+   <extension-point id="testControllerDescription" name="Test Controller Description Extension Point" schema="schema/testControllerDescription.exsd"/>
+   <extension-point id="clientManipulatorFactories" name="Client Manipulator Factories" schema="schema/clientManipulatorFactories.exsd"/>
+   <extension-point id="runtimeServerType" name="This allows extention points to use the built in runtimeEnvType for specific servers" schema="schema/runtimeServerType.exsd"/>
+   <extension-point id="testControllerDescriptionExtension" name="testControllerDescriptionExtension" schema="schema/testControllerDescriptionExtension.exsd"/>
+   <extension-point id="commTransport" name="Test Client Communication Transport" schema="schema/commTransport.exsd"/>
+
+   <!-- 
+       Define the base client value manipulator factory.  Note the order
+       is 99, so other manipulator factories with order < 99 will 
+       be invoked first. 
+     -->
+   <extension
+         point="com.ibm.etools.mft.unittest.core.clientManipulatorFactories">
+      <clientManipulatorFactory 
+            className="com.ibm.etools.mft.unittest.core.manipulator.BaseWorkbenchManipulatorFactory"
+            order="99"/>
+   </extension>
+
+
+   <!-- 
+       Define the base SIM Test controller
+     --> 
+   <extension
+         point="com.ibm.etools.mft.unittest.core.testControllerDescription">
+            
+      <testControllerDescription
+            class="com.ibm.etools.mft.unittest.core.controller.mb.MBTestControllerDescription"
+            id="MBTestController"/>            
+   </extension>
+   
+   <!-- 
+       Define the base J2EE and J2SE Runtime Environment
+     --> 
+   <extension
+         point="com.ibm.etools.mft.unittest.core.runtimeEnvType">
+             
+      <runtimeEnvType
+            testControllerId="MBTestController"
+            class="com.ibm.etools.mft.unittest.core.runtime.mb.MBRuntimeEnvType"
+            description="%MBTestController.desc"
+            name="%MBTestController.name"
+            icon="icons/obj16/mbv7runtime.gif"
+            id="WMB"/>            
+   </extension>
+   <extension
+         point="com.ibm.etools.mft.unittest.core.commTransport">
+      <transport
+            handler="com.ibm.etools.mft.unittest.core.transport.http.HTTPHandler"
+            name="HTTP Input"
+            type="ComIbmWSInput.msgnode"/>
+      <transport
+            handler="com.ibm.etools.mft.unittest.core.transport.mq.MQInputHandler"
+            name="MQ Input"
+            type="ComIbmMQInput.msgnode"/>
+      <transport
+            handler="com.ibm.etools.mft.unittest.core.transport.mq.MQGetHandler"
+            name="MQ Get"
+            type="ComIbmMQGet.msgnode"/>
+      <transport
+            handler="com.ibm.etools.mft.unittest.core.transport.mq.MQOutputHandler"
+            name="MQ Output"
+            type="com.ibm.etools.mft.unittest.common.flow.flowunittest.model2.mq.MQMonitor"/>
+      <transport
+            handler="com.ibm.etools.mft.unittest.core.transport.jms.JMSInputHandler"
+            name="JMS Input"
+            type="ComIbmJMSClientInput.msgnode"/>
+      <transport
+            handler="com.ibm.etools.mft.unittest.core.transport.jms.JMSOutputHandler"
+            name="JMS Output"
+            type="com.ibm.etools.mft.unittest.common.flow.flowunittest.model2.jms.JMSMonitor"/>
+      <transport
+            handler="com.ibm.etools.mft.unittest.core.transport.soap.SOAPHandler"
+            name="SOAP Input"
+            type="ComIbmSOAPInput.msgnode"/>
+      <transport
+            handler="com.ibm.etools.mft.unittest.core.transport.sca.SCAHandler"
+            name="SCA Input"
+            type="ComIbmSCAInput.msgnode"/>
+   </extension>
+</plugin>

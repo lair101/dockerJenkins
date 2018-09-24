@@ -1,0 +1,4 @@
+# IBM Content Magic HTTP parameters for Proxy version
+HasSeenSetup = true 
+CustomSetupURL =
+ForceContentTypeToMatchExt = false 

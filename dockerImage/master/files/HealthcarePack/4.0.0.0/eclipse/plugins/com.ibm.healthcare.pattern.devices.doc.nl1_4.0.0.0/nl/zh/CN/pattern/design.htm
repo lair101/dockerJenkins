@@ -1,0 +1,388 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!--
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>“Healthcare：医疗设备到 HL7”模式的设计</title>
+</head>
+<body role="main">
+<a name="links"></a>
+<div class="section">
+    <h1 class="topictitle1">“Healthcare：医疗设备到 HL7”模式的设计</h1>
+    <p class="shortdesc">
+    此模式使用 MedicalDeviceInput 节点读取来自医疗设备的测量和警报。设备读数将变换为 HL7
+观察结果消息 (ORU R01)。变换后的消息将通过使用 HL7 MLLP
+协议发送到目标应用程序，例如电子医疗记录 (EMR)。</p>
+</div>
+<div>
+    <p>
+    本主题包含下列各节：</p>
+    <div>
+        <a href="design.htm#devices">“医疗设备”流</a></div>
+    <div>
+        <a href="design.htm#transform">“变换并路由”流</a></div>
+    <div>
+        <a href="design.htm#sender">“发送方”流</a></div>
+    <div>
+        <a href="design.htm#service">“服务”流</a></div>
+    <div>
+        <a href="design.htm#results">观察结果</a></div>
+    <div>
+        <a href="design.htm#output">模式实例的输出</a></div>
+</div>
+<div class="section">
+    <a name="devices"></a><h2>“医疗设备”流</h2>
+    <p>
+    “医疗设备”流对来自 MedicalDeviceInput 节点的消息进行处理。每条消息都在自己的
+MQRFH2 头中添加了到期时间。这些消息将写入一个队列，并准备好传递给“变换并路由”流。消息写入队列后，将针对该设备测量发布一条日志消息。</p>
+</div>
+<div class="section">
+    <a name="transform"></a><h2>“变换并路由”流</h2>
+    <p>
+    “变换并路由”流将设备消息转换为 HL7 观察结果 (ORU R01)。这个流将检查每条设备消息以确保其测量有效。无效的测量将写入队列并被废弃。如果将此模式配置为查找患者标识，那么将使用设备标识作为数据库表的键，以获取与设备消息相关联的患者标识。变换后的 HL7 消息将写入“发送方”流的不匹配队列。</p>
+</div>
+<div class="section">
+    <a name="sender"></a><h2>“发送方”流</h2>
+    <p>
+    “发送方”流读取队列中的 HL7 消息，并使用 HL7 MLLP 协议将其发送到目标应用程序。如果消息交付中断，那么“发送方”流将进行重试，并且重试次数可配置。“发送方”流将检查消息的到期时间。如果处理消息所用的时间过长，那么该消息将写入到期队列，然后被废弃。
+</p>
+</div>
+<div class="section">
+    <a name="service"></a><h2>“服务”流</h2>
+    <p>
+此模式可以选择性地创建患者标识数据库的 Web 服务接口。此接口通过消息流实现。将使用 SOAPInput 节点来接收 Web 服务请求，然后将其路由到 Compute 节点，后者执行必需的数据库查询或更新。这个流需要 WSDL 消息集以配置 SOAP 节点。此消息集在模式资源主题中提供。</p>
+</div>
+<div class="section">
+    <a name="results"></a><h2>观察结果</h2>
+    <p>
+    下列各表显示了 HL7 ORU R01 消息中的段的构造方式：</p>
+</div>
+<div class="tablenoborder">
+    <h4>MSH</h4>
+    <p>
+    MSH 段用于定义 HL7 消息的意图、源标识、目标标识以及一些语法细节。</p>
+    <table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+        <thead align="left">
+        <tr>
+            <th class="firstcol" align="left" valign="top" width="33%">字段名</th>
+            <th class="invisible" valign="top" width="33%">观察结果消息中的字段值</th>
+            <th class="invisible" valign="top" width="33%">由模式参数配置</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.1.FieldSeparator</th>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                '|'
+                </span>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.ServiceString</th>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                “^~\&amp;”</span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.3.SendingApplication</th>
+            <td valign="top" width="*" class="invisible">“Message Broker”</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjprop">
+                “源标识”</span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.4.SendingFacility</th>
+            <td valign="top" width="*" class="invisible">''</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjprop">
+                “源设施”</span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.5.ReceivingApplication</th>
+            <td valign="top" width="*" class="invisible">“EMR”</td>
+            <td>
+                <span class="msobjprop">
+                “目标身份”</span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.6.ReceivingFacility</th>
+            <td valign="top" width="*" class="invisible">''</td>
+            <td>
+                <span class="msobjprop">
+                “目标设施”</span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.7.DateTimeOfMessage</th>
+            <td valign="top" width="*" class="invisible">从 MedicalDeviceInput 节点消息中的时间戳记复制</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.9.MessageType</th>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                “ORU^R01^ORU_R01”</span>
+            </td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.10.MessageControlID</th>
+            <td valign="top" width="*" class="invisible">UUID 或者 yyyyMMddHHmmssSSSSSS 格式的当前时间戳记</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjprop">
+                “消息标识”</span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.11.ProcessingID</th>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                “P”</span>
+            </td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.12.VersionID</th>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                “2.5”</span>
+            </td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        </tbody>
+    </table>
+    <h4>PID</h4>
+    <p>
+    PID 段由所有应用程序用作交流患者标识信息的主要方式。这个段包含永久的患者标识和人口统计信息，其中大部分信息不大可能经常更改。</p>
+    <table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+        <thead align="left">
+        <tr>
+            <th class="firstcol" align="left" valign="top" width="33%">字段名</th>
+            <th class="invisible" valign="top" width="33%">观察结果消息中的字段值</th>
+            <th class="invisible" valign="top" width="33%">由模式参数配置</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">PID.3.PatientIdentifierList</th>
+            <td valign="top" width="*" class="invisible">此字段由“<span class="msobjprop">患者标识</span>”模式参数确定。<p>
+                如果选择了“<span class="msobjpropval">观察结果中没有患者标识</span>”，那么此字段将不具有值。</p>
+                <p>
+                如果选择了“<span class="msobjpropval">使用来自设备的患者标识</span>”，那么消息中的患者标识将复制到此字段。</p>
+                <p>
+                如果选中了“<span class="msobjpropval">在数据库中查找患者标识</span>”，那么将使用设备标识在数据库中查找相关联的患者标识。</p>
+            </td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjprop">
+                “患者标识”</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <h4>PV1</h4>
+    <p>
+    患者管理应用程序使用 PV1 段按帐户或按特定就诊来传递信息。
+</p>
+    <table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+        <thead align="left">
+        <tr>
+            <th class="firstcol" align="left" valign="top" width="33%">字段名</th>
+            <th class="invisible" valign="top" width="33%">观察结果消息中的字段值</th>
+            <th class="invisible" valign="top" width="33%">由模式参数配置</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">PV1.2.PatientClass</th>
+            <td valign="top" width="*" class="invisible">“I”</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjprop">
+                “患者类”</span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">PV1.3.AssignedPatientLocation</th>
+            <td valign="top" width="*" class="invisible">MedicalDeviceInput 节点消息中的位置</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        </tbody>
+    </table>
+    <h4>OBR</h4>
+    <p>
+    在临床数据报告中，OBR 用作结果标题。它用于标识由下列原子观察表示的观察集。
+    它包含相关的排序信息（如果适用）。它包含许多通常应用于包括的所有观察的属性。</p>
+    <table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+        <thead align="left">
+        <tr>
+            <th class="firstcol" align="left" valign="top" width="33%">字段名</th>
+            <th class="invisible" valign="top" width="33%">观察结果消息中的字段值</th>
+            <th class="invisible" valign="top" width="33%">由模式参数配置</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">OBR.7.ObservationDateTime</th>
+            <td valign="top" width="*" class="invisible">与 <span class="msobjprop">MSH.7.DateTimeOfMessage</span> 相同</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">OBR.10.CollectorIdentifier</th>
+            <td valign="top" width="*" class="invisible">与 <span class="msobjprop">PV1.3.AssignedPatientLocation</span> 相同</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        </tbody>
+    </table>
+    <h4>OBX</h4>
+    <p>
+    OBX 段用于传输单个观察或观察片段。
+    它表示结果的最小不可分单元。</p>
+    <table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+        <thead align="left">
+        <tr>
+            <th class="firstcol" align="left" valign="top" width="33%">字段名</th>
+            <th class="invisible" valign="top" width="33%">观察结果消息中的字段值</th>
+            <th class="invisible" valign="top" width="33%">由模式参数配置</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">OBX.1.SetIDOBX</th>
+            <td valign="top" width="*" class="invisible">OBX 段数字索引，从 1 开始递增。</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">OBX.2.ValueType</th>
+            <td valign="top" width="*" class="invisible">“ST”</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">OBX.3.ObservationIdentifier</th>
+            <td valign="top" width="*" class="invisible">MedicalDeviceInput 节点消息中的主标识和辅助标识，以及对测量类型的简短描述。</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">OBX.5.ObservationValue</th>
+            <td valign="top" width="*" class="invisible">MedicalDeviceInput 节点消息中的值。</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">OBX.6.Units</th>
+            <td valign="top" width="*" class="invisible">MedicalDeviceInput 节点消息中的单位。</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">OBX.11.ObservationResultStatus</th>
+            <td valign="top" width="*" class="invisible">“F”</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">OBX.14.DateTimeoftheObservation</th>
+            <td valign="top" width="*" class="invisible">与 <span class="msobjprop">MSH.7.DateTimeOfMessage</span> 相同</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    此模式为波形消息创建了多个 OBX 段，其原因是这些消息有可能包含多个测量。</p>
+</div>
+<div class="section">
+    <a name="output"></a><h2>模式实例的输出</h2>
+    <p>
+    除路由到目标应用程序的 HL7 消息以外，此模式还提供了众多其他输出。这些输出将写入队列或发送到 Publication 节点。目标由“<span class="msobjprop">发布</span>”模式参数确定。如果选中了“<span class="msobjpropval">发布</span>”选项，那么所有信息都将使用以模式实例名开头的主题层次结构进行发布。</p>
+    <p>
+    如果选择了“<span class="msobjpropval">写入队列</span>”选项，那么输出将发送到一些队列，这些队列的名称根据模式参数“<span class="msobjprop">队列前缀</span>”和一组固定后缀生成，如下表所示。</p>
+    <p>
+    <b>注意</b>：未显示每个主题的初始构面（模式实例名）。</p>
+</div>
+<div class="tablenoborder">
+    <table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+        <thead align="left">
+        <tr>
+            <th class="firstcol" align="left" valign="top" width="20%">输出</th>
+            <th class="invisible" valign="top" width="15%">队列后缀</th>
+            <th class="invisible" valign="top" width="15%">主题</th>
+            <th valign="top" width="50%">备注</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">日志</th>
+            <td valign="top" width="*" class="invisible">.JRNL</td>
+            <td valign="top" width="*" class="invisible">/Journal</td>
+            <td valign="top" width="*" class="invisible">此输出以标准模式格式提供入局消息的日志。<p>
+                请参阅“注 1”。</p>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">到“变换并路由”</th>
+            <td valign="top" width="*" class="invisible">.RXF</td>
+            <td valign="top" width="*" class="invisible">不适用</td>
+            <td valign="top" width="*" class="invisible">每条消息都将发送到“变换并路由”流。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">出错的消息</th>
+            <td valign="top" width="*" class="invisible">.ERR</td>
+            <td valign="top" width="*" class="invisible">不适用</td>
+            <td valign="top" width="*" class="invisible">无法正确处理的消息将写入错误队列，并且错误信息包含在 MQRFH2 头中。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">规范</th>
+            <td valign="top" width="*" class="invisible">.CAN</td>
+            <td valign="top" width="*" class="invisible">/Canonical</td>
+            <td valign="top" width="*" class="invisible">如果选中了输出规范订阅源的选项，那么将编写规范 HL7 格式的输入消息。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">到“发送方”</th>
+            <td valign="top" width="*" class="invisible">.DEST</td>
+            <td valign="top" width="*" class="invisible">不适用</td>
+            <td valign="top" width="*" class="invisible">每条消息都将在变换为 HL7 之后发送到“发送方”流。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">已到期的消息</th>
+            <td valign="top" width="*" class="invisible">.EXP</td>
+            <td valign="top" width="*" class="invisible">不适用</td>
+            <td valign="top" width="*" class="invisible">超出已配置的到期时间的消息将写入此队列。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">服务日志</th>
+            <td valign="top" width="*" class="invisible">.LOG</td>
+            <td valign="top" width="*" class="invisible">不适用</td>
+            <td valign="top" width="*" class="invisible">用于存储患者标识 Web 服务的所有 SOAP 请求及响应消息的副本。</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">没有匹配的患者标识</th>
+            <td valign="top" width="*" class="invisible">.NOMATCH</td>
+            <td valign="top" width="*" class="invisible">不适用</td>
+            <td valign="top" width="*" class="invisible">没有匹配的患者标识的消息将写入此队列。</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    <b>注 1：</b>通过添加 MQMD 头和 MQRFH2 头，可以根据源消息生成日志消息。MQRFH2 头包含以下内容：</p>
+    <ul>
+        <li>
+            集成节点名</li>
+        <li>
+            消息流</li>
+        <li>
+            当前时间戳记</li>
+    </ul>
+</div>
+<p>
+</p>
+<a href="overview.htm#anchorBack" title="返回">返回到“Healthcare：医疗设备到 EMR”模式规范</a>
+<p>
+</p>
+</body>
+</html>

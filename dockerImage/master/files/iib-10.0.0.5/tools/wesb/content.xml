@@ -1,0 +1,381 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?metadataRepository version='1.1.0'?>
+<repository name='WESB Convert Tool for IIB 10' type='org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository' version='1.0.0'>
+  <properties size='2'>
+    <property name='p2.timestamp' value='1443109549678'/>
+    <property name='p2.compressed' value='false'/>
+  </properties>
+  <units size='9'>
+    <unit id='com.ibm.etools.mft.conversion.esb.nl1' version='10.0.0.v20150924-1628' singleton='false'>
+      <update id='com.ibm.etools.mft.conversion.esb.nl1' range='[0.0.0,10.0.0.v20150924-1628)' severity='0'/>
+      <properties size='3'>
+        <property name='org.eclipse.equinox.p2.name' value='%Fragment.name'/>
+        <property name='org.eclipse.equinox.p2.provider' value='IBM'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb.nl1' version='10.0.0.v20150924-1628'/>
+        <provided namespace='osgi.bundle' name='com.ibm.etools.mft.conversion.esb.nl1' version='10.0.0.v20150924-1628'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='osgi.fragment' name='com.ibm.etools.mft.conversion.esb' version='10.0.0.v20150924-1628'/>
+      </provides>
+      <requires size='1'>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.conversion.esb' range='[10.0.0,11.0.0)'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='com.ibm.etools.mft.conversion.esb.nl1' version='10.0.0.v20150924-1628'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Bundle-Version: 10.0.0.v20150924-1628&#xA;Manifest-Version: 1.0&#xA;Bundle-SymbolicName: com.ibm.etools.mft.conversion.esb.nl1&#xA;Bundle-Name: %Fragment.name&#xA;Fragment-Host: com.ibm.etools.mft.conversion.esb;bundle-version=&quot;[10.0.0,11.0.0)&quot;&#xA;Bundle-Localization: plugin&#xA;Bundle-Vendor: IBM
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='com.ibm.etools.mft.conversion.esb.nl2' version='10.0.0.v20150924-1628' singleton='false'>
+      <update id='com.ibm.etools.mft.conversion.esb.nl2' range='[0.0.0,10.0.0.v20150924-1628)' severity='0'/>
+      <properties size='3'>
+        <property name='org.eclipse.equinox.p2.name' value='%Fragment.name'/>
+        <property name='org.eclipse.equinox.p2.provider' value='IBM'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb.nl2' version='10.0.0.v20150924-1628'/>
+        <provided namespace='osgi.bundle' name='com.ibm.etools.mft.conversion.esb.nl2' version='10.0.0.v20150924-1628'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='osgi.fragment' name='com.ibm.etools.mft.conversion.esb' version='10.0.0.v20150924-1628'/>
+      </provides>
+      <requires size='1'>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.conversion.esb' range='[10.0.0,11.0.0)'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='com.ibm.etools.mft.conversion.esb.nl2' version='10.0.0.v20150924-1628'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Bundle-Version: 10.0.0.v20150924-1628&#xA;Manifest-Version: 1.0&#xA;Bundle-SymbolicName: com.ibm.etools.mft.conversion.esb.nl2&#xA;Bundle-Name: %Fragment.name&#xA;Fragment-Host: com.ibm.etools.mft.conversion.esb;bundle-version=&quot;[10.0.0,11.0.0)&quot;&#xA;Bundle-Localization: plugin&#xA;Bundle-Vendor: IBM
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='com.ibm.etools.mft.conversion.esb.feature.feature.jar' version='10.0.0.v20150924-1628'>
+      <properties size='7'>
+        <property name='org.eclipse.equinox.p2.name' value='%Feature.name'/>
+        <property name='org.eclipse.equinox.p2.description' value='%description'/>
+        <property name='org.eclipse.equinox.p2.provider' value='IBM'/>
+        <property name='df_LT.Feature.name' value='IBM Integration Toolkit - WebSphere ESB Conversion Tool'/>
+        <property name='df_LT.description' value='The WebSphere ESB Conversion Tool is an add-on to IBM Integration Toolkit. It assists with conversion of integration solutions from WebSphere ESB projects to IBM Integration Bus projects'/>
+        <property name='df_LT.copyright' value='(c) Copyright IBM Corporation 2000, 2015.  All rights reserved.'/>
+        <property name='df_LT.license' value='Use of this feature is subject to the same terms and conditions which govern the use of the Product which included this feature.'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb.feature.feature.jar' version='10.0.0.v20150924-1628'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='com.ibm.etools.mft.conversion.esb.feature' version='10.0.0.v20150924-1628'/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size='1'>
+        <artifact classifier='org.eclipse.update.feature' id='com.ibm.etools.mft.conversion.esb.feature' version='10.0.0.v20150924-1628'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+      <licenses size='1'>
+        <license uri='%25licenseURL' url='%25licenseURL'>
+          %license
+        </license>
+      </licenses>
+      <copyright>
+        %copyright
+      </copyright>
+    </unit>
+    <unit id='com.ibm.etools.mft.conversion.esb.nl2a' version='10.0.0.v20150924-1628' singleton='false'>
+      <update id='com.ibm.etools.mft.conversion.esb.nl2a' range='[0.0.0,10.0.0.v20150924-1628)' severity='0'/>
+      <properties size='3'>
+        <property name='org.eclipse.equinox.p2.name' value='%Fragment.name'/>
+        <property name='org.eclipse.equinox.p2.provider' value='IBM'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb.nl2a' version='10.0.0.v20150924-1628'/>
+        <provided namespace='osgi.bundle' name='com.ibm.etools.mft.conversion.esb.nl2a' version='10.0.0.v20150924-1628'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='osgi.fragment' name='com.ibm.etools.mft.conversion.esb' version='10.0.0.v20150924-1628'/>
+      </provides>
+      <requires size='1'>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.conversion.esb' range='[10.0.0,11.0.0)'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='com.ibm.etools.mft.conversion.esb.nl2a' version='10.0.0.v20150924-1628'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Bundle-Version: 10.0.0.v20150924-1628&#xA;Manifest-Version: 1.0&#xA;Bundle-SymbolicName: com.ibm.etools.mft.conversion.esb.nl2a&#xA;Bundle-Name: %Fragment.name&#xA;Fragment-Host: com.ibm.etools.mft.conversion.esb;bundle-version=&quot;[10.0.0,11.0.0)&quot;&#xA;Bundle-Localization: plugin&#xA;Bundle-Vendor: IBM
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='com.ibm.etools.mft.conversion.esb.feature.feature.group' version='10.0.0.v20150924-1628' singleton='false'>
+      <update id='com.ibm.etools.mft.conversion.esb.feature.feature.group' range='[0.0.0,10.0.0.v20150924-1628)' severity='0'/>
+      <properties size='8'>
+        <property name='org.eclipse.equinox.p2.name' value='%Feature.name'/>
+        <property name='org.eclipse.equinox.p2.description' value='%description'/>
+        <property name='org.eclipse.equinox.p2.provider' value='IBM'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+        <property name='df_LT.Feature.name' value='IBM Integration Toolkit - WebSphere ESB Conversion Tool'/>
+        <property name='df_LT.description' value='The WebSphere ESB Conversion Tool is an add-on to IBM Integration Toolkit. It assists with conversion of integration solutions from WebSphere ESB projects to IBM Integration Bus projects'/>
+        <property name='df_LT.copyright' value='(c) Copyright IBM Corporation 2000, 2015.  All rights reserved.'/>
+        <property name='df_LT.license' value='Use of this feature is subject to the same terms and conditions which govern the use of the Product which included this feature.'/>
+      </properties>
+      <provides size='2'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb.feature.feature.group' version='10.0.0.v20150924-1628'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='7'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb' range='[10.0.0.v20150924-1628,10.0.0.v20150924-1628]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb.eflowsimplifier' range='[10.0.0.v20150924-1628,10.0.0.v20150924-1628]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb.nl1' range='[10.0.0.v20150924-1628,10.0.0.v20150924-1628]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb.nl2' range='[10.0.0.v20150924-1628,10.0.0.v20150924-1628]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb.nl2a' range='[10.0.0.v20150924-1628,10.0.0.v20150924-1628]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb.doc' range='[1.0.0.v20150806_0832,1.0.0.v20150806_0832]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb.feature.feature.jar' range='[10.0.0.v20150924-1628,10.0.0.v20150924-1628]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+      <licenses size='1'>
+        <license uri='%25licenseURL' url='%25licenseURL'>
+          %license
+        </license>
+      </licenses>
+      <copyright>
+        %copyright
+      </copyright>
+    </unit>
+    <unit id='com.ibm.etools.mft.conversion.esb.eflowsimplifier' version='10.0.0.v20150924-1628' singleton='false'>
+      <update id='com.ibm.etools.mft.conversion.esb.eflowsimplifier' range='[0.0.0,10.0.0.v20150924-1628)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='Eflowsimplifier'/>
+        <property name='org.eclipse.equinox.p2.provider' value='IBM'/>
+      </properties>
+      <provides size='54'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb.eflowsimplifier' version='10.0.0.v20150924-1628'/>
+        <provided namespace='osgi.bundle' name='com.ibm.etools.mft.conversion.esb.eflowsimplifier' version='10.0.0.v20150924-1628'/>
+        <provided namespace='java.package' name='com.ibm.etools.eflow2.model' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.eflow2.model.eflow' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.eflow2.model.eflow.emf' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.eflow2.model.eflow.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.eflow2.model.eflow.util' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.eflow2.model.internal.generator' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.eflow2.utils.model.type' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.eflow2.utils.model.type.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.eflow2.utils.model.type.util' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.eflow2.utils.model.utility' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.eflow2.utils.model.utility.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.eflow2.utils.model.utility.util' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb.eflowsimplifier' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.propertygroup.ext.model' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.propertygroup.ext.model.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.propertygroup.ext.model.util' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.mediation.model' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.mediation.model.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.mediation.model.util' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.eflow' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.eflow.internal' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.eflow.migration' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.eflow.promotion' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.eflow.visitors' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.mediation.custom.model' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.mediation.custom.model.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.mediation.custom.model.util' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.mediation.model.mfcflow' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.mediation.model.mfcflow.extension' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.mediation.model.mfcflow.extension.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.mediation.model.mfcflow.extension.util' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.mediation.model.mfcflow.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.mediation.model.mfcflow.util' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.mediation.model.mfcflow.visitors' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.mediation.model.util' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.mediation.operation.model' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.mediation.operation.model.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wbit.sib.mediation.operation.model.util' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.ws.ffdc' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.ws.sibx.common' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.ws.sibx.common.nls' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.ws.sibx.scax.mediation.model' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.ws.sibx.scax.mediation.model.loader' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.ws.sibx.scax.mediation.model.readablexml' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.ws.sibx.scax.mediation.model.xml' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.ws.sibx.scax.mediation.model.xml.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.ws.sibx.scax.mediation.model.xml.loader' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wsspi.sibx.mediation.model' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wsspi.sibx.mediation.model.eflow.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wsspi.sibx.mediation.model.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.wsspi.sibx.mediation.model.xml.impl' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='5'>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='2.6.1'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='2.5.0'/>
+        <required namespace='osgi.bundle' name='com.ibm.ws.sca.scdl' range='7.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.6.2'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='com.ibm.etools.mft.conversion.esb.eflowsimplifier' version='10.0.0.v20150924-1628'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Export-Package: com.ibm.etools.eflow2.model,com.ibm.etools.eflow2.model.eflow,com.ibm.etools.eflow2.model.eflow.emf,com.ibm.etools.eflow2.model.eflow.impl,com.ibm.etools.eflow2.model.eflow.util,com.ibm.etools.eflow2.model.internal.generator,com.ibm.etools.eflow2.utils.model.type,com.ibm.etools.eflow2.utils.model.type.impl,com.ibm.etools.eflow2.utils.model.type.util,com.ibm.etools.eflow2.utils.model.utility,com.ibm.etools.eflow2.utils.model.utility.impl,com.ibm.etools.eflow2.utils.model.utility.util,com.ibm.etools.mft.conversion.esb.eflowsimplifier,com.ibm.propertygroup.ext.model,com.ibm.propertygroup.ext.model.impl,com.ibm.propertygroup.ext.model.util,com.ibm.wbit.mediation.model,com.ibm.wbit.mediation.model.impl,com.ibm.wbit.mediation.model.util,com.ibm.wbit.sib.eflow,com.ibm.wbit.sib.eflow.internal,com.ibm.wbit.sib.eflow.migration,com.ibm.wbit.sib.eflow.promotion,com.ibm.wbit.sib.eflow.visitors,com.ibm.wbit.sib.mediation.custom.model,com.ibm.wbit.sib.mediation.custom.model.impl,com.ibm.wbit.sib.mediation.custom.model.util,com.ibm.wbit.sib.mediation.model.mfcflow,com.ibm.wbit.sib.mediation.model.mfcflow.extension,com.ibm.wbit.sib.mediation.model.mfcflow.extension.impl,com.ibm.wbit.sib.mediation.model.mfcflow.extension.util,com.ibm.wbit.sib.mediation.model.mfcflow.impl,com.ibm.wbit.sib.mediation.model.mfcflow.util,com.ibm.wbit.sib.mediation.model.mfcflow.visitors,com.ibm.wbit.sib.mediation.model.util,com.ibm.wbit.sib.mediation.operation.model,com.ibm.wbit.sib.mediation.operation.model.impl,com.ibm.wbit.sib.mediation.operation.model.util,com.ibm.ws.ffdc,com.ibm.ws.sibx.common,com.ibm.ws.sibx.common.nls,com.ibm.ws.sibx.scax.mediation.model,com.ibm.ws.sibx.scax.mediation.model.loader,com.ibm.ws.sibx.scax.mediation.model.readablexml,com.ibm.ws.sibx.scax.mediation.model.xml,com.ibm.ws.sibx.scax.mediation.model.xml.impl,com.ibm.ws.sibx.scax.mediation.model.xml.loader,com.ibm.wsspi.sibx.mediation.model,com.ibm.wsspi.sibx.mediation.model.eflow.impl,com.ibm.wsspi.sibx.mediation.model.impl,com.ibm.wsspi.sibx.mediation.model.xml.impl&#xA;Bundle-RequiredExecutionEnvironment: JavaSE-1.6&#xA;Require-Bundle: org.eclipse.core.runtime,org.eclipse.emf.ecore;bundle-version=&quot;2.6.1&quot;,org.eclipse.emf.ecore.xmi;bundle-version=&quot;2.5.0&quot;,com.ibm.ws.sca.scdl;bundle-version=&quot;7.5.0&quot;,org.eclipse.core.resources;bundle-version=&quot;3.6.2&quot;&#xA;Bundle-Activator: com.ibm.etools.mft.conversion.esb.eflowsimplifier.Activator&#xA;Bundle-Name: Eflowsimplifier&#xA;Bundle-Version: 10.0.0.v20150924-1628&#xA;Bundle-Vendor: IBM&#xA;Bundle-SymbolicName: com.ibm.etools.mft.conversion.esb.eflowsimplifier&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-ClassPath: com.ibm.etools.eflow2.model_7.5.0.v20110519_0923.jar,.,mfc_op_model.jar,mediation_model.jar,eflow_model.jar,com.ibm.propertygroup.ext.model_8.0.0.v20120426-1430.jar,mfc_model.jar&#xA;Manifest-Version: 1.0
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='com.ibm.etools.mft.conversion.esb' version='10.0.0.v20150924-1628'>
+      <update id='com.ibm.etools.mft.conversion.esb' range='[0.0.0,10.0.0.v20150924-1628)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='WESB conversion Plug-in'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+      </properties>
+      <provides size='19'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb' version='10.0.0.v20150924-1628'/>
+        <provided namespace='osgi.bundle' name='com.ibm.etools.mft.conversion.esb' version='10.0.0.v20150924-1628'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb.editor' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb.editor.controller' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb.editor.parameter' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb.editor.resourceoptions.pages' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb.extension' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb.extension.binding' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb.extension.mediationprimitive' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb.extension.render' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb.extension.resource' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb.extensionpoint' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb.model' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb.model.definition' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb.model.mfc' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb.userlog' version='0.0.0'/>
+        <provided namespace='java.package' name='com.ibm.etools.mft.conversion.esb.wizard' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='47'>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.broker.runtime' range='[9.0.0,11.0.0)'/>
+        <required namespace='osgi.bundle' name='com.ibm.broker.config.appdev' range='[9.0.0,11.0.0)'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.6.2'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.6.2'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.6.1'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.6.0'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.uri' range='[9.0.0,11.0.0)'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.util' range='[9.0.0,11.0.0)'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.msg.msgmodel.utilities' range='[9.0.0,11.0.0)'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.msg.importer.wsdl' range='[9.0.0,11.0.0)'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.msg.wsdl.ui' range='[9.0.0,11.0.0)'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.msg.importer.framework' range='[9.0.0,11.0.0)'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.msg.wsdl.util' range='[9.0.0,11.0.0)'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.msg.coremodel.utilities' range='[9.0.0,11.0.0)'/>
+        <required namespace='osgi.bundle' name='com.ibm.msl.mapping' range='8.0.200'/>
+        <required namespace='osgi.bundle' name='com.ibm.msl.mapping.api' range='8.0.200'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.emf.workbench.ui' range='5.1.201'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.common.frameworks' range='1.0.200'/>
+        <required namespace='osgi.bundle' name='com.ibm.bpm.common' range='8.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.forms' range='3.5.2'/>
+        <required namespace='osgi.bundle' name='com.ibm.ws.sca.scdl' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='com.ibm.ws.sca.scdl.mfc' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='com.ibm.ws.sca.scdl.wsdl' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='com.ibm.ws.sca.scdl.webservice' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.ui' range='3.6.2'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.flow' range='[9.0.0,11.0.0)'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.fcb' range='[9.0.0,11.0.0)'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.util.ui' range='[9.0.0,11.0.0)'/>
+        <required namespace='osgi.bundle' name='com.ibm.ws.sca.scdl.jaxws' range='7.5.0'/>
+        <required namespace='osgi.bundle' name='com.ibm.wbit.model.utils' range='7.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.wst.common.frameworks' range='1.2.0'/>
+        <required namespace='osgi.bundle' name='com.ibm.xwt.wsdl' range='1.0.102'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.conversion.esb.eflowsimplifier' range='10.0.0'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.bpm.integration' range='9.0.0'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.wizard.editor' range='9.0.0'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.connector.base' range='9.0.0'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.pattern.capture.annotation' range='9.0.0'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.jcn' range='9.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.pde.ui' range='3.6.2'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.node' range='9.0.0'/>
+        <required namespace='osgi.bundle' name='com.ibm.ws.sca.scdl.mq' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='com.ibm.ws.sca.scdl.eis' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.sdo' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='com.ibm.ws.sca.scdl.java' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='com.ibm.etools.mft.conversion.esb.importer' range='10.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.expressions' range='[3.4.0,3.5.0)'/>
+        <required namespace='java.package' name='com.ibm.bpm.common.ui.project.interchange' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='com.ibm.etools.mft.conversion.esb' version='10.0.0.v20150924-1628'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-RequiredExecutionEnvironment: JavaSE-1.6&#xA;Bundle-Name: WESB conversion Plug-in&#xA;Bundle-Activator: com.ibm.etools.mft.conversion.esb.WESBConversionPlugin&#xA;Manifest-Version: 1.0&#xA;Bundle-ClassPath: conversion.jar,lib/com.ibm.ws.sca.scdl.http_8.5.0.201302211200.jar&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-SymbolicName: com.ibm.etools.mft.conversion.esb;singleton:=true&#xA;Import-Package: com.ibm.bpm.common.ui.project.interchange&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-Version: 10.0.0.v20150924-1628&#xA;Bundle-Localization: plugin&#xA;Export-Package: com.ibm.etools.mft.conversion.esb,com.ibm.etools.mft.conversion.esb.editor,com.ibm.etools.mft.conversion.esb.editor.controller,com.ibm.etools.mft.conversion.esb.editor.parameter,com.ibm.etools.mft.conversion.esb.editor.resourceoptions.pages,com.ibm.etools.mft.conversion.esb.extension,com.ibm.etools.mft.conversion.esb.extension.binding,com.ibm.etools.mft.conversion.esb.extension.mediationprimitive,com.ibm.etools.mft.conversion.esb.extension.render,com.ibm.etools.mft.conversion.esb.extension.resource,com.ibm.etools.mft.conversion.esb.extensionpoint,com.ibm.etools.mft.conversion.esb.model,com.ibm.etools.mft.conversion.esb.model.definition,com.ibm.etools.mft.conversion.esb.model.mfc,com.ibm.etools.mft.conversion.esb.userlog,com.ibm.etools.mft.conversion.esb.wizard&#xA;Require-Bundle: com.ibm.etools.mft.broker.runtime;bundle-version=&quot;[9.0.0,11.0.0)&quot;,com.ibm.broker.config.appdev;bundle-version=&quot;[9.0.0,11.0.0)&quot;,org.eclipse.ui;bundle-version=&quot;3.6.2&quot;,org.eclipse.ui.ide;bundle-version=&quot;3.6.2&quot;,org.eclipse.core.resources;bundle-version=&quot;3.6.1&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.6.0&quot;,com.ibm.etools.mft.uri;bundle-version=&quot;[9.0.0,11.0.0)&quot;,com.ibm.etools.mft.util;bundle-version=&quot;[9.0.0,11.0.0)&quot;,com.ibm.etools.msg.msgmodel.utilities;bundle-version=&quot;[9.0.0,11.0.0)&quot;,com.ibm.etools.msg.importer.wsdl;bundle-version=&quot;[9.0.0,11.0.0)&quot;,com.ibm.etools.msg.wsdl.ui;bundle-version=&quot;[9.0.0,11.0.0)&quot;,com.ibm.etools.msg.importer.framework;bundle-version=&quot;[9.0.0,11.0.0)&quot;,com.ibm.etools.msg.wsdl.util;bundle-version=&quot;[9.0.0,11.0.0)&quot;,com.ibm.etools.msg.coremodel.utilities;bundle-version=&quot;[9.0.0,11.0.0)&quot;,com.ibm.msl.mapping;bundle-version=&quot;8.0.200&quot;,com.ibm.msl.mapping.api;bundle-version=&quot;8.0.200&quot;,com.ibm.etools.emf.workbench.ui;bundle-version=&quot;5.1.201&quot;,com.ibm.etools.common.frameworks;bundle-version=&quot;1.0.200&quot;,com.ibm.bpm.common;bundle-version=&quot;8.5.0&quot;,org.eclipse.ui.forms;bundle-version=&quot;3.5.2&quot;,com.ibm.ws.sca.scdl,com.ibm.ws.sca.scdl.mfc,com.ibm.ws.sca.scdl.wsdl,com.ibm.ws.sca.scdl.webservice,org.eclipse.jdt.ui;bundle-version=&quot;3.6.2&quot;,com.ibm.etools.mft.flow;bundle-version=&quot;[9.0.0,11.0.0)&quot;,com.ibm.etools.mft.fcb;bundle-version=&quot;[9.0.0,11.0.0)&quot;,com.ibm.etools.mft.util.ui;bundle-version=&quot;[9.0.0,11.0.0)&quot;,com.ibm.ws.sca.scdl.jaxws;bundle-version=&quot;7.5.0&quot;,com.ibm.wbit.model.utils;bundle-version=&quot;7.5.0&quot;,org.eclipse.wst.common.frameworks;bundle-version=&quot;1.2.0&quot;,com.ibm.xwt.wsdl;bundle-version=&quot;1.0.102&quot;,com.ibm.etools.mft.conversion.esb.eflowsimplifier;bundle-version=&quot;10.0.0&quot;,com.ibm.etools.mft.bpm.integration;bundle-version=&quot;9.0.0&quot;,com.ibm.etools.mft.wizard.editor;bundle-version=&quot;9.0.0&quot;,com.ibm.etools.mft.connector.base;bundle-version=&quot;9.0.0&quot;,com.ibm.etools.mft.pattern.capture.annotation;bundle-version=&quot;9.0.0&quot;,com.ibm.etools.mft.jcn;bundle-version=&quot;9.0.0&quot;,org.eclipse.pde.ui;bundle-version=&quot;3.6.2&quot;,com.ibm.etools.mft.node;bundle-version=&quot;9.0.0&quot;,com.ibm.ws.sca.scdl.mq,com.ibm.ws.sca.scdl.eis,org.eclipse.emf.ecore.sdo,com.ibm.ws.sca.scdl.java,com.ibm.etools.mft.conversion.esb.importer;bundle-version=&quot;10.0.0&quot;,org.eclipse.core.expressions;bundle-version=&quot;[3.4.0,3.5.0)&quot;
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='com.ibm.etools.mft.conversion.esb' version='1.0.0.7J--cJIjId8s735C3K7A15E7I'>
+      <properties size='3'>
+        <property name='org.eclipse.equinox.p2.name' value='WebSphere ESB Conversion Tool'/>
+        <property name='org.eclipse.equinox.p2.description' value='The WebSphere ESB Conversion Tool is an add-on to IBM Integration Toolkit. It assists with conversion of integration solutions from WebSphere ESB projects to IBM Integration Bus projects'/>
+        <property name='org.eclipse.equinox.p2.type.category' value='true'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb' version='1.0.0.7J--cJIjId8s735C3K7A15E7I'/>
+      </provides>
+      <requires size='1'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb.feature.feature.group' range='[10.0.0.v20150924-1628,10.0.0.v20150924-1628]'/>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+    </unit>
+    <unit id='com.ibm.etools.mft.conversion.esb.doc' version='1.0.0.v20150806_0832'>
+      <update id='com.ibm.etools.mft.conversion.esb.doc' range='[0.0.0,1.0.0.v20150806_0832)' severity='0'/>
+      <properties size='5'>
+        <property name='df_LT.providerName' value='IBM'/>
+        <property name='df_LT.name' value='My Information'/>
+        <property name='org.eclipse.equinox.p2.name' value='%name'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.ibm.etools.mft.conversion.esb.doc' version='1.0.0.v20150806_0832'/>
+        <provided namespace='osgi.bundle' name='com.ibm.etools.mft.conversion.esb.doc' version='1.0.0.v20150806_0832'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='com.ibm.etools.mft.conversion.esb.doc' version='1.0.0.v20150806_0832'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Created-By: pwi3270sr6-20131015_01 (SR6) (IBM Corporation)&#xA;Manifest-Version: 1.0&#xA;Bundle-Version: 1.0.0.v20150806_0832&#xA;Bundle-SymbolicName: com.ibm.etools.mft.conversion.esb.doc; singleton:=true&#xA;Bundle-Localization: plugin&#xA;Ant-Version: Apache Ant 1.8.4&#xA;Bundle-Name: %name&#xA;Bundle-Vendor: %providerName&#xA;Eclipse-LazyStart: true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+  </units>
+</repository>

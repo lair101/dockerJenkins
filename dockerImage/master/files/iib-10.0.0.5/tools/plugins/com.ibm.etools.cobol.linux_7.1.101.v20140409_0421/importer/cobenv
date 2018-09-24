@@ -1,0 +1,9 @@
+PFX=/u1/cobdev/cobbuild/Linux/Importer
+              
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PFX
+export PATH=$PATH:$PFX          
+export NLSPATH=$NLSPATH:$PFX/%L/%N
+
+echo "LD_LIBRARY_PATH="$LD_LIBRARY_PATH
+echo "PATH="$PATH
+echo "NLSPATH="$NLSPATH

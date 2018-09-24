@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+
+<pdHelp xmlns="http://www.ibm.com/visualutils/pdhelpcontent"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ibm.com/visualutils/pdhelpcontent http://www.ibm.com/visualutils/pdhelpcontent">
+
+	<pluginCategory id="com.ibm.etools.mft.ibmnodes">
+	<pageHelp id="Subflow_general">
+			<title>Subflow node properties</title>
+			<shortDescription> </shortDescription>
+			<moreDescription>
+				<p>If you want to override property values and you use more than one instance of the same subflow in your flow, be aware of the following information about the difference between user-defined properties and promoted properties.</p>
+				<p>When you override the value of a user-defined property in one instance of a subflow node then the same value is used in all instances of the subflow in your flow.</p>
+				<p>When you override the value of a promoted property in one instance of a subflow node then the value applies only to that instance of the subflow node.</p>
+				<p>You can also modify the behavior of your subflow from the parent flow, by using the local environment tree to pass a value to the subflow. Design your subflow to use this value to give the same result as overriding the promoted property.</p>
+			</moreDescription>
+			<topic href="../com.ibm.etools.mft.doc/ac00643_.htm">
+				<label>User defined properties information</label>
+			</topic>
+			<topic href="../com.ibm.etools.mft.doc/ac00640_.htm">
+				<label>Promoted properties information</label>
+			</topic>
+			<topic href="../com.ibm.etools.mft.doc/ac00520_.htm">
+				<label>Local environment tree structure</label>
+			</topic>
+	</pageHelp>
+	
+	</pluginCategory>
+</pdHelp>	

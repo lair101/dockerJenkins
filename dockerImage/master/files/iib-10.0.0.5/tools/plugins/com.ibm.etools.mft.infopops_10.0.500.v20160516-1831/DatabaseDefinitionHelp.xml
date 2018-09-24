@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<contexts>
+	<context id="ImportRDBDefinitionsWizard">
+		<description><b>Create a database definition file</b>
+Use this page to specify basic information about the data design project that contains the database definition. The name of the database definition file is automatically assigned according to the database that you want to connect to.
+If a data definition is not migrated, check that the selected database type and version is supported.
+</description>
+	<topic href="../com.ibm.etools.mft.doc/ah10030_.htm" label="Supported databases"/>
+		<topic href="../com.ibm.etools.mft.doc/ar37660_.htm" label="Adding database definitions to the IBM Integration Toolkit"/>
+		<topic href="../com.ibm.etools.mft.doc/ar25265_.htm" label="Adding a database as a source or target"/>
+		<topic href="../com.ibm.etools.mft.doc/ar37640_.htm" label="Modifying databases using message mappings"/>
+		
+	</context>	
+	
+		<context id="MigrateDatabaseDefinition">
+		<description><b>Database Definition Migration</b>
+Click Yes to continue with the migration of database definition files.</description>
+		<topic href="../com.ibm.etools.mft.doc/ah61210_.htm" label="Migrating a flow containing data definitions"/>
+	</context>
+	
+	<!-- 	<context id="xx">
+		<description><b>Data Design Project page</b>
+Enter the values to define a database connection that enables a message flow to access a database table. The database must be defined in the IBM Integration Toolkit.</description>
+		<topic href="../com.ibm.etools.mft.doc/ar25153_.htm" label="Connect to the database and obtain the definition files"/>
+		<topic href="../com.ibm.etools.mft.doc/ac20145_.htm" label="Connecting to databases using the Data perspective"/>
+			</context> -->
+	
+</contexts>

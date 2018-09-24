@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="copyright" content="Copyright IBM Corporation 2014" />
+<meta name="DC.Rights.Owner" content="© Copyright IBM Corporation 2014" />
+<meta name="dc.date" scheme="iso8601" content="2013-12-13"/>
+<meta name="IBM.Effective" scheme="W3CDTF" content="2013-12-13"/>
+<meta name="description" content="Patrón Servicio sanitario: Transformación de HL7"/>
+<meta name="IBM.Country" content="ZZ" />
+<meta name="keywords" content="Servicio sanitario,HL7"/>
+<meta name="Robots" content="índice,seguir" />
+<meta name="DC.Type" content="concepto" />
+<meta name="security" content="public"/>
+<link rel="stylesheet" type="text/css" href="./css/pattern.css" />
+<!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    -->
+<title>Patrón Servicio sanitario: Transformación de HL7</title>
+</head>
+<body role="main">
+	<h1 class="topictitle1">Patrón Servicio sanitario: Transformación de HL7</h1>
+	<div>
+		<p class="shortdesc"></p>
+	</div>
+	<p>El patrón Servicio sanitario: Transformación de HL7 genera
+         correlaciones de datos gráficos que se pueden utilizar para
+ensamblar mensajes de HL7.</p>
+	<p>Los mensajes HL7 generalmente contienen muchos segmentos de
+datos. Los propios segmentos también pueden contener muchos campos
+individuales. Al crear un nuevo mensaje HL7, debe crear la jerarquía
+de mensajes HL7. Esta jerarquía puede contener cientos o miles de
+campos. Crear esta jerarquía puede llevar algún tiempo, aunque
+utilice una herramienta de correlación gráfica. El patrón Servicio sanitario: Transformación de HL7
+		le ayuda a solventar este problema generando correlaciones de datos gráficos
+		que asignan un valor predeterminado a todos los campos de los mensajes HL7
+		que selecciona.</p>
+
+	<img src="MapGeneration1.png" alt="Imagen que muestra la solución de Transformación de HL7"/>
+
+	<div class="section">
+		<h2 class="sectiontitle">Solución</h2>
+	</div>
+
+	<p>Puede utilizar el patrón Servicio sanitario: Transformación de
+HL7 de los siguientes modos:</p>
+	<ul>
+		<li>Seleccionar mensajes HL7 específicos. Cada selección
+genera los siguientes artefactos:
+			<ul>
+				<li>Una correlación de datos gráficos</li>
+				<li>Una subcorrelación para cada definición de segmento HL7</li>
+			</ul> Todos los artefactos generados se ponen en una biblioteca
+denominada <span
+			class="msobjpropval"><var>nombre_instancia_patrón_</var>HL7v27TransformLibrary</span>,
+donde <var>nombre_instancia_patrón_</var> es el nombre de la
+instancia de patrón.
+
+			Puede llamar a las subcorrelaciones de segmentos HL7 desde
+las diversas correlaciones de nivel superior.</li>
+		<li>Seleccionar segmentos HL7 específicos. Cada selección genera una
+subcorrelación de tipo Correlación de datos gráficos que se guarda en
+la biblioteca <span class="msobjpropval"><var>nombre_instancia_patrón_</var>HL7v27TransformLibrary</span>. Puede
+llamar a estas subcorrelaciones de segmentos desde sus propias
+Correlaciones de datos gráficos que haya creado fuera de este patrón.</li>
+	</ul>
+
+	<p>Los parámetros de patrón proporcionan las opciones siguientes:</p>
+	<ul>
+		<li>Puede generar Correlaciones de datos gráficos o lógica de
+transformación de nodos de cálculo (ESQL).</li>
+		<li>Puede elegir el valor a asignar a los campos individuales
+			del mensaje HL7.</li>
+		<li>Puede establecer valores individuales para los campos del
+segmento MSH (HL7
+			Message Header).</li>
+		<li>Puede crear un flujo de mensajes de ejemplo que muestre
+			cómo utilizar la lógica de transformación.</li>			
+	</ul>
+	
+	<p>Cuando se genera una instancia del patrón Servicio sanitario:
+Transformación de HL7, se importa automáticamente el modelo de mensaje HL7
+	del espacio de trabajo a la biblioteca <span class="msobjpropval">HL7v27DFDLLibrary</span>. 
+	Se muestra un aviso si la biblioteca existe. Si elige continuar, se
+sobrescribe la biblioteca existente. Si desea personalizar el modelo
+de mensaje HL7, haga los cambios después de haber generado una
+instancia del patrón.</p>
+
+	<p>Si selecciona que el parámetro de patrón cree un flujo de
+mensajes de ejemplo, éste contiene tres nodos:</p>
+	<ul>
+		<li>Un nodo MQInput que acepta mensajes de entrada de una cola
+denominada <span class="msobjpropval"><var>nombre_instancia_patrón</var>.RXF1</span>,
+donde <var>nombre_instancia_patrón</var> es el nombre de la
+instancia de patrón.</li>		
+		<li>Un nodo Mapping o bien un nodo Compute, según lo que haya
+seleccionado en el parámetro de patrón
+<span class="uicontrol">Generar</span>.</li>
+		<li>Un nodo MQOutput que graba los mensajes de salida a una cola
+denominada
+<span class="msobjpropval"><var>nombre_instancia_patrón</var>.DEST1</span>,
+donde <var>nombre_instancia_patrón</var> es el nombre de la instancia
+de patrón.</li>		
+	</ul>	
+	
+	<p>Se genera un script que puede ejecutar para crear las colas
+que utiliza el flujo de mensajes.</p>
+	
+	<p>Si se utiliza el patrón Servicio sanitario: Transformación de HL7
+para generar lógica de transformación para la creación de mensajes
+HL7 que contengan una estructura de opciones, las correlaciones de
+datos gráficos o el ESQL proporcionan
+	una subcorrelación o una llamada de procedimiento respectivamente. La
+subcorrelación o la llamada de procedimiento crea el primer hijo de
+la estructura de opciones. 
+	En el caso de correlaciones de
+datos gráficos, se utilizan transformaciones de tareas para
+proporcionar marcadores para otras opciones.
+	En el caso de ESQL, se utilizan llamadas de procedimiento comentadas
+para
+proporcionar marcadores para otras opciones.</p>
+	
+	<div>
+		<a href="parameters.htm">Parámetros del patrón</a>
+	</div>
+	
+</body>
+</html>

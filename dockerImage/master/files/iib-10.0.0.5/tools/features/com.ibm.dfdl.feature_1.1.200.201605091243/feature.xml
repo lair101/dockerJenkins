@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************** ********** ***
+* Licensed Materials - Property of IBM
+*
+* (C) Copyright IBM Corp. 2009, 2014
+*
+* US Government Users Restricted Rights - Use, duplication, or
+* disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+********************************************************** ********** -->
+<feature
+      id="com.ibm.dfdl.feature"
+      label="DFDL Toolkit"
+      version="1.1.200.201605091243"
+      provider-name="IBM">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="com.ibm.dfdl.model"
+         download-size="0"
+         install-size="0"
+         version="1.1.200.201605091243"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.dfdl.validation"
+         download-size="0"
+         install-size="0"
+         version="1.1.200.201605091243"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.dfdl.runtime"
+         download-size="0"
+         install-size="0"
+         version="1.1.200.201605091243"
+         unpack="true"/>
+
+   <plugin
+         id="com.ibm.dfdl.ui"
+         download-size="0"
+         install-size="0"
+         version="1.1.200.201605091243"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.dfdl.help"
+         download-size="0"
+         install-size="0"
+         version="1.1.200.201605091243"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.dfdl.precanned.formats"
+         download-size="0"
+         install-size="0"
+         version="1.1.200.201605091243"
+         unpack="false"/>
+         
+    <plugin
+         id="com.ibm.dfdl.ui.xpath.ext"
+         download-size="0"
+         install-size="0"
+         version="1.1.200.201605091243"
+         unpack="false"/>
+		         
+</feature>

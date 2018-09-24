@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<!-- Impact analysis (and later, refactoring?) -->
+<contexts>
+	<context id="RenameImpactAnalysis">
+		<description><b>Impact analysis - rename artifact</b>			
+Type the new name of the artifact.</description>
+		<topic href="../com.ibm.etools.mft.doc/bc34010_.htm"  label="Impact analysis"/>
+    </context>
+	<context id="MoveImpactAnalysis">
+		<description><b>Impact analysis - move artifact</b>			
+Select a new location for the artifact.</description>
+		<topic href="../com.ibm.etools.mft.doc/bc34010_.htm"  label="Impact analysis"/>
+    </context>
+
+  	<context id="ImpactAnalysisResult">
+  		<description><b>Impact analysis results</b>
+This screen shows artifacts that would be affected by making the changes shown in the 'Operations' panel. Some secondary impacts might not be shown.
+        </description>
+  		<topic href="../com.ibm.etools.mft.doc/bc34010_.htm"  label="Impact analysis"/>
+  		<topic href="../com.ibm.etools.mft.doc/bc34009_.htm"  label="Artifacts that are excluded from secondary analysis"/>
+    </context>
+
+  	<context id="ImpactAnalysisPreference">
+		<description><b>Impact analysis preferences</b>
+Enable and disable indexing through this window. You must enable indexing to perform impact analysis. You can turn off indexing to improve performance. Enabling indexing causes a full build of the index when you save the preference. 
+</description>
+  		<topic href="../com.ibm.etools.mft.doc/bc34010_.htm"  label="Impact analysis"/>
+  		<topic href="../com.ibm.etools.mft.doc/bc34011_.htm"  label="Enabling and disabling indexing"/>
+	</context>
+</contexts>

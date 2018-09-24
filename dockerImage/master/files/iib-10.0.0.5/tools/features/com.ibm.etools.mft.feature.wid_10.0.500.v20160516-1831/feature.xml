@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ibm.etools.mft.feature.wid"
+      label="%Feature.name"
+      version="10.0.500.v20160516-1831"
+      provider-name="IBM"
+      image="wsFeatUpdate.jpg">
+
+   <description>
+      %description
+   </description>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="com.ibm.wbit.artifact.loader"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.wbit.command.framework"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.wbit.comptest.common.compat"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.wbit.extension.model"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.wbit.index"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.wbit.mb.visual.utils"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.wbit.model.utils"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.wbit.refactor"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.wbit.stickyboard.model"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.wbit.stickyboard.ui"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.wbit.trace"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.wbit.visual.utils"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.wbit.visual.utils.breadcrumb"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.ws.sca.scdl.mfc"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.ccl.soa.test.base.framework"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.ccl.soa.test.common"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.ws.sca.was.ffdc"
+         download-size="0"
+         install-size="0"
+         version="8.5.0.201302211200"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.ws.sca.was.tr"
+         download-size="0"
+         install-size="0"
+         version="8.5.0.201302211200"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.ws.sca.was.wsexception"
+         download-size="0"
+         install-size="0"
+         version="8.5.0.201302211200"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.wbit.samples.framework"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+         
+	<!-- this is required by adapter -->
+   <plugin
+         id="com.ibm.wbit.adapter.common"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+</feature>

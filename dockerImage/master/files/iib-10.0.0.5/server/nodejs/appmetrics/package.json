@@ -1,0 +1,14 @@
+{
+  "name": "appmetrics",
+  "version": "1.0.0",
+  "description": "Node Application Metrics",
+  "private": "true",
+  "bin": {
+    "node-hc": "bin/appmetrics-cli.js"
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "appmetrics@1.0.0",
+  "_shasum": "de33352d076d1444f7b8084256bc89db4aefb01c",
+  "_resolved": "file:../../../../build/jenkins/workspace/package-ibm-sdk-node.js-1.2/arch/x64/label/bvt/os/linux/appmetrics-1.0.0.tgz",
+  "_from": "../../../../build/jenkins/workspace/package-ibm-sdk-node.js-1.2/arch/x64/label/bvt/os/linux/appmetrics-1.0.0.tgz"
+}

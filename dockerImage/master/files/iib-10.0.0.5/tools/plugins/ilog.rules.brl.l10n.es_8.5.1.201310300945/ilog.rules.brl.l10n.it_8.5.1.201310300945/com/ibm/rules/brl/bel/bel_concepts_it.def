@@ -1,0 +1,12 @@
+#
+#Mon Sep 12 12:25:44 CEST 2011
+imports=number,string,boolean,bel_styles
+name=bel_concepts
+concepts=duration,absoluteDuration,relativeDuration,hour,eventOrAction,action,event,filter
+concept.filter.base=boolean
+concept.event.base=eventOrAction
+concept.relativeDuration.base=duration
+concept.absoluteDuration.base=duration
+concept.action.base=eventOrAction
+onlyVocabulary=true
+locale=it

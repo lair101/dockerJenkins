@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: runtimeec.jar
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: IBM
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: BDSL Runtime Eclipse Plug-in
+Bundle-SymbolicName: com.ibm.bdsl.runtime.eclipse;singleton:=true
+Require-Bundle: org.eclipse.core.runtime,com.ibm.bdsl.runtime;bundle-v
+ ersion="[8.5.1,8.5.2)",ilog.rules.brl.l10n.fr;bundle-version="[8.5.1,
+ 8.5.2)",ilog.rules.brl.l10n.de;bundle-version="[8.5.1,8.5.2)",ilog.ru
+ les.brl.l10n.es;bundle-version="[8.5.1,8.5.2)",ilog.rules.brl.l10n.it
+ ;bundle-version="[8.5.1,8.5.2)",ilog.rules.brl.l10n.ja;bundle-version
+ ="[8.5.1,8.5.2)",ilog.rules.brl.l10n.ko;bundle-version="[8.5.1,8.5.2)
+ ",ilog.rules.brl.l10n.nl;bundle-version="[8.5.1,8.5.2)",ilog.rules.br
+ l.l10n.pt;bundle-version="[8.5.1,8.5.2)",ilog.rules.brl.l10n.ru;bundl
+ e-version="[8.5.1,8.5.2)",ilog.rules.brl.l10n.zh;bundle-version="[8.5
+ .1,8.5.2)",ilog.rules.brl.l10n.zh_TW;bundle-version="[8.5.1,8.5.2)",i
+ log.rules.brl.l10n.ar;bundle-version="[8.5.1,8.5.2)",ilog.rules.brl.l
+ 10n.iw;bundle-version="[8.5.1,8.5.2)",ilog.rules.brl.l10n.pl;bundle-v
+ ersion="[8.5.1,8.5.2)",ilog.rules.brl.parsing;bundle-version="[8.5.1,
+ 8.5.2)",ilog.rules.brl.brldf;bundle-version="[8.5.1,8.5.2)",ilog.rule
+ s.vocabulary.model;bundle-version="[8.5.1,8.5.2)",ilog.rules.language
+ .shared;bundle-version="[8.5.1,8.5.2)"
+Bundle-Activator: com.ibm.bdsl.runtime.eclipse.DSLRcpActivator
+Export-Package: com.ibm.bdsl.runtime.eclipse
+Bundle-Version: 8.5.1.201310300945
+Bundle-ManifestVersion: 2
+
+

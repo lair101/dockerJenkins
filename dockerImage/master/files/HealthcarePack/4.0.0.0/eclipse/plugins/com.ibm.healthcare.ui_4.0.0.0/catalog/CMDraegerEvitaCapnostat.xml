@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CMDriverDescription>
+<SupportedDevices model="Drager Evita Capnostat" type="Monitor">
+ <CMLLC type="CMLLCRS232">
+ 	<CMLLCCfg port="" baud="9600" parity="E" data="8" stopbit="1" rtscts="No" />
+ </CMLLC>
+ </SupportedDevices>
+ <Variables>
+	<Discrete>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="79:331-660:224:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:Peripheralvessels:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_CONCERNS_PERIPHERAL_VESSELS:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="%" 
+ 					abbreviation="SpO2" 
+ 					shortdesc="SpO2" 
+ 					longdesc="Peripheral oxygen saturation measurements" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:371:224-226:263" 
+ 					CMidtext="Rate:Noninvasive:Peripheralvessels-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PERIPHERAL_VESSELS-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="1/min" 
+ 					abbreviation="SpO2 PR" 
+ 					shortdesc="Pulse rate measured by SpO2 sensor" 
+ 					longdesc="Noninvasive pulse rate measured by SpO2 sensor" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:611-676:177-197:259" 
+ 					CMidtext="Concentration:PartialPressure-EndTidal:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_SPEC_PARTIALPRESSURE-M_TIMECRIT_ENDTIDAL:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="Pet CO2" 
+ 					shortdesc="EndTidal CO2 Partial Pressure" 
+ 					longdesc="Partial pressure of CO2 in airway gas measured at end of expiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:611-679:177-197:259" 
+ 					CMidtext="Concentration:PartialPressure-Inspiration:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_SPEC_PARTIALPRESSURE-M_TIMECRIT_INSPIRATION:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="PICO2" 
+ 					shortdesc="Inspiratory CO2 Partial Pressure" 
+ 					longdesc="Partial pressure of CO2 in airway gas measured in inspiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:676:177-197:259" 
+ 					CMidtext="Concentration:EndTidal:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%CO2 ET" 
+ 					shortdesc="Concentration Airway CO2 EndTidal" 
+ 					longdesc="Concentration of CO2 in airway gas measured at the end of expiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:679:177-197:259" 
+ 					CMidtext="Concentration:Inspiration:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%CO2 ins" 
+ 					shortdesc="Concentration Airway CO2 Inspiratory" 
+ 					longdesc="Concentration of CO2 in airway gas measured in inspiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:432:173:261" 
+ 					CMidtext="Rate:CO2:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_CO2:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="1/min" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, method: CO2 -sensor" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 		</VarGroup>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:224:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:Peripheralvessels:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_CONCERNS_PERIPHERAL_VESSELS:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="%" 
+ 					abbreviation="SpO2" 
+ 					shortdesc="SpO2" 
+ 					longdesc="Peripheral oxygen saturation measurements" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:224-226:263" 
+ 					CMidtext="Rate:Noninvasive:Peripheralvessels-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PERIPHERAL_VESSELS-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="1/min" 
+ 					abbreviation="SpO2 PR" 
+ 					shortdesc="Pulse rate measured by SpO2 sensor" 
+ 					longdesc="Noninvasive pulse rate measured by SpO2 sensor" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:611-676:177-197:259" 
+ 					CMidtext="Concentration:PartialPressure-EndTidal:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_SPEC_PARTIALPRESSURE-M_TIMECRIT_ENDTIDAL:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="Pet CO2" 
+ 					shortdesc="EndTidal CO2 Partial Pressure" 
+ 					longdesc="Partial pressure of CO2 in airway gas measured at end of expiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:676:177-197:259" 
+ 					CMidtext="Concentration:EndTidal:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%CO2 ET" 
+ 					shortdesc="Concentration Airway CO2 EndTidal" 
+ 					longdesc="Concentration of CO2 in airway gas measured at the end of expiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 		</VarGroup>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:224:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:Peripheralvessels:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_CONCERNS_PERIPHERAL_VESSELS:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="%" 
+ 					abbreviation="SpO2" 
+ 					shortdesc="SpO2" 
+ 					longdesc="Peripheral oxygen saturation measurements" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:224-226:263" 
+ 					CMidtext="Rate:Noninvasive:Peripheralvessels-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PERIPHERAL_VESSELS-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="1/min" 
+ 					abbreviation="SpO2 PR" 
+ 					shortdesc="Pulse rate measured by SpO2 sensor" 
+ 					longdesc="Noninvasive pulse rate measured by SpO2 sensor" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:611-676:177-197:259" 
+ 					CMidtext="Concentration:PartialPressure-EndTidal:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_SPEC_PARTIALPRESSURE-M_TIMECRIT_ENDTIDAL:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="Pet CO2" 
+ 					shortdesc="EndTidal CO2 Partial Pressure" 
+ 					longdesc="Partial pressure of CO2 in airway gas measured at end of expiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:611-679:177-197:259" 
+ 					CMidtext="Concentration:PartialPressure-Inspiration:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_SPEC_PARTIALPRESSURE-M_TIMECRIT_INSPIRATION:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="PICO2" 
+ 					shortdesc="Inspiratory CO2 Partial Pressure" 
+ 					longdesc="Partial pressure of CO2 in airway gas measured in inspiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:676:177-197:259" 
+ 					CMidtext="Concentration:EndTidal:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%CO2 ET" 
+ 					shortdesc="Concentration Airway CO2 EndTidal" 
+ 					longdesc="Concentration of CO2 in airway gas measured at the end of expiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 		</VarGroup>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:846:859" 
+ 					CMidtext="Status:Alert:Sensor:Inoperable" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_SENSOR:CM_CONDITION_INOPERABLE" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Sensor inoperable" 
+ 					longdesc="Alert, sensor inoperable" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:224:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:Peripheralvessels:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_CONCERNS_PERIPHERAL_VESSELS:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="NULL" 
+ 					abbreviation="SpO2" 
+ 					shortdesc="SpO2" 
+ 					longdesc="Peripheral oxygen saturation measurements" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:955-1032:1054:1060" 
+ 					CMidtext="Status:Off-Alarm:FunctionalStatus:Device" 
+ 					idref="M_BASE_STATUS:CM_HASSPECIFICATION_OFF-CM_HASSTATUS_ALARM:CM_CONCERNS_FUNCTIONALSTATUS:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="" 
+ 					abbreviation="ALARM OFF" 
+ 					shortdesc="Alarm off" 
+ 					longdesc="Indication: Alarm intentionally off (disabled)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:224:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:Peripheralvessels:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_CONCERNS_PERIPHERAL_VESSELS:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="NULL" 
+ 					abbreviation="SpO2" 
+ 					shortdesc="SpO2" 
+ 					longdesc="Peripheral oxygen saturation measurements" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:826:846:845" 
+ 					CMidtext="Status:Warning:Sensor:Disconnected" 
+ 					idref="M_BASE_STATUS:M_SPEC_WARNING:M_CONCERNS_SENSOR:M_CONDITION_DISCONNECTED" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Sensor disconnected" 
+ 					longdesc="Warning, sensor disconnected" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:224:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:Peripheralvessels:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_CONCERNS_PERIPHERAL_VESSELS:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="NULL" 
+ 					abbreviation="SpO2" 
+ 					shortdesc="SpO2" 
+ 					longdesc="Peripheral oxygen saturation measurements" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:224:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:Peripheralvessels:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_CONCERNS_PERIPHERAL_VESSELS:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="NULL" 
+ 					abbreviation="SpO2" 
+ 					shortdesc="SpO2" 
+ 					longdesc="Peripheral oxygen saturation measurements" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:224-226:263" 
+ 					CMidtext="Rate:Noninvasive:Peripheralvessels-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PERIPHERAL_VESSELS-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="SpO2 PR" 
+ 					shortdesc="Pulse rate measured by SpO2 sensor" 
+ 					longdesc="Noninvasive pulse rate measured by SpO2 sensor" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:224:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:Peripheralvessels:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_CONCERNS_PERIPHERAL_VESSELS:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="NULL" 
+ 					abbreviation="SpO2" 
+ 					shortdesc="SpO2" 
+ 					longdesc="Peripheral oxygen saturation measurements" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:224-226:263" 
+ 					CMidtext="Rate:Noninvasive:Peripheralvessels-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PERIPHERAL_VESSELS-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="SpO2 PR" 
+ 					shortdesc="Pulse rate measured by SpO2 sensor" 
+ 					longdesc="Noninvasive pulse rate measured by SpO2 sensor" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="1077:882-1024:1053:1060" 
+ 					CMidtext="Advisory:CO2-Failure:FunctionalDisturbance:Device" 
+ 					idref="CM_BASE_ADVISORY:CM_CONCERNSMATERIAL_CO2-CM_HASERRORCONDITION_FAILURE:CM_CONCERNS_FUNCTIONALDISTURBANCE:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="NULL" 
+ 					abbreviation="" 
+ 					shortdesc="CO2 failure" 
+ 					longdesc="Failure occurred in a CO2 measuring device" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:882-1032-1035:1054:1060" 
+ 					CMidtext="Status:CO2-Alarm-Disabled:FunctionalStatus:Device" 
+ 					idref="M_BASE_STATUS:CM_CONCERNSMATERIAL_CO2-CM_HASSTATUS_ALARM-CM_HASSTATUS_DISABLED:CM_CONCERNS_FUNCTIONALSTATUS:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="NULL" 
+ 					abbreviation="CO2 ALARM OFF" 
+ 					shortdesc="CO2 alarm disabled" 
+ 					longdesc="CO2 alarm disabled" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:882-1038:1054:1060" 
+ 					CMidtext="Status:CO2-WarmUp:FunctionalStatus:Device" 
+ 					idref="M_BASE_STATUS:CM_CONCERNSMATERIAL_CO2-CM_HASSTATUS_WARMUP:CM_CONCERNS_FUNCTIONALSTATUS:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="NULL" 
+ 					abbreviation="CO2 WARM UP" 
+ 					shortdesc="CO2 Warm up" 
+ 					longdesc="CO2 mon in low ACC mode (Warm up)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="1077:902-1025:1053:1060" 
+ 					CMidtext="Advisory:CO2Sensor-Fault:FunctionalDisturbance:Device" 
+ 					idref="CM_BASE_ADVISORY:CM_CONCERNSFUNCTIONALUNIT_CO2SENSOR-CM_HASERRORCONDITION_FAULT:CM_CONCERNS_FUNCTIONALDISTURBANCE:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="NULL" 
+ 					abbreviation="" 
+ 					shortdesc="CO2 sensor fault" 
+ 					longdesc="Fault occurred in CO2 sensor disc" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:1032-1035-1039:1054:1060" 
+ 					CMidtext="Status:Alarm-Disabled-Apnea:FunctionalStatus:Device" 
+ 					idref="M_BASE_STATUS:CM_HASSTATUS_ALARM-CM_HASSTATUS_DISABLED-CM_HASSTATUS_APNEA:CM_CONCERNS_FUNCTIONALSTATUS:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="NULL" 
+ 					abbreviation="APNEA ALARM OFF" 
+ 					shortdesc="Apnea alarm disabled" 
+ 					longdesc="Apnea alarm disabled" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:676:177-197:259" 
+ 					CMidtext="Concentration:EndTidal:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="NULL" 
+ 					abbreviation="%CO2 ET" 
+ 					shortdesc="Concentration Airway CO2 EndTidal" 
+ 					longdesc="Concentration of CO2 in airway gas measured at the end of expiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:679:177-197:259" 
+ 					CMidtext="Concentration:Inspiration:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="NULL" 
+ 					abbreviation="%CO2 ins" 
+ 					shortdesc="Concentration Airway CO2 Inspiratory" 
+ 					longdesc="Concentration of CO2 in airway gas measured in inspiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:676:177-197:259" 
+ 					CMidtext="Concentration:EndTidal:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="NULL" 
+ 					abbreviation="%CO2 ET" 
+ 					shortdesc="Concentration Airway CO2 EndTidal" 
+ 					longdesc="Concentration of CO2 in airway gas measured at the end of expiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 	</VarGroup>
+ </Discrete>
+</Variables></CMDriverDescription>

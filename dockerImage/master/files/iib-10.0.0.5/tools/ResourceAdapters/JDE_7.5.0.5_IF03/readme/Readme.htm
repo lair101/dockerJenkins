@@ -1,0 +1,700 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+					body { font-size: 11pt; }
+
+					table, td { border-color: #646464; border-style: solid; }
+
+					table.noborder {font-size: 10pt; border-color: #FFFFFF; }
+					td.noborder { margin: 0; padding: 2px; border-width: 0 0 0 0; }
+					
+					table.withborder { border-width: 0px 0px 0px 0px; border-color: RED; padding: 0px; }
+
+					table.defaulttable { border-width: 0 0 1px 1px; border-spacing:
+					0; border-collapse: collapse; padding: 0px; margin: 0;}					
+
+					td { margin: 0; padding: 4px; border-width: 1px 1px
+					0 0; }
+					
+					td.topborder { margin: 0; padding: 4px; border-width: 1px 0px 0 0; border-color: #666699; }
+
+					td.mediumsize { margin: 0; padding: 4px; border-width: 0 0 0 0;
+					font-size: 12pt; font-weight: normal; color:#000095;}
+
+					table.nopadding { font-size: 11pt; border:0 ; }
+
+					tr.nopadding { margin: 0; padding: 0px; border-width: 0 0 0 0; }
+
+					td.nopadding { margin: 0; padding: 0px; border-width: 0 0 0 0; }
+
+					td.nopaddingwithborder { margin: 0; padding: 0px; }
+					
+					tr.headerrow { background-color: #666699; color:white; font-size:
+					11; font-weight: bold; margin: 0; padding: 4px;
+					border-width: 1px 1px 0 0; text-align: center; }
+
+					tr.toprow { background-color: #000095; color:white; font-size: 32;  margin: 0; padding: 4px;
+					border-width: 1px 1px 0 0; text-align: left; font-weight:bold }
+
+					td.titlerow { color:#000095;
+					font-size: 18pt; font-weight: normal; text-align:
+					center; border-width: 0 0 0 0;}
+					
+					tr.middlerow { background-color: #66cccc; color: rgb(0, 0, 102);
+					font-size: 11; font-weight: bold; margin: 0; padding: 4px;
+					border-width: 1px 1px 0 0; text-align: center; }					
+
+					td.secondheader { color:#000095; font-size: 13pt; font-weight: bold; text-align: left; border-width: 0 0 0 0; }
+
+					a.localanchor:link {color: black; text-decoration: none;} /* unvisited link */
+					a.localanchor:active {color: black; text-decoration: none;}
+					a.localanchor:visited {color: black; text-decoration: none;} /* visited link */
+					a.localanchor:hover {color: black; text-decoration: underline;} /* mouse over link */
+				</style>
+<title>IBM WebSphere WebSphere Adapter for JDE, version 7.5.0.5_IF03 notes</title>
+</head>
+<body>
+<table width="90%" align="center" class="noborder">
+<tr class="nopadding">
+<td class="titlerow">IBM WebSphere WebSphere Adapter for JDE, version 7.5.0.5_IF03 notes</td>
+</tr>
+<tr class="nopadding">
+<td class="nopadding"></td>
+</tr>
+</table>
+<br>
+<table width="90%" align="center" class="nopadding">
+<tr>
+<td class="nopadding">This document contains the following sections:</td>
+</tr>
+<tr>
+<td class="nopadding"><a href="#crs">Enhancements and fixes</a></td>
+</tr>
+<tr>
+<td class="nopadding"><a href="#newproperties">New and modified connector properties</a></td>
+</tr>
+<tr>
+<td class="nopadding"><a href="#upgradenotes">Upgrade notes</a></td>
+</tr>
+</table>
+<br>
+<table align="center" class="nopadding" width="90%">
+<tr>
+<td class="nopadding">
+<table align="center" width="100%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in interim fix version 7.5.0.5_IF03.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top">RFE 47032</td><td valign="top"></td><td valign="top">Support for child events of array structure(occurs multiple times) in Real Time Events.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Symptom: Only single event is considered even though the type is array</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Enabled adapter to identify and support the array structures</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<br>
+<table align="center" width="100%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in interim fix version 7.5.0.5_IF02.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There are no enhancements in this interim fix.</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top">9195</td><td valign="top"></td><td valign="top">WebSphere Adapter for JDE to support for NIST SP800-131a Compliance.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Symptom: The Random Number Generation is not compliant with NIST SP800-131a</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Made the changes to generate the Random Number securely, now compliant with NIST SP800-131a</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<br>
+<table align="center" width="100%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in interim fix version 7.5.0.5_IF01.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There are no enhancements in this interim fix.</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top"></td><td valign="top">JR44380</td><td valign="top">JDE Adapter fails to handle JDEUtime ASI type values for outbound.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: JDE Adapter fails to handle JDEUtime ASI type values for outbound.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Updated JDEUtil to handle JDEUtime ASI type by checking for JDECalendar objects in received value.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td valign="top">2</td><td valign="top"></td><td valign="top"></td><td valign="top">Support for JDE Tools v9.1 - Outbound</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Support for JDE Tools v9.1 - Outbound.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Support added for JDE Tools v9.1 - Outbound only.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">3</td><td valign="top"></td><td valign="top">JR44257</td><td valign="top">V9.1 missing from descriptions in resource bundle for languages other than english.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: V9.1 missing from descriptions in resource bundle for languages other than english. During EMD step, 9.1 does not show in the supported versions when user language is not english.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Updated the the resources to include 9.1 in the descriptions for languages other than english.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<br>
+<table align="center" width="100%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in fix pack version 7.5.0.5.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There are no enhancements in this fix pack.</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top">RTC-8832</td><td valign="top"></td><td valign="top">CI: Operation and Selection properties should not be translated.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI: Operation and Selection properties should not be translated.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: SELECTION, DEFAULTOPERATION and CONFIGWITHOUTOP values are set to constants for CI runtime.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<br>
+<table align="center" width="100%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in fix pack version 7.5.0.4.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There are no enhancements in this fix pack.</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top">RTC-6777</td><td valign="top"></td><td valign="top">CI EMD operations are not thread safe for JDE connector</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI EMD operations are not thread safe for JDE connector</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: CI EMD thread safe implementated for JDE connector.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td valign="top">2</td><td valign="top">RTC-8745</td><td valign="top"></td><td valign="top">Business Function Response XML missing the end tags</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Business Function Response XML missing the end tags</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed the issue by adding the End tags programatically</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">3</td><td valign="top">RTC-8764</td><td valign="top"></td><td valign="top">jdeasi.xsd has special characters at the start of the file</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: jdeasi.xsd has special characters at the start of the file</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Removed the special characters in jdeasi.xsd</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td valign="top">4</td><td valign="top">RTC-8746</td><td valign="top"></td><td valign="top">caching jde metadata selection causing the error in canAdd() method</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: caching jde metadata selection causing the error in canAdd() method.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: fixed th issue. canAdd() method is working fine.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">5</td><td valign="top">RTC-7053</td><td valign="top"></td><td valign="top">CI- property name for the table in selection properties screen is getting translated</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: CI- property name for the table in selection properties screen is getting translated.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Removed the logic for the translation of property name for the table in selection properties screen.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<br>
+<table align="center" width="100%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in fix pack version 7.5.0.3.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There are no enhancements in this fix pack.</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top">RTC-7053</td><td valign="top">JR43298</td><td valign="top">Property name for the table in selection properties screen is getting translated.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Property name for the table in selection properties screen is getting translated.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Updated to use constant for table property name.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<br>
+<table align="center" width="100%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in fix pack version 7.5.0.2.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There are no enhancements in this fix pack.</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top">RTC-6293</td><td valign="top">JR43288</td><td valign="top">Minimum and maximum properties under "Number of connections for event deilivery" are not seen in EMD screen</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: When UNORDERED delivery is selected, Minimum and maximum properties under "Number of connections for event deilivery" are not seen in EMD screen.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Removed support for UNORDERED delivery.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td valign="top">2</td><td valign="top">RTC-6503</td><td valign="top">JR43289</td><td valign="top">User name and password fields are empty in "deployment properties screen" for outbound scenario</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: User name and password fields are empty in "deployment properties screen" for outbound scenario. The values entered in discovery properties screen are not carried to deployment properties screen.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Fixed by AFC RTC-6694.  See AFC Readme.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">3</td><td valign="top">RTC-6774</td><td valign="top">JR43294</td><td valign="top">JDE Adapter failing to validate the timeout property properly in deployment properties screen</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: JDE Adapter failing to validate the timeout property properly in deployment properties screen. A positive long value higher than MAX_INT can get cast to a negative integer and result in execptions at runtime.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Updated JDEOutboundConnectionConfiguration and JDEMetadataSelection classes to allow values in the range 0 to MAX_INT only in the timeout properties during EMD.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td valign="top">4</td><td valign="top">RTC-6860</td><td valign="top">JR43295</td><td valign="top">JDE adapter is polling for all the events in JDE server irrespective of BO mapped during the EMD step</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: When JDE adapter receives an event which is not configured through EMD, it throws a NullPointerException since the BO definition for that event could not be found.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Updated the adapter to throw ResourceException when BO definition could not be found.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">5</td><td valign="top">RTC-6881</td><td valign="top">JR43296</td><td valign="top">NullPointerException seen in .log after Discovery</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: NullPointerException seen in .log after Discovery</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Added null check and corrected the property name used to lookup XMLLists property element in JDEFilterPG.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td valign="top">6</td><td valign="top">RTC-7033</td><td valign="top">JR43300</td><td valign="top">JDE adapter is not deleting the events which are 1 with XID entry which may lead to performance issue</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: If the server is terminated while event processing is in progress, any entries with status 1 are left undeleted from the event table. When event processing resumes after server is restarted, the event entries remain in the event table.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Updated JDEEventStoreWithXid to include events already existing in event table (but received from EIS once again as the events were not acknowledged when they were processed in the previous run) for deletion.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">7</td><td valign="top">RTC-7038</td><td valign="top">JR43302</td><td valign="top">JDE server connection leak in JDEInboundHandlerWithXid</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: When an instance of JDEInboundHandlerWithXid is created, a failure to create a sync event session can result in connection to JDE server not logged off.  The connection is logged off only when close() is called on the instance.  But then an exception thrown by the constructor leaves no chance to call close() thus leading to connection leaks.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Updated JDEInboundHandlerWithXid to logoff connection when SyncEventSession creation fails.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<br>
+<table align="center" width="100%" class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="crs">This table lists the enhancements and fixes in fix pack version 7.5.0.1.</a></td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Enhancements</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">There are no enhancements in this fix pack.</td>
+</tr>
+<tr class="middlerow">
+<td colspan="5">Fixes</td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>CR</td><td>APAR</td><td>Title</td><td>Details</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">1</td><td valign="top">103499</td><td valign="top">JR40937</td><td valign="top">Password getting displayed for Connection_Id parameter in the trace logs</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Password getting displayed for Connection_Id parameter in the trace logs</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Removed password from the Connection_Id</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td valign="top">2</td><td valign="top">103593</td><td valign="top">JR40938</td><td valign="top">JDE Adapter inbound scenario failing with WMB</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: JDE Adapter inbound scenario failing with WMB due to exceptions Caused by: java.lang.ClassNotFoundException: com.ibm.websphere.sca.sdo.DataFactory.  JDE code is checking whether it is SDOV1 or SDOV2 while creating the data object.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Checking of SDO version is delegated to AFC code while creating the data object.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">3</td><td valign="top">103499</td><td valign="top">JR40939</td><td valign="top">For Wrong credentials  "AUTHENTICATION" Failure is not getting captured in trace log</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: When wrong credentials are provided AUTHENTICATION Failure is not getting captured in trace logs. Also, CONNECTION closed should not be reported as there is no connectoion is established.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Changed JDEResourceAdapter.isAuthenticationFailure() to recognize com.jdedwards.system.connector.dynamic.InvalidLoginException as authentication failed exception.  Changed the connection retry behaviour not to attempt retries in case of authentication failure.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td valign="top">4</td><td valign="top">103593</td><td valign="top">JR40940</td><td valign="top">Not reporting any event status in trace logs for authentication failure,connection lost and connection failure for inbound scenario.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Not reporting any event status in trace logs for authentication failure,connection lost and connection failure for inbound scenario.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Changed JDEInboundHandlerWithXid.createSyncEventSession() to catch ApplicationExceptions and log authentication failures</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">5</td><td valign="top">103593</td><td valign="top">JR40943</td><td valign="top">Message flow is getting deployed successfully in to the broker when provided wrong crendentials for inbound scenario</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Message flow deployment in to the broker is successful when we provided wrong crendentials for inbound scenario.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: In case of authentication failure in inbound scenario, wrapping of JDE ApplicationException in AuthenticationFailException results in deployment to succeed.  Throwing the original exception as is after logging fails the deploymentm which is the expected behavior.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td valign="top">6</td><td valign="top">103593</td><td valign="top">JR40944</td><td valign="top">Reporting wrong event status when provided wrong credentials for inbound scenario.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Reporting wrong event status when provided wrong credentials for inbound scenario. It should report authentication failure and connection failure as event status not authentication failure and connection lost as event status.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Throw the original JDE ApplicationException as is to prevent connection lost getting logged incorrectly.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">7</td><td valign="top">103593</td><td valign="top">JR40945</td><td valign="top">Not Reporting any connection related event status for "connection failure" and "connection Lost"  in inbound scenario</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Not Reporting any connection related event status for connection failure and connection Lost  in inbound scenario.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Updated JDEInboundHandlerWithXid and JDEEventStoreWithXid to emit a connection event in case of connection loss.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td valign="top">8</td><td valign="top">103593</td><td valign="top">JR40946</td><td valign="top">Message flow is getting deployed successfully in to the broker when there is connection failure and Lost for inbound scenario</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Message flow deployment in to the broker is successful when there is connection failure and connection Lost for inbound scenario.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Changed the default value of the property retryConnectionOnStartup to false.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="white">
+<td valign="top">9</td><td valign="top"></td><td valign="top">JR40947</td><td valign="top">Errors are caused when building the project after running EMD for inbound scenario.</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Errors are caused when building the project after running EMD for inbound scenario.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Changed JDERTEDataDescription.getCardinality() to return "1" instead of "RTE".</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="#ebebeb">
+<td valign="top">10</td><td valign="top"></td><td valign="top">JR40974</td><td valign="top">Runtime errors occured for JDE inbound and SAP outbound mediation flow scenario in WPS7.5</td><td class="nopaddingwithborder" valign="top">
+<table width="100%" class="withborder">
+<tr>
+<td valign="top" class="noborder">Symptom: Runtime errors occured for JDE inbound and SAP outbound mediation flow scenario in WPS7.5.  Throws "org.xml.sax.SAXNotRecognizedException: Feature 'http://apache.org/xml/features/xinclude' is not recognized" due to xerces dependency jar required by the adapter.</td>
+</tr>
+<tr>
+<td valign="top" class="topborder">Resolution: Setting the property "org.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerces.parsers.XIncludeAwareParserConfiguration" in jre/lib/xerces.properties in the WPS' java runtime directory removes the SAXNotRecognizedException exception.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<br>
+</td>
+</tr>
+</table>
+<table align="center" class="nopadding" width="90%">
+<tr>
+<td class="nopadding">
+<table class="defaulttable">
+<tr class="toprow">
+<td colspan="5"><a name="newproperties">This table lists new and modified connector properties</a></td>
+</tr>
+<tr class="headerrow">
+<td>#</td><td>Version</td><td>Added or Modified</td><td>Property</td><td>Location</td>
+</tr>
+<tr bgcolor="white">
+<td colspan="5">No connector properties were introduced or modified for this version of the fix pack.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<br>
+<table align="center" class="nopadding" width="90%">
+<tr>
+<td class="nopadding">
+<table class="defaulttable">
+<tr class="toprow">
+<td><a name="upgradenotes">To upgrade to the fix pack version 7.5.0.5_IF03, do the following.</a></td>
+</tr>
+<tr>
+<td bgcolor="#ebebeb">1. Ensure that you have followed the "Installation Instructions" section in the download link before proceeding.</td>
+</tr>
+<tr>
+<td bgcolor="#ebebeb">2. If you need to use the fix pack for EMD, delete the connector project in WebSphere Integration Developer (WID), import the new RAR file, and apply the enterprise information system (EIS) specific dependency files.</td>
+</tr>
+<tr>
+<td bgcolor="white">&nbsp;&nbsp;&nbsp;a. Open the Java build path for the SCA module and remove the <b>Connector</b> project that is selected on <b>Projects</b> tab.</td>
+</tr>
+<tr>
+<td bgcolor="white">&nbsp;&nbsp;&nbsp;b. Open the dependency editor and remove the connector project.</td>
+</tr>
+<tr>
+<td bgcolor="white">&nbsp;&nbsp;&nbsp;c. Delete the connector project from the workspace.</td>
+</tr>
+<tr>
+<td bgcolor="white">&nbsp;&nbsp;&nbsp;d. Import the new RAR file. Add any dependency files from EIS specific application-specific information as needed.</td>
+</tr>
+<tr>
+<td bgcolor="white">&nbsp;&nbsp;&nbsp;e. Open the Java build path for the SCA module and select the <b>Connector</b> project that is selected on the <b>Projects</b> tab.</td>
+</tr>
+<tr>
+<td bgcolor="white">&nbsp;&nbsp;&nbsp;f. Open the dependency editor and add the connector project if it is not already present.</td>
+</tr>
+<tr>
+<td bgcolor="#ebebeb">3. If you need to update deployed applications using embedded adapter on WebSphere Process Server (WPS) or WebSphere Enterprise Service Bus (ESB), do the following:</td>
+</tr>
+<tr>
+<td bgcolor="white">&nbsp;&nbsp;&nbsp;a. Select <b>Update</b> for the corresponding application on the WPS or ESB administrative console.</td>
+</tr>
+<tr>
+<td bgcolor="white">&nbsp;&nbsp;&nbsp;b. Select <b>Single Module</b> with a relative path as name of the RAR file - CWYBC_JDE.rar.</td>
+</tr>
+<tr>
+<td bgcolor="white">&nbsp;&nbsp;&nbsp;c. Click <b>Browse</b> on the local file system to select the updated RAR file that has the changes.</td>
+</tr>
+<tr>
+<td bgcolor="white">&nbsp;&nbsp;&nbsp;d. Select the default values in the remaining steps and click <b>Finish</b>.  This will ensure that existing configurations, for example, are not changed and that only JAR files will be updated.</td>
+</tr>
+<tr>
+<td bgcolor="#ebebeb">4. If you need to update deployed applications using stand-alone adapter on WPS or ESB, do the following:</td>
+</tr>
+<tr>
+<td bgcolor="white">&nbsp;&nbsp;&nbsp;a. Stop all deployed applications using the stand-alone adapter on the WPS or ESB administrative console.</td>
+</tr>
+<tr>
+<td bgcolor="white">&nbsp;&nbsp;&nbsp;b. Re-deploy the stand-alone resource adapter with the new RAR.</td>
+</tr>
+<tr>
+<td bgcolor="white">&nbsp;&nbsp;&nbsp;c. Re-deploy all the applications using stand-alone adapter.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<br>
+<table border="0" align="center" width="90%" class="noborder">
+<tr>
+<td align="center" class="noborder">
+						August 4, 2014 6:00 PM
+					</td>
+</tr>
+<tr>
+<td align="center" class="noborder">
+						(C) Copyright 2014 IBM Corporation
+					</td>
+</tr>
+</table>
+</body>
+</html>

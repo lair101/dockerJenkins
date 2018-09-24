@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+        <title>Healthcare: FHIR Transformation pattern</title>
+    </head>
+    <body>
+        <h1 class="topictitle1">Healthcare: FHIR Transformation pattern</h1>
+        <div>
+            <p class="shortdesc"></p>
+        </div>
+        <p>
+        	The <span>Healthcare: FHIR Transformation</span> pattern provides an application for the transformation of HL7&reg; FHIR&reg; standard Resources between the XML and JSON formats.
+        </p>
+        
+        <div class="section">
+            <h2 class="sectiontitle">Solution</h2>
+        </div>
+        
+		<p>
+			Fast Healthcare Interoperability Resources (FHIR&reg;) is a draft standard from Health Level 7 International (HL7) designed to allow the exchange of electronic health records.
+			It is built upon previous standards such as HL7 version 2 and HL7 version 3, and uses XML and JSON for data representation.
+			FHIR&reg; solutions can be created using components called Resources which are built around particular concepts, such as the patient or provider, as well as diagnostics and care plans.
+			Systems implementing FHIR&reg; must support Resources in the XML format, but may also support Resources in the JSON format.
+			You can use the <span>Healthcare: FHIR Transformation</span> pattern to create an application that reads a Resource in either XML or JSON format from the file system, and transforms it into the other format.
+		</p>		
+		<p>
+			When you generate an instance of the <span>Healthcare: FHIR Transformation</span> pattern, a library named <span class="msobjpropval">FHIRDSTU1Schemas</span> is created automatically.
+			The library contains the FHIR&reg; XML schemas, based on Draft Standard for Trial Use 1 (DSTU 1), to allow Resources in the XML format to be validated.
+			The library can also be used by nodes other than those included in the generated application to parse FHIR XML messages.
+		</p>
+
+		<div class="familylinks">
+			<a name="anchorBack"></a>
+			<div class="section">
+				<h2 class="sectiontitle">Related tasks</h2>
+			</div>
+			<p>Read the following section for information about how to apply and use this pattern.</p>
+		</div>
+		<div>
+			<a href="constraints.htm">Constraints on the use of the pattern</a>
+		</div>
+		<div>
+			<a href="parameters.htm">Parameters for the pattern</a>
+		</div>
+    </body>
+</html>

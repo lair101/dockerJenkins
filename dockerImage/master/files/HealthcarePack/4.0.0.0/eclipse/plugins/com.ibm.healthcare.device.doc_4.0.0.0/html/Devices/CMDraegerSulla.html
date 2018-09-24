@@ -1,0 +1,1748 @@
+<html>  
+<head> 
+<title>CMDraegerSulla Driver Help</title>
+<!--CMDraegerSulla Driver  - Copyright Cain Medical Ltd 2012 - www.cainmedcial.com-->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+tr.head1 {
+	background-color: #CCCCCC;
+}
+tr.head2 {
+	background-color: #EEEEEE;
+}
+td.head2 {
+	background-color: #EEEEEE;
+}
+h3 {
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../css/general.css"/>
+</head>
+
+<body>
+<h1>CMDraegerSulla </h1>
+<p><strong>Supported devices:</strong> Draeger Sulla, Trajan, Titus, SA2 and PM 8050<br>
+  Release 1.10.0.0<br>
+  Document reference: 1a</p>
+<p>Known issues:</p>
+<ul>
+  <li>None</li>
+  </ul>
+  <h1>Computer Connection</h1>
+  
+<!-- <p><img src="Pic-Front.JPG" > 
+ ## <img src="Pic-Rear.JPG" width="401" height="142"> </p> -->
+
+<p>The driver supports the RS232 connection.</p>
+<p>Please read the following description carefully and ensure the cable in use matches the monitor. </p>
+  <p>Computer connection location: rear side of PM 8050 Label Port 1: RS-232-C Port 2: Protokoll / Printer / RS-232-C</p>
+  
+  <tr>
+    <p>Type RS-232-C 25 pin Sub D (female)</p>
+    <td> </td>
+  </tr>
+  <tr>
+  <table border="0">
+  <tr> 
+    <td class="head2">Housing</td>
+    <td>1</td>
+  </tr>
+  <tr> 
+    <td class="head2">RxD</td>
+    <td>3</td>
+  </tr>  
+  <tr> 
+    <td class="head2">TxD</td>
+    <td>2</td>
+  </tr>
+  <tr> 
+    <td class="head2">GND</td>
+    <td>7</td>
+  </tr>
+  <tr> 
+    <td class="head2">Cable</td>
+    <td>1.5kV galvanic isolation</td>
+  </tr>
+</tr>
+    </table>
+ 
+ 
+
+<h2>Supported communication parameters: </h2>
+
+<p>Port Configuration (both ports independent):</p>
+
+<table border="0">
+  <tr> 
+    <td class="head2">Baud rate</td>
+    <td>1200, 9600</td>
+  </tr>
+  <tr> 
+    <td class="head2">Parity</td>
+    <td>E</td>
+  </tr>
+  <tr> 
+    <td class="head2">Data bits</td>
+    <td>8</td>
+  </tr>
+  <tr> 
+    <td class="head2">Start bits</td>
+    <td>1</td>
+  </tr>
+  <tr> 
+    <td class="head2">Stop bits</td>
+    <td>1</td>
+  </tr>
+</table>
+
+<p>Port 2 must be configured to run MEDIBUS instead of Printer-protocol</p>
+<p>Port 2 MEDIBUS is provided for Cato device version
+2.00 and higher.</p>
+
+<h1>Supported Data Parameters </h1>
+
+
+<!-- Inset Parameter HTML Code -->
+  
+<table >
+  <tr class="head1"> 
+    <td colspan="2">ID</td>
+    <td>Sources</td>
+    <td>Acronym</td>
+    <td>Common Term</td>
+    <td>Description</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:331-660:224:502</td>
+    <td>SpO2</td>
+    <td>SpO2</td>
+    <td>Peripheral oxygen saturation measurements</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:826:846:859</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Sensor inoperable</td>
+    <td>Warning, sensor inoperable</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-219:259</td>
+    <td>%O2 ins</td>
+    <td>Concentration Airway O2 Inspiratory</td>
+    <td>Concentration of O2 in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:331-660:224:502</td>
+    <td>SpO2</td>
+    <td>SpO2</td>
+    <td>Peripheral oxygen saturation measurements</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>101:371:224-226:263</td>
+    <td>SpO2 PR</td>
+    <td>Pulse rate measured by SpO2 sensor</td>
+    <td>Noninvasive pulse rate measured by SpO2 sensor</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>101:371:224-226:263</td>
+    <td>SpO2 PR</td>
+    <td>Pulse rate measured by SpO2 sensor</td>
+    <td>Noninvasive pulse rate measured by SpO2 sensor</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-219:259</td>
+    <td>%O2 ins</td>
+    <td>Concentration Airway O2 Inspiratory</td>
+    <td>Concentration of O2 in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-219:259</td>
+    <td>%O2 ins</td>
+    <td>Concentration Airway O2 Inspiratory</td>
+    <td>Concentration of O2 in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>1077:882-1024:1053:1060</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>CO2 failure</td>
+    <td>Failure occurred in a CO2 measuring device</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:882-1038:1054:1060</td>
+    <td rowspan='2'></td>
+    <td>CO2 WARM UP</td>
+    <td>CO2 Warm up</td>
+    <td>CO2 mon in low ACC mode (Warm up)</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:882-1032-1035:1054:1060</td>
+    <td rowspan='2'></td>
+    <td>CO2 ALARM OFF</td>
+    <td>CO2 alarm disabled</td>
+    <td>CO2 alarm disabled</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:177-197:259</td>
+    <td>%CO2 ins</td>
+    <td>Concentration Airway CO2 Inspiratory</td>
+    <td>Concentration of CO2 in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>1077:902-1025:1053:1060</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>CO2 sensor fault</td>
+    <td>Fault occurred in CO2 sensor disc</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:676:177-197:259</td>
+    <td>%CO2 ET</td>
+    <td>Concentration Airway CO2 EndTidal</td>
+    <td>Concentration of CO2 in airway gas measured at the end of expiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:676:177-197:259</td>
+    <td>%CO2 ET</td>
+    <td>Concentration Airway CO2 EndTidal</td>
+    <td>Concentration of CO2 in airway gas measured at the end of expiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>1076:862-925-980:1053:1063</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Inoperable flow measurement</td>
+    <td>The flow measurement in a ventilator is inoperable</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>109::164:260</td>
+    <td>Tairway</td>
+    <td>Temperature airway</td>
+    <td>Temperature airway</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>1076:862-926-980:1053:1063</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Inoperable Pressure measurement</td>
+    <td>The pressure measurement in a ventilator is inoperable</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>1077:925-962:1054:1063</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Flow calibration necessary</td>
+    <td>Flow calibration of ventilator is necessary</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>84:609:197:261</td>
+    <td></td>
+    <td>Respir. Minute Volume</td>
+    <td>Total volume of gas breathed in one minute during spontaneous respiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>84:609:197:261</td>
+    <td></td>
+    <td>Respir. Minute Volume</td>
+    <td>Total volume of gas breathed in one minute during spontaneous respiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99::197:259</td>
+    <td>PAW</td>
+    <td>Respir. Airway Pressure</td>
+    <td>pressure of gas in airway</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>1078:273-1039::268</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Apnea</td>
+    <td>Apnea - pressure absent for 15 seconds</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>1076:881-941:1053:1063</td>
+    <td rowspan='2'></td>
+    <td>AGT NOT SEL</td>
+    <td>Agent not selected</td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>1078:888-1039::268</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Apnea</td>
+    <td>Apnea - no volume exhale for 30 seconds</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:881-1038:1054:1060</td>
+    <td rowspan='2'></td>
+    <td>AGENT WARM UP</td>
+    <td>Agent Warm up</td>
+    <td>Agent mon in low ACC mode (Warm up)</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:846:859</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Sensor inoperable</td>
+    <td>Alert, sensor inoperable</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79::197-849:259</td>
+    <td>%Agt</td>
+    <td>Concentration Airway anaesthetic agent</td>
+    <td>Concentration of anaesthetic agent in airway gas</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-236:259</td>
+    <td></td>
+    <td>Concentration Airway Sevoflurane Inspiratory</td>
+    <td>Concentration of Sevoflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:846:859</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Sensor inoperable</td>
+    <td>Alert, sensor inoperable</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79::197-217:259</td>
+    <td>%Nitrogen Dioxide</td>
+    <td>Concentration Airway NO2</td>
+    <td>Concentration of Nitrogen Dioxide in airway gas</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:189-197:259</td>
+    <td></td>
+    <td>Concentration Airway Enflurane Inspiratory</td>
+    <td>Concentration of Enflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-207:259</td>
+    <td></td>
+    <td>Concentration Airway Isoflurane Inspiratory</td>
+    <td>Concentration of Isoflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:184-197:259</td>
+    <td></td>
+    <td>Concentration Airway Desflurane Inspiratory</td>
+    <td>Concentration of Desflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-201:259</td>
+    <td></td>
+    <td>Concentration Airway Halothane Inspiratory</td>
+    <td>Concentration of Halothane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-236:259</td>
+    <td></td>
+    <td>Concentration Airway Sevoflurane Inspiratory</td>
+    <td>Concentration of Sevoflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:184-197:259</td>
+    <td></td>
+    <td>Concentration Airway Desflurane Inspiratory</td>
+    <td>Concentration of Desflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:189-197:259</td>
+    <td></td>
+    <td>Concentration Airway Enflurane Inspiratory</td>
+    <td>Concentration of Enflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-207:259</td>
+    <td></td>
+    <td>Concentration Airway Isoflurane Inspiratory</td>
+    <td>Concentration of Isoflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-201:259</td>
+    <td></td>
+    <td>Concentration Airway Halothane Inspiratory</td>
+    <td>Concentration of Halothane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:331-660:224:502</td>
+    <td>SpO2</td>
+    <td>SpO2</td>
+    <td>Peripheral oxygen saturation measurements</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:331-660:224:502</td>
+    <td>SpO2</td>
+    <td>SpO2</td>
+    <td>Peripheral oxygen saturation measurements</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:331-660:224:502</td>
+    <td rowspan='2'></td>
+    <td>SpO2</td>
+    <td>SpO2</td>
+    <td>Peripheral oxygen saturation measurements</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>101:371:224-226:263</td>
+    <td>SpO2 PR</td>
+    <td>Pulse rate measured by SpO2 sensor</td>
+    <td>Noninvasive pulse rate measured by SpO2 sensor</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>101:371:224-226:263</td>
+    <td>SpO2 PR</td>
+    <td>Pulse rate measured by SpO2 sensor</td>
+    <td>Noninvasive pulse rate measured by SpO2 sensor</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:197-219:259</td>
+    <td rowspan='2'></td>
+    <td>%O2 ins</td>
+    <td>Concentration Airway O2 Inspiratory</td>
+    <td>Concentration of O2 in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>101:371:224-226:263</td>
+    <td rowspan='2'></td>
+    <td>SpO2 PR</td>
+    <td>Pulse rate measured by SpO2 sensor</td>
+    <td>Noninvasive pulse rate measured by SpO2 sensor</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:125:197-219:271</td>
+    <td rowspan='2'></td>
+    <td>FI-EO2</td>
+    <td>Diff. Inspired and Expired Oxygen Conc. (Ventilator)</td>
+    <td>Difference in O2 concentration between inspiration and expiration during mechanical ventilation</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:676:197-219:259</td>
+    <td rowspan='2'></td>
+    <td>%O2 ET</td>
+    <td>Concentration Airway O2 EndTidal</td>
+    <td>Concentration of O2 in airway gas measured at the end of expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:611-676:177-197:259</td>
+    <td rowspan='2'></td>
+    <td>Pet CO2</td>
+    <td>EndTidal CO2 Partial Pressure</td>
+    <td>Partial pressure of CO2 in airway gas measured at end of expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:611-676:177-197:259</td>
+    <td>Pet CO2</td>
+    <td>EndTidal CO2 Partial Pressure</td>
+    <td>Partial pressure of CO2 in airway gas measured at end of expiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:611-676:177-197:259</td>
+    <td>Pet CO2</td>
+    <td>EndTidal CO2 Partial Pressure</td>
+    <td>Partial pressure of CO2 in airway gas measured at end of expiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:611-679:177-197:259</td>
+    <td>PICO2</td>
+    <td>Inspiratory CO2 Partial Pressure</td>
+    <td>Partial pressure of CO2 in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:611-679:177-197:259</td>
+    <td>PICO2</td>
+    <td>Inspiratory CO2 Partial Pressure</td>
+    <td>Partial pressure of CO2 in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:611-679:177-197:259</td>
+    <td rowspan='2'></td>
+    <td>PICO2</td>
+    <td>Inspiratory CO2 Partial Pressure</td>
+    <td>Partial pressure of CO2 in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:676:177-197:259</td>
+    <td>%CO2 ET</td>
+    <td>Concentration Airway CO2 EndTidal</td>
+    <td>Concentration of CO2 in airway gas measured at the end of expiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:676:177-197:259</td>
+    <td>%CO2 ET</td>
+    <td>Concentration Airway CO2 EndTidal</td>
+    <td>Concentration of CO2 in airway gas measured at the end of expiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:676:177-197:259</td>
+    <td rowspan='2'></td>
+    <td>%CO2 ET</td>
+    <td>Concentration Airway CO2 EndTidal</td>
+    <td>Concentration of CO2 in airway gas measured at the end of expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:177-197:259</td>
+    <td>%CO2 ins</td>
+    <td>Concentration Airway CO2 Inspiratory</td>
+    <td>Concentration of CO2 in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:177-197:259</td>
+    <td>%CO2 ins</td>
+    <td>Concentration Airway CO2 Inspiratory</td>
+    <td>Concentration of CO2 in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:177-197:259</td>
+    <td rowspan='2'></td>
+    <td>%CO2 ins</td>
+    <td>Concentration Airway CO2 Inspiratory</td>
+    <td>Concentration of CO2 in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>101:432:173:261</td>
+    <td rowspan='2'></td>
+    <td>RR (interval)</td>
+    <td>Respiration Rate</td>
+    <td>Rate of breathing, method: CO2 -sensor</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>109::164:260</td>
+    <td rowspan='2'></td>
+    <td>Tairway</td>
+    <td>Temperature airway</td>
+    <td>Temperature airway</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>109::164:260</td>
+    <td>Tairway</td>
+    <td>Temperature airway</td>
+    <td>Temperature airway</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>101:455:173:261</td>
+    <td rowspan='2'></td>
+    <td>RR (interval)</td>
+    <td>Respiration Rate</td>
+    <td>Rate of breathing, method not specified</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81::167:261</td>
+    <td rowspan='2'></td>
+    <td>A</td>
+    <td>Apnea Duration</td>
+    <td>Duration of apnea - no flow measured</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>84:609:197:261</td>
+    <td></td>
+    <td>Respir. Minute Volume</td>
+    <td>Total volume of gas breathed in one minute during spontaneous respiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>84:609:197:261</td>
+    <td></td>
+    <td>Respir. Minute Volume</td>
+    <td>Total volume of gas breathed in one minute during spontaneous respiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>84:609:197:261</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Respir. Minute Volume</td>
+    <td>Total volume of gas breathed in one minute during spontaneous respiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>101:387:173:261</td>
+    <td rowspan='2'></td>
+    <td>RR (interval)</td>
+    <td>Respiration Rate</td>
+    <td>Spontaneous rate of breathing</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:336-674:197:271</td>
+    <td rowspan='2'></td>
+    <td>PEEP</td>
+    <td>Positive end expiratory pressure, applied</td>
+    <td>Positive End Expiratory Pressure applied to the airway during mechanical ventilation</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:133-679:197:259</td>
+    <td rowspan='2'></td>
+    <td>PIP</td>
+    <td>Maximum Inspiratory Airway Pressure (Peak inspiratory pressure)</td>
+    <td>Maximum pressure of gas in airway during inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>112::211-244:261</td>
+    <td rowspan='2'></td>
+    <td>VT</td>
+    <td>Respiration Tidal Volume</td>
+    <td>Volume of gas during each breath</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:692:197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Plateau Respir. Pressure</td>
+    <td>Pressure in airway in plateau phase during mechanical ventilation.</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:137:173-197:259</td>
+    <td></td>
+    <td>Mean breathing pressure</td>
+    <td>Mean breathing pressure</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:137:173-197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Mean breathing pressure</td>
+    <td>Mean breathing pressure</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99::173-197:259</td>
+    <td></td>
+    <td>Breathing pressure</td>
+    <td>Breathing pressure</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99::173-197:259</td>
+    <td></td>
+    <td>Breathing pressure</td>
+    <td>Breathing pressure</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99::173-197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Breathing pressure</td>
+    <td>Breathing pressure</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:677:197-217:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Nitrogen Dioxide Expiratory</td>
+    <td>Concentration of Nitrogen Dioxide in airway gas measured during expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-217:259</td>
+    <td></td>
+    <td>Concentration Airway Nitrogen Dioxide Inspiratory</td>
+    <td>Concentration of Nitrogen Dioxide in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:197-217:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Nitrogen Dioxide Inspiratory</td>
+    <td>Concentration of Nitrogen Dioxide in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-217:259</td>
+    <td></td>
+    <td>Concentration Airway Nitrogen Dioxide Inspiratory</td>
+    <td>Concentration of Nitrogen Dioxide in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:677:197-207:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Isoflurane Expiratory</td>
+    <td>Concentration of Isoflurane in airway gas measured during expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-207:259</td>
+    <td></td>
+    <td>Concentration Airway Isoflurane Inspiratory</td>
+    <td>Concentration of Isoflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-207:259</td>
+    <td></td>
+    <td>Concentration Airway Isoflurane Inspiratory</td>
+    <td>Concentration of Isoflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:197-207:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Isoflurane Inspiratory</td>
+    <td>Concentration of Isoflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:677:189-197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Enflurane Expiratory</td>
+    <td>Concentration of Enflurane in airway gas measured during expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:189-197:259</td>
+    <td></td>
+    <td>Concentration Airway Enflurane Inspiratory</td>
+    <td>Concentration of Enflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:189-197:259</td>
+    <td></td>
+    <td>Concentration Airway Enflurane Inspiratory</td>
+    <td>Concentration of Enflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:189-197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Enflurane Inspiratory</td>
+    <td>Concentration of Enflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-201:259</td>
+    <td></td>
+    <td>Concentration Airway Halothane Inspiratory</td>
+    <td>Concentration of Halothane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:677:197-201:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Halothane Expiratory</td>
+    <td>Concentration of Halothane in airway gas measured during expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-201:259</td>
+    <td></td>
+    <td>Concentration Airway Halothane Inspiratory</td>
+    <td>Concentration of Halothane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:197-201:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Halothane Inspiratory</td>
+    <td>Concentration of Halothane in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:676:197-849:259</td>
+    <td rowspan='2'></td>
+    <td>%Agt ET</td>
+    <td>Concentration Airway Anaesthetic agent EndTidal</td>
+    <td>Concentration of anaesthetic agent in airway gas measured at the end of expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-849:259</td>
+    <td>%Agt In</td>
+    <td>Concentration Airway anaesthetic agent Inspiratory</td>
+    <td>Concentration Airway anaesthetic agent in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-849:259</td>
+    <td>%Agt In</td>
+    <td>Concentration Airway anaesthetic agent Inspiratory</td>
+    <td>Concentration Airway anaesthetic agent in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:197-849:259</td>
+    <td rowspan='2'></td>
+    <td>%Agt In</td>
+    <td>Concentration Airway anaesthetic agent Inspiratory</td>
+    <td>Concentration Airway anaesthetic agent in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:677:197-236:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Sevoflurane Expiratory</td>
+    <td>Concentration of Sevoflurane in airway gas measured during expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-236:259</td>
+    <td></td>
+    <td>Concentration Airway Sevoflurane Inspiratory</td>
+    <td>Concentration of Sevoflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:197-236:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Sevoflurane Inspiratory</td>
+    <td>Concentration of Sevoflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:197-236:259</td>
+    <td></td>
+    <td>Concentration Airway Sevoflurane Inspiratory</td>
+    <td>Concentration of Sevoflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:677:184-197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Desflurane Expiratory</td>
+    <td>Concentration of Desflurane in airway gas measured during expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:184-197:259</td>
+    <td></td>
+    <td>Concentration Airway Desflurane Inspiratory</td>
+    <td>Concentration of Desflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:679:184-197:259</td>
+    <td></td>
+    <td>Concentration Airway Desflurane Inspiratory</td>
+    <td>Concentration of Desflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:184-197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Desflurane Inspiratory</td>
+    <td>Concentration of Desflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:826:846:845</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Sensor disconnected</td>
+    <td>Warning, sensor disconnected</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:331-660:224:502</td>
+    <td>SpO2</td>
+    <td>SpO2</td>
+    <td>Peripheral oxygen saturation measurements</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:955-1032:1054:1060</td>
+    <td rowspan='2'></td>
+    <td>ALARM OFF</td>
+    <td>Alarm off</td>
+    <td>Indication: Alarm intentionally off (disabled)</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:331-660:224:502</td>
+    <td>SpO2</td>
+    <td>SpO2</td>
+    <td>Peripheral oxygen saturation measurements</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:846:859</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Sensor inoperable</td>
+    <td>Alert, sensor inoperable</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:331-660:224:502</td>
+    <td>SpO2</td>
+    <td>SpO2</td>
+    <td>Peripheral oxygen saturation measurements</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>94::254:271</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Ventilation Mode</td>
+    <td>Selected mode of ventilator</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr></table>
+
+
+  
+  <!-- End Parameter HTML Code -->
+  
+
+</body>
+</html>

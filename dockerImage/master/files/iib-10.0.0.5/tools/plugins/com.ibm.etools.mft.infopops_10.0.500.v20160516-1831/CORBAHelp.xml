@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+  <contexts>
+    <context id="IM001">
+      <description><b>Select a CORBA IDL file to import</b>
+Select a CORBA IDL file to import into a message set.  The CORBA IDL file can be from a workspace or an external location.
+      </description>
+      <topic href="../com.ibm.etools.mft.doc/bc22480_.htm"  label="Importing an IDL file"/>
+    </context>
+    <context id="IM002">
+      <description><b>Validation messages</b>
+The following validation messages were returned after validating the selected CORBA IDL file.
+      </description>
+    </context>
+    <context id="IM003">
+      <description><b>File conflict detected</b> 
+The files shown in the table conflict with existing files in the message set.  To continue, either rename or overwrite the files without grey boxes beside them.
+      </description>
+      <topic href="../com.ibm.etools.mft.doc/bc22480_.htm"  label="Importing an IDL file"/>
+    </context>
+    <context id="DND001">
+      <description><b>CORBA IDL File Usage</b>
+To configure the CORBA nodes with an imported CORBA IDL file, drag the file from the CORBA IDLs folder into the Message Flow editor.
+      </description>
+      <topic href="../com.ibm.etools.mft.doc/bc22440_.htm"  label="Developing a message flow with a CORBARequest node"/>
+    </context>
+    
+    <context id="CORBA_DND_InterfaceAndOperationSelectionDialog">
+      <description><b>CORBA IDL interface and operation selection dialog </b>
+When a CORBA IDL file is dropped into the Message Flow editor, this selection dialog will appear only if there is more than one interface with more than one operation. Typing a filter expression will change the number of interfaces listed.  Selecting an interface will refresh the list of operations.
+      </description>
+    </context>
+
+    <context id="CORBA_InterfaceSelectionDialog">
+      <description><b>Interface selection dialog </b>
+Lists the available CORBA IDL interfaces for a given CORBA IDL file. Typing a filter expression will change the number of interfaces listed.  Select an interface from the list and press the OK button to update the 'Interface name' property.
+      </description>
+    </context>
+    
+  </contexts>

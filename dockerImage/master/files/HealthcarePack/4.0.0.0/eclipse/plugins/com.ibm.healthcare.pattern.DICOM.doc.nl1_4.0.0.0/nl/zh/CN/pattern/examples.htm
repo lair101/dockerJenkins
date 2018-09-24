@@ -1,0 +1,951 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2013, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>C-FIND 和 C-MOVE 请求的示例消息</title>
+</head>
+<body role="main">
+<h1 class="topictitle1">C-FIND 和 C-MOVE 请求的示例消息</h1> 
+<p>“<span>Healthcare：Web 服务到 DICOM</span>”模式中的查询消息通过使用 DICOM 标记来指定其搜索条件。DICOM 标准用于定义标记名称、其含义以及允许的值。在每个查询根和查询级别，将一个标记定义为唯一标记 (<b>U</b>)。唯一标记中的单个值用于唯一地标识该级别的单个实体。即，同一级别的两个实体不会具有相同的唯一标记值。C-FIND SCP 支持由 DICOM 定义的所有唯一标记的存在以及对其进行匹配。由 C-FIND SCP
+管理的所有实体都必须具有长度不为零的特定唯一标记值。</p>
+
+<p>每个 DICOM 查询根和级别都具有一小组必须由所有 DICOM 供应商支持的必需 (<b>R</b>)
+标记。必需标记表示 C-FIND 的 SCP 必须支持根据 C-FIND
+请求中包含的值进行匹配。对于必需标记，多个实体可以具有同一个值。即，必需标记中的相异值并不一定能够在键级别标识单个实体。C-FIND SCP
+支持存在给定的根和级别处定义的所有必需标记以及对其进行匹配。如果 C-FIND SCP
+管理标记长度为零的实体，那么会将值视作未知，并且所有针对长度为零的标记进行的匹配都将被视作成功匹配。</p>
+
+<p>DICOM 供应商可能支持更大的一组可选 (<b>O</b>) 标记。供应商可以任意添加更多在搜索条件中支持的标记。C-FIND
+请求中包含的可选标记可以具有三种不同类型的行为，具体取决于 C-FIND SCP
+对存在性和/或匹配的支持。首先，如果 C-FIND SCP 不支持存在可选标记，那么不会在
+C-FIND 响应中返回此标记。其次，如果 SCP 支持存在可选标记但不支持对其进行匹配，那么将按处理长度为零的必需标记的方式处理此标记。即，将忽略指定为要针对此标记进行匹配的值，但是 SCP 可以在响应消息中返回值。最后，如果 SCP 支持存在此标记以及对其进行匹配，那么将按处理必需标记的方式对其进行处理。</p>
+
+<p>DICOM 提供了许多用于描述 C-FIND 搜索条件的选项，尤其是有关通配符、日期及时间范围以及用于在列表中匹配多个值的选项。请参阅
+DICOM 标准的 PS3.4 以获取更多信息。DICOMFindMove 节点当前不支持对序列执行匹配。发往
+DICOMFindMove 节点的 XML 查询消息可以请求使用额外的返回标记。这些标记未用于对 SCP
+发出的 C-FIND 请求中的搜索条件。如果 SCP 支持该返回标记，那么响应消息将包含每个搜索标记的相应匹配值以及每个返回标记的相应值。</p>
+ 
+<p>以下示例显示包含两个搜索标记
+<code>00100010</code> (<code>PatientName</code>) 和
+<code>00080050</code> (<code>AccessionNumber</code>) 以及配置的额外返回标记
+<code>00080054</code> (<code>RetrieveAETitle</code>) 的 XML 查询消息：</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;STUDY&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;STUDY&lt;/QueryLevel&gt;
+    &lt;Match&gt;
+        &lt;Attribute Tag="00100010"&gt;FEROVIX&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080050"&gt;1210490&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+        &lt;Attribute Tag="00080054"/&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>查询消息可以使用标记名称（例如 <code>PatientID</code>）或标记 (<code>00100020</code>)
+指定其搜索条件。与使用标记相比，标记名称通常易于理解并且不易出错。如下所示，响应消息始终使用 DICOM 标记。</p>
+
+<p>以下示例显示除去了 SOAP 响应包络的 DICOM C-FIND 结果消息：</p>
+<pre>
+&lt;DICOM:Results xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;DICOM&gt;
+        &lt;Attribute Tag="00080005" VR="CS"&gt;ISO_IR 100&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080016" VR="UI"&gt;1.2.840.10008.5.1.4.1.1.2&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080018" VR="UI"&gt;1.3.12.2.1107.5.1.4.54023.30000004093016410718700003864&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080052" VR="CS"&gt;IMAGE&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080054" VR="AE"&gt;PACS&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080056" VR="CS"&gt;ONLINE&lt;/Attribute&gt;
+        &lt;Attribute Tag="0020000D" VR="UI"&gt;1.3.12.2.1107.5.1.4.54023.30000004093013443132800000021&lt;/Attribute&gt;
+        &lt;Attribute Tag="0020000E" VR="UI"&gt;1.3.12.2.1107.5.1.4.54023.30000004093016410718700003676&lt;/Attribute&gt;
+        &lt;Attribute Tag="00200013" VR="IS"&gt;188&lt;/Attribute&gt;
+        &lt;Attribute Tag="00880130" VR="SH"/&gt;
+        &lt;Attribute Tag="00880140" VR="UI"/&gt;
+    &lt;/DICOM&gt;
+&lt;/DICOM:Results&gt;
+</pre>
+
+<p>下表显示了结果消息中每个 DICOM 标记的含义：</p>
+<table summary="" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+    <thead align="left">
+    <tr>
+        <th class="firstcol" align="left" valign="top" width="*">标记</th>
+        <th valign="top" width="*">名称</th>
+        <th valign="top" width="*">值</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00080005</td>
+            <td valign="top" width="2*">SpecificCharacterSet</td>
+            <td valign="top" width="2*">ISO_IR 100</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00080016</td>
+            <td valign="top" width="2*">SOPClassUID</td>
+            <td valign="top" width="2*">1.2.840.10008.5.1.4.1.1.2</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00080018</td>
+            <td valign="top" width="2*">SOPInstanceUID</td>
+            <td valign="top" width="2*">1.3.12.2.1107.5.1.4.54023.30000004093016410718700003864</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00080052</td>
+            <td valign="top" width="2*">QueryRetrieveLevel</td>
+            <td valign="top" width="2*">IMAGE</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00080054</td>
+            <td valign="top" width="2*">RetrieveAETitle</td>
+            <td valign="top" width="2*">PACS</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00080056</td>
+            <td valign="top" width="2*">InstanceAvailability</td>
+            <td valign="top" width="2*">ONLINE</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">0020000D</td>
+            <td valign="top" width="2*">StudyInstanceUID</td>
+            <td valign="top" width="2*">1.3.12.2.1107.5.1.4.54023.30000004093013443132800000021</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">0020000E</td>
+            <td valign="top" width="2*">SeriesInstanceUID</td>
+            <td valign="top" width="2*">1.3.12.2.1107.5.1.4.54023.30000004093016410718700003676</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00200013</td>
+            <td valign="top" width="2*">InstanceNumber</td>
+            <td valign="top" width="2*">188</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00880130</td>
+            <td valign="top" width="2*">StorageMediaFileSetID</td>
+            <td valign="top" width="2*"></td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00880140</td>
+            <td valign="top" width="2*">StorageMediaFileSetUID</td>
+            <td valign="top" width="2*"></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>重要事项！</h3>
+<p>请确保在 XML 请求消息中正确配置 <code>QueryRoot</code> 和 <code>QueryLevel</code>
+元素。请使用本主题中的示例作为患者根与查询级别的各种组合的参考。</p>
+
+<h2>C-MOVE 命令</h2>
+<p>C-MOVE 请求消息的设置方式与 C-FIND 请求消息完全相同。唯一的区别在于，XML 查询消息包含
+<code>MoveDestination</code> 元素。此移动目标是应用程序实体标题，对于此实体标题，DICOM
+实例应该改为使用 C-STORE 命令。必须为处理 C-FIND 和 C-MOVE 命令的 PACS
+预先配置移动目标的连接详细信息。</p>
+
+<p>以下示例显示指定了 <code>MoveDestination</code> 的 DICOM C-FIND 和 C-MOVE 请求消息：</p>
+
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;STUDY&lt;/QueryLevel&gt;
+    &lt;MoveDestination&gt;REMOTEAE&lt;/MoveDestination&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="PatientID"&gt;fWT0KTL&lt;/Attribute&gt;
+        &lt;Attribute Tag="AccessionNumber"&gt;1210490&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p><code>OperationPriority</code> 是 XML
+请求消息中的可选字段。是否使用此字段取决于供应商。此字段的值可以为
+<code>HIGH</code>、<code>NORMAL</code> 或 <code>LOW</code>。</p>
+
+<p>在 C-MOVE 命令完成后，将返回此模式的 SOAP 响应消息。因此，如果移动大型研究结果、系列或图像，那么响应可能需要花费一些时间。响应消息还包含一个名为
+<code>MoveResults</code> 的 XML 元素，用于描述 C-MOVE
+命令的总体成功情况或其他情况。下面显示了响应消息中的详细状态字段（<code>Completed</code>、<code>Failed</code> 和 <code>Warnings</code>）。</p>
+
+<pre>
+&lt;DICOM:Results xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;DICOM&gt;
+        &lt;Attribute Tag="00080005" VR="CS"&gt;ISO_IR 100&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080016" VR="UI"&gt;1.2.840.10008.5.1.4.1.1.2&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080018" VR="UI"&gt;1.3.12.2.1107.5.1.4.54023.30000004093016410718700003864&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080052" VR="CS"&gt;IMAGE&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080054" VR="AE"&gt;PACS&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080056" VR="CS"&gt;ONLINE&lt;/Attribute&gt;
+        &lt;Attribute Tag="0020000D" VR="UI"&gt;1.3.12.2.1107.5.1.4.54023.30000004093013443132800000021&lt;/Attribute&gt;
+        &lt;Attribute Tag="0020000E" VR="UI"&gt;1.3.12.2.1107.5.1.4.54023.30000004093016410718700003676&lt;/Attribute&gt;
+        &lt;Attribute Tag="00200013" VR="IS"&gt;188&lt;/Attribute&gt;
+        &lt;Attribute Tag="00880130" VR="SH"/&gt;
+        &lt;Attribute Tag="00880140" VR="UI"/&gt;
+        &lt;MoveResults&gt;
+            &lt;Completed&gt;1&lt;/Completed&gt;
+            &lt;Failed&gt;0&lt;/Failed&gt;
+            &lt;Warnings&gt;0&lt;/Warnings&gt;
+        &lt;/MoveResults&gt;
+    &lt;/DICOM&gt;
+&lt;/DICOM:Results&gt;
+</pre>
+
+<h2>患者根</h2> 
+
+<p>患者根支持四个级别的查询：患者、研究、系列和图像。</p>
+
+<h5>患者根/患者级别</h5>
+<p>患者级查询用于在 PACS 中查询患者。此查询具有少量可用于查询的属性，例如患者姓名、患者性别和出生日期。</p>
+
+<p>下表显示了可用于患者级查询的搜索标记：</p>
+<table summary="" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+    <thead align="left">
+    <tr>
+        <th class="firstcol" align="left" valign="top" width="*">名称</th>
+        <th valign="top" width="*">标记</th>
+        <th valign="top" width="*">类型</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientName</td>
+            <td valign="top" width="2*">00100010</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientID</td>
+            <td valign="top" width="2*">00100020</td>
+            <td valign="top" width="*">U</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">IssuerOfPatientID</td>
+            <td valign="top" width="2*">00100021</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientBirthDate</td>
+            <td valign="top" width="2*">00100030</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientBirthTime</td>
+            <td valign="top" width="2*">00100032</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientSex</td>
+            <td valign="top" width="2*">00100040</td>
+            <td valign="top" width="*">O</td>
+        </tr>        
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">OtherPatientIDs</td>
+            <td valign="top" width="2*">00101000</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">OtherPatientNames</td>
+            <td valign="top" width="2*">00101001</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">EthnicGroup</td>
+            <td valign="top" width="2*">00102160</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientComments</td>
+            <td valign="top" width="2*">00104000</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfPatientRelatedStudies</td>
+            <td valign="top" width="2*">00201200</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfPatientRelatedSeries</td>
+            <td valign="top" width="2*">00201202</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfPatientRelatedInstances</td>
+            <td valign="top" width="2*">00201204</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>以下示例显示使用 <code>PatientID</code> (<code>00100020</code>) 作为搜索条件的患者级查询：</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;PATIENT&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="00100020"&gt;fWT0KTL&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>以下示例显示使用 <code>PatientBirthDate</code> 作为搜索条件的患者级查询：</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;PATIENT&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="PatientBirthDate"&gt;19670227&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<h5>患者根/研究级别</h5> 
+
+<p>研究级查询用于在 PACS 中查询指定患者的研究结果。研究级查询必须包含患者标识以及零个或零个以上用于进一步优化搜索的可选标记，例如研究日期。</p>
+
+<p>下表显示了可用于研究级查询的搜索标记：</p>
+<table summary="" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+    <thead align="left">
+    <tr>
+        <th class="firstcol" align="left" valign="top" width="*">名称</th>
+        <th valign="top" width="*">标记</th>
+        <th valign="top" width="*">类型</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyDate</td>
+            <td valign="top" width="2*">00080020</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyTime</td>
+            <td valign="top" width="2*">00080030</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">AccessionNumber</td>
+            <td valign="top" width="2*">00080050</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyID</td>
+            <td valign="top" width="2*">00200010</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyInstanceUID</td>
+            <td valign="top" width="2*">0020000D</td>
+            <td valign="top" width="*">U</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">ModalitiesInStudy</td>
+            <td valign="top" width="2*">00080061</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SOPClassesInStudy</td>
+            <td valign="top" width="2*">00080062</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">ReferringPhysicianName</td>
+            <td valign="top" width="2*">00080090</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyDescription</td>
+            <td valign="top" width="2*">00081030</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NameOfPhysicianReadingStudy</td>
+            <td valign="top" width="2*">00081060</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">ReferringPhysicianName</td>
+            <td valign="top" width="2*">00080090</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">AdmittingDiagnosesDescription</td>
+            <td valign="top" width="2*">00081080</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientAge</td>
+            <td valign="top" width="2*">00101010</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientSize</td>
+            <td valign="top" width="2*">00101020</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientWeight</td>
+            <td valign="top" width="2*">00101030</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">Occupation</td>
+            <td valign="top" width="2*">00102180</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">AdditionalPatientHistory</td>
+            <td valign="top" width="2*">001021B0</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">OtherStudyNumbers</td>
+            <td valign="top" width="2*">00201070</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfStudyRelatedSeries</td>
+            <td valign="top" width="2*">00201206</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfStudyRelatedInstances</td>
+            <td valign="top" width="2*">00201208</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>以下示例显示了将 <code>PatientID</code> (<code>00100020</code>) 和 <code>AccessionNumber</code> (<code>00080050</code>) 用作搜索条件的研究级查询：</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;STUDY&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt;
+    &lt;Match&gt;
+        &lt;Attribute Tag="00100020"&gt;fWT0KTL&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080050"&gt;1210490&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>以下示例显示使用 <code>PatientID</code> 作为搜索条件的研究级查询：</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;STUDY&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt;
+    &lt;Match&gt;
+        &lt;Attribute Tag="PatientID"&gt;fWT0KTL&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<h5>患者根/系列级别</h5> 
+
+<p>系列级查询用于在 PACS 中查询特定研究内的系列。系列级查询必须包含研究 UID
+以及零个或零个以上用于进一步优化搜索的可选属性，例如医疗器械。</p>
+
+<p>下表显示了可用于系列级查询的搜索标记：</p>
+<table summary="" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+    <thead align="left">
+    <tr>
+        <th class="firstcol" align="left" valign="top" width="*">名称</th>
+        <th valign="top" width="*">标记</th>
+        <th valign="top" width="*">类型</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">Modality</td>
+            <td valign="top" width="2*">00080060</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SeriesNumber</td>
+            <td valign="top" width="2*">00200011</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SeriesInstanceUID</td>
+            <td valign="top" width="2*">0020000E</td>
+            <td valign="top" width="*">U</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfSeriesRelatedInstances</td>
+            <td valign="top" width="2*">0020,1209</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>以下示例显示使用 <code>StudyInstanceUID</code> (<code>0020000D</code>) 作为搜索条件的系列级查询：</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;SERIES&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt;
+    &lt;Match&gt;
+        &lt;Attribute Tag="0020000D"&gt;1.2.840.113745.101000.1008000.37796.6311.5221360&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>以下示例显示使用 <code>StudyInstanceUID</code> 和 <code>Modality</code> 作为搜索条件的系列级查询：</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;SERIES&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="StudyInstanceUID"&gt;1.2.840.113745.101000.1008000.37796.6311.5221360&lt;/Attribute&gt;
+        &lt;Attribute Tag="Modality"&gt;CT&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<h5>患者根/图像级别</h5> 
+
+<p>图像级查询用于查询系列中的特定图像。此级别不常用。图像级查询必须包含系列 UID。</p>
+
+<p>下表显示了可用于图像级查询的搜索标记：</p>
+<table summary="" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+    <thead align="left">
+    <tr>
+        <th class="firstcol" align="left" valign="top" width="*">名称</th>
+        <th valign="top" width="*">标记</th>
+        <th valign="top" width="*">类型</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">InstanceNumber</td>
+            <td valign="top" width="2*">00200013</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SOPInstanceUID</td>
+            <td valign="top" width="2*">00080018</td>
+            <td valign="top" width="*">U</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SOPClassUID</td>
+            <td valign="top" width="2*">00080016</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">RelatedGeneralSOPClassUID</td>
+            <td valign="top" width="2*">0008001A</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">ContainerIdentifier</td>
+            <td valign="top" width="2*">00400512</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>以下示例显示使用 <code>SeriesInstanceUID</code> (<code>0020000E</code>) 作为搜索条件的图像级查询：</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;IMAGE&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt;
+    &lt;Match&gt;
+        &lt;Attribute Tag="0020000E"&gt;1.3.12.2.1107.5.1.4.50146.4.0.2320790629191549&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>以下示例显示使用 <code>SeriesInstanceUID</code> 作为搜索条件的图像级查询：</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;IMAGE&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="SeriesInstanceUID"&gt;1.3.12.2.1107.5.1.4.50146.4.0.2320790629191549&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<h2>研究根</h2>
+<p>研究根与患者根非常相似，这种相似经常会引起混淆。研究根中没有患者级查询。第一个受支持的级别是研究级查询。研究级查询具有较多允许使用的属性。支持的搜索条件包括研究日期、研究时间以及患者的属性，例如患者姓名、患者标识和患者性别。因此，可以将此研究级查询视作患者根中研究级查询与患者级查询的合并。</p>
+
+<p>研究级查询非常有用，这是因为，在指定一些基本搜索条件（例如患者姓名和研究日期）的情况下，便可一次性查询有关患者的所有研究。患者根将此查询划分为两个单独的查询。</p>
+
+<p>在研究根和患者根中，系列级查询与图像级查询完全相同。</p>
+
+<h5>研究根/研究级别</h5> 
+
+<p>下表显示了可用于研究级查询的搜索标记：</p>
+<table summary="" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+    <thead align="left">
+    <tr>
+        <th class="firstcol" align="left" valign="top" width="*">名称</th>
+        <th valign="top" width="*">标记</th>
+        <th valign="top" width="*">类型</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyDate</td>
+            <td valign="top" width="2*">00080020</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyTime</td>
+            <td valign="top" width="2*">00080030</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">AccessionNumber</td>
+            <td valign="top" width="2*">00080050</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientName</td>
+            <td valign="top" width="2*">00100010</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientID</td>
+            <td valign="top" width="2*">00100020</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyID</td>
+            <td valign="top" width="2*">00200010</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyInstanceUID</td>
+            <td valign="top" width="2*">0020000D</td>
+            <td valign="top" width="*">U</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">ModalitiesInStudy</td>
+            <td valign="top" width="2*">00080061</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SOPClassesInStudy</td>
+            <td valign="top" width="2*">00080062</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">ReferringPhysicianName</td>
+            <td valign="top" width="2*">00080090</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyDescription</td>
+            <td valign="top" width="2*">00081030</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NameOfPhysicianReadingStudy</td>
+            <td valign="top" width="2*">00081060</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">AdmittingDiagnosesDescription</td>
+            <td valign="top" width="2*">00081080</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">IssuerOfPatientID</td>
+            <td valign="top" width="2*">00100021</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientBirthDate</td>
+            <td valign="top" width="2*">00100030</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientBirthTime</td>
+            <td valign="top" width="2*">00100032</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientSex</td>
+            <td valign="top" width="2*">00100040</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">OtherPatientIDs</td>
+            <td valign="top" width="2*">00101000</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">OtherPatientNames</td>
+            <td valign="top" width="2*">00101001</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientAge</td>
+            <td valign="top" width="2*">00101010</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientSize</td>
+            <td valign="top" width="2*">00101020</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientWeight</td>
+            <td valign="top" width="2*">0010,1030</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">EthnicGroup</td>
+            <td valign="top" width="2*">00102160</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">Occupation</td>
+            <td valign="top" width="2*">00102180</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">AdditionalPatientHistory</td>
+            <td valign="top" width="2*">001021B0</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientComments</td>
+            <td valign="top" width="2*">00104000</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">OtherStudyNumbers</td>
+            <td valign="top" width="2*">00201070</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfPatientRelatedStudies</td>
+            <td valign="top" width="2*">00201200</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfPatientRelatedSeries</td>
+            <td valign="top" width="2*">00201202</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfPatientRelatedInstances</td>
+            <td valign="top" width="2*">00201204</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfStudyRelatedSeries</td>
+            <td valign="top" width="2*">00201206</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfStudyRelatedInstances</td>
+            <td valign="top" width="2*">00201208</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>以下示例显示了将 <code>PatientID</code> (<code>00100020</code>) 和 <code>AccessionNumber</code> (<code>00080050</code>) 用作搜索条件的研究级查询：</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;STUDY&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;STUDY&lt;/QueryLevel&gt;
+    &lt;Match&gt;
+        &lt;Attribute Tag="00100010"&gt;FEROVIX&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080050"&gt;1210490&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>以下示例显示使用 <code>PatientID</code> 和 <code>AccessionNumber</code> 作为搜索条件的研究级查询：</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;STUDY&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;STUDY&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="PatientName"&gt;FEROVIX&lt;/Attribute&gt;
+        &lt;Attribute Tag="AccessionNumber"&gt;1210490&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<h5>研究根/系列级别</h5> 
+
+<p>系列级查询用于在 PACS 中查询特定研究内的系列。系列级查询必须包含研究 UID
+以及零个或零个以上用于进一步优化搜索的可选属性，例如医疗器械。此级别与患者根中的系列级别完全相同，只是
+XML 查询消息中的 <code>QueryRoot</code> 设置为 <code>STUDY</code>，而不是 <code>PATIENT</code>。</p>
+
+<p>下表显示了可用于系列级查询的搜索标记：</p>
+<table summary="" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+    <thead align="left">
+    <tr>
+        <th class="firstcol" align="left" valign="top" width="*">名称</th>
+        <th valign="top" width="*">标记</th>
+        <th valign="top" width="*">类型</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">Modality</td>
+            <td valign="top" width="2*">00080060</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SeriesNumber</td>
+            <td valign="top" width="2*">00200011</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SeriesInstanceUID</td>
+            <td valign="top" width="2*">0020000E</td>
+            <td valign="top" width="*">U</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfSeriesRelatedInstances</td>
+            <td valign="top" width="2*">0020,1209</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>以下示例显示使用 <code>StudyInstanceUID</code> (<code>0020000D</code>) 作为搜索条件的系列级查询：</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;STUDY&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;SERIES&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="0020000D"&gt;1.2.840.113745.101000.1008000.37796.6311.5221360&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>以下示例显示使用 <code>StudyInstanceUID</code> 和 <code>Modality</code> 作为搜索条件的系列级查询：</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;STUDY&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;SERIES&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="StudyInstanceUID"&gt;1.2.840.113745.101000.1008000.37796.6311.5221360&lt;/Attribute&gt;
+        &lt;Attribute Tag="Modality"&gt;CT&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<h5>研究根/图像级别</h5>
+
+<p>图像级查询用于查询系列中的特定图像。此级别不常用。图像级查询必须包含系列 UID。此级别与患者根中的图像级别完全相同，只是
+XML 查询消息中的 <code>QueryRoot</code> 设置为 <code>STUDY</code>，而不是 <code>PATIENT</code>。</p>
+
+<p>下表显示了可用于图像级查询的搜索标记：</p>
+<table summary="" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+    <thead align="left">
+    <tr>
+        <th class="firstcol" align="left" valign="top" width="*">名称</th>
+        <th valign="top" width="*">标记</th>
+        <th valign="top" width="*">类型</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">InstanceNumber</td>
+            <td valign="top" width="2*">00200013</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SOPInstanceUID</td>
+            <td valign="top" width="2*">00080018</td>
+            <td valign="top" width="*">U</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SOPClassUID</td>
+            <td valign="top" width="2*">00080016</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">RelatedGeneralSOPClassUID</td>
+            <td valign="top" width="2*">0008001A</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">ContainerIdentifier</td>
+            <td valign="top" width="2*">00400512</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>以下示例显示使用 <code>SeriesInstanceUID</code> (<code>0020000E</code>) 作为搜索条件的图像级查询：</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;STUDY&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;IMAGE&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="0020000E"&gt;1.3.12.2.1107.5.1.4.50146.4.0.2320790629191549&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>以下示例显示使用 <code>SeriesInstanceUID</code> 作为搜索条件的图像级查询：</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;STUDY&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;IMAGE&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="SeriesInstanceUID"&gt;1.3.12.2.1107.5.1.4.50146.4.0.2320790629191549&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>
+<a href="overview.htm#anchor1" title="返回">返回到“Healthcare：Web 服务到 DICOM”模式规范</a></p>
+</body>
+</html>
+
+

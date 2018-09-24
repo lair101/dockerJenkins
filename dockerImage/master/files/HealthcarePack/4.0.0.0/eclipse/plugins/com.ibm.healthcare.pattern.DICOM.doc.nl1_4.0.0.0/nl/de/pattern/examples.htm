@@ -1,0 +1,938 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2013, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>Beispielnachrichten für C-FIND- und C-MOVE-Anforderungen</title>
+</head>
+<body role="main">
+<h1 class="topictitle1">Beispielnachrichten für C-FIND- und C-MOVE-Anforderungen</h1> 
+<p>Für die Suchkriterien in Abfragenachrichten im Muster <span>
+Healthcare: Web-Service an DICOM</span> werden DICOM-Tags verwendet. Der DICOM-Standard definiert die Tagnamen, ihre Bedeutung und die gültigen Werte. In jedem Abfragestamm und auf jeder Abfrageebene ist ein Tag des Typs <b>U</b> (unique; eindeutig) definiert. Ein Einzelwert in einem solchen eindeutigen Tag kennzeichnet eindeutig jeweils eine Entität auf dieser Ebene, d. h., zwei Entitäten auf derselben Ebene können nicht denselben Wert in ihrem U-Tag haben. C-FIND-SCPs unterstützen das Vorhandensein und den Abgleich aller durch DICOM definierten eindeutigen Tags. Allen über C-FIND-SCPs verwalteten Entitäten muss ein bestimmter U-Tagwert mit einer Länge ungleich null zugewiesen sein.</p>
+
+<p>Jeder DICOM-Abfragestamm und jede DICOM-Abfrageebene verfügt über eine kleine Anzahl von Tags des Typs <b>R</b>  (required; erforderlich), die von jedem DICOM-Anbieter unterstützt werden müssen. Erforderliche Tags setzen voraus, dass ein C-FIND-SCP einen Abgleich auf Basis eines in einer C-FIND-Anforderung enthaltenen Werts unterstützen muss. Dabei können die erforderlichen Tags mehrerer Entitäten denselben Wert haben,  d. h., über den Wert eines erforderlichen Tags kann nicht notwendigerweise auf eine bestimmte Entität auf der Ebene des Schlüssels verwiesen werden. 
+C-FIND-SCPs unterstützen das Vorhandensein und den Abgleich aller in einem bestimmten Stamm und in einer bestimmten Ebene definierten erforderlichen Tags. Wenn ein C-FIND-SCP eine Entität verwaltet, deren Tagwert eine Länge von null hat, gilt der Wert als unbekannt und jeder Abgleich mit diesem Tag mit Nulllänge gilt als erfolgreicher Abgleich.</p>
+
+<p>Es gibt noch eine wesentlich größere Anzahl optionaler Tags (Tags des Typs <b>O</b>), die von DICOM-Anbietern unter Umständen unterstützt werden. Anbieter können weitere Tags hinzufügen, die in den Suchkriterien unterstützt werden. 
+Für optionale Tags in einer C-FIND-Anforderung sind drei unterschiedliche Verhaltensweisen möglich, die davon abhängen, ob vom C-FIND-SCP Vorhandensein und/oder Abgleich unterstützt werden.  
+Erstens: Wenn der C-FIND-SCP das Vorhandensein eines optionalen Tags nicht unterstützt, wird der Tag nicht in einer C-FIND-Antwort zurückgegeben. Zweitens: Wenn der SCP das Vorhandensein eines optionalen Tags unterstützt, nicht jedoch einen Abgleich auf Basis dieses Tags, wird er wie ein Tag des Typs 'R' (required) mit einer Länge von null gehandhabt, d. h., der angegebene Wert, der mit dem Tag abgeglichen werden soll, wird ignoriert, aber vom SCP kann in der Antwortnachricht ein Wert zurückgegeben werden. Drittens: Wenn der SCP Vorhandensein und Abgleich mit dem Tag unterstützt, wird der Tag wie ein Tag des Typs 'R' verarbeitet.</p>
+
+<p>DICOM stellt eine Vielzahl von Optionen für die Beschreibung von C-FIND-Suchkriterien bereit, insbesondere für Platzhalter, Zeiträume und den Abgleich mehrerer Werte in einer Liste.
+Weitere Informationen hierzu finden Sie im Dokument PS3.4 des DICOM-Standards. Der DICOMFindMove-Knoten unterstützt momentan keinen Sequenzabgleich. Eine XML-Abfragenachricht an den DICOMFindMove-Knoten kann zusätzliche Rückgabetags anfordern. 
+Diese Tags werden nicht als Suchkriterien in der C-FIND-Anforderung an den SCP verwendet. 
+Wenn der Rückgabetag vom SCP unterstützt wird, enthalten die Antwortnachrichten einen übereinstimmenden Wert für jeden Suchtag und einen Wert für jeden Rückgabetag.</p>
+ 
+<p>Bei dem folgenden Beispiel handelt es sich um eine XML-Abfragenachricht mit den beiden Suchtags <code>00100010</code> (<code>PatientName</code>) und <code>00080050</code>
+(<code>AccessionNumber</code>) sowie dem zusätzlichen Rückgabetag <code>00080054</code> (<code>RetrieveAETitle</code>):</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;STUDY&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;STUDY&lt;/QueryLevel&gt;
+    &lt;Match&gt;
+        &lt;Attribute Tag="00100010"&gt;FEROVIX&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080050"&gt;1210490&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+        &lt;Attribute Tag="00080054"/&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>In Abfragenachrichten können Suchkriterien über den Tagnamen (z. B. <code>PatientID</code>) oder den Tag (<code>00100020</code>) angegeben werden.
+Der Tagname ist in der Regel aussagekräftiger und weniger fehleranfällig als der Tag. Wie im Folgenden zu sehen, wird in Antwortnachrichten immer der DICOM-Tag verwendet.</p>
+
+<p>Bei dem folgenden Beispiel handelt es sich um eine DICOM-C-FIND-Ergebnisnachricht, aus der die SOAP-Antwortrahmenanweisung entfernt wurde:</p>
+<pre>
+&lt;DICOM:Results xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;DICOM&gt;
+        &lt;Attribute Tag="00080005" VR="CS"&gt;ISO_IR 100&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080016" VR="UI"&gt;1.2.840.10008.5.1.4.1.1.2&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080018" VR="UI"&gt;1.3.12.2.1107.5.1.4.54023.30000004093016410718700003864&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080052" VR="CS"&gt;IMAGE&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080054" VR="AE"&gt;PACS&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080056" VR="CS"&gt;ONLINE&lt;/Attribute&gt;
+        &lt;Attribute Tag="0020000D" VR="UI"&gt;1.3.12.2.1107.5.1.4.54023.30000004093013443132800000021&lt;/Attribute&gt;
+        &lt;Attribute Tag="0020000E" VR="UI"&gt;1.3.12.2.1107.5.1.4.54023.30000004093016410718700003676&lt;/Attribute&gt;
+        &lt;Attribute Tag="00200013" VR="IS"&gt;188&lt;/Attribute&gt;
+        &lt;Attribute Tag="00880130" VR="SH"/&gt;
+        &lt;Attribute Tag="00880140" VR="UI"/&gt;
+    &lt;/DICOM&gt;
+&lt;/DICOM:Results&gt;
+</pre>
+
+<p>In der folgenden Tabelle ist angegeben, was die einzelnen DICOM-Tags bedeuten:</p>
+<table summary="" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+    <thead align="left">
+    <tr>
+        <th class="firstcol" align="left" valign="top" width="*">Tag</th>
+        <th valign="top" width="*">Name</th>
+        <th valign="top" width="*">Wert</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00080005</td>
+            <td valign="top" width="2*">SpecificCharacterSet</td>
+            <td valign="top" width="2*">ISO_IR 100</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00080016</td>
+            <td valign="top" width="2*">SOPClassUID</td>
+            <td valign="top" width="2*">1.2.840.10008.5.1.4.1.1.2</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00080018</td>
+            <td valign="top" width="2*">SOPInstanceUID</td>
+            <td valign="top" width="2*">1.3.12.2.1107.5.1.4.54023.30000004093016410718700003864</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00080052</td>
+            <td valign="top" width="2*">QueryRetrieveLevel</td>
+            <td valign="top" width="2*">IMAGE</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00080054</td>
+            <td valign="top" width="2*">RetrieveAETitle</td>
+            <td valign="top" width="2*">PACS</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00080056</td>
+            <td valign="top" width="2*">InstanceAvailability</td>
+            <td valign="top" width="2*">ONLINE</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">0020000D</td>
+            <td valign="top" width="2*">StudyInstanceUID</td>
+            <td valign="top" width="2*">1.3.12.2.1107.5.1.4.54023.30000004093013443132800000021</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">0020000E</td>
+            <td valign="top" width="2*">SeriesInstanceUID</td>
+            <td valign="top" width="2*">1.3.12.2.1107.5.1.4.54023.30000004093016410718700003676</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00200013</td>
+            <td valign="top" width="2*">InstanceNumber</td>
+            <td valign="top" width="2*">188</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00880130</td>
+            <td valign="top" width="2*">StorageMediaFileSetID</td>
+            <td valign="top" width="2*"></td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">00880140</td>
+            <td valign="top" width="2*">StorageMediaFileSetUID</td>
+            <td valign="top" width="2*"></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Wichtig:</h3>
+<p>Stellen Sie sicher, dass die Elemente <code>QueryRoot</code> und <code>QueryLevel</code> in den XML-Anforderungsnachrichten korrekt konfiguriert sind. Die Beispiele in diesem Abschnitt zeigen die verschiedenen Kombinationen aus Patientenstamm und Abfrageebene.</p>
+
+<h2>C-MOVE-Befehle</h2>
+<p>C-MOVE-Anforderungsnachrichten werden auf dieselbe Weise wie C-FIND-Anforderungsnachrichten gebildet. Der einzige Unterschied ist, dass die XML-Abfragenachricht ein <code>MoveDestination</code>-Element enthält. Das Ziel für die Verschiebeoperation ist der Anwendungsinstanztitel, zu dem die DICOM-Instanzen mithilfe von C-STORE-Befehlen verschoben werden sollen. Im PACS, das die C-FIND- und C-MOVE-Befehle verarbeitet, müssen die Verbindungsdetails dieses Ziels vorab konfiguriert werden.</p>
+
+<p>Bei dem folgenden Beispiel handelt es sich um eine DICOM-C-FIND- und DICOM-C-MOVE-Anforderungsnachricht, für die ein Ziel für den Verschiebevorgang (<code>MoveDestination</code>) angegeben ist:</p>
+
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;STUDY&lt;/QueryLevel&gt;
+    &lt;MoveDestination&gt;REMOTEAE&lt;/MoveDestination&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="PatientID"&gt;fWT0KTL&lt;/Attribute&gt;
+        &lt;Attribute Tag="AccessionNumber"&gt;1210490&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p><code>OperationPriority</code> ist ein optionales Feld in der XML-Anforderungsnachricht.
+Es hängt vom Anbieter ab, ob dieses Feld berücksichtigt wird. Zulässige Werte für das Feld sind <code>HIGH</code>, <code>NORMAL</code> oder <code>LOW</code>.</p>
+
+<p>SOAP-Antwortnachrichten werden nach der Ausführung des C-MOVE-Befehls aus dem Muster zurückgegeben. Beim Verschieben umfangreicher Untersuchungen, Serien oder Bilder kann es daher einige Zeit bis zum Eingang einer Antwort dauern. Die Antwortnachrichten enthalten außerdem das XML-Element <code>MoveResults</code>, das angibt, ob der C-MOVE-Befehl erfolgreich war oder fehlgeschlagen ist. Im Folgenden sind die Felder mit ausführlicheren Statusangaben  aufgeführt (<code>Completed</code>, <code>Failed</code> und <code>Warnings</code>).</p>
+
+<pre>
+&lt;DICOM:Results xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;DICOM&gt;
+        &lt;Attribute Tag="00080005" VR="CS"&gt;ISO_IR 100&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080016" VR="UI"&gt;1.2.840.10008.5.1.4.1.1.2&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080018" VR="UI"&gt;1.3.12.2.1107.5.1.4.54023.30000004093016410718700003864&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080052" VR="CS"&gt;IMAGE&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080054" VR="AE"&gt;PACS&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080056" VR="CS"&gt;ONLINE&lt;/Attribute&gt;
+        &lt;Attribute Tag="0020000D" VR="UI"&gt;1.3.12.2.1107.5.1.4.54023.30000004093013443132800000021&lt;/Attribute&gt;
+        &lt;Attribute Tag="0020000E" VR="UI"&gt;1.3.12.2.1107.5.1.4.54023.30000004093016410718700003676&lt;/Attribute&gt;
+        &lt;Attribute Tag="00200013" VR="IS"&gt;188&lt;/Attribute&gt;
+        &lt;Attribute Tag="00880130" VR="SH"/&gt;
+        &lt;Attribute Tag="00880140" VR="UI"/&gt;
+        &lt;MoveResults&gt;
+            &lt;Completed&gt;1&lt;/Completed&gt;
+            &lt;Failed&gt;0&lt;/Failed&gt;
+            &lt;Warnings&gt;0&lt;/Warnings&gt;
+        &lt;/MoveResults&gt;
+    &lt;/DICOM&gt;
+&lt;/DICOM:Results&gt;
+</pre>
+
+<h2>Patientenstamm</h2> 
+
+<p>Für den Patientenstamm sind vier Abfrageebenen möglich: Patient, Untersuchung, Serie und Bild.</p>
+
+<h5>Patientenstamm - Patientenebene</h5>
+<p>Mit der Abfrage auf Patientenebene werden Daten zu Patienten aus einem PACS abgefragt. Es stehen mehrere Attribute zur Verfügung, die in der Abfrage verwendet werden können, wie Name, Geschlecht und Geburtsdatum des Patienten.</p>
+
+<p>In der folgenden Tabelle sind die Suchtags aufgeführt, die für eine Abfrage auf Patientenebene verfügbar sind:</p>
+<table summary="" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+    <thead align="left">
+    <tr>
+        <th class="firstcol" align="left" valign="top" width="*">Name</th>
+        <th valign="top" width="*">Tag</th>
+        <th valign="top" width="*">Typ</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientName</td>
+            <td valign="top" width="2*">00100010</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientID</td>
+            <td valign="top" width="2*">00100020</td>
+            <td valign="top" width="*">U</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">IssuerOfPatientID</td>
+            <td valign="top" width="2*">00100021</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientBirthDate</td>
+            <td valign="top" width="2*">00100030</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientBirthTime</td>
+            <td valign="top" width="2*">00100032</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientSex</td>
+            <td valign="top" width="2*">00100040</td>
+            <td valign="top" width="*">O</td>
+        </tr>        
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">OtherPatientIDs</td>
+            <td valign="top" width="2*">00101000</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">OtherPatientNames</td>
+            <td valign="top" width="2*">00101001</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">EthnicGroup</td>
+            <td valign="top" width="2*">00102160</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientComments</td>
+            <td valign="top" width="2*">00104000</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfPatientRelatedStudies</td>
+            <td valign="top" width="2*">00201200</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfPatientRelatedSeries</td>
+            <td valign="top" width="2*">00201202</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfPatientRelatedInstances</td>
+            <td valign="top" width="2*">00201204</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Bei dem folgenden Beispiel handelt es sich um eine Abfrage auf Patientenebene, in der das Attribut für die Patienten-ID <code>PatientID</code> (<code>00100020</code>) als Suchkriterium verwendet wird:</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;PATIENT&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="00100020"&gt;fWT0KTL&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>Bei dem folgenden Beispiel handelt es sich um eine Abfrage auf Patientenebene, in der das Attribut für das Geburtsdatum <code>PatientBirthDate</code> als Suchkriterium verwendet wird:</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;PATIENT&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="PatientBirthDate"&gt;19670227&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<h5>Patientenstamm - Untersuchungsebene</h5> 
+
+<p>Mit der Abfrage auf Untersuchungsebene werden Angaben zu den Untersuchungen für einen bestimmten Patienten aus einem PACS abgefragt. 
+Die Abfrage auf Untersuchungsebene muss die Patienten-ID enthalten; außerdem kann sie null oder mehrere optionale Tags  wie beispielsweise das Untersuchungsdatum enthalten, um die Suche weiter einzugrenzen.</p>
+
+<p>Die folgende Tabelle enthält die für eine Abfrage auf Untersuchungsebene verfügbaren Suchtags:</p>
+<table summary="" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+    <thead align="left">
+    <tr>
+        <th class="firstcol" align="left" valign="top" width="*">Name</th>
+        <th valign="top" width="*">Tag</th>
+        <th valign="top" width="*">Typ</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyDate</td>
+            <td valign="top" width="2*">00080020</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyTime</td>
+            <td valign="top" width="2*">00080030</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">AccessionNumber</td>
+            <td valign="top" width="2*">00080050</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyID</td>
+            <td valign="top" width="2*">00200010</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyInstanceUID</td>
+            <td valign="top" width="2*">0020000D</td>
+            <td valign="top" width="*">U</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">ModalitiesInStudy</td>
+            <td valign="top" width="2*">00080061</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SOPClassesInStudy</td>
+            <td valign="top" width="2*">00080062</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">ReferringPhysicianName</td>
+            <td valign="top" width="2*">00080090</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyDescription</td>
+            <td valign="top" width="2*">00081030</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NameOfPhysicianReadingStudy</td>
+            <td valign="top" width="2*">00081060</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">ReferringPhysicianName</td>
+            <td valign="top" width="2*">00080090</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">AdmittingDiagnosesDescription</td>
+            <td valign="top" width="2*">00081080</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientAge</td>
+            <td valign="top" width="2*">00101010</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientSize</td>
+            <td valign="top" width="2*">00101020</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientWeight</td>
+            <td valign="top" width="2*">00101030</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">Occupation</td>
+            <td valign="top" width="2*">00102180</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">AdditionalPatientHistory</td>
+            <td valign="top" width="2*">001021B0</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">OtherStudyNumbers</td>
+            <td valign="top" width="2*">00201070</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfStudyRelatedSeries</td>
+            <td valign="top" width="2*">00201206</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfStudyRelatedInstances</td>
+            <td valign="top" width="2*">00201208</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Bei dem folgenden Beispiel handelt es sich um eine Abfrage auf Untersuchungsebene, in der das Attribut für die Patienten-ID <code>PatientID</code> (<code>00100020</code>) und das Attribut für die Vorgangsnummer <code>AccessionNumber</code> (<code>00080050</code>) als Suchkriterien verwendet werden:</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;STUDY&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="00100020"&gt;fWT0KTL&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080050"&gt;1210490&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>Bei dem folgenden Beispiel handelt es sich um eine Abfrage auf Untersuchungsebene, in der das Attribut für die Patienten-ID <code>PatientID</code> als Suchkriterium verwendet wird:</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;STUDY&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="PatientID"&gt;fWT0KTL&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<h5>Patientenstamm - Serienebene</h5> 
+
+<p>Mit der Abfrage auf Serienebene werden Serien im Rahmen einer bestimmten Untersuchung aus einem PACS abgefragt. Die Abfrage auf Serienebene muss die Serien-UID enthalten; außerdem kann sie null oder mehrere optionale Attribute wie beispielsweise die Modalität enthalten, um die Suche weiter einzugrenzen.</p>
+
+<p>In der folgenden Tabelle sind die Suchtags aufgeführt, die für eine Abfrage auf Serienebene verfügbar sind:</p>
+<table summary="" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+    <thead align="left">
+    <tr>
+        <th class="firstcol" align="left" valign="top" width="*">Name</th>
+        <th valign="top" width="*">Tag</th>
+        <th valign="top" width="*">Typ</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">Modality</td>
+            <td valign="top" width="2*">00080060</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SeriesNumber</td>
+            <td valign="top" width="2*">00200011</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SeriesInstanceUID</td>
+            <td valign="top" width="2*">0020000E</td>
+            <td valign="top" width="*">U</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfSeriesRelatedInstances</td>
+            <td valign="top" width="2*">0020,1209</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Bei dem folgenden Beispiel handelt es sich um eine Abfrage auf Serienebene, in der das Attribut für die UID einer Untersuchungsinstanz <code>StudyInstanceUID</code> (<code>0020000D</code>) als Suchkriterium verwendet wird:</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;SERIES&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="0020000D"&gt;1.2.840.113745.101000.1008000.37796.6311.5221360&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>Bei dem folgenden Beispiel handelt es sich um eine Abfrage auf Serienebene, in der das Attribut für die UID der Untersuchungsinstanz <code>StudyInstanceUID</code> und das Modalitätsattribut <code>Modality</code> als Suchkriterien verwendet werden:</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;SERIES&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="StudyInstanceUID"&gt;1.2.840.113745.101000.1008000.37796.6311.5221360&lt;/Attribute&gt;
+        &lt;Attribute Tag="Modality"&gt;CT&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<h5>Patientenstamm - Bildebene</h5> 
+
+<p>Mit der Abfrage auf Bildebene werden bestimmte Bilder in einer Serie abgefragt. Diese Abfrage wird nur selten verwendet. Eine Abfrage auf Bildebene muss die Serien-UID enthalten.</p>
+
+<p>In der folgenden Tabelle sind die Suchtags aufgeführt, die für eine Abfrage auf Bildebene verfügbar sind:</p>
+<table summary="" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+    <thead align="left">
+    <tr>
+        <th class="firstcol" align="left" valign="top" width="*">Name</th>
+        <th valign="top" width="*">Tag</th>
+        <th valign="top" width="*">Typ</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">InstanceNumber</td>
+            <td valign="top" width="2*">00200013</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SOPInstanceUID</td>
+            <td valign="top" width="2*">00080018</td>
+            <td valign="top" width="*">U</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SOPClassUID</td>
+            <td valign="top" width="2*">00080016</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">RelatedGeneralSOPClassUID</td>
+            <td valign="top" width="2*">0008001A</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">ContainerIdentifier</td>
+            <td valign="top" width="2*">00400512</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Bei dem folgenden Beispiel handelt es sich um eine Abfrage auf Bildebene, in der das Attribut für die UID der Serieninstanz <code>SeriesInstanceUID</code> (<code>0020000E</code>) als Suchkriterium verwendet wird:</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;IMAGE&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="0020000E"&gt;1.3.12.2.1107.5.1.4.50146.4.0.2320790629191549&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>Bei dem folgenden Beispiel handelt es sich um eine Abfrage auf Bildebene, in der das Attribut für die UID der Serieninstanz <code>SeriesInstanceUID</code> als Suchkriterium verwendet wird:</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;PATIENT&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;IMAGE&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="SeriesInstanceUID"&gt;1.3.12.2.1107.5.1.4.50146.4.0.2320790629191549&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<h2>Untersuchungsstamm</h2>
+<p>Der Untersuchungsstamm hat Ähnlichkeit mit dem Patientenstamm, was häufig Verwirrung stiftet. 
+Innerhalb des Untersuchungsstamms gibt es keine Abfragen auf Patientenebene. Die Abfrage auf Untersuchungsebene ist die erste Ebene, die unterstützt wird. Für die Abfrage auf Untersuchungsebene steht eine größere Anzahl von Attributen zur Verfügung, die verwendet werden können. 
+Unter anderem werden Datum und Uhrzeit der Untersuchung sowie Patientenattribute wie Name, Patienten-ID und Geschlecht des Patienten unterstützt. Die Abfrage auf Untersuchungsebene kann daher auch als eine kombinierte Abfrage auf Untersuchungs- und Patientenebene im Kontext des Patientenstamms gesehen werden.</p>
+
+<p>Die Abfrage auf Untersuchungsebene ist sehr hilfreich, da Sie mit einigen grundlegenden Suchkriterien wie Name des Patienten und Datum der Untersuchung alle Untersuchungen eines Patienten abfragen können. Im Patientenstamm sind hierzu zwei verschiedene Abfragen erforderlich. </p>
+
+<p>Die Abfragen auf Serien- und Bildebene sind beim Untersuchungsstamm und Patientenstamm identisch.</p>
+
+<h5>Untersuchungsstamm - Untersuchungsebene</h5> 
+
+<p>Die folgende Tabelle enthält die für eine Abfrage auf Untersuchungsebene verfügbaren Suchtags:</p>
+<table summary="" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+    <thead align="left">
+    <tr>
+        <th class="firstcol" align="left" valign="top" width="*">Name</th>
+        <th valign="top" width="*">Tag</th>
+        <th valign="top" width="*">Typ</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyDate</td>
+            <td valign="top" width="2*">00080020</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyTime</td>
+            <td valign="top" width="2*">00080030</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">AccessionNumber</td>
+            <td valign="top" width="2*">00080050</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientName</td>
+            <td valign="top" width="2*">00100010</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientID</td>
+            <td valign="top" width="2*">00100020</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyID</td>
+            <td valign="top" width="2*">00200010</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyInstanceUID</td>
+            <td valign="top" width="2*">0020000D</td>
+            <td valign="top" width="*">U</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">ModalitiesInStudy</td>
+            <td valign="top" width="2*">00080061</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SOPClassesInStudy</td>
+            <td valign="top" width="2*">00080062</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">ReferringPhysicianName</td>
+            <td valign="top" width="2*">00080090</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">StudyDescription</td>
+            <td valign="top" width="2*">00081030</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NameOfPhysicianReadingStudy</td>
+            <td valign="top" width="2*">00081060</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">AdmittingDiagnosesDescription</td>
+            <td valign="top" width="2*">00081080</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">IssuerOfPatientID</td>
+            <td valign="top" width="2*">00100021</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientBirthDate</td>
+            <td valign="top" width="2*">00100030</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientBirthTime</td>
+            <td valign="top" width="2*">00100032</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientSex</td>
+            <td valign="top" width="2*">00100040</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">OtherPatientIDs</td>
+            <td valign="top" width="2*">00101000</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">OtherPatientNames</td>
+            <td valign="top" width="2*">00101001</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientAge</td>
+            <td valign="top" width="2*">00101010</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientSize</td>
+            <td valign="top" width="2*">00101020</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientWeight</td>
+            <td valign="top" width="2*">0010,1030</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">EthnicGroup</td>
+            <td valign="top" width="2*">00102160</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">Occupation</td>
+            <td valign="top" width="2*">00102180</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">AdditionalPatientHistory</td>
+            <td valign="top" width="2*">001021B0</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">PatientComments</td>
+            <td valign="top" width="2*">00104000</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">OtherStudyNumbers</td>
+            <td valign="top" width="2*">00201070</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfPatientRelatedStudies</td>
+            <td valign="top" width="2*">00201200</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfPatientRelatedSeries</td>
+            <td valign="top" width="2*">00201202</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfPatientRelatedInstances</td>
+            <td valign="top" width="2*">00201204</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfStudyRelatedSeries</td>
+            <td valign="top" width="2*">00201206</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfStudyRelatedInstances</td>
+            <td valign="top" width="2*">00201208</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Bei dem folgenden Beispiel handelt es sich um eine Abfrage auf Untersuchungsebene, in der das Attribut für die Patienten-ID <code>PatientID</code> (<code>00100020</code>) und das Attribut für die Vorgangsnummer <code>AccessionNumber</code> (<code>00080050</code>) als Suchkriterien verwendet werden:</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;STUDY&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;STUDY&lt;/QueryLevel&gt;
+    &lt;Match&gt;
+        &lt;Attribute Tag="00100010"&gt;FEROVIX&lt;/Attribute&gt;
+        &lt;Attribute Tag="00080050"&gt;1210490&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>Bei dem folgenden Beispiel handelt es sich um eine Abfrage auf Untersuchungsebene, in der das Attribut für die Patienten-ID <code>PatientID</code> und das Attribut für die Vorgangsnummer <code>AccessionNumber</code> als Suchkriterien verwendet werden:</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;STUDY&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;STUDY&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="PatientName"&gt;FEROVIX&lt;/Attribute&gt;
+        &lt;Attribute Tag="AccessionNumber"&gt;1210490&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<h5>Untersuchungsstamm - Serienebene</h5> 
+
+<p>Mit der Abfrage auf Serienebene werden Serien im Rahmen einer bestimmten Untersuchung aus einem PACS abgefragt. Die Abfrage auf Serienebene muss die Serien-UID enthalten; außerdem kann sie null oder mehrere optionale Attribute wie beispielsweise die Modalität enthalten, um die Suche weiter einzugrenzen. Diese Ebene entspricht mehr oder weniger der Serienebene im Patientenstamm, nur dass in der XML-Abfragenachricht das Attribut <code>QueryRoot</code> auf <code>STUDY</code> und nicht auf <code>PATIENT</code> gesetzt ist.</p>
+
+<p>In der folgenden Tabelle sind die Suchtags aufgeführt, die für eine Abfrage auf Serienebene verfügbar sind:</p>
+<table summary="" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+    <thead align="left">
+    <tr>
+        <th class="firstcol" align="left" valign="top" width="*">Name</th>
+        <th valign="top" width="*">Tag</th>
+        <th valign="top" width="*">Typ</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">Modality</td>
+            <td valign="top" width="2*">00080060</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SeriesNumber</td>
+            <td valign="top" width="2*">00200011</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SeriesInstanceUID</td>
+            <td valign="top" width="2*">0020000E</td>
+            <td valign="top" width="*">U</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">NumberOfSeriesRelatedInstances</td>
+            <td valign="top" width="2*">0020,1209</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Bei dem folgenden Beispiel handelt es sich um eine Abfrage auf Serienebene, in der das Attribut für die UID einer Untersuchungsinstanz <code>StudyInstanceUID</code> (<code>0020000D</code>) als Suchkriterium verwendet wird:</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;STUDY&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;SERIES&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="0020000D"&gt;1.2.840.113745.101000.1008000.37796.6311.5221360&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>Bei dem folgenden Beispiel handelt es sich um eine Abfrage auf Serienebene, in der das Attribut für die UID der Untersuchungsinstanz <code>StudyInstanceUID</code> und das Modalitätsattribut <code>Modality</code> als Suchkriterien verwendet werden:</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;STUDY&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;SERIES&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="StudyInstanceUID"&gt;1.2.840.113745.101000.1008000.37796.6311.5221360&lt;/Attribute&gt;
+        &lt;Attribute Tag="Modality"&gt;CT&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<h5>Untersuchungsstamm - Bildebene</h5>
+
+<p>Mit der Abfrage auf Bildebene wird eine Abfrage bestimmter Bilder in einer Serie durchgeführt. Diese Abfrage wird nur selten verwendet. Eine Abfrage auf Bildebene muss die Serien-UID enthalten. Diese Ebene entspricht mehr oder weniger der Bildebene im Patientenstamm, nur dass in der XML-Abfragenachricht das Attribut <code>QueryRoot</code> auf <code>STUDY</code> und nicht auf <code>PATIENT</code> gesetzt ist.</p>
+
+<p>In der folgenden Tabelle sind die Suchtags aufgeführt, die für eine Abfrage auf Bildebene verfügbar sind:</p>
+<table summary="" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+    <thead align="left">
+    <tr>
+        <th class="firstcol" align="left" valign="top" width="*">Name</th>
+        <th valign="top" width="*">Tag</th>
+        <th valign="top" width="*">Typ</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">InstanceNumber</td>
+            <td valign="top" width="2*">00200013</td>
+            <td valign="top" width="*">R</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SOPInstanceUID</td>
+            <td valign="top" width="2*">00080018</td>
+            <td valign="top" width="*">U</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">SOPClassUID</td>
+            <td valign="top" width="2*">00080016</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">RelatedGeneralSOPClassUID</td>
+            <td valign="top" width="2*">0008001A</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="*" class="firstcol">ContainerIdentifier</td>
+            <td valign="top" width="2*">00400512</td>
+            <td valign="top" width="*">O</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Bei dem folgenden Beispiel handelt es sich um eine Abfrage auf Bildebene, in der das Attribut für die UID der Serieninstanz <code>SeriesInstanceUID</code> (<code>0020000E</code>) als Suchkriterium verwendet wird:</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;STUDY&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;IMAGE&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="0020000E"&gt;1.3.12.2.1107.5.1.4.50146.4.0.2320790629191549&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>Bei dem folgenden Beispiel handelt es sich um eine Abfrage auf Bildebene, in der das Attribut für die UID der Serieninstanz <code>SeriesInstanceUID</code> als Suchkriterium verwendet wird:</p>
+<pre>
+&lt;DICOM:FindMove xmlns:DICOM="http://com.ibm.healthcare/DICOM"&gt;
+    &lt;QueryRoot&gt;STUDY&lt;/QueryRoot&gt;
+    &lt;QueryLevel&gt;IMAGE&lt;/QueryLevel&gt;
+    &lt;OperationPriority&gt;NORMAL&lt;/OperationPriority&gt; 
+    &lt;Match&gt;
+        &lt;Attribute Tag="SeriesInstanceUID"&gt;1.3.12.2.1107.5.1.4.50146.4.0.2320790629191549&lt;/Attribute&gt;
+    &lt;/Match&gt;
+    &lt;Return&gt;
+    &lt;/Return&gt;
+&lt;/DICOM:FindMove&gt;
+</pre>
+
+<p>
+<a href="overview.htm#anchor1" title="Zurück">Zurück zur Spezifikation des Musters 'Healthcare: Web-Service an DICOM'</a>
+</p>
+</body>
+</html>
+
+

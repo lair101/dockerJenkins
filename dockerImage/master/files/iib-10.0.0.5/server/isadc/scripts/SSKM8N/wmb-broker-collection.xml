@@ -1,0 +1,1361 @@
+<project name="wmb-broker" default="autopdmain">
+
+	
+	<!-- need to set the classpath to include the latest plugin -->
+
+	<dirname property="wmb.broker.targets.basedir" file="${ant.file.wmb-broker}" />
+	<dirname property="wmb.broker.targets.parentdir" file="${wmb.broker.targets.basedir}" />
+	<dirname property="wmb.broker.targets.bundle.basedir" file="${wmb.broker.targets.parentdir}" />
+	
+	<taskdef file="${autopdrootdir}/properties/autopdtaskdef.properties" loaderref="ISA"  />
+	<autopdimport file="${wmb.broker.targets.bundle.basedir}/scripts/SSKM8N/wmb-sharedtargets.xml" />
+	
+    <property name="autopdProblem" value="WMB_Broker_Problem" />
+	<property name="taxonomy" value="SSKM8N" />
+	<property name="autopdProblem_nlsbundle" value="properties/SSKM8N/autopd" />
+
+	<property name="exec.timeout.value" value="120000" />
+	
+	<target name="autopdmain" description="Main start"
+		depends="load_sharedelements_tasks,
+				set_problem_type_with_nls_bundle,
+				setup_autopd_v2, 
+				validate_os, 
+		
+				determine_os_properties, 
+				determine_install_root,
+				initialize_wmb_environment,
+				collect_required_files,collect_event_viewer_logs,collect_failure_logs,
+				collect_odbcini_files,
+			    collect_fixinstaller_files,
+				collect_broker_files,collect_stdout_stderr_files,
+				run_cisa_scan,
+				ftp_to_ecurep" > 
+		
+				
+		<echo message="" />
+	</target>
+	
+	<target name="collect_broker_files" >
+
+		<autopd_unset_property name="DFE.name" />
+		<autopdproperty name="DFE.name" value="1"/> 
+		<autopd_unset_property name="exitloop" />
+		<autopdproperty name="exitloop" value="true"/> 
+		<autopdwhile property="exitloop" > 
+			<!-- Ask for broker name --> 
+			<inputdialogtask>
+				<fieldtask name="prompt" label="Input_Required"
+					type="prompt" bundle="properties/SSKM8N/autopd" />
+				<fieldtask name="broker.name"
+					bundle="properties/SSKM8N/autopd" type="plaintext"
+					label="Input_Broker_Name" defaultValue="" initialValueSource="persisted" />
+			</inputdialogtask>
+		
+			<delete dir="${autopdtmp}/autopd/broker" quiet="true" failonerror="false" /> 
+			<mkdir dir="${autopdtmp}/autopd/broker"/>
+			<!-- execute listBroker script to set the variables -->
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/listBroker.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/listBroker-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+		
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/listBroker.sh"
+				tofile="${autopdtmp}/autopd/execution-scripts/listBroker-filled.sh"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+		
+			<chmod file="${autopdtmp}/autopd/execution-scripts/listBroker-filled.sh" perm="766"/>
+			
+			<exec executable="${autopdtmp}/autopd/execution-scripts/listBroker-filled.bat"
+			      timeout="${exec.timeout.value}"
+			      dir="${autopdtmp}/autopd/broker"
+			      output="${autopd.echolog.instance}"
+			      append="true"
+			      os="${os.windows}">
+				<arg line="" />
+			</exec>
+		
+			<exec executable="${autopdtmp}/autopd/execution-scripts/listBroker-filled.sh"
+			      timeout="${exec.timeout.value}"
+			      dir="${autopdtmp}/autopd/broker"
+			      output="${autopd.echolog.instance}"
+			      append="true"
+				  os="${os.unixkind}">
+				<arg line="" />
+			</exec>	
+		
+			<!-- Ensure that Broker exists - Runs mqsiservice (broker} to determine there is no BIP8013E in the output --> 
+			<property name="mqsiListBrokerFileName" value="${autopdtmp}/autopd/broker/mqsiListBroker.txt" /> 
+			<autopd_unset_property name="is.bip.exists" />
+			<autopd_unset_property name="bips.exists.true" />
+			<loadfile property="is.bip.exists" srcfile="${mqsiListBrokerFileName}">
+				<filterchain>
+					<linecontains> 
+						<contains value="BIP8013E" /> 
+					</linecontains>
+				</filterchain>
+			</loadfile> 
+			<condition property="bips.exists.true" > 
+				<isset property="is.bip.exists" /> 
+			</condition> 
+			<autopd_unset_property name="is.broker.stopped" />
+			<autopd_unset_property name="broker.stopped.true" />
+			<loadfile property="is.broker.stopped" srcfile="${mqsiListBrokerFileName}">
+				<filterchain>
+					<linecontains> 
+						<contains value="BIP1054E" /> 
+					</linecontains>
+				</filterchain>
+			</loadfile> 
+			
+			<condition property="broker.stopped.true" > 
+				<isset property="is.broker.stopped" /> 
+			</condition> 
+			
+ 	    	<if isTrue="${bips.exists.true}" > 
+				<!-- Not a valid Broker - prompt again -->
+				<autopdproperty name="exitloop" value="true" /> 
+				<wsnlsecho key="Broker_Not_Valid_Enter_Again" bundle="properties/SSKM8N/autopd" console="true" /> 
+				<wsnlsecho message=" " console="true" /> 
+			</if> 
+			
+			<if isNotTrue="${bips.exists.true}" > 
+				<!-- Broker exists - Exit now --> 
+				<autopdproperty name="exitloop" value="false"/> 
+				<wsnlsecho message=" " console="true" /> 
+			</if> 
+		</autopdwhile> 
+		<if isTrue="${broker.stopped.true}" >
+				<!-- Execution Group checking is not needed as Broker is stopped --> 
+				<wsnlsecho key="Broker_Down_No_EGSpecific_Collection" bundle="properties/SSKM8N/autopd" console="true" /> 
+				<wsnlsecho message=" " console="true" /> 
+				<autopdproperty name="DFE.name" value="0" /> 
+		</if>
+		
+		<!-- Ask for execution group name only if the  Broker is running --> 
+		<if isNotTrue="${broker.stopped.true}" >
+			<autopd_unset_property name="exitloop" />
+			<autopdproperty name="exitloop" value="true"/> 
+			<autopdwhile property="exitloop" > 
+				<inputdialogtask>
+					<fieldtask name="prompt" label="Input_Required"
+						type="prompt" bundle="properties/SSKM8N/autopd" />
+					<fieldtask name="executiongroup.name"
+						bundle="properties/SSKM8N/autopd" type="plaintext"
+						label="Input_ExecutionGroup_Name" defaultValue="" initialValueSource="persisted" />
+				</inputdialogtask>
+				
+				<condition property="no.dfe.collection"> 
+					<equals arg1="${executiongroup.name}" arg2="0"/> 
+				</condition> 
+
+				<condition property="eg.collection.not.needed" > 
+					<isset property="no.dfe.collection" /> 
+				</condition> 
+				
+				<if isNotTrue="${eg.collection.not.needed}" >
+				
+					<delete dir="${autopdtmp}/autopd/eg" quiet="true" failonerror="false" /> 
+					<mkdir dir="${autopdtmp}/autopd/eg"/>
+				
+					<!-- run the reportEGproperties.sh script to set the variables -->
+					<!-- It is a very simple script, not a much of overhead -->
+					<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/reportEGproperties.bat"
+					tofile="${autopdtmp}/autopd/execution-scripts/reportEGproperties-filled.bat"
+					overwrite="true">
+					<filterset>
+						<filter token="wmb.root" value="${wmb.root}" />
+						<filter token="broker" value="${broker.name}" />
+						<filter token="executiongroup" value="${executiongroup.name}" />
+					</filterset>
+					</copy>
+			
+					<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/reportEGproperties.sh"
+						tofile="${autopdtmp}/autopd/execution-scripts/reportEGproperties-filled.sh"
+						overwrite="true">
+						<filterset>
+							<filter token="wmb.root" value="${wmb.root}" />
+							<filter token="broker" value="${broker.name}" />
+							<filter token="executiongroup" value="${executiongroup.name}" />
+						</filterset>
+					</copy>
+			
+					<chmod file="${autopdtmp}/autopd/execution-scripts/reportEGproperties-filled.sh" perm="766"/>
+				
+					<exec executable="${autopdtmp}/autopd/execution-scripts/reportEGproperties-filled.bat"
+						  timeout="${exec.timeout.value}"
+						  dir="${autopdtmp}/autopd/eg"
+						  output="${autopd.echolog.instance}"
+						  append="true"
+						  os="${os.windows}">
+						<arg line="" />
+					</exec>
+			
+					<exec executable="${autopdtmp}/autopd/execution-scripts/reportEGproperties-filled.sh"
+						  timeout="${exec.timeout.value}"
+						  dir="${autopdtmp}/autopd/eg"
+						  output="${autopd.echolog.instance}"
+						  append="true"
+						  os="${os.unixkind}">
+						<arg line="" />
+					</exec>	
+			
+					<!-- Ensure that Execution group exists --> 
+					<property name="mqsiEGpropertiesFileName" value="${autopdtmp}/autopd/eg/mqsiEGproperties.txt" /> 
+						<autopd_unset_property name="eg.does.not.exist" />
+						<autopd_unset_property name="eg.not.available" />
+						<loadfile property="eg.does.not.exist" srcfile="${mqsiEGpropertiesFileName}">
+							<filterchain>
+								<linecontains> 
+									<contains value="BIP8039E" /> 
+								</linecontains>
+							</filterchain>
+						</loadfile> 
+						<condition property="eg.not.available" > 
+							<isset property="eg.does.not.exist" /> 
+						</condition> 
+						<if isTrue="${eg.not.available}" > 
+							<!-- Not a valid Execution group - prompt again -->
+							<autopdproperty name="exitloop" value="true" /> 
+							<wsnlsecho key="ExecutionGroup_Not_Valid_Enter_Again" bundle="properties/SSKM8N/autopd" console="true" /> 
+							<wsnlsecho message=" " console="true" /> 
+						</if> 
+						<if isNotTrue="${eg.not.available}" > 
+							<!-- Execution Group exists - Exit now --> 
+							<!-- Execution Group exists - check if it is running --> 
+							
+							<!-- execute reportEGproperties script to set the variables -->
+							<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/reportEGproperties.bat"
+								tofile="${autopdtmp}/autopd/execution-scripts/reportEGproperties-filled.bat"
+								overwrite="true">
+								<filterset>
+									<filter token="wmb.root" value="${wmb.root}" />
+									<filter token="broker" value="${broker.name}" />
+									<filter token="executiongroup" value="${executiongroup.name}" />
+								</filterset>
+							</copy>
+				
+							<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/reportEGproperties.sh"
+									tofile="${autopdtmp}/autopd/execution-scripts/reportEGproperties-filled.sh"
+									overwrite="true">
+								<filterset>
+									<filter token="wmb.root" value="${wmb.root}" />
+									<filter token="broker" value="${broker.name}" />
+									<filter token="executiongroup" value="${executiongroup.name}" />
+								</filterset>
+							</copy>
+			
+							<chmod file="${autopdtmp}/autopd/execution-scripts/reportEGproperties-filled.sh" perm="766"/>
+				
+							<exec executable="${autopdtmp}/autopd/execution-scripts/reportEGproperties-filled.bat"
+								timeout="${exec.timeout.value}"
+								dir="${autopdtmp}/autopd/broker"
+								output="${autopd.echolog.instance}"
+								append="true"
+								os="${os.windows}">
+								<arg line="" />
+							</exec>
+			
+							<exec executable="${autopdtmp}/autopd/execution-scripts/reportEGproperties-filled.sh"
+								timeout="${exec.timeout.value}"
+								dir="${autopdtmp}/autopd/broker"
+								output="${autopd.echolog.instance}"
+								append="true"
+								os="${os.unixkind}">
+								<arg line="" />
+							</exec>	
+		
+							<!-- Ensure that Execution group is running  - Runs reportEGproperties to determine there is no BIP2851E in the output --> 
+							<property name="mqsiEGpropertiesFileName" value="${autopdtmp}/autopd/broker/mqsiEGproperties.txt" /> 
+							<autopd_unset_property name="is.eg.stopped" />
+							<autopd_unset_property name="eg.running.true" />
+							<loadfile property="is.eg.stopped" srcfile="${mqsiEGpropertiesFileName}">
+							<filterchain>
+								<linecontains> 
+									<contains value="BIP2851E" /> 
+								</linecontains>
+							</filterchain>
+							</loadfile> 
+						
+							<condition property="eg.stopped.true" > 
+								<isset property="is.eg.stopped" /> 
+							</condition> 
+				
+							<autopdproperty name="DFE.name" value="${executiongroup.name}" /> 
+							<autopdproperty name="exitloop" value="false"/> 
+						</if> 
+					
+				</if>
+				<if isTrue="${eg.collection.not.needed}" >
+					<autopdproperty name="DFE.name" value="0" /> 
+					<autopdproperty name="exitloop" value="false"/> 
+				</if>
+			</autopdwhile> 
+
+			</if>	
+			<if isTrue="${eg.stopped.true}" >
+					<!-- Execution Group is not running - DFE specific collection will be skipped --> 
+					<wsnlsecho key="ExecutionGroup_Down_No_EGSpecific_Collection" bundle="properties/SSKM8N/autopd" console="true" /> 
+					<wsnlsecho message=" " console="true" /> 
+					<autopdproperty name="DFE.name" value="0" /> 
+			</if>
+			
+			<!-- run rest of the scripts here one-by-one with a timeout set -->
+			<!-- start brokerDetails -->
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/brokerDetails.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/brokerDetails-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+			
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/brokerDetails.sh"
+				tofile="${autopdtmp}/autopd/execution-scripts/brokerDetails-filled.sh"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+		
+			<chmod file="${autopdtmp}/autopd/execution-scripts/brokerDetails-filled.sh" perm="766"/>
+			
+			<exec executable="${autopdtmp}/autopd/execution-scripts/brokerDetails-filled.bat" 
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.windows}">
+				<arg line="" />
+			</exec>
+		
+			<exec executable="${autopdtmp}/autopd/execution-scripts/brokerDetails-filled.sh"
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.unixkind}">
+				<arg line="" />
+			</exec>	
+		
+			<!-- end brokerDetails -->
+				
+			<!-- start browseBrokerResource -->
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/browseBrokerResource.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/browseBrokerResource-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+			
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/browseBrokerResource.sh"
+				tofile="${autopdtmp}/autopd/execution-scripts/browseBrokerResource-filled.sh"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+		
+			<chmod file="${autopdtmp}/autopd/execution-scripts/browseBrokerResource-filled.sh" perm="766"/>
+			
+			<exec executable="${autopdtmp}/autopd/execution-scripts/browseBrokerResource-filled.bat" 
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.windows}">
+				<arg line="" />
+			</exec>
+		
+			<exec executable="${autopdtmp}/autopd/execution-scripts/browseBrokerResource-filled.sh"
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.unixkind}">
+				<arg line="" />
+			</exec>	
+			<!-- end browseBrokerResource -->
+			
+			<!-- Do we really need a Broker backup to be included?? Uncomment later if needed -->
+			<!-- start brokerBackup -->
+				<!--copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/brokerBackup.bat"
+					tofile="${autopdtmp}/autopd/execution-scripts/brokerBackup-filled.bat"
+					overwrite="true">
+					<filterset>
+						<filter token="wmb.root" value="${wmb.root}" />
+						<filter token="broker" value="${broker.name}" />
+						<filter token="executiongroup" value="${executiongroup.name}" />
+					</filterset>
+				</copy>
+				
+				<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/brokerBackup.sh"
+					tofile="${autopdtmp}/autopd/execution-scripts/brokerBackup-filled.sh"
+					overwrite="true">
+					<filterset>
+						<filter token="wmb.root" value="${wmb.root}" />
+						<filter token="broker" value="${broker.name}" />
+						<filter token="executiongroup" value="${executiongroup.name}" />
+					</filterset>
+				</copy>
+			
+				<chmod file="${autopdtmp}/autopd/execution-scripts/brokerBackup-filled.sh" perm="766"/>
+				
+				<exec executable="${autopdtmp}/autopd/execution-scripts/brokerBackup-filled.bat" 
+					  timeout="${exec.timeout.value}"
+					  dir="${autopdtmp}/autopd/broker"
+					  output="${autopd.echolog.instance}"
+					  append="true"
+					  os="${os.windows}">
+					<arg line="" />
+				</exec>
+			
+				<exec executable="${autopdtmp}/autopd/execution-scripts/brokerBackup-filled.sh"
+					  timeout="${exec.timeout.value}"
+					  dir="${autopdtmp}/autopd/broker"
+					  output="${autopd.echolog.instance}"
+					  append="true"
+					  os="${os.unixkind}">
+					<arg line="" />
+				</exec  -->	
+			
+			<!-- end brokerBackup -->
+			
+			<!-- start reportAgentJVMSettings -->
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/reportAgentJVMSettings.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportAgentJVMSettings-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+				
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/reportAgentJVMSettings.sh"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportAgentJVMSettings-filled.sh"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+			
+			<chmod file="${autopdtmp}/autopd/execution-scripts/reportAgentJVMSettings-filled.sh" perm="766"/>
+				
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportAgentJVMSettings-filled.bat" 
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.windows}">
+				<arg line="" />
+			</exec>
+			
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportAgentJVMSettings-filled.sh"
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.unixkind}">
+				<arg line="" />
+			</exec>	
+			<!-- end reportAgentJVMSettings -->
+			
+			<!-- start reportAllReportableEntity -->
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/reportAllReportableEntity.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportAllReportableEntity-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+				
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/reportAllReportableEntity.sh"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportAllReportableEntity-filled.sh"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+			
+			<chmod file="${autopdtmp}/autopd/execution-scripts/reportAllReportableEntity-filled.sh" perm="766"/>
+				
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportAllReportableEntity-filled.bat" 
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.windows}">
+				<arg line="" />
+			</exec>
+			
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportAllReportableEntity-filled.sh"
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.unixkind}">
+				<arg line="" />
+			</exec>	
+			<!-- end reportAllReportableEntity -->
+
+			<!-- start reportBrokerRegistry -->
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/reportBrokerRegistry.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportBrokerRegistry-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+			
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/reportBrokerRegistry.sh"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportBrokerRegistry-filled.sh"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+		
+			<chmod file="${autopdtmp}/autopd/execution-scripts/reportBrokerRegistry-filled.sh" perm="766"/>
+			
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportBrokerRegistry-filled.bat" 
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.windows}">
+				<arg line="" />
+			</exec>
+		
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportBrokerRegistry-filled.sh"
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.unixkind}">
+				<arg line="" />
+			</exec>	
+			<!-- end reportBrokerRegistry -->
+			
+			<!-- start reportBrokerHTTPConnectorProperties -->
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/reportBrokerHTTPConnectorProperties.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportBrokerHTTPConnectorProperties-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+			
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/reportBrokerHTTPConnectorProperties.sh"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportBrokerHTTPConnectorProperties-filled.sh"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+		
+			<chmod file="${autopdtmp}/autopd/execution-scripts/reportBrokerHTTPConnectorProperties-filled.sh" perm="766"/>
+			
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportBrokerHTTPConnectorProperties-filled.bat" 
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.windows}">
+				<arg line="" />
+			</exec>
+		
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportBrokerHTTPConnectorProperties-filled.sh"
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.unixkind}">
+				<arg line="" />
+			</exec>	
+			<!-- end reportBrokerHTTPConnectorProperties -->
+			
+			<!-- start reportTraceSettings -->
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/reportTraceSettings.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportTraceSettings-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+			
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/reportTraceSettings.sh"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportTraceSettings-filled.sh"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+		
+			<chmod file="${autopdtmp}/autopd/execution-scripts/reportTraceSettings-filled.sh" perm="766"/>
+			
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportTraceSettings-filled.bat" 
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.windows}">
+				<arg line="" />
+			</exec>
+		
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportTraceSettings-filled.sh"
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.unixkind}">
+				<arg line="" />
+			</exec>	
+			<!-- end reportTraceSettings -->
+			
+			<!-- start verifyBroker -->
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/verifyBroker.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/verifyBroker-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+			
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/verifyBroker.sh"
+				tofile="${autopdtmp}/autopd/execution-scripts/verifyBroker-filled.sh"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+		
+			<chmod file="${autopdtmp}/autopd/execution-scripts/verifyBroker-filled.sh" perm="766"/>
+			
+			<exec executable="${autopdtmp}/autopd/execution-scripts/verifyBroker-filled.bat" 
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.windows}">
+				<arg line="" />
+			</exec>
+		
+			<exec executable="${autopdtmp}/autopd/execution-scripts/verifyBroker-filled.sh"
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.unixkind}">
+				<arg line="" />
+			</exec>	
+		
+		<!-- end verifyBroker -->
+			
+		<!-- Execution Group specific tasks starts here, if we are asked to collect -->
+		<condition property="no.dfe.collection"> 
+			<equals arg1="${DFE.name}" arg2="0"/> 
+		</condition> 
+
+		<condition property="eg.collection.not.needed" > 
+			<isset property="no.dfe.collection" /> 
+		</condition> 
+
+		<if isNotTrue="${eg.collection.not.needed}" > 
+			<!-- Need to collect Execution Group specific details --> 
+			
+			<!-- start reportFlowMonitoringDetails -->
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/reportFlowMonitoringDetails.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportFlowMonitoringDetails-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+			
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/reportFlowMonitoringDetails.sh"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportFlowMonitoringDetails-filled.sh"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+		
+			<chmod file="${autopdtmp}/autopd/execution-scripts/reportFlowMonitoringDetails-filled.sh" perm="766"/>
+			
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportFlowMonitoringDetails-filled.bat" 
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.windows}">
+				<arg line="" />
+			</exec>
+		
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportFlowMonitoringDetails-filled.sh"
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.unixkind}">
+				<arg line="" />
+			</exec>	
+			<!-- end reportFlowMonitoringDetails -->
+		
+			<!-- start reportFlowUserExits -->
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/reportFlowUserExits.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportFlowUserExits-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+			
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/reportFlowUserExits.sh"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportFlowUserExits-filled.sh"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+		
+			<chmod file="${autopdtmp}/autopd/execution-scripts/reportFlowUserExits-filled.sh" perm="766"/>
+			
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportFlowUserExits-filled.bat" 
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.windows}">
+				<arg line="" />
+			</exec>
+		
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportFlowUserExits-filled.sh"
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.unixkind}">
+				<arg line="" />
+			</exec>	
+			<!-- end reportFlowUserExits -->
+		
+			<!-- start reportFTEAgentProperties -->
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/reportFTEAgentProperties.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportFTEAgentProperties-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+			
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/reportFTEAgentProperties.sh"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportFTEAgentProperties-filled.sh"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+		
+			<chmod file="${autopdtmp}/autopd/execution-scripts/reportFTEAgentProperties-filled.sh" perm="766"/>
+			
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportFTEAgentProperties-filled.bat" 
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.windows}">
+				<arg line="" />
+			</exec>
+		
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportFTEAgentProperties-filled.sh"
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.unixkind}">
+				<arg line="" />
+			</exec>	
+			<!-- end reportFTEAgentProperties -->
+		
+			<!-- start reportAllMessageFlows -->
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/reportAllMessageFlows.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportAllMessageFlows-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+			
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/reportAllMessageFlows.sh"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportAllMessageFlows-filled.sh"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+		
+			<chmod file="${autopdtmp}/autopd/execution-scripts/reportAllMessageFlows-filled.sh" perm="766"/>
+			
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportAllMessageFlows-filled.bat" 
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.windows}">
+				<arg line="" />
+			</exec>
+		
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportAllMessageFlows-filled.sh"
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.unixkind}">
+				<arg line="" />
+			</exec>	
+			<!-- end reportAllMessageFlows -->
+		
+			<!-- start reportDFEHTTPConnectorProperties -->
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/reportDFEHTTPConnectorProperties.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportDFEHTTPConnectorProperties-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+			
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/reportDFEHTTPConnectorProperties.sh"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportDFEHTTPConnectorProperties-filled.sh"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+		
+			<chmod file="${autopdtmp}/autopd/execution-scripts/reportDFEHTTPConnectorProperties-filled.sh" perm="766"/>
+			
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportDFEHTTPConnectorProperties-filled.bat" 
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.windows}">
+				<arg line="" />
+			</exec>
+		
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportDFEHTTPConnectorProperties-filled.sh"
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.unixkind}">
+				<arg line="" />
+			</exec>	
+			<!-- end reportDFEHTTPConnectorProperties -->
+		
+			<!-- start reportDFEJVMSettings -->
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/reportDFEJVMSettings.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportDFEJVMSettings-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+			
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/reportDFEJVMSettings.sh"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportDFEJVMSettings-filled.sh"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+		
+			<chmod file="${autopdtmp}/autopd/execution-scripts/reportDFEJVMSettings-filled.sh" perm="766"/>
+			
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportDFEJVMSettings-filled.bat" 
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.windows}">
+				<arg line="" />
+			</exec>
+		
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportDFEJVMSettings-filled.sh"
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.unixkind}">
+				<arg line="" />
+			</exec>	
+			<!-- end reportDFEJVMSettings -->
+		
+			<!-- start reportEGproperties -->
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/reportEGproperties.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportEGproperties-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+			
+			<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/reportEGproperties.sh"
+				tofile="${autopdtmp}/autopd/execution-scripts/reportEGproperties-filled.sh"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="broker" value="${broker.name}" />
+					<filter token="executiongroup" value="${executiongroup.name}" />
+				</filterset>
+			</copy>
+		
+			<chmod file="${autopdtmp}/autopd/execution-scripts/reportEGproperties-filled.sh" perm="766"/>
+			
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportEGproperties-filled.bat" 
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.windows}">
+				<arg line="" />
+			</exec>
+		
+			<exec executable="${autopdtmp}/autopd/execution-scripts/reportEGproperties-filled.sh"
+				  timeout="${exec.timeout.value}"
+				  dir="${autopdtmp}/autopd/broker"
+				  output="${autopd.echolog.instance}"
+				  append="true"
+				  os="${os.unixkind}">
+				<arg line="" />
+			</exec>	
+			<!-- end reportEGproperties -->
+		</if>		
+		
+		<!-- Pick up files --> 
+		<zip encoding="UTF8" destfile="${pmrfilename}" update="true">
+			<zipfileset dir="${autopdtmp}/autopd/broker" prefix="${autopdProblem}/Broker" >
+				<include name="mqsiReportBrokerOutput.txt" />
+				<include name="mqsiListBrokerOutput.txt" />
+				<include name="mqsiBrowseOutput.txt" />
+				<include name="mqsiRuntimes.txt" />
+				<include name="mqsiListBrokerOutput.txt" />
+				<include name="mqsiExecutionGroupsOutput.txt" />
+				<include name="mqsicvpOutput.txt" />
+				<include name="mqsiResourcesOutput.txt" />
+				<include name="mqsiDeployInfoOutput.txt" />
+				
+				<!-- Do we really need a Broker backup to be included?? Uncomment later if needed -->
+				<!--include name="*.zip" />
+				<include name="mqsibackuptrace.txt" / -->
+				
+				<include name="mqsiAgentJVMSettings.txt" />
+				<include name="mqsiHTTPSConnectorProperties.txt" />
+				<include name="mqsiHTTPConnectorProperties.txt" />
+				<include name="mqsiAllReportableEntity.txt" />
+				<include name="mqsiBrokerRegistry.txt" />
+				<include name="mqsiTraceSettings.txt" />
+			</zipfileset> 
+		</zip> 
+		<condition property="no.dfe.collection"> 
+			<equals arg1="${DFE.name}" arg2="0"/> 
+		</condition> 
+
+		<condition property="eg.collection.not.needed" > 
+			<isset property="no.dfe.collection" /> 
+		</condition> 
+
+		<if isNotTrue="${eg.collection.not.needed}" > 
+			<!-- Need to collect Execution Group specific details --> 
+			<zip encoding="UTF8" destfile="${pmrfilename}" update="true">
+				<zipfileset dir="${autopdtmp}/autopd/broker" prefix="${autopdProblem}/Broker/${broker.name}/ExecutionGroupDetails/${executiongroup.name}" >
+					<include name="mqsiAllMessageFlows.txt" />
+					<include name="mqsiFlowMonitoringDetails.txt" />
+					<include name="mqsiFlowUserExits.txt" />
+					<include name="mqsiFTEAgentProperties.txt" />
+					<include name="mqsiDFEHTTPSConnectorProperties.txt" />
+					<include name="mqsiDFEHTTPConnectorProperties.txt" />
+					<include name="mqsiDFEJVMSettings.txt" />
+					<include name="mqsiEGproperties.txt" />
+				</zipfileset> 	
+			</zip> 				
+		</if>
+	</target>
+	
+	<target name="collect_stdout_stderr_files" > 
+
+
+	<!--
+{MQSI_WORKPATH} will need to be determined from 'mqsiservice <broker>' command
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+$ mqsiservice ASMB8
+BIPmsgs  en_GB
+  Console CCSID=819, ICU CCSID=819
+  Default codepage=ISO-8859-1, in ascii=ISO-8859-1
+  JAVA console codepage name=ISO-8859-1
+
+Install Path = /opt/IBM/mqsi/8.0.0.0
+Shared Work Path = NOT_HA_ENABLED_BROKER
+Local Work Path = /var/mqsi
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If  the value of  "Shared Work Path"  is NOT_HA_ENABLED_BROKER  then we should take the value of "Local Work Path "  
+to resolve all the relative paths .  Otherwise we should take the value of Shared Work Path. 
+	
+	-->
+		<!-- start checkMqsiService -->
+		<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/checkMqsiService.bat"
+			tofile="${autopdtmp}/autopd/execution-scripts/checkMqsiService-filled.bat"
+			overwrite="true">
+			<filterset>
+				<filter token="wmb.root" value="${wmb.root}" />
+				<filter token="broker" value="${broker.name}" />
+				<filter token="executiongroup" value="${executiongroup.name}" />
+			</filterset>
+		</copy>
+		
+		<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/checkMqsiService.sh"
+			tofile="${autopdtmp}/autopd/execution-scripts/checkMqsiService-filled.sh"
+			overwrite="true">
+			<filterset>
+				<filter token="wmb.root" value="${wmb.root}" />
+				<filter token="broker" value="${broker.name}" />
+				<filter token="executiongroup" value="${executiongroup.name}" />
+			</filterset>
+		</copy>
+	
+		<chmod file="${autopdtmp}/autopd/execution-scripts/checkMqsiService-filled.sh" perm="766"/>
+		
+		<exec executable="${autopdtmp}/autopd/execution-scripts/checkMqsiService-filled.bat" 
+			  timeout="${exec.timeout.value}"
+			  dir="${autopdtmp}/autopd/broker"
+			  output="${autopd.echolog.instance}"
+			  append="true"
+			  os="${os.windows}">
+			<arg line="" />
+		</exec>
+	
+		<exec executable="${autopdtmp}/autopd/execution-scripts/checkMqsiService-filled.sh"
+			  timeout="${exec.timeout.value}"
+			  dir="${autopdtmp}/autopd/broker"
+			  output="${autopd.echolog.instance}"
+			  append="true"
+			  os="${os.unixkind}">
+			<arg line="" />
+		</exec>	
+		<!-- end checkMqsiService -->
+			
+		<property name="mqsiServiceOutput.file" value="${autopdtmp}/autopd/broker/mqsiServiceOutput.txt" />
+	
+	    <loadfile property="ha_enabled_string" srcfile="${mqsiServiceOutput.file}">        
+	      <filterchain>         
+	        <linecontains>            
+	          <contains value="NOT_HA_ENABLED_BROKER"/>          
+	        </linecontains>        
+	      </filterchain>     
+	    </loadfile>      
+		<condition property="is.ha.string.found" > 
+			<isset property="ha_enabled_string" /> 
+		</condition> 
+
+		<if isTrue="${is.ha.string.found}"> 
+			<!-- Look up the value of Local Work Path from the above mqsiServiceOutput file--> 
+		    <loadfile property="local.work.path" srcfile="${mqsiServiceOutput.file}">        
+		      <filterchain>         
+		        <linecontains>            
+		          <contains value="Local Work Path"/> 
+					</linecontains>
+					<tokenfilter>
+		             <replacestring from="Local Work Path = " to=""/>
+		         </tokenfilter>			 
+		      </filterchain>     
+		    </loadfile>      
+	
+			<echo file="${autopdtmp}/mqsiWorkFile.tmp.txt" message="${local.work.path}" />
+			<loadfile srcFile="${autopdtmp}/mqsiWorkFile.tmp.txt" property="os.mqsi.workpath" >
+				<filterchain>
+					<striplinebreaks/>
+					<tokenfilter>
+						<trim/>
+					</tokenfilter>
+				</filterchain>
+			</loadfile> 
+
+		</if>
+		<if isNotTrue="${is.ha.string.found}"> 
+			<!-- Take the value of SHARED Work Path --> 
+		<!--		<concat destfile="${autopdtmp}/autopd/broker/mqsiWorkPath.txt" append="false" > 
+		${ha_enabled_string}
+			</concat> --> 
+			<loadfile srcfile="${mqsiServiceOutput.file}" property="os.mqsi.workpath.temp" > 
+				<filterchain> 
+			        <linecontains>            
+			          <contains value="Shared Work Path"/> 
+					</linecontains>
+					<tokenfilter> 
+						<replacestring from="Shared Work Path = " to="" />
+					</tokenfilter>
+				</filterchain>
+			</loadfile>
+	
+			<echo file="${autopdtmp}/mqsiWorkFile.tmp.txt" message="${os.mqsi.workpath.temp}" />
+			<loadfile srcFile="${autopdtmp}/mqsiWorkFile.tmp.txt" property="os.mqsi.workpath" >
+				<filterchain>
+					<striplinebreaks/>
+					<tokenfilter>
+						<trim/>
+					</tokenfilter>
+				</filterchain>
+			</loadfile> 
+	
+		</if>
+		<echo message="os.mqsi.workpath is ${os.mqsi.workpath}"/> 
+                        <loadfile srcfile="${mqsiServiceOutput.file}" property="os.mqsi.workpathlocal.temp" >
+                                <filterchain>
+                                <linecontains>
+                                  <contains value="Local Work Path"/>
+                                        </linecontains>
+                                        <tokenfilter>
+                                                <replacestring from="Local Work Path = " to="" />
+                                        </tokenfilter>
+                                </filterchain>
+                        </loadfile>
+
+                        <echo file="${autopdtmp}/mqsiWorkFilelocal.tmp.txt" message="${os.mqsi.workpathlocal.temp}" />
+                        <loadfile srcFile="${autopdtmp}/mqsiWorkFilelocal.tmp.txt" property="os.mqsi.workpathlocal" >
+                                <filterchain>
+                                        <striplinebreaks/>
+                                        <tokenfilter>
+                                                <trim/>
+                                        </tokenfilter>
+                                </filterchain>
+                        </loadfile>
+		<echo message="os.mqsi.workpathlocal is ${os.mqsi.workpathlocal}"/> 
+		
+		<!-- Now that we have found os.mqsi.workpath - lets pick up files --> 
+		<available file="${os.mqsi.workpath}/components/${broker.name}" type="dir" property="mqsi.workpath.folder.available" /> 
+
+		<if isTrue="${mqsi.workpath.folder.available}"> 
+			<zip encoding="UTF8" destfile="${pmrfilename}" update="true">
+				<zipfileset dir="${os.mqsi.workpath}/components/${broker.name}" prefix="${autopdProblem}/Broker/${broker.name}/BrokerLogs">
+					<include name="console.txt"/> 
+					<include name="stdout" />
+					<include name="stderr" />
+					<include name="**/stdout" />
+					<include name="**/stderr" />
+					<include name="**/console.txt" />
+					<include name="httplistener/stdout" />
+					<include name="httplistener/stderr" />
+					<include name="httplistener/*console*.*" />
+				</zipfileset>
+				<!-- For the Broker Collector, it might be worth looking for broker specific and EG specific profile logs, files ending in .profilelog extension under $MQSI_WORKPATH/common/log/.
+					If present, these will show additional env settings that won't appear in the env output. -->
+				<zipfileset dir="${os.mqsi.workpathlocal}/common/log" prefix="${autopdProblem}/Broker/${broker.name}/BrokerLogs">
+					<include name="${broker.name}.*.profilelog"/> 
+				</zipfileset>
+			</zip> 
+		</if>
+		
+		<!-- Abend files are always in Local work path --> 
+	    <loadfile property="local.work.path.var" srcfile="${mqsiServiceOutput.file}">        
+	      <filterchain>         
+	        <linecontains>            
+	          <contains value="Local Work Path"/> 
+				</linecontains>
+				<tokenfilter>
+	             <replacestring from="Local Work Path = " to=""/>
+	         </tokenfilter>			 
+	      </filterchain>     
+	    </loadfile>      
+
+		<echo file="${autopdtmp}/mqsilocalworkpath.txt" message="${local.work.path.var}" />
+		<loadfile srcFile="${autopdtmp}/mqsilocalworkpath.txt" property="mqsi.local.workpath" >
+			<filterchain>
+				<striplinebreaks/>
+				<tokenfilter>
+					<trim/>
+				</tokenfilter>
+			</filterchain>
+		</loadfile> 
+		<!-- start - listProcess -->
+		<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/listProcess.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/listProcess-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="mqsiworkpath" value="${os.mqsi.workpath}" />
+				</filterset>
+		</copy>
+		
+		<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/listProcess.sh"
+			tofile="${autopdtmp}/autopd/execution-scripts/listProcess-filled.sh"
+			overwrite="true">
+			<filterset>
+				<filter token="wmb.root" value="${wmb.root}" />
+				<filter token="mqsiworkpath" value="${os.mqsi.workpath}" />				
+			</filterset>
+		</copy>
+		
+		<chmod file="${autopdtmp}/autopd/execution-scripts/listProcess-filled.sh" perm="766"/>
+			
+		<exec executable="${autopdtmp}/autopd/execution-scripts/listProcess-filled.bat"
+		      timeout="${exec.timeout.value}"
+		      dir="${autopdtmp}/autopd/broker"
+		      output="${autopd.echolog.instance}"
+		      append="true"
+		      os="${os.windows}">
+			<arg line="" />
+		</exec>
+		
+		<exec executable="${autopdtmp}/autopd/execution-scripts/listProcess-filled.sh"
+		      timeout="${exec.timeout.value}"
+		      dir="${autopdtmp}/autopd/broker"
+		      output="${autopd.echolog.instance}"
+		      append="true"
+		      os="${os.unixkind}">
+			  <arg line="" />
+		</exec>	
+		<!-- end - listProcess -->
+		
+		<!-- start - listWorkPathFolder -->
+		<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/windows/listWorkPathFolder.bat"
+				tofile="${autopdtmp}/autopd/execution-scripts/listWorkPathFolder-filled.bat"
+				overwrite="true">
+				<filterset>
+					<filter token="wmb.root" value="${wmb.root}" />
+					<filter token="mqsiworkpath" value="${os.mqsi.workpath}" />
+				</filterset>
+		</copy>
+		
+		<copy file="${wmb.shared.targets.parentdir}/SSKM8N/execution-scripts/unix/listWorkPathFolder.sh"
+			tofile="${autopdtmp}/autopd/execution-scripts/listWorkPathFolder-filled.sh"
+			overwrite="true">
+			<filterset>
+				<filter token="wmb.root" value="${wmb.root}" />
+				<filter token="mqsiworkpath" value="${os.mqsi.workpath}" />				
+			</filterset>
+		</copy>
+		
+		<chmod file="${autopdtmp}/autopd/execution-scripts/listWorkPathFolder-filled.sh" perm="766"/>
+			
+		<exec executable="${autopdtmp}/autopd/execution-scripts/listWorkPathFolder-filled.bat"
+		      timeout="${exec.timeout.value}"
+		      dir="${autopdtmp}/autopd/broker"
+		      output="${autopd.echolog.instance}"
+		      append="true"
+		      os="${os.windows}">
+			<arg line="" />
+		</exec>
+		
+		<exec executable="${autopdtmp}/autopd/execution-scripts/listWorkPathFolder-filled.sh"
+		      timeout="${exec.timeout.value}"
+		      dir="${autopdtmp}/autopd/broker"
+		      output="${autopd.echolog.instance}"
+		      append="true"
+		      os="${os.unixkind}">
+			  <arg line="" />
+		</exec>	
+		<!-- end - listWorkPathFolder -->
+		
+		<zip encoding="UTF8" destfile="${pmrfilename}" update="true">
+			<zipfileset dir="${autopdtmp}/autopd/broker" prefix="${autopdProblem}/Broker" >
+				<include name="processList.txt" />
+				<include name="mqsiWorkPathDirListing.txt" />
+			</zipfileset> 
+		</zip> 		
+		<available file="${mqsi.local.workpath}/common/errors" type="dir" property="mqsi.workpath.local.folder.available" /> 
+		<available file="${mqsi.local.workpath}/common/profiles" type="dir" property="mqsi.common.profile.folder.available" /> 
+		<if isTrue="${mqsi.workpath.local.folder.available}"> 
+			<zip encoding="UTF8" destfile="${pmrfilename}" update="true">
+				<zipfileset dir="${mqsi.local.workpath}/common/errors" prefix="${autopdProblem}/Broker/${broker.name}/common/errors">
+					<include name="${broker.name}*.Abend"/> 
+					<include name="${broker.name}*.abend"/> 
+					<!--include name="heapdump*.phd"/--> 
+					<include name="javacore*.txt"/>
+				</zipfileset>
+			</zip> 
+			<if isTrue="${mqsi.common.profile.folder.available}"> 
+			<zip encoding="UTF8" destfile="${pmrfilename}" update="true">
+				<zipfileset dir="${mqsi.local.workpath}/common/profiles" prefix="${autopdProblem}/Broker/${broker.name}/common/profiles">
+					<include name="*.sh"/> 
+					<include name="*.cmd"/> 
+					<include name="*.bat"/> 
+				</zipfileset>
+			</zip> 
+		</if> 
+		
+		</if> 
+	</target> 
+	
+</project>	

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ibm.j2ca.wmb.migration.feature"
+      label="com.ibm.j2ca.wmb.migration.feature"
+      version="8.0.0.201110071709"
+      provider-name="IBM">
+   <install-handler/>
+
+   <description>
+      %description
+   </description>
+
+   <copyright url="[Enter Copyright URL here.]">
+      IBM Confidential
+OCO Source Materials
+5724-N40, 5724-N41, 5724-N42, 5724-N43, 5724-L77, 5724-L78, 5724-L79,
+5724-L80, 5724-L81, 5724-L82
+© Copyright IBM Corporation 2007
+The source code for this program is not published or otherwise divested of its trade secrets, irrespective of what has been deposited with the U.S. Copyright Office.
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="com.ibm.j2ca.wmb.migration.base"
+         download-size="0"
+         install-size="0"
+         version="8.0.0.201110071709"/>
+
+   <plugin
+         id="com.ibm.j2ca.wmb.migration.core"
+         download-size="0"
+         install-size="0"
+         version="8.0.0.201110071709"/>
+
+   <plugin
+         id="com.ibm.j2ca.wmb.migration.sap"
+         download-size="0"
+         install-size="0"
+         version="8.0.0.201110071709"/>
+
+   <plugin
+         id="com.ibm.j2ca.wmb.migration.peoplesoft"
+         download-size="0"
+         install-size="0"
+         version="8.0.0.201110071709"/>
+
+</feature>

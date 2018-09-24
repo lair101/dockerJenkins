@@ -1,0 +1,7 @@
+<?php
+    $pim = $_MB["PATTERN_INSTANCE_MANAGER"];
+    $class = $pim->getPluginClass("com.ibm.healthcare.pattern.devices.code", "com.ibm.healthcare.pattern.devices.utility.PatternUtility");
+    $prefix = $class->getConfigurableServicePrefix($pim);
+?>
+<?xml version="1.0" encoding="UTF-8"?>
+<configurableservice configXMLFile="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;p:config xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:p=&quot;com.ibm.healthcare.node&quot; version=&quot;2.0&quot;&gt;&lt;p:devices&gt;&lt;p:device description=&quot;&quot; driver=&quot;CMVirtualMonitor&quot; id=&quot;MedicalVirtualMonitor1&quot; location_id=&quot;&quot; msIdRef=&quot;MSet1&quot; name=&quot;Medical Virtual Monitor 1&quot; patient_id=&quot;&quot; tags=&quot;&quot;&gt;&lt;connection xsi:type=&quot;p:SerialCfg&quot; identifier=&quot;SerialCfg1&quot; baudRate=&quot;9600&quot; data=&quot;7&quot; flowControl=&quot;No&quot; parity=&quot;E&quot; port=&quot;1&quot; stopbit=&quot;1&quot;/&gt;&lt;/p:device&gt;&lt;/p:devices&gt;&lt;p:measurements&gt;&lt;p:measurementSet description=&quot;&quot; device=&quot;Medical Virtual Monitor 1&quot; driver=&quot;CMVirtualMonitor&quot; id=&quot;MSet1&quot; name=&quot;TestMeasurements&quot; tags=&quot;&quot;&gt;&lt;p:measurement xsi:type=&quot;p:Discrete&quot; name=&quot;heart rate&quot; primaryId=&quot;101:667:203:263&quot; poll=&quot;5&quot;/&gt;&lt;/p:measurementSet&gt;&lt;/p:measurements&gt;&lt;/p:config&gt;" csName="<?php echo $prefix; ?>MedicalDevices" csType="UserDefined"/>

@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>Prueba del patrón Servicio sanitario: Dispositivos
+médicos a
+EMR</title>
+</head>
+<body role="main">
+<a name="links"></a>
+<div class="section">
+    <h1 class="topictitle1">Prueba del patrón Servicio sanitario:
+Dispositivos médicos a EMR</h1>
+    <p class="shortdesc">
+    Utilice la información siguiente para probar el patrón
+    <span>
+    Servicio sanitario: Dispositivos médicos a EMR</span>.
+    </p>
+</div>
+<div class="section">
+    <a name="setup"></a> <h2 class="sectiontitle">Configuración de
+la instancia de patrón básica</h2>
+    <p>
+    Los flujos de mensajes principales de la instancia de patrón
+son:
+    </p>
+    <ul>
+        <li>
+            MedicalDevices
+        </li>
+        <li>
+            TransformAndRoute
+        </li>
+        <li>
+            Sender
+        </li>
+        <li>
+            PatientIdentifiers
+        </li>
+    </ul>
+    <p>
+    Debe asegurarse de que tiene todas las colas configuradas para la
+instancia de patrón,
+    consulte la sección &quot;Colas&quot; en
+<a href="management.htm">Gestión de una instancia de patrón Servicio sanitario: Dispositivos médicos a EMR</a>.
+    </p>
+</div>
+<div class="section">
+    <a name="flow"></a> <h2 class="sectiontitle">Flujo de información a través
+de la instancia de patrón</h2>
+    <p>
+    Cuando se despliega una instancia del patrón Servicio sanitario: Dispositivos médicos a EMR,
+    la información fluye en la secuencia siguiente.
+    </p>
+    <ol>
+        <li>
+            El nodo MedicalDeviceInput localiza su servicio
+configurable para determinar a los
+            dispositivos médicos a los que debe conectarse y las
+mediciones que debe recopilar.
+        </li>
+        <li>
+            El nodo MedicalDeviceInput lee una medición de un
+dispositivo médico y propaga la información
+            en forma de mensaje en el flujo de mensajes
+MedicalDevices.
+        </li>
+        <li>
+            El flujo de mensajes MedicalDevices añade un tiempo de
+caducidad y envía el mensaje a la cola
+            RXF del flujo de mensajes TransformAndRoute.
+        </li>
+        <li>
+            El flujo de mensajes TransformAndRoute convierte el
+mensaje de dispositivo en un resultado de observación HL7. El
+mensaje se publica en formato canónico HL7 para que otras
+aplicaciones pueden consumirlo. El resultado de observación de
+asocia al identificador actual de paciente para ese dispositivo y
+después se graba en la cola DEST.
+        </li>
+        <li>
+            El flujo de mensajes Sender envía el mensaje HL7
+al EMR, ce responde con un  ACK.
+        </li>
+        <li>
+            El flujo Sender procesa el mensaje ACK.
+        </li>
+    </ol>
+    <p>
+    Todos los flujos tienen también un subflujo de manejo de
+excepciones que maneja los problemas que capte el flujo.
+    </p>
+    <p>
+    La aplicación de prueba de HL7 se puede utilizar durante el desarrollo para simular que se recibe el EMR. Inicie la
+aplicación de prueba e inicie un escucha MLLP TCP/IP. La aplicación
+de prueba recibirá y mostrará los resultados de observación que envíe
+la instancia de patrón.
+    </p>
+    <p>
+   	Para iniciar la aplicación de prueba de HL7, realice los pasos siguientes:<ol>
+    	<li>Pulse <span class="uicontrol">Archivo > Nuevo > Otro</span>.</li>
+    	<li>En la carpeta <span class="uicontrol">Healthcare</span>, seleccione
+    		<span class="uicontrol">Aplicación de prueba de HL7</span> y pulse <span class="uicontrol">Siguiente</span>.</li>
+    	<li>Especifique un contenedor y nombre de archivo para los valores de la aplicación de prueba y pulse <span class="uicontrol">Finalizar</span>.
+    		La aplicación de prueba de HL7 se inicia.</li>
+    </ol>
+    </p>
+</div>
+<a href="overview.htm#anchorBack" title="Atrás">Volver a
+la especificación del patrón Servicio sanitario: Dispositivos médicos
+a EMR</a>
+<p>
+</p>
+</body>
+</html>

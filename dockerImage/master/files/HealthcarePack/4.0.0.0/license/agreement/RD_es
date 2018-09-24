@@ -1,0 +1,100 @@
+﻿<html>
+
+<head>
+	<style>
+		body {margin-top:0;}
+		h3 {font-family:arial; font-weight:bold; font-size:12; padding:20px 0 0; margin:0;}
+		p {font-family:arial; font-weight:normal; font-size:12; padding:10px 0 0; margin:0;}
+		.padoff {padding:0 !important;}
+	</style>
+</head>
+
+<body>
+<h3 class='padoff'>
+
+
+<!--LI 2 Title-->
+Restricciones de Uso
+
+
+</h3>
+<p>
+
+
+<!--LI 2 Paragraph 1-->
+El Programa puede utilizarse como sistema de datos de dispositivo médico para transferir, almacenar y convertir datos de un formato a otro. El Programa puede transmitir en ocasiones datos a los dispositivos médicos hospitalarios (por ejemplo, para sondeos y telemetría). Sin embargo, el Programa en sí no es un dispositivo médico.
+
+
+</p>
+<p>
+<!--LI 2 Paragraph 2, pre-bullets-->
+Los siguientes usos del Programa están prohibidos:
+
+
+<br />
+
+
+<!--LI 2 Paragraph 2, bullets-->
+a. el uso para controlar dispositivos médicos hospitalarios con fines clínicos, terapéuticos o de tratamiento (por ejemplo, a título enunciativo y no limitativo, la administración de medicamentos, anestesia, sueros y similares);
+<br />
+b. el uso para la monitorización activa de pacientes (por ejemplo, cuando el Programa se utiliza como medio exclusivo para monitorizar datos vitales del paciente, como el ritmo cardíaco);
+<br />
+c. el uso como soporte en la toma de decisiones (por ejemplo, cuando el Programa se utiliza como base principal para determinar tratamientos específicos para el paciente o acciones clínicas inmediatas); o
+<br />
+d. Uso en la supervisión activa que dependa de la puntualidad de la transmisión de datos.
+
+
+</p>
+<h3>
+
+
+<!--LI 3 Title-->
+Indemnidad de IBM
+
+
+</h3>
+<p>
+
+
+<!--LI 3 Paragraph 1-->
+El Licencitario mantendrá indemne a International Business Machines Corporation y a las empresas afiliadas contra cualquier reclamación de terceros y responsabilidad que pueda derivarse directa o indirectamente del uso del Programa por parte del Licenciatario con una finalidad prohibida en las estipulaciones de la cláusula anterior: "Restricciones de Uso".
+
+
+</p>
+<h3>
+
+
+<!--LI 5 Title-->
+Limitaciones por país
+
+
+</h3>
+<p>
+
+
+<!--LI 5 Paragraph 1-->
+El Programa está sujeto a autorizaciones jurídicas y normativas específicas y, por tanto, sólo puede ser lanzado al mercado por IBM en un marco restringido y conforme a la legislación nacional de cada país. El Programa solo se puede utilizar en los países que se enumeran en el URL siguiente:-
+
+
+<br />
+<a href='http://www-01.ibm.com/software/integration/wbimessagebroker/healthcare/license'>http://www-01.ibm.com/software/integration/<br />wbimessagebroker/healthcare/license</a>,
+<br />
+
+
+<!--LI 5 Paragraph 1, pre-email-->
+o bien dirigir una solicitud a IBM por medio de un correo electrónico a
+
+
+&nbsp;<a href='mailto:mqlcycle@uk.ibm.com'>mqlcycle@uk.ibm.com</a>.
+</p>
+<p>
+
+
+<!--LI 5 Paragraph 2-->
+Las autorizaciones jurídicas y normativas nacionales pueden cambiar a lo largo del tiempo. IBM renuncia a toda responsabilidad en el caso de que una autorización sufra restricciones o se retire en cualquiera de los países aprobados anteriormente. Es responsabilidad del Licenciatario verificar periódicamente los cambios, de haberlos, indicados en el URL especificado.
+
+
+</p>
+</body>
+
+</html>

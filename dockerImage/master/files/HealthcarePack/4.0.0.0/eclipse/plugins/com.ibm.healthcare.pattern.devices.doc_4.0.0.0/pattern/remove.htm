@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <title>Cleaning up the patient identifier database</title>
+    <!-- 
+       (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+       All Rights Reserved * Licensed Materials - Property of IBM
+      -->
+</head>
+<body role="main">
+<div>
+    <h1 class="topictitle1">Cleaning up the patient identifier database</h1>
+    <p class="shortdesc">
+    When you have finished with the Healthcare: Medical devices to EMR pattern, you can remove 
+    the database, its ODBC definition, and the user identifier and password values 
+    that are associated with the data source name.
+    </p>
+</div>
+<p>
+Complete the following tasks to clean up the database environment:
+</p>
+<ol>
+    <li>
+        Remove the database and ODBC definition.
+        <p>
+        Follow the instructions that are relevant to your database manager:
+        </p>
+        <ul>
+            <li>
+                <a href="remove_db2.htm">Clean up DB2</a>
+            </li>
+            <li>
+                <a href="remove_oracle.htm">Clean up Oracle</a>
+            </li>
+        </ul>
+        
+    </li>
+    <li>
+        Remove the user identifier and password that are associated with the data source 
+        name <span class="msobjpropval">PATIENTSDSN</span>.
+        <p>
+        Open a command console window in which you can run IBM Integration Bus 
+        commands. Enter the following command to remove the user identifier and password:
+        </p>
+        <pre>mqsisetdbparms <var>integration_node</var> -n PATIENTSDSN -d</pre>
+    </li> where <var>integration_node</var> is the name of your integration node.
+</ol>
+<a href="overview.htm#anchorBack" title="Back">Back to the Healthcare: Medical 
+devices to EMR pattern specification</a>
+
+</body>
+</html>

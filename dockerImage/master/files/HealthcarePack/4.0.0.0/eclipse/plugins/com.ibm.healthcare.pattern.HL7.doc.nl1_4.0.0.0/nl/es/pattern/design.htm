@@ -1,0 +1,1026 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>Diseño del patrón Servicio sanitario: HL7 a HL7</title>
+</head>
+<body role="main">
+<a name="links"></a>
+<div class="section">
+    <h1 class="topictitle1">Diseño del patrón Servicio sanitario: HL7
+a HL7</h1>
+    <p class="shortdesc">
+    El patrón Servicio sanitario: HL7 a DFDL HL7 utiliza el nodo
+GenericHL7Input para leer los mensajes HL7 entrantes completamente;
+No hay restricciones respecto a los segmentos que se pueden incluir
+en un mensaje, siempre y cuando los segmentos estén presentes en el
+conjunto de mensajes HL7v25P que utiliza el patrón. El patrón
+utiliza el conjunto de mensajes HL7v25P que se incluye en IBM Integration Bus Healthcare Pack. El
+conjunto de mensajes HL7v25P incluye definiciones de todos los
+segmentos válidos y estándar de HL7 versión 2.5. Puede añadir
+segmentos Z adicionales a este conjunto de mensajes HL7v25P. Los segmentos Z los utilizan las aplicaciones para
+enviar o recibir datos definidos fuera de la especificación HL7.
+    </p>
+    <p>
+    La numeración secuencial, la comprobación de
+duplicados y el acuse de recibo HL7 se llevan a cabo una vez, por
+parte del flujo Receiver, sobre el mensaje de origen.
+    </p>
+    <p>
+    El patrón define el número de destinos a los que se
+distribuye un mensaje entrante. Para cada destino, se
+procesa el mensaje y se aplica el filtrado. Este filtrado determina si
+el mensaje es necesario para el destino, y qué segmentos
+del mensaje de origen de tienen que incluir en el mensaje de salida.
+    </p>
+    <p>
+    El flujo Sender de cada destino se asegura de que los mensajes se
+envían en la secuencia correcta a la aplicación de destino.
+    </p>
+</div>
+<div>
+    <p>
+    Este tema contiene las secciones siguientes:
+    </p>
+    <ul><li>
+        <a href="design.htm#source">Proceso del mensaje de origen
+utilizando el nodo GenericHL7Input</a></li>
+    
+    <li>
+        <a href="design.htm#sequencing">Secuenciación en el flujo Receiver</a>
+    </li>
+    <li>
+        <a href="design.htm#transform">Transformación y direccionamiento</a>
+    </li>
+    <li>
+        <a href="design.htm#sending">Flujos Sender</a>
+    </li>
+    <li>
+        <a href="design.htm#messageset">Conjunto de mensajes HL7v25P</a>
+    </li>
+    <li>
+        <a href="design.htm#publish">Salida de una instancia de patrón</a></li>
+    </ul>
+</div>
+<div class="section">
+    <a name="source"></a> <h2>Proceso del mensaje de origen
+utilizando el nodo GenericHL7Input</h2>
+    <p>
+    Inicialmente, el nodo GenericHL7Input lee un mensaje de entrada
+en el flujo Receiver como un mensaje BLOB. Antes de analizarlo, se
+eliminan los bytes MLLP iniciales. Si no se encuentra el byte
+inicial, se rechaza el mensaje porque el emisor no ha seguido el
+protocolo MLLP, se cierra la conexión y se envía un mensaje de
+respuesta de acuse de recibo negativa (NACK).
+    </p>
+    <p>
+    El nodo GenericHL7Input analiza el mensaje de acuerdo con la
+definición de mensaje HL7 del conjunto de mensajes HL7v25P; consulte
+<a href="resources.htm">Recursos para el patrón <span> Servicio
+sanitario: HL7 a HL7</span></a>. Se leen todos los segmentos y si algún segmento
+tiene campos adicionales, se colocan en un campo Restantes de ese
+segmento.
+    </p>
+    <h3>Validación de mensajes</h3>
+    <p>
+    No se utiliza una validación estándar de los datos de
+mensaje en el flujo Receiver. Sin embargo, se confirma la
+presencia de los siguientes campos de datos HL7 específicos en el
+segmento MSH, porque estos campos son necesarios para que pueda
+continuar el proceso.
+    </p>
+    <ul>
+        <li>
+            MSH.1.FieldSeparator
+        </li>
+        <li>
+            MSH.2.SeviceString
+        </li>
+        <li>
+            MSH.3.SendingApplication
+        </li>
+        <li>
+            MSH4.SendingFacility
+        </li>
+        <li>
+            MSH.10.MessageControlID
+        </li>
+        <li>
+            MSH.11.ProcessingID
+        </li>
+        <li>
+            MSH.12.VersionID
+        </li>
+    </ul>
+    <h3>Opción de proceso de duplicados</h3>
+    <p>
+    Cada uno de los mensajes HL7 entrantes tiene un campo
+MessageControlID en el segmento de cabecera MSH que sirve para
+identificar el registro.
+    </p>
+    <p>
+    Los parámetros de patrón que sirven para controlar la comprobación
+de duplicados se utilizan para definir las propiedades equivalentes
+en el nodo GenericHL7Input.
+    </p>
+    <p>
+    Si está seleccionado el recuadro
+    <span class="uicontrol">
+    Comprobar duplicados
+    </span>
+    de IBM Integration Bus Toolkit, todos los identificadores se
+almacenan en la cola de duplicados junto con el acuse de recibo (ACK)
+que se ha devuelto al emisor. El identificador de un mensaje entrante se compara con los identificadores
+guardados para determinar si es un duplicado.
+    </p>
+    <p>
+    Cuando se detecta un duplicado, no se procesa, sino que se
+devuelve el mismo acuse de
+recibo que se ha enviado con el primer mensaje al emisor.
+    </p>
+    <p>
+    Los identificadores se suprimen y
+los mensajes con el mismo identificador ya no se tratan como
+duplicados. El periodo de tiempo predeterminado para almacenar los
+identificadores de mensaje es de 24 horas, pero puede cambiarlo
+con un parámetro de patrón. La cola de
+duplicados debe tener un tamaño suficiente como para contener el número
+máximo
+de  identificadores de mensajes esperado en el periodo de tiempo
+establecido.
+    </p>
+    <p>
+    Si un mensaje entrante no es un duplicado, el mensaje se
+pasa a través del terminal de salida del nodo GenericHL7Input para su
+proceso.
+    </p>
+    <p>
+    Si se detecta un duplicado, el nodo GenericHL7Input devuelve el acuse de recibe al
+solicitante. Si el informe de duplicados está seleccionado y se
+detecta un duplicado, o si se produce algún otro error en el nodo
+GenericHL7Input, el mensaje se pasa al terminal Anomalía y el entorno
+contiene una descripción del error.
+    </p>
+</div>
+<p>
+</p>
+<a name="sequencing"></a> <h3>Secuenciación en el flujo Receiver</h3>
+<p>
+El parámetro
+<span class="msobjprop">
+Números de secuencia
+</span>
+determina cómo el flujo Receiver asigna números de secuencia a un
+mensaje de entrada para asegurarse de que los mensajes se entregan en
+el orden correcto.
+</p>
+<p>
+Hay tres opciones disponibles para asignar números de secuencia:
+</p>
+<ul>
+    <li>
+        <span class="msobjpropval">
+        Basado en la llegada
+        </span>
+        , el valor predeterminado. El nodo de integración asigna
+números de secuencia a medida que van llegando los mensajes. El flujo Receiver debe estar desplegado como un flujo con una sola hebra de
+modo
+que los mensajes lleguen y se les asignen números de secuencia, en el
+orden en que fueron enviados por la aplicación de origen.
+    </li>
+    <li>
+        <span class="msobjpropval">
+        Basado en contenido
+        </span>
+        . Utiliza el número de secuencia incluido en el segmento MSH
+de HL7. Se puede seleccionar esta opción si se sabe que la aplicación
+de origen completa este campo de forma fiable.
+    </li>
+    <li>
+        <span class="msobjpropval">
+        Sin secuenciación
+        </span>
+        . Si no necesita que los mensajes se entreguen en secuencia a
+ninguno de los destinos, seleccione esta opción de forma que no se
+incluyan nodos de secuencia en el flujo de mensajes receptor.
+    </li>
+</ul>
+<h3>Acuses de recibo</h3>
+<p>
+El estilo de interacción para este patrón es una interacción síncrona
+entre la aplicación de origen y el flujo del nodo de integración,
+conservándose el mensaje en la cola del flujo TransformAndRoute hasta
+que se envía el acuse de recibo síncrono.
+</p>
+<p>
+De forma predeterminada, el flujo Receiver HL7 genera una
+respuesta de acuse de
+recibo (ACK) o mensaje de respuesta de acuse de recibo negativo (NACK)
+en respuesta a la recepción de datos. Si no se requiere acuse de
+recibo, desmarque el recuadro correspondiente al parámetro <span class="msobjprop">
+Enviar acuse de recibo</span>.
+</p>
+<p>
+Tras devolver el acuse de recibo, los flujos de mensajes se
+aseguran de que se procesa el mensaje o bien se genera un error, en
+cuyo caso se guardan los datos del mensaje para poder volver a
+enviarlo o realizar un procesamiento alternativo.
+</p>
+<p>
+Cuando en el mensaje existen los valores necesarios para construir un
+acuse de recibo, éstos se utilizan.
+</p>
+<p>
+El estado actual de la interacción de extremo a extremo se almacena
+en todos los puntos principales del flujo, y el mensaje NACK incluye
+esta información de error.
+</p>
+<div class="tablenoborder">
+    <h2>MSH</h2>
+    <table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+        <thead align="left">
+        <tr>
+            <th class="firstcol" align="left" valign="top" width="33%">Nombre del campo</th>
+            <th class="invisible" valign="top" width="33%">Valor
+del campo en el mensaje de acuse de recibo</th>
+            <th class="invisible" valign="top" width="34%">Si no está
+presente en el mensaje de entrada</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.1.FieldSeparator</th>
+            <td valign="top" width="*" class="invisible">MSH.1.FieldSeparator
+del mensaje de entrada</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                '|'
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.ServiceString</th>
+            <td valign="top" width="*" class="invisible">MSH.2.ServiceString del mensaje de entrada</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                '^~\&amp;'
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.3.SendingApplication</th>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                'BROKER.RECEIVER'
+                </span>
+            </td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.4.SendingFacility</th>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                ' '
+                </span>
+            </td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.5.ReceivingApplication</th>
+            <td valign="top" width="*" class="invisible">MSH.3.SendingApplication del mensaje de entrada</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                ' '
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.6.ReceivingFacility</th>
+            <td valign="top" width="*" class="invisible">MSH.4.SendingFacility del mensaje de entrada</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                ' '
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.7.DateTimeOfMessage</th>
+            <td valign="top" width="*" class="invisible">Fecha y hora
+actuales con el formato
+                <span class="msobjprop">
+                AAAAMMddHHmmss
+                </span>
+                .</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.9.MessageType</th>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                'ACK'
+                </span>
+            </td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.10.MessageControlID</th>
+            <td valign="top" width="*" class="invisible">Nuevo
+identificador exclusivo</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.11.ProcessingID</th>
+            <td valign="top" width="*" class="invisible">MSH.11.ProcessingID del mensaje de entrada</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                'P'
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSH.12.VersionID</th>
+            <td valign="top" width="*" class="invisible">MSH.12.VersionID del mensaje de entrada</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                '2.2'
+                </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <h2>MSA</h2>
+    <table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+        <thead align="left">
+        <tr>
+            <th class="firstcol" align="left" valign="top" width="33%">Nombre del campo</th>
+            <th class="invisible" valign="top" width="33%">Valor del
+campo en el mensaje de acuse de recibo</th>
+            <th class="invisible" valign="top" width="34%">Si no está
+presente en el mensaje de entrada</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSA.1.AcknowledgmentCode</th>
+            <td valign="top" width="*" class="invisible">Cuando se
+recibe correctamente el mensaje el código de acuse
+de recibo MSA se establece en
+                <span class="msobjpropval">
+                AA
+                </span>
+                y el campo MSA.3.TextMessage se deja en blanco.</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSA.2.MessageControlID</th>
+            <td valign="top" width="*" class="invisible">MSH.10.MessageControlID del mensaje de entrada</td>
+            <td valign="top" width="*" class="invisible">
+                <span class="msobjpropval">
+                '123456789'
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSA.3.TextMessage</th>
+            <td valign="top" width="*" class="invisible">Cuando se
+recibe correctamente el mensaje el código de acuse de recibo MSA se
+establece en
+                <span class="msobjpropval">
+                AA
+                </span>
+                y el campo MSA.3.TextMessage se deja en blanco.</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">MSA.4.ExpectedSequenceNumber</th>
+            <td valign="top" width="*" class="invisible">MSH.13.ExpectedSequenceNumber del mensaje de entrada</td>
+            <td valign="top" width="*" class="invisible"></td>
+        </tr>
+        </tbody>
+    </table>
+    <h3>Errores</h3>
+    <p>
+    <b>Error al eliminar el byte MLLP</b>. El código de acuse de
+recibo MSA se establece en <span class="msobjpropval">
+    AR
+    </span>
+    y el campo MSA.3.TextMessage se establece en
+    <span class="msobjpropval">
+    Error MLLP - falta byte de inicio
+    </span>
+    .
+    </p>
+    <p>
+    <b>Error al validar MSH entrante o al desduplicar los datos</b>. El código de acuse de
+recibo MSA se establece en
+    <span class="msobjpropval">
+    AE
+    </span>
+    y el campo MSA.3.TextMessage se establece en
+    <span class="msobjpropval">
+    Error de análisis del mensaje de entrada o de validación </span>
+    .
+    </p>
+    <p>
+    <b>Error al aplicar la lógica de secuencia</b>. El código de
+acuse de recibo MSA se establece en
+    <span class="msobjpropval">
+    AR
+    </span>
+    y el campo MSA.3.TextMessage se establece en
+    <span class="msobjpropval">
+    Fallo interno en el nodo de secuencia  </span>
+    .
+    </p>
+    <p>
+    <b>Error al persistir el mensaje HL7 en una cola</b>. El código
+de acuse de recibo MSA se establece en
+    <span class="msobjpropval">
+    AR
+    </span>
+    y el campo MSA.3.TextMessage se establece en
+    <span class="msobjpropval">
+    Error al enviar el mensaje a la cola del procesador  </span> .
+    </p>
+</div>
+<div>
+    <h2>Distribución</h2>
+    <p>
+    El mensaje de origen se graban en una o más colas para su
+transformación y direccionamiento. 
+    El mensaje se graba en una cola
+para cada parte del patrón y, a continuación, cada parte del patrón se
+direcciona a los diversos destinos necesarios.
+    </p>
+</div>
+<p>
+</p>
+<div class="section">
+    <a name="transform"></a> <h2 class="sectiontitle">Transformación
+y direccionamiento</h2>
+    <p>
+    El flujo de TransformAndRoute lee un mensaje HL7 de la cola.
+    </p>
+    <h3>Campos restantes</h3>
+    <p>
+    Si el parámetro <span class="msobjprop">Informar de restos</span>
+está seleccionado, se comprueba si hay campos restantes,
+que son campos adicionales que se encuentran dentro de un segmento,
+pero no se modelan en el mensaje HL7 que se utiliza para analizar los
+mensajes de entrada. Si se encuentran campos restantes, se graban en
+una cola o se publican. Esta opción se utiliza durante el
+desarrollo para identificar los campos adicionales y determinar cómo
+se procesan.
+    </p>
+    <h3>Formato XML canónico</h3>
+    <p>
+    El mensaje HL7 se transforma en su formato XML canónico y se pasa
+al subflujo SubCustomize. De forma predeterminada, este subflujo no
+hace más que pasar el mensaje. No obstante, el subflujo
+ofrece un lugar donde puede especificar personalización para una
+instancia de patrón específica sin cambiar la estructura del flujo.
+    </p>
+    <p>
+    Si se selecciona el parámetro
+    <span class="msobjprop">
+    Canal de información canónico
+    </span>, se produce el formato canónico en este momento, ver
+<a href="design.htm#publish">Salida de una instancia de patrón</a>. Puede
+utilizar el formato canónico del mensaje de entrada como canal de
+información para otras aplicaciones que no acepten mensajes HL7
+básicos.
+    </p>
+    <h3>Distribución a los destinos</h3>
+    <p>
+    El patrón admite hasta seis destinos para cada parte del patrón. 
+    Puede configurar cada destino por separado. Si selecciona menos
+    de seis destinos, sólo se configuran los destinos
+seleccionados. Para cada destino, el flujo
+    TransformAndRoute envía una copia del mensaje al subflujo de
+    filtrado del flujo TransformAndRoute. Para cada destino se aplica
+    el filtro para determinar si se envía un mensaje entrante al
+    destino. Los parámetros del patrón configuran un subflujo de
+filtrado para cada destino, Dest<var>n</var>Filter,
+    donde <var>n</var> es el número del destino, para generar una
+    lista de los pares permitidos de código de mensaje y suceso de
+mensaje. Sólo los mensajes coincidentes se pasan a la aplicación de
+destino.
+    </p>
+    <p>
+    Se pasa un mensaje ficticio al subflujo Dest<var>n</var>Sender,
+donde <var>n</var>
+    es el número del destino, siempre que se filtra un mensaje,
+excepto cuando el parámetro
+    <span class="msobjprop">
+    Acción de secuenciación
+    </span>
+    de un destino está establecido en
+    <span class="msobjpropval">
+    Sin secuenciación
+    </span>. Este mensaje ficticio es necesario para que se mantenga la
+secuenciación correcta de mensajes del origen.
+    </p>
+    <h2>Filtrado de segmentos</h2>
+    <p>
+    Después del filtrado de mensajes, cada mensaje se transforma a formato HL7. Si el parámetro
+    <span class="msobjprop">
+    Filtrado de segmentos
+    </span>
+    está seleccionado, se eliminan los segmentos que se listan en
+la tabla <span class="msobjprop"> Filtros de segmentos
+    </span>
+    del destino como parte de la transformación.
+    </p>
+    <h2>Personalización</h2>
+    <p>
+    A continuación, el mensaje se pasa por un subflujo de
+personalización. De forma predeterminada, este subflujo no hace más
+que transmitir el mensaje. No obstante, el subflujo
+ofrece un lugar donde puede especificar personalización para una
+instancia de patrón específica. 
+    Finalmente, el mensaje se graba en la cola del flujo Sender.
+    </p>
+</div>
+<div class="section">
+    <a name="sending"></a> <h2 class="sectiontitle">Flujos Sender</h2>
+    <p>
+    Para cada destino se crea un flujo de mensajes distinto,
+subflujo Dest<var>n</var>Sender, donde <var>n</var> es el número del
+destino.
+    </p>
+    <h3>Resecuenciación</h3>
+    <p>
+    La secuenciación de un destino puede ser estricta o laxa. Esto
+viene determinado por el parámetro de patrón
+    <span class="msobjprop">
+    Acción de secuenciación</span>. Si se selecciona <span class="msobjpropval">
+    Estricta </span>, se incluye un nodo Resequence en el flujo Sender con un tiempo de espera infinito. Si los mensajes llegan fuera
+de secuencia, se retienen en la cola de secuenciación hasta que
+lleguen los mensajes que faltan. Si se selecciona esta opción, se
+debe supervisar la cola del
+sistema que contiene mensajes pendientes y se deben adoptar las
+medidas necesarias para suministrar los mensajes que faltan.
+    </p>
+    <p>
+    Para cada mensaje que se entrega satisfactoriamente a un
+destino, se graban los mensajes de secuencia del origen, y de
+resecuenciación del flujo Sender, en la cola
+<var>QueuePrefix</var>.SEQNOS, donde <var>QueuePrefix</var> viene
+definido por el parámetro <span class="msobjprop">
+    Prefijo de cola
+    </span>, junto con una indicación de fecha y hora y el grupo
+de secuencia que corresponde al destino especificado como
+Dest<var>n</var>, donde <var>n</var> es el número de destino.
+    </p>
+    <p>
+    Incluso con secuenciación estricta, algunos mensajes no se pasan a un destino si la opción
+    <span class="msobjprop">
+    Filtrado de mensajes
+    </span>
+    está seleccionada. En este caso, los mensajes ficticios, que
+representan los mensajes que no son para entregar, se eliminan tras
+la resecuenciación y se aplican nuevos números de secuencia a los
+mensajes siguientes antes de pasarlos al destino.
+    </p>
+    <p>
+    Si se selecciona la opción
+    <span class="msobjpropval">
+    Laxa
+    </span>, los mensajes normalmente se entregan secuencialmente,
+pero si falta un mensaje tras el periodo de tiempo especificado en el
+parámetro <span class="msobjprop">
+    Tiempo de espera de secuenciación
+    </span>, se envía un mensaje a la cola de notificación y el flujo
+de mensajes continúa. El mensaje de falta se inserta en el flujo
+cuando llega. Cuando llega un mensaje que faltaba, también se graba
+en la cola .SEQNTFY.
+    </p>
+    <p>
+    De forma predeterminada, las colas de secuenciación del sistema se definen como:
+    </p>
+    <ul>
+        <li>
+            SYSTEM.BROKER.EDA.EVENTS
+        </li>
+        <li>
+            SYSTEM.BROKER.EDA.COLLECTIONS
+        </li>
+    </ul>
+    <p>
+    Si el parámetro
+    <span class="msobjprop">
+    Separar colas de secuencia
+    </span>
+    está seleccionado para un patrón, se definen colas de
+secuenciación específicas para la instancia de patrón utilizando el
+parámetro <span class="msobjprop">
+    Prefijo de cola
+    </span>
+    de la forma siguiente:
+    </p>
+    <ul>
+        <li>
+            SYSTEM.BROKER.EDA.<var>QueuePrefix</var>.EVENTS
+        </li>
+        <li>
+            SYSTEM.BROKER.EDA.<var>QueuePrefix</var>.COLLECTIONS
+        </li>
+    </ul>
+    <p>
+    Estas colas de secuenciación no predeterminadas están definidos por un servicio configurable llamado <span class="msobjprop">
+    patternInstance_setSeqQs
+    </span>
+    . La instancia de patrón crea un archivo denominado <span class="filepath">
+    <i>patternInstance</i>.resequence.configurableservice
+    </span>
+    con una definición de este servicio que se debe crear en el nodo
+de integración donde se ejecuta la instancia de patrón. Los flujos Sender también están configurados para utilizar este servicio
+configurable.
+    </p>
+    <p>
+    Si no se requiere secuenciación para un destino, se omite en el
+flujo el nodo Resequence y el
+    informe de mensajes que faltan.
+    </p>
+    <h3>Enviar y reintentar en el nodo GenericHL7Output </h3>
+    <p>
+    El nodo GenericHL7Output prepara un mensaje para la aplicación de
+destino,
+    cambiándolo a una secuencia de bits y añadiendo el byte
+delimitador MLLP (Minimal Lower Layer),
+    <span class="msobjpropval">
+    0B
+    </span>
+    , al principio. A continuación, el nodo GenericHL7Output reenvía
+este mensaje preparado al nodo de salida TCP/IP, que intenta
+enviar el mensaje a la aplicación de destino.
+    </p>
+    <p>
+    Si la aplicación de destino devuelve un código de éxito
+    <span class="msobjpropval">
+    AA
+    </span>, se borra la variable
+    <span class="msobjprop">
+    Environment.PatternVariables.FlowMilestoneReached
+    </span>
+    y se envía el mensaje al terminal Salida.
+    </p>
+    <p>
+    Si la aplicación de destino devuelve un código de respuesta
+    <span class="msobjpropval">
+    AE
+    </span>, la variable
+    <span class="msobjprop">
+    Environment.PatternVariables.FlowMilestoneReached
+    </span>
+    se establece en
+    <span class="msobjpropval">
+    ACKAE
+    </span>
+    y el mensaje se pasa al terminal Anomalía. No se realiza ningún
+reintento después de una respuesta <span class="msobjpropval">
+    ACKAE
+    </span>.
+    </p>
+    <p>
+    Si el mensaje de envía satisfactoriamente pero no se recibe
+ningún acuse de recibo, o si se recibe un acuse de recibo no válido,
+    se trata igual que una respuesta <span class="msobjpropval">
+    AE
+    </span>, pero la variable <span class="msobjprop">
+    Environment.PatternVariables.FlowMilestoneReached
+    </span>
+    se establece en
+    <span class="msobjpropval">
+    TIMEOUT
+    </span>
+    ,
+    <span class="msobjpropval">
+    RECEIVEACK
+    </span>
+    o
+    <span class="msobjpropval">
+    ACKERROR
+    </span>
+    antes de pasar el mensaje al terminal Anomalía. No se realiza ningún
+reintento.
+    </p>
+    <p>
+    Si el nodo GenericHL7Output no puede enviar el mensaje al
+destino o si el destino devuelve un acuse de recibo
+    <span class="msobjpropval">
+    AR
+    </span>, el mensaje se pasa al terminal Registro de reintento. Se
+vuelve a intentar el mensaje cuando se devuelve el control después
+del registro hasta que se envía satisfactoriamente o hasta que el
+número de reintentos alcanza el límite definido en el parámetro
+    <span class="msobjprop">
+    Límite de reintentos</span>.
+    </p>
+    <p>
+    Cuando se alcanza el límite de reintentos, la variable
+    <span class="msobjprop">
+    Environment.PatternVariables.FlowMilestoneReached
+    </span>
+    se establece en
+    <span class="msobjpropval">
+    ACKARTOOMANYREPEATS
+    </span>
+    y el mensaje se pasa al terminal Anomalía.
+    </p>
+    <h3>Validación de mensajes</h3>
+    <p>
+    Se selecciona la validación de contenido según el destino con el
+parámetro <span class="msobjprop">
+    Validación
+    </span>
+    en la sección
+    <span class="msobjprop">
+    Comunicaciones de destino
+    </span>. Cuando se selecciona la validación para un destino, el
+parámetro <span class="msobjprop">
+    Validación
+    </span>
+    se establece en
+    <span class="msobjpropval">
+    Contenido
+    </span>
+    en el nodo MQInput del flujo Sender correspondiente. La
+propiedad <span class="msobjprop">
+    Temporización del análisis
+    </span>
+    de este nodo está definida en el patrón como
+    <span class="msobjpropval">
+    Inmediato
+    </span>
+    de forma que la validación se produce sin más
+procesamiento. La validación solo valida el mensaje contra el
+conjunto de mensajes HL7v25P. No da una validación HL7 completa de
+los campos dependientes, por ejemplo.
+    </p>
+</div>
+<div class="section">
+    <a name="messageset"></a> <h2 class="sectiontitle">Conjunto de mensajes HL7v25P</h2>
+    <p>
+    El conjunto de mensajes HL7v25P se utiliza con el analizador MRM para
+analizar y escribir mensajes HL7. El árbol de mensajes resultante
+puede ser serializado a un formato canónico XML. 
+    Las definiciones de
+mensajes son suficientemente flexibles como para tolerar variaciones
+locales sin necesidad de personalización y también pueden ampliarse
+para permitir el análisis de segmentos Z definidos localmente y campos
+adicionales. Si se producen variaciones locales y los datos de estas
+variaciones locales deben ser procesados, el modelo HL7 se debe
+modificar de forma que cumpla una especificación de coincidencia
+para asegurarse de que se puede acceder a todos los datos.
+    </p>
+    <p>
+    La organización puede utilizar el formato canónico para guardar
+una representación de
+    los datos que funcionan en cualquier sistema operativo. Estos
+datos pueden ser en forma de fechas y horas estándar, formato de
+números o cualquier otro requisito de estandarización de datos que
+imponga organización. El formato canónico representa una separación
+de las aplicaciones de origen y de destino, permitiendo la máxima
+reutilización y el mínimo mantenimiento. En los patrones que genere
+se incluirá un subflujo de personalización de este formato canónico.
+    </p>
+    <p>
+    El conjunto de mensajes HL7v25P contiene definiciones de
+elementos globales para todos los segmentos
+    definidos en la especificación HL7 v2.5. Los componentes y subcomponentes
+    de cada segmento se modelan con los delimitadores correctos. Puede
+utilizar una definición de mensaje genérica con el nombre
+    <span class="msobjprop">
+    HL7
+    </span>
+    para analizar cualquier secuencia de segmentos HL7.
+    </p>
+    <p>
+    <b>Nota:</b> El ejemplo de Servicio sanitario que se
+proporciona en IBM Integration Bus
+    también tiene un conjunto de mensajes HL7. Para evitar el
+conflicto, el conjunto de mensajes que se utiliza en IBM Integration
+Bus Healthcare Pack tiene un nombre distinto (HL7v25P). El conjunto
+de mensajes HL7v25P es más actualizado y es el que debe utilizar con
+el patrón <span>
+    Servicio sanitario: HL7 a HL7
+    </span>.
+    </p>
+</div>
+<p>
+</p>
+<div class="section">
+    <a name="publish"></a> <h2 class="sectiontitle">Salida de una instancia de patrón</h2>
+    <p>
+    Además de los mensajes HL7 direccionados a direcciones
+específicas, este patrón ofrece diversas otras salidas. Estas
+salidas se graban en una cola o se envían a un nodo Publication. El
+destino viene determinado por el parámetro de patrón
+    <span class="msobjprop">
+    Publicar
+    </span>. Si se selecciona la opción
+    <span class="msobjpropval">
+    Publicar
+            </span>
+    toda la información se publica utilizando una jerarquía
+de temas que comienza con el nombre de la instancia de patrón.
+    </p>
+    <p>
+    Si se selecciona la opción
+    <span class="msobjpropval">
+    Grabar en cola</span>, la salida se envía a las colas con los
+nombres generados a partir del parámetro de patrón <span class="msobjprop">
+    Prefijo de cola
+    </span>
+    y un conjunto fijo de sufijos, como se muestra en la tabla
+siguiente.
+    </p>
+    <p>
+    <b>Nota</b>: La faceta inicial de cada tema y cola (el nombre de
+instancia de patrón) no se muestra.
+    </p>
+</div>
+<div class="tablenoborder">
+    <table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+        <thead align="left">
+        <tr>
+            <th class="firstcol" align="left" valign="top" width="20%">Salida</th>
+            <th class="invisible" valign="top" width="15%">Cola</th>
+            <th class="invisible" valign="top" width="15%">Tema</th>
+            <th valign="top" width="50%">Notas</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">Canal de información de origen</th>
+            <td valign="top" width="*" class="invisible">.SRC</td>
+            <td valign="top" width="*" class="invisible">/Receiver/Source</td>
+            <td valign="top" width="*" class="invisible">Se graba una
+copia del mensaje origen, tal como se recibe.</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">Diario</th>
+            <td valign="top" width="*" class="invisible">.JRNL</td>
+            <td valign="top" width="*" class="invisible">/Receiver/Journal</td>
+            <td valign="top" width="*" class="invisible">Esta salida
+proporciona un diario de mensajes de entrada en formato de patrón
+estándar.
+                <p>
+                Ver Nota 1.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">A flujos TransformAndRoute</th>
+            <td valign="top" width="*" class="invisible">.RXF<var>n</var></td>
+            <td valign="top" width="*" class="invisible">No aplicable</td>
+            <td valign="top" width="*" class="invisible">Para cada destino, se envía un mensaje al flujo TransformAndRoute. </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">Mensajes erróneos</th>
+            <td valign="top" width="*" class="invisible">.ERR</td>
+            <td valign="top" width="*" class="invisible">No aplicable</td>
+            <td valign="top" width="*" class="invisible">Los mensajes
+que no se pueden procesar correctamente se graban en la cola de
+errores con la información de error en una cabecera MQRFH2.</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">ID
+de mensaje para la comprobación de duplicados</th>
+            <td valign="top" width="*" class="invisible">.DUPID</td>
+            <td valign="top" width="*" class="invisible">No aplicable</td>
+            <td valign="top" width="*" class="invisible">Los
+identificadores de mensajes y los mensajes de acuse de recibo, se
+almacenan para comparar con los mensajes de entrada posteriores
+y detectar así mensajes duplicados.
+                <p>
+                Ver Nota 2.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">Restantes</th>
+            <td valign="top" width="*" class="invisible">.REM</td>
+            <td valign="top" width="*" class="invisible">/Remainders</td>
+            <td valign="top" width="*" class="invisible">Opcionalmente,
+se pueden grabar mensajes con campos restantes.</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">Canónico</th>
+            <td valign="top" width="*" class="invisible">.CAN</td>
+            <td valign="top" width="*" class="invisible">/Canonical</td>
+            <td valign="top" width="*" class="invisible">Si se
+selecciona la opción de dar como salida un canal de información
+canónico, se graba una copia en formato XML canónico del mensaje de
+entrada.</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">A flujos Sender</th>
+            <td valign="top" width="*" class="invisible">.DEST<var>n</var></td>
+            <td valign="top" width="*" class="invisible">No aplicable</td>
+            <td valign="top" width="*" class="invisible">Para cada
+destino, se envía un mensaje al flujo Sender. </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">Datos
+de secuenciación</th>
+            <td valign="top" width="*" class="invisible">SYSTEM.BROKER.EDA.EVENTS</td>
+            <td valign="top" width="*" class="invisible">No aplicable</td>
+            <td valign="top" width="*" class="invisible">La cola del
+sistema que utilizan de forma predeterminada los nodos
+Resequence de los flujos Sender.</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">Datos de secuenciación</th>
+            <td valign="top" width="*" class="invisible">SYSTEM.BROKER.EDA.COLLECTIONS</td>
+            <td valign="top" width="*" class="invisible">No aplicable</td>
+            <td valign="top" width="*" class="invisible">La cola del
+sistema que utilizan de forma predeterminada los nodos Resequence de
+los flujos Sender.</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">Datos de secuenciación</th>
+            <td valign="top" width="*" class="invisible">SYSTEM.BROKER.EDA.<var>QueuePrefix</var>.EVENTS</td>
+            <td valign="top" width="*" class="invisible">No aplicable</td>
+            <td valign="top" width="*" class="invisible">La cola que
+utilizan los nodos Resequence de
+los flujos Sender cuando la opción
+                <span class="msobjpropval">
+                Separar colas de secuencias
+                </span>
+                está seleccionada. </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">Datos de secuenciación</th>
+            <td valign="top" width="*" class="invisible">SYSTEM.BROKER.EDA.<var>QueuePrefix</var>.COLLECTIONS</td>
+            <td valign="top" width="*" class="invisible">No aplicable</td>
+            <td valign="top" width="*" class="invisible">La cola que
+utilizan los nodos Resequence de los flujos Sender cuando la opción
+                <span class="msobjpropval">
+                Separar colas de secuencias
+                </span>
+                está seleccionada.</td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">Mensajes
+fuera de secuencia</th>
+            <td valign="top" width="*" class="invisible">.SEQNTFY</td>
+            <td valign="top" width="*" class="invisible">No aplicable</td>
+            <td valign="top" width="*" class="invisible">Cuando
+la opción de secuenciación <span class="msobjpropval">
+                Laxa
+                </span>
+                está seleccionada, los mensajes que llegan fuera de
+secuencia se graban en esta cola y se entregan al destino. </td>
+        </tr>
+        <tr>
+            <th align="left" valign="top" width="*" class="firstcol">Números de secuencia</th>
+            <td valign="top" width="*" class="invisible">.SEQNOS</td>
+            <td valign="top" width="*" class="invisible">No aplicable</td>
+            <td valign="top" width="*" class="invisible">En esta cola
+se registran el último número de secuencia entregado a cada
+destino. Cuando la opción de secuenciación
+<span class="msobjpropval">Estricta</span> está seleccionada, la cola
+se utiliza para determinar el último número de secuencia entregado a
+un destino.</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    <b>Nota 1:</b> Se puede generar un mensaje de diario a partir de
+un mensaje de origen añadiendo cabeceras MQMD y MQRFH2. En la
+cabecera MQRFH2 se incluye:
+    </p>
+    <ul>
+        <li>
+            Nombre del nodo de integración
+        </li>
+        <li>
+            Flujo de mensajes
+        </li>
+        <li>
+            Indicación de la hora actual
+        </li>
+    </ul>
+    <p>
+    <b>Nota 2:</b> Cuando llega cada mensaje, se comprueba en la cola
+si hay algún mensaje anterior con el mismo ID de mensaje. A estos
+mensajes se les da un tiempo de espera que viene determinado por un
+parámetro del mensaje, tras el cual el mensaje se elimina de la
+cola. Por lo tanto, sólo se comprueban los duplicados durante
+un periodo de tiempo, el valor predeterminado es 24 horas.
+    </p>
+</div>
+<a href="overview.htm#anchorBack" title="Atrás">Volver a
+la especificación del patrón Servicio sanitario: HL7 a HL7</a>
+<p>
+</p>
+</body>
+</html>

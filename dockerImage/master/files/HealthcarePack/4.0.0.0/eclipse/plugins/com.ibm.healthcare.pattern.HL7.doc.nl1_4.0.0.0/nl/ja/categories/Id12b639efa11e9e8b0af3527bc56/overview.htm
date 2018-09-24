@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="copyright" content="Copyright IBM Corporation 2010" />
+<link rel="stylesheet" type="text/css" href="./css/pattern.css" />
+<title>Healthcare パターン</title>
+</head>
+<body role="main">
+	<h1 class="topictitle1">Healthcare</h1>
+	<div>
+		<p class="shortdesc">IBM Integration Bus Healthcare Pack は、
+			IBM Integration Bus の上にビルドされたもので、Healthcare のアプリケーションをサポートしています。</p>
+	</div>
+	<h3>「Healthcare: HIPAA to XML」パターン</h3>
+	<p>
+		<span>「Healthcare: HIPAA to XML」</span> パターンは HIPAA ファイルを XML ファイルに変換するのに使用できるメッセージ・フローを生成します。
+	</p>
+	<div class="image">
+		<img src="HIPAAtoXML.png"
+			alt="ソース・アプリケーションからの HIPAA ファイルは、このパターンによって XML ファイルへ変換されます" />
+	</div>
+	<h3>「Healthcare: HL7 Transformation」パターン</h3>
+	<p>
+				「<span>Healthcare: HL7 Transformation</span>」パターンは、HL7 メッセージを組み立てるために使用できるグラフィカル・データ・マップを生成します。
+	</p>
+	<div class="image">
+				<img src="MapGeneration1.png"
+			alt="「Healthcare: HL7 Transformation」示す図" />
+	</div>
+	<h3>「Healthcare: HL7 to HL7 DFDL」パターン</h3>
+	<p>
+		<span>「Healthcare: HL7 to HL7 DFDL」</span>パターンは、HL7 v2 メッセージを送信できるアプリケーションを、HL7 メッセージを受信できる 1 つ以上のアプリケーションと統合します。
+アプリケーションは、MLLP over TCP/IP の使用によるメッセージの送受信が可能でなければなりません。このパターンは DFDL メッセージ・モデルを使用します。このパターンの代替バージョンである<span>「Healthcare: HL7 to HL7」</span>パターンは、MRM および HL7v25P メッセージ・セットを DFDL の代わりに使用する場合に提供されます。
+	</p>
+	<div class="image">
+		<img src="pattern.png" alt="「Healthcare: HL7 to HL7」パターンの 3 つの部分を示す図" />
+</div>
+	<h3>「Healthcare: HL7 to reports」パターン</h3>
+	<p>
+		<span>「Healthcare: HL7 to reports」</span>パターンは、HL7 v2 メッセージを送信できるアプリケーションを、テキスト・レポート生成と統合します。
+テキスト・レポートは PHP スクリプトを使って作成され、HL7 メッセージ・データに完全にアクセスすることができます。
+完成したレポートは定期的にターゲット・ファイル・システム・ディレクトリーに送信されます。
+その際、オプションで、レポートを外部 FTP/SFTP サイトにコピーすることもできます。</p>
+	<div class="image">
+		<img src="reports.png"
+    alt="「Healthcare: HL7 to reports」パターンの 3 つの部分を示す図" />
+</div>
+	<h3>「Healthcare: Medical devices to EMR」パターン</h3>
+	<p>
+		<span>「Healthcare: Medical devices to EMR」</span>パターンは、医療デバイスと、Health Level Seven International (HL7) v2 検査結果メッセージ (ORU R01) を受信できる電子カルテ (EMR) アプリケーションとを統合します。
+このアプリケーションは、Minimal Lower Layer Protocol (MLLP) over TCP/IP を使用して HL7 ORU R01 メッセージを受信できる必要があります。
+</p>
+	<div class="image">
+		<img src="devices.png"
+    alt="「Healthcare: Medical devices to EMR」パターンの 3 つの部分を示す図" />
+</div>
+
+	<h3>「Healthcare: Web service to DICOM」パターン</h3>
+	<p>
+		<span>「Healthcare: Web service to DICOM」</span>パターンを使用して、Web サービスを使って作成したアプリケーションを、C-FIND 操作および C-MOVE 操作をサポートする DICOM アプリケーションと統合します。
+パターンを使用することにより、IBM Integration Bus によって実装された Web サービスを使用して、DICOM アーカイブ (PACS) から患者、研究、系統、およびイメージを照会することができます。
+</p>
+	<div class="image">
+				<img src="DICOM.png"
+			alt="「Healthcare: Web service to DICOM」パターンの動作を示す図" />
+	</div>
+	<h3>「Healthcare: Home Health」パターン</h3>
+	<p>
+		<span>「Healthcare: Home Health」</span>パターンを使用すれば、ヘルス・システムで HL7 v2.6 対応デバイスからの Web サービス要求を受け付けることができるようになります。その結果、ホーム・ヘルス・デバイスで収集してアプリケーション・ホスティング・デバイス (AHD) に送信したデータを要求元の臨床アプリケーションに転送することが可能になります。
+	</p>
+	<div class="image">
+				<img src="health_home.png"
+			alt="「Healthcare: Home Health」パターンの動作を示す図。" />
+	</div>
+	<h3>Healthcare: Patient Identifier Cross-reference Manager</h3>
+	<p>
+		<span>「Healthcare: Patient Identifier Cross-reference Manager」</span>パターンを使用して、IHE PIX プロファイルに準拠した患者 ID 相互参照マネージャーを作成します。
+</p>
+</body>
+</html>
+
+

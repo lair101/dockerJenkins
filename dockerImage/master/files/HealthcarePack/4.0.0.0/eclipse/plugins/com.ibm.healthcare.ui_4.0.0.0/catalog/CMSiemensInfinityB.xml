@@ -1,0 +1,1189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CMDriverDescription>
+<SupportedDevices model="Siemens Vista" type="Monitor">
+ <CMLLC type="CMLLCRS232">
+ 	<CMLLCCfg port="" baud="19200" parity="N" data="8" stopbit="1" rtscts="No" />
+ </CMLLC>
+ </SupportedDevices>
+ <Variables>
+	<Discrete>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:667:203:263" 
+ 					CMidtext="Rate:Beats:Heart:CVS" 
+ 					idref="M_BASE_RATE:M_TIMECRIT_BEATS:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="HR" 
+ 					shortdesc="heart rate" 
+ 					longdesc="Rate of cardiac beats" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:712:169:263-498" 
+ 					CMidtext="Pressure:Systolic:Blood:CVS-Artery" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_ARTERY" 
+ 					defaultunits="" 
+ 					abbreviation="SAP" 
+ 					shortdesc="Systolic Arterial Pressure" 
+ 					longdesc="Systolic Pressure of the blood in an artery" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:671:169:263-498" 
+ 					CMidtext="Pressure:Diastolic:Blood:CVS-Artery" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_ARTERY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Diastolic Arterial Pressure" 
+ 					longdesc="Diastolic Pressure of the blood in an artery" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:137:169:263-498" 
+ 					CMidtext="Pressure:Mean:Blood:CVS-Artery" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_ARTERY" 
+ 					defaultunits="" 
+ 					abbreviation="MAP" 
+ 					shortdesc="Mean Arterial Pressure" 
+ 					longdesc="Mean Pressure of the blood in an artery" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:712:169:263-534" 
+ 					CMidtext="Pressure:Systolic:Blood:CVS-PulmonaryArtery" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_PULMONARYARTERY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Systolic Pulmonary Arterial Pressure" 
+ 					longdesc="Systolic Pressure of the blood in the pulmonary artery" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:671:169:263-534" 
+ 					CMidtext="Pressure:Diastolic:Blood:CVS-PulmonaryArtery" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_PULMONARYARTERY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Diastolic Pulmonary Arterial Pressure" 
+ 					longdesc="Diastolic Pressure of the blood in the pulmonary artery" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:137:169:263-534" 
+ 					CMidtext="Pressure:Mean:Blood:CVS-PulmonaryArtery" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_PULMONARYARTERY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Mean Pulmonary Arterial Pressure" 
+ 					longdesc="Mean Pressure of the blood in the Pulmonary artery" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99::169:263-504" 
+ 					CMidtext="Pressure::Blood:CVS-CentralVein" 
+ 					idref="M_BASE_PRESSURE::M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_CENTRALVEIN" 
+ 					defaultunits="" 
+ 					abbreviation="CVP" 
+ 					shortdesc="Central Venous Pressure" 
+ 					longdesc="Pressure of the blood in the thoracic venae cavae" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99::202-206:262" 
+ 					CMidtext="Pressure::Head-Intracranial:CNS" 
+ 					idref="M_BASE_PRESSURE::M_CONCERNS_HEAD-M_CONCERNS_INTRACRANIAL:M_CONTEXT_CNS" 
+ 					defaultunits="" 
+ 					abbreviation="ICP" 
+ 					shortdesc="Intracranial Pressure" 
+ 					longdesc="Pressure inside skull" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:712:169:263" 
+ 					CMidtext="Pressure:Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Systolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the systolic phase" 
+ 				/> 
+ 				<Sources list="Channel1,Channel2" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:671:169:263" 
+ 					CMidtext="Pressure:Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Diastolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the diastolic phase" 
+ 				/> 
+ 				<Sources list="Channel1,Channel2" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:137:169:263" 
+ 					CMidtext="Pressure:Mean:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Mean Blood Pressure" 
+ 					longdesc="Pressure of the blood as computed by averaging on one cycle" 
+ 				/> 
+ 				<Sources list="Channel1,Channel2" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:346-371-712:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Noninvasive-Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE-M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="NIBP (sys)" 
+ 					shortdesc="Discontinuous, Noninvasive Systolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the systolic phase, measured discontinuously and noninvasively (cuff)" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:346-371-671:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Noninvasive-Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE-M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="NIBP (dia)" 
+ 					shortdesc="Discontinuous, Noninvasive Diastolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the diastolic phase, measured discontinuously and noninvasively (cuff)" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:137-346-371:169:263" 
+ 					CMidtext="Pressure:Mean-Discontinuous-Noninvasive:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN-M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="NIBP (mean)" 
+ 					shortdesc="Discontinuous, Noninvasive Mean Blood Pressure" 
+ 					longdesc="Pressure of the blood computed as mean value between systolic and diastolic Pressures, measured discontinuously and noninvasively (cuff)" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:455:173:261" 
+ 					CMidtext="Rate:NOS:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_NOS:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, method not specified" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:224:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:Peripheralvessels:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_CONCERNS_PERIPHERAL_VESSELS:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="" 
+ 					abbreviation="SpO2" 
+ 					shortdesc="SpO2" 
+ 					longdesc="Peripheral oxygen saturation measurements" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:224-226:263" 
+ 					CMidtext="Rate:Noninvasive:Peripheralvessels-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PERIPHERAL_VESSELS-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="SpO2 PR" 
+ 					shortdesc="Pulse rate measured by SpO2 sensor" 
+ 					longdesc="Noninvasive pulse rate measured by SpO2 sensor" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="109:::260" 
+ 					CMidtext="Temperature:::Body" 
+ 					idref="M_BASE_TEMPERATURE:::M_CONTEXT_BODY" 
+ 					defaultunits="" 
+ 					abbreviation="T" 
+ 					shortdesc="Temperature" 
+ 					longdesc="Temperature - unspecified measurement of patient" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:710-818:203:263" 
+ 					CMidtext="Duration:ST (segment)-ECG lead:Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_TIMECRIT_ST__SEGMENT_-M_ORIGIN_ECGLEAD:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="ST" 
+ 					shortdesc="ST" 
+ 					longdesc="Duration of the ST segment of ECG in unspecified lead" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:445-710:203:263" 
+ 					CMidtext="Duration:I-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_I_MDC_ECG_LEAD_I-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STI" 
+ 					shortdesc="ST lead I" 
+ 					longdesc="Duration of the ST segment of ECG in lead I" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:446-710:203:263" 
+ 					CMidtext="Duration:II-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_II_MDC_ECG_LEAD_II-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STII" 
+ 					shortdesc="ST lead II" 
+ 					longdesc="Duration of the ST segment of ECG in lead II" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:447-710:203:263" 
+ 					CMidtext="Duration:III-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_III_MDC_ECG_LEAD_III-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STIII" 
+ 					shortdesc="ST lead III" 
+ 					longdesc="Duration of the ST segment of ECG in lead III" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:423-710:203:263" 
+ 					CMidtext="Duration:aVL-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_AVL_MDC_ECG_LEAD_AVL-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STaVL" 
+ 					shortdesc="ST lead aVL" 
+ 					longdesc="Duration of the ST segment of ECG in lead aVL" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:424-710:203:263" 
+ 					CMidtext="Duration:aVR-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_AVR_MDC_ECG_LEAD_AVR-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STaVR" 
+ 					shortdesc="ST aVR" 
+ 					longdesc="Duration of the ST segment of ECG in lead aVR" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:422-710:203:263" 
+ 					CMidtext="Duration:aVF-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_AVF_MDC_ECG_LEAD_AVF-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STaVF" 
+ 					shortdesc="ST lead aVF" 
+ 					longdesc="Duration of the ST segment of ECG in lead aVF" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:466-710:203:263" 
+ 					CMidtext="Duration:V1-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_V1_MDC_ECG_LEAD_V1-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STV1" 
+ 					shortdesc="ST lead V1" 
+ 					longdesc="Duration of the ST segment of ECG in lead V1" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:467-710:203:263" 
+ 					CMidtext="Duration:V2-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_V2_MDC_ECG_LEAD_V2-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STV2" 
+ 					shortdesc="ST lead V2" 
+ 					longdesc="Duration of the ST segment of ECG in lead V2" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:467-710:203:263" 
+ 					CMidtext="Duration:V2-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_V2_MDC_ECG_LEAD_V2-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STV2" 
+ 					shortdesc="ST lead V2" 
+ 					longdesc="Duration of the ST segment of ECG in lead V2" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:466-710:203:263" 
+ 					CMidtext="Duration:V1-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_V1_MDC_ECG_LEAD_V1-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STV1" 
+ 					shortdesc="ST lead V1" 
+ 					longdesc="Duration of the ST segment of ECG in lead V1" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:422-710:203:263" 
+ 					CMidtext="Duration:aVF-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_AVF_MDC_ECG_LEAD_AVF-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STaVF" 
+ 					shortdesc="ST lead aVF" 
+ 					longdesc="Duration of the ST segment of ECG in lead aVF" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:424-710:203:263" 
+ 					CMidtext="Duration:aVR-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_AVR_MDC_ECG_LEAD_AVR-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STaVR" 
+ 					shortdesc="ST aVR" 
+ 					longdesc="Duration of the ST segment of ECG in lead aVR" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:423-710:203:263" 
+ 					CMidtext="Duration:aVL-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_AVL_MDC_ECG_LEAD_AVL-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STaVL" 
+ 					shortdesc="ST lead aVL" 
+ 					longdesc="Duration of the ST segment of ECG in lead aVL" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:447-710:203:263" 
+ 					CMidtext="Duration:III-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_III_MDC_ECG_LEAD_III-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STIII" 
+ 					shortdesc="ST lead III" 
+ 					longdesc="Duration of the ST segment of ECG in lead III" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:446-710:203:263" 
+ 					CMidtext="Duration:II-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_II_MDC_ECG_LEAD_II-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STII" 
+ 					shortdesc="ST lead II" 
+ 					longdesc="Duration of the ST segment of ECG in lead II" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:445-710:203:263" 
+ 					CMidtext="Duration:I-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_I_MDC_ECG_LEAD_I-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STI" 
+ 					shortdesc="ST lead I" 
+ 					longdesc="Duration of the ST segment of ECG in lead I" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:710-818:203:263" 
+ 					CMidtext="Duration:ST (segment)-ECG lead:Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_TIMECRIT_ST__SEGMENT_-M_ORIGIN_ECGLEAD:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="ST" 
+ 					shortdesc="ST" 
+ 					longdesc="Duration of the ST segment of ECG in unspecified lead" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="109:::260" 
+ 					CMidtext="Temperature:::Body" 
+ 					idref="M_BASE_TEMPERATURE:::M_CONTEXT_BODY" 
+ 					defaultunits="degC" 
+ 					abbreviation="T" 
+ 					shortdesc="Temperature" 
+ 					longdesc="Temperature - unspecified measurement of patient" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:371:224-226:263" 
+ 					CMidtext="Rate:Noninvasive:Peripheralvessels-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PERIPHERAL_VESSELS-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="bpm" 
+ 					abbreviation="SpO2 PR" 
+ 					shortdesc="Pulse rate measured by SpO2 sensor" 
+ 					longdesc="Noninvasive pulse rate measured by SpO2 sensor" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:331-660:224:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:Peripheralvessels:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_CONCERNS_PERIPHERAL_VESSELS:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="%" 
+ 					abbreviation="SpO2" 
+ 					shortdesc="SpO2" 
+ 					longdesc="Peripheral oxygen saturation measurements" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:455:173:261" 
+ 					CMidtext="Rate:NOS:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_NOS:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="bpm" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, method not specified" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:137-346-371:169:263" 
+ 					CMidtext="Pressure:Mean-Discontinuous-Noninvasive:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN-M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="NIBP (mean)" 
+ 					shortdesc="Discontinuous, Noninvasive Mean Blood Pressure" 
+ 					longdesc="Pressure of the blood computed as mean value between systolic and diastolic Pressures, measured discontinuously and noninvasively (cuff)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:346-371-671:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Noninvasive-Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE-M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="NIBP (dia)" 
+ 					shortdesc="Discontinuous, Noninvasive Diastolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the diastolic phase, measured discontinuously and noninvasively (cuff)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:346-371-712:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Noninvasive-Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE-M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="NIBP (sys)" 
+ 					shortdesc="Discontinuous, Noninvasive Systolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the systolic phase, measured discontinuously and noninvasively (cuff)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:137:169:263" 
+ 					CMidtext="Pressure:Mean:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Mean Blood Pressure" 
+ 					longdesc="Pressure of the blood as computed by averaging on one cycle" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="Channel1,Channel2" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:671:169:263" 
+ 					CMidtext="Pressure:Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Diastolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the diastolic phase" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="Channel1,Channel2" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:712:169:263" 
+ 					CMidtext="Pressure:Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Systolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the systolic phase" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="Channel1,Channel2" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99::202-206:262" 
+ 					CMidtext="Pressure::Head-Intracranial:CNS" 
+ 					idref="M_BASE_PRESSURE::M_CONCERNS_HEAD-M_CONCERNS_INTRACRANIAL:M_CONTEXT_CNS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="ICP" 
+ 					shortdesc="Intracranial Pressure" 
+ 					longdesc="Pressure inside skull" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99::169:263-504" 
+ 					CMidtext="Pressure::Blood:CVS-CentralVein" 
+ 					idref="M_BASE_PRESSURE::M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_CENTRALVEIN" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="CVP" 
+ 					shortdesc="Central Venous Pressure" 
+ 					longdesc="Pressure of the blood in the thoracic venae cavae" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:137:169:263-534" 
+ 					CMidtext="Pressure:Mean:Blood:CVS-PulmonaryArtery" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_PULMONARYARTERY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Mean Pulmonary Arterial Pressure" 
+ 					longdesc="Mean Pressure of the blood in the Pulmonary artery" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:671:169:263-534" 
+ 					CMidtext="Pressure:Diastolic:Blood:CVS-PulmonaryArtery" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_PULMONARYARTERY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Diastolic Pulmonary Arterial Pressure" 
+ 					longdesc="Diastolic Pressure of the blood in the pulmonary artery" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:712:169:263-534" 
+ 					CMidtext="Pressure:Systolic:Blood:CVS-PulmonaryArtery" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_PULMONARYARTERY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Systolic Pulmonary Arterial Pressure" 
+ 					longdesc="Systolic Pressure of the blood in the pulmonary artery" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:137:169:263-498" 
+ 					CMidtext="Pressure:Mean:Blood:CVS-Artery" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_ARTERY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="MAP" 
+ 					shortdesc="Mean Arterial Pressure" 
+ 					longdesc="Mean Pressure of the blood in an artery" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:671:169:263-498" 
+ 					CMidtext="Pressure:Diastolic:Blood:CVS-Artery" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_ARTERY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Diastolic Arterial Pressure" 
+ 					longdesc="Diastolic Pressure of the blood in an artery" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:712:169:263-498" 
+ 					CMidtext="Pressure:Systolic:Blood:CVS-Artery" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_ARTERY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="SAP" 
+ 					shortdesc="Systolic Arterial Pressure" 
+ 					longdesc="Systolic Pressure of the blood in an artery" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:667:203:263" 
+ 					CMidtext="Rate:Beats:Heart:CVS" 
+ 					idref="M_BASE_RATE:M_TIMECRIT_BEATS:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="bpm" 
+ 					abbreviation="HR" 
+ 					shortdesc="heart rate" 
+ 					longdesc="Rate of cardiac beats" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 	</VarGroup>
+ </Discrete>
+</Variables></CMDriverDescription>

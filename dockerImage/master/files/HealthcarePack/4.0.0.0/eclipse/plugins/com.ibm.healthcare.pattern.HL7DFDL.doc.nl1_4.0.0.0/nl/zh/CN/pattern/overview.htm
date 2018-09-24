@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2013, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> <title>“Healthcare：从 HL7 到 HL7 DFDL”模式</title>
+</head>
+<body role="main">
+<h1 class="topictitle1">“Healthcare：从 HL7 到 HL7 DFDL”模式</h1>
+<div>
+    <p class="shortdesc"/>
+    <p>
+    “<span>Healthcare：从 HL7 到 HL7 DFDL</span>”模式将能够发送
+Health Level Seven International (HL7) V2 消息的应用程序与一个或多个能够接收
+HL7 消息的应用程序集成。
+    这些应用程序必须能够使用基于 TCP/IP 的
+Minimal Lower Layer Protocol (MLLP) 发送和接收 HL7 消息。
+</p>
+</div>
+<div class="image">
+    <img src="overview.png"
+    alt="此图显示“Healthcare：从 HL7 到 HL7”模式的三个部分" />
+</div>
+<div>
+    <h2>重要事项！</h2>
+    <p>
+    必须将 HL7 DFDL 库导入到工作空间中。这个库中的 DFDL 模型用于在消息流处理
+HL7 消息时对这些消息进行解析。必须在项目中包含对 HL7 DFDL 库的引用，以便该 DFDL
+库可以与生成的应用程序一起部署。缺省情况下，此模式生成的应用程序包含对 HL7 V2.7 DFDL
+模型所在的库的引用。如果希望使用 HL7 V2.6 或 HL7 V2.5.1 DFDL 模型，请参阅<a href="management.htm#messageset">准备 HL7 DFDL 库</a>。
+</p>
+    <p>
+    您可以从<a href="resources.htm" title="模式的资源">模式的资源</a>页面将 HL7 DFDL 库导入到工作空间中。</p>
+    <p>
+    构建和部署 HL7 DFDL 库需要花费较长时间。通过从消息集中删除 HL7 章节，可以缩短构建
+DFDL 模型所需的时间。
+    将 <span class="filepath">GenericHL7.xsd</span>、<span class="filepath">segments.xsd</span>、<span class="filepath">fields.xsd</span> 和 <span class="filepath">datatypes.xsd</span> 消息定义文件保留在消息集中，因为这些是模式所需的文件。
+</p>
+</div>
+<div class = "description">
+    <h2>选项</h2>
+    <p>
+    此模式中的“接收方”流支持下列选项：</p>
+    <ul>
+        <li>
+            使用基于 TCP/IP 的 MLLP 接收 HL7 消息</li>
+        <li>
+            验证并解析消息</li>
+        <li>
+            审计入局消息</li>
+        <li>
+            检查并处理重复消息</li>
+        <li>
+            支持排序选项</li>
+        <li>
+            发布每条入局消息，或者将该消息发送到队列以便在模式外进行处理</li>
+        <li>
+            将输出发送到“变换并路由”队列</li>
+        <li>
+            处理异常</li>
+    </ul>
+    <p>
+    此模式中的 TransformAndRoute 流支持下列选项：</p>
+    <ul>
+        <li>
+            变换为规范 XML 格式</li>
+        <li>
+            发布规范入局消息，或者将该消息发送到队列以便在模式外进行处理</li>
+        <li>
+            对 HL7 段中的其他字段进行报告</li>
+        <li>
+            将消息分发到多个可分别配置的目标</li>
+        <li>
+            对要发送到各个目标的消息进行过滤</li>
+        <li>
+            对要针对各个目标包括的段进行过滤</li>
+        <li>
+            定制点，用于支持包括特定于目标的非标准更改</li>
+        <li>
+            重新变换为 HL7，并将输出发送到各个目标的“发送方”流的队列</li>
+        <li>
+            处理异常</li>
+    </ul>
+    <p>
+    此模式中的每个“发送方”流支持下列选项：</p>
+    <ul>
+        <li>
+            为此目标读取变换后的消息</li>
+        <li>
+            对变换后的消息进行验证</li>
+        <li>
+            确保根据排序选项按顺序交付消息</li>
+        <li>
+            在消息未按顺序到达时发出通知</li>
+        <li>
+            使用基于 TCP/IP 的 MLLP 将 HL7 消息交付到目标应用程序</li>
+        <li>
+            处理异常</li>
+    </ul>
+</div>
+<div class="familylinks">
+    <a name="anchorBack"></a>
+    <div class="section">
+        <h2 class="sectiontitle">更多信息</h2>
+        <div>
+            <a href="design.htm">模式设计</a></div>
+        <div>
+            <a href="management.htm">管理模式实例</a></div>
+        <div>
+            <a href="monitoring.htm">监视模式</a></div>
+        <div>
+            <a href="parameters.htm">模式参数</a></div>
+        <div>
+            <a href="resources.htm" title="模式的资源">模式的资源</a></div>
+        <div>
+            <a href="running.htm">运行模式</a></div>
+        <div>
+            <a href="testing.htm">测试模式</a></div>
+    </div>
+</div>
+<p>
+</p>
+</body>
+</html>

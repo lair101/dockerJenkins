@@ -1,0 +1,9 @@
+@Override
+public void onGeneratePatternInstance(PatternInstanceManager patternInstanceManager) {
+
+	// The location for the generated projects 
+	String location = patternInstanceManager.getWorkspaceLocation();
+		
+	// The pattern instance name for this generation
+	String patternInstanceName = patternInstanceManager.getPatternInstanceName();
+}

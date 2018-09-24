@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: vocmodel.jar
+Bundle-Vendor: %Plugin.Provider
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: %Plugin.Name
+Bundle-SymbolicName: ilog.rules.vocabulary.model
+Require-Bundle: com.ibm.rules.engine;bundle-version="[8.5.1,8.5.2)";vi
+ sibility:=reexport,ilog.rules.language.shared;bundle-version="[8.5.1,
+ 8.5.2)"
+Export-Package: ilog.rules.vocabulary.i18n,ilog.rules.vocabulary.model
+ ,ilog.rules.vocabulary.model.checker,ilog.rules.vocabulary.model.even
+ t,ilog.rules.vocabulary.model.filter,ilog.rules.vocabulary.model.help
+ er,ilog.rules.vocabulary.model.impl,ilog.rules.vocabulary.model.io,il
+ og.rules.vocabulary.model.io.converter,ilog.rules.vocabulary.model.io
+ .xml,ilog.rules.vocabulary.model.util,ilog.rules.vocabulary.synthesiz
+ er,ilog.rules.vocabulary.util,ilog.rules.vocabulary.verbalization,ilo
+ g.rules.vocabulary.verbalization.english,ilog.rules.vocabulary.verbal
+ ization.english.neutral,ilog.rules.vocabulary.wizard
+Bundle-Version: 8.5.1.201310300945
+Bundle-ManifestVersion: 2
+
+

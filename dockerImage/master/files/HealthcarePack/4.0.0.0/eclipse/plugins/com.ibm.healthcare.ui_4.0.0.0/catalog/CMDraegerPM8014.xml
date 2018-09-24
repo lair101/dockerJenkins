@@ -1,0 +1,1552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CMDriverDescription>
+<SupportedDevices model="Draeger PM8014" type="Ventilator">
+ <CMLLC type="CMLLCRS232">
+ 	<CMLLCCfg port="" baud="19200,1200,2400,4800,9600" parity="E,N,O" data="8" stopbit="1,2" rtscts="No" />
+ </CMLLC>
+ </SupportedDevices>
+ <Variables>
+	<Discrete>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="109:::260" 
+ 					CMidtext="Temperature:::Body" 
+ 					idref="M_BASE_TEMPERATURE:::M_CONTEXT_BODY" 
+ 					defaultunits="degC" 
+ 					abbreviation="T" 
+ 					shortdesc="Temperature" 
+ 					longdesc="Temperature - unspecified measurement of patient" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="1,2" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:331-660:302:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:ArterialBlood:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_FLUIDTYPE_ARTERIALBLOOD:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="%" 
+ 					abbreviation="SaO2" 
+ 					shortdesc="None" 
+ 					longdesc="arterial oxygen saturation" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:371:177-224-226:263" 
+ 					CMidtext="Rate:Noninvasive:CO2-Peripheralvessels-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_CO2-M_CONCERNS_PERIPHERAL_VESSELS-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="1/min" 
+ 					abbreviation="SaO2 PR" 
+ 					shortdesc="Pulse rate measured by SaO2 sensor" 
+ 					longdesc="Noninvasive pulse rate measured by SaO2 sensor" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:371:226:263-501-831" 
+ 					CMidtext="Duration:Noninvasive:Pulse:CVS-Blood-NotSensed" 
+ 					idref="M_BASE_DURATION:M_METHOD_NONINVASIVE:M_CONCERNS_PULSE:M_CONTEXT_CVS-M_PERTAINS_BLOOD-M_CONDITION_NOTSENSED" 
+ 					defaultunits="s" 
+ 					abbreviation="" 
+ 					shortdesc="Pulse not detected" 
+ 					longdesc="Duration of no blood pulse in an artery, the rate is measured not invasively" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:371:226:263-501" 
+ 					CMidtext="Rate:Noninvasive:Pulse:CVS-Blood" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PULSE:M_CONTEXT_CVS-M_PERTAINS_BLOOD" 
+ 					defaultunits="1/min" 
+ 					abbreviation="PRNI" 
+ 					shortdesc="Noninvasive Pulse Rate" 
+ 					longdesc="Rate of blood pulse in an artery, the rate is measured not invasively" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:371-712:169:263" 
+ 					CMidtext="Pressure:Noninvasive-Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_NONINVASIVE-M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="NIBP (sys)" 
+ 					shortdesc="Noninvasive Systolic Blood Pressure" 
+ 					longdesc="Pressure of the blood, obtained noninvasively (i.e. Fingertip), at the systolic phase" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:137-371:169:263" 
+ 					CMidtext="Pressure:Mean-Noninvasive:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN-M_METHOD_NONINVASIVE:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="NIBP (mean)" 
+ 					shortdesc="Noninvasive Mean Blood Pressure" 
+ 					longdesc="Pressure of the blood, obtained noninvasively (i.e. Fingertip), as computed by averaging on one cycle" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:371-671:169:263" 
+ 					CMidtext="Pressure:Noninvasive-Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_NONINVASIVE-M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="NIBP (dia)" 
+ 					shortdesc="Noninvasive Diastolic Blood Pressure" 
+ 					longdesc="Pressure of the blood, obtained noninvasively (i.e. Fingertip), at the diastolic phase" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:360:169-226:263" 
+ 					CMidtext="Rate:Invasive:Blood-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_INVASIVE:M_CONCERNS_BLOOD-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="1/min" 
+ 					abbreviation="HR (IBP)" 
+ 					shortdesc="Heart rate from invasive blood pressure" 
+ 					longdesc="Heart rate measured by invasive blood pressure probe" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:396:169:263-534" 
+ 					CMidtext="Pressure:Wedge:Blood:CVS-PulmonaryArtery" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_WEDGE:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_PULMONARYARTERY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="PAW" 
+ 					shortdesc="Pulmonary Artery Wedge Pressure" 
+ 					longdesc="Pressure of the blood measured by a catheter wedged into a small branch of the pulmonary artery" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:346-360-712:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Invasive-Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE-M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="IBP(sys)" 
+ 					shortdesc="Invasive blood pressure systolic" 
+ 					longdesc="" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="1,2,3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:137-346-360:169:263" 
+ 					CMidtext="Pressure:Mean-Discontinuous-Invasive:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN-M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="IBP(mean)" 
+ 					shortdesc="Invasive blood pressure mean" 
+ 					longdesc="" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="1,2,3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:346-360-671:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Invasive-Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE-M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="IBP(dia)" 
+ 					shortdesc="Invasive blood pressure diastolic" 
+ 					longdesc="" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="1,2,3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="112:691:169:263-526" 
+ 					CMidtext="Volume:PerMinute:Blood:CVS-LeftVentricle" 
+ 					idref="M_BASE_VOLUME:M_TIMECRIT_PERMINUTE:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_LEFTVENTRICLE" 
+ 					defaultunits="l/min" 
+ 					abbreviation="CO" 
+ 					shortdesc="Cardiac output" 
+ 					longdesc="Quantity of blood pumped by the left ventricle into the aorta per minute" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="103::195:263-543" 
+ 					CMidtext="Resistance::Flow:CVS-SystemicBlood" 
+ 					idref="M_BASE_RESISTANCE::M_CONCERNS_FLOW:M_CONTEXT_CVS-M_PERTAINS_SYSTEMICBLOOD" 
+ 					defaultunits="0" 
+ 					abbreviation="SVR" 
+ 					shortdesc="Systemic Vascular Resistance" 
+ 					longdesc="Resistance to blood flow in the systemic circulation" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="113:688-858:203:263-541" 
+ 					CMidtext="Work:OneBeat-Index:Heart:CVS-RightVentricle" 
+ 					idref="M_BASE_WORK:M_TIMECRIT_ONEBEAT-CM_ISCOMPUTEDAS_INDEX:M_CONCERNS_HEART:M_CONTEXT_CVS-M_PERTAINS_RIGHTVENTRICLE" 
+ 					defaultunits="0" 
+ 					abbreviation="RVSWI" 
+ 					shortdesc="Right Ventricular Stroke Indexed" 
+ 					longdesc="Work of right ventricle of the heart in one cardiac cycle and related to Body Surface Area (LVSW/BSA)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="113:688-858:203:263-526" 
+ 					CMidtext="Work:OneBeat-Index:Heart:CVS-LeftVentricle" 
+ 					idref="M_BASE_WORK:M_TIMECRIT_ONEBEAT-CM_ISCOMPUTEDAS_INDEX:M_CONCERNS_HEART:M_CONTEXT_CVS-M_PERTAINS_LEFTVENTRICLE" 
+ 					defaultunits="0" 
+ 					abbreviation="LVSWI" 
+ 					shortdesc="Left Ventricular Stroke Indexed" 
+ 					longdesc="Work of left ventricle of the heart in one cardiac cycle and related to Body Surface Area (LVSW/BSA)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="112:688-858:169:263" 
+ 					CMidtext="Volume:OneBeat-Index:Blood:CVS" 
+ 					idref="M_BASE_VOLUME:M_TIMECRIT_ONEBEAT-CM_ISCOMPUTEDAS_INDEX:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="ml/m2" 
+ 					abbreviation="" 
+ 					shortdesc="Stroke index" 
+ 					longdesc="Stroke index" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="112:688:169:263" 
+ 					CMidtext="Volume:OneBeat:Blood:CVS" 
+ 					idref="M_BASE_VOLUME:M_TIMECRIT_ONEBEAT:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="ml" 
+ 					abbreviation="SV" 
+ 					shortdesc="Stroke Volume" 
+ 					longdesc="Volume of blood ejected per beat" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="87:691:257:263-501-526" 
+ 					CMidtext="Index:PerMinute:Volume:CVS-Blood-LeftVentricle" 
+ 					idref="M_BASE_INDEX:M_TIMECRIT_PERMINUTE:M_CONCERNS_VOLUME:M_CONTEXT_CVS-M_PERTAINS_BLOOD-M_PERTAINS_LEFTVENTRICLE" 
+ 					defaultunits="l/min" 
+ 					abbreviation="CI" 
+ 					shortdesc="Cardiac index" 
+ 					longdesc="Quantity of blood pumped by the left ventricle into the aorta per minute and divided by the Body Surface Area (CO/BSA)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="112:137-691:169:263-526" 
+ 					CMidtext="Volume:Mean-PerMinute:Blood:CVS-LeftVentricle" 
+ 					idref="M_BASE_VOLUME:M_COMPUTED_MEAN-M_TIMECRIT_PERMINUTE:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_LEFTVENTRICLE" 
+ 					defaultunits="l/min" 
+ 					abbreviation="CO" 
+ 					shortdesc="Mean cardiac output" 
+ 					longdesc="Mean quantity of blood pumped by the left ventricle into the aorta per minute" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81::167:261" 
+ 					CMidtext="Duration::Apnea:Breathing" 
+ 					idref="M_BASE_DURATION::M_CONCERNS_APNEA:M_CONTEXT_BREATHING" 
+ 					defaultunits="s" 
+ 					abbreviation="A" 
+ 					shortdesc="Apnea Duration" 
+ 					longdesc="Duration of apnea - no flow measured" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:434:173:261" 
+ 					CMidtext="Rate:ECG:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_ECG:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="1/min" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, origin: ECG" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 		</VarGroup>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:302:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:ArterialBlood:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_FLUIDTYPE_ARTERIALBLOOD:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="%" 
+ 					abbreviation="SaO2" 
+ 					shortdesc="None" 
+ 					longdesc="arterial oxygen saturation" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:226:263-501" 
+ 					CMidtext="Rate:Noninvasive:Pulse:CVS-Blood" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PULSE:M_CONTEXT_CVS-M_PERTAINS_BLOOD" 
+ 					defaultunits="1/min" 
+ 					abbreviation="PRNI" 
+ 					shortdesc="Noninvasive Pulse Rate" 
+ 					longdesc="Rate of blood pulse in an artery, the rate is measured not invasively" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:371-712:169:263" 
+ 					CMidtext="Pressure:Noninvasive-Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_NONINVASIVE-M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="NIBP (sys)" 
+ 					shortdesc="Noninvasive Systolic Blood Pressure" 
+ 					longdesc="Pressure of the blood, obtained noninvasively (i.e. Fingertip), at the systolic phase" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:137-371:169:263" 
+ 					CMidtext="Pressure:Mean-Noninvasive:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN-M_METHOD_NONINVASIVE:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="NIBP (mean)" 
+ 					shortdesc="Noninvasive Mean Blood Pressure" 
+ 					longdesc="Pressure of the blood, obtained noninvasively (i.e. Fingertip), as computed by averaging on one cycle" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:371-671:169:263" 
+ 					CMidtext="Pressure:Noninvasive-Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_NONINVASIVE-M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="NIBP (dia)" 
+ 					shortdesc="Noninvasive Diastolic Blood Pressure" 
+ 					longdesc="Pressure of the blood, obtained noninvasively (i.e. Fingertip), at the diastolic phase" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:360:169-226:263" 
+ 					CMidtext="Rate:Invasive:Blood-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_INVASIVE:M_CONCERNS_BLOOD-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="1/min" 
+ 					abbreviation="HR (IBP)" 
+ 					shortdesc="Heart rate from invasive blood pressure" 
+ 					longdesc="Heart rate measured by invasive blood pressure probe" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:346-360-712:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Invasive-Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE-M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="IBP(sys)" 
+ 					shortdesc="Invasive blood pressure systolic" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="1,2,3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:137-346-360:169:263" 
+ 					CMidtext="Pressure:Mean-Discontinuous-Invasive:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN-M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="IBP(mean)" 
+ 					shortdesc="Invasive blood pressure mean" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="1,2,3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:346-360-671:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Invasive-Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE-M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="IBP(dia)" 
+ 					shortdesc="Invasive blood pressure diastolic" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="1,2,3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:434:173:261" 
+ 					CMidtext="Rate:ECG:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_ECG:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="1/min" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, origin: ECG" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 		</VarGroup>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:302:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:ArterialBlood:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_FLUIDTYPE_ARTERIALBLOOD:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="%" 
+ 					abbreviation="SaO2" 
+ 					shortdesc="None" 
+ 					longdesc="arterial oxygen saturation" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:226:263-501" 
+ 					CMidtext="Rate:Noninvasive:Pulse:CVS-Blood" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PULSE:M_CONTEXT_CVS-M_PERTAINS_BLOOD" 
+ 					defaultunits="1/min" 
+ 					abbreviation="PRNI" 
+ 					shortdesc="Noninvasive Pulse Rate" 
+ 					longdesc="Rate of blood pulse in an artery, the rate is measured not invasively" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:371-712:169:263" 
+ 					CMidtext="Pressure:Noninvasive-Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_NONINVASIVE-M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="NIBP (sys)" 
+ 					shortdesc="Noninvasive Systolic Blood Pressure" 
+ 					longdesc="Pressure of the blood, obtained noninvasively (i.e. Fingertip), at the systolic phase" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:137-371:169:263" 
+ 					CMidtext="Pressure:Mean-Noninvasive:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN-M_METHOD_NONINVASIVE:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="NIBP (mean)" 
+ 					shortdesc="Noninvasive Mean Blood Pressure" 
+ 					longdesc="Pressure of the blood, obtained noninvasively (i.e. Fingertip), as computed by averaging on one cycle" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:371-671:169:263" 
+ 					CMidtext="Pressure:Noninvasive-Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_NONINVASIVE-M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="NIBP (dia)" 
+ 					shortdesc="Noninvasive Diastolic Blood Pressure" 
+ 					longdesc="Pressure of the blood, obtained noninvasively (i.e. Fingertip), at the diastolic phase" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:360:169-226:263" 
+ 					CMidtext="Rate:Invasive:Blood-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_INVASIVE:M_CONCERNS_BLOOD-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="1/min" 
+ 					abbreviation="HR (IBP)" 
+ 					shortdesc="Heart rate from invasive blood pressure" 
+ 					longdesc="Heart rate measured by invasive blood pressure probe" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:346-360-712:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Invasive-Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE-M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="IBP(sys)" 
+ 					shortdesc="Invasive blood pressure systolic" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="1,2,3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:137-346-360:169:263" 
+ 					CMidtext="Pressure:Mean-Discontinuous-Invasive:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN-M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="IBP(mean)" 
+ 					shortdesc="Invasive blood pressure mean" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="1,2,3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:346-360-671:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Invasive-Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE-M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="IBP(dia)" 
+ 					shortdesc="Invasive blood pressure diastolic" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="1,2,3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:434:173:261" 
+ 					CMidtext="Rate:ECG:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_ECG:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="1/min" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, origin: ECG" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 		</VarGroup>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:226:263-501" 
+ 					CMidtext="Rate:Noninvasive:Pulse:CVS-Blood" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PULSE:M_CONTEXT_CVS-M_PERTAINS_BLOOD" 
+ 					defaultunits="NULL" 
+ 					abbreviation="PRNI" 
+ 					shortdesc="Noninvasive Pulse Rate" 
+ 					longdesc="Rate of blood pulse in an artery, the rate is measured not invasively" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:226:263-501" 
+ 					CMidtext="Rate:Noninvasive:Pulse:CVS-Blood" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PULSE:M_CONTEXT_CVS-M_PERTAINS_BLOOD" 
+ 					defaultunits="NULL" 
+ 					abbreviation="PRNI" 
+ 					shortdesc="Noninvasive Pulse Rate" 
+ 					longdesc="Rate of blood pulse in an artery, the rate is measured not invasively" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:955-1032:1054:1060" 
+ 					CMidtext="Status:Off-Alarm:FunctionalStatus:Device" 
+ 					idref="M_BASE_STATUS:CM_HASSPECIFICATION_OFF-CM_HASSTATUS_ALARM:CM_CONCERNS_FUNCTIONALSTATUS:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="" 
+ 					abbreviation="ALARM OFF" 
+ 					shortdesc="Alarm off" 
+ 					longdesc="Indication: Alarm intentionally off (disabled)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:226:263-501" 
+ 					CMidtext="Rate:Noninvasive:Pulse:CVS-Blood" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PULSE:M_CONTEXT_CVS-M_PERTAINS_BLOOD" 
+ 					defaultunits="NULL" 
+ 					abbreviation="PRNI" 
+ 					shortdesc="Noninvasive Pulse Rate" 
+ 					longdesc="Rate of blood pulse in an artery, the rate is measured not invasively" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:846:859" 
+ 					CMidtext="Status:Alert:Sensor:Inoperable" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_SENSOR:CM_CONDITION_INOPERABLE" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Sensor inoperable" 
+ 					longdesc="Alert, sensor inoperable" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:302:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:ArterialBlood:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_FLUIDTYPE_ARTERIALBLOOD:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="NULL" 
+ 					abbreviation="SaO2" 
+ 					shortdesc="None" 
+ 					longdesc="arterial oxygen saturation" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:302:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:ArterialBlood:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_FLUIDTYPE_ARTERIALBLOOD:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="NULL" 
+ 					abbreviation="SaO2" 
+ 					shortdesc="None" 
+ 					longdesc="arterial oxygen saturation" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:955-1032:1054:1060" 
+ 					CMidtext="Status:Off-Alarm:FunctionalStatus:Device" 
+ 					idref="M_BASE_STATUS:CM_HASSPECIFICATION_OFF-CM_HASSTATUS_ALARM:CM_CONCERNS_FUNCTIONALSTATUS:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="" 
+ 					abbreviation="ALARM OFF" 
+ 					shortdesc="Alarm off" 
+ 					longdesc="Indication: Alarm intentionally off (disabled)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:302:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:ArterialBlood:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_FLUIDTYPE_ARTERIALBLOOD:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="NULL" 
+ 					abbreviation="SaO2" 
+ 					shortdesc="None" 
+ 					longdesc="arterial oxygen saturation" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:177-224-226:263" 
+ 					CMidtext="Rate:Noninvasive:CO2-Peripheralvessels-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_CO2-M_CONCERNS_PERIPHERAL_VESSELS-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="SaO2 PR" 
+ 					shortdesc="Pulse rate measured by SaO2 sensor" 
+ 					longdesc="Noninvasive pulse rate measured by SaO2 sensor" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:302:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:ArterialBlood:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_FLUIDTYPE_ARTERIALBLOOD:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="NULL" 
+ 					abbreviation="SaO2" 
+ 					shortdesc="None" 
+ 					longdesc="arterial oxygen saturation" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:177-224-226:263" 
+ 					CMidtext="Rate:Noninvasive:CO2-Peripheralvessels-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_CO2-M_CONCERNS_PERIPHERAL_VESSELS-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="SaO2 PR" 
+ 					shortdesc="Pulse rate measured by SaO2 sensor" 
+ 					longdesc="Noninvasive pulse rate measured by SaO2 sensor" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="1076:905-1020:1053:1060" 
+ 					CMidtext="ErrorEvent:Cuff-Disconnected:FunctionalDisturbance:Device" 
+ 					idref="CM_BASE_ERROREVENT:CM_CONCERNSFUNCTIONALUNIT_CUFF-CM_HASERRORCONDITION_DISCONNECTED:CM_CONCERNS_FUNCTIONALDISTURBANCE:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="NULL" 
+ 					abbreviation="CUFF ERR" 
+ 					shortdesc="Cuff disconnected" 
+ 					longdesc="Cuff disconnection or leaking e.g. in NIBP" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="1076:887-905-999:1059:1060" 
+ 					CMidtext="ErrorEvent:NIBP-Cuff-InproperlyPlaced:SignalQuality:Device" 
+ 					idref="CM_BASE_ERROREVENT:CM_CONCERNSMEASUREMENT_NIBP-CM_CONCERNSFUNCTIONALUNIT_CUFF-CM_HASERRORCONDITION_INPROPERLYPLACED:CM_CONCERNS_SIGNALQUALITY:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="NULL" 
+ 					abbreviation="NIBP CUFF ERP" 
+ 					shortdesc="Cuff improperly placed" 
+ 					longdesc="" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:371-712:169:263" 
+ 					CMidtext="Pressure:Noninvasive-Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_NONINVASIVE-M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="NIBP (sys)" 
+ 					shortdesc="Noninvasive Systolic Blood Pressure" 
+ 					longdesc="Pressure of the blood, obtained noninvasively (i.e. Fingertip), at the systolic phase" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:371-712:169:263" 
+ 					CMidtext="Pressure:Noninvasive-Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_NONINVASIVE-M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="NIBP (sys)" 
+ 					shortdesc="Noninvasive Systolic Blood Pressure" 
+ 					longdesc="Pressure of the blood, obtained noninvasively (i.e. Fingertip), at the systolic phase" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:955-1032:1054:1060" 
+ 					CMidtext="Status:Off-Alarm:FunctionalStatus:Device" 
+ 					idref="M_BASE_STATUS:CM_HASSPECIFICATION_OFF-CM_HASSTATUS_ALARM:CM_CONCERNS_FUNCTIONALSTATUS:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="" 
+ 					abbreviation="ALARM OFF" 
+ 					shortdesc="Alarm off" 
+ 					longdesc="Indication: Alarm intentionally off (disabled)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:346-360:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Invasive:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="IBP" 
+ 					shortdesc="Invasive Blood Pressure" 
+ 					longdesc="Invasive blood pressure" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:360:169-226:263" 
+ 					CMidtext="Rate:Invasive:Blood-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_INVASIVE:M_CONCERNS_BLOOD-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="HR (IBP)" 
+ 					shortdesc="Heart rate from invasive blood pressure" 
+ 					longdesc="Heart rate measured by invasive blood pressure probe" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:360:169-226:263" 
+ 					CMidtext="Rate:Invasive:Blood-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_INVASIVE:M_CONCERNS_BLOOD-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="HR (IBP)" 
+ 					shortdesc="Heart rate from invasive blood pressure" 
+ 					longdesc="Heart rate measured by invasive blood pressure probe" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="1076:912-931-1020:1053:1060" 
+ 					CMidtext="ErrorEvent:Lead-ECG-Disconnected:FunctionalDisturbance:Device" 
+ 					idref="CM_BASE_ERROREVENT:CM_CONCERNSFUNCTIONALUNIT_LEAD-CM_CONCERNSSIGNAL_ECG-CM_HASERRORCONDITION_DISCONNECTED:CM_CONCERNS_FUNCTIONALDISTURBANCE:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="NULL" 
+ 					abbreviation="" 
+ 					shortdesc="ECG lead disconnected" 
+ 					longdesc="Error Event: (ECG) Lead Disconnected (specialized form of the generic Disconnect. In case of ECG, some ECG devices reconstruct leads when a single lead of a multilead cable falls off. This needs a special user notification, because the situation might not be visible on the display waves Reasoning: see above)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:955-1032:1054:1060" 
+ 					CMidtext="Status:Off-Alarm:FunctionalStatus:Device" 
+ 					idref="M_BASE_STATUS:CM_HASSPECIFICATION_OFF-CM_HASSTATUS_ALARM:CM_CONCERNS_FUNCTIONALSTATUS:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="" 
+ 					abbreviation="ALARM OFF" 
+ 					shortdesc="Alarm off" 
+ 					longdesc="Indication: Alarm intentionally off (disabled)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:346-360:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Invasive:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="IBP" 
+ 					shortdesc="Invasive Blood Pressure" 
+ 					longdesc="Invasive blood pressure" 
+ 				/> 
+ 				<Sources list="1,2,3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:346-360-712:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Invasive-Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE-M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="IBP(sys)" 
+ 					shortdesc="Invasive blood pressure systolic" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="1,2,3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:346-360-712:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Invasive-Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE-M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="IBP(sys)" 
+ 					shortdesc="Invasive blood pressure systolic" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="1,2,3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:137-346-360:169:263" 
+ 					CMidtext="Pressure:Mean-Discontinuous-Invasive:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN-M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="IBP(mean)" 
+ 					shortdesc="Invasive blood pressure mean" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="1,2,3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:137-346-360:169:263" 
+ 					CMidtext="Pressure:Mean-Discontinuous-Invasive:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN-M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="IBP(mean)" 
+ 					shortdesc="Invasive blood pressure mean" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="1,2,3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:455:173:261" 
+ 					CMidtext="Rate:NOS:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_NOS:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="NULL" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, method not specified" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:434-667:203:263" 
+ 					CMidtext="Rate:ECG-Beats:Heart:CVS" 
+ 					idref="M_BASE_RATE:M_ORIGIN_ECG-M_TIMECRIT_BEATS:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="HR" 
+ 					shortdesc="Heart rate (ECG)" 
+ 					longdesc="Heart rate measured from ECG" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:434-667:203:263" 
+ 					CMidtext="Rate:ECG-Beats:Heart:CVS" 
+ 					idref="M_BASE_RATE:M_ORIGIN_ECG-M_TIMECRIT_BEATS:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="HR" 
+ 					shortdesc="Heart rate (ECG)" 
+ 					longdesc="Heart rate measured from ECG" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:931-1032-1035:1057:1060" 
+ 					CMidtext="Status:ECG-Alarm-Disabled:Processing:Device" 
+ 					idref="M_BASE_STATUS:CM_CONCERNSSIGNAL_ECG-CM_HASSTATUS_ALARM-CM_HASSTATUS_DISABLED:CM_CONCERNS_PROCESSING:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="NULL" 
+ 					abbreviation="" 
+ 					shortdesc="ECG alarm disabled" 
+ 					longdesc="Status: All ECG Alarms are off (still need these in France to meet French homologation, despite MDD)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:828:823" 
+ 					CMidtext="Status:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower Limit Alarm Alert" 
+ 					longdesc="Lower alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:346-360-671:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Invasive-Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE-M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="IBP(dia)" 
+ 					shortdesc="Invasive blood pressure diastolic" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="1,2,3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:346-360-671:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Invasive-Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_INVASIVE-M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="NULL" 
+ 					abbreviation="IBP(dia)" 
+ 					shortdesc="Invasive blood pressure diastolic" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="1,2,3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:455:173:261" 
+ 					CMidtext="Rate:NOS:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_NOS:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="NULL" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, method not specified" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:955-1032:1054:1060" 
+ 					CMidtext="Status:Off-Alarm:FunctionalStatus:Device" 
+ 					idref="M_BASE_STATUS:CM_HASSPECIFICATION_OFF-CM_HASSTATUS_ALARM:CM_CONCERNS_FUNCTIONALSTATUS:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="" 
+ 					abbreviation="ALARM OFF" 
+ 					shortdesc="Alarm off" 
+ 					longdesc="Indication: Alarm intentionally off (disabled)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:455:173:261" 
+ 					CMidtext="Rate:NOS:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_NOS:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="NULL" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, method not specified" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 	</VarGroup>
+ </Discrete>
+</Variables></CMDriverDescription>

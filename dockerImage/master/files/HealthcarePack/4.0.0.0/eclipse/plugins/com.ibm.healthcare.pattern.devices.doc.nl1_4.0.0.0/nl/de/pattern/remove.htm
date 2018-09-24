@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <title>Datenbank der Patienten-IDs bereinigen</title>
+    <!-- 
+       (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+       All Rights Reserved * Licensed Materials - Property of IBM
+      -->
+</head>
+<body role="main">
+<div>
+    <h1 class="topictitle1">Datenbank der Patienten-IDs bereinigen</h1>
+    <p class="shortdesc">
+    Sobald Sie das MedicalMedicalDeviceInput-Knotenbeispiel abgeschlossen haben, können Sie die Datenbank, deren zugehörige ODBC-Definition sowie die Werte für die Benutzer-ID und das Kennwort, die dem Datenquellennamen zugeordnet sind, entfernen.
+</p>
+</div>
+<p>
+Führen Sie zur Bereinigung der Datenbankumgebung die folgenden Tasks aus:
+</p>
+<ol>
+    <li>
+        Entfernen Sie die Datenbank und die ODBC-Definition.
+<p>
+        Befolgen Sie die für Ihren Datenbankmanager relevanten Anweisungen:
+        </p>
+        <ul>
+            <li>
+                <a href="remove_db2.htm">DB2 bereinigen</a>
+            </li>
+            <li>
+                <a href="remove_oracle.htm">Oracle bereinigen</a>
+            </li>
+        </ul>
+        
+    </li>
+    <li>
+        Entfernen Sie die Werte für die Benutzer-ID und das Kennwort, die dem Datenquellennamen <span class="msobjpropval">PATIENTSDSN</span> zugeordnet sind.
+<p>
+        Öffnen Sie ein Befehlskonsolenfenster, in dem Sie IBM Integration Bus-Befehle ausführen können. Geben Sie zum Entfernen der Benutzer-ID und des Kennworts den folgenden Befehl ein:
+        </p>
+        <pre>mqsisetdbparms <var>Integrationsknoten</var> -n PATIENTSDSN -d</pre>
+    </li> Dabei ist <var>Integrationsknoten</var> der Name Ihres Integrationsknotens.
+</ol>
+<a href="overview.htm#anchorBack" title="Zurück">Zurück zur Spezifikation des Musters 'Healthcare: Medizinische Geräte an EKA'</a>
+
+</body>
+</html>

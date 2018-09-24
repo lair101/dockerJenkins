@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+        (C) COPYRIGHT International Business Machines Corporation., 2011, 2014
+        All Rights Reserved * Licensed Materials - Property of IBM
+    --> <title>Gestión de una instancia de patrón Servicio
+sanitario: Dispositivos médicos a EMR</title>
+</head>
+<body role="main">
+<a name="links"></a> <h1 class="topictitle1">Gestión de una instancia
+de patrón Servicio sanitario: Dispositivos médicos a EMR</h1>
+<p>
+El patrón asume una topología simple, con todos los flujos de
+mensajes ejecutándose en un solo nodo de integración. En este
+tema se incluye información sobre cómo desplegar y
+gestionar una instancia de patrón que utilice esta topología simple y
+sobre cómo puede gestionar la instancia de patrón.
+</p>
+<p>
+Este tema contiene las secciones siguientes:
+</p>
+<div>
+    <a href="management.htm#setup">Configuración</a>
+</div>
+<div>
+    <a href="management.htm#deployment">Despliegue del patrón</a>
+</div>
+<div>
+    <a href="management.htm#errors">Supervisión y manejo de
+errores</a>
+</div>
+<div class="section">
+    <a name="setup"></a> <h2 class="sectiontitle">Configuración</h2> <h4>Colas</h4>
+    <p>
+    Puede elegir generar un script MQSC para definir las colas que
+requiere el patrón seleccionando el recuadro
+<span class="msobjpropval">Generar scripts</span> en la sección <span class="uicontrol">General</span>
+de la pestaña <span class="uicontrol"> Configurar parámetros de
+patrón</span>, antes de generar la instancia de patrón. Este
+script, que se llama <tt>queues.mqsc</tt>, se encuentra en el
+directorio raíz del proyecto de instancia de patrón; define las colas
+y los temas básicos.
+    </p>
+    <p>
+    Puede ejecutar el script MQSC utilizando el mandato siguiente,
+donde <var>MBQMGR</var>
+    es el nombre del gestor de colas del nodo de integración:
+    </p>
+    <pre>runmqsc <var>MBQMGR</var> &lt; queues.mqsc</pre>
+    <p>
+    Puede editar este script MQSC para añadir descripciones del
+entorno y para establecer las profundidades de cola adecuadas. Se
+supone que las otras colas se supervisan y se borran con regularidad. Estas
+colas se crean con un tamaño predeterminado, pero debe revisar cómo
+se usan y asegurarse de que tienen profundidad suficiente.
+    </p>
+    <p>
+    Debe ejecutar el script MQSC antes de desplegar la instancia de
+patrón.
+    </p>
+</div>
+<div class="section">
+    <a name="deployment"></a> <h2 class="sectiontitle">Despliegue del
+patrón </h2>
+    <p>
+    Cree un nuevo archivo BAR en la ubicación donde desee almacenar estos recursos.
+    </p>
+    <p>
+    El mensaje HL7v25P debe estar empaquetado en su propio archivo BAR:
+    </p>
+    <ol>
+        <li>
+            Seleccione el conjunto de mensajes HL7v25P y cree el
+archivo BAR.
+        </li>
+        <li>
+            Despliegue el archivo BAR en todos los servidores de
+integración en los que desee que se ejecute el patrón o partes del
+mismo.
+        </li>
+        <li>
+            Cuando el conjunto de mensajes HL7v25P esté
+desplegado, asegúrese de que todas las colas necesarias estén
+definidas y de que todos los archivos de servicios configurables
+estén desplegados.
+        </li>
+        <li>
+            Cree uno o más archivos BAR que contengan los flujos que
+desea desplegar en un servidor de integración específico. En el caso
+más sencillo, donde todo se ejecuta en un único entorno de ejecución,
+incluya el flujo Receiver y los flujos Processor.
+        </li>
+    </ol>
+    <p>
+    </p>
+</div>
+<div class="section">
+    <a name="errors"></a> <h2 class="sectiontitle">Supervisión y
+manejo de errores</h2>
+    <p>
+    Las notificación de error de todos los flujos de mensajes del
+patrón se graban en una cola de errores. También se genera un rastreo
+de cola en la ubicación que haya definido durante la generación del
+patrón. LA cabecera MQRFH2 del mensaje de error contiene información
+que indica dónde se ha producido el error. En esta sección se
+especifica también información detallada sobre el comportamiento de
+cada uno de los flujos de mensajes.
+    </p>
+    <h3>Errores en el flujo de dispositivos médicos</h3>
+    <p>
+    El flujo de dispositivos médicos se ejecuta como una transacción y
+todos los mensajes de salida están comprometidos cuando el flujo de mensajes finaliza
+satisfactoriamente.
+    </p>
+    <p>
+    Si hay algún error, se producen los siguientes sucesos:
+    </p>
+    <ul>
+        <li>
+            El error es captado y procesado por el subflujo MedicalDevicesExceptionHandler. 
+            Este subflujo añade cabeceras MQMD y MQRFH2 al mensaje y
+lo escribe en la cola de salida fuera de la transacción. La cabecera
+MQRFH2 contiene información detallada sobre dónde se ha producido el
+error. El cuerpo del mensaje de error contiene la medición del
+dispositivo.
+        </li>
+        <li>
+            Se genera una excepción, lo que retrotrae todos los
+mensajes. La retrotracción también desencadena la salida de la
+información de la excepción al registro de sucesos.
+        </li>
+        <li>
+            La medición de dispositivo se descarta cuando se retrotrae la
+excepción al nodo MedicalDeviceInput.
+        </li>
+    </ul>
+    <p>
+    El administrador debe supervisar la cola de errores y
+el registro de sucesos para determinar cuándo la instancia de patrón
+no ha procesado los mensajes y realizar las acciones necesarias para
+resolver el error.
+    </p>
+    <h3>Errores en el flujo de transformación y direccionamiento</h3>
+    <p>
+    Un flujo de transformación y direccionamiento se ejecuta como una
+única transacción. Cuando se completa satisfactoriamente el flujo de
+mensajes, se envían todos los mensajes de salida a las siguientes
+ubicaciones:
+    </p>
+    <ul>
+        <li>
+            La cola de entrada del flujo Sender de cada destino
+        </li>
+        <li>
+            La cola del canal de mensajes canónico
+        </li>
+    </ul>
+    <p>
+    Si hay algún error, se producen los siguientes sucesos:
+    </p>
+    <ul>
+        <li>
+            El error es captado y procesado por el subflujo
+TransformAndRouteExceptionHandler. Este subflujo añade una cabecera MQRFH2 al mensaje y lo
+escribe en la cola de salida fuera de la transacción. La cabecera
+MQRFH2 contiene información detallada sobre dónde se ha producido el
+error.
+        </li>
+        <li>
+            Se genera una excepción, lo que pone el mensaje de
+entrada otra vez en la cola, retrotrae todos los mensajes que se hayan
+grabado en las colas y desencadena la salida de la
+información de la excepción al registro de sucesos.
+        </li>
+    </ul>
+    <p>
+    </p>
+    <p>
+    El administrador debe comprobar la cola de errores y el registro de
+sucesos para determinar qué errores se han producido. Tanto la cola
+de errores como las colas de restitución contienen información y,
+una vez que se haya procesado un mensaje corregido, esta
+información se puede borrar para evitar que se llene la cola.
+    </p>
+    <p>
+    El administrador debe configurar una cola de restitución para la cola
+de entrada.
+    </p>
+    <h3>Errores en el flujo Sender</h3>
+    <p>
+    Se escribe un mensaje en la cola de errores fuera de la
+transacción, y el mensaje de entrada se retrotrae a la cola de
+entrada del flujo Sender.
+    </p>
+    <p>
+    La cola de entrada debe estar configurada con una cola de
+restitución.
+    </p>
+    <p>
+    También se puede producir un error después de que se haya
+entregado un mensaje. Este tipo de error se produce si la aplicación
+de destino no puede procesar el mensaje y envía una respuesta NACK. En este caso, se graba un mensaje en la cola de errores. El
+administrador debe comprobar el mensaje de error y corregir el
+problema en la aplicación de destino.
+    </p>
+</div>
+<a href="overview.htm#anchorBack" title="Atrás">Volver a
+la especificación del patrón Servicio sanitario: Dispositivos médicos
+a EMR</a>
+<p>
+</p>
+</body>
+</html>

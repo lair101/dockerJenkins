@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="EmailOutputHeader_type">
+        <xsd:all maxOccurs="1" minOccurs="1">
+	      <xsd:element minOccurs="0" name="To" type="xsd:string"/>
+    	  <xsd:element minOccurs="0" name="Cc" type="xsd:string"/>
+	      <xsd:element minOccurs="0" name="Bcc" type="xsd:string"/>
+	      <xsd:element minOccurs="0" name="From" type="xsd:string"/>
+	      <xsd:element minOccurs="0" name="Reply-To" type="xsd:string"/>
+	      <xsd:element minOccurs="0" name="Subject" type="xsd:string"/>
+	      <xsd:any minOccurs="0" maxOccurs="unbounded" />
+        </xsd:all>
+  </xsd:complexType>
+  <xsd:element name="EmailOutputHeader" type="EmailOutputHeader_type">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/EmailOutputHeader;XSDElementDeclaration$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+</xsd:schema>

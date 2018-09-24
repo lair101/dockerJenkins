@@ -1,0 +1,3546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CMDriverDescription>
+<SupportedDevices model="Siemens Gamma X XL" type="Monitor">
+ <CMLLC type="CMLLCRS232">
+ 	<CMLLCCfg port="" baud="19200" parity="N" data="8" stopbit="1" rtscts="No" />
+ </CMLLC>
+ </SupportedDevices>
+ <SupportedDevices model="Siemens Vista XL" type="Monitor">
+ <CMLLC type="CMLLCRS232">
+ 	<CMLLCCfg port="" baud="19200" parity="N" data="8" stopbit="1" rtscts="No" />
+ </CMLLC>
+ </SupportedDevices>
+ <Variables>
+	<Discrete>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:710-1075:203:263" 
+ 					CMidtext="Duration:ST (segment)-V6 (derived):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_TIMECRIT_ST__SEGMENT_-CM_HASORIGIN_V6(DERIVED):M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STdV6" 
+ 					shortdesc="ST derived lead V6" 
+ 					longdesc="Duration of the ST segment of ECG in derived lead V6" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:710-1074:203:263" 
+ 					CMidtext="Duration:ST (segment)-V4 (derived):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_TIMECRIT_ST__SEGMENT_-CM_HASORIGIN_V4(DERIVED):M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STdV4" 
+ 					shortdesc="ST derived lead V4" 
+ 					longdesc="Duration of the ST segment of ECG in derived lead V4" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:710-1073:203:263" 
+ 					CMidtext="Duration:ST (segment)-V3 (derived):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_TIMECRIT_ST__SEGMENT_-CM_HASORIGIN_V3(DERIVED):M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STdV3" 
+ 					shortdesc="ST derived lead V3" 
+ 					longdesc="Duration of the ST segment of ECG in derived lead V3" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:710-1071:203:263" 
+ 					CMidtext="Duration:ST (segment)-V1 (derived):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_TIMECRIT_ST__SEGMENT_-CM_HASORIGIN_V1(DERIVED):M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STdV1" 
+ 					shortdesc="ST derived lead V1" 
+ 					longdesc="Duration of the ST segment of ECG in derived lead V1" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:473-710:203:263" 
+ 					CMidtext="Duration:V5-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_V5_MDC_ECG_LEAD_V5-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STV5" 
+ 					shortdesc="ST lead V5" 
+ 					longdesc="Duration of the ST segment of ECG in lead V5" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:471-710:203:263" 
+ 					CMidtext="Duration:V4-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_V4_MDC_ECG_LEAD_V4-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STV4" 
+ 					shortdesc="ST lead V4" 
+ 					longdesc="Duration of the ST segment of ECG in lead V4" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:469-710:203:263" 
+ 					CMidtext="Duration:V3-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_V3_MDC_ECG_LEAD_V3-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STV3" 
+ 					shortdesc="ST lead V3" 
+ 					longdesc="Duration of the ST segment of ECG in lead V3" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:467-710:203:263" 
+ 					CMidtext="Duration:V2-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_V2_MDC_ECG_LEAD_V2-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STV2" 
+ 					shortdesc="ST lead V2" 
+ 					longdesc="Duration of the ST segment of ECG in lead V2" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:466-710:203:263" 
+ 					CMidtext="Duration:V1-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_V1_MDC_ECG_LEAD_V1-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STV1" 
+ 					shortdesc="ST lead V1" 
+ 					longdesc="Duration of the ST segment of ECG in lead V1" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:422-710:203:263" 
+ 					CMidtext="Duration:aVF-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_AVF_MDC_ECG_LEAD_AVF-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STaVF" 
+ 					shortdesc="ST lead aVF" 
+ 					longdesc="Duration of the ST segment of ECG in lead aVF" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:424-710:203:263" 
+ 					CMidtext="Duration:aVR-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_AVR_MDC_ECG_LEAD_AVR-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STaVR" 
+ 					shortdesc="ST aVR" 
+ 					longdesc="Duration of the ST segment of ECG in lead aVR" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:423-710:203:263" 
+ 					CMidtext="Duration:aVL-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_AVL_MDC_ECG_LEAD_AVL-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STaVL" 
+ 					shortdesc="ST lead aVL" 
+ 					longdesc="Duration of the ST segment of ECG in lead aVL" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:447-710:203:263" 
+ 					CMidtext="Duration:III-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_III_MDC_ECG_LEAD_III-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STIII" 
+ 					shortdesc="ST lead III" 
+ 					longdesc="Duration of the ST segment of ECG in lead III" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:446-710:203:263" 
+ 					CMidtext="Duration:II-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_II_MDC_ECG_LEAD_II-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STII" 
+ 					shortdesc="ST lead II" 
+ 					longdesc="Duration of the ST segment of ECG in lead II" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:445-710:203:263" 
+ 					CMidtext="Duration:I-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_I_MDC_ECG_LEAD_I-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="STI" 
+ 					shortdesc="ST lead I" 
+ 					longdesc="Duration of the ST segment of ECG in lead I" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81:710-818:203:263" 
+ 					CMidtext="Duration:ST (segment)-ECG lead:Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_TIMECRIT_ST__SEGMENT_-M_ORIGIN_ECGLEAD:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="ST" 
+ 					shortdesc="ST" 
+ 					longdesc="Duration of the ST segment of ECG in unspecified lead" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:676:197-207:259" 
+ 					CMidtext="Concentration:EndTidal:Gas-Isoflurane:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_GAS-M_CONCERNS_ISOFLURANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Isoflurane EndTidal" 
+ 					longdesc="Concentration of Isoflurane in airway gas measured at the end of expiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:679:197-207:259" 
+ 					CMidtext="Concentration:Inspiration:Gas-Isoflurane:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-M_CONCERNS_ISOFLURANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Isoflurane Inspiratory" 
+ 					longdesc="Concentration of Isoflurane in airway gas measured in inspiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79::197-207:259" 
+ 					CMidtext="Concentration::Gas-Isoflurane:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_GAS-M_CONCERNS_ISOFLURANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="%Isoflurane" 
+ 					shortdesc="Concentration Airway Isoflurane" 
+ 					longdesc="Concentration of Isoflurane in airway gas" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:676:189-197:259" 
+ 					CMidtext="Concentration:EndTidal:Enflurane-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_ENFLURANE-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Enflurane EndTidal" 
+ 					longdesc="Concentration of Enflurane in airway gas measured at the end of expiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:679:189-197:259" 
+ 					CMidtext="Concentration:Inspiration:Enflurane-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_ENFLURANE-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Enflurane Inspiratory" 
+ 					longdesc="Concentration of Enflurane in airway gas measured in inspiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79::189-197:259" 
+ 					CMidtext="Concentration::Enflurane-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_ENFLURANE-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="%Enflurane" 
+ 					shortdesc="Concentration Airway Enflurane" 
+ 					longdesc="Concentration of Enflurane in airway gas" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:676:197-201:259" 
+ 					CMidtext="Concentration:EndTidal:Gas-Halothane:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_GAS-M_CONCERNS_HALOTHANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Halothane EndTidal" 
+ 					longdesc="Concentration of Halothane in airway gas measured at the end of expiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:679:197-201:259" 
+ 					CMidtext="Concentration:Inspiration:Gas-Halothane:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-M_CONCERNS_HALOTHANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Halothane Inspiratory" 
+ 					longdesc="Concentration of Halothane in airway gas measured in inspiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79::197-201:259" 
+ 					CMidtext="Concentration::Gas-Halothane:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_GAS-M_CONCERNS_HALOTHANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="%Halothane" 
+ 					shortdesc="Concentration Airway Halothane" 
+ 					longdesc="Concentration of Halothane in airway gas" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:676:197-236:259" 
+ 					CMidtext="Concentration:EndTidal:Gas-Sevoflurane:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_GAS-M_CONCERNS_SEVOFLURANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Sevoflurane EndTidal" 
+ 					longdesc="Concentration of Sevoflurane in airway gas measured at the end of expiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:679:197-236:259" 
+ 					CMidtext="Concentration:Inspiration:Gas-Sevoflurane:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-M_CONCERNS_SEVOFLURANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Sevoflurane Inspiratory" 
+ 					longdesc="Concentration of Sevoflurane in airway gas measured in inspiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79::197-236:259" 
+ 					CMidtext="Concentration::Gas-Sevoflurane:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_GAS-M_CONCERNS_SEVOFLURANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="%Sevoflurane" 
+ 					shortdesc="Concentration Airway Sevoflurane" 
+ 					longdesc="Concentration of Sevoflurane in airway gas" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:676:184-197:259" 
+ 					CMidtext="Concentration:EndTidal:Desflurane-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_DESFLURANE-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Desflurane EndTidal" 
+ 					longdesc="Concentration of Desflurane in airway gas measured at the end of expiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:679:184-197:259" 
+ 					CMidtext="Concentration:Inspiration:Desflurane-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_DESFLURANE-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Desflurane Inspiratory" 
+ 					longdesc="Concentration of Desflurane in airway gas measured in inspiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79::184-197:259" 
+ 					CMidtext="Concentration::Desflurane-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_DESFLURANE-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="%Desflurane" 
+ 					shortdesc="Concentration Airway Desflurane" 
+ 					longdesc="Concentration of Desflurane in airway gas" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:676:197-849:259" 
+ 					CMidtext="Concentration:EndTidal:Gas-AnaestheticAgent:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_GAS-CM_CONCERNS_ANAESTHETICAGENT:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="%Agt ET" 
+ 					shortdesc="Concentration Airway Anaesthetic agent EndTidal" 
+ 					longdesc="Concentration of anaesthetic agent in airway gas measured at the end of expiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:679:197-849:259" 
+ 					CMidtext="Concentration:Inspiration:Gas-AnaestheticAgent:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-CM_CONCERNS_ANAESTHETICAGENT:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="%Agt In" 
+ 					shortdesc="Concentration Airway anaesthetic agent Inspiratory" 
+ 					longdesc="Concentration Airway anaesthetic agent in inspiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79::197-849:259" 
+ 					CMidtext="Concentration::Gas-AnaestheticAgent:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_GAS-CM_CONCERNS_ANAESTHETICAGENT:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="%Agt" 
+ 					shortdesc="Concentration Airway anaesthetic agent" 
+ 					longdesc="Concentration of anaesthetic agent in airway gas" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:676:197-216:259" 
+ 					CMidtext="Concentration:EndTidal:Gas-N2O:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_GAS-M_CONCERNS_N2O__NITROUS_OXIDE_:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Nitrous Oxide EndTidal" 
+ 					longdesc="Concentration of Nitrous Oxide in airway gas measured at the end of expiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:679:197-216:259" 
+ 					CMidtext="Concentration:Inspiration:Gas-N2O:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-M_CONCERNS_N2O__NITROUS_OXIDE_:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Nitrous Oxide Inspiratory" 
+ 					longdesc="Concentration of Nitrous Oxide in airway gas measured in inspiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79::197-216:259" 
+ 					CMidtext="Concentration::Gas-N2O:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_GAS-M_CONCERNS_N2O__NITROUS_OXIDE_:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="%Nitrous Oxide" 
+ 					shortdesc="Concentration Airway N2O" 
+ 					longdesc="Concentration of Nitrous Oxide in airway gas" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:679:177-197:259" 
+ 					CMidtext="Concentration:Inspiration:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="%CO2 ins" 
+ 					shortdesc="Concentration Airway CO2 Inspiratory" 
+ 					longdesc="Concentration of CO2 in airway gas measured in inspiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:676:177-197:259" 
+ 					CMidtext="Concentration:EndTidal:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="%CO2 ET" 
+ 					shortdesc="Concentration Airway CO2 EndTidal" 
+ 					longdesc="Concentration of CO2 in airway gas measured at the end of expiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79::177-197:259" 
+ 					CMidtext="Concentration::CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="%CO2" 
+ 					shortdesc="Concentration Airway CO2" 
+ 					longdesc="Concentration of CO2 in airway gas" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:676:197-219:259" 
+ 					CMidtext="Concentration:EndTidal:Gas-O2:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_GAS-M_CONCERNS_O2:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="%O2 ET" 
+ 					shortdesc="Concentration Airway O2 EndTidal" 
+ 					longdesc="Concentration of O2 in airway gas measured at the end of expiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:679:197-219:259" 
+ 					CMidtext="Concentration:Inspiration:Gas-O2:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-M_CONCERNS_O2:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="%O2 ins" 
+ 					shortdesc="Concentration Airway O2 Inspiratory" 
+ 					longdesc="Concentration of O2 in airway gas measured in inspiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:679:197-219:271" 
+ 					CMidtext="Concentration:Inspiration:Gas-O2:Ventilator" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-M_CONCERNS_O2:M_CONTEXT_VENTILATOR" 
+ 					defaultunits="" 
+ 					abbreviation="FIO2" 
+ 					shortdesc="Ventilation Inspired Oxygen Concentration" 
+ 					longdesc="Concentration of O2 in inspiration during mechanical ventilation" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="103::195:263-543" 
+ 					CMidtext="Resistance::Flow:CVS-SystemicBlood" 
+ 					idref="M_BASE_RESISTANCE::M_CONCERNS_FLOW:M_CONTEXT_CVS-M_PERTAINS_SYSTEMICBLOOD" 
+ 					defaultunits="" 
+ 					abbreviation="SVR" 
+ 					shortdesc="Systemic Vascular Resistance" 
+ 					longdesc="Resistance to blood flow in the systemic circulation" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79::197-219:259" 
+ 					CMidtext="Concentration::Gas-O2:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_GAS-M_CONCERNS_O2:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="%O2" 
+ 					shortdesc="Concentration Airway O2" 
+ 					longdesc="Concentration of O2 in airway gas" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="112:592-691:169:263-526" 
+ 					CMidtext="Volume:Intermittent-PerMinute:Blood:CVS-LeftVentricle" 
+ 					idref="M_BASE_VOLUME:M_SPEC_INTERMITTENT-M_TIMECRIT_PERMINUTE:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_LEFTVENTRICLE" 
+ 					defaultunits="" 
+ 					abbreviation="ICO" 
+ 					shortdesc="Intermittent Cardiac output" 
+ 					longdesc="Quantity of blood pumped by the left ventricle into the aorta per minute, obtained an intermittent measurement" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="112:344-691:169:263-526" 
+ 					CMidtext="Volume:Continuous-PerMinute:Blood:CVS-LeftVentricle" 
+ 					idref="M_BASE_VOLUME:M_METHOD_CONTINUOUS-M_TIMECRIT_PERMINUTE:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_LEFTVENTRICLE" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Continuous Cardiac output" 
+ 					longdesc="Quantity of blood pumped by the left ventricle into the aorta per minute, obtained as continuous measurement" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="109::169:260" 
+ 					CMidtext="Temperature::Blood:Body" 
+ 					idref="M_BASE_TEMPERATURE::M_CONCERNS_BLOOD:M_CONTEXT_BODY" 
+ 					defaultunits="" 
+ 					abbreviation="T" 
+ 					shortdesc="Blood temperature" 
+ 					longdesc="Blood temperature" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="112:691:169:263-526" 
+ 					CMidtext="Volume:PerMinute:Blood:CVS-LeftVentricle" 
+ 					idref="M_BASE_VOLUME:M_TIMECRIT_PERMINUTE:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_LEFTVENTRICLE" 
+ 					defaultunits="" 
+ 					abbreviation="CO" 
+ 					shortdesc="Cardiac output" 
+ 					longdesc="Quantity of blood pumped by the left ventricle into the aorta per minute" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="109:::260" 
+ 					CMidtext="Temperature:::Body" 
+ 					idref="M_BASE_TEMPERATURE:::M_CONTEXT_BODY" 
+ 					defaultunits="" 
+ 					abbreviation="T" 
+ 					shortdesc="Temperature" 
+ 					longdesc="Temperature - unspecified measurement of patient" 
+ 				/> 
+ 				<Sources list="TA,T1A,T1B,DeltaT1,T2A,T2B,DeltaT2,T3A,T3B,DeltaT3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="109::164:260" 
+ 					CMidtext="Temperature::Airway:Body" 
+ 					idref="M_BASE_TEMPERATURE::M_CONCERNS_AIRWAY:M_CONTEXT_BODY" 
+ 					defaultunits="" 
+ 					abbreviation="Tairway" 
+ 					shortdesc="Temperature airway" 
+ 					longdesc="Temperature airway" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="109:123:180-242:260" 
+ 					CMidtext="Temperature:Difference:Core-Surface:Body" 
+ 					idref="M_BASE_TEMPERATURE:M_COMPUTED_DIFFERENCE:M_CONCERNS_CORE-M_CONCERNS_SURFACE:M_CONTEXT_BODY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Temperature difference" 
+ 					longdesc="Difference between two temperatures, usually core temperature and preipheral temperature" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:144-679:177-197:259" 
+ 					CMidtext="Concentration:Minimum-Inspiration:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_COMPUTED_MINIMUM-M_TIMECRIT_INSPIRATION:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="PICO2 min" 
+ 					shortdesc="Inspiratory CO2 Minimum Pressure" 
+ 					longdesc="Minimum pressure of CO2 in airway gas measured in inspiration" 
+ 				/> 
+ 				<Sources list="MGM,CO2" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:418:173:261" 
+ 					CMidtext="Rate:Airway:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_AIRWAY:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, method: direct airway flow measurement" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:611-676:177-197:259" 
+ 					CMidtext="Concentration:PartialPressure-EndTidal:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_SPEC_PARTIALPRESSURE-M_TIMECRIT_ENDTIDAL:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="Pet CO2" 
+ 					shortdesc="EndTidal CO2 Partial Pressure" 
+ 					longdesc="Partial pressure of CO2 in airway gas measured at end of expiration" 
+ 				/> 
+ 				<Sources list="MGM,CO2" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:432:173:261" 
+ 					CMidtext="Rate:CO2:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_CO2:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, method: CO2 -sensor" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:371:224-226:263" 
+ 					CMidtext="Rate:Noninvasive:Peripheralvessels-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PERIPHERAL_VESSELS-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="SpO2 PR" 
+ 					shortdesc="Pulse rate measured by SpO2 sensor" 
+ 					longdesc="Noninvasive pulse rate measured by SpO2 sensor" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:331-660:224:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:Peripheralvessels:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_CONCERNS_PERIPHERAL_VESSELS:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="" 
+ 					abbreviation="SpO2" 
+ 					shortdesc="SpO2" 
+ 					longdesc="Peripheral oxygen saturation measurements" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:455:173:261" 
+ 					CMidtext="Rate:NOS:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_NOS:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, method not specified" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:396:169:263-534" 
+ 					CMidtext="Pressure:Wedge:Blood:CVS-PulmonaryArtery" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_WEDGE:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_PULMONARYARTERY" 
+ 					defaultunits="" 
+ 					abbreviation="PAW" 
+ 					shortdesc="Pulmonary Artery Wedge Pressure" 
+ 					longdesc="Pressure of the blood measured by a catheter wedged into a small branch of the pulmonary artery" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:137-346-371:169:263" 
+ 					CMidtext="Pressure:Mean-Discontinuous-Noninvasive:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN-M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="NIBP (mean)" 
+ 					shortdesc="Discontinuous, Noninvasive Mean Blood Pressure" 
+ 					longdesc="Pressure of the blood computed as mean value between systolic and diastolic Pressures, measured discontinuously and noninvasively (cuff)" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:346-371-671:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Noninvasive-Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE-M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="NIBP (dia)" 
+ 					shortdesc="Discontinuous, Noninvasive Diastolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the diastolic phase, measured discontinuously and noninvasively (cuff)" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:346-371-712:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Noninvasive-Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE-M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="NIBP (sys)" 
+ 					shortdesc="Discontinuous, Noninvasive Systolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the systolic phase, measured discontinuously and noninvasively (cuff)" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:137:169:263" 
+ 					CMidtext="Pressure:Mean:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Mean Blood Pressure" 
+ 					longdesc="Pressure of the blood as computed by averaging on one cycle" 
+ 				/> 
+ 				<Sources list="Channel1,Channel2,Channel1a,Channel1b,Channel1c,Channel1d,Channel2a,Channel2b,Channel2c,Channel2d,Channel3a,Channel3b,Channel3c,Channel3d" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:671:169:263" 
+ 					CMidtext="Pressure:Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Diastolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the diastolic phase" 
+ 				/> 
+ 				<Sources list="Channel1,Channel2,Channel1a,Channel1b,Channel1c,Channel1d,Channel2a,Channel2b,Channel2c,Channel2d,Channel3a,Channel3b,Channel3c,Channel3d" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:712:169:263" 
+ 					CMidtext="Pressure:Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Systolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the systolic phase" 
+ 				/> 
+ 				<Sources list="Channel1,Channel2,Channel1a,Channel1b,Channel1c,Channel1d,Channel2a,Channel2b,Channel2c,Channel2d,Channel3a,Channel3b,Channel3c,Channel3d" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:121:202-206:262" 
+ 					CMidtext="Pressure:Difference (MeanArterial-MeanIntracranial):Head-Intracranial:CNS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_DIFF__MEANART_MEANINTRACRANIAL_:M_CONCERNS_HEAD-M_CONCERNS_INTRACRANIAL:M_CONTEXT_CNS" 
+ 					defaultunits="" 
+ 					abbreviation="CPP" 
+ 					shortdesc="Cerebral Perfusion Pressure" 
+ 					longdesc="Pressure difference between mean arterial pressure and mean pressure inside skull" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99::202-206:262" 
+ 					CMidtext="Pressure::Head-Intracranial:CNS" 
+ 					idref="M_BASE_PRESSURE::M_CONCERNS_HEAD-M_CONCERNS_INTRACRANIAL:M_CONTEXT_CNS" 
+ 					defaultunits="" 
+ 					abbreviation="ICP" 
+ 					shortdesc="Intracranial Pressure" 
+ 					longdesc="Pressure inside skull" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99::169:263-504" 
+ 					CMidtext="Pressure::Blood:CVS-CentralVein" 
+ 					idref="M_BASE_PRESSURE::M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_CENTRALVEIN" 
+ 					defaultunits="" 
+ 					abbreviation="CVP" 
+ 					shortdesc="Central Venous Pressure" 
+ 					longdesc="Pressure of the blood in the thoracic venae cavae" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99::169:263-523" 
+ 					CMidtext="Pressure::Blood:CVS-LeftAtrium" 
+ 					idref="M_BASE_PRESSURE::M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_LEFTATRIUM" 
+ 					defaultunits="" 
+ 					abbreviation="LAP" 
+ 					shortdesc="Left Atrial Pressure" 
+ 					longdesc="Pressure of the blood in the left atrium of the heart" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99::169:263-538" 
+ 					CMidtext="Pressure::Blood:CVS-RightAtrium" 
+ 					idref="M_BASE_PRESSURE::M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_RIGHTATRIUM" 
+ 					defaultunits="" 
+ 					abbreviation="RAP" 
+ 					shortdesc="Right Atrial Pressure" 
+ 					longdesc="Pressure of the blood in the right atrium of the heart" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:137:169:263-526" 
+ 					CMidtext="Pressure:Mean:Blood:CVS-LeftVentricle" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_LEFTVENTRICLE" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Mean Left Ventricular Pressure" 
+ 					longdesc="Mean Pressure of the blood in the left ventricle of the heart" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:671:169:263-526" 
+ 					CMidtext="Pressure:Diastolic:Blood:CVS-LeftVentricle" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_LEFTVENTRICLE" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Diastolic Left Ventricular Pressure" 
+ 					longdesc="Diastolic Pressure of the blood in the left ventricle of the heart" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:712:169:263-526" 
+ 					CMidtext="Pressure:Systolic:Blood:CVS-LeftVentricle" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_LEFTVENTRICLE" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Systolic Left Ventricular Pressure" 
+ 					longdesc="Systolic Pressure of the blood in the left ventricle of the heart" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:137:169:263-541" 
+ 					CMidtext="Pressure:Mean:Blood:CVS-RightVentricle" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_RIGHTVENTRICLE" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Mean Right Ventricular Pressure" 
+ 					longdesc="Mean Pressure of the blood in the right ventricle of the heart" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:671:169:263-541" 
+ 					CMidtext="Pressure:Diastolic:Blood:CVS-RightVentricle" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_RIGHTVENTRICLE" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Diastolic Right Ventricular Pressure" 
+ 					longdesc="Diastolic Pressure of the blood in the right ventricle of the heart" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:712:169:263-541" 
+ 					CMidtext="Pressure:Systolic:Blood:CVS-RightVentricle" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_RIGHTVENTRICLE" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Systolic Right Ventricular Pressure" 
+ 					longdesc="Systolic Pressure of the blood in the right ventricle of the heart" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:137:169:263-534" 
+ 					CMidtext="Pressure:Mean:Blood:CVS-PulmonaryArtery" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_PULMONARYARTERY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Mean Pulmonary Arterial Pressure" 
+ 					longdesc="Mean Pressure of the blood in the Pulmonary artery" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:671:169:263-534" 
+ 					CMidtext="Pressure:Diastolic:Blood:CVS-PulmonaryArtery" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_PULMONARYARTERY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Diastolic Pulmonary Arterial Pressure" 
+ 					longdesc="Diastolic Pressure of the blood in the pulmonary artery" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:712:169:263-534" 
+ 					CMidtext="Pressure:Systolic:Blood:CVS-PulmonaryArtery" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_PULMONARYARTERY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Systolic Pulmonary Arterial Pressure" 
+ 					longdesc="Systolic Pressure of the blood in the pulmonary artery" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:137:169:263-498" 
+ 					CMidtext="Pressure:Mean:Blood:CVS-Artery" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_ARTERY" 
+ 					defaultunits="" 
+ 					abbreviation="MAP" 
+ 					shortdesc="Mean Arterial Pressure" 
+ 					longdesc="Mean Pressure of the blood in an artery" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:671:169:263-498" 
+ 					CMidtext="Pressure:Diastolic:Blood:CVS-Artery" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_ARTERY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Diastolic Arterial Pressure" 
+ 					longdesc="Diastolic Pressure of the blood in an artery" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:712:169:263-498" 
+ 					CMidtext="Pressure:Systolic:Blood:CVS-Artery" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_ARTERY" 
+ 					defaultunits="" 
+ 					abbreviation="SAP" 
+ 					shortdesc="Systolic Arterial Pressure" 
+ 					longdesc="Systolic Pressure of the blood in an artery" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:840:" 
+ 					CMidtext="Status:Alert:Alarms:" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_ALARMS:" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Alarm Alert" 
+ 					longdesc="Alarm condition" 
+ 				/>
+ 				<Secondary 
+ 					CMid="101:667:203:263" 
+ 					CMidtext="Rate:Beats:Heart:CVS" 
+ 					idref="M_BASE_RATE:M_TIMECRIT_BEATS:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="" 
+ 					abbreviation="HR" 
+ 					shortdesc="heart rate" 
+ 					longdesc="Rate of cardiac beats" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:710-1075:203:263" 
+ 					CMidtext="Duration:ST (segment)-V6 (derived):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_TIMECRIT_ST__SEGMENT_-CM_HASORIGIN_V6(DERIVED):M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STdV6" 
+ 					shortdesc="ST derived lead V6" 
+ 					longdesc="Duration of the ST segment of ECG in derived lead V6" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:710-1074:203:263" 
+ 					CMidtext="Duration:ST (segment)-V4 (derived):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_TIMECRIT_ST__SEGMENT_-CM_HASORIGIN_V4(DERIVED):M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STdV4" 
+ 					shortdesc="ST derived lead V4" 
+ 					longdesc="Duration of the ST segment of ECG in derived lead V4" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:710-1073:203:263" 
+ 					CMidtext="Duration:ST (segment)-V3 (derived):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_TIMECRIT_ST__SEGMENT_-CM_HASORIGIN_V3(DERIVED):M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STdV3" 
+ 					shortdesc="ST derived lead V3" 
+ 					longdesc="Duration of the ST segment of ECG in derived lead V3" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:710-1071:203:263" 
+ 					CMidtext="Duration:ST (segment)-V1 (derived):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_TIMECRIT_ST__SEGMENT_-CM_HASORIGIN_V1(DERIVED):M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STdV1" 
+ 					shortdesc="ST derived lead V1" 
+ 					longdesc="Duration of the ST segment of ECG in derived lead V1" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:473-710:203:263" 
+ 					CMidtext="Duration:V5-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_V5_MDC_ECG_LEAD_V5-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STV5" 
+ 					shortdesc="ST lead V5" 
+ 					longdesc="Duration of the ST segment of ECG in lead V5" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:471-710:203:263" 
+ 					CMidtext="Duration:V4-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_V4_MDC_ECG_LEAD_V4-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STV4" 
+ 					shortdesc="ST lead V4" 
+ 					longdesc="Duration of the ST segment of ECG in lead V4" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:469-710:203:263" 
+ 					CMidtext="Duration:V3-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_V3_MDC_ECG_LEAD_V3-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STV3" 
+ 					shortdesc="ST lead V3" 
+ 					longdesc="Duration of the ST segment of ECG in lead V3" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:467-710:203:263" 
+ 					CMidtext="Duration:V2-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_V2_MDC_ECG_LEAD_V2-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STV2" 
+ 					shortdesc="ST lead V2" 
+ 					longdesc="Duration of the ST segment of ECG in lead V2" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:466-710:203:263" 
+ 					CMidtext="Duration:V1-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_V1_MDC_ECG_LEAD_V1-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STV1" 
+ 					shortdesc="ST lead V1" 
+ 					longdesc="Duration of the ST segment of ECG in lead V1" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:422-710:203:263" 
+ 					CMidtext="Duration:aVF-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_AVF_MDC_ECG_LEAD_AVF-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STaVF" 
+ 					shortdesc="ST lead aVF" 
+ 					longdesc="Duration of the ST segment of ECG in lead aVF" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:424-710:203:263" 
+ 					CMidtext="Duration:aVR-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_AVR_MDC_ECG_LEAD_AVR-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STaVR" 
+ 					shortdesc="ST aVR" 
+ 					longdesc="Duration of the ST segment of ECG in lead aVR" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:423-710:203:263" 
+ 					CMidtext="Duration:aVL-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_AVL_MDC_ECG_LEAD_AVL-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STaVL" 
+ 					shortdesc="ST lead aVL" 
+ 					longdesc="Duration of the ST segment of ECG in lead aVL" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:447-710:203:263" 
+ 					CMidtext="Duration:III-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_III_MDC_ECG_LEAD_III-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STIII" 
+ 					shortdesc="ST lead III" 
+ 					longdesc="Duration of the ST segment of ECG in lead III" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:446-710:203:263" 
+ 					CMidtext="Duration:II-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_II_MDC_ECG_LEAD_II-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STII" 
+ 					shortdesc="ST lead II" 
+ 					longdesc="Duration of the ST segment of ECG in lead II" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:445-710:203:263" 
+ 					CMidtext="Duration:I-ST (segment):Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_ORIGIN_I_MDC_ECG_LEAD_I-M_TIMECRIT_ST__SEGMENT_:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="STI" 
+ 					shortdesc="ST lead I" 
+ 					longdesc="Duration of the ST segment of ECG in lead I" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="81:710-818:203:263" 
+ 					CMidtext="Duration:ST (segment)-ECG lead:Heart:CVS" 
+ 					idref="M_BASE_DURATION:M_TIMECRIT_ST__SEGMENT_-M_ORIGIN_ECGLEAD:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="mm" 
+ 					abbreviation="ST" 
+ 					shortdesc="ST" 
+ 					longdesc="Duration of the ST segment of ECG in unspecified lead" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:676:197-207:259" 
+ 					CMidtext="Concentration:EndTidal:Gas-Isoflurane:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_GAS-M_CONCERNS_ISOFLURANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Isoflurane EndTidal" 
+ 					longdesc="Concentration of Isoflurane in airway gas measured at the end of expiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:679:197-207:259" 
+ 					CMidtext="Concentration:Inspiration:Gas-Isoflurane:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-M_CONCERNS_ISOFLURANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Isoflurane Inspiratory" 
+ 					longdesc="Concentration of Isoflurane in airway gas measured in inspiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79::197-207:259" 
+ 					CMidtext="Concentration::Gas-Isoflurane:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_GAS-M_CONCERNS_ISOFLURANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%Isoflurane" 
+ 					shortdesc="Concentration Airway Isoflurane" 
+ 					longdesc="Concentration of Isoflurane in airway gas" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:676:189-197:259" 
+ 					CMidtext="Concentration:EndTidal:Enflurane-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_ENFLURANE-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Enflurane EndTidal" 
+ 					longdesc="Concentration of Enflurane in airway gas measured at the end of expiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:679:189-197:259" 
+ 					CMidtext="Concentration:Inspiration:Enflurane-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_ENFLURANE-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Enflurane Inspiratory" 
+ 					longdesc="Concentration of Enflurane in airway gas measured in inspiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79::189-197:259" 
+ 					CMidtext="Concentration::Enflurane-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_ENFLURANE-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%Enflurane" 
+ 					shortdesc="Concentration Airway Enflurane" 
+ 					longdesc="Concentration of Enflurane in airway gas" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:676:197-201:259" 
+ 					CMidtext="Concentration:EndTidal:Gas-Halothane:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_GAS-M_CONCERNS_HALOTHANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Halothane EndTidal" 
+ 					longdesc="Concentration of Halothane in airway gas measured at the end of expiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:679:197-201:259" 
+ 					CMidtext="Concentration:Inspiration:Gas-Halothane:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-M_CONCERNS_HALOTHANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Halothane Inspiratory" 
+ 					longdesc="Concentration of Halothane in airway gas measured in inspiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79::197-201:259" 
+ 					CMidtext="Concentration::Gas-Halothane:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_GAS-M_CONCERNS_HALOTHANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%Halothane" 
+ 					shortdesc="Concentration Airway Halothane" 
+ 					longdesc="Concentration of Halothane in airway gas" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:676:197-236:259" 
+ 					CMidtext="Concentration:EndTidal:Gas-Sevoflurane:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_GAS-M_CONCERNS_SEVOFLURANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Sevoflurane EndTidal" 
+ 					longdesc="Concentration of Sevoflurane in airway gas measured at the end of expiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:679:197-236:259" 
+ 					CMidtext="Concentration:Inspiration:Gas-Sevoflurane:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-M_CONCERNS_SEVOFLURANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Sevoflurane Inspiratory" 
+ 					longdesc="Concentration of Sevoflurane in airway gas measured in inspiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79::197-236:259" 
+ 					CMidtext="Concentration::Gas-Sevoflurane:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_GAS-M_CONCERNS_SEVOFLURANE:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%Sevoflurane" 
+ 					shortdesc="Concentration Airway Sevoflurane" 
+ 					longdesc="Concentration of Sevoflurane in airway gas" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:676:184-197:259" 
+ 					CMidtext="Concentration:EndTidal:Desflurane-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_DESFLURANE-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Desflurane EndTidal" 
+ 					longdesc="Concentration of Desflurane in airway gas measured at the end of expiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:679:184-197:259" 
+ 					CMidtext="Concentration:Inspiration:Desflurane-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_DESFLURANE-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Desflurane Inspiratory" 
+ 					longdesc="Concentration of Desflurane in airway gas measured in inspiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79::184-197:259" 
+ 					CMidtext="Concentration::Desflurane-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_DESFLURANE-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%Desflurane" 
+ 					shortdesc="Concentration Airway Desflurane" 
+ 					longdesc="Concentration of Desflurane in airway gas" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:676:197-849:259" 
+ 					CMidtext="Concentration:EndTidal:Gas-AnaestheticAgent:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_GAS-CM_CONCERNS_ANAESTHETICAGENT:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%Agt ET" 
+ 					shortdesc="Concentration Airway Anaesthetic agent EndTidal" 
+ 					longdesc="Concentration of anaesthetic agent in airway gas measured at the end of expiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:679:197-849:259" 
+ 					CMidtext="Concentration:Inspiration:Gas-AnaestheticAgent:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-CM_CONCERNS_ANAESTHETICAGENT:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%Agt In" 
+ 					shortdesc="Concentration Airway anaesthetic agent Inspiratory" 
+ 					longdesc="Concentration Airway anaesthetic agent in inspiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79::197-849:259" 
+ 					CMidtext="Concentration::Gas-AnaestheticAgent:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_GAS-CM_CONCERNS_ANAESTHETICAGENT:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%Agt" 
+ 					shortdesc="Concentration Airway anaesthetic agent" 
+ 					longdesc="Concentration of anaesthetic agent in airway gas" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:676:197-216:259" 
+ 					CMidtext="Concentration:EndTidal:Gas-N2O:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_GAS-M_CONCERNS_N2O__NITROUS_OXIDE_:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Nitrous Oxide EndTidal" 
+ 					longdesc="Concentration of Nitrous Oxide in airway gas measured at the end of expiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:679:197-216:259" 
+ 					CMidtext="Concentration:Inspiration:Gas-N2O:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-M_CONCERNS_N2O__NITROUS_OXIDE_:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="" 
+ 					shortdesc="Concentration Airway Nitrous Oxide Inspiratory" 
+ 					longdesc="Concentration of Nitrous Oxide in airway gas measured in inspiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79::197-216:259" 
+ 					CMidtext="Concentration::Gas-N2O:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_GAS-M_CONCERNS_N2O__NITROUS_OXIDE_:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%Nitrous Oxide" 
+ 					shortdesc="Concentration Airway N2O" 
+ 					longdesc="Concentration of Nitrous Oxide in airway gas" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:679:177-197:259" 
+ 					CMidtext="Concentration:Inspiration:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%CO2 ins" 
+ 					shortdesc="Concentration Airway CO2 Inspiratory" 
+ 					longdesc="Concentration of CO2 in airway gas measured in inspiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:676:177-197:259" 
+ 					CMidtext="Concentration:EndTidal:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%CO2 ET" 
+ 					shortdesc="Concentration Airway CO2 EndTidal" 
+ 					longdesc="Concentration of CO2 in airway gas measured at the end of expiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79::177-197:259" 
+ 					CMidtext="Concentration::CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="%CO2" 
+ 					shortdesc="Concentration Airway CO2" 
+ 					longdesc="Concentration of CO2 in airway gas" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:676:197-219:259" 
+ 					CMidtext="Concentration:EndTidal:Gas-O2:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_ENDTIDAL:M_CONCERNS_GAS-M_CONCERNS_O2:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%O2 ET" 
+ 					shortdesc="Concentration Airway O2 EndTidal" 
+ 					longdesc="Concentration of O2 in airway gas measured at the end of expiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:679:197-219:259" 
+ 					CMidtext="Concentration:Inspiration:Gas-O2:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-M_CONCERNS_O2:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%O2 ins" 
+ 					shortdesc="Concentration Airway O2 Inspiratory" 
+ 					longdesc="Concentration of O2 in airway gas measured in inspiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:679:197-219:271" 
+ 					CMidtext="Concentration:Inspiration:Gas-O2:Ventilator" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-M_CONCERNS_O2:M_CONTEXT_VENTILATOR" 
+ 					defaultunits="%" 
+ 					abbreviation="FIO2" 
+ 					shortdesc="Ventilation Inspired Oxygen Concentration" 
+ 					longdesc="Concentration of O2 in inspiration during mechanical ventilation" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="103::195:263-543" 
+ 					CMidtext="Resistance::Flow:CVS-SystemicBlood" 
+ 					idref="M_BASE_RESISTANCE::M_CONCERNS_FLOW:M_CONTEXT_CVS-M_PERTAINS_SYSTEMICBLOOD" 
+ 					defaultunits="" 
+ 					abbreviation="SVR" 
+ 					shortdesc="Systemic Vascular Resistance" 
+ 					longdesc="Resistance to blood flow in the systemic circulation" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79::197-219:259" 
+ 					CMidtext="Concentration::Gas-O2:Airway" 
+ 					idref="M_BASE_CONCENTRATION::M_CONCERNS_GAS-M_CONCERNS_O2:M_CONTEXT_AIRWAY" 
+ 					defaultunits="%" 
+ 					abbreviation="%O2" 
+ 					shortdesc="Concentration Airway O2" 
+ 					longdesc="Concentration of O2 in airway gas" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="112:592-691:169:263-526" 
+ 					CMidtext="Volume:Intermittent-PerMinute:Blood:CVS-LeftVentricle" 
+ 					idref="M_BASE_VOLUME:M_SPEC_INTERMITTENT-M_TIMECRIT_PERMINUTE:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_LEFTVENTRICLE" 
+ 					defaultunits="" 
+ 					abbreviation="ICO" 
+ 					shortdesc="Intermittent Cardiac output" 
+ 					longdesc="Quantity of blood pumped by the left ventricle into the aorta per minute, obtained an intermittent measurement" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="112:344-691:169:263-526" 
+ 					CMidtext="Volume:Continuous-PerMinute:Blood:CVS-LeftVentricle" 
+ 					idref="M_BASE_VOLUME:M_METHOD_CONTINUOUS-M_TIMECRIT_PERMINUTE:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_LEFTVENTRICLE" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Continuous Cardiac output" 
+ 					longdesc="Quantity of blood pumped by the left ventricle into the aorta per minute, obtained as continuous measurement" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="109::169:260" 
+ 					CMidtext="Temperature::Blood:Body" 
+ 					idref="M_BASE_TEMPERATURE::M_CONCERNS_BLOOD:M_CONTEXT_BODY" 
+ 					defaultunits="degC" 
+ 					abbreviation="T" 
+ 					shortdesc="Blood temperature" 
+ 					longdesc="Blood temperature" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="112:691:169:263-526" 
+ 					CMidtext="Volume:PerMinute:Blood:CVS-LeftVentricle" 
+ 					idref="M_BASE_VOLUME:M_TIMECRIT_PERMINUTE:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_LEFTVENTRICLE" 
+ 					defaultunits="l/min" 
+ 					abbreviation="CO" 
+ 					shortdesc="Cardiac output" 
+ 					longdesc="Quantity of blood pumped by the left ventricle into the aorta per minute" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="109:::260" 
+ 					CMidtext="Temperature:::Body" 
+ 					idref="M_BASE_TEMPERATURE:::M_CONTEXT_BODY" 
+ 					defaultunits="degC" 
+ 					abbreviation="T" 
+ 					shortdesc="Temperature" 
+ 					longdesc="Temperature - unspecified measurement of patient" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="TA,T1A,T1B,DeltaT1,T2A,T2B,DeltaT2,T3A,T3B,DeltaT3" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="109::164:260" 
+ 					CMidtext="Temperature::Airway:Body" 
+ 					idref="M_BASE_TEMPERATURE::M_CONCERNS_AIRWAY:M_CONTEXT_BODY" 
+ 					defaultunits="degC" 
+ 					abbreviation="Tairway" 
+ 					shortdesc="Temperature airway" 
+ 					longdesc="Temperature airway" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="109:123:180-242:260" 
+ 					CMidtext="Temperature:Difference:Core-Surface:Body" 
+ 					idref="M_BASE_TEMPERATURE:M_COMPUTED_DIFFERENCE:M_CONCERNS_CORE-M_CONCERNS_SURFACE:M_CONTEXT_BODY" 
+ 					defaultunits="degC" 
+ 					abbreviation="" 
+ 					shortdesc="Temperature difference" 
+ 					longdesc="Difference between two temperatures, usually core temperature and preipheral temperature" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:144-679:177-197:259" 
+ 					CMidtext="Concentration:Minimum-Inspiration:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_COMPUTED_MINIMUM-M_TIMECRIT_INSPIRATION:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="PICO2 min" 
+ 					shortdesc="Inspiratory CO2 Minimum Pressure" 
+ 					longdesc="Minimum pressure of CO2 in airway gas measured in inspiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="MGM,CO2" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:418:173:261" 
+ 					CMidtext="Rate:Airway:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_AIRWAY:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="bpm" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, method: direct airway flow measurement" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:611-676:177-197:259" 
+ 					CMidtext="Concentration:PartialPressure-EndTidal:CO2-Gas:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_SPEC_PARTIALPRESSURE-M_TIMECRIT_ENDTIDAL:M_CONCERNS_CO2-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="Pet CO2" 
+ 					shortdesc="EndTidal CO2 Partial Pressure" 
+ 					longdesc="Partial pressure of CO2 in airway gas measured at end of expiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="MGM,CO2" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:432:173:261" 
+ 					CMidtext="Rate:CO2:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_CO2:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="bpm" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, method: CO2 -sensor" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:371:224-226:263" 
+ 					CMidtext="Rate:Noninvasive:Peripheralvessels-Pulse:CVS" 
+ 					idref="M_BASE_RATE:M_METHOD_NONINVASIVE:M_CONCERNS_PERIPHERAL_VESSELS-M_CONCERNS_PULSE:M_CONTEXT_CVS" 
+ 					defaultunits="bpm" 
+ 					abbreviation="SpO2 PR" 
+ 					shortdesc="Pulse rate measured by SpO2 sensor" 
+ 					longdesc="Noninvasive pulse rate measured by SpO2 sensor" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:331-660:224:502" 
+ 					CMidtext="Concentration:Saturation-Oxygen:Peripheralvessels:BloodChemistry" 
+ 					idref="M_BASE_CONCENTRATION:M_MEASTYPE_SATURATION-M_SUBST_OXYGEN:M_CONCERNS_PERIPHERAL_VESSELS:M_PERTAINS_BLOODCHEMISTRY" 
+ 					defaultunits="%" 
+ 					abbreviation="SpO2" 
+ 					shortdesc="SpO2" 
+ 					longdesc="Peripheral oxygen saturation measurements" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:455:173:261" 
+ 					CMidtext="Rate:NOS:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_NOS:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="bpm" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, method not specified" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:396:169:263-534" 
+ 					CMidtext="Pressure:Wedge:Blood:CVS-PulmonaryArtery" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_WEDGE:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_PULMONARYARTERY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="PAW" 
+ 					shortdesc="Pulmonary Artery Wedge Pressure" 
+ 					longdesc="Pressure of the blood measured by a catheter wedged into a small branch of the pulmonary artery" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:137-346-371:169:263" 
+ 					CMidtext="Pressure:Mean-Discontinuous-Noninvasive:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN-M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="NIBP (mean)" 
+ 					shortdesc="Discontinuous, Noninvasive Mean Blood Pressure" 
+ 					longdesc="Pressure of the blood computed as mean value between systolic and diastolic Pressures, measured discontinuously and noninvasively (cuff)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:346-371-671:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Noninvasive-Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE-M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="NIBP (dia)" 
+ 					shortdesc="Discontinuous, Noninvasive Diastolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the diastolic phase, measured discontinuously and noninvasively (cuff)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:346-371-712:169:263" 
+ 					CMidtext="Pressure:Discontinuous-Noninvasive-Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_DISCONTINUOUS-M_METHOD_NONINVASIVE-M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="NIBP (sys)" 
+ 					shortdesc="Discontinuous, Noninvasive Systolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the systolic phase, measured discontinuously and noninvasively (cuff)" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:137:169:263" 
+ 					CMidtext="Pressure:Mean:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Mean Blood Pressure" 
+ 					longdesc="Pressure of the blood as computed by averaging on one cycle" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="Channel1,Channel2,Channel1a,Channel1b,Channel1c,Channel1d,Channel2a,Channel2b,Channel2c,Channel2d,Channel3a,Channel3b,Channel3c,Channel3d" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:671:169:263" 
+ 					CMidtext="Pressure:Diastolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Diastolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the diastolic phase" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="Channel1,Channel2,Channel1a,Channel1b,Channel1c,Channel1d,Channel2a,Channel2b,Channel2c,Channel2d,Channel3a,Channel3b,Channel3c,Channel3d" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:712:169:263" 
+ 					CMidtext="Pressure:Systolic:Blood:CVS" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Systolic Blood Pressure" 
+ 					longdesc="Pressure of the blood at the systolic phase" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="Channel1,Channel2,Channel1a,Channel1b,Channel1c,Channel1d,Channel2a,Channel2b,Channel2c,Channel2d,Channel3a,Channel3b,Channel3c,Channel3d" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:121:202-206:262" 
+ 					CMidtext="Pressure:Difference (MeanArterial-MeanIntracranial):Head-Intracranial:CNS" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_DIFF__MEANART_MEANINTRACRANIAL_:M_CONCERNS_HEAD-M_CONCERNS_INTRACRANIAL:M_CONTEXT_CNS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="CPP" 
+ 					shortdesc="Cerebral Perfusion Pressure" 
+ 					longdesc="Pressure difference between mean arterial pressure and mean pressure inside skull" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99::202-206:262" 
+ 					CMidtext="Pressure::Head-Intracranial:CNS" 
+ 					idref="M_BASE_PRESSURE::M_CONCERNS_HEAD-M_CONCERNS_INTRACRANIAL:M_CONTEXT_CNS" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="ICP" 
+ 					shortdesc="Intracranial Pressure" 
+ 					longdesc="Pressure inside skull" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99::169:263-504" 
+ 					CMidtext="Pressure::Blood:CVS-CentralVein" 
+ 					idref="M_BASE_PRESSURE::M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_CENTRALVEIN" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="CVP" 
+ 					shortdesc="Central Venous Pressure" 
+ 					longdesc="Pressure of the blood in the thoracic venae cavae" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99::169:263-523" 
+ 					CMidtext="Pressure::Blood:CVS-LeftAtrium" 
+ 					idref="M_BASE_PRESSURE::M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_LEFTATRIUM" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="LAP" 
+ 					shortdesc="Left Atrial Pressure" 
+ 					longdesc="Pressure of the blood in the left atrium of the heart" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99::169:263-538" 
+ 					CMidtext="Pressure::Blood:CVS-RightAtrium" 
+ 					idref="M_BASE_PRESSURE::M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_RIGHTATRIUM" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="RAP" 
+ 					shortdesc="Right Atrial Pressure" 
+ 					longdesc="Pressure of the blood in the right atrium of the heart" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:137:169:263-526" 
+ 					CMidtext="Pressure:Mean:Blood:CVS-LeftVentricle" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_LEFTVENTRICLE" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Mean Left Ventricular Pressure" 
+ 					longdesc="Mean Pressure of the blood in the left ventricle of the heart" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:671:169:263-526" 
+ 					CMidtext="Pressure:Diastolic:Blood:CVS-LeftVentricle" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_LEFTVENTRICLE" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Diastolic Left Ventricular Pressure" 
+ 					longdesc="Diastolic Pressure of the blood in the left ventricle of the heart" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:712:169:263-526" 
+ 					CMidtext="Pressure:Systolic:Blood:CVS-LeftVentricle" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_LEFTVENTRICLE" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Systolic Left Ventricular Pressure" 
+ 					longdesc="Systolic Pressure of the blood in the left ventricle of the heart" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:137:169:263-541" 
+ 					CMidtext="Pressure:Mean:Blood:CVS-RightVentricle" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_RIGHTVENTRICLE" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Mean Right Ventricular Pressure" 
+ 					longdesc="Mean Pressure of the blood in the right ventricle of the heart" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:671:169:263-541" 
+ 					CMidtext="Pressure:Diastolic:Blood:CVS-RightVentricle" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_RIGHTVENTRICLE" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Diastolic Right Ventricular Pressure" 
+ 					longdesc="Diastolic Pressure of the blood in the right ventricle of the heart" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:712:169:263-541" 
+ 					CMidtext="Pressure:Systolic:Blood:CVS-RightVentricle" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_RIGHTVENTRICLE" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Systolic Right Ventricular Pressure" 
+ 					longdesc="Systolic Pressure of the blood in the right ventricle of the heart" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:137:169:263-534" 
+ 					CMidtext="Pressure:Mean:Blood:CVS-PulmonaryArtery" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_PULMONARYARTERY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Mean Pulmonary Arterial Pressure" 
+ 					longdesc="Mean Pressure of the blood in the Pulmonary artery" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:671:169:263-534" 
+ 					CMidtext="Pressure:Diastolic:Blood:CVS-PulmonaryArtery" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_PULMONARYARTERY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Diastolic Pulmonary Arterial Pressure" 
+ 					longdesc="Diastolic Pressure of the blood in the pulmonary artery" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:712:169:263-534" 
+ 					CMidtext="Pressure:Systolic:Blood:CVS-PulmonaryArtery" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_PULMONARYARTERY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Systolic Pulmonary Arterial Pressure" 
+ 					longdesc="Systolic Pressure of the blood in the pulmonary artery" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:137:169:263-498" 
+ 					CMidtext="Pressure:Mean:Blood:CVS-Artery" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_ARTERY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="MAP" 
+ 					shortdesc="Mean Arterial Pressure" 
+ 					longdesc="Mean Pressure of the blood in an artery" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:671:169:263-498" 
+ 					CMidtext="Pressure:Diastolic:Blood:CVS-Artery" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_DIASTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_ARTERY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="" 
+ 					shortdesc="Diastolic Arterial Pressure" 
+ 					longdesc="Diastolic Pressure of the blood in an artery" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:712:169:263-498" 
+ 					CMidtext="Pressure:Systolic:Blood:CVS-Artery" 
+ 					idref="M_BASE_PRESSURE:M_TIMECRIT_SYSTOLIC:M_CONCERNS_BLOOD:M_CONTEXT_CVS-M_PERTAINS_ARTERY" 
+ 					defaultunits="mmHg" 
+ 					abbreviation="SAP" 
+ 					shortdesc="Systolic Arterial Pressure" 
+ 					longdesc="Systolic Pressure of the blood in an artery" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:667:203:263" 
+ 					CMidtext="Rate:Beats:Heart:CVS" 
+ 					idref="M_BASE_RATE:M_TIMECRIT_BEATS:M_CONCERNS_HEART:M_CONTEXT_CVS" 
+ 					defaultunits="bpm" 
+ 					abbreviation="HR" 
+ 					shortdesc="heart rate" 
+ 					longdesc="Rate of cardiac beats" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 	</VarGroup>
+ </Discrete>
+</Variables></CMDriverDescription>

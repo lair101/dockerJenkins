@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CMDriverDescription>
+<SupportedDevices model="Draeger 8000" type="Incubator">
+ <CMLLC type="CMLLCRS232">
+ 	<CMLLCCfg port="" baud="9600" parity="N" data="8" stopbit="1" rtscts="No" />
+ </CMLLC>
+ </SupportedDevices>
+ <Variables>
+	<Discrete>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="1076:917-1020:1053:1060" 
+ 					CMidtext="ErrorEvent:Sensor-Disconnected:FunctionalDisturbance:Device" 
+ 					idref="CM_BASE_ERROREVENT:CM_CONCERNSFUNCTIONALUNIT_SENSOR-CM_HASERRORCONDITION_DISCONNECTED:CM_CONCERNS_FUNCTIONALDISTURBANCE:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Sensor disconnected" 
+ 					longdesc="Sensor disconnected or fault" 
+ 				/>
+ 				<Secondary 
+ 					CMid="109::242:260" 
+ 					CMidtext="Temperature::Surface:Body" 
+ 					idref="M_BASE_TEMPERATURE::M_CONCERNS_SURFACE:M_CONTEXT_BODY" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="Tcore" 
+ 					shortdesc="Peripheral (surface) Temperature" 
+ 					longdesc="Peripheral (surface) temperature" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:825:827:823" 
+ 					CMidtext="Status:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_STATUS:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper Limit Alarm Alert" 
+ 					longdesc="Upper alarm limit exceeded" 
+ 				/>
+ 				<Secondary 
+ 					CMid="109::180:260" 
+ 					CMidtext="Temperature::Core:Body" 
+ 					idref="M_BASE_TEMPERATURE::M_CONCERNS_CORE:M_CONTEXT_BODY" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="Tcore" 
+ 					shortdesc="Core Temperature" 
+ 					longdesc="Core temperature" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="1076:917-1020:1053:1060" 
+ 					CMidtext="ErrorEvent:Sensor-Disconnected:FunctionalDisturbance:Device" 
+ 					idref="CM_BASE_ERROREVENT:CM_CONCERNSFUNCTIONALUNIT_SENSOR-CM_HASERRORCONDITION_DISCONNECTED:CM_CONCERNS_FUNCTIONALDISTURBANCE:CM_PERTAINSTO_DEVICE" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Sensor disconnected" 
+ 					longdesc="Sensor disconnected or fault" 
+ 				/>
+ 				<Secondary 
+ 					CMid="109::180:260" 
+ 					CMidtext="Temperature::Core:Body" 
+ 					idref="M_BASE_TEMPERATURE::M_CONCERNS_CORE:M_CONTEXT_BODY" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="Tcore" 
+ 					shortdesc="Core Temperature" 
+ 					longdesc="Core temperature" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 		</VarGroup>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="107:826:846:859" 
+ 					CMidtext="Status:Warning:Sensor:Inoperable" 
+ 					idref="M_BASE_STATUS:M_SPEC_WARNING:M_CONCERNS_SENSOR:CM_CONDITION_INOPERABLE" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Sensor inoperable" 
+ 					longdesc="Warning, sensor inoperable" 
+ 				/>
+ 				<Secondary 
+ 					CMid="109::185:1089" 
+ 					CMidtext="Temperature::Device:mattress" 
+ 					idref="M_BASE_TEMPERATURE::M_CONCERNS_DEVICE:CM_PERTAINS_MATTRESS" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="" 
+ 					shortdesc="Mattress temperature" 
+ 					longdesc="Temperature of mattress" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="109::242:260" 
+ 					CMidtext="Temperature::Surface:Body" 
+ 					idref="M_BASE_TEMPERATURE::M_CONCERNS_SURFACE:M_CONTEXT_BODY" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="Tcore" 
+ 					shortdesc="Peripheral (surface) Temperature" 
+ 					longdesc="Peripheral (surface) temperature" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="109::180:260" 
+ 					CMidtext="Temperature::Core:Body" 
+ 					idref="M_BASE_TEMPERATURE::M_CONCERNS_CORE:M_CONTEXT_BODY" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="Tcore" 
+ 					shortdesc="Core Temperature" 
+ 					longdesc="Core temperature" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="109::185:1089" 
+ 					CMidtext="Temperature::Device:mattress" 
+ 					idref="M_BASE_TEMPERATURE::M_CONCERNS_DEVICE:CM_PERTAINS_MATTRESS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Mattress temperature" 
+ 					longdesc="Temperature of mattress" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 		</VarGroup>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="833:::823" 
+ 					CMidtext="Setting:::UserLimits" 
+ 					idref="M_BASE_SETTING:::M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Device Setting" 
+ 					longdesc="Device Setting" 
+ 				/>
+ 				<Secondary 
+ 					CMid="109::185:1089" 
+ 					CMidtext="Temperature::Device:mattress" 
+ 					idref="M_BASE_TEMPERATURE::M_CONCERNS_DEVICE:CM_PERTAINS_MATTRESS" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="" 
+ 					shortdesc="Mattress temperature" 
+ 					longdesc="Temperature of mattress" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:::823" 
+ 					CMidtext="Setting:::UserLimits" 
+ 					idref="M_BASE_SETTING:::M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Device Setting" 
+ 					longdesc="Device Setting" 
+ 				/>
+ 				<Secondary 
+ 					CMid="109::855:260" 
+ 					CMidtext="Temperature::Skin:Body" 
+ 					idref="M_BASE_TEMPERATURE::CM_CONCERNS_SKIN:M_CONTEXT_BODY" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="Tskin" 
+ 					shortdesc="Skin Temperature" 
+ 					longdesc="Skin temperature" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 	</VarGroup>
+ </Discrete>
+</Variables></CMDriverDescription>

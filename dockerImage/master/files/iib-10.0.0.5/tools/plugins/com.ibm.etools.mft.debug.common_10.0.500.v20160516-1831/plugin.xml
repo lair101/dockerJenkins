@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Licensed Material - Property of IBM 
+ 5724-I66
+ (C) Copyright IBM Corporation 2005, 2015 - All Rights Reserved. 
+ Note to U.S. Government Users Restricted Rights - Use, duplication or disclosure 
+ restricted by GSA ADP Schedule Contract with IBM Corp. 
+
+-->
+<?eclipse version="3.0"?>
+<plugin>
+
+    
+<!-- ==============================================================================	-->
+<!-- 																				-->
+<!-- <helperinfo helperID = "com.ibm.etools.mft.debug.common.CommonDebugAdapter">			-->
+<!-- 																				-->
+<!-- Extension point for registering debug helper 									-->
+<!-- ==============================================================================	-->
+   <extension-point id="CommonDebugAdapter" name="%CommonDebugAdapterExtensionName"/>
+   <extension-point id="FileChangedListener" name="FileChangedListener" schema="schema/FileChangedListener.exsd"/>
+   <extension-point id="PreferencePageContents" name="PreferencePageContents" schema="schema/PreferencePageContents.exsd"/>
+
+<!-- Presentation Services -->
+   <extension
+         point="org.eclipse.debug.ui.debugModelPresentations">
+      <debugModelPresentation
+            class="com.ibm.etools.mft.debug.common.cda.core.CDAModelPresentation"
+            id="com.ibm.etools.mft.debug.common.cda">
+      </debugModelPresentation>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.debugModelPresentations">
+      <debugModelPresentation
+            class="com.ibm.etools.mft.debug.common.core.WBIModelPresentation"
+            id="com.ibm.etools.mft.debug.common.wbi">
+      </debugModelPresentation>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.debugModelPresentations">
+      <debugModelPresentation
+            class="com.ibm.etools.mft.debug.common.sim.SimModelPresentation"
+            id="com.ibm.etools.mft.debug.common.sim">
+      </debugModelPresentation>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.debugModelPresentations">
+      <debugModelPresentation
+            class="com.ibm.etools.mft.debug.common.sourcedebug.SourceModelPresentation"
+            id="com.ibm.etools.mft.debug.common.source">
+      </debugModelPresentation>
+   </extension>
+      
+<!-- WSA Debug Element extension -->
+	<extension
+         point="com.ibm.debug.wsa.javaDebugWrappers">
+      <javaDebugWrappers
+            name="CDA Plug-in"
+            debugTarget="com.ibm.etools.mft.debug.common.cda.core.CDADebugTarget"
+            sourceLocator="com.ibm.etools.mft.debug.common.cda.core.CDASourceLocator"
+            id="com.ibm.etools.mft.debug.common.cda">
+      </javaDebugWrappers>
+   </extension>
+   
+<!-- WSA Thread Filter extension -->
+	<extension
+         point="com.ibm.debug.wsa.threadFilters">
+      <threadFilter
+            id="com.ibm.etools.mft.debug.common.cda.thread_filter"
+            className="com.ibm.etools.mft.debug.common.cda.core.CDAThread"
+            label="WBI Thread Filter"
+            enabled="true">
+      </threadFilter>
+   </extension>
+
+<!-- WBI Breakpoint and marker declaration -->
+  <extension
+         id="generalBreakpointMarker"
+         name="%GENERAL_BREAKPOINT_MARKER"
+         point="org.eclipse.core.resources.markers">
+      	<super type="org.eclipse.debug.core.breakpointMarker"/> 
+		<attribute name="pluginId"/>
+		<attribute name="version"/>
+		<!--<attribute name="active"/>-->
+		<attribute name="breakpointLabel"/>
+		<attribute name="deployedType"/>
+		<attribute name="image"/>
+		<!--<attribute name="installed"/>-->
+   </extension>
+   <extension
+         id="wbiBreakpointMarker"
+         name="%WBI_BREAKPOINT_MARKER"
+         point="org.eclipse.core.resources.markers">
+      	<super type="com.ibm.etools.mft.debug.common.generalBreakpointMarker"/>
+      	<super type="com.ibm.wbit.visual.utils.graphicalMarker"/> 
+		<attribute name="condition"/>
+		<attribute name="conditionEnabled"/>
+		<attribute name="conditionSuspendOnTrue"/>
+		<attribute name="hitCount"/>
+		<attribute name="isLocal"/>
+		<attribute name="suspendPolicy"/>
+   </extension>
+   <extension
+         id="wbiGlobalBreakpointMarker"
+         name="%WBI_GLOBAL_BREAKPOINT_MARKER"
+         point="org.eclipse.core.resources.markers">
+      	<super type="com.ibm.etools.mft.debug.common.wbiBreakpointMarker"/>
+      	<persistent value="true"/>
+   </extension>
+   <extension
+         id="wbiJavaBreakpointMarker"
+         name="%WBI_JAVA_BREAKPOINT_MARKER"
+         point="org.eclipse.core.resources.markers">
+      	<super type="com.ibm.etools.mft.debug.common.wbiBreakpointMarker"/>
+   </extension>
+   <extension
+         id="wbiJavaGlobalBreakpointMarker"
+         name="%WBI_JAVA_GLOBAL_BREAKPOINT_MARKER"
+         point="org.eclipse.core.resources.markers">
+      	<super type="com.ibm.etools.mft.debug.common.wbiJavaBreakpointMarker"/>
+      	<persistent value="true"/>
+   </extension>
+   <!-- WBI breakpoint -->
+   <extension
+         point="org.eclipse.debug.core.breakpoints">
+      <breakpoint
+            markerType="com.ibm.etools.mft.debug.common.wbiGlobalBreakpointMarker"
+            class="com.ibm.etools.mft.debug.common.breakpoint.WBIBreakpoint"
+            id="com.ibm.etools.mft.debug.common.breakpoint.WBIBreakpoint">
+      </breakpoint>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.breakpoints">
+      <breakpoint
+            markerType="com.ibm.etools.mft.debug.common.wbiJavaGlobalBreakpointMarker"
+            class="com.ibm.etools.mft.debug.common.breakpoint.WBIJavaBreakpoint"
+            id="com.ibm.etools.mft.debug.common.breakpoint.WBIJavaBreakpoint">
+      </breakpoint>
+   </extension>
+<!-- WBI source Breakpoint and marker declaration -->
+   <extension
+         id="sourceBreakpointMarker"
+         name="%WBI_SOURCE_BREAKPOINT_MARKER"
+         point="org.eclipse.core.resources.markers">
+      	<super type="com.ibm.etools.mft.debug.common.wbiBreakpointMarker"/>         
+     	<super type="com.ibm.wbit.visual.utils.textMarker"/>
+		<attribute name="sourceObjectName"/>
+		<attribute name="sourceType"/>
+      <persistent value="true"/>
+   </extension>
+   <extension
+         id="sourceLineBreakpointMarker"
+         name="%WBI_SOURCE_LINE_BREAKPOINT_MARKER"
+         point="org.eclipse.core.resources.markers">
+      <super type="com.ibm.wbit.visual.utils.javaLineBreakpointMarker"/>
+      <super type="com.ibm.etools.mft.debug.common.sourceBreakpointMarker"/>
+      <persistent value="true"/>
+   </extension>
+   <!-- WBI source breakpoint -->
+   <extension
+         point="org.eclipse.debug.core.breakpoints">
+      <breakpoint
+            markerType="com.ibm.etools.mft.debug.common.sourceLineBreakpointMarker"
+            class="com.ibm.etools.mft.debug.common.sourcedebug.SourceLineBreakpoint"
+            id="com.ibm.etools.mft.debug.common.sourcedebug.SourceLineBreakpoint">
+      </breakpoint>
+   </extension>
+ 
+<!-- WBI popup menus -->
+  <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="com.ibm.etools.mft.debug.common.breakpoint.WBIBreakpoint"
+            id="com.ibm.etools.mft.debug.common.breakpoint.WBIBreakpointActions">
+        <!-- 
+         <action
+               label="%hitCount.label"
+               icon="icons/full/elcl16/sethitcount_co.gif"
+               helpContextId="hit_count_action_context"
+               class="com.ibm.etools.mft.debug.common.ui.actions.WBIBreakpointHitCountAction"
+               menubarPath="emptyBreakpointGroup"
+               enablesFor="1"
+               id="com.ibm.etools.mft.debug.common.ui.actions.WBIBreakpointHitCount">
+         </action>
+         <action
+               label="%suspendPolicy.label"
+               icon="icons/full/elcl16/suspend_co.gif"
+               helpContextId="breakpoint_suspend_policy_toggle_action_context"
+               class="org.eclipse.jdt.internal.debug.ui.actions.BreakpointSuspendPolicyToggleAction"
+               menubarPath="emptyBreakpointGroup"
+               enablesFor="1"
+               id="org.eclipse.jdt.debug.ui.actions.SuspendPolicy">
+         </action>-->
+         <!--<action
+               label="%breakpointPropertiesAction.label"
+               helpContextId="com.ibm.etools.mft.debug.common.brka0020"
+               class="com.ibm.etools.mft.debug.common.ui.actions.WBIBreakpointPropertiesAction"
+               menubarPath="additions"
+               enablesFor="1"
+               id="com.ibm.etools.mft.debug.common.ui.actions.WBIBreakpointProperties">
+         </action>-->
+          
+      </objectContribution>
+   </extension>
+<!-- WBI propertyPages -->
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            objectClass="com.ibm.etools.mft.debug.common.breakpoint.WBIBreakpoint"
+            adaptable="true"
+            name="%commonPage.label"
+            class="com.ibm.etools.mft.debug.common.ui.propertypages.WBIBreakpointPage"
+            id="com.ibm.etools.mft.debug.common.ui.propertypages.common">
+      </page>
+      <page
+            objectClass="com.ibm.etools.mft.debug.common.breakpoint.WBIBreakpoint"
+            adaptable="true"
+            name="%filteringPage.label"
+            class="com.ibm.etools.mft.debug.common.ui.propertypages.WBIBreakpointAdvancedPage"
+            id="com.ibm.etools.mft.debug.common.ui.propertypages.filter">
+      </page>
+   </extension>
+<!--  WBI Preference Page extension  --> 
+<!--  Disable until BI has a preference page
+   <extension point="org.eclipse.ui.preferencePages">
+   	  <page
+   	  		name="%Preference.Debug" 
+   	  		class="com.ibm.etools.mft.debug.common.ui.WBIDebugPreferencePage"
+   	  		id="com.ibm.etools.mft.debug.common.ui.WBIDebugPreferencePage"> 
+   	  </page>
+   </extension>
+--> 
+
+
+<!-- Registering with the Command Framework -->
+<!--	<extension 
+		id = "smappostprocessorcommand"
+		name = "%SMAPPostProcessCommand.label"
+		point = "com.ibm.ws.rapiddeploy.command.command">
+			<command class="com.ibm.etools.mft.debug.common.smap.SMAPPostProcessorCommand"/>
+	</extension>-->
+<!-- Registering the Builder that uses the above ICommand -->
+<!--	<extension 
+		id="SMAPBuilder"
+		name="SMAPBuilder"
+		point="org.eclipse.core.resources.builders">
+		<builder>
+			<run class="com.ibm.ws.rd.command.CommandBuilder">
+				<parameter name="command" value="com.ibm.etools.mft.debug.common.smappostprocessorcommand"/>
+			</run>
+		</builder>
+	</extension>-->
+	
+<!-- Register with the Command Framework to listen in to file changes -->
+<!--	<extension 
+		id = "FileChangedCommand"
+		name = "FileChangedCommand"
+		point = "com.ibm.wbit.command.framework.command">
+			<command class="com.ibm.etools.mft.debug.common.listeners.FileChangedCommand"/>
+	</extension>
+-->
+<!-- Common debug Preference Page -->
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="%Preference.Debug"
+            class="com.ibm.etools.mft.debug.common.ui.CommonDebugPreferencePage"
+            category="com.ibm.etools.mft.flow.preference.broker"
+            id="com.ibm.etools.mft.debug.common.ui.preferences">
+      </page>
+   </extension>
+   <!-- Add items to the preference page -->
+   <extension
+         point="com.ibm.etools.mft.debug.common.PreferencePageContents">
+         <contents
+		        id="com.ibm.etools.mft.debug.common.HCRWarnings"
+         		type="CHECK"
+         		label="%PREF_HCRDIALOG"
+         		group = "1"
+         		default_value="false">
+         </contents>
+   </extension>
+
+   <extension
+         point="com.ibm.etools.mft.debug.common.PreferencePageContents">
+         <contents
+		        id="com.ibm.etools.mft.debug.common.refactoringWarnings"
+         		type="CHECK"
+         		label="%PREF_REFACTORING"
+         		group = "1"
+         		default_value="false">
+         </contents>
+   </extension>
+   
+      <extension
+         point="com.ibm.etools.mft.debug.common.PreferencePageContents">
+         <contents
+		        id="com.ibm.etools.mft.debug.common.OutOfSyncWarnings"
+         		type="CHECK"
+         		label="%PREF_OUTOFSYNCDIALOG"
+         		group = "1"
+         		default_value="false">
+         </contents>
+   </extension>
+
+      <extension
+         point="com.ibm.etools.mft.debug.common.PreferencePageContents">
+         <contents
+		        id="com.ibm.etools.mft.debug.common.NoSMAPWarnings"
+         		type="CHECK"
+         		label="%PREF_NOSMAPDIALOG"
+         		group = "1"
+         		default_value="false">
+         </contents>
+   </extension>
+   
+   
+      <extension
+         point="com.ibm.etools.mft.debug.common.PreferencePageContents">
+         <contents
+		        id="com.ibm.etools.mft.debug.common.AlwaysAskForFileSelection"
+         		type="CHECK"
+         		label="%PREF_ALWAYS_ASK_SELECTFILE_DIALOG"
+         		group = "1"
+         		default_value="false">
+         </contents>
+   </extension>
+   
+      
+      <extension
+         point="com.ibm.etools.mft.debug.common.PreferencePageContents">
+         <contents
+		        id="com.ibm.etools.mft.debug.common.RemoveInvalidBreakpoint"
+         		type="STANDARD_RADIO"
+         		label="%PREF_ALWAYS_REMOVE_INVALID_BP_DIALOG"
+         		group = "1"
+         		default_value="ALWAYS">
+         </contents>
+   </extension>
+   
+         
+      <extension
+         point="com.ibm.etools.mft.debug.common.PreferencePageContents">
+         <contents
+		        id="com.ibm.etools.mft.debug.common.ShowAllVariables"
+         		type="CHECK"
+         		label="%PREF_SHOW_ALL_VARIABLE"
+         		group = "1"
+         		default_value="false">
+         </contents>
+   </extension>
+</plugin>

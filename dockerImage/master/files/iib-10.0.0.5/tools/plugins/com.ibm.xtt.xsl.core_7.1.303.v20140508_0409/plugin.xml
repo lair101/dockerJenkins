@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+<extension-point id="xsltValidator" name="XSLT Validator" schema="schema/xsltValidator.exsd"/>
+<extension-point id="xsltLauncher" name="XSLT Launcher" schema="schema/xsltLauncher.exsd"/>
+<extension-point id="xsltProcessor" name="XSLT Processor" schema="schema/xsltProcessor.exsd"/>
+<extension-point id="xsltCompiler" name="XSLT Compiler" schema="schema/xsltCompiler.exsd"/>
+
+<!-- Launch Configurations -->
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            delegate="com.ibm.xtt.xsl.core.launch.XSLLaunchConfigurationDelegate"
+            delegateDescription="%launch_config.delegateDescription"
+            delegateName="%launch_config.delegateName"
+            id="com.ibm.xtt.xsl.core.launch.XSLLaunch"
+            modes="run"
+            name="%launch_config.load">
+         <fileExtension
+               default="true"
+               extension="xsl">
+         </fileExtension>
+      </launchConfigurationType>
+	</extension>
+	<extension
+		point="org.eclipse.core.contenttype.contentTypes">
+		<content-type priority="high"
+			name="XSL Document"
+            id="com.ibm.xtt.xsl.core.xslDocument"
+            base-type="org.eclipse.wst.xml.core.xslsource">
+			<describer class="com.ibm.xtt.xsl.core.contenttype.XSLContentTypeDescriber"/>
+		</content-type>
+   </extension>
+   
+ <extension
+       point="com.ibm.xtt.xsl.core.xsltLauncher">
+    <JVMConfig
+          id="com.ibm.xtt.xslt4j"
+          provider="com.ibm.xtt.xsl.core.launch.XSLT4JJVMConfigProvider"
+          version="1.0">
+    </JVMConfig>
+ </extension>
+ 
+ 	<extension point="com.ibm.xtt.xsl.core.xsltProcessor">
+		<processor
+			processorId="com.ibm.xtt.xslt4j"
+			processorLabel="%XSLT4J_LABEL"
+			processorDelegate="com.ibm.xtt.xsl.core.processors.XSLT4JProcessorDelegate">
+			<default version="1.0"/>
+		</processor>
+	</extension>
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer class="com.ibm.xtt.xsl.core.preferences.PreferenceInitializer"/>
+	</extension>
+	<extension
+          point="com.ibm.xtt.xsl.core.xsltValidator">
+       <validator
+             configurator="com.ibm.xtt.xsl.core.validation.internal.XSLT4JValidatorConfigurator"
+             processorId="com.ibm.xtt.xslt4j"
+             version="1.0">
+       </validator>
+    </extension>
+    <extension id="validationMarker" name="%_UI_XSL_VALIDATOR_MARKER"
+         point="org.eclipse.core.resources.markers">
+      <super type="org.eclipse.wst.validation.problemmarker"/>
+      <persistent value="true"/>
+    </extension>    
+    <extension id="xsl" name="%_UI_XSL_VALIDATOR" point="org.eclipse.wst.validation.validatorV2">
+      <validator
+            build="true"
+            class="com.ibm.xtt.xsl.core.validation.internal.core.eclipse.Validator"
+            manual="true"
+            sourceid="com.ibm.xtt.xsl.ui.internal.validation.DelegatingSourceValidatorForXSL"
+            markerId="com.ibm.xtt.xsl.core.validationMarker"
+            version="2">
+         <include>
+            <rules>
+               <fileext caseSensitive="false" ext="xsl"></fileext>
+            </rules>
+         </include>
+      </validator>
+   </extension>
+    <extension
+          point="com.ibm.xtt.xsl.core.xsltCompiler">
+       <compiler
+       		 processorId="com.ibm.xtt.xslt4j"
+             compilerDelegate="com.ibm.xtt.xsl.core.compiler.XSLT4JCompilerDelegate">
+       </compiler>
+    </extension>
+</plugin>

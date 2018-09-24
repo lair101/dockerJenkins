@@ -1,0 +1,341 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>Healthcare testen: Muster HL7 an HL7</title>
+</head>
+<body role="main">
+<a name="links"></a>
+<div class="section">
+    <h1 class="topictitle1">Muster 'Healthcare: HL7 an HL7' testen</h1>
+    <p class="shortdesc">
+    Mit den folgenden Informationen können Sie das Muster
+    <span>
+    Healthcare: HL7 an HL7
+    </span>
+    testen.
+</p>
+    
+        <p>
+        Dieses Kapitel enthält folgende Abschnitte:
+        </p>
+        <ul><li>
+            <a href="testing.htm#test">Testanwendung</a>
+        </li>
+        <li>
+            <a href="testing.htm#messages">HL7-Nachrichten</a>
+        </li>
+        <li>
+            <a href="testing.htm#setup">Einrichtung der grundlegenden Musterinstanz</a>
+        </li>
+        <li>
+            <a href="testing.htm#flow">Informationsaustausch in der Musterinstanz</a>
+        </li>
+        <li>
+            <a href="testing.htm#options">Zusatzoptionen</a>
+       </li>
+    </ul>
+</div>
+<div class="section">
+    <a name="test"></a> <h2 class="sectiontitle">Testdatenflüsse</h2>
+    <p>
+    Mit diesem Muster können Sie HL7-Anwendungen verbinden und gefilterte Nachrichten aus einer Absenderanwendung an viele     Zielanwendungen weiterleiten. Weitere Informationen zur Einführung in die Musterinstanz erhalten Sie durch die Verwendung von Nachrichtenflüssen zur Simulation von klinischen Quellen- und Zielanwendungen.
+</p>
+    <p>
+    Das in diesem Muster enthaltene Projekt
+    <span class="msobjpropval">
+    TestApplication
+    </span>
+    (siehe <a href = "resources.htm#resources">Ressourcen für das Muster
+    <span>
+    Healthcare: HL7 an HL7
+    </span>
+    </a> enthält einen Quellendatenfluss mit der Bezeichnung 'SourceApplication' und sechs Zieldatenflüsse mit der Bezeichnung 'DestinationApplication'. Die sechs Zieldatenflüsse sind bis auf die Verbindungsdetails gleich. Die Zielanwendungsflüsse werden für die Verwendung von <span class="msobjpropval">
+    localhost
+    </span>
+    mit der im Datenflussnamen angegebenen Portnummer eingerichtet. Deshalb sind beispielsweise die Verbindungsdetails für 'DestinationApplicationListensOnPort2222' auf
+    <span class="msobjpropval">
+localhost:2222</span> gesetzt.
+    </p>
+    <p>
+    Die Verbindungsdetails der Projektdatenflüsse
+    <span class="msobjpropval">
+    TestApplication
+    </span>
+    stimmen mit den standardmäßigen Verbindungsdetails für die Musterinstanz überein. Wenn Sie die Verbindungsdetails in der Konfiguration der Musterinstanz ändern, müssen Sie auch die Verbindungsdetails in den Datenflüssen der Testanwendung ändern.
+</p>
+    <h3 class="sectiontitle">Muster mithilfe des Nachrichtenflussdebuggers testen</h3>
+    <p>
+    Hinweise zum Testen des Musters mithilfe des Nachrichtenflussdebuggers finden Sie im Abschnitt 'Test und Fehlerbehebung für Nachrichtenflussanwendungen durchführen' in der Dokumentation zu IBM Integration Bus. Für die Verwendung des Nachrichtenflussdebuggers mit den
+GenericHL7Input- und GenericHL7Output-Knoten müssen Sie die von diesen Ressourcen verwendeten untergeordneten Nachrichtenflüsse importieren; siehe <a href = "resources.htm#resources">Ressourcen für das Muster
+    <span>
+    Healthcare: HL7 an HL7
+    </span>
+    </a>.
+</p>
+</div>
+<div class="section">
+    <a name="test"></a> <h2 class="sectiontitle">HL7-Testanwendung</h2>
+    <p>
+    Mit der HL7-Testanwendung können Sie HL7-Nachrichten über MLLP an den Integrationsknoten senden und von diesem empfangen. Die Anwendung kann eine einzelne klinische Quellen- und Zielanwendung simulieren. Die Testanwendung stellt Optionen bereit, mit denen unterschiedliche MLLP-Konfigurationen und eine Reihenfolgeplanung der Nachrichten simuliert werden können. HL7-Nachrichten werden in den Musterressourcen für die Verwendung als Testdaten bereitgestellt; siehe <a href = "resources.htm#resources">Ressourcen für das Muster
+    <span>
+    Healthcare: HL7 an HL7
+    </span>
+    </a>.
+</p>
+    <p>
+   	Führen Sie zum Starten der HL7-Testanwendung die folgenden Schritte aus:
+    <ol>
+    	<li>Klicken Sie auf <span class="uicontrol">Datei > Neu > Andere</span>.</li>
+    	<li>Wählen Sie im Ordner <span class="uicontrol">Healthcare</span> die Option
+    		<span class="uicontrol">HL7-Testanwendung</span> aus und klicken Sie auf <span class="uicontrol">Weiter</span>.</li>
+    	<li>Geben Sie einen Container und einen Dateinamen für die Testanwendungseinstellungen ein und klicken Sie dann auf <span class="uicontrol">Fertigstellen</span>.
+    		Die HL7-Testanwendung wird gestartet. </li>
+    </ol>
+    </p>
+</div>
+<div class="section">
+    <a name="messages"></a> <h2 class="sectiontitle">HL7-Nachrichten</h2>
+    <p>
+    Eine HL7-Nachricht setzt sich aus Segmenten und Feldern zusammen. Die Grenze zwischen Segmenten kann je nach der sendenden Anwendung variieren. Die in der Testanwendung verwendeten Beispielnachrichten verwenden die Hexadezimalzeichen     <span class="msobjpropval">
+    0D
+    </span>
+    und
+    <span class="msobjpropval">
+    0A
+    </span>
+. Felder innerhalb eines Segments werden durch das Zeichen getrennt, das im MSH-Segment am Anfang jeder HL7-Nachricht deklariert wurde. Der Standardwert ist der vertikale Balken (|). Die Segmente werden nach dem ersten Feld ermittelt; das folgende Beispiel enthält vier Segmente: MSH, EVN, PID und PV1. Das MSH-Segment ist die Kopfzeile der Nachricht und enthält mehrere Felder, die in diesem Abschnitt erläutert werden.
+</p>
+    <p>
+    Im folgenden Beispiel wird eine typische HL7-Nachricht (ADT A01) gezeigt (es wurden Zeilenumbrüche zur besseren Lesbarkeit hinzugefügt):
+    </p>
+    <pre>MSH|^~\&amp;|HL7ABLAB|HNA500|HNAM|HNAM|20090911132151||ADT^A01|
+Q30235031T29347435X328970|A|2.3|123
+EVN|A01|20090911132100|||^DRONE_PM1^DRONE_PM^^^^^^^Personnel
+PID|1||1357920591||IntFace1101A^WinTask^^^^^Current||19801117|M||||||||||
+10000476524^^^FIN^FIN NBR|100000451||||||0
+PV1|1|Inpatient|CD:16067689^CD:16067691^CD:16067741^Uniontown Hospit^^Bed(s)
+^Uniontown Hospit||||||||||||||501455^Orr^Maggi^^^^^^External ID^Personnel^^^
+External
+Identifier~25584^Orr^Maggi^^^^^^PERSONNEL PRIMARY
+IDENTIFIER^Personnel^^^Personnel Primary Identifier|Inpatient|||||||||||||||||||
+||
+Uniontown Hospit||Active|||20090911132100
+    </pre>
+</div>
+<div class="section">
+    <a name="setup"></a> <h2 class="sectiontitle">Einrichtung der grundlegenden Musterinstanz</h2>
+    <p>
+    Die Musterinstanz enthält folgende Hauptnachrichtenflüsse:
+    </p>
+    <ul>
+        <li>
+            Receiver
+        </li>
+        <li>
+            TransformAndRoute<var>n</var>
+        </li>
+        <li>
+            Dest<var>n</var>Sender
+        </li>
+    </ul>
+    <p>
+    Wenn Sie eine Musterinstanz mit weiteren Zielen erstellen möchten, werden weitere Nachrichtenflüsse des Typs 'Dest<var>n</var>Sender' erstellt, wobei <var>n</var> die Anzahl der Ziele ist.
+</p>
+    <p>
+    Sie müssen sicherstellen, dass alle Warteschlangen für die Musterinstanz installiert sind; weitere Informationen finden Sie im Abschnitt &quot;Warteschlangen&quot; unter <a href="management.htm">Musterinstanz 'Healthcare: HL7 an HL7' verwalten</a>.
+</p>
+</div>
+<div class="section">
+    <a name="flow"></a> <h2 class="sectiontitle">Informationsaustausch in der Musterinstanz</h2>
+    <p>
+    Wenn Sie eine Nachricht mit der Testanwendung senden, werden die Informationen in
+    folgender Reihenfolge durch die Musterinstanz geleitet:
+    </p>
+    <ol>
+        <li>
+            Die Nachricht wird in die Warteschlange HL7_TEST_IN eingereiht und vom Datenfluss 'SourceApplication' abgenommen.
+</li>
+        <li>
+            Der Datenfluss 'SourceApplication' fügt der Nachricht MLLP-Bytes hinzu und sendet sie über TCP/IP an die Musterinstanz.
+</li>
+        <li>
+            Die Nachricht erreicht den Receiver-Nachrichtenfluss, in dem die MLLP-Bytes abgeschnitten werden.
+</li>
+        <li>
+            Das MSH-Segment in der Nachricht wird analysiert.
+</li>
+        <li>
+            Wenn die doppelte Nachricht und die Optionen zur Reihenfolgeplanung beim Einrichten der Musterinstanz aktiviert werden, findet eine Überprüfung auf doppelte Nachrichten statt und die Reihenfolgeplanung wird eingerichtet.
+</li>
+        <li>
+            Es wird eine Bestätigungsantwort (ACK-Nachricht) zurück an den Datenfluss 'SourceApplication' gesendet.
+</li>
+        <li>
+            Die Nachricht wird an die Warteschlange 'RXF<var>n</var>' gesendet, wobei <var>n</var> für die Nummer des Ziels steht. Der Nachrichtenfluss 'TransformAndRoute<var>n</var>' (mit <var>n</var> als der Nummer des Ziels) nimmt die Nachricht von der Warteschlange 'RXF<var>n</var>' ab.
+<p>
+            Wenn Sie das Filtern der Nachricht oder des Segments installiert haben, wird der Filtervorgang in diesem Datenfluss ausgeführt. Abhängig von der Einrichtung der Musterinstanz kann dieser Datenfluss auch Knoten enthalten, die Restwerte in der Nachricht und das kanonische Format der Nachricht veröffentlichen.
+</p>
+        </li>
+        <li>
+            Die Nachricht wird in XML transformiert und an jeden Zieldatenfluss gesendet.
+</li>
+        <li>
+            In den Zieldatenflüssen werden die Nachrichten an die DestinationApplication-Datenflüsse gesendet, die mit einer Bestätigungsnachricht antworten.
+</li>
+        <li>
+            Die Bestätigungsnachricht wird vom Zieldatenfluss verarbeitet.
+</li>
+        <li>
+            Abhängig von der von Ihnen installierten Konfiguration der Musterinstanz können die Nachrichten auch neu sortiert und erneut an das Ziel gesendet werden.
+</li>
+    </ol>
+    <p>
+    Alle Flüsse verfügen auch über einen untergeordneten Nachrichtenfluss zur Ausnahmebedingungsbehandlung, der sämtliche Probleme bearbeitet, die vom Nachrichtenfluss abgefangen werden.
+</p>
+</div>
+<div class="section">
+    <a name="options"></a> <h2 class="sectiontitle">Zusatzoptionen</h2> <h3>Reihenfolgeplanung</h3>
+    <p>
+    Sie können die Reihenfolgeplanung für die Musterinstanz in der Gruppe <span class="msobjprop">
+    Optionen
+    </span>
+    der Parameter einrichten. Falls die Option
+    <span class="msobjpropval">
+    Arrival based
+    </span> (Auf dem Eingang basiert)
+    für die Reihenfolgeplanung ausgewählt ist, basiert die richtige Reihenfolge des Eingangs auf der Musterinstanz. Falls die Option
+    <span class="msobjpropval">
+    Content based
+    </span> (Auf Inhalten basiert)
+    für die Reihenfolgeplanung ausgewählt ist, wird der Wert des dreizehnten Felds (<code>123</code> im Beispiel) im MSH-Segment der Nachricht als Folgenummer verwendet. 
+    Der Receiver-Nachrichtenfluss richtet die Reihenfolgeplanung für die Musterinstanz ein und verwendet die Folgenummer der Nachrichten.
+</p>
+    <p>
+    Nachrichten werden in jedem der Zieldatenflüsse neu sortiert. Sie können für jedes Ziel eine strikte oder eine lockere Reihenfolgeplanung auswählen. Wenn bei Auswahl der strikten Reihenfolgeplanung eine Nachricht fehlt, werden die übrigen Nachrichten blockiert, bis die fehlende Nachricht empfangen wird. Dadurch kann der Datenfluss auf unbestimmte Zeit blockiert sein. Wenn bei Auswahl der lockeren Reihenfolgeplanung eine Nachricht fehlt, können Sie entscheiden, wie lange der Datenfluss auf die fehlende Nachricht wartet, bis die Verarbeitung der Nachrichten fortgesetzt wird.
+</p>
+    <p>
+    Für die Anwendung der Optionen zur Reihenfolgeplanung können Sie die Reihenfolge, in der die Nachrichten an die Musterinstanz gesendet werden, und die Reihenfolgeplanung in der Nachricht ändern oder Nachrichten während der Verarbeitung aus Warteschlangen herausnehmen.
+</p>
+    <h3>Doppelte Nachrichten verarbeiten</h3>
+    <p>
+    Falls der Parameter
+    <span class="msobjprop">
+    Check duplicates
+    </span> (Duplikate prüfen)
+    ausgewählt ist, enthält der Receiver-Nachrichtenfluss zusätzliche Knoten für die Überprüfung auf doppelte Nachrichten. Das zehnte Feld (in diesem Beispiel <code>Q30235031T29347435X328970</code>) im MSH-Segment der Nachricht enthält die Nachrichtensteuerungs-ID, die zur Überprüfung auf doppelte Nachrichten verwendet wird. Nach der Verarbeitung einer Nachricht durch den Datenfluss wird die Nachricht in einer Warteschlange gespeichert, die überprüft werden kann. Der untergeordnete Nachrichtenfluss <span class="msobjprop">
+    Check duplicates
+    </span> (Duplikate prüfen)
+    überprüft, ob doppelte Nachrichten vorhanden sind; wenn die Nachricht keine doppelte Nachricht ist, wird die Verarbeitung normal fortgesetzt. Wenn es sich aber um eine doppelte Nachricht handelt und Bestätigungsnachrichten aktiviert sind, wird die ursprüngliche Nachricht an die sendende Anwendung zurückgegeben. Wenn Bestätigungsnachrichten inaktiviert sind, wird die doppelte Nachricht auf die gleiche Weise verarbeitet wie eine neue Nachricht, die im Datenfluss empfangen wird.
+</p>
+    <p>
+    Zur Ausführung der doppelten Verarbeitung können Sie das zehnte Feld des MSH-Segments in Ihren Nachrichten verändern.
+</p>
+    <h3>Bestätigungsnachrichten (ACK) und negative Bestätigungsnachrichten (NACK) senden</h3>
+    <p>
+    Falls der Parameter
+    <span class="msobjprop">
+    Send acknowledgment
+    </span> (Bestätigung senden)
+    ausgewählt ist, sendet die Musterinstanz nach der Verarbeitung der Nachricht durch den Receiver-Nachrichtenfluss eine Bestätigungsnachricht an die sendende Anwendung. Durch diese Aktion wird die sendende Anwendung darüber informiert, dass die Nachricht erfolgreich verarbeitet wurde. Der SourceApplication-Nachrichtenfluss enthält Knoten, die für die Verarbeitung von Bestätigungsnachrichten (ACK) und negativen Bestätigungsantworten (NACK) konfiguriert wurden. 
+    Wenn bei der Nachrichtenverarbeitung ein Fehler auftritt, wird nun eine NACK-Nachricht an die sendende Anwendung gesendet.
+</p>
+    <p>
+    Knoten sind auch in den Zielnachrichtenflüssen enthalten und verarbeiten dort Bestätigungsnachrichten, die nach dem erfolgreichen Empfang der Nachricht in der Zielanwendung von dieser zurück an die Musterinstanz gesendet werden.
+</p>
+    <h3>Journalführung</h3>
+    <p>
+    Mehrere Parameter in der Gruppe
+    <span class="msobjprop">
+    Optionen
+    </span>
+    der Musterinstanzkonfiguration ermöglichen Ihnen die Auswahl der Informationen, die während der Verarbeitung der Nachrichten protokolliert werden:
+    </p>
+    <ul>
+        <li>
+            <span class="msobjprop">
+                        Journalführung
+            </span>
+. Dieser Parameter kann aktiviert oder inaktiviert werden. Bei der Journalführung wird eine Kopie der Quellennachricht in eine Nachrichtenwarteschlange geschrieben oder die Nachricht wird in einem Thema veröffentlicht. Die Nachricht enthält zusätzliche Metadaten, die den Quellennachrichtenfluss, den Namen des Integrationsknotens und den Namen der Musterinstanz angeben. Mithilfe der Journalfunktion erhalten Sie eine Kopie aller Eingabenachrichten, die an einen Integrationsknoten gesendet werden. Das Beibehalten von Nachrichten ist hinsichtlich einer Prüfung sinnvoll. Sie können die Journalwarteschlange so konfigurieren, dass Nachrichten beispielsweise nach einer Woche verfallen, damit die Warteschlange nicht unendlich wächst.
+</li>
+        <li>
+            <span class="msobjprop">
+                        Veröffentlichen
+            </span>
+. Falls die
+            <span class="msobjprop">
+            Journalführung
+            </span>
+            ausgewählt ist, können Sie den Parameter
+            <span class="msobjprop">
+            Veröffentlichen
+            </span>
+            ändern, um festzulegen, ob die Nachricht in einem Thema oder einer Warteschlange veröffentlicht wird.
+</li>
+        <li>
+            <span class="msobjprop">
+                Kanonischer Feed</span>
+            und
+            <span class="msobjprop">
+            Quellen-Feed
+            </span>
+. Sie können auswählen, ob die Nachricht protokolliert wird.
+</li>
+        <li>
+            <span class="msobjprop">
+                Restliche melden</span>
+. Sie können auswählen, ob Reste protokolliert werden. Bei Resten handelt es sich um Felder, die von der HL7v25P-Nachrichtengruppe nicht modelliert werden.
+</li>
+    </ul>
+    <h3>Filtern von Nachrichten und Segmenten</h3>
+    <p>
+    <span class="msobjprop">
+        Nachrichtenfilterung </span>
+    ermöglicht Ihnen das Filtern von Nachrichten auf Basis des zugehörigen Ereignistyps, des neunten Felds (im Beispiel <code>ADT^A01</code>) des MSH-Segments der Nachricht. Nicht alles Nachrichten aus einer Quellenanwendung sind für alle Ziele erforderlich. Mit dem Filtern von Nachrichten können Sie bestimmte Nachrichten aus bestimmten Zielen ausschließen. Das Filtern von Nachrichten wird auf Zielbasis konfiguriert.
+</p>
+    <p>
+    Bei der Angabe von Nachrichtenfiltern werden im neunten Feld Werte für <span class="msobjprop">
+    Code
+    </span>
+            und
+            <span class="msobjprop">
+    Ereignis
+    </span> bereitgestellt
+. Die beiden Werte werden durch das Zirkumflexzeichen (^) getrennt. Bei der Beispielnachricht am Anfang dieses Dokuments gilt:
+    <span class="msobjprop">
+    Code
+    </span>
+    ist
+    <span class="msobjpropval">
+    ADT
+    </span>
+    und
+    <span class="msobjprop">
+    Ereignis
+    </span> bereitgestellt
+    ist
+    <span class="msobjpropval">
+    A01
+    </span>
+. Wenn die Reihenfolgeplanung aktiviert und das Filtern inaktiviert ist, wird stattdessen eine Testnachricht gesendet, damit die Reihenfolge beibehalten wird.
+</p>
+    <p>
+    <span class="msobjprop">
+        Segmentfilter</span>
+    ermöglicht Ihnen die Angabe der Segmente, die beim Senden einer Nachricht an ein Ziel aus der Nachricht entfernt werden. Mit dem Filtern von Segmenten können Sie diese Segmente aus einer Nachricht entfernen, bevor diese an ein Ziel weitergegeben wird. Wenn das Ziel nicht alle von der Quellenanwendung gesendeten Nachrichtensegmente unterstützt, können Sie mit dieser Option diese Segmente herausfiltern, beispielsweise Erweiterungen für HL7-Nachrichten mit der Bezeichnung Z-Segmente. Das Filtern von Segmenten wird auf Zielbasis konfiguriert.
+</p>
+    <p>
+    Segmente werden durch einen Code aus drei Buchstaben angegeben (in der Beispielnachricht sind dies MSH, EVN, PID und PV1). Beim MSH-Segment handelt es sich um den Nachrichtenheader, der nicht herausgefiltert werden kann, selbst wenn dies vom Benutzer angegeben wurde.
+</p>
+</div>
+<a href="overview.htm#anchorBack" title="Zurück">Zurück zur Musterspezifikation 'Healthcare: HL7 an HL7'</a>
+<p>
+</p>
+</body>
+</html>

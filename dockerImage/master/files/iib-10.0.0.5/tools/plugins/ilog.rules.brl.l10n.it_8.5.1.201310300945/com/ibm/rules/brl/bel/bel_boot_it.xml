@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vocabulary xmlns="http://schemas.ilog.com/Rules/1.0/Vocabulary">
+  <glossary>
+    <term>
+      <label><![CDATA[anno]]></label>
+      <termProperties>
+        <plural><![CDATA[anni]]></plural>
+      </termProperties>
+    </term>
+    <term>
+      <label><![CDATA[booleano]]></label>
+      <termProperties>
+        <plural><![CDATA[booleani]]></plural>
+      </termProperties>
+    </term>
+    <term>
+      <label><![CDATA[carattere]]></label>
+      <termProperties>
+        <plural><![CDATA[caratteri]]></plural>
+      </termProperties>
+    </term>
+    <term>
+      <label><![CDATA[data]]></label>
+      <termProperties>
+        <plural><![CDATA[date ]]></plural>
+        <gender>FEMALE</gender>
+      </termProperties>
+    </term>
+    <term>
+      <label><![CDATA[data universale]]></label>
+      <termProperties>
+        <plural><![CDATA[date universali]]></plural>
+        <gender>FEMALE</gender>
+      </termProperties>
+    </term>
+    <term>
+      <label><![CDATA[giorno della settimana]]></label>
+      <termProperties>
+        <plural><![CDATA[giorni della settimana]]></plural>
+      </termProperties>
+    </term>
+    <term>
+      <label><![CDATA[lunghezza]]></label>
+      <termProperties>
+        <plural><![CDATA[lunghezze]]></plural>
+        <gender>FEMALE</gender>
+      </termProperties>
+    </term>
+    <term>
+      <label><![CDATA[mese]]></label>
+      <termProperties>
+        <plural><![CDATA[mesi]]></plural>
+      </termProperties>
+    </term>
+    <term>
+      <label><![CDATA[numero]]></label>
+      <termProperties>
+        <plural><![CDATA[numeri]]></plural>
+      </termProperties>
+    </term>
+    <term>
+      <label><![CDATA[oggetto]]></label>
+      <termProperties>
+        <plural><![CDATA[oggetti]]></plural>
+      </termProperties>
+    </term>
+    <term>
+      <label><![CDATA[ora]]></label>
+      <termProperties>
+        <plural><![CDATA[ore]]></plural>
+        <gender>FEMALE</gender>
+      </termProperties>
+    </term>
+    <term>
+      <label><![CDATA[orario universale]]></label>
+      <termProperties>
+        <plural><![CDATA[orari universali]]></plural>
+      </termProperties>
+    </term>
+    <term>
+      <label><![CDATA[stringa]]></label>
+      <termProperties>
+        <plural><![CDATA[stringhe]]></plural>
+        <gender>FEMALE</gender>
+      </termProperties>
+    </term>
+  </glossary>
+</vocabulary>

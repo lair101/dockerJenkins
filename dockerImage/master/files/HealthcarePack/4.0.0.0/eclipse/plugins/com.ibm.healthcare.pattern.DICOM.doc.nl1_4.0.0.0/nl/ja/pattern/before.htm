@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja-jp" xml:lang="ja-jp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2013, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    -->
+    <title>「Healthcare: Web service to DICOM」パターンを適用する前に完了するタスク</title>
+</head>
+<body role="main">
+    <h1 class="topictitle1"><span>「Healthcare: Web service to DICOM」</span>パターンを適用する前に完了するタスク
+</h1>
+    <div class="p">
+        <p class="shortdesc">パターン・インスタンスを作成するためにパターンを適用する前に、必要に応じて、以下の 1 つ以上のタスクを完了します。</p>
+    </div>
+    <ul>
+        <li>
+「Healthcare: Web service to DICOM」パターンがビジネス要件を満たしていること、および要求側アプリケーションと PACS の両方でサポート可能であることを確認します。
+</li>
+        <li>
+DICOM PACS アプリケーションを定義または識別し、それが C-FIND コマンドおよび C-MOVE コマンドをサポートしていることを確認します。
+</li>
+        <li>
+            パターン・インスタンスに名前を付けます。適切な名前を選択できるように、パターン適用の目的を確認してください。</li>
+        <li>
+ロギング・メッセージやエラー・メッセージが必要かどうかを決定します。
+どちらかのメッセージが必要な場合、どのキュー・マネージャーおよびキューにメッセージが送付されるかを決定する必要があります。複数のメッセージ・フローで使われる一般的なキューにメッセージを送信できます。または、パターン・インスタンス用の固有のキューを使用することもできます。
+</li>
+    </ul>
+    <p>
+        <a href="overview.htm#anchor1" title="戻る">「Healthcare: Web service to DICOM」パターンの仕様に戻る</a>
+    </p>
+</body>
+</html>

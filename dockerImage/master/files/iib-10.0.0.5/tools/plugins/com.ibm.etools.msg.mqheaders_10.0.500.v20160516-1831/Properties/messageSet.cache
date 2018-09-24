@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MRMessageSet id="DSE0MDS002001" name="Properties" parser="Properties">
+  <MRMsgCollection
+    href="platform:/plugin/com.ibm.etools.msg.mqheaders/Properties/properties.mxsd"
+    prefix="" targetNamespace="">
+    <message
+      href="platform:/plugin/com.ibm.etools.msg.mqheaders/Properties/properties.mxsd#/0/Properties;XSDElementDeclaration$MRMessage" name="Properties"/>
+    <element
+      href="platform:/plugin/com.ibm.etools.msg.mqheaders/Properties/properties.mxsd#/0/Properties;XSDElementDeclaration"
+      name="Properties" type="mset://Properties#/-/complexType{}PropertiesType"/>
+    <complexType
+      baseType="mset://Properties#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType"
+      href="platform:/plugin/com.ibm.etools.msg.mqheaders/Properties/properties.mxsd#/0/PropertiesType;XSDComplexTypeDefinition" name="PropertiesType"/>
+  </MRMsgCollection>
+</MRMessageSet>

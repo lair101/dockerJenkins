@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2013, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    -->
+    <title>Tareas que deben completarse después de aplicar el
+patrón Servicio sanitario: Servicio web a DICOM</title>
+</head>
+<body role="main">
+    <h1 class="topictitle1">Tareas que deben completarse después de
+generar el patrón <span>Servicio sanitario: Servicio web a
+DICOM</span></h1>
+    <p class="shortdesc">Tareas que deben completarse después de
+generar el patrón.</p>
+    <h2>Despliegue de IBM Integration Bus</h2>
+
+    <ol>
+        <li>
+Cree el archivo BAR y añádale el flujo de mensajes:
+            <ol>
+                <li>
+                    Pulse <span class="uicontrol">Archivo &gt; Nuevo
+&gt; Archivo BAR</span>.
+                </li>
+                <li>
+                    Escriba el nombre de su aplicación o seleccione
+uno de lista visualizada. La lista se filtra para mostrar sólo los
+proyectos del conjunto de trabajo activo.
+                </li>
+                <li>
+                    Especifique un nombre para el archivo BAR que está creando.
+                </li>
+                <li>
+                    Pulse <span class="uicontrol">Finalizar</span>.
+                    Se crea un archivo con la extensión <span class="filepath">.bar</span> y se muestra en la vista
+Desarrollo de aplicaciones, bajo la carpeta <span class="filepath">BARs</span>. Se abre el
+Editor de archivos BAR. </li>
+                <li>
+                    En el separador Preparar, seleccione la aplicación generada para
+añadirla al archivo BAR.  
+                </li>
+                <li>
+                    Seleccione <span class="uicontrol">Compilar e incorporar
+recursos</span> y, a continuación, pulse
+<span class="uicontrol">Compilar y guardar</span> para crear el
+archivo BAR.
+                </li>
+            </ol>
+        </li>
+        <li>
+Configure el archivo BAR.
+No se requiere más configuración del flujo de mensajes en
+el archivo de archivador de intermediario antes de desplegar los
+flujos de mensajes para la instancia de patrón <span>Servicio
+sanitario: Servicio web a DICOM</span>, pero quizás desee revisar
+algunas de las opciones predeterminadas y configurar cambios en su
+entorno.
+            
+            En el editor de archivos BAR, en el separador Gestionar:
+
+            <ol>
+                <li>
+                    <span>Opcional: utilice la propiedad
+definida por el usuario <span class="msobjprop">LoggingOn</span> para
+seleccionar si el registro está activado o desactivado para el flujo
+de mensajes de servicio web.</span>
+                </li>
+                <li>Opcional: utilice la propiedad definida por el
+usuario <span class="msobjprop">ErrorLoggingOn</span> para
+seleccionar si se generan mensajes de error.
+                </li>
+                <li>Opcional: puede cambiar cualquiera de las propiedades configurables en el archivo BAR, por
+ejemplo, las propiedades de seguridad o crear instancias adicionales. <p>Debe asegurarse de que los valores que cambie no afectarán al
+comportamiento de la instancia de patrón.</p>
+                </li>
+            </ol>
+        </li>
+        <li>
+            Cree colas. Se deben crear colas para <span>WebSphere MQ</span>, si no existen ya, para los mensajes de error y de registro.
+            <ol>
+                <li>Cree colas de <span>WebSphere MQ</span>. Puede crear recursos de <span>WebSphere MQ</span>
+en la línea de mandatos utilizando programas y utilidades como por ejemplo <span class="cmdname">runmqsc</span>, o utilizando la interfaz
+gráfica de <span>WebSphere MQ</span>. Para obtener más información sobre cómo crear recursos para <span>WebSphere MQ</span>, consulte la documentación de <span>WebSphere MQ</span>, disponible en la página web de la <a href="http://www.ibm.com/software/integration/wmq/library/" target="_blank">biblioteca de WebSphere MQ</a>.
+
+                </li>
+            </ol>
+        </li>
+        <li>Despliegue el archivo BAR en un servidor de integración.</li>
+    </ol>
+    <p>
+Una vez que haya creado un archivo BAR que contenga el patrón, podrá probarlo mediante la aplicación de prueba de DICOM.
+    Puede utilizar la aplicación de prueba de DICOM para enviar y recibir mensajes de DICOM y para enviar y recibir mensajes de servicio web.
+    Para obtener más información sobre cómo utilizar la aplicación de prueba de DICOM, consulte "Utilización de la aplicación de prueba de DICOM" en la documentación de IBM Integration Bus Healthcare Pack.
+    </p>
+    <p>
+        <a href="overview.htm#anchor1" title="Atrás">Volver a la
+especificación del patrón Servicio sanitario: Servicio web a
+DICOM</a>
+    </p>
+</body>
+</html>
+
+

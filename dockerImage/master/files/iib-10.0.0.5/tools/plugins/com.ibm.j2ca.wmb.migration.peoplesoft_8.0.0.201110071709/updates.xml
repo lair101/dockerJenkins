@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Licensed Materials - Property of IBM
+ 5724-L81
+ © Copyright IBM Corporation 2009.  All Rights Reserved.
+ US Government Users Restricted Rights - Use, duplication or disclosure
+ restricted by GSA ADP Schedule Contract with IBM Corp.
+-->
+
+<tns:adapter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://www.ibm.com/xmlns/prod/websphere/j2ca/migration" xsi:schemaLocation="http://www.ibm.com/xmlns/prod/websphere/j2ca/migration j2caMigration.xsd" name="IBM WebSphere Adapter for PeopleSoft Enterprise" version="(7\.0)|(7\.0.*)">
+	<update type="migration" version="(6.0\.*.*)|(UNDEFINED)">
+		<tasks>
+			<task description="%JCA.PeopleSoftConnectorMigrationTask.Description" name="%JCA.PeopleSoftConnectorMigrationTask.Name">
+				<function name="com.ibm.j2ca.wmb.migration.peoplesoft.v600_to_v700.PeopleSoftConnectorMigrationTask"/>
+			</task>			
+			<task description="%JCA.PeopleSoftModuleMigrationTask.Description" name="%JCA.PeopleSoftModuleMigrationTask.Name">
+				<function name="com.ibm.j2ca.wmb.migration.peoplesoft.v600_to_v700.PeopleSoftModuleMigrationTask"/>
+			</task>
+		</tasks>
+	</update>
+	<update type="migration" version="(6.1\.*.*)">
+		<tasks>
+			<task description="%JCA.PeopleSoftConnectorMigrationTask.Description" name="%JCA.PeopleSoftConnectorMigrationTask.Name">
+				<function name="com.ibm.j2ca.wmb.migration.peoplesoft.v610_to_v700.PeopleSoftConnectorMigrationTask"/>
+			</task>
+			<task description="%JCA.PeopleSoftModuleMigrationTask.Description" name="%JCA.PeopleSoftModuleMigrationTask.Name">
+				<function name="com.ibm.j2ca.wmb.migration.peoplesoft.v610_to_v700.PeopleSoftModuleMigrationTask"/>
+			</task>			
+		</tasks>
+	</update>
+	<update type="migration" version="(6.2\.*.*)">
+		<tasks>
+			<task description="%JCA.PeopleSoftConnectorMigrationTask.Description" name="%JCA.PeopleSoftConnectorMigrationTask.Name">
+				<function name="com.ibm.j2ca.wmb.migration.peoplesoft.v620_to_v700.PeopleSoftConnectorMigrationTask"/>
+			</task>			
+			<task description="%JCA.PeopleSoftModuleMigrationTask.Description" name="%JCA.PeopleSoftModuleMigrationTask.Name">
+				<function name="com.ibm.j2ca.wmb.migration.peoplesoft.v620_to_v700.PeopleSoftModuleMigrationTask"/>
+			</task>
+		</tasks>
+	</update>
+
+	<update type="migration" version="WBI">
+		<tasks>
+			<task description="%WBIA.PeopleSoftModuleMigrationTask.Description" name="%WBIA.PeopleSoftModuleMigrationTask.Name">
+				<function name="com.ibm.j2ca.wmb.migration.peoplesoft.wbi_to_v700.PeopleSoftModuleMigrationTask"/>
+			</task>
+		</tasks>
+	</update>
+	
+</tns:adapter>

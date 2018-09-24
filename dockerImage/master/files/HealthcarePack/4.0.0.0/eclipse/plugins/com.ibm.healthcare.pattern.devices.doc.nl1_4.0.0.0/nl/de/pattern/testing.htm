@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>Muster 'Healthcare: Medizinische Geräte an EKA' testen</title>
+</head>
+<body role="main">
+<a name="links"></a>
+<div class="section">
+    <h1 class="topictitle1">Muster 'Healthcare: Medizinische Geräte an EKA' testen</h1>
+    <p class="shortdesc">
+    Mit den folgenden Informationen können Sie das Muster
+    <span>
+    'Healthcare: Medizinische Geräte an EKA'</span>
+    testen.
+</p>
+</div>
+<div class="section">
+    <a name="setup"></a> <h2 class="sectiontitle">Basiseinrichtung der Musterinstanz</h2>
+    <p>
+    Die wichtigsten Nachrichtenflüsse der Musterinstanz lauten wie folgt:
+    </p>
+    <ul>
+        <li>
+            MedicalDevices
+        </li>
+        <li>
+            TransformAndRoute
+        </li>
+        <li>
+            Sender
+        </li>
+        <li>
+            PatientIdentifiers
+        </li>
+    </ul>
+    <p>
+    Stellen Sie sicher, dass für die Musterinstanz alle Warteschlangen konfiguriert sind; Informationen finden Sie im Abschnitt &quot;Warteschlangen&quot; unter <a href="management.htm">Musterinstanz 'Healthcare: Medizinische Geräte an EKA' verwalten</a>.
+</p>
+</div>
+<div class="section">
+    <a name="flow"></a> <h2 class="sectiontitle">Informationsfluss durch die Musterinstanz</h2>
+    <p>
+    Bei der Implementierung einer Instanz des Musters 'Healthcare: Medizinische Geräte an EKA' fließen die Informationen in der folgenden Reihenfolge:
+    </p>
+    <ol>
+        <li>
+            Der MedicalDeviceInput-Knoten sucht seinen konfigurierbaren Service, um festzustellen, zu welchen medizinischen Geräten eine Verbindung hergestellt werden muss, und welche Messungen erfasst werden müssen.
+</li>
+        <li>
+            Der MedicalDeviceInput-Knoten liest eine Messung des medizinischen Geräts und gibt diese Informationen in Form einer Nachricht an den Nachrichtenfluss 'MedicalDevices' weiter.
+</li>
+        <li>
+            Der Nachrichtenfluss 'MedicalDevices' fügt eine Ablaufzeit hinzu und sendet die Nachricht an die RXF-Warteschlange für den Nachrichtenfluss 'TransformAndRoute'.
+</li>
+        <li>
+            Der Nachrichtenfluss 'TransformAndRoute' konvertiert die Gerätenachricht in ein HL7-Überwachungsergebnis. Die Nachricht wird in einem kanonischen HL7-Format veröffentlicht, sodass sie von anderen Anwendungen verarbeitet werden kann. Das Überwachungsergebnis wird der aktuellen Patientenkennung für das betreffende Gerät zugeordnet und anschließend in die DEST-Warteschlange geschrieben.
+</li>
+        <li>
+            Der Nachrichtenfluss 'Sender' sendet die HL7-Nachricht an die EKA-Anwendung, die wiederum mit einer Bestätigung (ACK) antwortet.
+</li>
+        <li>
+            Die Bestätigungsnachricht wird vom Nachrichtenfluss 'Sender' verarbeitet.
+</li>
+    </ol>
+    <p>
+    Alle Flüsse verfügen auch über einen untergeordneten Nachrichtenfluss zur Ausnahmebedingungsbehandlung, der sämtliche Probleme bearbeitet, die vom Nachrichtenfluss abgefangen werden.
+</p>
+    <p>
+    Die HL7-Testanwendung kann während der Entwicklung für die Simulation der empfangenden EKA-Anwendung verwendet werden. Starten Sie die Testanwendung und einen TCP/IP-MLLP-Listener. Die Testanwendung wird die von der Musterinstanz gesendeten Überwachungsergebnisse empfangen und anzeigen.
+</p>
+    <p>
+   	Führen Sie zum Starten der HL7-Testanwendung die folgenden Schritte aus:
+    <ol>
+    	<li>Klicken Sie auf <span class="uicontrol">Datei > Neu > Andere</span>.</li>
+    	<li>Wählen Sie im Ordner <span class="uicontrol">Healthcare</span> die Option
+    		<span class="uicontrol">HL7-Testanwendung</span> aus und klicken Sie auf <span class="uicontrol">Weiter</span>.</li>
+    	<li>Geben Sie einen Container und einen Dateinamen für die Testanwendungseinstellungen ein und klicken Sie dann auf <span class="uicontrol">Fertigstellen</span>.
+    		Die HL7-Testanwendung wird gestartet. </li>
+    </ol>
+    </p>
+</div>
+<a href="overview.htm#anchorBack" title="Zurück">Zurück zur Spezifikation des Musters 'Healthcare: Medizinische Geräte an EKA'</a>
+<p>
+</p>
+</body>
+</html>

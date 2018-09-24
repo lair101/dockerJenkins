@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <title>患者 ID データベースのセットアップ</title>
+    <!-- 
+       (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+       All Rights Reserved * Licensed Materials - Property of IBM
+      -->
+</head>
+<body role="main">
+<div>
+    <h1 class="topictitle1">患者 ID データベースのセットアップ</h1>
+    <p class="shortdesc">
+<span>「Healthcare: Medical devices to EMR」</span>パターンでは、オプションで患者 ID のデータベースに照会できます。
+患者 ID は、デバイス測定を正しく患者と関連付ける上で重要です。
+このデータベースは、デバイス ID と患者 ID を関連付けます。
+デバイス ID は、MedicalDeviceInput ノードからのメッセージで伝搬されます。
+患者 ID は、パターン・インスタンスによって、宛先アプリケーションに送信される HL7 v2 検査結果メッセージ (ORU R01) に追加されます。
+</p>
+    <p>
+患者 ID を参照するには、表を 1 つ含むデータベースと、ODBC 定義が必要です。
+このデータベースにアクセスするために、ユーザー ID およびパスワードを使って Integration ノードを構成する必要があります。</p>
+</div>
+<h2>データベース表のセットアップ</h2>
+<p>
+データベース表をセットアップするには、以下のタスクを実行します。</p>
+<ol>
+    <li>
+データベースを作成します。
+<p>
+ご使用のデータベース・マネージャーに該当する手順に従ってください。</p>
+        <ul>
+            <li>
+                <a href="create_db2.htm">DB2 のセットアップ</a>
+            </li>
+            <li>
+                <a href="create_oracle.htm">Oracle のセットアップ</a>
+            </li>
+        </ul>
+    </li>
+</ol>
+<h2>Integration ノードのデータベース環境のセットアップ</h2>
+<p>
+Integrationノードのデータベース環境をセットアップするには、以下のタスクを実行します。
+</p>
+<ol>
+    <li>
+データ・ソース名 (DSN) を <span class="input">PATIENTSDSN</span> にして、PATSDB データベースの ODBC 定義を作成します。
+IBM Integration Bus の資料で『データベースへの ODBC 接続の使用可能化』を参照してください。
+</li>
+    <li>
+データ・ソース名 <span class="input">PATIENTSDSN</span> に関連付けるユーザー ID とパスワードを指定します。
+.
+        <p>
+Integration ノードが <span class="input">PATIENTSDSN</span> データ・ソースで使用できるユーザー ID およびパスワードを指定するには、<span class="uicontrol">mqsisetdbparms</span> コマンドを使用します。
+このユーザー ID は、前のステップでデータベースを作成した際に使用したユーザー ID と同じものでなければなりません。
+このユーザー ID によってデータベース・スキーマ名が決まります。
+Integration ノードは表にアクセスする際に、この同じユーザー ID を使用する必要があります。
+例えば、ユーザー ID が <span class="input">USERID</span> である場合、表名 PATSDB の完全修飾名は <span class="filepath">USERID.PATSDB</span> です。
+.
+        </p>
+        <ol>
+            <li>
+IBM Integration Bus コマンドを実行できる、コマンド・コンソール・ウィンドウを開きます。
+以下のコマンドを入力して、ユーザー ID およびパスワードを指定します。
+<pre>mqsisetdbparms <var>integration node</var> -n PATIENTSDSN -u &lt;user ID&gt; -p &lt;password&gt;</pre>
+            </li>
+            <li>
+以下のコマンドを入力して、統合サーバーを再ロードします。
+<pre>mqsireload <var>integration node</var> -e <var>integration server name</var></pre>
+ここで、<var>integration node</var> は Integration ノードの名前で、<var>integration server name</var> は統合サーバーの名前です。
+</li>
+        </ol>
+    </li>
+</ol>
+<p>
+</p>
+<a href="overview.htm#anchorBack" title="戻る">「Healthcare: Medical devices to EMR」パターンの仕様に戻る</a>
+<p>
+</p>
+</body>
+</html>

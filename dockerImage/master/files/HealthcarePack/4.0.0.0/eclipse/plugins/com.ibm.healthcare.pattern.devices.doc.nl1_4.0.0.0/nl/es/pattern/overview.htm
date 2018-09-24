@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <title>Patrón Servicio sanitario: Dispositivos médicos a EMR</title>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    -->
+</head>
+<body role="main">
+<h1 class="topictitle1">Patrón Servicio sanitario: Dispositivos
+médicos a EMR</h1>
+<div>
+    <p class="shortdesc"/>
+    <p>
+    El patrón
+    <span>
+    Servicio sanitario: Dispositivos médicos a EMR
+    </span>
+    integra dispositivos médicos con una aplicación
+de Historial clínico electrónico (HCE)
+    que pueda recibir mensajes de resultados de observación (ORU R01)
+de HL7 (Health Level Seven International) v2. La aplicación debe
+poder recibir mensajes HL7 utilizando el protocolo MLLP
+(Minimal Lower Layer Protocol) sobre TCP/IP.
+    </p>
+</div>
+<div class="image">
+    <img src="overview.png" alt="Diagrama que muestra el patrón Servicio sanitario: Dispositivos médicos a EMR" />
+</div>
+<div>
+	<p><b>Nota:</b> Este patrón está disponible a partir de IBM
+WebSphere Message Broker Connectivity Pack 	for Healthcare versión
+7.0 y sigue disponible y soportado en esta versión de 	IBM
+Integration Bus Healthcare Pack. No obstante, este patrón todavía
+utiliza MRM y el conjunto de mensajes HL7v25P en lugar del modelo de
+mensaje DFDL que se introdujo en 	IBM WebSphere Message Broker
+Connectivity Pack for Healthcare versión 8.
+	Se recomienda el modelo
+de mensaje DFDL para aplicaciones nuevas y actualizadas porque tiene
+las siguientes ventajas:
+	<ul>
+		<li>DFDL es un formato estándar abierto, mientras que MRM y el
+conjunto de mensajes HL7v25P son de propiedad de IBM Integration Bus
+		</li>
+		<li>El editor DFDL proporciona herramientas más sencillas para
+desarrollar y probar extensiones a los esquemas HL7, en comparación
+con MRM y el conjunto de mensajes HL7v25P
+		</li>
+		<li>El modelo de mensaje DFDL admite HL7 versiones 2.7, 2.6, 2.5.1
+y anteriores, mientras que MRM y el conjunto de mensajes HL7v25P solo
+admiten HL7 versión 2.5.1 y anteriores
+		</li>
+	</ul>
+	</p>
+</div>
+<div>
+    <h2>Importante</h2>
+    <p>
+    Debe desplegar el conjunto de mensajes HL7 en el nodo de
+integración antes de desplegar una instancia de patrón. El conjunto
+de mensajes se utiliza para analizar mensajes HL7 a medida que los
+procesan los flujos de mensajes. Los flujos de mensajes que genera el
+patrón no se pueden desplegar en el nodo de integración hasta que se
+haya desplegado el conjunto de mensajes.
+    </p>
+    <p>
+    Puede importar el conjunto de mensajes HL7 en el espacio de
+trabajo desde la página <a href="resources.htm"
+    title="Recursos para el patrón">Recursos para el
+patrón</a>.
+    </p>
+    <p>
+    El conjunto de mensajes HL7 tarda mucho tiempo en construirse y
+puede ralentizar significativamente el espacio de trabajo. Por esto
+se recomienda hacer lo siguiente:
+    <ul>
+        <li>
+            Importe el conjunto de mensajes HL7 en su espacio de
+trabajo
+        </li>
+        <li>
+            Añada el conjunto de mensajes HL7 a un archivo BAR
+        </li>
+        <li>
+            Despliegue el archivo BAR en su nodo de integración
+        </li>
+        <li>
+            Suprima el conjunto de mensajes HL7 y el archivo BAR
+de su espacio de trabajo
+        </li>
+    </ul>
+    </p>
+    <p>
+    Si desea utilizar el correlacionador de gráficos para las
+transformaciones de mensajes, tendrá que dejar el conjunto de
+mensajes HL7 en su espacio de trabajo. Puede reducir el tiempo que se
+tarda en construir el conjunto de mensajes suprimiendo los capítulos
+HL7 del conjunto de mensajes 
+    Deje los archivos de definición de mensajes
+    <span class="filepath">
+    segments.mxsd
+    </span>
+    ,
+    <span class="filepath">
+    fields.mxsd
+    </span>
+    y
+    <span class="filepath">
+    datatypes.mxsd
+    </span>
+    del conjunto de mensajes tal como los requiera el patrón.
+    </p>
+    <p>
+    Si utiliza búsquedas de base de datos para la identificación de
+pacientes y configura la instancia de patrón para crear un servicio
+web, debe importar y desplegar el conjunto de mensajes PatientIdentifiersService. Los
+nodos SOAP del flujo de servicios web requieren este
+conjunto de mensajes porque contiene el archivo WSDL. Este
+conjunto de mensajes y también un conjunto de mensajes que modela
+las medidas del nodo MedicalDeviceInput están disponibles en la
+página <a href="resources.htm" title="Recursos para el patrón">Recursos para el patrón</a>.
+    </p>
+    <p>
+    El conjunto de mensajes del nodo MedicalDeviceInput se puede
+utilizar con el correlacionador gráfico para transformar los mensajes
+de los dispositivos. Asegúrese de definir DataObject como analizador de
+destino para el mensaje de salida en el correlacionador gráfico,
+porque el valor por defecto es XMLNSC. Este patrón espera que
+todos los mensajes de dispositivos estén en el dominio DataObject y
+no funcionará correctamente si utiliza XMLNSC.
+    </p>
+</div>
+<div class = "description">
+    <h2>Opciones</h2>
+    <p>
+    El flujo Dispositivos médicos de este patrón admite las
+siguientes opciones:
+    </p>
+    <ul>
+        <li>
+            Recepción de mensajes de dispositivos médicos. Se crea un
+servicio configurable predeterminado para generar datos a partir de
+un controlador de dispositivos virtual.
+        </li>
+        <li>
+            Publicación o envío a una cola de cada uno de los
+mensajes entrantes para su proceso fuera del patrón
+        </li>
+        <li>
+            Envío de la salida a la cola de Transformación y  direccionamiento
+        </li>
+        <li>
+            Establecimiento de un tiempo de caducidad, de modo que los
+mensajes de dispositivo antiguos se descarten
+        </li>
+    </ul>
+    <p>
+    El flujo Transformación y direccionamiento de este patrón admite
+las  siguientes opciones:
+    </p>
+    <ul>
+        <li>
+            Transformación a un formato HL7 canónico
+        </li>
+        <li>
+            Publicación o envío a una cola del mensaje canónico
+para su proceso fuera del patrón
+        </li>
+        <li>
+            Puntos de personalización para habilitar la inclusión de
+cambios no estándar específicos de cada destino
+        </li>
+        <li>
+            Transformación a HL7 y envío de la salida a la cola
+del flujo Sender
+        </li>
+        <li>
+            Asociación de los mensajes de dispositivos a
+identificadores de pacientes mediante una búsqueda en una base de
+datos, utilizando una base de datos definida como parte de este
+patrón
+        </li>
+        <li>
+            Se incluyen instrucciones para crear las tablas de base de
+datos para DB2 u Oracle y
+            se llega a la base de datos mediante ODBC desde el patrón
+        </li>
+    </ul>
+    <p>
+    El flujo Sender de este patrón admite las siguientes
+opciones:
+    </p>
+    <ul>
+        <li>
+            Lectura de mensajes transformados para el destino
+        </li>
+        <li>
+            Validación de los mensajes transformados
+        </li>
+        <li>
+            Entrega de los mensajes HL7 a la aplicación de destino
+utilizando MLLP sobre TCP/IP
+        </li>
+    </ul>
+    <p>
+    Opcionalmente, este patrón puede generar un servicio web para
+gestionar la base de datos de identificadores de pacientes:
+    </p>
+    <ul>
+        <li>
+            Servicio web implementado como un flujo de mensajes para
+obtener, definir y borrar identificadores de pacientes
+        </li>
+        <li>
+            Registrar todas las solicitudes de servicio web en una cola
+        </li>
+        <li>
+            Implementa el servicio web como consultas o actualizaciones a una base de datos
+        </li>
+    </ul>
+    <p>
+    Todos los flujos de mensajes que genera este patrón manejan las
+excepciones utilizando colas para guardar la información de error.
+    </p>
+</div>
+<div class="familylinks">
+    <a name="anchorBack"></a>
+    <div class="section">
+        <h2 class="sectiontitle">Información adicional</h2>
+        <div>
+            <a href="remove.htm">Limpieza de la base de datos de
+identificadores de pacientes</a>
+        </div>
+        <div>
+            <a href="customizing.htm">Personalización de una
+instancia de patrón</a>
+        </div>
+        <div>
+            <a href="design.htm">Diseño del patrón</a>
+        </div>
+        <div>
+            <a href="management.htm">Gestión de una instancia de
+patrón</a>
+        </div>
+        <div>
+            <a href="parameters.htm">Parámetros del patrón</a>
+        </div>
+        <div>
+            <a href="resources.htm">Recursos para el patrón</a>
+        </div>
+        <div>
+            <a href="create.htm">Configuración de la base de datos de
+identificadores de pacientes</a>
+        </div>
+        <div>
+            <a href="testing.htm">Prueba del patrón</a>
+        </div>
+    </div>
+</div>
+<p>
+</p>
+</body>
+</html>

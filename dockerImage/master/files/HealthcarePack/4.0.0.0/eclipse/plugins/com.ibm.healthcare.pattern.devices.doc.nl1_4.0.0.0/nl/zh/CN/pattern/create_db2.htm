@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <title>设置 DB2</title>
+    <!-- 
+       (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+       All Rights Reserved * Licensed Materials - Property of IBM
+      -->
+</head>
+<body role="main">
+<h1>设置 DB2</h1>
+<p>
+下列指示信息假定您使用的是 DB2 通用数据库，并指导您完成以下任务：</p>
+<ul>
+    <li>
+        创建名为 PATSDB 的数据库</li>
+    <li>
+        绑定 DB2 CLI 程序包</li>
+    <li>
+        创建 PATIENTS 表，用于存储患者与设备之间的关联</li>
+</ul>
+<p>
+<b>注意：</b>在创建和访问数据库表时，请注意下列问题：</p>
+<ul>
+    <li>
+        运行用于在数据库中创建表的脚本时，运行此脚本的用户标识确定了数据库模式名。
+        例如，如果您的用户标识为 <span class="input">USERID</span>，那么 PATIENTS 表的标准名称为 USERID.PATIENTS。</li>
+    <li>
+        将模式实例配置为使用您创建数据库和表时使用的用户标识来访问数据库，并将模式名包括在配置中。例如，<span class="filepath">Database.USERID.PATIENTS</span>。</li>
+</ul>
+<p>
+请完成下列步骤：</p>
+<ol>
+    <li>
+        在 DB2 命令窗口中，输入以下命令以确保 DB2 已启动：<pre>db2start</pre>
+    </li>
+    <li>
+        创建名为 PATSDB 的数据库。</li>
+    <li>
+        在文本编辑器中打开一个新文档，将以下用于连接到 PATSDB 数据库并运行 BIND 实用程序的脚本复制并粘贴到该文档中，然后将文件命名为 <span class="filepath">PATSDB.sql</span> 并保存。<ul>
+            <li>
+                <p>
+                在 <span>Windows</span> 上：</p>
+                必须将 install_dir 替换为 DB2 产品安装目录的路径，例如
+<span class="filepath">C:\PROGRA~1\IBM\SQLLIB</span>。您可以使用 db2level 命令找到此位置：<pre>
+CONNECT TO PATSDB
+BIND 'install_dir\bnd\@db2cli.lst' blocking all grant public
+TERMINATE
+                </pre>
+            </li>
+            <li>
+                <p>
+                在 <span>Linux</span> 上：</p>
+                必须将 install_dir 替换为 DB2 产品安装目录的路径。您可以使用 db2level 命令找到此位置：<pre>
+CONNECT TO PATSDB
+BIND install_dir/bnd/@db2cli.lst grant public CLIPKG 5
+TERMINATE
+                </pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        在 DB2 命令窗口中，导航至包含 <span class="filepath">PATSDB.sql</span> 的文件夹并输入以下命令：<pre>db2 -vf PATSDB.sql</pre>
+    </li>
+    <li>
+        在文本编辑器中打开一个新文档，将以下用于创建 PATIENTS 表的脚本复制并粘贴到该文档中，然后将文件命名为 <span class="filepath">patients_create_tables_db2.sql</span> 并保存。<pre>
+CONNECT TO PATSDB@
+DROP TABLE "PATIENTS"@
+CREATE TABLE "PATIENTS" (
+    "DEVICEID" VARCHAR(50) NOT NULL PRIMARY KEY,
+    "PATIENTID" VARCHAR(50)
+)
+DATA CAPTURE NONE@
+TERMINATE@
+        </pre>
+    </li>
+    <li>
+        确保数据库正在运行且已建立连接。
+</li>
+    <li>
+        打开用于访问数据库的命令窗口，然后切换到 <span class="filepath">patients_create_tables_db2.sql</span> 所在的文件夹并输入以下命令：<pre>db2 -td@ -vf patients_create_tables_db2.sql</pre>
+        <p>
+        等待此脚本完成运行。如果这是您首次运行此脚本，那么将显示以下消息：</p>
+        <pre>
+DB21034E  已将此命令作为 SQL 语句进行处理，这是因为，它不是有效的命令行处理方命令。在 SQL 处理期间，它返回了以下消息：SQL0204N “DB2ADMIN.PATIENTS”不是已定义的名称。SQLSTATE=42704</pre>
+        请忽略此消息。显示此消息的原因是，此脚本在创建新表前尝试除去现有的表 PATIENTS，但如果之前未曾运行过此脚本，那么此脚本将找不到现有的表。
+</li>
+</ol>
+<p>
+</p>
+<a href="create.htm" title="返回">返回到“设置患者标识数据库”</a>
+<p>
+</p>
+</body>
+</html>

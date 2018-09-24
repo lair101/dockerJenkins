@@ -1,0 +1,2 @@
+# IBM Content Magic SUBLAYER parameters for the proxy configuration
+ibm/PluggableSublayer = true 

@@ -1,0 +1,2 @@
+//>>built
+define("dojo/cldr/nls/kk/coptic",{"field-day-relative+-1":"кеше","field-day-relative+0":"бүгін","field-day-relative+-2":"алдыңғы күні","field-day-relative+1":"ертең","field-day-relative+2":"арғы күні"});

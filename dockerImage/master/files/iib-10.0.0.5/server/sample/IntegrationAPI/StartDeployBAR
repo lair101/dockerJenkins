@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# Licensed Materials - Property of IBM;
+# 5655-G97 (c) Copyright IBM Corp. 2004-2009;
+# All Rights Reserved;
+# US Government Users Restricted Rights - use,
+# duplication or disclosure restricted by GSA
+# ADP Schedule Contract with IBM Corp.;
+# See Copyright Instructions
+#
+#
+# IntegrationAPI Sample : DeployBAR
+#
+# It is assumed that an appropriate environment has been set up to
+# run this command. Sourcing 'mqsiprofile' is not necessary to run
+# IntegrationAPI applications, though this script assumes this to be the case;
+# for all IntegrationAPI applications, the following JARs MUST be in the CLASSPATH:
+#     IntegrationAPI.jar
+# Java and its core libraries must also be available.
+#
+# This sample also requires IntegrationAPISamples.jar; this
+# is where the compiled sample can be found.
+CLASSPATH=$MQSI_FILEPATH/sample/IntegrationAPI/IntegrationAPISamples.jar:$CLASSPATH
+export CLASSPATH
+ARGS=$*
+
+# Restore any environment variables that may have been reset (platform dependent).
+if [ -r "${MQSI_FILEPATH}/bin/.internal/mqsiprofileint" ]
+then
+  . "${MQSI_FILEPATH}/bin/.internal/mqsiprofileint"
+fi
+
+java iapi.DeployBAR $ARGS

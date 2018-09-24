@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ibm.etools.mft.feature.dotnet"
+      label="%Feature.name"
+      version="10.0.500.v20160516-1831"
+      provider-name="IBM"
+      plugin="com.ibm.etools.mft.dotnet"
+      image="wsFeatUpdate.jpg">
+
+   <description>
+      %description
+   </description>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="com.ibm.etools.mft.dotnet"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="true"/>
+
+</feature>

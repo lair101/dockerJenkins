@@ -1,0 +1,39 @@
+<project name="wmb-general" default="autopdmain">
+
+	
+	<!-- need to set the classpath to include the latest plugin -->
+
+	<dirname property="wmb.general.targets.basedir" file="${ant.file.wmb-general}" />
+	<dirname property="wmb.general.targets.parentdir" file="${wmb.general.targets.basedir}" />
+	<dirname property="wmb.general.targets.bundle.basedir" file="${wmb.general.targets.parentdir}" />
+	
+	<taskdef file="${autopdrootdir}/properties/autopdtaskdef.properties" loaderref="ISA"  />
+	<autopdimport file="${wmb.general.targets.bundle.basedir}/scripts/SSKM8N/wmb-sharedtargets.xml" />
+	
+    <property name="autopdProblem" value="WMB_General_Problem" />
+	<property name="taxonomy" value="SSKM8N" />
+	<property name="autopdProblem_nlsbundle" value="properties/SSKM8N/autopd" />
+
+	
+	<target name="autopdmain" description="Main start"
+		depends="load_sharedelements_tasks,
+				set_problem_type_with_nls_bundle,
+				setup_autopd_v2, 
+				validate_os, 
+		
+				determine_os_properties, 
+				determine_install_root,
+				initialize_wmb_environment,
+		        collect_odbcini_files,
+		        collect_fixinstaller_files,
+				collect_required_files,collect_event_viewer_logs,collect_failure_logs,
+
+				run_cisa_scan,
+				ftp_to_ecurep" /> 
+		<!-- Need to remove script_completed_v2 from the targets - Defect 23942 --> 
+				
+		<echo message="" />
+
+
+	
+</project>	

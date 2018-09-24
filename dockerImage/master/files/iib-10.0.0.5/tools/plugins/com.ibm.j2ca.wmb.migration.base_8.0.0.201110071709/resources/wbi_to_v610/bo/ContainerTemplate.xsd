@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	<import/>
+	<annotation xml:space="preserve">
+		<appinfo source="http://www.ibm.com/xmlns/prod/j2ca/versionCompatability">
+			<info:resourceAdapter xmlns:info="http://www.ibm.com/xmlns/prod/j2ca/versionCompatability" version="6.2.0.0"/>
+		</appinfo>
+	</annotation>
+	<complexType>
+		<sequence>
+			<element minOccurs="1" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,11 @@
+#
+#Mon Sep 12 12:25:44 CEST 2011
+imports=bel_styles,boolean,number,bel_concepts
+name=bel_date
+concept.universalDate.base=date
+concepts=date,universalDate,simpleDate,time,universalTime,year,month,dayOfWeek
+concept.simpleDate.base=date
+concept.year.nature=number
+onlyVocabulary=true
+concept.universalTime.base=time
+locale=it

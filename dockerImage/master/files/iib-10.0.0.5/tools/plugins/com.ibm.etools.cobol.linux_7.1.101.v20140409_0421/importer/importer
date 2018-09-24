@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# Set environment variables for the COBOL Importer
+#
+home=$(dirname $0);
+export NLSPATH=$home/%L/%N:"$NLSPATH"
+export PATH=$home:"$PATH"
+export LD_LIBRARY_PATH=$home:"LD_LIBRARY_PATH"
+#
+# Pass the request on the 'real', unhidden target
+#
+exec $home/IGYCCOB2 "$@";

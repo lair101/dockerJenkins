@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CMDriverDescription>
+<SupportedDevices model="Draeger 8004" type="Incubator">
+ <CMLLC type="CMLLCRS232">
+ 	<CMLLCCfg port="" baud="9600" parity="N" data="8" stopbit="1" rtscts="No" />
+ </CMLLC>
+ </SupportedDevices>
+ <Variables>
+	<Discrete>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="112::211-244:261" 
+ 					CMidtext="Volume::Lung-Tidal:Breathing" 
+ 					idref="M_BASE_VOLUME::M_CONCERNS_LUNG-M_CONCERNS_TIDAL:M_CONTEXT_BREATHING" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="VT" 
+ 					shortdesc="Respiration Tidal Volume" 
+ 					longdesc="Volume of gas during each breath" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:133-679:197:259" 
+ 					CMidtext="Pressure:Maximum-Inspiration:Gas:Airway" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MAXIMUM-M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="PIP" 
+ 					shortdesc="Maximum Inspiratory Airway Pressure (Peak inspiratory pressure)" 
+ 					longdesc="Maximum pressure of gas in airway during inspiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="1076:862-925-980:1053:1063" 
+ 					CMidtext="ErrorEvent:Measurement-Flow-Inoperable:FunctionalDisturbance:Ventilator" 
+ 					idref="CM_BASE_ERROREVENT:CM_CONCERNSDEVICEFUNCTION_MEASUREMENT-CM_CONCERNSPHYSICALPROPERTY_FLOW-CM_HASERRORCONDITION_INOPERABLE:CM_CONCERNS_FUNCTIONALDISTURBANCE:CM_PERTAINSTO_VENTILATOR" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="" 
+ 					shortdesc="Inoperable flow measurement" 
+ 					longdesc="The flow measurement in a ventilator is inoperable" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="107:826:846:859" 
+ 					CMidtext="Status:Warning:Sensor:Inoperable" 
+ 					idref="M_BASE_STATUS:M_SPEC_WARNING:M_CONCERNS_SENSOR:CM_CONDITION_INOPERABLE" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Sensor inoperable" 
+ 					longdesc="Warning, sensor inoperable" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:679:197-219:259" 
+ 					CMidtext="Concentration:Inspiration:Gas-O2:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-M_CONCERNS_O2:M_CONTEXT_AIRWAY" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="%O2 ins" 
+ 					shortdesc="Concentration Airway O2 Inspiratory" 
+ 					longdesc="Concentration of O2 in airway gas measured in inspiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="79:679:197-219:259" 
+ 					CMidtext="Concentration:Inspiration:Gas-O2:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-M_CONCERNS_O2:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="%O2 ins" 
+ 					shortdesc="Concentration Airway O2 Inspiratory" 
+ 					longdesc="Concentration of O2 in airway gas measured in inspiration" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="101:455:173:261" 
+ 					CMidtext="Rate:NOS:Breath:Breathing" 
+ 					idref="M_BASE_RATE:M_ORIGIN_NOS:M_CONCERNS_BREATH:M_CONTEXT_BREATHING" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="RR (interval)" 
+ 					shortdesc="Respiration Rate" 
+ 					longdesc="Rate of breathing, method not specified" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="84:609:197:271" 
+ 					CMidtext="Flow:OneMinute:Gas:Ventilator" 
+ 					idref="M_BASE_FLOW:M_SPEC_ONEMINUTE:M_CONCERNS_GAS:M_CONTEXT_VENTILATOR" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="" 
+ 					shortdesc="Ventilation Minute Volume" 
+ 					longdesc="Total volume of gas delivered by ventilator during mechanical ventilation" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:336-674:197:271" 
+ 					CMidtext="Pressure:Applied-Endexpiratory:Gas:Ventilator" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_APPLIED-M_TIMECRIT_ENDEXPIRATORY:M_CONCERNS_GAS:M_CONTEXT_VENTILATOR" 
+ 					defaultunits="" 
+ 					abbreviation="PEEP" 
+ 					shortdesc="Positive end expiratory pressure, applied" 
+ 					longdesc="Positive End Expiratory Pressure applied to the airway during mechanical ventilation" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="99:137:173-197:259" 
+ 					CMidtext="Pressure:Mean:Breath-Gas:Airway" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MEAN:M_CONCERNS_BREATH-M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Mean breathing pressure" 
+ 					longdesc="Mean breathing pressure" 
+ 				/>
+ 				<Secondary 
+ 					CMid="" 
+ 					CMidtext="" 
+ 					idref="" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="" 
+ 					shortdesc="" 
+ 					longdesc="" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 		</VarGroup>
+		<VarGroup>
+			<Variable> 
+ 				<Primary 
+ 					CMid="833:::823" 
+ 					CMidtext="Setting:::UserLimits" 
+ 					idref="M_BASE_SETTING:::M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Device Setting" 
+ 					longdesc="Device Setting" 
+ 				/>
+ 				<Secondary 
+ 					CMid="112::211-244:261" 
+ 					CMidtext="Volume::Lung-Tidal:Breathing" 
+ 					idref="M_BASE_VOLUME::M_CONCERNS_LUNG-M_CONCERNS_TIDAL:M_CONTEXT_BREATHING" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="VT" 
+ 					shortdesc="Respiration Tidal Volume" 
+ 					longdesc="Volume of gas during each breath" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:828:823" 
+ 					CMidtext="Setting:Alert:Lower:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_LOWER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Lower limit alarm setting" 
+ 					longdesc="Setting of lower alarm limit" 
+ 				/>
+ 				<Secondary 
+ 					CMid="84:609:197:261" 
+ 					CMidtext="Flow:OneMinute:Gas:Breathing" 
+ 					idref="M_BASE_FLOW:M_SPEC_ONEMINUTE:M_CONCERNS_GAS:M_CONTEXT_BREATHING" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="" 
+ 					shortdesc="Respir. Minute Volume" 
+ 					longdesc="Total volume of gas breathed in one minute during spontaneous respiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:825:827:823" 
+ 					CMidtext="Setting:Alert:Upper:UserLimits" 
+ 					idref="M_BASE_SETTING:M_SPEC_ALERT:M_CONCERNS_UPPER:M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Upper limit alarm setting" 
+ 					longdesc="Setting of a upper limit alarm" 
+ 				/>
+ 				<Secondary 
+ 					CMid="84:609:197:261" 
+ 					CMidtext="Flow:OneMinute:Gas:Breathing" 
+ 					idref="M_BASE_FLOW:M_SPEC_ONEMINUTE:M_CONCERNS_GAS:M_CONTEXT_BREATHING" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="" 
+ 					shortdesc="Respir. Minute Volume" 
+ 					longdesc="Total volume of gas breathed in one minute during spontaneous respiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:::823" 
+ 					CMidtext="Setting:::UserLimits" 
+ 					idref="M_BASE_SETTING:::M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Device Setting" 
+ 					longdesc="Device Setting" 
+ 				/>
+ 				<Secondary 
+ 					CMid="112::250:271" 
+ 					CMidtext="Volume::TriggerSensitivity:Ventilator" 
+ 					idref="M_BASE_VOLUME::M_CONCERNS_TRIGGERSENSITIVITY:M_CONTEXT_VENTILATOR" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="" 
+ 					shortdesc="Ventilator Trigger Sensitivity" 
+ 					longdesc="Sensitivity of trigger in ventilator, a volume value" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:::823" 
+ 					CMidtext="Setting:::UserLimits" 
+ 					idref="M_BASE_SETTING:::M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Device Setting" 
+ 					longdesc="Device Setting" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:133-679:197:259" 
+ 					CMidtext="Pressure:Maximum-Inspiration:Gas:Airway" 
+ 					idref="M_BASE_PRESSURE:M_COMPUTED_MAXIMUM-M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS:M_CONTEXT_AIRWAY" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="PIP" 
+ 					shortdesc="Maximum Inspiratory Airway Pressure (Peak inspiratory pressure)" 
+ 					longdesc="Maximum pressure of gas in airway during inspiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:::823" 
+ 					CMidtext="Setting:::UserLimits" 
+ 					idref="M_BASE_SETTING:::M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Device Setting" 
+ 					longdesc="Device Setting" 
+ 				/>
+ 				<Secondary 
+ 					CMid="81::167:261" 
+ 					CMidtext="Duration::Apnea:Breathing" 
+ 					idref="M_BASE_DURATION::M_CONCERNS_APNEA:M_CONTEXT_BREATHING" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="A" 
+ 					shortdesc="Apnea Duration" 
+ 					longdesc="Duration of apnea - no flow measured" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:::823" 
+ 					CMidtext="Setting:::UserLimits" 
+ 					idref="M_BASE_SETTING:::M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Device Setting" 
+ 					longdesc="Device Setting" 
+ 				/>
+ 				<Secondary 
+ 					CMid="99:336-674:197:271" 
+ 					CMidtext="Pressure:Applied-Endexpiratory:Gas:Ventilator" 
+ 					idref="M_BASE_PRESSURE:M_METHOD_APPLIED-M_TIMECRIT_ENDEXPIRATORY:M_CONCERNS_GAS:M_CONTEXT_VENTILATOR" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="PEEP" 
+ 					shortdesc="Positive end expiratory pressure, applied" 
+ 					longdesc="Positive End Expiratory Pressure applied to the airway during mechanical ventilation" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:::823" 
+ 					CMidtext="Setting:::UserLimits" 
+ 					idref="M_BASE_SETTING:::M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Device Setting" 
+ 					longdesc="Device Setting" 
+ 				/>
+ 				<Secondary 
+ 					CMid="102:1066-1067:197:261" 
+ 					CMidtext="Ratio:Flow(ExpirationPhase)-Flow(InspirationPhase):Gas:Breathing" 
+ 					idref="M_BASE_RATIO:CM_PERTAINSTO_FLOW(EXPIRATIONPHASE)-CM_PERTAINSTO_FLOW(INSPIRATIONPHASE):M_CONCERNS_GAS:M_CONTEXT_BREATHING" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="I:E" 
+ 					shortdesc="Inspiratory Expiratory ratio" 
+ 					longdesc="Ratio between Inspiratory Expiratory flow" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:::823" 
+ 					CMidtext="Setting:::UserLimits" 
+ 					idref="M_BASE_SETTING:::M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Device Setting" 
+ 					longdesc="Device Setting" 
+ 				/>
+ 				<Secondary 
+ 					CMid="85:365-592:197:271" 
+ 					CMidtext="Frequency:Mandatory-Intermittent:Gas:Ventilator" 
+ 					idref="M_BASE_FREQUENCY:M_METHOD_MANDATORY-M_SPEC_INTERMITTENT:M_CONCERNS_GAS:M_CONTEXT_VENTILATOR" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="IMV" 
+ 					shortdesc="Intermittent Mandatory Ventilation" 
+ 					longdesc="Intermittent Mandatory Ventilation (Frequency)" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 			<Variable> 
+ 				<Primary 
+ 					CMid="833:::823" 
+ 					CMidtext="Setting:::UserLimits" 
+ 					idref="M_BASE_SETTING:::M_CONCERNS_LIMITS" 
+ 					defaultunits="" 
+ 					abbreviation="" 
+ 					shortdesc="Device Setting" 
+ 					longdesc="Device Setting" 
+ 				/>
+ 				<Secondary 
+ 					CMid="79:679:197-219:259" 
+ 					CMidtext="Concentration:Inspiration:Gas-O2:Airway" 
+ 					idref="M_BASE_CONCENTRATION:M_TIMECRIT_INSPIRATION:M_CONCERNS_GAS-M_CONCERNS_O2:M_CONTEXT_AIRWAY" 
+ 					defaultunits="l/bar" 
+ 					abbreviation="%O2 ins" 
+ 					shortdesc="Concentration Airway O2 Inspiratory" 
+ 					longdesc="Concentration of O2 in airway gas measured in inspiration" 
+ 				/> 
+ 				<Sources list="" /> 
+ 			</Variable>
+ 	</VarGroup>
+ </Discrete>
+</Variables></CMDriverDescription>

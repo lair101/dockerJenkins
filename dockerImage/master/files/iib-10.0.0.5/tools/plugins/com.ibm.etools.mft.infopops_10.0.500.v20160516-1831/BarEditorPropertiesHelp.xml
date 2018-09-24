@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pdHelp xmlns="http://www.ibm.com/visualutils/pdhelpcontent"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ibm.com/visualutils/pdhelpcontent http://www.ibm.com/visualutils/pdhelpcontent">
+	
+	<pluginCategory id="com.ibm.etools.mft.bar.editor">
+		<pageHelp id="Subflow_Default_Tab">
+			<title>Configuring default values for promoted and user defined properties</title>
+			<shortDescription> </shortDescription>
+			<moreDescription><p>If you specify a value for a user-defined property or a promoted property on the subflow and also specify a value for the same property in the subflow node in the parent flow, the value that is set in the subflow node is used.</p></moreDescription>
+			<topic href="../com.ibm.etools.mft.doc/ac00643_.htm">
+				<label>Using a user defined property</label>
+			</topic>
+			<topic href="../com.ibm.etools.mft.doc/ac02380_.htm">
+				<label>Promoting a property</label>
+			</topic>
+		</pageHelp>	
+		<fieldHelp id="StartModeApplication">
+			<title>Start Mode Configurable Property</title>
+			<description>
+				<p>Specify how the application is started after it is deployed or after the broker/integration server/application is restarted with the following three options:</p>
+				<p><b>Maintained</b></p>
+				<p>The state of the application is under complete control of the administrator.  The application will be started once the deployment has completed and will remain in started state until a stop command has been issued.  Once a stop command has been issued, the application will remain in stopped state until a start command is issued. Re-deployment and restarting broker/integration server/application does not change the state of the application.</p>
+				<p><b>Manual</b></p>
+				<p>The application will always require a start command after deployment or broker/integration server/application restart.  The application will be in stopped state on completion of the deployment or re-deployment and after broker/integration server/application restart. This is regardless of the previous state of the application (e.g. before re-deploy or broker/integration server/application stop).</p>
+				<p><b>Automatic</b></p>
+				<p>The application will always automatically start after deployment or broker/integration server/application restart.</p>
+			</description>
+		</fieldHelp>
+		<fieldHelp id="StartModeFlow">
+			<title>Start Mode Configurable Property</title>
+			<description>
+				<p>Specify how the message flow is started after it is deployed or after the broker/integration server/application is restarted with the following three options:</p>
+				<p><b>Maintained</b></p>
+				<p>The state of the flow is under complete control of the administrator.  The flow will be started once the deployment has completed and will remain in started state until a stop command has been issued.  Once a stop command has been issued, the flow will remain in stopped state until a start command is issued. Re-deployment and restarting broker/integration server/application does not change the state of the flow.</p>
+				<p><b>Manual</b></p>
+				<p>The flow will always require a start command after deployment or broker/integration server/application restart.  The flow will be in stopped state on completion of the deployment or re-deployment and after broker/integration server/application restart. This is regardless of the previous state of the flow (e.g. before re-deploy or broker/integration server/application stop).</p>
+				<p><b>Automatic</b></p>
+				<p>The flow will always automatically start after deployment or broker/integration server/application restart.</p>
+			</description>
+		</fieldHelp>
+		<fieldHelp id="DefaultDotNetAppDomain">
+			<title>Default .NET Application Domain Property</title>
+			<description>
+				<p>Specify the application domain in which the assemblies called by .NETCompute nodes and ESQLs in the application are loaded, if the <b>AppDomain</b> attribute is not set on the .NETCompute node or the ESQL Procedure signature.</p>
+				<p>If this property is not set, the application domain in which assemblies are loaded is the name of the application.</p>
+			</description>
+		</fieldHelp>
+	</pluginCategory>
+</pdHelp>

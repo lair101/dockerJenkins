@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+	Sample global cache policy for a single broker.
+
+	The broker will host two catalog servers, so if one fails, the
+	global cache will fail over to the remaining catalog server.
+
+	Customize this policy file for your installation.
+
+-->
+<cachePolicy xmlns="http://www.ibm.com/xmlns/prod/websphere/messagebroker/globalcache/policy-1.0">
+
+	<!--
+		The broker "broker1" runs on "host1.ibm.com".
+	-->
+	<broker name="broker1" listenerHost="host1.ibm.com">
+
+		<!--
+			This broker hosts two catalog servers.
+		-->
+		<catalogs>2</catalogs>
+
+		<!--
+			This broker uses ports between 3000-3019.
+		-->
+		<portRange>
+			<startPort>3000</startPort>
+			<endPort>3019</endPort>
+		</portRange>
+
+	</broker>
+
+</cachePolicy>

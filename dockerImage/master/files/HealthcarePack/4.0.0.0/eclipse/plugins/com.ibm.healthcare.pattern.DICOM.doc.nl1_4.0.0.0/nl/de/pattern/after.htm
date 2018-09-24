@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2013, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    -->
+    <title>Tasks, die nach der Anwendung des Musters 'Healthcare: Web-Service an DICOM' auszuführen sind</title>
+</head>
+<body role="main">
+    <h1 class="topictitle1">Tasks, die nach der Erstellung des Musters <span>Healthcare: Web-Service an DICOM</span> auszuführen sind</h1>
+    <p class="shortdesc">Tasks, die Sie nach der Erstellung des Musters ausführen müssen.</p>
+    <h2>IBM Integration Bus implementieren</h2>
+
+    <ol>
+        <li>
+            Erstellen Sie die BAR-Datei und fügen Sie ihr Ihren Nachrichtenfluss hinzu:
+            <ol>
+                <li>
+                    Klicken Sie auf <span class="uicontrol">Datei &gt; Neu &gt; BAR-Datei</span>.
+</li>
+                <li>
+                    Geben Sie den Namen der Anwendung ein oder wählen Sie eine Anwendung in der angezeigten Liste aus. Die Liste ist gefiltert, sodass nur Projekte des aktiven Arbeitssets angezeigt werden.
+</li>
+                <li>
+                    Geben Sie einen Namen für die BAR-Datei ein, die erstellt werden soll.
+</li>
+                <li>
+                    Klicken Sie auf <span class="uicontrol">Fertigstellen</span>.
+                    Es wird eine Datei mit der Erweiterung <span class="filepath">.bar</span> erstellt und in der Ansicht 'Anwendungsentwicklung' im Ordner <span class="filepath">BARs</span> angezeigt. Der Editor für BAR-Dateien wird geöffnet.
+                </li>
+                <li>
+                    Wählen Sie auf der Registerkarte 'Prepare' (Vorbereiten) die generierte Anwendung aus, die der BAR-Datei hinzugefügt werden soll. </li>
+                <li>
+                    Wählen Sie <span class="uicontrol">Ressourcen kompilieren und integrieren</span> aus und klicken Sie anschließend auf <span class="uicontrol">Build and Save</span> (Erstellen und speichern), um die BAR-Datei zu erstellen.
+</li>
+            </ol>
+        </li>
+        <li>
+            Konfigurieren Sie die BAR-Datei. Vor der Implementierung der Nachrichtenflüsse für Ihre Musterinstanz <span>Healthcare: Web-Service an DICOM</span> ist keine weitere Konfiguration des Nachrichtenflusses in der BAR-Datei erforderlich, aber unter Umständen möchten Sie einige der Standardoptionen überprüfen und Änderungen für Ihre Umgebung konfigurieren.
+            
+Führen Sie im Editor für BAR-Dateien auf der Registerkarte "Verwalten" die folgenden Aktionen aus:
+
+            <ol>
+                <li>
+                    <span>Optional: Über die benutzerdefinierte Eigenschaft <span class="msobjprop">LoggingOn</span> können Sie festlegen, ob die Protokollierung für den Web-Service-Nachrichtenfluss aktiviert oder inaktiviert werden soll.</span>
+</li>
+                <li>Optional: Über die benutzerdefinierte Eigenschaft <span class="msobjprop">ErrorLoggingOn</span> können Sie angeben, ob Fehlernachrichten generiert werden sollen.
+</li>
+                <li>Optional: Sie können alle konfigurierbaren Eigenschaften (beispielsweise für die Sicherheit oder die Erstellung weiterer Instanzen) in der BAR-Datei ändern. <p>Sie müssen sicherstellen, dass die von Ihnen geänderten Werte sich nicht auf das Verhalten der Musterinstanz auswirken.</p>
+                </li>
+            </ol>
+        </li>
+        <li>
+            Erstellen Sie Warteschlangen. Die <span>WebSphere MQ</span>-Warteschlangen für die Fehler- und Protokollnachrichten müssen erstellt werden, falls sie noch nicht vorhanden sind.
+<ol>
+                <li>Erstellen Sie <span>WebSphere MQ</span>-Warteschlangen. <span>WebSphere MQ</span>-Ressourcen können entweder über die Befehlszeile von Programmen und Dienstprogrammen wie <span class="cmdname">runmqsc</span> oder über die grafische Schnittstelle von <span>WebSphere MQ</span> erstellt werden. Weitere
+Informationen zum Erstellen von <span>WebSphere MQ</span>-Ressourcen finden Sie in der Produktdokumentation zu
+                    <span>WebSphere MQ</span> auf der Webseite mit der
+                    <a href="http://www.ibm.com/software/integration/wmq/library/" target="_blank">WebSphere
+                    MQ-Bibliothek</a>.
+
+                </li>
+            </ol>
+        </li>
+        <li>Implementieren Sie die BAR-Datei auf einem Integrationsserver.</li>
+    </ol>
+    <p>
+    Nachdem Sie eine BAR-Datei mit Ihrem Muster erstellt haben, können Sie das Muster mit der DICOM-Testanwendung testen.
+    Mit der DICOM-Testanwendung können Sie DICOM-Nachrichten senden und empfangen und Web-Service-Nachrichten senden und empfangen.
+    Weitere Informationen zur Verwendung der DICOM-Testanwendung finden Sie im Abschnitt "DICOM-Testanwendung verwenden" in der Dokumentation zu IBM Integration Bus
+    Healthcare Pack.
+    </p>
+    <p>
+        <a href="overview.htm#anchor1" title="Zurück">Zurück zur Spezifikation des Musters 'Healthcare: Web-Service an DICOM'</a>
+    </p>
+</body>
+</html>
+
+

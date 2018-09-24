@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policy type="MQTTPublish" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="mqtt_publish_policy_definition.xsd">
+  <policyProperties>
+    <description>
+      <shortDesc>shortDesc</shortDesc>
+      <longDesc>longDesc</longDesc>
+    </description>
+    <basic>
+      <hostName>hostName</hostName>
+      <port>port</port>
+      <qos>qos</qos>
+    </basic>
+  </policyProperties>
+</policy>

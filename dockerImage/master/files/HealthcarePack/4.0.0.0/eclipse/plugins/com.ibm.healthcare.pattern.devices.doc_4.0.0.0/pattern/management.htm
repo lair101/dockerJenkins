@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+        (C) COPYRIGHT International Business Machines Corporation., 2011, 2014
+        All Rights Reserved * Licensed Materials - Property of IBM
+    --> <title>Managing a Healthcare: Medical devices to EMR pattern instance</title>
+</head>
+<body role="main">
+<a name="links"></a> <h1 class="topictitle1">Managing a Healthcare: Medical 
+devices to EMR pattern instance</h1>
+<p>
+The pattern assumes a simple topology, with all message flows running on a 
+single integration node. Information about deploying and managing a pattern 
+instance that uses this simple topology and how you can manage the pattern 
+instance is included in this topic.
+</p>
+<p>
+This topic contains the following sections:
+</p>
+<div>
+    <a href="management.htm#setup">Set up</a>
+</div>
+<div>
+    <a href="management.htm#deployment">Pattern deployment</a>
+</div>
+<div>
+    <a href="management.htm#errors">Monitoring and Error handling</a>
+</div>
+<div class="section">
+    <a name="setup"></a> <h2 class="sectiontitle">Set up</h2> <h4>Queues</h4>
+    <p>
+    You can choose to generate an MQSC script for defining the queues that are 
+    required by the pattern by selecting the
+    <span class="msobjpropval">
+    Generate scripts
+    </span>
+    check box in the
+    <span class="uicontrol">
+    General
+    </span>
+    section of the
+    <span class="uicontrol">
+    Configure Pattern Parameters
+    </span>
+    tab, before you generate the pattern instance. This script, which is called <tt>queues.mqsc</tt>, 
+    is in the root directory of the pattern instance project; it defines basic 
+    queues and topics.
+    </p>
+    <p>
+    You can run the MQSC script by using the following command, where <var>MBQMGR</var> 
+    is the name of the queue manager for your integration node:
+    </p>
+    <pre>runmqsc <var>MBQMGR</var> &lt; queues.mqsc</pre>
+    <p>
+    You can edit this MQSC script to add descriptions for your environment and to 
+    set appropriate queue depths. It is expected that other queues are monitored and 
+    regularly cleared. These queues are created with a default size, but you must 
+    review their use and ensure that the depth is sufficient.
+    </p>
+    <p>
+    You must run the MQSC script before you deploy the pattern instance.
+    </p>
+</div>
+<div class="section">
+    <a name="deployment"></a> <h2 class="sectiontitle">Pattern deployment </h2>
+    <p>
+    Create a new BAR file in the location where you want to store 
+    these resources.
+    </p>
+    <p>
+    The HL7v25P message set must be packaged in its own BAR file:
+    </p>
+    <ol>
+        <li>
+            Select the HL7v25P message set, and build the BAR file.
+        </li>
+        <li>
+            Deploy the BAR file to all integration servers on which you want the pattern, or 
+            parts of the pattern, to run.
+        </li>
+        <li>
+            After the HL7v25P message set is deployed, ensure that all required queues are 
+            defined and that any configurable service files are deployed.
+        </li>
+        <li>
+            Create one or more BAR files that contain the flows that you want to deploy to a 
+            specific integration server. In the simplest case, where everything runs in a 
+            single runtime environment, include the Receiver flow and Processor flows.
+        </li>
+    </ol>
+    <p>
+    </p>
+</div>
+<div class="section">
+    <a name="errors"></a> <h2 class="sectiontitle">Monitoring and Error handling</h2>
+    <p>
+    Error notifications are written to an error queue for all message flows in the 
+    pattern. A queue trace is also output to the location that you defined during 
+    pattern generation. The MQRFH2 header of the error message contains information 
+    indicating where the error occurred. Details about the behavior of each message 
+    flow are specified in this section.
+    </p>
+    <h3>Errors in the Medical Devices flow</h3>
+    <p>
+    The Medical Devices flow is run as a transaction and all output messages are 
+    committed on successful completion of the message flow.
+    </p>
+    <p>
+    If there is an error, the following events occur:
+    </p>
+    <ul>
+        <li>
+            The error is caught and processed by the MedicalDevicesExceptionHandler subflow. 
+            This subflow adds MQMD and MQRFH2 headers to the message and writes the message 
+            to the error queue outside the transaction. The MQRFH2 header contains details 
+            about where the error occurred. The body of the error message contains the 
+            device measurement.
+        </li>
+        <li>
+            An exception is thrown, which rolls back all messages. The rollback also 
+            triggers the output of the exception information to the Event log.
+        </li>
+        <li>
+            The device measurement is discarded when the exception rolls back to the 
+            MedicalDeviceInput node.
+        </li>
+    </ul>
+    <p>
+    The administrator must monitor the error queue and Event log to determine when 
+    messages have not been processed by the pattern instance, and take the necessary 
+    remedial action to resolve the error.
+    </p>
+    <h3>Errors in the Transform and Route flow</h3>
+    <p>
+    A Transform and Route flow is run as a single transaction. On successful 
+    completion of the message flow, all output messages are committed to the 
+    following locations:
+    </p>
+    <ul>
+        <li>
+            The input queue for the Sender flow for each destination
+        </li>
+        <li>
+            The Queue for the canonical message feed
+        </li>
+    </ul>
+    <p>
+    If there is an error, the following events occur:
+    </p>
+    <ul>
+        <li>
+            The error is caught and processed by the TransformAndRouteExceptionHandler 
+            subflow. This subflow adds an MQRFH2 header to the message and writes the 
+            message to the error queue outside the transaction. The MQRFH2 header contains 
+            details about where the error occurred.
+        </li>
+        <li>
+            An exception is thrown, which puts the input message back onto the queue, rolls 
+            back any messages written to queues, and triggers the output of the exception 
+            information to the Event log.
+        </li>
+    </ul>
+    <p>
+    </p>
+    <p>
+    The administrator must check the error queue and Event log to determine what 
+    errors have occurred. Both the error queue and the backout queues contain 
+    information, and after a corrected message is processed this information must be 
+    cleared to prevent the queue from filling.
+    </p>
+    <p>
+    The administrator must configure a backout queue for the input queue.
+    </p>
+    <h3>Errors in the Sender flow</h3>
+    <p>
+    A message is written to the error queue outside the transaction, and the input 
+    message is rolled back to the input queue for the Sender flow.
+    </p>
+    <p>
+    The input queue must be configured with a backout queue.
+    </p>
+    <p>
+    An error can also occur after a message is delivered. This type of error happens 
+    if the destination application cannot process the message and sends a NACK. In 
+    this case, a message is written to the error queue. The administrator must check 
+    the error message and correct the problem at the destination application.
+    </p>
+</div>
+<a href="overview.htm#anchorBack" title="Back">Back to the Healthcare: Medical
+devices to EMR pattern specification</a>
+<p>
+</p>
+</body>
+</html>

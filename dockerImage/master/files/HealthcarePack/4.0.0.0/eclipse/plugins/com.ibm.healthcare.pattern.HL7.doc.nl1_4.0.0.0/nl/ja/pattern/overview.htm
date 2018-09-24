@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> <title>「Healthcare: HL7 to HL7」パターン</title>
+</head>
+<body role="main">
+<h1 class="topictitle1">「Healthcare: HL7 to HL7」パターン</h1>
+<div>
+    <p class="shortdesc"/>
+    <p>
+<span>「Healthcare: HL7 to HL7」</span>パターンは、Health Level Seven International (HL7) v2 メッセージを送信できるアプリケーションを、HL7 メッセージを受信できる 1 つ以上のアプリケーションと統合します。
+それらのアプリケーションは、Minimal Lower Layer Protocol (MLLP) over TCP/IP を使用して HL7 メッセージを送信および受信できる必要があります。
+</p>
+</div>
+<div class="image">
+    <img src="overview.png"
+    alt="「Healthcare: HL7 to HL7」パターンの 3 つの部分を示す図" />
+</div>
+<div>
+	<p><b>注:</b>「Healthcare: HL7 to HL7」パターンは IBM WebSphere Message Broker Connectivity Pack for Healthcare バージョン 7.0 で使用可能になり、このバージョンの IBM Integration Bus Healthcare Pack でも引き続き使用でき、サポートされています。
+ただし、可能な場合は、代わりに「Healthcare: HL7 to HL7 DFDL」パターンを使用することをお勧めします。
+「Healthcare: HL7 to HL7 DFDL」パターンは、MRM および HL7v25P メッセージ・セットの代わりに DFDL メッセージ・モデルを使用します。
+DFDL メッセージ・モデルには、以下の利点があります。
+<ul>
+		<li>DFDL がオープン・スタンダードなフォーマットであるのに対し、MRM および HL7v25P メッセージ・セットは IBM Integration Bus 独自のものです。</li>
+		<li>DFDL エディターは、MRM および HL7v25P メッセージ・セットと比べると、HL7 スキーマに対する拡張機能をより容易に開発およびテストできるツールを提供しています。
+</li>
+		<li>DFDL メッセージ・モデルが HL7 バージョン 2.7、2.6、および 2.5.1 以前をサポートしているのに対し、MRM および HL7v25P メッセージ・セットは HL7 バージョン 2.5.1 以前のみをサポートしています。
+</li>
+	</ul>
+	</p>
+</div>
+<div>
+    <h2>重要</h2>
+    <p>
+パターン・インスタンスをデプロイする前に、HL7 メッセージ・セットを Integration ノードにデプロイする必要があります。
+このメッセージ・セットは、HL7 メッセージがメッセージ・フローによって処理される際に、HL7 メッセージを解析するために使用されます。
+パターンによって生成されるメッセージ・フローを Integration ノードにデプロイするには、その前にメッセージ・セットをデプロイしておく必要があります。
+</p>
+    <p>
+HL7 メッセージ・セットは、<a href="resources.htm" title="パターンのリソース">パターンのリソース</a>のページからワークスペースにインポートできます。
+</p>
+    <p>
+HL7 メッセージ・セットは、ビルドするのに長時間かかり、ワークスペースの動作を著しく低速にします。
+このため、以下のようにすることをお勧めします。
+<ul>
+        <li>
+HL7 メッセージ・セットをワークスペースにインポートします。
+</li>
+        <li>
+HL7 メッセージ・セットを BAR ファイルに追加します。
+</li>
+        <li>
+BAR ファイルを Integration ノードにデプロイします。
+</li>
+        <li>
+HL7 メッセージ・セットと BAR ファイルをワークスペースから削除します。
+</li>
+    </ul>
+    </p>
+    <p>
+メッセージ変換にグラフィカル・マッパーを使用する場合は、HL7 メッセージ・セットをワークスペース内に残しておく必要があります。
+メッセージ・セットのビルドに要する時間を短縮するには、メッセージ・セットから HL7 チャプターを削除します。
+ただし、メッセージ・セットに含まれる <span class="filepath">segments.mxsd</span>、<span class="filepath">fields.mxsd</span> および <span class="filepath">datatypes.mxsd</span> の各メッセージ定義ファイルは、パターンに必要なため、残しておいてください。
+</p>
+</div>
+<div class = "description">
+    <h2>オプション</h2>
+    <p>
+「Healthcare: HL7 to HL7」パターンの受信側フローは、以下のオプションをサポートしています。
+</p>
+    <ul>
+        <li>
+MLLP over TCP/IP を使用して HL7 メッセージを受信する。
+</li>
+        <li>
+メッセージを検証および解析する。
+</li>
+        <li>
+着信メッセージを監査する。
+</li>
+        <li>
+重複したメッセージをチェックし、処理する。
+</li>
+        <li>
+順序付けオプションをサポートする。
+</li>
+        <li>
+各着信メッセージをパターンの外部で処理するため、パブリッシュまたはキューへの送信を行う。
+</li>
+        <li>
+変換および経路指定キューに出力を送信する。
+</li>
+        <li>
+            例外の処理
+        </li>
+    </ul>
+    <p>
+「Healthcare: HL7 to HL7」パターンの TransformAndRoute フローは、以下のオプションをサポートしています。
+</p>
+    <ul>
+        <li>
+Canonical XML フォーマットに変換する。
+</li>
+        <li>
+パターンの外側で処理するために、着信する正規メッセージをパブリッシュするかキューに送信する。
+</li>
+        <li>
+HL7 セグメントに含まれる追加のフィールドについてレポートする。
+</li>
+        <li>
+メッセージを、独立して構成可能な複数の宛先に配布する。
+</li>
+        <li>
+メッセージをフィルタリングして、各宛先に送信する。
+</li>
+        <li>
+セグメントをフィルタリングして、各宛先に組み込む。
+</li>
+        <li>
+非標準で宛先に固有の変更を組み込めるようにするカスタマイズ・ポイント。
+</li>
+        <li>
+HL7 に逆変換し、各宛先の送信側フロー用のキューに出力を送信する。
+</li>
+        <li>
+            例外の処理
+        </li>
+    </ul>
+    <p>
+「Healthcare: HL7 to HL7」パターンの各送信側フローは、以下のオプションをサポートしています。
+</p>
+    <ul>
+        <li>
+この宛先用に変換されたメッセージを読み取る。
+</li>
+        <li>
+変換されたメッセージを妥当性検査する。
+</li>
+        <li>
+順序付けオプションに従ってメッセージが順番に送達されるようにする。
+</li>
+        <li>
+順番どおりに到着しなかったメッセージがあれば通知する。
+</li>
+        <li>
+MLLP over TCP/IP を使用して HL7 メッセージ宛先アプリケーションに送達する。
+</li>
+        <li>
+            例外の処理
+        </li>
+    </ul>
+</div>
+<div class="familylinks">
+    <a name="anchorBack"></a>
+    <div class="section">
+        <h2 class="sectiontitle">詳細情報</h2>
+        <div>
+            <a href="design.htm">パターンの設計</a>
+        </div>
+        <div>
+            <a href="management.htm">パターン・インスタンスの管理</a>
+        </div>
+        <div>
+            <a href="monitoring.htm">パターンのモニター</a>
+        </div>
+        <div>
+            <a href="parameters.htm">パターン・パラメーター</a>
+        </div>
+        <div>
+            <a href="resources.htm" title="パターンのリソース">パターンのリソース</a>
+        </div>
+        <div>
+            <a href="running.htm">パターンの実行</a>
+        </div>
+        <div>
+            <a href="testing.htm">パターンのテスト</a>
+        </div>
+    </div>
+</div>
+<p>
+</p>
+</body>
+</html>

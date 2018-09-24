@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Licensed Materials - Property of IBM
+ 5724-N40, 5724-N41, 5724-N42, 5724-N43, 5724-L77, 5724-L78, 5724-L79, 5724-L80, 5724-L81, 5724-L82
+ © Copyright IBM Corporation 2007, 2009.  All Rights Reserved.
+ US Government Users Restricted Rights - Use, duplication or disclosure
+ restricted by GSA ADP Schedule Contract with IBM Corp. 
+-->
+
+<?eclipse version="3.0"?>
+<plugin>
+
+	<extension
+		point="com.ibm.j2ca.wmb.migration.core.migrationParticipant">
+		<migrationParticipant
+			class="com.ibm.j2ca.wmb.migration.ModuleMigrationParticipant"
+            id="ModuleMigrationParticipant"
+            name="%ModuleMigrationParticipantName">
+		</migrationParticipant>
+	</extension>
+
+	<extension
+		point="com.ibm.j2ca.wmb.migration.core.migrationParticipant">
+		<migrationParticipant
+			class="com.ibm.j2ca.wmb.migration.VersionUpdateParticipant"
+            id="VersionUpdateParticipant"
+            name="%VersionUpdateParticipantName">
+		</migrationParticipant>
+	</extension>
+
+	<extension
+		id="com.ibm.j2ca.wmb.migration.validation.validators.ConnectorAdapterVersionValidator"
+		name="%connectorValidator"
+		point="org.eclipse.wst.validation.validator">
+		<validator>
+			<enablement>
+				<adapt type="org.eclipse.core.resources.IProject">
+					<test
+						forcePluginActivation="true"						
+            			property="org.eclipse.wst.common.project.facet.core.projectFacet"
+           				value="jst.connector:[1.5"/>
+      			</adapt>
+			</enablement>
+			<helper class="com.ibm.j2ca.wmb.migration.validation.ProjectValidatorHelper" />
+			<run class="com.ibm.j2ca.wmb.migration.validation.validators.ConnectorAdapterVersionValidator" />
+			
+			<markerId markerIdValue="validation.MigrationValidationMarker" />
+		</validator>
+	</extension>
+	
+	<extension
+		id="validation.MigrationValidationMarker"
+		name="%migrationValidationMarker"
+		point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.core.resources.problemmarker" />
+		<persistent value="true" />
+		<attribute name="id"/>
+		<attribute name="resourceBundle"/>
+		<attribute name="quickFixClass"/>
+	</extension>
+	
+	<extension 
+		point="org.eclipse.ui.ide.markerHelp">
+		<markerHelp
+			markerType="com.ibm.j2ca.wmb.migration.base.validation.MigrationValidationMarker"
+			helpContextId="com.ibm.j2ca.wmb.migration.CWPAD0001">
+			<attribute name="id" value="CWPAD0001"/>
+		</markerHelp>
+	</extension>
+	
+	<extension 
+		point="org.eclipse.ui.ide.markerHelp">
+		<markerHelp
+			markerType="com.ibm.j2ca.wmb.migration.base.validation.MigrationValidationMarker"
+			helpContextId="com.ibm.j2ca.wmb.migration.CWPAD0002">
+			<attribute name="id" value="CWPAD0002"/>
+		</markerHelp>
+	</extension>
+	
+	<extension 
+		point="org.eclipse.ui.ide.markerHelp">
+		<markerHelp
+			markerType="com.ibm.j2ca.wmb.migration.base.validation.MigrationValidationMarker"
+			helpContextId="com.ibm.j2ca.wmb.migration.CWPAD0003">
+			<attribute name="id" value="CWPAD0003"/>
+		</markerHelp>
+	</extension>
+	
+	<extension 
+		point="org.eclipse.ui.ide.markerHelp">
+		<markerHelp
+			markerType="com.ibm.j2ca.wmb.migration.base.validation.MigrationValidationMarker"
+			helpContextId="com.ibm.j2ca.wmb.migration.CWPAD0004">
+			<attribute name="id" value="CWPAD0004"/>
+		</markerHelp>
+	</extension>
+
+	<extension 
+		point="org.eclipse.ui.ide.markerHelp">
+		<markerHelp
+			markerType="com.ibm.j2ca.wmb.migration.base.validation.MigrationValidationMarker"
+			helpContextId="com.ibm.j2ca.wmb.migration.CWPAD0005">
+			<attribute name="id" value="CWPAD0005"/>
+		</markerHelp>
+	</extension>
+
+	<extension
+		id="AdapterArtifactVersionValidationCommand"
+		name="%moduleValidator"
+		point="com.ibm.wbit.command.framework.command">
+		<command class="com.ibm.j2ca.wmb.migration.validation.validators.command.AdapterArtifactVersionValidationCommand">
+			<validator sourceID="CWYAM">true</validator>
+			<ignoreGeneratedResources>true</ignoreGeneratedResources>
+			<supportedFileTypes>import,export</supportedFileTypes>
+			<generateDeployCode>false</generateDeployCode>
+			<generateAuthoringCode>false</generateAuthoringCode>
+		</command>
+	</extension>
+	
+	<extension
+		id="com.ibm.j2ca.wmb.migration.validation.validators.ModuleAdapterVersionValidator"
+		name="%moduleValidator"
+		point="org.eclipse.wst.validation.validator">
+		<validator>
+			<projectNature id="com.ibm.wbit.project.generalmodulenature" />
+			<helper class="com.ibm.j2ca.wmb.migration.validation.ProjectValidatorHelper" />
+			<run class="com.ibm.j2ca.wmb.migration.validation.validators.ModuleAdapterVersionValidator" />
+			<markerId markerIdValue="validation.MigrationValidationMarker" />
+		</validator>
+	</extension>
+   
+    <extension
+       point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            id="com.ibm.j2ca.wmb.migration.validation.MenuEnableTester.connectorMenuEnable"
+            type="org.eclipse.core.resources.IProject"
+            namespace="com.ibm.j2ca.wmb.migration.validation"
+            properties="connectorMenuEnable"
+            class="com.ibm.j2ca.wmb.migration.validation.MenuEnableTester">        
+      </propertyTester>      
+ 	</extension>
+   
+    <extension
+		point="org.eclipse.ui.popupMenus">
+		<objectContribution
+			objectClass="org.eclipse.core.resources.IProject"
+            adaptable="true"
+            id="com.ibm.j2ca.wmb.migration.migrate_module">
+			<menu
+				label="%updateSubmenu.label"
+				path="additions"
+				id="ModuleUpdateMenu">
+				<separator name="submenu"/>					
+			</menu>
+			<action
+				enablesFor="1"
+				label="%migrateAction.label"
+				class="com.ibm.j2ca.wmb.migration.internal.ui.MigrateAction"
+				menubarPath="submenu"
+				id="com.ibm.j2ca.wmb.migration.migrateAction"/>
+				<enablement>
+					<test forcePluginActivation="true" property="com.ibm.j2ca.wmb.migration.validation.moduleMenuEnable"/>
+				</enablement>
+				<visibility>
+				<objectState
+					name="nature"
+					value="com.ibm.etools.msg.validation.msetnature">
+				</objectState>
+			</visibility>
+		</objectContribution>
+	</extension>
+	
+ 	<extension
+       point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            id="com.ibm.j2ca.wmb.migration.validation.MenuEnableTester.moduleMenuEnable"
+            type="org.eclipse.core.resources.IProject"
+            namespace="com.ibm.j2ca.wmb.migration.validation"
+            properties="moduleMenuEnable"
+            class="com.ibm.j2ca.wmb.migration.validation.MenuEnableTester">        
+      </propertyTester>      
+ 	</extension>
+	
+	<extension point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator
+			class="com.ibm.j2ca.wmb.migration.validation.quickfix.MigrationQuickFixer"
+   			markerType="com.ibm.j2ca.wmb.migration.base.validation.MigrationValidationMarker" />
+	</extension>
+	
+	<extension
+		point="org.eclipse.help.contexts">
+		<contexts file="help_contexts.xml"/>
+	</extension>
+	
+	<extension point="org.eclipse.ui.preferencePages">
+ 		<page
+         category="com.ibm.etools.mft.flow.preference.broker"
+         class="com.ibm.j2ca.wmb.migration.internal.ui.EnableWBIAdapterMigrationPreferencePage"
+         id="WBIAdapterMigrationPreferencePage"
+         name="WBI Adapter Migration">
+   		</page>
+   	
+   	</extension> 
+</plugin>

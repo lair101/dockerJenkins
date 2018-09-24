@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ibm.lpex.doc"
+      label="LPEX Editor Documentation"
+      version="4.2.0.v20130425_2320"
+      provider-name="IBM">
+
+
+   <license>
+      Use of this feature is subject to the same terms and conditions which govern the use of the Product which included this feature.
+   </license>
+
+   <plugin
+         id="com.ibm.lpex.doc.isv"
+         download-size="0"
+         install-size="0"
+         version="4.2.0.v20130425_2320"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.lpex.doc.user"
+         download-size="0"
+         install-size="0"
+         version="4.2.0.v20130320_1827"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<contexts>
+	<context id="ComIbmTCPIPServerInput">
+		<description><b>TCPIPServerInput node</b>
+Use the TCPIPServerInput node to create a server connection to a raw TCPIP socket, and to receive data over that connection.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm" label="TCPIPServerInput node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac00330_.htm" label="Deciding which nodes to use"/>			
+    </context>
+        	
+  	<context id="ComIbmTCPIPServerInput_properties">
+		<description><b>Properties navigator</b>
+This displays the node properties. Configure the node by selecting the properties and setting their values. Mandatory properties are marked with an asterisk.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm" label="TCPIPServerInput node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm#ac67330_cfg" label="TCPIPServerInput node - Configuring the TCPIPServerInput node"/>		
+    </context>
+        	
+  	<context id="ComIbmTCPIPServerInput_description">
+		<description><b>Description page</b>
+If you want to describe the purpose of the node in the message flow, use these fields to enter a short description, a long description, or both</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm" label="TCPIPServerInput node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm#ac67330_cfg" label="TCPIPServerInput node - Configuring the TCPIPServerInput node"/>
+    </context>
+        	
+  	<context id="ComIbmTCPIPServerInput_basic">
+		<description><b>Basic page</b>
+Enter the host name, port number and timeout information for the TCPIPServerInput node.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm" label="TCPIPServerInput node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm#ac67330_cfg" label="TCPIPServerInput node - Configuring the TCPIPServerInput node"/>
+    </context>
+      	  
+  	<context id="ComIbmTCPIPServerInput_advanced">
+		<description><b>Advanced page</b>
+Enter advanced configuration information for the TCPIPServerInput node: for example, whether the TCP/IP connection is closed after a record is received.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm" label="TCPIPServerInput node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm#ac67330_cfg" label="TCPIPServerInput node - Configuring the TCPIPServerInput node"/>
+    </context>
+    
+    <context id="ComIbmTCPIPServerInput_inboundMessageParsing">
+		<description><b>Input Message Parsing page</b>
+Set values for the properties that the node uses to determine how to parse the incoming message.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm" label="TCPIPServerInput node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm#ac67330_cfg" label="TCPIPServerInput node - Configuring the TCPIPServerInput node"/>
+    </context>
+        	
+    <context id="ComIbmTCPIPServerInput_parserOptions">
+		<description><b>Parsing Options page</b>
+Edit the timing properties on this page to control when and how messages are parsed and validated. Select one of the XMLNSC options.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm" label="TCPIPServerInput node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm#ac67330_cfg" label="TCPIPServerInput node - Configuring the TCPIPServerInput node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac21000_.htm" label="Specifying opaque elements for the XMLNSC parser"/>
+    </context>
+        
+    <context id="ComIbmTCPIPServerInput_recordsAndElements">
+		<description><b>Records and Elements page</b>
+Specify how and to what extent you want your TCPIP records and elements to be processed.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm" label="TCPIPServerInput node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm#ac67330_cfg" label="TCPIPServerInput node - Configuring the TCPIPServerInput node"/>
+    </context>
+        	
+    <context id="ComIbmTCPIPServerInput_retry">
+		<description><b>Retry page</b>
+Choose how retry processing is to be performed when a flow fails.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm" label="TCPIPServerInput node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm#ac67330_cfg" label="TCPIPServerInput node - Configuring the TCPIPServerInput node"/>
+    </context> 
+        	        	
+    <context id="ComIbmTCPIPServerInput_validation">
+		<description><b>Validation page</b>
+Set these properties if you want the MRM parser to validate the body of messages using the dictionary generated from the message set, and choose the failure action to be taken.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm" label="TCPIPServerInput node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm#ac67330_cfg" label="TCPIPServerInput node - Configuring the TCPIPServerInput node"/>
+    </context>
+        	
+	<context id="ComIbmTCPIPServerInput_transactions">
+		<description><b>Transactions page</b>
+Set the transaction mode to say whether the message is to be received under syncpoint. The default is Yes.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm" label="TCPIPServerInput node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm#ac67330_cfg" label="TCPIPServerInput node - Configuring the TCPIPServerInput node"/>
+    </context>
+        	
+    <context id="ComIbmTCPIPServerInput_instances">
+		<description><b>Instances page</b>
+Select the pool from which additional instances are obtained; choose either the pool associated with the message flow or the pool associated with the node itself. In the latter case, set the number of additional instances to be given.</description>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm" label="TCPIPServerInput node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac67330_.htm#ac67330_cfg" label="TCPIPServerInput node - Configuring the TCPIPServerInput node"/>
+        <topic href="../com.ibm.etools.mft.doc/ac09055_.htm#ac09055_cfg" label="Configurable message flow properties - Additional Instances "/>
+    </context>
+</contexts>

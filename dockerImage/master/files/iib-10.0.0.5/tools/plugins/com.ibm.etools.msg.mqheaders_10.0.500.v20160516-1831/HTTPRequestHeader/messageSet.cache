@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MRMessageSet id="KQFH6GS002001" name="HTTPRequestHeader" parser="HTTPRequestHeader">
+  <MRMsgCollection
+    href="platform:/plugin/com.ibm.etools.msg.mqheaders/HTTPRequestHeader/HTTPRequestHeader.mxsd"
+    prefix="" targetNamespace="">
+    <message
+      href="platform:/plugin/com.ibm.etools.msg.mqheaders/HTTPRequestHeader/HTTPRequestHeader.mxsd#/0/HTTPRequestHeader;XSDElementDeclaration$MRMessage" name="HTTPRequestHeader"/>
+    <element
+      href="platform:/plugin/com.ibm.etools.msg.mqheaders/HTTPRequestHeader/HTTPRequestHeader.mxsd#/0/HTTPRequestHeader;XSDElementDeclaration"
+      name="HTTPRequestHeader" type="mset://HTTPRequestHeader#/-/complexType{}HTTPRequestHeader_type"/>
+    <complexType
+      baseType="mset://HTTPRequestHeader#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType"
+      href="platform:/plugin/com.ibm.etools.msg.mqheaders/HTTPRequestHeader/HTTPRequestHeader.mxsd#/0/HTTPRequestHeader_type;XSDComplexTypeDefinition" name="HTTPRequestHeader_type"/>
+  </MRMsgCollection>
+</MRMessageSet>

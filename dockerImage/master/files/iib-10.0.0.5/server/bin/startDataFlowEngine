@@ -1,0 +1,117 @@
+#!/bin/bash
+##-----------------------------------------------------------------------------
+##
+##
+##  Licensed Materials - Property of IBM;
+##  5724-A82,5765-E05 (c) Copyright IBM Corp. 2010
+##  All Rights Reserved;
+##  US Government Users Restricted Rights - use,
+##  duplication or disclosure restricted by GSA
+##  ADP Schedule Contract with IBM Corp.;
+##
+## Version  %Z% %I% %W% %E% %U% [%H% %T%]
+##
+##
+##-----------------------------------------------------------------------------
+
+# Check to see if the environment has been set. If not, attempt to set it.
+if [ -z "${MQSI_FILEPATH}" -o -z "${MQSI_REGISTRY}" ]
+then
+  path=$(dirname $0)  
+  if [ -r "${path}/mqsiprofile" ]
+  then
+    . ${path}/mqsiprofile > /dev/null
+  fi
+fi
+
+# Set required variables into an EG's environment and attempt to run it
+# Check for and read any execution group level profiles. Then start the DataFlowEngine process.
+
+# Dont do anything if no arguments are given
+if [[ $# != 0 ]]
+then
+  # $1 is the broker name, $2 is the eguuid and $3 is the eg label.
+  # If there is a profiles directory for the EG for this broker run all scripts in it
+
+  # Lets check if this is a HA Broker or not
+  if [ -a "$MQSI_REGISTRY/registry/${1}/HASharedWorkPath" ]
+  then
+    path=`cat $MQSI_REGISTRY/registry/${1}/HASharedWorkPath`
+  else
+    # Assume broker was not created using the -w workpath flag
+    path=$MQSI_REGISTRY
+    # if its not HA lets check if we have a work path enabled broker.
+    if [ -a "$MQSI_REGISTRY/registry/${1}/CurrentVersion/WorkPath" ]
+    then
+      potential_path=`cat $MQSI_REGISTRY/registry/${1}/CurrentVersion/WorkPath`
+      if [ -d "${potential_path}/config/${1}/${3}/profiles" ]
+      then
+        path=${potential_path}
+      fi
+    fi
+  fi
+
+  # If user has created any profiles for this EG on this broker then run them
+  if [ -d "$path/config/${1}/${3}/profiles" ]
+  then
+    for SCRIPT in $path/config/${1}/"${3}"/profiles/*.sh
+    do
+      if [ -r "${SCRIPT}" ]
+      then
+        thedate=`date`
+        echo "$thedate - Sourcing Execution Group profile script $SCRIPT for BROKER $1 EG $3" 1>>${MQSI_REGISTRY}/common/log/${1}."${3}".profilelog 2>&1
+        . "${SCRIPT}" 1>>${MQSI_REGISTRY}/common/log/${1}."${3}".profilelog 2>&1
+      else
+        thedate=`date`
+        echo "$thedate - The profile script $SCRIPT for BROKER $1 EG $3 does not exist or cannot be accessed. Any environment customisation in the file $SCRIPT will NOT be applied." 1>>${MQSI_REGISTRY}/common/log/${1}."${3}".profilelog 2>&1
+      fi
+    done
+    # print out the environment we will be using now all profiles have been sourced.
+    echo "------------------------------------------------------------------" 1>>${MQSI_REGISTRY}/common/log/${1}."${3}".profilelog 2>&1
+    thedate=`date`
+    echo "$thedate - The environment to be use for Broker $1 execution group $3 is:" 1>>${MQSI_REGISTRY}/common/log/${1}."${3}".profilelog 2>&1
+    env 1>>${MQSI_REGISTRY}/common/log/${1}."${3}".profilelog 2>&1
+    echo "------------------------------------------------------------------" 1>>${MQSI_REGISTRY}/common/log/${1}."${3}".profilelog 2>&1
+  fi
+
+  # Set up the environment for any installed extensions
+  if [ -d "${path}/extensions" ]
+  then
+    for EXTENSION in ${path}/extensions/*
+    do
+      if [ ! -d "${EXTENSION}" ]
+      then
+        thedate=`date`
+        echo "${thedate} - ignoring non-directory extension ${EXTENSION}" >>${MQSI_REGISTRY}/common/log/${1}."${3}".profilelog 2>&1
+        continue
+      fi
+      if [ "${EXTENSION}" = ".metadata" ]
+      then
+        thedate=`date`
+        echo "${thedate} - ignoring .metadata directory" >>${MQSI_REGISTRY}/common/log/${1}."${3}".profilelog 2>&1
+        continue
+      fi
+      if [ -d "${EXTENSION}/lil" ]
+      then
+        thedate=`date`
+        echo "${thedate} - adding extension ${EXTENSION} to MQSI_LILPATH" >>${MQSI_REGISTRY}/common/log/${1}."${3}".profilelog 2>&1
+        MQSI_LILPATH=${EXTENSION}/lil:${MQSI_LILPATH}
+        export MQSI_LILPATH
+      fi
+    done
+  fi
+
+  # Set up the environment for accessing java-script modules
+  if [ -n "$MQSI_NODE_PATH" ]
+  then
+     if [ -n "$NODE_PATH" ]
+     then
+       NODE_PATH=${MQSI_NODE_PATH}:${NODE_PATH}
+     else
+       NODE_PATH=${MQSI_NODE_PATH}
+     fi
+     export NODE_PATH
+  fi
+fi
+
+exec DataFlowEngine "$@"

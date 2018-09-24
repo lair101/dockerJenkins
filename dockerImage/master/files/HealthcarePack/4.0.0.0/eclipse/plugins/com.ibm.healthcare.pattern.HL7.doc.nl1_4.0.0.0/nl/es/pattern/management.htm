@@ -1,0 +1,645 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>Gestión de una instancia de patrón Servicio sanitario:
+de HL7 a HL7</title>
+</head>
+<body role="main">
+<a name="links"></a> <h1 class="topictitle1">Gestión de una instancia
+de patrón Servicio sanitario: de HL7 a HL7</h1>
+<p class="shortdesc">
+Puede utilizar parámetros de patrón para generar una instancia de
+patrón con los valores establecidos para su propia instancia de patrón. No obstante, también debe desplegar y gestionar la instancia de
+patrón y puede que necesite realizar cambios en contextos operativos
+específicos.
+</p>
+<p>
+El patrón asume una topología simple, con todos los flujos de
+mensajes ejecutándose en un solo nodo de integración. En este tema se
+incluye información sobre cómo desplegar y gestionar una instancia de
+patrón que utilice esta topología simple y sobre cómo puede gestionar
+la instancia de patrón.
+</p>
+<p>
+El patrón incluye algunos puntos de personalización específicos, que
+puede utilizar para añadir sus propios cambios.
+</p>
+<p>
+Este tema contiene las secciones siguientes:
+</p>
+<div>
+    <a href="management.htm#setup">Configuración</a>
+</div>
+<div>
+    <a href="management.htm#messageset">Preparación del conjunto de mensajes HL7v25P</a>
+</div>
+<div>
+    <a href="management.htm#customize">Personalización</a>
+</div>
+<div>
+    <a href="management.htm#deployment">Despliegue del patrón</a>
+</div>
+<div>
+    <a href="management.htm#errors">Supervisión y manejo de
+errores</a>
+</div>
+<div class="section">
+    <a name="setup"></a> <h2 class="sectiontitle">Configuración</h2> <h4>Colas</h4>
+    <p>
+    Puede elegir generar un script MQSC para definir las colas que
+requiere el patrón seleccionando el recuadro
+<span class="msobjpropval">Generar scripts</span> en la sección
+<span class="uicontrol">General</span> de la pestaña
+<span class="uicontrol"> Configurar parámetros de patrón</span>,
+antes de generar la instancia de patrón. Este script, que se llama
+<tt>queues.mqsc</tt>, se encuentra en el directorio raíz del proyecto
+de instancia de patrón; define las colas y los temas básicos. 
+    </p>
+    <p>
+    Puede ejecutar el script MQSC utilizando el mandato siguiente,
+donde <var>MBQMGR</var>
+    es el nombre del gestor de colas del nodo de integración:
+    </p>
+    <pre>runmqsc <var>MBQMGR</var> &lt; queues.mqsc</pre>
+    <p>
+    Puede editar este script MQSC para añadir descripciones del entorno y
+para establecer las profundidades de cola adecuadas. 
+    </p>
+    <p>
+    Concretamente, debe comprobar la profundidad de la cola,
+flowprefix.DUPID, que contiene el almacén de datos de duplicados. En esta cola se almacenan todos los datos que se utilizan para la
+comprobación de duplicados. Si la comprobación de duplicados está
+habilitada, la profundidad necesaria para esta cola se calcula
+multiplicando la
+velocidad máxima del receptor de mensaje por la duración del valor de
+caducidad. Por ejemplo, si la velocidad máxima es de 10 mensajes por
+segundo y el valor de caducidad es 24 horas (86.400 segundos),
+la profundidad necesaria es <span class="msobjpropval">
+    864000
+    </span>
+    .
+    </p>
+    <p>
+    Se supone que las otras colas se supervisan y se borran con
+regularidad. Estas colas se crean con un tamaño predeterminado, pero
+debe revisar cómo se usan y asegurarse de que tienen profundidad
+suficiente.
+    </p>
+    <p>
+    Debe ejecutar el script MQSC antes de desplegar la instancia de
+patrón.
+    </p>
+    <h4>Servicio configurable</h4>
+    <p>
+    Si ha activado la secuenciación y ha seleccionado la opción de
+separar las colas de secuencia, el patrón genera un archivo de
+servicio configurable. Este archivo se crea cuando genera una
+instancia del patrón en el directorio raíz del proyecto contenedor
+que contiene los flujos de mensajes generados. Este servicio
+configurable proporciona información a los nodos Resequence sobre
+dónde almacenar la información de secuenciación. El servicio
+configurable debe desplegarse en el nodo de integración antes de
+desplegar el patrón.
+    </p>
+</div>
+<div class="section">
+    <a name="messageset"></a> <h2 class="sectiontitle">Preparación
+del conjunto de mensajes HL7v25P</h2>
+    <p>
+    Descargue el conjunto de mensajes HL7v25P, consulte
+<a href = "resources.htm#resources">Recursos para el patrón<span>Servicio sanitario: HL7 a HL7</span></a>.
+    </p>
+    <p>
+    Este conjunto de mensajes cumple los estándares establecidos en
+la norma HL7 v2.5. El mensaje que utiliza el patrón es el mensaje HL7
+del archivo de definición de mensaje  <span class="msobjpropval">
+    segments.mxsd
+    </span>. Si las aplicaciones de origen o de destino hacen
+modificaciones respecto a la norma, estas modificaciones se deben
+reflejar en el modelo de mensaje. Las modificaciones más probables
+son:
+    </p>
+    <ul>
+        <li>
+            Modificación del valor obligatorio de los campos
+definidos en el modelo de mensaje cambiando los valores de parámetro
+            <span class="msobjprop">
+            Mín apariciones
+            </span>
+            o
+            <span class="msobjprop">
+            Máx apariciones
+            </span>.
+        </li>
+        <li>
+            Creación de los segmentos Z que utilicen las aplicaciones
+de origen o de destino. 
+            Datos específicos de aplicación de modelo de segmentos Z
+que no están definidos en el conjunto de mensajes HL7v25P
+        </li>
+        <li>
+            Modificaciones o adiciones sobre la norma específicas de
+proveedor
+        </li>
+    </ul>
+    <b>Creación de un nuevo segmento Z</b>
+    <p>
+    Los segmentos Z los utilizan las aplicaciones para
+enviar o recibir datos definidos fuera de la especificación HL7. Puede
+crear modelos de segmentos Z y utilizarlos en su implementación:
+    </p>
+    <ol>
+        <li>
+            Crear un archivo de definición de mensajes nuevo. Este archivo
+conserva el código específico de la aplicación separado del
+conjunto de mensajes HL7v25P principal. Pulse con el botón
+derecho del ratón sobre el conjunto de mensajes HL7v25P,
+seleccione <span class="uicontrol">
+            Nuevo &gt; Archivo de definición de mensaje</span>
+            .
+        </li>
+        <li>
+            Defina la propiedad
+            <span class="msobjprop">
+            Espacio de nombres de destino de destino
+            </span>
+            de este archivo de definición de mensaje como
+<span class="msobjpropval">
+            urn:hl7-org:v2xml
+            </span>
+        </li>
+        <li>
+            Abra el nuevo archivo de definición de mensaje y
+seleccione la pestaña <span class="uicontrol"> Propiedades
+            </span>. Añada el archivo
+            <span class="filepath">
+            datatypes.mxsd
+            </span>.
+        </li>
+        <li>
+            En el nuevo archivo
+            <span class="filepath">
+            .mxsd
+            </span>, cree un nuevo elemento global que tenga el mismo
+nombre que la definición de segmento Z que proporciona la aplicación
+de origen o de destino.
+        </li>
+        <li>
+            Cambie el
+            <span class="msobjprop">
+            Tipo
+            </span>
+            de este elemento a
+            <span class="msobjpropval">
+            Nuevo complejo local
+            </span>
+            .
+        </li>
+        <li>
+            Cree campos individuales como elementos locales. Si el segmento Z
+contiene campos que contienen campos hijo, seleccione un
+            <span class="msobjprop">
+            Tipo
+            </span>
+            adecuado para el elemento en el menú pulsando <span class="uicontrol">
+            Más
+            </span>
+            . Estos campos se definen en el archivo  <span class="filepath">
+            fields.mxsd
+            </span>
+            . Asegúrese de que la estructura resultante coincida
+con la especificación del proveedor de origen o de destino. 
+        </li>
+        <li>
+            Añada el nuevo elemento al mensaje HL7:
+            <ol>
+                <li>
+                    Abra el archivo de definición de mensaje
+                    <span class="filepath">
+                    segments.mxsd
+                    </span>, seleccione la pestaña
+<span class="uicontrol">
+                    Propiedades
+                    </span>, incluya el archivo de definición de
+mensaje que ha creado y guarde el cambio.
+                </li>
+                <li>
+                    Para el elemento nuevo que ha creado, añada una
+referencia de elemento al mensaje HL7:
+                    <ol>
+                        <li>
+                            En el archivo de definición de mensaje
+                            <span class="filepath">
+                            segments.mxsd
+                            </span>, expanda el mensaje HL7.
+                        </li>
+                        <li>
+                            Pulse con el botón derecho del
+ratón sobre
+                            <span class="uicontrol">
+                            Elección
+                            </span>
+                            y seleccione
+                            <span class="uicontrol">
+                            Añadir referencia de elemento
+                            </span>
+                            .
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    Abra las propiedades del elemento global que ha
+creado y defina la etiqueta de forma que sea igual que el nombre del
+elemento.
+                </li>
+            </ol>
+        </li>
+        <li>
+            Para cada elemento del nuevo segmento Z, abra las
+propiedades y defina el espacio de nombres como
+            <span class="msobjpropval">
+            urn:hl7-org:v2xml
+            </span>
+        </li>
+    </ol>
+    <b>Adiciones específicas de proveedor al estándar HL7</b>
+    <p>
+    Las implementaciones HL7 pueden realizar adiciones a los segmentos
+estándar, tal como están definidos por la HL7, añadiendo campos
+adicionales al final de un segmento. Estas adiciones están modeladas
+genéricamente por mediante el campo Restos, al final de cada
+definición de segmento. 
+    No obstante, puede añadir los campos
+adicionales que requieran los proveedores antes del campo Restos.
+    </p>
+</div>
+<div class="section">
+    <a name="customize"></a> <h2 class="sectiontitle">Personalización</h2>
+    <p>
+    Hay tres puntos de personalización disponibles para los
+usuarios del patrón, pero también hay disponibles otros puntos
+adicionales de personalización.
+    </p>
+    <h4>Personalización del origen</h4>
+    <p>
+    El flujo de mensajes principal TransformAndRoute llama al
+subflujo SubCustomize antes de distribuir el mensaje a distintos
+destinos y antes de crear la forma canónica del mensaje, si es necesario.
+    </p>
+    <p>
+    El subflujo predeterminado SubCustomize no tiene ningún efecto
+sobre este mensaje, pero puede utilizar este punto de
+personalización para estandarizar datos procedentes del origen para
+que cumplan sus requisitos. Por ejemplo, puede que tenga un estándar
+para fechas con el formato <span class="msobjpropval">
+    AAAA-MM-DD
+    </span>
+    , pero que el origen utilice otro formato. Puede utilizar este
+punto de personalización para modificar los datos de origen. Además,
+puede optar por incluir datos en este punto disponibles de otras
+fuentes, como por ejemplo bases de datos.
+    </p>
+    <h4>Personalización del destino</h4>
+    <p>
+    Para cada destino hay un subflujo de personalización
+predeterminado (denominado Dest<var>n</var>,
+    donde <var>n</var> es el número del destino) que no tiene
+ningún efecto sobre el mensaje, pero puede utilizar este subflujo
+para construir un mensaje de salida que coincida con las
+especificaciones que requiera ese destino. Por ejemplo, el destino
+puede requerir los cambios siguientes :
+    </p>
+    <ul>
+        <li>
+            Datos adicionales que se necesitan en los segmentos Z
+        </li>
+        <li>
+            Modificación de datos del origen; por ejemplo,
+formateo de la fecha de nacimiento de un paciente en base a los
+requisitos del formato de la fecha de destino
+        </li>
+        <li>
+            Supresión de datos no necesarios o no admitidos por el
+destino
+        </li>
+    </ul>
+    <h4>Uso de canales de información de origen canónicos</h4>
+    <p>
+    Si ha elegido generar un canal de información de origen o un
+canal de información canónico, cada mensaje procesado por el flujo Receiver genera una copia del mensaje origen o del mensaje después de
+la canonicalización. Estos mensajes se graban en una cola de
+WebSphere MQ o se publican según lo determinado por los parámetros de
+patrón.
+    </p>
+    <p>
+    Puede que desee enviar mensajes a destinos que no son compatibles
+con el patrón, por ejemplo, a un depósito de datos, a un destino no
+HL7 o a un destino que utiliza un mecanismo de transporte  diferente. Puede enviar mensajes a destinos que no sean compatibles con el patrón
+creando soluciones de integración para procesar los mensajes de los canales de información de origen o canónicos.
+    </p>
+</div>
+<div class="section">
+    <a name="deployment"></a> <h2 class="sectiontitle">Despliegue del
+patrón </h2>
+    <p>
+    Cree un nuevo archivo BAR en la ubicación donde desee almacenar estos recursos.
+    </p>
+    <p>
+    El mensaje HL7v25P debe estar empaquetado en su propio archivo
+BAR:
+    </p>
+    <ol>
+        <li>
+            Seleccione el conjunto de mensajes HL7v25P y cree el
+archivo BAR.
+        </li>
+        <li>
+            Despliegue el archivo BAR en todos los servidores de
+integración en los que desee que se ejecute el patrón o partes del
+mismo.
+        </li>
+        <li>
+            Cuando el conjunto de mensajes HL7v25P esté desplegado,
+asegúrese de que todas las colas necesarias estén definidas y de que
+todos los archivos de servicios configurables estén desplegados.
+        </li>
+        <li>
+            Cree uno o más archivos BAR que contengan los flujos que
+desea desplegar en un servidor de integración específico. En el caso
+más sencillo, donde todo se ejecuta en un único entorno de ejecución,
+incluya el flujo Receiver, el flujo TransformAndRoute y todos los
+flujos de destino.
+        </li>
+        <li>
+            Para obtener un mejor rendimiento una ves se hayan creado
+los flujos, es posible que desee aumentar el valor de <span class="msobjprop">
+            Instancias adicionales</span>
+            para cualquier flujo que no tenga requisitos de secuenciación:
+            <ol>
+                <li>
+                    Pulse en el separador
+                    <span class="uicontrol">
+                    Gestionar
+                    </span>.
+                </li>
+                <li>
+                    Seleccione las propiedades de los flujos que
+desee configurar y defina los valores requeridos según su
+implementación.
+                </li>
+            </ol>
+        </li>
+    </ol>
+    <p>
+    </p>
+</div>
+<div class="section">
+    <a name="errors"></a> <h2 class="sectiontitle">Supervisión y
+manejo de errores</h2>
+    <p>
+    Las notificación de error de todos los flujos de mensajes del
+patrón se graban en una cola de errores. También se genera un rastreo
+de cola en la ubicación que haya definido durante la generación del
+patrón. LA cabecera MQRFH2 del mensaje de error contiene información
+que indica dónde se ha producido el error. En esta sección se
+especifica también información detallada sobre el comportamiento de
+cada uno de los flujos de mensajes. 
+    </p>
+    <h3>Errores en el flujo Receiver</h3>
+    <p>
+    El flujo Receiver se ejecuta como una transacción y
+todos los mensajes de salida están comprometidos cuando el flujo de
+mensajes finaliza satisfactoriamente. Si se requieren acuses de
+recibo, la última acción del flujo Receiver es enviar el acuse de
+recibo (ACK). Cuando se ha completado satisfactoriamente el proceso
+del acuse de recibo, el flujo finaliza y se envían los mensajes.
+    </p>
+    <p>
+    Para cada acción del flujo Receiver:
+    </p>
+    <ul>
+        <li>
+            El parámetro
+<span class="msobjprop">FlowMilestoneReached</span> se define antes de iniciar la acción; este parámetro
+indica la parte del flujo donde se ha producido el error.
+        </li>
+        <li>
+            El mensaje ErrorCondition da detalles del error.
+        </li>
+    </ul>
+    <p>
+    Si hay un error, se producen los siguientes sucesos:
+    </p>
+    <ul>
+        <li>
+            El error es captado y procesado por el subflujo
+ReceiverExceptionHandler. Este subflujo añade cabeceras MQMD y MQRFH2 al mensaje y
+lo escribe en la cola de salida fuera de la transacción. La cabecera
+MQRFH2 contiene información detallada sobre dónde se ha producido el
+error.
+            <p>
+            Si es necesario, se genera una respuesta de acuse de
+recibo negativa (NACK) y se envía a la aplicación de origen.
+            </p>
+        </li>
+        <li>
+            Se genera una excepción, lo que retrotrae todos los
+mensajes y, si se requiere secuenciación basada en la llegada, se
+asigna un  número de secuencia. La retrotracción también desencadena
+la salida de la información de la excepción al registro de sucesos.
+        </li>
+        <li>
+            El flujo se comporta como si no se hubiera recibido
+ningún mensaje y se reenvía un mensaje corregido o bien se procesa la
+información en la aplicación de destino.
+        </li>
+        <li>
+            El NACK que se envía a la aplicación receptora indica que el mensaje no se ha procesado.
+        </li>
+    </ul>
+    <p>
+    El administrador debe supervisar la cola de errores y el registro
+de sucesos para determinar cuándo la cola del receptor no ha
+procesado los mensajes y realizar las acciones necesarias para
+resolver el error.
+    </p>
+    <h3>Errores en un flujo TransformAndRoute</h3>
+    <p>
+    Un flujo TransformAndRoute se ejecuta como una
+única transacción. Cuando se completa satisfactoriamente el flujo de
+mensajes, se envían todos los mensajes de salida a las siguientes
+ubicaciones:
+    </p>
+    <ul>
+        <li>
+            La cola de entrada del flujo Sender de cada destino
+        </li>
+        <li>
+            El informe de restantes (si se ha seleccionado)
+        </li>
+        <li>
+            La cola del canal de mensajes canónico
+        </li>
+    </ul>
+    <p>
+    Si hay un error, se producen los siguientes sucesos:
+    </p>
+    <ul>
+        <li>
+            El error es captado y procesado por el subflujo
+TransformationExceptionHandler. 
+            Este subflujo añade una cabecera MQRFH2 al mensaje y lo
+escribe en la cola de salida fuera de la transacción. La cabecera
+MQRFH2 contiene información detallada sobre dónde se ha producido el
+error.
+        </li>
+        <li>
+            Se genera una excepción, lo que pone el mensaje de
+entrada otra vez en la cola, retrotrae todos los mensajes que se
+hayan grabado en las colas y desencadena la salida de la información
+de la excepción al registro de sucesos.
+        </li>
+    </ul>
+    <p>
+    </p>
+    <p>
+    El administrador debe comprobar la cola de errores y el registro de
+sucesos para determinar qué errores se han producido. Tanto la cola
+de errores como las colas de restitución contienen información y, una
+vez que se haya procesado un mensaje corregido, esta información se
+puede borrar para evitar que se llene la cola.
+    </p>
+    <p>
+    El administrador debe configurar una cola de restitución para la cola
+de entrada.
+    </p>
+    <p>
+    Cuando el flujo de direccionamiento y transformación retrotrae un
+mensaje, los mensajes posteriores se procesan y se pasan a los flujos Sender. Sin embargo, esta acción puede tener un efecto en
+los flujos Sender para cualquier destino que implemente
+secuenciación laxa o estricta porque se pierde el número de secuencia
+del mensaje con error, lo que hace que los mensajes hagan cola en
+la cola de secuencia hasta  que llega un mensaje con el número de
+secuencia correcto o, solo en el caso de la secuenciación laxa, el
+mensaje supera el tiempo de espera, permitiendo saltar el número de
+secuencia que falta. Por lo tanto, los errores en el flujo
+TransformAndRoute deben corregirse lo antes posible.
+    </p>
+    <p>
+    Hay dos opciones disponibles para corregir un error en el
+flujo TransformAndRoute:
+    </p>
+    <ul>
+        <li>
+            Se puede enviar un mensaje corregido al flujo TransformAndRoute. Puede
+editar el mensaje grabado en la cola de errores o en la cola de
+restitución y después volver a enviar el mensaje. Esta acción
+garantiza que los números de secuencia son correctos.
+        </li>
+        <li>
+            La información contenida en el mensaje de error se
+puede aplicar directamente a las aplicaciones de destino. Si se utiliza
+secuenciación estricta para un destino, debe enviar un
+mensaje ficticio a ese destino para permitir que el flujo de
+mensajes pueda continuar:
+            <ol>
+                <li>
+                    Cree un mensaje XML. Por ejemplo:
+                    <pre>&lt;sup:MaintainSequence xmlns:sup=http://ibm/healthcare/support&gt;
+    &lt;MessageGeneratedToMaintainSequence&gt;true&lt;/ 
+    MessageGeneratedToMaintainSequence&gt;
+&lt;/sup:MaintainSequence&gt;</pre>
+                </li>
+                <li>
+                    Ponga este mensaje XML en la cola de destino
+adecuada. Debe establecer los dos valores siguientes para la carpeta
+de usuario de cabecera MQRFH2, donde el elemento de número de
+secuencia contiene la secuencia de mensajes a saltar, y el
+elemento de grupo de secuencia especifica el destino al que hace
+referencia el mensaje. Por ejemplo:
+                    <pre>&lt;SequenceNumber&gt;2&lt;/SequenceNumber&gt;
+&lt;SequenceGroup&gt;DEST1&lt;/SequenceGroup&gt;</pre>
+                </li>
+            </ol>
+        </li>
+    </ul>
+    <h3>Errores en un flujo Sender</h3>
+    <p>
+    El nodo Resequence, denominado Maintain Sequence, se incluye en
+los flujos Sender que admiten secuenciación. Un nodo Resequence
+divide el flujo en dos transacciones. Si se produce una excepción
+antes del nodo Resequence, se graba un mensaje a la cola de
+errores fuera de la transacción y se retrotrae el mensaje de entrada
+hasta la cola de entrada del flujo Sender. La cola de entrada debe
+estar configurada con una cola de restitución.
+    </p>
+    <p>
+    Este tipo de manejo de errores también se aplica si el flujo Sender
+no tiene secuenciación.
+    </p>
+    <p>
+    Utilice una de las soluciones siguientes para corregir el error:
+    </p>
+    <ul>
+        <li>
+            Corrija y vuelva a enviar el mensaje.
+        </li>
+        <li>
+            Aplique el suceso directamente a la aplicación de destino
+y envíe un mensaje ficticio.
+        </li>
+    </ul>
+    <p>
+    Los errores en este punto del flujo significan que falta un número de
+secuencia. Si se utiliza secuenciación en el flujo Sender, el
+administrador debe revisar la cola de errores y corregir el error lo
+antes posible. Los mensajes posteriores de la secuencia se
+guardan en las colas internas de secuencia; por lo tanto, un error
+puede resultar en una acumulación de mensajes.
+    </p>
+    <p>
+    Si se produce un error después del nodo Resequence pero antes de
+que se envíe el mensaje a la aplicación de destino, se graba un
+mensaje de error y se restituye el mensaje en la cola de secuencia
+interna. Para resolver este tipo de error, el administrador debe
+asegurarse de que la aplicación de destino está disponible y
+conectada. El nodo Resequence sigue intentando entregar el
+mensaje de forma que este se entrega cuando se realiza la
+conexión y, en caso de secuenciación estricta, los mensajes
+posteriores no se entregan hasta que la entrega anterior finaliza
+satisfactoriamente.
+    </p>
+    <p>
+    También se puede producir un error después de que se haya
+entregado un mensaje. Este tipo de error se produce si la aplicación
+de destino no puede procesar el mensaje y envía una respuesta NACK. En
+este caso, el flujo no restituye el mensaje en el nodo Resequence
+porque el mensaje podría provocar el mismo repetidamente. En su
+lugar, se graba un mensaje a la cola de errores. El administrador
+debe comprobar el mensaje de error y corregir el problema en la
+aplicación de destino. En este caso, los mensajes con un número de secuencia mayor
+continúan fluyendo.
+    </p>
+    <p>
+    La información principal disponible para los administradores que
+resuelven errores es la información contenida en los errores de la
+cola de errores y de las colas de restitución. Sin embargo, también está disponible la cola
+SEQNOS, que almacena el estado de la
+información de la secuencia actual. Puede utilizar esta cola para dar
+una visión general del flujo de los mensajes a cada uno de los destinos
+de patrón.
+    </p>
+</div>
+<a href="overview.htm#anchorBack" title="Atrás">Volver a
+la especificación del patrón Servicio sanitario: HL7 a HL7</a>
+<p>
+</p>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{ 
+  "taxonomy":"MessageBroker",
+  "version":"2.0.1",
+  "name":"WebSphere Message Broker",
+  "productDeltas": "deltas/MessageBrokerDelta_2.0.1.zip" ,
+  "productStandAlone": [
+				{ "win": "standalone/MessageBroker_2.0.1.zip" },
+				{ "unix": "standalone/MessageBroker_2.0.1.tar.gz" }
+			],
+	  "isaCoreBuildId": "2.0.1",
+	  "licenseURL": "" ,
+	  "libJarsURL": "lib/MessageBroker_2.0.1.jar,${additionalJars}", 
+	  "supportedLocales":""
+}
+	
+

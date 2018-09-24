@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="copyright" content="Copyright IBM Corporation 2014" />
+        <meta name="DC.Rights.Owner" content="© Copyright IBM Corporation 2014" />
+        <meta name="dc.date" scheme="iso8601" content="2014-07-17"/>
+        <meta name="IBM.Effective" scheme="W3CDTF" content="2014-07-17"/>
+        <meta name="description" content="Muster 'Healthcare: HL7-Transformation'"/>
+        <meta name="IBM.Country" content="ZZ" />
+        <meta name="keywords" content="Healthcare,HL7"/>
+        <meta name="Robots" content="Index,Fortsetzung" />
+        <meta name="DC.Type" content="Konzept" />
+        <meta name="security" content="Öffentlich"/>
+        <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+<!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    -->
+        <title>Muster 'Healthcare: HIPAA in XML'</title>
+    </head>
+    <body>
+        <h1 class="topictitle1">Muster 'Healthcare: HIPAA in XML'</h1>
+        <div>
+            <p class="shortdesc">Verwenden Sie das Muster 'Healthcare: HIPAA in XML', um HIPAA-Dateien in XML zu konvertieren.</p>
+        <img src="HIPAAtoXML.png" alt="HIPAA-Dateien aus einer Quellenanwendung werden mithilfe des Musters in XML-Dateien transformiert"/>
+        </div>
+        <div class="section">
+            <h2 class="sectiontitle">Lösung</h2>
+            <p>Das Muster 'Healthcare: HIPAA in XML' generiert einen Nachrichtenfluss, der ein DFDL-Modell verwendet, um HIPAA-Eingabedateien zu parsen.</p>
+            <p>Der Nachrichtenfluss liest Dateien aus einem bestimmten Eingabeverzeichnis. Jede Datei wird anhand des DFDL-Modells geparst,
+            in XML konvertiert und in ein bestimmtes Ausgabeverzeichnis geschrieben. </p>
+            <p>Jede Eingabedatei muss ein XML-Interchange sein, der mindestens eine HIPAA-Transaktionsgruppe enthält. Die gesamte
+            Eingabedatei wird gelesen, in XML konvertiert und in das Ausgabeverzeichnis geschrieben. Syntaxfehler in der Eingabedatei werden erkannt,
+            aber das Muster prüft nicht, ob der Inhalt der Datei der HIPAA-Spezifikation entspricht. </p>		
+		    <p>Nachdem Sie eine Instanz des Musters 'Healthcare: HIPAA in XML' generiert haben, können Sie den generierten Nachrichtenfluss modifizieren, um
+            beispielsweise aus einer anderen Eingabequelle zu lesen, die Zuordnungen anzupassen oder ein anderes Ausgabeformat zu generieren. </p>
+            <p>Wenn Sie eine Instanz des Musters 'Healthcare: HIPAA in XML' erstellen, werden mehrere Bibliotheken mit dem Namen
+            <span class="filepath">HIPAA_5010_<var>Transaktionsgruppe</var></span> erstellt, wobei <var>Transaktionsgruppe</var> für den Namen der Transaktionsgruppe steht.
+            Jede Bibliothek enthält das DFDL-Modell für die angegebene HIPAA-Transaktionsgruppe. Die Bibliothek <span class="filepath">HIPAA_5010_820A1</span> enthält
+            beispielsweise das DFDL-Modell für die HIPAA-Transaktionsgruppe 820A1. Zur Verbesserung der Reaktionsfähigkeit von IBM Integration Toolkit bei der Arbeit mit der
+            Musterinstanz entfernen Sie die Bibliotheksreferenzen für Transaktionsgruppen, die Sie nicht verwenden möchten. Zum Entfernen dieser Referenzen klicken Sie in der
+            Ansicht <span>Anwendungsentwicklung</span> mit der rechten Maustaste auf die Bibliothek <span class="filepath">HIPAAtoXMLMapping</span> und klicken Sie dann auf
+            <span class="uicontrol">Bibliotheksreferenzen verwalten</span>. Wählen Sie anschließend die Einträge für Bibliotheken ab, die den nicht mehr benötigten
+            Transaktionsgruppen entsprechen. </p>
+        </div>
+		
+		<div>
+						<a href="parameters.htm">Parameter für das Muster</a>
+		</div>
+
+    </body>
+</html>

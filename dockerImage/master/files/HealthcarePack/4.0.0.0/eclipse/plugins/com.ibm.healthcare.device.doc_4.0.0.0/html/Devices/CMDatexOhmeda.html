@@ -1,0 +1,2855 @@
+<html>
+<head>
+<title>CMDatexOhmeda Driver Help File</title>
+<!--Cain Medical CMDatexOhmeda Driver - Copyright Cain Medical LTD 2012 - www.cainmedcial.com-->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+tr.head1 {
+	background-color: #CCCCCC;
+}
+tr.head2 {
+	background-color: #EEEEEE;
+}
+td.head2 {
+	background-color: #EEEEEE;
+}
+h3 {
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../css/general.css"/>
+</head>
+
+<body>
+<h1>CMDatexOhmeda</h1>
+<p><strong>Supported devices:</strong>Datex Ohmeda AS/3, CS/3, CS/3 Compact, S/5, Cardiocap 5<br>
+  Release 1.10.0.0<br>
+  Document reference: 1a<p>
+<p>Known issues:</p>
+<ul>
+  <li>If the driver is not stopped or closed down gracefully, the monitor will continue to try and send messages to a client that is no longer listening. It has been found that after a short while the monitor no longer responds to communication, and requires the power to be cycled before communication can be reestablished (the duration is dependent on the amount of data being sent. In the case of waveforms it may be less than a minute). It is always recommended that drivers should have the stop() method called before an application is closed down, and in this case, to not do so may mean the monitor will not send any data when reconnected without powering the device down and restarting it first. </li>
+</ul>
+<h1>Computer connection</h1>
+<p>The driver supports the RS232 connection. </p>
+<p><img src="CMDatexOhmedamonitorS5.gif" width="352" height="302"><img 
+  src="CMDatexOhmedaports.gif" width="410" height="307"></p>
+<p>The device requires a standard null modem serial cable with the following pin layout: </p>
+<table cellpadding="5" cellspacing="0">
+  <tr class="head1"> 
+    <td colspan="3"> <div align="center">PC</div></td>
+    <td width="36"> <div align="center"></div></td>
+    <td colspan="2"> <div align="center">Patient Monitor</div></td>
+  </tr>
+  <tr class="head2"> 
+    <td width="67"> <div align="center"></div></td>
+    <td width="29"> <div align="center">female DB9</div></td>
+    <td width="37"> <div align="center">DB25</div></td>
+    <td> <div align="center"></div></td>
+    <td width="37"> <div align="center"></div></td>
+    <td width="117"> <div align="center">CMS (male DB9)</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">TxD</div></td>
+    <td><div align="center">3</div></td>
+    <td><div align="center">2</div></td>
+    <td><div align="center"> 
+        <hr>
+      </div></td>
+    <td><div align="center">RxD</div></td>
+    <td><div align="center">2</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">RxD</div></td>
+    <td><div align="center">2</div></td>
+    <td><div align="center">3</div></td>
+    <td><div align="center"> 
+        <hr>
+      </div></td>
+    <td><div align="center">TxD</div></td>
+    <td><div align="center">3</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">GND</div></td>
+    <td><div align="center">5</div></td>
+    <td><div align="center">7</div></td>
+    <td><div align="center"> 
+        <hr>
+      </div></td>
+    <td><div align="center">GND</div></td>
+    <td><div align="center">5</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">RTS</div></td>
+    <td><div align="center">7</div></td>
+    <td><div align="center">4</div></td>
+    <td><div align="center"> 
+        <hr>
+      </div></td>
+    <td><div align="center">CTS</div></td>
+    <td><div align="center">8</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center"> CTS</div></td>
+    <td><div align="center">8</div></td>
+    <td><div align="center">5</div></td>
+    <td><div align="center"> 
+        <hr>
+      </div></td>
+    <td><div align="center">RTS</div></td>
+    <td><div align="center">7</div></td>
+  </tr>
+</table>
+<h2>Supported communication parameters: </h2>
+<p>Only the following settings are supported</p>
+<table border="0">
+  <tr> 
+    <td class="head2">Baud rate</td>
+    <td>19200</td>
+  </tr>
+  <tr> 
+    <td class="head2">Parity</td>
+    <td>Even</td>
+  </tr>
+  <tr> 
+    <td class="head2">Data bits</td>
+    <td>8</td>
+  </tr>
+  <tr> 
+    <td class="head2">Stop bits</td>
+    <td>1</td>
+  </tr>
+  <tr> 
+    <td class="head2">Flow control</td>
+    <td>CTS/RTS</td>
+  </tr>
+</table>
+<h1>Supported Data Parameters </h1>
+<p>The following waveforms are supported. For all waveforms, the primaryid is 111:889::, with the subid being a value from the following table. To start a waveform make a request with the value CM_START. To stop waveform transmission, send the same request with the value CM_STOP (see SDK manual for full details).</p>
+<p>The Datex Ohmeda can support a maximum of 600 samples per second, which can be made from any number of the following waveforms. Requests for waveforms once this limit has been reached will be ignored. For example, 1 ECG channel and 3 Invasive blood pressure channels will fulfill this maximum requirement, and no further waveforms can be requested. </p>
+<table width="70%" border="1" cellpadding="0" cellspacing="0">
+<tr>
+<th scope="col">Subid</th>
+<th scope="col">Channels</th>
+<th scope="col">Samples per s</th>
+<th scope="col">Description</th>
+</tr>
+<tr><td>101:434-667:203:263</td><td>channel1, channel2, channel3</td><td>300</td><td>ECG µV </td></tr>
+<tr><td>99:346-360:169:263"</td><td>channel1, channel2, channel3, channel4, channel5, channel6</td><td>100</td><td>Invasive blood pressure x mmHg </td></tr>
+<tr><td>101:371:224-226:263</td>
+<td>&nbsp;</td>
+<td>100</td><td>Plethysmograph modulation </td></tr>
+<tr><td>79::177-197:259</td>
+<td>&nbsp;</td>
+<td>25</td><td>CO2 concentration </td></tr>
+<tr><td>79::197-219:259</td><td>&nbsp;</td><td>25</td><td>O2 concentration </td></tr>
+<tr><td>79::197-216:259</td><td>&nbsp;</td><td>25</td><td>N2O concentration </td></tr>
+<tr><td>79::197-849:259</td><td>&nbsp;</td><td>25</td><td>Anesthesia agent </td></tr>
+<tr><td>99::197:259</td><td>&nbsp;</td><td>25</td><td>Airway pressure cmH2O </td></tr>
+<tr><td>84::197:261</td><td>&nbsp;</td><td>25</td><td>Airway flow l/min </td></tr>
+<tr><td>101:455:173:261</td>&nbsp;<td>&nbsp;</td><td>25</td><td>Airway volume ml </td></tr>
+<tr><td>83::181:262"</td><td>channel1, channel2, channel3, channel4</td><td>25</td><td>ECG Respiration, µV </td></tr>
+<tr><td>112::211-244:261</td><td>&nbsp;</td><td>100</td><td>EEG </td></tr>
+<tr><td>87:513:176-848:262</td><td>&nbsp;</td><td>25</td><td>Tonometry catheter pressure mbar </td></tr>
+<tr><td>99:494:177-307-1088:1060</td><td>&nbsp;</td><td>100</td><td>Entropy µV</td></tr>      
+<tr><td>83:343:181-1086:262</td><td>&nbsp;</td><td>300</td><td>BIS µV</td></tr></table>
+<p><table >
+  <tr class="head1"> 
+    <td colspan="2">ID</td>
+    <td>Sources</td>
+    <td>Acronym</td>
+    <td>Common Term</td>
+
+    <td>Description</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:331-660:224:502</td>
+    <td rowspan='2'></td>
+    <td>SpO2</td>
+
+    <td>SpO2</td>
+    <td>Peripheral oxygen saturation measurements</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>101:371:224-226:263</td>
+    <td rowspan='2'></td>
+    <td>SpO2 PR</td>
+
+    <td>Pulse rate measured by SpO2 sensor</td>
+    <td>Noninvasive pulse rate measured by SpO2 sensor</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:331-660:302:502</td>
+    <td rowspan='2'></td>
+    <td>SaO2</td>
+
+    <td>None</td>
+    <td>arterial oxygen saturation</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:331-660:314:502</td>
+    <td rowspan='2'></td>
+    <td>SvO2</td>
+
+    <td>SvO2</td>
+    <td>Venous oxygen saturation</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>109::855:260</td>
+    <td rowspan='2'></td>
+    <td>Tskin</td>
+
+    <td>Skin Temperature</td>
+    <td>Skin temperature</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>109::180:260</td>
+    <td rowspan='2'></td>
+    <td>Tcore</td>
+
+    <td>Core Temperature</td>
+    <td>Core temperature</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>109::228:260</td>
+    <td rowspan='2'></td>
+    <td>KKT</td>
+
+    <td>Rectal temperature</td>
+    <td>Rectal temperature</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>109::164:260</td>
+    <td rowspan='2'></td>
+    <td>Tairway</td>
+
+    <td>Temperature airway</td>
+    <td>Temperature airway</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>109:::260</td>
+    <td rowspan='2'>T1, T2, T3, T4</td>
+    <td>T</td>
+
+    <td>Temperature</td>
+    <td>Temperature - unspecified measurement of patient</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>109::856:260</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Nasopharyngeal temperature</td>
+
+    <td>Nasopharyngeal temperature</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>109::191:260</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Esophagus temperature</td>
+
+    <td>Esophagus temperature</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>109:137:242:260</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Mean surface temperature</td>
+
+    <td>Mean value of temperature measurements on defined body surface locations</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:346-371-671:169:263</td>
+    <td rowspan='2'></td>
+    <td>NIBP (dia)</td>
+    <td>Discontinuous, Noninvasive Diastolic Blood Pressure</td>
+
+    <td>Pressure of the blood at the diastolic phase, measured discontinuously and noninvasively (cuff)</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:346-371-712:169:263</td>
+    <td rowspan='2'></td>
+    <td>NIBP (sys)</td>
+    <td>Discontinuous, Noninvasive Systolic Blood Pressure</td>
+
+    <td>Pressure of the blood at the systolic phase, measured discontinuously and noninvasively (cuff)</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:137-346-371:169:263</td>
+    <td rowspan='2'></td>
+    <td>NIBP (mean)</td>
+    <td>Discontinuous, Noninvasive Mean Blood Pressure</td>
+
+    <td>Pressure of the blood computed as mean value between systolic and diastolic Pressures, measured discontinuously and noninvasively (cuff)</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:346-360-712:169:263</td>
+    <td rowspan='2'>channel1, channel2, channel3, channel4, channel5, channel6</td>
+    <td>IBP(sys)</td>
+    <td>Invasive blood pressure systolic</td>
+
+    <td></td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>101:434-667:203:263</td>
+    <td rowspan='2'>Monitor, Mortara</td>
+    <td>HR</td>
+    <td>Heart rate (ECG)</td>
+
+    <td>Heart rate measured from ECG</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81:424-710:203:263</td>
+    <td rowspan='2'>channel1, channel2, channel3</td>
+    <td>STaVR</td>
+    <td>ST aVR</td>
+
+    <td>Duration of the ST segment of ECG in lead aVR</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81:423-710:203:263</td>
+    <td rowspan='2'>channel1, channel2, channel3</td>
+    <td>STaVL</td>
+    <td>ST lead aVL</td>
+
+    <td>Duration of the ST segment of ECG in lead aVL</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81:422-710:203:263</td>
+    <td rowspan='2'>channel1, channel2, channel3</td>
+    <td>STaVF</td>
+    <td>ST lead aVF</td>
+
+    <td>Duration of the ST segment of ECG in lead aVF</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81:446-710:203:263</td>
+    <td rowspan='2'>channel1, channel2, channel3</td>
+    <td>STII</td>
+    <td>ST lead II</td>
+
+    <td>Duration of the ST segment of ECG in lead II</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81:447-710:203:263</td>
+    <td rowspan='2'>channel1, channel2, channel3</td>
+    <td>STIII</td>
+    <td>ST lead III</td>
+
+    <td>Duration of the ST segment of ECG in lead III</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81:445-710:203:263</td>
+    <td rowspan='2'>channel1, channel2, channel3</td>
+    <td>STI</td>
+    <td>ST lead I</td>
+
+    <td>Duration of the ST segment of ECG in lead I</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>83:710-962:203:263</td>
+    <td rowspan='2'>channel1, channel2, channel3</td>
+    <td></td>
+    <td>ST amplitude in lead V</td>
+
+    <td>ST amplitude in lead V</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:137:169:263-498</td>
+    <td rowspan='2'></td>
+    <td>MAP</td>
+    <td>Mean Arterial Pressure</td>
+
+    <td>Mean Pressure of the blood in an artery</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:712:169:263-498</td>
+    <td rowspan='2'></td>
+    <td>SAP</td>
+    <td>Systolic Arterial Pressure</td>
+
+    <td>Systolic Pressure of the blood in an artery</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:671:169:263-498</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Diastolic Arterial Pressure</td>
+
+    <td>Diastolic Pressure of the blood in an artery</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:671:169:263-504</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Diastolic Central Venous Pressure</td>
+
+    <td>Diastolic Pressure of the blood in the thoracic venae cavae</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:712:169:263-504</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Systolic Central Venous Pressure</td>
+
+    <td>Systolic Pressure of the blood in the thoracic venae cavae</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:137:169:263-504</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Mean Central Venous Pressure</td>
+
+    <td>Mean Pressure of the blood in the thoracic venae cavae</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:712:169:263-534</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Systolic Pulmonary Arterial Pressure</td>
+
+    <td>Systolic Pressure of the blood in the pulmonary artery</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:671:169:263-534</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Diastolic Pulmonary Arterial Pressure</td>
+
+    <td>Diastolic Pressure of the blood in the pulmonary artery</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:137:169:263-534</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Mean Pulmonary Arterial Pressure</td>
+
+    <td>Mean Pressure of the blood in the Pulmonary artery</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:712:169:263-538</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Systolic Right Atrial Pressure</td>
+
+    <td>Systolic Pressure of the blood in the right atrium of the heart</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:671:169:263-538</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Diastolic Right Atrial Pressure</td>
+
+    <td>Diastolic Pressure of the blood in the right atrium of the heart</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:137:169:263-538</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Mean Right Atrial Pressure</td>
+
+    <td>Mean Pressure of the blood in the right atrium of the heart</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:712:169:263-541</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Systolic Right Ventricular Pressure</td>
+
+    <td>Systolic Pressure of the blood in the right ventricle of the heart</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:671:169:263-541</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Diastolic Right Ventricular Pressure</td>
+
+    <td>Diastolic Pressure of the blood in the right ventricle of the heart</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:137:169:263-541</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Mean Right Ventricular Pressure</td>
+
+    <td>Mean Pressure of the blood in the right ventricle of the heart</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:712:169:263-523</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Systolic Left Atrial Pressure</td>
+
+    <td>Systolic Pressure of the blood in the left atrium of the heart</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:671:169:263-523</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Diastolic Left Atrial Pressure</td>
+
+    <td>Diastolic Pressure of the blood in the left atrium of the heart</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:137:169:263-523</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Mean Left Atrial Pressure</td>
+
+    <td>Mean Pressure of the blood in the left atrium of the heart</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:712:202-206:262</td>
+    <td rowspan='2'></td>
+    <td>ICPS</td>
+    <td>Systolic Intracranial Pressure</td>
+
+    <td>Maximum Pressure inside skull, caused by filling of vessels during systolic phase of blood pressure</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:671:202-206:262</td>
+    <td rowspan='2'></td>
+    <td>ICPD</td>
+    <td>Diastolic Intracranial Pressure</td>
+
+    <td>Minimum Pressure inside skull, caused by emptying of vessels during diastolic phase of blood pressure</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:137:202-206:262</td>
+    <td rowspan='2'></td>
+    <td>ICPM</td>
+    <td>Mean Intracranial Pressure</td>
+
+    <td>Mean Pressure inside skull</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:712:169:263-496</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Systolic Aortic Pressure</td>
+
+    <td>Systolic Pressure of the blood in the aorta</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:671:169:263-496</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Diastolic Aortic Pressure</td>
+
+    <td>Diastolic Pressure of the blood in the aorta</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:137:169:263-496</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Mean Aortic Pressure</td>
+
+    <td>Mean Pressure of the blood in the aorta</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:676:177-197:259</td>
+    <td rowspan='2'></td>
+    <td>%CO2 ET</td>
+    <td>Concentration Airway CO2 EndTidal</td>
+
+    <td>Concentration of CO2 in airway gas measured at the end of expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:177-197:259</td>
+    <td rowspan='2'>Any, FICO2, FIO2</td>
+    <td>%CO2 ins</td>
+    <td>Concentration Airway CO2 Inspiratory</td>
+
+    <td>Concentration of CO2 in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:346-360-671:169:263</td>
+    <td rowspan='2'>channel1, channel2, channel3, channel4, channel5, channel6</td>
+    <td>IBP(dia)</td>
+    <td>Invasive blood pressure diastolic</td>
+
+    <td></td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:137-346-360:169:263</td>
+    <td rowspan='2'>channel1, channel2, channel3, channel4, channel5, channel6</td>
+    <td>IBP(mean)</td>
+    <td>Invasive blood pressure mean</td>
+
+    <td></td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>101:432:173:261</td>
+    <td rowspan='2'></td>
+    <td>RR (interval)</td>
+    <td>Respiration Rate</td>
+    <td>Rate of breathing, method: CO2 -sensor</td>
+
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+
+    <td>79:679:197-219:259</td>
+    <td rowspan='2'></td>
+    <td>%O2 ins</td>
+    <td>Concentration Airway O2 Inspiratory</td>
+    <td>Concentration of O2 in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:676:197-219:259</td>
+
+    <td rowspan='2'></td>
+    <td>%O2 ET</td>
+    <td>Concentration Airway O2 EndTidal</td>
+    <td>Concentration of O2 in airway gas measured at the end of expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:676:197-216:259</td>
+
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Nitrous Oxide EndTidal</td>
+    <td>Concentration of Nitrous Oxide in airway gas measured at the end of expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:197-216:259</td>
+    <td rowspan='2'></td>
+
+    <td></td>
+    <td>Concentration Airway Nitrous Oxide Inspiratory</td>
+    <td>Concentration of Nitrous Oxide in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:189-197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+
+    <td>Concentration Airway Enflurane Inspiratory</td>
+    <td>Concentration of Enflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:197-201:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Halothane Inspiratory</td>
+
+    <td>Concentration of Halothane in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:184-197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Desflurane Inspiratory</td>
+
+    <td>Concentration of Desflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:676:184-197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Desflurane EndTidal</td>
+
+    <td>Concentration of Desflurane in airway gas measured at the end of expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:197-207:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Isoflurane Inspiratory</td>
+
+    <td>Concentration of Isoflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:676:189-197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Enflurane EndTidal</td>
+
+    <td>Concentration of Enflurane in airway gas measured at the end of expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:197-236:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Sevoflurane Inspiratory</td>
+
+    <td>Concentration of Sevoflurane in airway gas measured in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:676:197-201:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Halothane EndTidal</td>
+
+    <td>Concentration of Halothane in airway gas measured at the end of expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:676:197-207:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Isoflurane EndTidal</td>
+
+    <td>Concentration of Isoflurane in airway gas measured at the end of expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:676:197-236:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Concentration Airway Sevoflurane EndTidal</td>
+
+    <td>Concentration of Sevoflurane in airway gas measured at the end of expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:197-849:259</td>
+    <td rowspan='2'></td>
+    <td>%Agt In</td>
+    <td>Concentration Airway anaesthetic agent Inspiratory</td>
+
+    <td>Concentration Airway anaesthetic agent in inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:676:197-849:259</td>
+    <td rowspan='2'></td>
+    <td>%Agt ET</td>
+    <td>Concentration Airway Anaesthetic agent EndTidal</td>
+
+    <td>Concentration of anaesthetic agent in airway gas measured at the end of expiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:359-674:197:259</td>
+    <td rowspan='2'></td>
+    <td>PEEP</td>
+    <td>Intrinsic positive end expiratory pressure (Auto PEEP)</td>
+
+    <td>Physiologically generated positive airway pressure</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>78::166:264</td>
+    <td rowspan='2'></td>
+    <td>C TH+L</td>
+    <td>Compliance of respiratory system</td>
+
+    <td>Change of tidal volume per unit change of airway pressure</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:692:197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Plateau Respir. Pressure</td>
+
+    <td>Pressure in airway in plateau phase during mechanical ventilation.</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>101:455:173:261</td>
+    <td rowspan='2'></td>
+    <td>RR (interval)</td>
+    <td>Respiration Rate</td>
+
+    <td>Rate of breathing, method not specified</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:133:197:271</td>
+    <td rowspan='2'></td>
+    <td>PAW max</td>
+    <td>Maximum Ventilation Pressure</td>
+
+    <td>Maximum pressure of gas in airway during mechanical ventilation.</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>112:679:211-244:261</td>
+    <td rowspan='2'></td>
+    <td>VTI</td>
+    <td>Inspired tidal volume</td>
+
+    <td>Volume of gas inspired during each breath</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>112:677:211-244:261</td>
+    <td rowspan='2'></td>
+    <td>VTE</td>
+    <td>Expired tidal volume</td>
+
+    <td>Volume of gas expired during each breath</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>84:609-677:197:261</td>
+    <td rowspan='2'></td>
+    <td>E</td>
+    <td>Expiratory Respir. Minute Volume</td>
+
+    <td>Total volume of gas breathed out in one minute during spontaneous respiration.</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>112:691:169:263-526</td>
+    <td rowspan='2'></td>
+    <td>CO</td>
+    <td>Cardiac output</td>
+
+    <td>Quantity of blood pumped by the left ventricle into the aorta per minute</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>109::169:260</td>
+    <td rowspan='2'></td>
+    <td>T</td>
+    <td>Blood temperature</td>
+
+    <td>Blood temperature</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:396:169:263-534</td>
+    <td rowspan='2'></td>
+    <td>PAW</td>
+    <td>Pulmonary Artery Wedge Pressure</td>
+
+    <td>Pressure of the blood measured by a catheter wedged into a small branch of the pulmonary artery</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81:434-704:203:263</td>
+    <td rowspan='2'></td>
+    <td>RR (interval)</td>
+    <td>R-R interval</td>
+
+    <td>Duration of the interval between two consecutive QRS complexes</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>97:192-281-479-615:203-664:263</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Premature ventricular contractions</td>
+
+    <td>Premature ventricular contractions</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81:466-710:203:263</td>
+    <td rowspan='2'></td>
+    <td>STV1</td>
+    <td>ST lead V1</td>
+
+    <td>Duration of the ST segment of ECG in lead V1</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81:467-710:203:263</td>
+    <td rowspan='2'></td>
+    <td>STV2</td>
+    <td>ST lead V2</td>
+
+    <td>Duration of the ST segment of ECG in lead V2</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81:469-710:203:263</td>
+    <td rowspan='2'></td>
+    <td>STV3</td>
+    <td>ST lead V3</td>
+
+    <td>Duration of the ST segment of ECG in lead V3</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81:471-710:203:263</td>
+    <td rowspan='2'></td>
+    <td>STV4</td>
+    <td>ST lead V4</td>
+
+    <td>Duration of the ST segment of ECG in lead V4</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81:473-710:203:263</td>
+    <td rowspan='2'></td>
+    <td>STV5</td>
+    <td>ST lead V5</td>
+
+    <td>Duration of the ST segment of ECG in lead V5</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81:475-710:203:263</td>
+    <td rowspan='2'></td>
+    <td>STV6</td>
+    <td>ST lead V6</td>
+
+    <td>Duration of the ST segment of ECG in lead V6</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>87:513:176-848:262</td>
+    <td rowspan='2'></td>
+    <td>BIS</td>
+    <td>Bispectral index</td>
+
+    <td>Bispectral index, an electroencephalogram derived multivariant scale that reflects the level of hypnosis in anesthetized patients.</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>87:513:852-853:262</td>
+    <td rowspan='2'></td>
+    <td>SQI</td>
+    <td>Signal Quality Index</td>
+
+    <td>Signal Quality Index - indicator of quality of Bispectral index calculation</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>83::215:265</td>
+    <td rowspan='2'></td>
+    <td>EMG</td>
+    <td>Electromyogram</td>
+
+    <td>Electrical Potential from muscle derived bipolarly between electrode position 1 and 2 on skin surface or inside muscle. </td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>102:12-513::262</td>
+    <td rowspan='2'></td>
+    <td>BSR</td>
+    <td>Burst Suppression Ratio</td>
+
+    <td>Burst suppression ratio - the time the EEG voltage is in the suppressed state as a fraction of the sampling period. </td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>112:691:179:263-501</td>
+    <td rowspan='2'></td>
+    <td>VO2</td>
+    <td>Oxygen Consumption</td>
+
+    <td>Oxygen consumption of the body</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>84:609-677:177-197:261</td>
+    <td rowspan='2'></td>
+    <td>VCO2</td>
+    <td>Expired CO2 minute volume</td>
+
+    <td>Total volume of CO2 breathed out in one minute.</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>102:515-516:197:269</td>
+    <td rowspan='2'></td>
+    <td>RQ</td>
+    <td>Respiratory Quotient</td>
+
+    <td>Ratio of CO2 expired to O2 used</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:336-674:197:271</td>
+    <td rowspan='2'></td>
+    <td>PEEP</td>
+    <td>Positive end expiratory pressure, applied</td>
+
+    <td>Positive End Expiratory Pressure applied to the airway during mechanical ventilation</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:137-679:197:259</td>
+    <td rowspan='2'></td>
+    <td>PI mean</td>
+    <td>Mean Inspiratory Airway Pressure</td>
+
+    <td>Mean pressure of gas in airway during inspiration</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>103::164:261</td>
+    <td rowspan='2'></td>
+    <td>RAW</td>
+    <td>Respir. Resistance</td>
+
+    <td>Resistance to gas flow within the airway</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>84:609-679:197:271</td>
+    <td rowspan='2'></td>
+    <td>I</td>
+    <td>Ventilation Inspiratory Minute Volume</td>
+
+    <td>Total volume of gas breathed in one minute during mechanical ventilation.</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>102:1066-1067:197:261</td>
+    <td rowspan='2'></td>
+    <td>I:E</td>
+    <td>Inspiratory Expiratory ratio</td>
+
+    <td>Ratio between Inspiratory Expiratory flow</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>78:390:166-225:264</td>
+    <td rowspan='2'></td>
+    <td>C L</td>
+    <td>Lung Compliance, static</td>
+
+    <td>Change of tidal volume per unit change in oesophageal pressure measured statically at expiration end</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>111:889::</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Waveform</td>
+
+    <td>Waveform measurement</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79::177-197:259</td>
+    <td>%CO2</td>
+    <td>Concentration Airway CO2</td>
+
+    <td>Concentration of CO2 in airway gas</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>111:889::</td>
+    <td rowspan='2'></td>
+    <td></td>
+
+    <td>Waveform</td>
+    <td>Waveform measurement</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79::197-219:259</td>
+    <td>%O2</td>
+
+    <td>Concentration Airway O2</td>
+    <td>Concentration of O2 in airway gas</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>111:889::</td>
+    <td rowspan='2'></td>
+
+    <td></td>
+    <td>Waveform</td>
+    <td>Waveform measurement</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79::197-216:259</td>
+
+    <td>%Nitrous Oxide</td>
+    <td>Concentration Airway N2O</td>
+    <td>Concentration of Nitrous Oxide in airway gas</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>111:889::</td>
+
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Waveform</td>
+    <td>Waveform measurement</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79::197-849:259</td>
+
+    <td>%Agt</td>
+    <td>Concentration Airway anaesthetic agent</td>
+    <td>Concentration of anaesthetic agent in airway gas</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>111:889::</td>
+
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Waveform</td>
+    <td>Waveform measurement</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99::197:259</td>
+
+    <td>PAW</td>
+    <td>Respir. Airway Pressure</td>
+    <td>pressure of gas in airway</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>111:889::</td>
+
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Waveform</td>
+    <td>Waveform measurement</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>84::197:261</td>
+
+    <td></td>
+    <td>Airway Flow</td>
+    <td>Gas flow in airway during spontaneous respiration</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>111:889::</td>
+
+    <td rowspan='2'>channel1, channel2, channel3, channel4</td>
+    <td></td>
+    <td>Waveform</td>
+    <td>Waveform measurement</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td>83::181:262</td>
+    <td>EEG</td>
+    <td>Electroencephalogram</td>
+    <td>Electrical potential derived bipolarly between two electrodes, position 1 and 2 at head surface. </td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+
+    <td>111:889::</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Waveform</td>
+    <td>Waveform measurement</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td>112::211-244:261</td>
+    <td>VT</td>
+    <td>Respiration Tidal Volume</td>
+    <td>Volume of gas during each breath</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+
+    <td>111:889::</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Waveform</td>
+    <td>Waveform measurement</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td>87:513:176-848:262</td>
+    <td>BIS</td>
+    <td>Bispectral index</td>
+    <td>Bispectral index, an electroencephalogram derived multivariant scale that reflects the level of hypnosis in anesthetized patients.</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+
+    <td>101:377:226:263-501</td>
+    <td rowspan='2'></td>
+    <td>PRpl</td>
+    <td>Pulse Rate</td>
+    <td>Rate of blood pulse as obtained by plethysmography</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>111:889::</td>
+
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Waveform</td>
+    <td>Waveform measurement</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>101:371:224-226:263</td>
+
+    <td>SpO2 PR</td>
+    <td>Pulse rate measured by SpO2 sensor</td>
+    <td>Noninvasive pulse rate measured by SpO2 sensor</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>111:889::</td>
+
+    <td rowspan='2'>channel1, channel2, channel3</td>
+    <td></td>
+    <td>Waveform</td>
+    <td>Waveform measurement</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td>101:434-667:203:263</td>
+    <td>HR</td>
+    <td>Heart rate (ECG)</td>
+    <td>Heart rate measured from ECG</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+
+    <td>111:889::</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Waveform</td>
+    <td>Waveform measurement</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td>101:455:173:261</td>
+    <td>RR (interval)</td>
+    <td>Respiration Rate</td>
+    <td>Rate of breathing, method not specified</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+
+    <td>111:889::</td>
+    <td rowspan='2'>channel1, channel2, channel3, channel4, channel5, channel6</td>
+    <td></td>
+    <td>Waveform</td>
+    <td>Waveform measurement</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td>99:346-360:169:263</td>
+    <td>IBP</td>
+    <td>Invasive Blood Pressure</td>
+    <td>Invasive blood pressure</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+
+    <td>101:360:169-226:263</td>
+    <td rowspan='2'></td>
+    <td>HR (IBP)</td>
+    <td>Heart rate from invasive blood pressure</td>
+    <td>Heart rate measured by invasive blood pressure probe</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>101:393:173:261</td>
+
+    <td rowspan='2'></td>
+    <td>RR (interval)</td>
+    <td>Respiration Rate</td>
+    <td>Rate of breathing, method: transthoracic impedance</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>101:371:169-226:263</td>
+
+    <td rowspan='2'></td>
+    <td>HR (NIBP)</td>
+    <td>Heart rate from noninvasive blood pressure</td>
+    <td>Heart rate measured during noninvasive blood pressure measurement (i.e. cuff)</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>109::1082:260</td>
+
+    <td rowspan='2'></td>
+    <td>Tbladder</td>
+    <td>Temperature of bladder</td>
+    <td>Bladder temperature</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:144:165-849:259</td>
+
+    <td rowspan='2'></td>
+    <td>MAC</td>
+    <td>Total Minimum Alveolar Concentration</td>
+    <td>Total Minimum Alveolar Anesthetic Concentration over breathing cycle</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:144:165-189:259</td>
+
+    <td rowspan='2'></td>
+    <td>MAC (Enflurane)</td>
+    <td>Total Minimum Alveolar Concentration for Enflurane</td>
+    <td>Total Minimum Alveolar Enflurane Concentration over breathing cycle</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:144:165-201:259</td>
+
+    <td rowspan='2'></td>
+    <td>MAC (halothane)</td>
+    <td>Total Minimum Alveolar Concentration for Halothane</td>
+    <td>Total Minimum Alveolar Halothane Concentration over breathing cycle</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:144:165-207:259</td>
+
+    <td rowspan='2'></td>
+    <td>MAC (Isoflurane)</td>
+    <td>Total Minimum Alveolar Concentration for Halothane</td>
+    <td>Total Minimum Alveolar Isoflurane Concentration over breathing cycle</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:144:165-184:259</td>
+
+    <td rowspan='2'></td>
+    <td>MAC (Desflurane)</td>
+    <td>Total Minimum Alveolar Concentration for Desflurane</td>
+    <td>Total Minimum Alveolar Desflurane Concentration over breathing cycle</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:144:165-236:259</td>
+
+    <td rowspan='2'></td>
+    <td>MAC (Sevoflurane)</td>
+    <td>Total Minimum Alveolar Concentration for Sevoflurane</td>
+    <td>Total Minimum Alveolar Sevoflurane Concentration over breathing cycle</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>102:688:169:263-541</td>
+
+    <td rowspan='2'></td>
+    <td>RVEF</td>
+    <td>Right Ventricular Ejection Fraction</td>
+    <td>Fraction of blood ejected from right venticle each beat</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>101:144-434-667:203:263</td>
+
+    <td rowspan='2'></td>
+    <td>HRmin</td>
+    <td>Minimum Heart Rate (ECG)</td>
+    <td>Minimum heart rate measured from ECG</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>101:133-434-667:203:263</td>
+
+    <td rowspan='2'></td>
+    <td>HRmax</td>
+    <td>Maximum Heart Rate (ECG)</td>
+    <td>Maximum heart rate measured from ECG</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>85:146-155-513:181:262</td>
+
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Spectral Edge Frequency of Electroencephalogram</td>
+    <td>Spectral edge frequency of Power spectrum of Electroencephalogram measured between two electrodes, position 1 and 2 at head surface.</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>98:117-146-150-513:181:262</td>
+    <td rowspan='2'></td>
+
+    <td></td>
+    <td>Relative Power of delta band of Electroencephalogram</td>
+    <td>Relative power of delta band of Power spectrum of Electroencephalogram measured between two electrodes, position 1 and 2 at head surface.</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>98:146-150-161-513:181:262</td>
+    <td rowspan='2'></td>
+    <td></td>
+
+    <td>Relative Power of theta band of Electroencephalogram</td>
+    <td>Relative power of theta band of Power spectrum of Electroencephalogram measured between two electrodes, position 1 and 2 at head surface.</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>98:115-146-150-513:181:262</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Relative Power of  alpha band of Electroencephalogram</td>
+
+    <td>Relative power of alpha band of Power spectrum of Electroencephalogram measured between two electrodes, position 1 and 2 at head surface.</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>98:116-146-150-513:181:262</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Relative Power of  beta band of Electroencephalogram</td>
+
+    <td>Relative power of beta band of Power spectrum of Electroencephalogram measured between two electrodes, position 1 and 2 at head surface.</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>85:143-146-513:181:262</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Median Power Frequency of Electroencephalogram</td>
+
+    <td>Median Power frequency of Power spectrum of Electroencephalogram measured between two electrodes, position 1 and 2 at head surface.</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>109::410:260</td>
+    <td rowspan='2'></td>
+    <td>T</td>
+    <td>Ear temperature</td>
+
+    <td>Ear temperature</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>109::1083:260</td>
+    <td rowspan='2'></td>
+    <td>Taxil</td>
+    <td>Axillary Temperature</td>
+
+    <td>Axillary temperature (underarm temperature)</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>109::203-215:260</td>
+    <td rowspan='2'></td>
+    <td>Tmyo</td>
+    <td>Myocardial Temperature</td>
+
+    <td>Myocardial temperature</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>102:349-1084:215-240:265</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>TOF twitch</td>
+
+    <td>NMT response for train of four mode</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>102:349:215-240:265</td>
+    <td rowspan='2'></td>
+    <td>t ratio</td>
+    <td>NMT ratio</td>
+
+    <td>ratio of NMT response (t4/t1 for train of four mode, t2/t1 for double burst mode).</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81:349-1084:215-240:265</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>NMT pulse duration</td>
+
+    <td>Duration of NMT stimulation pulse</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>83:351:215:265</td>
+    <td rowspan='2'></td>
+    <td>fEMG</td>
+    <td>Frontal EMG</td>
+
+    <td>Electrical Potential from muscle derived bipolarly between electrode position 1 and 2 on facial skin surface.</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>98:513-1085:181:265</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>EEG RMS amplitude</td>
+
+    <td>RMS amplitude of EEG</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>83:343:181-1086:262</td>
+    <td rowspan='2'></td>
+    <td>SE</td>
+    <td>State Entropy</td>
+
+    <td>Spectral entropy of the pure EEG signal</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>83:343:215-1086:265</td>
+    <td rowspan='2'></td>
+    <td>RE</td>
+    <td>Response Entropy</td>
+
+    <td>Spectral entropy of the combined EEG-FEMG signal </td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>102:12-343-513:1086:262</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Entropy burst suppression ratio</td>
+
+    <td>Entropy burst suppression ratio</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81:677:197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Expiration duration</td>
+
+    <td>Duration of expiration phase</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81:679:197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Inspiration duration</td>
+
+    <td>Duration of inspiration phase</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:390-692:197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Static Plateau Respir. Pressure</td>
+
+    <td>Pressure in airway in plateau phase during mechanical ventilation measured statically</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:336-390-674:197:271</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Static positive end expiratory pressure, applied</td>
+
+    <td>Positive End Expiratory Pressure applied to the airway during mechanical ventilation, measured statically</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:359-390-674:197:259</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Static intrinsic positive end expiratory pressure (Auto PEEP)</td>
+
+    <td>Physiologically generated positive airway pressure, measured statically</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:679:1087:271</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Inspired balance gas</td>
+
+    <td>Inspiratory concentration of balance gas</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:677:1087:271</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Expired balance gas</td>
+
+    <td>Expiratory concentration of balance gas</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>111:889::</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Waveform</td>
+
+    <td>Waveform measurement</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>83:343:181-1086:262</td>
+    <td>SE</td>
+    <td>State Entropy</td>
+
+    <td>Spectral entropy of the pure EEG signal</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:494:307-1088:520</td>
+    <td rowspan='2'></td>
+    <td>pHi</td>
+
+    <td>Gastric intramucosal pH</td>
+    <td>Gastric intramucosal pH</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:494:307-1088:520</td>
+    <td rowspan='2'></td>
+    <td>pgCO2</td>
+
+    <td>pgCO2</td>
+    <td>gastric mucosal partial pressure of carbon dioxide</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:494-676:177-307-1088:520</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>P(g-Et)CO2 gap</td>
+
+    <td>gastric-to-end-tidal PCO2 difference</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:494:177-302-307-1088:520</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>P(g-a)CO2 gap</td>
+
+    <td>gastric-to-arterial PCO2 difference</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>111:889::</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Waveform</td>
+
+    <td>Waveform measurement</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:494:177-307-1088:1060</td>
+    <td></td>
+    <td>Tonomotry catheter pressure</td>
+
+    <td>Tonomotry catheter pressure</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr></table></p>
+</body>
+</html>

@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Created-By: 1.7.0 (IBM Corporation)
+
+Name: license.html
+SHA-256-Digest: iB/QB6FXY9Z45H6PbFSaACtgL/sVxATjCHyR61AxIpM=
+
+Name: eclipse_update_120.jpg
+SHA-256-Digest: Hz0atd2kr+i4cvgLVlm8vrN9olKs5NgxwdDxTuA9N2k=
+
+Name: feature.xml
+SHA-256-Digest: fjCODyJFe0mLI3cl3JL9Ztaf4TP8iZgidDqnDanOhpM=
+
+Name: feature.properties
+SHA-256-Digest: nmINgB+nXoiN4K71RowPltsTEYkR2iDpR1y14eCui+M=
+

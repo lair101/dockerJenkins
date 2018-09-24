@@ -1,0 +1,343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2013, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>Running the Healthcare: HL7 to HL7 DFDL pattern</title>
+</head>
+<body role="main">
+<div class="section">
+    <h1 class="topictitle1">Running the Healthcare: HL7 to HL7 DFDL pattern</h1>
+    <p class="shortdesc">
+    This pattern can distribute incoming messages to any number of destinations, but 
+    for ease of development and management each pattern instance contains a maximum 
+    of six destinations.
+    </p>
+    <p>
+    <b>Before you start:</b>
+    </p>
+    <p>
+    Read "Using patterns" in the IBM Integration Bus documentation.
+    </p>
+</div>
+<div class="image">
+    <img src="running.png" alt="A diagram showing how destinations are divided between pattern instance projects." />
+</div>
+<div class = "description">
+    <p>
+    The first instance of the pattern determines the total number of destinations 
+    and configures all the parameters, except those that are specific to a 
+    particular destination. For every group of six destinations that you want to use, 
+    you must create a new pattern instance. For example, to create a pattern with 16 
+    destinations, you must have three pattern instances.
+    </p>
+    <p>
+    For ease of monitoring, each pattern instance name should have a number at the 
+    end. Increment the number by one each time you create a new pattern instance and 
+    ensure the value of the
+    <span class="msobjprop">
+    Part
+    </span>
+    parameter matches the number of the pattern instance. For example, if the 
+    pattern instance has the number
+    <span class="msobjpropval">
+    3
+    </span>
+    the pattern instance name is PatternInstance3, and the value in the
+    <span class="msobjprop">
+    Part
+    </span>
+    parameter should also be
+    <span class="msobjpropval">
+    3
+    </span>
+    .
+    </p>
+</div>
+<div class="section">
+    <a name="config"></a> <h2 class="sectiontitle">Configuring your pattern</h2> <h3>Configuring 
+    a pattern with a maximum of six destinations </h3>
+    <p>
+    To configure a pattern that contains a maximum of six destinations, complete the 
+    following steps:
+    </p>
+    <ol>
+        <li>
+            In the
+            <span class="uicontrol">
+            Pattern Specification
+            </span>
+            tab, click
+            <span class="uicontrol">
+            Create New Instance
+            </span>
+            . The
+            <span>
+            New Pattern Instance
+            </span>
+            window opens.
+        </li>
+        <li>
+            Type in your pattern instance name for the first pattern instance. For ease of 
+            monitoring, include a
+            <span class="msobjpropval">
+            1
+            </span>
+            at the end of the name, for example, PatternInstance1. Click
+            <span class="uicontrol">
+            OK
+            </span>
+            . The
+            <span class="uicontrol">
+            Configure Pattern Parameters
+            </span>
+            tab opens.
+        </li>
+        <li>
+            Ensure that the
+            <span class="msobjprop">
+            Part
+            </span>
+            parameter is set to
+            <span class="msobjpropval">
+            1
+            </span>
+            , and type in the number of destinations that you want to use, for example,
+            <span class="msobjpropval">
+            6
+            </span>
+            . A
+            <span class="uicontrol">
+            Destination <var>n</var> parameters
+            </span>
+            section is automatically created for each destination, where <var>n</var> is the 
+            number of the destination.
+        </li>
+        <li>
+            Optional: Review the parameters for each destination and edit any that you want 
+            to configure for that destination.
+        </li>
+        <li>
+            Click
+            <span class="uicontrol">
+            Generate
+            </span>
+            .
+        </li>
+        <li>
+            You can now deploy your flows.
+        </li>
+    </ol>
+    <h3>Configuring a pattern with more than six destinations</h3>
+    <p>
+    To configure a pattern that contains more than six destinations, complete the 
+    following steps:
+    </p>
+    <ol>
+        <li>
+            In the
+            <span class="uicontrol">
+            Pattern Specification
+            </span>
+            tab, click
+            <span class="uicontrol">
+            Create New Instance
+            </span>
+            . The
+            <span>
+            New Pattern Instance
+            </span>
+            window opens.
+        </li>
+        <li>
+            Type in your pattern instance name for the first pattern instance. For ease of 
+            monitoring, include a
+            <span class="msobjpropval">
+            1
+            </span>
+            at the end of the name, for example, PatternInstance1. Click
+            <span class="uicontrol">
+            OK
+            </span>
+            . The
+            <span class="uicontrol">
+            Configure Pattern Parameters
+            </span>
+            tab opens.
+        </li>
+        <li>
+            Ensure that the
+            <span class="msobjprop">
+            Part
+            </span>
+            parameter is set to
+            <span class="msobjpropval">
+            1
+            </span>
+            , and type in the total number of destinations that you want to use, for example,
+            <span class="msobjpropval">
+            16
+            </span>
+            . A
+            <span class="uicontrol">
+            Destination <var>n</var> parameters
+            </span>
+            section is automatically created, where <var>n</var> is the number of the 
+            destination, for each of the first group of six destinations.
+        </li>
+        <li>
+            Optional: Review the parameters for each destination and edit any that you want 
+            to configure for that destination.
+        </li>
+        <li>
+            Click
+            <span class="uicontrol">
+            Generate
+            </span>
+            .
+        </li>
+        <li>
+            Return to the
+            <span class="uicontrol">
+            Pattern Specification
+            </span>
+            tab, click
+            <span class="uicontrol">
+            Create New Instance
+            </span>
+            . The
+            <span>
+            New Pattern Instance
+            </span>
+            window opens.
+        </li>
+        <li>
+            Type in your pattern instance name for the next pattern instance, remembering to 
+            increment the number at the end of the name by one, for example, 
+            PatternInstance2. Click
+            <span class="uicontrol">
+            OK
+            </span>
+            . The
+            <span class="uicontrol">
+            Configure Pattern Parameters
+            </span>
+            tab opens.
+        </li>
+        <li>
+            Import the configuration file from the first pattern instance by clicking the
+            <span class="uicontrol">
+            Open existing configuration
+            </span>
+            folder icon at the top of the
+            <span class="uicontrol">
+            Pattern Parameters
+            </span>
+            table. This action ensures that all the parameters that are set in the first 
+            pattern instance are available to correctly configure the next group of 
+            destinations.
+        </li>
+        <li>
+            Set the
+            <span class="msobjprop">
+            Part
+            </span>
+            parameter to
+            <span class="msobjpropval">
+            2
+            </span>
+            . A
+            <span class="uicontrol">
+            Destination <var>n</var> parameters
+            </span>
+            section is automatically created, where <var>n</var> is the number of the 
+            destination, for each of the second group of six destinations, each destination 
+            has its own identifying number 7 - 12.
+        </li>
+        <li>
+            Optional: Review the parameters for each destination and edit any that you want 
+            to configure for that destination. If a pattern parameter inherits its 
+            configuration from the first pattern instance, the parameter is disabled.
+        </li>
+        <li>
+            Click
+            <span class="uicontrol">
+            Generate
+            </span>
+            .
+        </li>
+        <li>
+            Repeat steps 6 - 11 for each pattern instance that you need to create, replacing 
+            the pattern instance number and the
+            <span class="msobjprop">
+            Part
+            </span>
+            parameter value as appropriate until you have a pattern instance for each of 
+            your destinations.
+        </li>
+        <li>
+            You can now deploy your flows.
+        </li>
+    </ol>
+    <h3>Queue and flow names</h3>
+    <p>
+    The names of the flows and queues are created automatically when you generate 
+    the pattern:
+    </p>
+    <ol>
+        <li>
+            Each Sender flow and Destination subflow is named to reflect its destination 
+            number. For example, if the destination number is 8, the flow names also contain 
+            the number 8.
+        </li>
+        <li>
+            The queue name for the TransformAndRoute flow reflects the value of the
+            <span class="msobjprop">
+            Part
+            </span>
+            parameter. For example, the queue name for the pattern instance that contains 
+            the second group of destinations is QueuePrefix.RXF2
+        </li>
+        <li>
+            The queue name for each Sender flow also contains the number of the destination.
+        </li>
+        <li>
+            Other queues are shared between the pattern instance projects because, although 
+            each pattern instance is identified independently, the pattern instances are 
+            managed as a single pattern instance driven from a single source application.
+        </li>
+    </ol>
+</div>
+<div class="section">
+    <a name="deploying"></a> <h2 class="sectiontitle">Deploying your pattern instance</h2>
+    <p>
+    To deploy your pattern instance:
+    </p>
+    <ol>
+        <li>
+            In the
+            <span>
+            Application Development
+            </span>
+            view, for Part 1 of the pattern, drag the generated HL7toHL7DFDL application onto the integration server in the
+            <span>
+            Integration Nodes
+            </span>
+            view.
+        </li>       
+    </ol>
+    <p>
+    The pattern is now running, and messages can be sent.
+    </p>
+</div>
+<a href="overview.htm#anchorBack" title="Back">Back to the Healthcare: HL7 to 
+HL7 DFDL pattern specification</a>
+<p>
+</p>
+</body>
+</html>

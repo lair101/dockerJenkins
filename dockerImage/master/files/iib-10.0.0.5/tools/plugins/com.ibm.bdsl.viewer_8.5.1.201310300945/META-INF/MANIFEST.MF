@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: icons/,bdslviewer.jar
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: IBM
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: BDSL IntelliText Viewer Plug-In
+Bundle-SymbolicName: com.ibm.bdsl.viewer;singleton:=true
+Bundle-Activator: com.ibm.bdsl.viewer.IntelliTextActivator
+Require-Bundle: ilog.rules.brl.ui;bundle-version="[8.5.1,8.5.2)",ilog.
+ rules.brl.brldf;bundle-version="[8.5.1,8.5.2)",ilog.rules.brl.parsing
+ ;bundle-version="[8.5.1,8.5.2)",ilog.rules.vocabulary.model;bundle-ve
+ rsion="[8.5.1,8.5.2)",ilog.rules.language.shared;bundle-version="[8.5
+ .1,8.5.2)",org.eclipse.jface,org.eclipse.jface.text;visibility:=reexp
+ ort,org.eclipse.core.runtime
+Export-Package: com.ibm.bdsl.viewer,com.ibm.bdsl.viewer.contentassist,
+ com.ibm.bdsl.viewer.contentoutline,com.ibm.bdsl.viewer.document,com.i
+ bm.bdsl.viewer.events,com.ibm.bdsl.viewer.preferences,com.ibm.bdsl.vi
+ ewer.problem,com.ibm.bdsl.viewer.source,com.ibm.bdsl.viewer.structure
+ .editor,com.ibm.bdsl.viewer.template,com.ibm.bdsl.viewer.text,com.ibm
+ .bdsl.viewer.ui,com.ibm.bdsl.viewer.ui.text.html,com.ibm.bdsl.viewer.
+ util,com.ibm.bdsl.viewer.value,com.ibm.bdsl.viewer.value.editor,com.i
+ bm.bdsl.viewer.views,com.ibm.bdsl.viewer.vocui
+Bundle-Version: 8.5.1.201310300945
+Bundle-ManifestVersion: 2
+
+

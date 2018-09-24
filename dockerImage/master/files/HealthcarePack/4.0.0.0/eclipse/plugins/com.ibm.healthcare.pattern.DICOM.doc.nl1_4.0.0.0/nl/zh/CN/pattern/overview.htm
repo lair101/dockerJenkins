@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2013, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>“Healthcare：Web 服务到 DICOM”模式</title>
+</head>
+<body role="main">
+<h1 class="topictitle1">“Healthcare：Web 服务到 DICOM”模式</h1>
+<p>
+使用“<span>Healthcare：Web 服务到 DICOM</span>”模式可以将使用 Web 服务编写的应用程序与支持 C-FIND 和 C-MOVE 操作的 DICOM
+应用程序集成。借助 IBM Integration Bus 实现的 Web 服务，可以使用此模式来查询
+DICOM 归档 (PACS) 中的患者、研究、系列和图像。</p>
+<div class="image">
+    <img src="DICOM.png" alt="此图显示“Healthcare：Web 服务到 DICOM”模式的行为。"/>
+</div>
+<h2>解决方案</h2>
+<p>
+请为“<span>Healthcare：Web 服务到 DICOM</span>”模式的实例配置 PACS 的
+DICOM 连接详细信息。此连接信息包括 PACS 的主机名和端口。DICOM
+应用程序在连接时标识其自身。因此，需要为此模式配置
+IBM Integration Toolkit 模式实例的应用程序实体标题 (AET) 以及 PACS。</p>
+<p>
+“<span>Healthcare：Web 服务到 DICOM</span>”模式使用 DICOMFindMove 节点与
+PACS 进行交互。DICOMFindMove 节点具有两项密切相关的功能。第一项功能是在 PACS
+中查询患者、研究、系列和图像。搜索条件在传播到节点输入终端的
+XML 消息中指定。DICOM 查询的结果从节点的输出终端进行传播。</p>
+<p>
+DICOMFindMove 节点的第二项功能是使用 C-MOVE 命令将查询结果移至
+DICOM 应用程序。C-MOVE 命令的目标可以是 IBM Integration Bus 中配置的 DICOMInput
+节点，这使您能够配置非常灵活的路由拓扑。C-MOVE 命令的目标在
+XML 消息中作为应用程序实体标题 (AET) 进行指定。必须为 PACS 预先配置 C-MOVE
+目标，以使其了解要将 DICOM 对象实例发送到的位置。
+</p>
+<p>
+发出请求的应用程序将搜索条件作为
+SOAP 请求消息中的 XML 主体进行发送。“Healthcare：Web 服务到 DICOM”模式实例生成的主消息流将抽取此主体并将其传递到
+DICOMFindMove 节点。DICOMFindMove 节点所传播的 XML 结果将在
+SOAP 响应中发回至发出请求的应用程序。</p>
+<p>
+如果执行 C-FIND 或 C-MOVE 命令期间发生错误，那么消息流将抛出异常。异常列表包含对问题进行描述的插入内容。此模式提供了基于错误队列的可选错误处理功能。如果启用了错误处理，并且抛出了异常，那么错误将记录到错误队列中，并且错误 HTTP 响应消息将发回至发出请求的应用程序。
+</p>
+<h5>查询根</h5>
+<p>
+DICOM 定义了多种类型的 C-FIND 查询，这些查询称为查询根。DICOMFindMove
+节点支持的根为患者和研究。另外，还存在多个其他查询根，但在 DICOM 标准中已不使用。</p>
+<p>
+患者根支持四个级别的查询：患者、研究、系列和图像。患者级查询用于在 PACS 中查询患者。此查询具有少量可用于查询的属性，例如患者姓名、患者性别和出生日期。研究级查询用于在 PACS 中查询指定患者的研究结果。研究级查询必须包含患者标识属性以及零个或零个以上用于进一步优化搜索的可选属性，例如研究日期。系列级查询用于在 PACS 中查询特定研究内的系列。系列级查询必须包含研究 UID
+以及零个或零个以上用于进一步优化搜索的可选属性，例如医疗器械。最后，图像级查询用于查询系列中的特定图像。此级别不常用。图像级查询必须包含系列 UID。</p>
+<p>
+研究根与患者根非常相似，这种相似经常会引起混淆。研究根中没有患者级查询。第一个受支持的级别是研究级查询。此查询具有较多允许使用的属性。支持的属性包括研究日期、研究时间以及患者的属性，例如患者姓名、患者标识和患者性别。因此，可以将此研究级查询视作患者根中研究级查询与患者级查询的合并。研究级查询非常有用，这是因为，在指定一些基本搜索条件（例如患者姓名和研究日期）的情况下，便可一次性查询有关患者的所有研究。在研究根和患者根中，系列级查询与图像级查询完全相同。</p>
+<p>
+DICOMFindMove 节点支持上述两种根以及七种查询级别（患者根中存在四种，研究根中存在三种）。对于根与级别的每种组合，此节点定义了支持的搜索属性以及 PACS 所返回的最小属性集。请注意，一个查询可以返回多条结果消息；这些消息作为单一消息从 DICOMFindMove 节点进行传播，并因此作为单一 XML 消息在 SOAP 响应中返回。</p>
+<p>
+供应商可能支持其他属性，这些属性可以在 XML
+查询消息中用作搜索条件，或者在结果消息中返回。此节点允许在
+XML 查询消息中配置这些属性，但这些属性特定于供应商，因此“Healthcare：Web 服务到
+DICOM”模式未记录这些属性。DICOM 要求搜索条件中提供的所有搜索属性都在响应中返回。</p>
+<h5>生成的 Web 服务</h5>
+<p>
+此模式实例生成实现了 Web 服务的消息流。此模式实例还生成一个
+WSDL 文件，用于表示发出请求的应用程序与 IBM Integration Bus 之间的 Web 服务接口。</p>
+<p>
+此模式实例生成的 WSDL 文件用于对生成的消息流中的 SOAPInput
+节点进行配置。另外，发出请求的应用程序还可以使用
+WSDL 文件，以确保以正确的格式发送和接收 SOAP 请求。</p>
+<p>
+WSDL 文件是符合 WS-I 标准的 Web 服务描述。WSDL 文件包含 WSDL
+端口类型定义，以及用于发送 C-FIND 和 C-MOVE
+请求的单一操作。此操作具有输入消息和输出消息。请求消息非常灵活，支持两种查询根的七种不同类型的查询消息。此模式实例还生成一个
+XML 模式文件。XML 模式表示请求消息和响应消息的数据类型。通过使用标准的
+WSDL <code>include</code> 语句，模式文件包括在 WSDL 文件中。</p>
+<h5>部署 Web 服务</h5>
+<p>
+WSDL 和模式必须与生成的消息流一起部署到 IBM Integration Bus。从
+WebSphere Message Broker V8.0 开始，无需将 WSDL 文件和
+XML 模式文件导入到消息集即可将其部署到集成节点。IBM Integration Toolkit
+将 WSDL 和模式自动打包在 BAR 文件中。
+</p>
+<div>
+    <div class="familylinks">
+        <a name="anchor"></a>
+        <div class="section">
+            <h2 class="sectiontitle">相关任务</h2>
+        </div>
+        <p>
+        请阅读下一节，以获取有关如何应用和使用此模式的信息。</p>
+    </div>
+    <div>
+        <a href="constraints.htm" title="使用此模式时的约束。">使用此模式时的约束</a></div>
+    <div>
+        <a href="before.htm" title="有关使用此模式前必须了解的内容以及必须具备的资源的详细信息。">在应用模式前需要完成的任务</a></div>
+    <div>
+        <a href="parameters.htm" title="模式参数">模式参数</a></div>
+    <div>
+        <a href="examples.htm" title="">C-FIND 和 C-MOVE 请求的示例消息</a></div>
+    <div>
+        <a href="after.htm" title="">生成模式后要完成的任务</a></div>
+    <p>
+    </p>
+</div>
+</body>
+</html>

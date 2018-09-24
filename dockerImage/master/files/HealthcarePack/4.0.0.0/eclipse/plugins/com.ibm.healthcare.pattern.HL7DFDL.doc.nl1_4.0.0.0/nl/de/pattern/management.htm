@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="copyright" content="Copyright IBM Corporation 2013, 2014" />
+<link rel="stylesheet" type="text/css" href="./css/pattern.css" />
+<!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    -->
+<title>Musterinstanz 'Healthcare: HL7 an HL7 DFDL' verwalten</title>
+</head>
+<body role="main">
+	<a name="links"></a>
+	<h1 class="topictitle1">Musterinstanz 'Healthcare: HL7 an HL7 DFDL' verwalten</h1>
+	<p class="shortdesc">Mithilfe von Musterparametern können Sie eine Musterinstanz mit Werten generieren, die für Ihre eigene Musterinstanz festgelegt werden. Sie müssen jedoch auch die Musterinstanz implementieren und verwalten. Möglicherweise müssen darüber hinaus bestimmte operative Kontexte geändert werden.</p>
+	<p>Bei dem Muster wird von einer einfachen Topologie ausgegangen, in der alle Nachrichtenflüsse in einem einzigen Integrationsknoten ausgeführt werden. Dieses Thema enthält Informationen zur Implementierung und Verwaltung einer Musterinstanz, die diese einfache Topologie verwendet. Außerdem erfahren Sie, wie Sie die Musterinstanz verwalten können.</p>
+	<p>Das Muster enthält einige spezielle Anpassungspunkte, über die Sie eigene Änderungen hinzufügen können.</p>
+	<p>Dieses Kapitel enthält folgende Abschnitte:</p>
+	<div>
+				<a href="management.htm#setup">Konfiguration</a>
+	</div>
+	<div>
+				<a href="management.htm#messageset">HL7-DFDL-Bibliothek vorbereiten</a>
+	</div>
+	<div>
+		<a href="management.htm#customize">Anpassung</a>
+	</div>
+	<div>
+				<a href="management.htm#deployment">Implementierung des Musters</a>
+	</div>
+	<div>
+				<a href="management.htm#errors">Überwachung und Fehlerbehandlung</a>
+	</div>
+	<div class="section">
+		<a name="setup"></a>
+		<h2 class="sectiontitle">Konfiguration</h2>
+		<h4>Warteschlangen</h4>
+		<p>
+						Vor der Generierung der Musterinstanz können Sie ein MQSC-Script für die Definition der vom Muster benötigten Warteschlangen generieren, indem Sie im Abschnitt <span class="uicontrol">
+    General
+    </span> (Allgemein) der Registerkarte <span class="uicontrol">
+    Configure Pattern Parameters
+    </span> (Musterparameter konfigurieren) das Kontrollkästchen <span class="msobjpropval">
+    Generate scripts
+    </span> (Scripts generieren) aktivieren. Dieses Script mit der Bezeichnung <tt>queues.mqsc</tt> befindet sich im Stammverzeichnis des Musterinstanzprojekts; es definiert grundlegende Warteschlangen und Themen.
+		</p>
+		<p>Sie können das MQSC-Script mit dem folgenden Befehl ausführen:</p>
+		<pre>runmqsc <var>Warteschlangenmanager</var> &lt; queues.mqsc</pre>
+				Dabei ist <var>Warteschlangenmanager</var> der Name des Warteschlangenmanagers für den Integrationsknoten.
+		<p>Sie können dieses MQSC-Script bearbeiten, um Beschreibungen für Ihre Umgebung hinzuzufügen und geeignete Warteschlangenlängen festzulegen.</p>
+		<p>
+			Sie müssen insbesondere die Länge der Warteschlange 'flowprefix.DUPID' prüfen, in der der duplizierte Datenspeicher enthalten ist. In dieser Warteschlange sind alle Daten gespeichert, die für die Duplikatprüfung verwendet werden. Wenn die Duplikatprüfung aktiviert ist,
+wird die erforderliche Länge dieser Warteschlange durch die Multiplikation der maximalen Empfängernachrichtenrate mit der Dauer der Ablaufeinstellung berechnet. Wenn die maximale Rate beispielsweise bei 10 Nachrichten pro Sekunde liegt und die Verfallszeit auf 24 Stunden (86.400 Sekunden) eingestellt ist, liegt die erforderliche Länge bei <span class="msobjpropval">864000</span>.
+		</p>
+		<p>Es wird erwartet, das andere Warteschlangen überwacht und regelmäßig gelöscht werden. Diese Warteschlangen werden mit einer Standardgröße erstellt, aber Sie müssen deren Verwendung prüfen und sicherstellen, dass die Tiefe ausreichend ist.</p>
+		<p>Sie müssen das MQSC-Script vor der Implementierung der Musterinstanz ausführen.</p>
+		<h4>Konfigurierbarer Service</h4>
+		<p>Wenn Sie die Sequenzbildung aktiviert und die Option für separate Sequenzwarteschlangen ausgewählt haben, generiert das Muster eine konfigurierbare Servicedatei. Wenn Sie eine Instanz des Musters generieren, wird diese Datei im Stammverzeichnis des Containerprojekts erstellt, das die generierten Nachrichtenflüsse enthält. Dieser konfigurierbare Service teilt den Resequence-Knoten mit, wo folgegebundene Informationen gespeichert werden sollen. Vor der Implementierung des Musters muss der konfigurierbare Service im Integrationsknoten implementiert werden.</p>
+	</div>
+	<div class="section">
+		<a name="messageset"></a>
+		<h2 class="sectiontitle">HL7-DFDL-Bibliothek vorbereiten</h2>
+		<p>
+						Laden Sie eine der HL7-DFDL-Bibliotheken herunter (siehe <a
+				href="resources.htm#resources">Ressourcen für das Muster <span>
+					Healthcare: HL7 an HL7 DFDL </span></a>.
+		</p>
+		<p>Standardmäßig enthält die vom Muster generierte Anwendung das HL7-DFDL-Modell der Version 2.7. 
+		Wenn Sie das HL7-DFDL-Modell der Version 2.6 oder 2.5.1 verwenden möchten, führen Sie folgende Schritte aus:
+		<ol>
+			<li>Aktualisieren Sie den Verweis in der Anwendung, die vom Muster generiert wird, sodass sie auf die erforderliche HL7-Bibliothek verweist. Um den Verweis zu ändern, klicken Sie mit der rechten Maustaste auf die generierte Anwendung und klicken Sie auf <span class="uicontrol">Manage Library references</span> (Bibliotheksverweise verwalten).</li>
+			<li>Bearbeiten Sie in der Datei <span class="filepath">Receiver.esql</span> den Wert der Konstante <span class="filepath">ReceiverMessageSet</span>:
+				<ul>
+					 <li>Wenn Sie das HL7-DFDL-Modell der Version 2.5.1 verwenden möchten, ändern Sie den Wert in <span class="filepath">HL7v251DFDL</span>.</li> 
+					 <li>Wenn Sie das HL7-DFDL-Modell der Version 2.6 verwenden möchten, ändern Sie den Wert in <span class="filepath">HL7v26DFDL</span>.</li>
+				</ul></li>
+			<li>Starten Sie das IBM Integration Toolkit mit der Option <span class="filepath">-clean</span> erneut. Geben Sie die Option <span class="filepath">-clean</span>  an, indem Sie den Direktaufruf bearbeiten, mit dem Sie das IBM Integration Toolkit starten, oder indem Sie das IBM Integration Toolkit über eine Eingabeaufforderung starten.</li>
+		</ol>
+    
+		</p>
+		<p>
+						Die DFDL-Bibliotheken entsprechen den in den HL7-Standards der Version 2.5.1, Version 2.6 und Version 2.7 festgelegten Standards. Das Muster verwendet die in der Nachrichtendefinitionsdatei <span class="msobjpropval"> segments.xsd </span> enthaltene HL7-Nachricht. Wenn Quellen- oder Zielanwendungen Änderungen am Standard vornehmen, müssen diese Änderungen im Nachrichtenmodell reflektiert werden. Die gängigsten Änderungen lauten wie folgt:
+		</p>
+		<ul>
+			<li>Änderung der obligatorischen Einstellung der Felder, die im Nachrichtenmodell definiert sind. Diese Änderungen erfolgen über die Parameterwerte <span class="msobjprop">Min occurs</span> (Mindestanzahl) oder <span class="msobjprop">Max occurs</span> (Maximale Anzahl).</li>
+			<li>Erstellung von Z-Segmenten, die von Quellen- oder Zielanwendungen verwendet werden. Z-Segmente modellieren anwendungsspezifische Daten, die nicht in der HL7-DFDL-Bibliothek definiert sind.</li>
+			<li>Herstellerspezifische Änderungen oder Zusätze zum Standard.
+</li>
+		</ul>
+				<b>Neues Z-Segment erstellen</b>
+		<p>Z-Segmente werden von Anwendungen zum Senden oder Empfangen von Daten verwendet, die außerhalb der HL7-Spezifikation definiert sind. Sie können eigene Z-Segmente modellieren und in Ihren Anwendungen verwenden. Jede DFDL-Modellbibliothek  enthält die Datei 'Z_Segments.xsd', die Sie anpassen können, indem Sie ihr eigene Z-Segmentdefinitionen hinzufügen.</p>
+		<p>Die Z-Segmentdefinitionen, die unter 'Z_Group' in der Datei 'Z_Segments.xsd' hinzugefügt werden, werden zur Analyse aller nicht modellierten Segmente herangezogen. Dieser Gruppe wird standardmäßig das Element 'Zxx' hinzugefügt. Das Element 'Zxx' verfügt über keine bestimmte Initiatordefinition für das Segment, sodass der gesamte Segmentinhalt vom Remainder-Feld modelliert wird.</p>
+		<p>So erstellen Sie eine neue Z-Segmentdefinition:</p>
+		<ol>
+			<li>Öffnen Sie im DFDL-Editor die Nachrichtendefinitionsdatei 'Z_Segments.xsd in der DFDL-Modellbibliothek.</li>
+			<li>Erstellen Sie ein neues Element für das Segment, das nicht entsprechend der HL7-Spezifikation definiert wurde. Sie können entweder ein neues globales Element erstellen und dem Element in der choice-Gruppe der Z_Group-Definition einen Verweis hinzufügen oder Sie können der choice-Gruppe der Z_Group-Definition direkt ein lokales Element hinzufügen.</li>
+			<li>Löschen Sie das Standardelement 'Zxx' (falls vorhanden) oder stellen Sie sicher, dass das Element 'Zxx' der letzte Eintrag in der choice-Gruppe der Z_Group-Definition ist.</li>
+		</ol>
+				<b>Herstellerspezifische Zusätze zum HL7-Standard</b>
+		<p>HL7-Implementierungen können die durch HL7 definierten Standardsegmente ergänzen, indem am Ende eines Segments zusätzliche Felder hinzugefügt werden. Diese Zusätze werden in der Regel durch ein Remainder-Feld am Ende jeder Segmentdefinition modelliert. Sie können vor dem Remainder-Feld jedoch die zusätzlichen Felder hinzufügen, die von Herstellern benötigt werden.</p>
+	</div>
+	<div class="section">
+		<a name="customize"></a>
+		<h2 class="sectiontitle">Anpassung</h2>
+		<p>Den Benutzern des Musters stehen drei Hauptanpassungspunkte zur Verfügung. Darüber hinaus sind jedoch noch weitere Anpassungspunkte verfügbar.</p>
+		<h4>Quellenanpassung</h4>
+		<p>Der Hauptnachrichtenfluss 'TransformAndRoute' ruft den untergeordneten Nachrichtenfluss 'SubCustomize' auf, bevor er die Nachrichten an verschiedene Ziele verteilt und gegebenenfalls das kanonische Format der Nachricht erstellt.</p>
+		<p>
+			Der standardmäßige untergeordnete Nachrichtenfluss 'SubCustomize' hat keine Auswirkung auf die Nachricht, Sie können mit diesem Anpassungspunkt jedoch Daten aus der Quelle standardisieren, damit Ihre Anforderungen erfüllt werden. Es kann beispielsweise vorkommen, dass Ihr Standard für Datumsangaben das Format <span class="msobjpropval">JJJJ-MM-TT</span> vorschreibt, die Quelle jedoch ein anderes Datumsformat verwendet. Mit diesem Anpassungspunkt können Sie beliebige Quellendaten ändern. Es kann auch gelegentlich sinnvoll sein, an diesem Punkt Daten einzufügen, die in anderen Quellen wie zum Beispiel Datenbanken verfügbar sind.
+		</p>
+		<h4>Zielanpassung</h4>
+		<p>
+			Für jedes Ziel gibt es einen standardmäßigen untergeordneten Nachrichtenfluss zur Anpassung (namens Dest<var>n</var>, wobei <var>n</var> für die Nummer des Ziels steht), der keine Auswirkung auf die Nachricht hat. Sie können mit diesem untergeordneten Nachrichtenfluss jedoch eine Ausgabenachricht erstellen, die den Spezifikationen entspricht, die von dem betreffenden Ziel benötigt werden. Das Ziel könnte beispielsweise die folgenden Änderungen erfordern:
+		</p>
+		<ul>
+			<li>Zusätzliche Daten, die in Z-Segmenten erforderlich sind</li>
+			<li>Änderung der Daten aus der Quelle; beispielsweise die Formatierung des Geburtsdatums eines Patienten auf Basis der Datumsformatanforderungen des Ziels</li>
+			<li>Löschen von Daten, die vom Ziel nicht benötigt oder nicht unterstützt werden</li>
+		</ul>
+		<h4>Verwendung von Quellenfeeds oder kanonischen Feeds</h4>
+		<p>Wenn Sie sich für die Generierung eines Quellenfeeds oder kanonischen Feeds entschlossen haben, generiert jede vom Receiver-Nachrichtenfluss verarbeitete Nachricht eine Kopie der Quellennachricht oder der Nachricht nach der Kanonisierung. Diese Nachrichten werden in eine WebSphere MQ-Warteschlange geschrieben oder veröffentlicht, je nachdem, was durch Ihre Musterparameter angegeben ist.</p>
+		<p>Möglicherweise möchten Sie Nachrichten an Ziele senden, die nicht mit dem Muster kompatibel sind. Beispiele hierfür wären ein Data-Warehouse, ein Nicht-HL7-Ziel oder ein Ziel, das einen anderen Transportmechanismus verwendet. Sie können Nachrichten an Ziele senden,
+die nicht mit dem Muster kompatibel sind, indem Sie Integrationslösungen für die Verarbeitung der Nachrichten aus den Quellenfeeds oder kanonischen Feeds schreiben.
+</p>
+	</div>
+	<div class="section">
+		<a name="deployment"></a>
+		<h2 class="sectiontitle">Musterimplementierung</h2>
+		<p>Implementieren Sie die generierte Anwendung, die einen Verweis auf die HL7-DFDL-Bibliothek und die Bibliothek des untergeordneten Nachrichtenflusses enthält.</p>
+		<ol>
+			<li>Zur Leistungssteigerung nach der Erstellung der Flüsse kann es sinnvoll sein, die Einstellung <span class="msobjprop">
+            Additional instances
+            </span> (Zusätzliche Instanzen) für jeden Nachrichtenfluss zu erhöhen, der keine Sequenzbildungsanforderungen hat:
+				<ol>
+					<li>Klicken Sie auf die Registerkarte <span class="uicontrol">
+                    Manage
+                    </span> (Verwalten).</li>
+					<li>Wählen Sie die Eigenschaften von Flüssen aus, die Sie konfigurieren möchten, und legen Sie Werte fest, die von Ihrer Implementierung benötigt werden.</li>
+				</ol></li>
+		</ol>
+		<p></p>
+	</div>
+	<div class="section">
+		<a name="errors"></a>
+		<h2 class="sectiontitle">Überwachung und Fehlerbehandlung</h2>
+		<p>Bei allen Nachrichtenflüssen im Muster werden Fehlerbenachrichtigungen in eine Fehlerwarteschlange geschrieben. Darüber hinaus wird ein Warteschlangentrace an der Position ausgegeben, die Sie während der Generierung des Musters definiert haben. Der MQRFH2-Header der Fehlernachricht enthält Informationen, die angeben, wo der Fehler aufgetreten ist. Einzelheiten zum Verhalten jedes Nachrichtenflusses werden in diesem Abschnitt angegeben.</p>
+		<h3>Fehler im Receiver-Nachrichtenfluss</h3>
+		<p>Der Receiver-Nachrichtenfluss wird als Transaktion ausgeführt und sämtliche Ausgabenachrichten werden beim erfolgreichen Abschluss des Nachrichtenflusses festgeschrieben.
+Falls Bestätigungen erforderlich sind, wird als letzte Aktion des Receiver-Nachrichtenflusses die Bestätigungsnachricht (ACK) gesendet. Sobald die Verarbeitung der Bestätigung erfolgreich abgeschlossen ist, wird der Nachrichtenfluss beendet und die Nachrichten werden festgeschrieben.</p>
+		<p>Für jede Aktion im Receiver-Nachrichtenfluss gilt Folgendes:</p>
+		<ul>
+			<li>Der Parameter  <span class="msobjprop">
+            FlowMilestoneReached
+            </span> wird vor Beginn der Aktion festgelegt; der Parameter gibt den Teil des Nachrichtenflusses an, in dem der Fehler aufgetreten ist.</li>
+			<li>Die Nachricht mit der Fehlerbedingung (ErrorCondition) enthält Details zum aufgetretenen Fehler.</li>
+		</ul>
+		<p>Falls ein Fehler auftritt, geschieht Folgendes:</p>
+		<ul>
+			<li>Der Fehler wird abgefangen und vom untergeordneten Nachrichtenfluss 'ReceiverExceptionHandler' verarbeitet. Dieser untergeordnete Nachrichtenfluss fügt der Nachricht die Header MQMD und MQRFH2 hinzu und schreibt die Nachricht in die Fehlerwarteschlange außerhalb der Transaktion. Der Header MQRFH2 enthält Einzelheiten dazu, wo der Fehler auftrat.
+<p>Falls erforderlich, wird eine Antwort mit einer negativen Rückmeldung (NACK) generiert und an die Quellenanwendung gesendet.</p></li>
+			<li>Eine Ausnahmebedingung wird ausgelöst, die für alle Nachrichten einen Rollback durchführt und im Fall einer erforderlichen Sequenzbildung auf Basis des Eintreffens eine Folgenummer zuordnet.
+				Das Rückgängigmachen löst auch die Ausgabe der Ausnahmeinformationen im Ereignisprotokoll aus.</li>
+			<li>Der Nachrichtenfluss verhält sich, als ob keine Nachricht empfangen worden wäre, und entweder wird eine korrigierte Nachricht erneut übergeben oder die Informationen werden bei der Zielanwendung verarbeitet.</li>
+			<li>Die von der empfangenden Anwendung gesendete NACK-Bestätigung zeigt an, dass die Nachricht nicht verarbeitet wurde.</li>
+		</ul>
+		<p>Der Administrator muss die Fehlerwarteschlange und das Ereignisprotokoll überwachen, um festzustellen, wann Nachrichten nicht von der Empfängerwarteschlange verarbeitet wurden. Auf diese Weise kann er erforderliche Korrekturmaßnahmen ergreifen, um den Fehler zu beheben.</p>
+		<h3>Fehler im Nachrichtenfluss 'TransformAndRoute'</h3>
+		<p>Der Nachrichtenfluss 'TransformAndRoute' wird als einzelne Transaktion ausgeführt. Sobald der Nachrichtenfluss erfolgreich abgeschlossen wurde, werden sämtliche Ausgabenachrichten an folgenden Positionen festgeschrieben:</p>
+		<ul>
+			<li>in der Eingabewarteschlange für den Sender-Nachrichtenfluss jedes Ziels</li>
+			<li>im Remainder-Bericht (falls ausgewählt)</li>
+			<li>in der Warteschlange für den kanonischen Nachrichtenfeed</li>
+		</ul>
+		<p>Falls ein Fehler auftritt, geschieht Folgendes:</p>
+		<ul>
+			<li>Der Fehler wird abgefangen und vom untergeordneten Nachrichtenfluss 'TransformationExceptionHandler' verarbeitet. Dieser untergeordnete Nachrichtenfluss fügt der Nachricht einen MQRFH2-Header hinzu und schreibt die Nachricht außerhalb der Transaktion in die Fehlerwarteschlange. Der Header MQRFH2 enthält Einzelheiten dazu, wo der Fehler auftrat.</li>
+			<li>Eine Ausnahmebedingung wird ausgelöst, die die Eingabenachricht wieder in die Warteschlange stellt, für alle Nachrichten, die in Warteschlangen geschrieben wurden, einen Rollback durchführt und die Ausgabe der Ausnahmebedingungsinformationen im Ereignisprotokoll auslöst.</li>
+		</ul>
+		<p></p>
+		<p>Der Administrator muss die Fehlerwarteschlange und das Ereignisprotokoll überprüfen, um festzustellen, welche Fehler aufgetreten sind. Sowohl die Fehlerwarteschlange als auch die Rücksetzwarteschlangen enthalten Informationen. Nach der Verarbeitung einer korrigierten Nachricht müssen diese Informationen gelöscht werden, um ein Ansteigen der Daten in der Warteschlange zu verhindern.</p>
+		<p>Der Administrator muss eine Rücksetzwarteschlange für die Eingabewarteschlange konfigurieren.</p>
+		<p>Wenn für eine Nachricht vom Nachrichtenfluss 'Routing and Transformation' ein Rollback durchgeführt wird, werden spätere Nachrichten dennoch verarbeitet und an die Sender-Nachrichtenflüsse übergeben. Diese Aktion kann jedoch bei jedem Ziel, das eine lockere oder strikte Sequenzbildung implementiert, eine Auswirkung auf die
+Sender-Nachrichtenflüsse haben, da die Folgenummer der fehlerhaften Nachricht fehlt. Dies führt dazu, dass Nachrichten in die Sequenzwarteschlange eingereiht werden, bis entweder eine Nachricht mit der richtigen Folgenummer empfangen wird, oder dass die Nachricht aufgrund einer Zeitlimitüberschreitung beendet wird, damit die fehlende Folgenummer übersprungen werden kann (nur bei der lockeren Sequenzbildung). Daher müssen Fehler im Nachrichtenfluss 'TransformAndRoute' möglichst schnell korrigiert werden.</p>
+		<p>Für die Korrektur eines Fehlers im Nachrichtenfluss 'TransformAndRoute' stehen zwei Möglichkeiten zur Verfügung:</p>
+		<ul>
+			<li>Eine korrigierte Nachricht kann an den Nachrichtenfluss 'TransformAndRoute' übergeben werden. Sie können die in die Fehlerwarteschlange oder in die Rücksetzwarteschlange geschriebene Nachricht bearbeiten und diese anschließend erneut übergeben. Diese Maßnahme stellt sicher, dass die Folgenummern korrekt sind.</li>
+			<li>Die Informationen in der Fehlernachricht können direkt in den Zielanwendungen übernommen werden. Wenn für ein Ziel eine strikte Sequenzbildung verwendet wird, müssen Sie an dieses Ziel eine Pseudonachricht senden, damit der Nachrichtenfluss fortgesetzt werden kann:
+				<ol>
+					<li>Erstellen Sie eine XML-Nachricht. Beispiel: <pre>&lt;sup:MaintainSequence xmlns:sup=http://ibm/healthcare/support&gt;
+    &lt;MessageGeneratedToMaintainSequence&gt;true&lt;/ 
+    MessageGeneratedToMaintainSequence&gt;
+&lt;/sup:MaintainSequence&gt;</pre></li>
+					<li>Stellen Sie diese XML-Nachricht in die erforderliche Zielwarteschlange.
+Sie müssen die folgenden beiden Werte für den MQRFH2-Headerbenutzerordner festlegen. Das Folgenummernelement enthält die zu überspringende Nachrichtenfolge und das Folgegruppenelement gibt das Ziel an, auf das die Nachricht verweist. Beispiel: <pre>&lt;SequenceNumber&gt;2&lt;/SequenceNumber&gt;
+&lt;SequenceGroup&gt;DEST1&lt;/SequenceGroup&gt;</pre></li>
+				</ol></li>
+		</ul>
+		<h3>Fehler im Sender-Nachrichtenfluss</h3>
+		<p>Sender-Nachrichtenflüsse, die die Sequenzbildung unterstützen, enthalten den Resequence-Knoten 'Maintain Sequence'. Ein Resequence-Knoten unterteilt den Nachrichtenfluss in zwei Transaktionen. Wenn vor dem Resequence-Knoten eine Ausnahmebedingung auftritt, wird eine Nachricht in die
+Fehlerwarteschlange außerhalb der Transaktion geschrieben und für die Eingabenachricht wird ein Rollback zur Eingabewarteschlange für den Sender-Nachrichtenfluss durchgeführt. Die Eingabewarteschlange muss mit einer Rücksetzwarteschlange konfiguriert werden.</p>
+		<p>Diese Art der Fehlerbehandlung wird auch angewandt, wenn der Sender-Nachrichtenfluss keine Sequenzbildung aufweist.</p>
+		<p>Korrigieren Sie den Fehler mit einer der folgenden Lösungen:</p>
+		<ul>
+			<li>Korrigieren Sie die Nachricht und übergeben Sie sie erneut.</li>
+			<li>Wenden Sie das Ereignis direkt auf die Zielanwendung an und senden Sie eine Pseudonachricht.</li>
+		</ul>
+		<p>Wenn an diesem Punkt im Nachrichtenfluss Fehler auftreten, bedeutet dies, dass eine Folgenummer fehlt. Wenn für den Sender-Nachrichtenfluss eine Sequenzbildung verwendet wird, muss der Administrator die Fehlerwarteschlange überprüfen und den Fehler möglichst schnell korrigieren. Spätere Nachrichten in der Folge werden in internen Sequenzwarteschlangen gespeichert; daher kann ein Fehler zu einer hohen Menge an Nachrichten führen.</p>
+		<p>Wenn ein Fehler nach dem Resequence-Knoten, aber vor dem Versenden der Nachricht an die Zielanwendung auftritt, wird eine Fehlernachricht geschrieben und die Nachricht wird auf die interne Sequenzwarteschlange zurückgesetzt. Um diese Art von Fehler zu beheben, muss der Administrator sicherstellen, dass die Zielanwendung sowohl verfügbar als auch verbunden ist. Der Resequence-Knoten versucht weiterhin, die Nachricht zuzustellen, damit die Nachricht zugestellt wird, sobald die Verbindung hergestellt wird. Bei einer strikten Sequenzbildung werden spätere Nachrichten erst zugestellt, wenn die vorherige Zustellung erfolgreich war.</p>
+		<p>Ein Fehler kann auch nach der Zustellung einer Nachricht auftreten. Diese Art von Fehler tritt auf, wenn die Zielanwendung die Nachricht nicht verarbeiten kann und eine NACK-Meldung sendet. In diesem Fall setzt der Nachrichtenfluss die Nachricht nicht auf den Resequence-Knoten zurück, da die Nachricht denselben Fehler möglicherweise wiederholt verursacht. Stattdessen wird eine Nachricht in die Fehlerwarteschlange geschrieben. Der Administrator muss die Fehlerwarteschlange überprüfen und das Problem bei der Zielanwendung beheben. In diesem Fall fließen Nachrichten mit einer höheren Folgenummer weiterhin.</p>
+		<p>Administratoren, die Fehler beheben müssen, finden die wichtigsten Informationen in den Nachrichten, die sich in der Fehlerwarteschlange und in den Rücksetzwarteschlangen befinden. Darüber hinaus steht jedoch auch die SEQNOS-Warteschlange zur Verfügung, in der der Status der aktuellen folgegebundenen Informationen gespeichert ist. Diese Warteschlange bietet einen Überblick über den Nachrichtenfluss der Nachrichten an jedes der Musterziele.</p>
+	</div>
+		<a href="overview.htm#anchorBack" title="Zurück">Zurück zur Spezifikation des Musters 'Healthcare: HL7 an HL7 DFDL'</a>
+	<p></p>
+</body>
+</html>

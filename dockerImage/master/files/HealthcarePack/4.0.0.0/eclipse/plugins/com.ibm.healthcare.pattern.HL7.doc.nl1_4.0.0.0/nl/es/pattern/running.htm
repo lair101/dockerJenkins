@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>Ejecución del patrón Servicio sanitario: HL7 a HL7</title>
+</head>
+<body role="main">
+<div class="section">
+    <h1 class="topictitle1">Ejecución del patrón Servicio sanitario:
+HL7 a HL7</h1>
+    <p class="shortdesc">
+    El patrón Servicio sanitario: HL7 a HL7 puede distribuir
+los mensajes entrantes a cualquier número de destinos, pero para
+facilitar el desarrollo y la gestión, cada instancia de patrón
+contiene un máximo de seis destinos.
+    </p>
+    <p>
+    <b>Antes de empezar:</b>
+    </p>
+    <p>
+    Lea "Utilización de patrones" en la documentación de IBM Integration Bus.
+    </p>
+</div>
+<div class="image">
+    <img src="running.png" alt="Diagrama que muestra cómo se dividen los destinos entre proyectos de instancia de patrón." />
+</div>
+<div class = "description">
+    <p>
+    La primera instancia del patrón determina el número total de
+destinos y configura todos los parámetros, excepto los que son
+específicos de un destino en particular. Debe crear una nueva
+instancia de patrón para cada grupo de seis
+destinos que desee utilizar. Por ejemplo, para crear un patrón con 16
+destinos, debe tener tres instancias de patrón.
+    </p>
+    <p>
+    Para facilitar su supervisión, cada instancia de patrón debe
+tener un número al final. Incremente el número en uno cada vez que
+cree una nueva instancia de patrón y asegúrese de que el valor del
+parámetro <span class="msobjprop">
+    Parte
+    </span>
+    coincide con el número de la instancia de patrón. Por ejemplo, si
+la instancia de patrón tiene el número <span class="msobjpropval">
+    3
+    </span>
+    el nombre de la instancia de patrón es PatternInstance3,
+y el valor del parámetro <span class="msobjprop">
+    Parte
+    </span>
+    debe ser
+    <span class="msobjpropval">
+    3
+    </span>
+    .
+    </p>
+</div>
+<div class="section">
+    <a name="config"></a> <h2 class="sectiontitle">Configuración del patrón</h2> <h3>Configuración de un patrón con un máximo de seis destinos </h3>
+    <p>
+    Para configurar un patrón que contenga un máximo de seis destinos,
+efectúe los pasos siguientes:
+    </p>
+    <ol>
+        <li>
+            En el separador
+            <span class="uicontrol">
+            Especificación de patrón
+            </span>, pulse
+            <span class="uicontrol">
+            Crear nueva instancia
+            </span>
+            . Se abre la ventana
+            <span>
+            Nueva instancia de patrón
+            </span>.
+        </li>
+        <li>
+            Escriba el nombre de la primera instancia de patrón. Para
+facilitar la supervisión, incluya un <span class="msobjpropval">
+            1
+            </span>
+            al final del nombre, por ejemplo,
+PatternInstance1. Pulse <span class="uicontrol">Aceptar</span>. Se
+abre el separador <span class="uicontrol">
+            Configurar parámetros de patrón
+            </span>.
+        </li>
+        <li>
+            Asegúrese de que el parámetro
+            <span class="msobjprop">
+            Parte
+            </span>
+            está definido en
+            <span class="msobjpropval">
+            1
+            </span>
+            , y escriba el número de destinos que desea utilizar, por
+ejemplo, <span class="msobjpropval">
+            6
+            </span>
+            . Se crea automáticamente una sección
+            <span class="uicontrol">
+            Parámetros del destino <var>n</var>
+            </span>
+            para cada destino, donde <var>n</var> es el número del destino.
+        </li>
+        <li>
+            Opcional: Revise los parámetros de cada uno de los
+destinos y edite los que desee configurar.
+        </li>
+        <li>
+            Pulse en
+            <span class="uicontrol">
+            Generar
+            </span>
+            .
+        </li>
+        <li>
+            Ahora ya puede desplegar los flujos.
+        </li>
+    </ol>
+    <h3>Configuración de un patrón con más de seis destinos</h3>
+    <p>
+    Para configurar un patrón que contenga más de seis destinos, efectúe
+los pasos siguientes:
+    </p>
+    <ol>
+        <li>
+            En el separador
+            <span class="uicontrol">
+            Especificación de patrón
+            </span>, pulse
+            <span class="uicontrol">
+            Crear nueva instancia
+            </span>
+            . Se abre la ventana
+            <span>
+            Nueva instancia de patrón
+            </span>.
+        </li>
+        <li>
+            Escriba el nombre de la primera instancia de patrón. Para
+facilitar la supervisión, incluya un <span class="msobjpropval">
+            1
+            </span>
+            al final del nombre, por ejemplo, PatternInstance1. Pulse <span class="uicontrol">Aceptar</span>. Se abre el separador <span class="uicontrol">
+            Configurar parámetros de patrón
+            </span>.
+        </li>
+        <li>
+            Asegúrese de que el parámetro
+            <span class="msobjprop">
+            Parte
+            </span>
+            está definido en
+            <span class="msobjpropval">
+            1
+            </span>
+            , y escriba el número total de destinos que desea
+utilizar, por  ejemplo, <span class="msobjpropval">
+            16
+            </span>
+            . Se crea automáticamente una sección
+            <span class="uicontrol">
+            Parámetros del destino <var>n</var>
+            </span>
+            para cada destino, donde <var>n</var> es el número del
+destino, para cada uno de los destinos del primer grupo de seis.
+        </li>
+        <li>
+            Opcional: Revise los parámetros de cada uno de los
+destinos y edite los que desee configurar.
+        </li>
+        <li>
+            Pulse en
+            <span class="uicontrol">
+            Generar
+            </span>
+            .
+        </li>
+        <li>
+            Vuelva al separador
+            <span class="uicontrol">
+            Especificación de patrón
+            </span>, pulse
+            <span class="uicontrol">
+            Crear nueva instancia
+            </span>
+            . Se abre la ventana
+            <span>
+            Nueva instancia de patrón
+            </span>.
+        </li>
+        <li>
+            Escriba en el nombre de la siguiente instancia de patrón.
+recuerde aumentar en uno el número al final del nombre, por ejemplo,
+            PatternInstance2. Pulse <span class="uicontrol">Aceptar</span>. Se abre el separador <span class="uicontrol">
+            Configurar parámetros de patrón
+            </span>.
+        </li>
+        <li>
+            Importe el archivo de configuración de la primera
+instancia de patrón pulsando en el icono de carpeta <span class="uicontrol">
+            Abrir configuración existente</span>
+            que hay en la parte superior de la tabla <span class="uicontrol">
+            Parámetros de patrón
+            </span>. Esta acción garantiza que todos los parámetros
+definidos en la primera instancia de patrón están disponibles
+para configurar correctamente el siguiente grupo de destinos.
+        </li>
+        <li>
+            Defina el parámetro
+            <span class="msobjprop">
+            Parte
+            </span>
+            en
+            <span class="msobjpropval">
+            2
+            </span>
+            . Se crea automáticamente una sección
+            <span class="uicontrol">
+            Parámetros del destino <var>n</var>
+            </span>
+            para cada destino, donde <var>n</var> es el número del
+destino, para cada uno de los destinos del segundo grupo de seis,
+cada destino tiene su propio número de identificación 7 - 12.
+        </li>
+        <li>
+            Opcional: Revise los parámetros de cada uno de los
+destinos y edite los que desee configurar. Si un parámetro de patrón hereda su configuración de la
+primera instancia de patrón, el parámetro queda inhabilitado.
+        </li>
+        <li>
+            Pulse en
+            <span class="uicontrol">
+            Generar
+            </span>
+            .
+        </li>
+        <li>
+            Repita los pasos 6 - 11 para cada instancia de patrón que
+tenga que crear, sustituyendo el número de instancia de patrón y los
+valores del parámetro <span class="msobjprop">
+            Parte
+            </span>
+            como corresponda hasta tener una instancia de patrón para
+cada uno de los destinos.
+        </li>
+        <li>
+            Ahora ya puede desplegar los flujos.
+        </li>
+    </ol>
+    <h3>Nombres de colas y flujos</h3>
+    <p>
+    Los nombres de los flujos y colas se crean automáticamente al generar
+el patrón:
+    </p>
+    <ol>
+        <li>
+            Cada flujo Sender y cada subflujo de destino recibe un
+nombre que refleje su número de destino. Por ejemplo, si el número de
+destino es 8, los nombres de flujo también contienen el número 8.
+        </li>
+        <li>
+            El nombre de cola del flujo TransformAndRoute refleja el
+valor del parámetro <span class="msobjprop"> Parte
+            </span>. Por ejemplo, el nombre de la cola de la
+instancia de patrón que contiene el segundo grupo de destinos es
+QueuePrefix.RXF2
+        </li>
+        <li>
+            El nombre de la cola de cada flujo Sender también contiene el
+número del destino.
+        </li>
+        <li>
+            Otras colas se comparten entre los proyectos de instancia de patrón
+porque, aunque cada instancia de patrón se identifica de forma
+independiente, las instancias de patrón se gestionan como una
+única instancia de patrón controlada desde una única aplicación de
+origen.
+        </li>
+    </ol>
+</div>
+<div class="section">
+    <a name="deploying"></a> <h2 class="sectiontitle">Despliegue de
+los flujos</h2>
+    <p>
+    Para desplegar los flujos:
+    </p>
+    <ol>
+        <li>
+            En la vista
+            <span>
+            Desarrollo de aplicaciones
+            </span>, de la parte 1 del patrón, arrastre el flujo
+Receiver, el flujo TransformAndRoute y cada uno de los flujos Sender
+al servidor de integración de la vista <span>Nodos de integración</span>.
+        </li>
+        <li>
+            Para cada una de las demás partes del patrón, arrastre el
+flujo TransformAndRoute y cada uno de los flujos Sender y de destino
+al servidor de integración de la vista <span>
+            Nodos de integración</span>.
+        </li>
+    </ol>
+    <p>
+    Ahora el patrón ya se está ejecutando y se pueden enviar mensajes.
+    </p>
+</div>
+<a href="overview.htm#anchorBack" title="Atrás">Volver a
+la especificación del patrón Servicio sanitario: HL7 a HL7</a>
+<p>
+</p>
+</body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn">
+<head>
+	<!--
+		(c) Copyright IBM Corporation 2013, 2014. All rights reserved.
+		All Rights Reserved * Licensed Materials - Property of IBM 
+	-->
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="abstract" content="下列各表包含“Web 服务到 DICOM”模式的模式参数详细信息"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+	<title>“Web 服务到 DICOM”模式的模式参数</title>	
+	<script language="JavaScript" src="../help/actions.js"></script>
+	
+	<!-- START NON-TRANSLATABLE -->
+	<script language="JavaScript">
+	<!--
+
+	function getParameter(location, name) {
+		name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+		var search = "[\\?&]" + name + "=([^&#]*)";
+		var regex = new RegExp(search);
+		var results = regex.exec(location);
+		return (results == null ? true : (results[1] == "false" ? false : true));
+	}
+	
+	function addStyleSheet() {
+		if (getParameter(window.location.href, "everything") == false) {
+			var headId = document.getElementsByTagName("head")[0];         
+			var cssNode = document.createElement("link");
+			cssNode.type = "text/css";
+			cssNode.rel = "stylesheet";
+			cssNode.href = "../css/patterns.css";
+			cssNode.media = "screen";
+			headId.appendChild(cssNode);
+		}
+	}
+		
+	addStyleSheet(); // Depends on the query string!
+	
+	function getElementsByStyleClass (className) {
+  		var all = document.all ? document.all :
+    	document.getElementsByTagName('*');
+  		var elements = new Array();
+  		
+  		for (var e = 0; e < all.length; e++) {
+    		if (all[e].className == className) {
+      			elements[elements.length] = all[e];
+      		}
+      	}
+ 		return elements;
+	}
+	
+	function collapseAll() {
+		var elements = getElementsByStyleClass('twisty');
+		for (var e = 0; e < elements.length; e++) {
+			changeTwisty(elements[e], 'TWISTIE.COLLAPSEALL');
+		}
+	}
+	
+	function expandAll() {
+		var elements = getElementsByStyleClass('twisty');
+		for (var e = 0; e < elements.length; e++) {
+			changeTwisty(elements[e], 'TWISTIE.EXPANDALL');
+		}
+	}
+	
+	function toggleTwisty(group) {
+		changeTwisty(group, 'TWISTIE.TOGGLE');
+		// Make KC adjust content area for change of content height
+		if (typeof kc === "object" && typeof kc.resize === "function") kc.resize();
+	}
+
+	function changeTwisty(group, mode) {		
+		whichGroupId = group.parentNode.id;
+
+		whichGroupContainerId = whichGroupId + "Container";
+		whichGroupTwistyId = whichGroupId + "Twisty";
+		whichGroupTwistyImageId = whichGroupId + "Arrow";
+		groupContainerObj = document.getElementById(whichGroupContainerId);
+		twistyArrowContainerObj = document.getElementById(whichGroupTwistyId);
+		twistyArrowImageObj = document.getElementById(whichGroupTwistyImageId);
+		group.parentNode.style.height = "auto";
+
+		var toShow = false;
+		
+		if (mode == 'TWISTIE.TOGGLE') {
+			if (groupContainerObj.style.display == "none" || groupContainerObj.style.display == "") {
+				toShow = true;
+			} else {
+				toShow = false;
+			}
+		} else if (mode == 'TWISTIE.EXPANDALL') {
+			toShow = true;
+		}
+		
+		if (toShow) {
+			groupContainerObj.style.visibility = "visible";
+			groupContainerObj.style.display = "block";
+			twistyArrowImageObj.src = '../images/twistyopen.png'
+			group.parentNode.style.height = (groupContainerObj.offsetHeight + 30) +'px'; 
+	
+		} else {
+			groupContainerObj.style.visibility = "hidden";
+			groupContainerObj.style.display = "none";
+			twistyArrowImageObj.src = '../images/twistyclosed.png'
+		}
+	
+	}
+	//-->
+	</script>
+	<!-- END NON-TRANSLATABLE -->
+</head>
+<body id="com.ibm.healthcare.pattern.DICOM.pattern.parametertable" role="main">
+	<!-- Page main title -->
+  	<div id="title" class="invisible">
+		<h1 class="patterns-title">“<span>Web 服务到 DICOM</span>”模式的参数</h1>
+  	</div>
+
+
+	
+		
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="Id13b7b8bbce745eda4d843a731">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="Id13b7b8bbce745eda4d843a731Twisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="Id13b7b8bbce745eda4d843a731Arrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">DICOM
+服务
+</div>
+							
+							
+
+									
+
+									
+
+									
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="Id13b7b8bbce745eda4d843a731Container">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">模式参数</th>
+													  <th class="invisible" valign="top" width="*">缺省值</th>
+													  <th valign="top" width="*">描述</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																应用程序实体标题</th>
+															<td valign="top" width="2*" class="invisible">
+																				BROKERAE
+															</td>
+															<td valign="top" width="*">
+																<p>这是模式生成的应用程序实体在连接到远程应用程序实体 (PACS) 时使用的 DICOM 标题。</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																远程应用程序实体标题</th>
+															<td valign="top" width="2*" class="invisible">
+																				PACS
+															</td>
+															<td valign="top" width="*">
+																<p>这是 DICOM C-FIND 和 C-MOVE 命令所发送到的远程应用程序实体的 DICOM 标题。</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																最大结果数</th>
+															<td valign="top" width="2*" class="invisible">
+																				99
+															</td>
+															<td valign="top" width="*">
+																<p>此参数指定处理的 C-FIND 响应消息的最大数目。此值确保长时间运行的 C-FIND 查询在合理的时间长度内完成。</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																连接超时（秒）</th>
+															<td valign="top" width="2*" class="invisible">
+																				60
+															</td>
+															<td valign="top" width="*">
+																<p>这是允许与远程应用程序实体 (PACS) 建立连接的最大时间长度。</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																连接详细信息</th>
+															<td valign="top" width="2*" class="invisible">
+																																								localhost:11112
+															</td>
+															<td valign="top" width="*">
+																<p>此参数以 <code>hostname:port</code> 格式定义远程应用程序实体 (PACS) 的 TCP/IP 连接。</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																启用针对查询 WSDL 的支持</th>
+															<td valign="top" width="2*" class="invisible">
+																				选中</td>
+															<td valign="top" width="*">
+																																如果选中此参数，并且集成节点接收到包含 ?wsdl 查询字符串的 HTTP GET
+请求，那么集成节点将返回与端点相关的 WSDL 和 XML 模式信息。使用此参数可以控制 WSDL 的分发。</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	
+		
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="Id1308908e7daf97fc78dd96e3372">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="Id1308908e7daf97fc78dd96e3372Twisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="Id1308908e7daf97fc78dd96e3372Arrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">日志记录</div>
+							
+							
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="Id1308908e7daf97fc78dd96e3372Container">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">模式参数</th>
+													  <th class="invisible" valign="top" width="*">缺省值</th>
+													  <th valign="top" width="*">描述</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																需要进行日志记录</th>
+															<td valign="top" width="2*" class="invisible">
+																				取消选中</td>
+															<td valign="top" width="*">
+																																此模式参数确定模式实例是否包含用于进行日志记录的子流。
+<p>如果未选中此模式参数，那么将不包含日志记录子流。</p>
+
+<p>如果选中此模式参数，那么必须为<span class="msobjprop">“日志队列管理器”</span>和<span class="msobjprop">“日志队列”</span>设置值。</p>
+
+
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																日志队列管理器</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																																此模式参数定义用于进行日志记录的队列管理器。如果使用了集成节点队列管理器进行日志记录，那么可以保留此参数为空。
+<p>仅当选中了<span class="msobjprop">“需要进行日志记录”</span>时，才需要指定此模式参数。</p>
+
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																日志队列</th>
+															<td valign="top" width="2*" class="invisible">
+																				日志</td>
+															<td valign="top" width="*">
+																此模式参数定义用于进行日志记录的队列。
+<p>仅当选中了<span class="msobjprop">“需要进行日志记录”</span>时，才需要指定此模式参数。</p>
+
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	
+		
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="Id130891153cc8e51a7fe8d2be291">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="Id130891153cc8e51a7fe8d2be291Twisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="Id130891153cc8e51a7fe8d2be291Arrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">错误处理</div>
+							
+							
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="Id130891153cc8e51a7fe8d2be291Container">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">模式参数</th>
+													  <th class="invisible" valign="top" width="*">缺省值</th>
+													  <th valign="top" width="*">描述</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																需要错误消息</th>
+															<td valign="top" width="2*" class="invisible">
+																				选中</td>
+															<td valign="top" width="*">
+																																此模式参数确定模式实例是否包含用于将错误消息放入队列的代码。
+<p>如果选中了此模式参数，那么必须为<span class="msobjprop">“错误队列管理器”</span>和<span class="msobjprop">“错误队列”</span>设置值。</p>
+
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																错误队列管理器</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																																此模式参数定义用于进行错误日志记录的队列管理器。
+<p>仅当选中了<span class="msobjprop">“需要错误消息”</span>时，才需要指定此模式参数。</p>
+
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																错误队列</th>
+															<td valign="top" width="2*" class="invisible">
+																				ERROR
+															</td>
+															<td valign="top" width="*">
+																																此模式参数定义用于存放错误消息的队列。
+<p>仅当选中了<span class="msobjprop">“需要错误消息”</span>时，才需要指定此模式参数。</p>
+
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	
+		
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="Id13089154448c721ac87b85f7031">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="Id13089154448c721ac87b85f7031Twisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="Id13089154448c721ac87b85f7031Arrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">常规</div>
+							
+							
+
+									
+
+									
+
+									
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="Id13089154448c721ac87b85f7031Container">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">模式参数</th>
+													  <th class="invisible" valign="top" width="*">缺省值</th>
+													  <th valign="top" width="*">描述</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																流前缀</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																																此模式参数定义要在所有消息流名称的开头添加的前缀。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																流后缀</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																																此模式参数定义要在所有消息流名称的末尾添加的后缀。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																队列前缀</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																																此模式参数定义要在所有队列名称的开头添加的前缀。<p>如果使用了缺省队列名称，那么必须设置前缀和/或后缀，以标识每个模式实例的队列名。</p>
+
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																队列后缀</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																																此模式参数定义要在所有队列名称的末尾添加的后缀。
+<p>如果使用了缺省队列名称，那么必须设置前缀和/或后缀，以标识每个模式实例的队列名。</p>
+
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																简短描述</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																																此模式参数定义要对生成的所有消息流的<span class="msobjprop">“简短描述”</span>属性添加的描述。</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	<div id="footnotes" class="invisible">
+		<div class="box first">
+			<div class="TitleBox"><!-- --></div>
+			<div class="FooterBox"><!-- --></div>
+			<div class="TL"><!-- --></div>
+			<div class="TR"><!-- --></div>
+			<div class="BL"><!-- --></div>
+			<div class="BR"><!-- --></div>
+			<div class="ContentBox">
+				<div class="invisible" >
+					<p class="shortdesc">所有模式参数均随其缺省值一起列出。					未指示缺省值时，表明缺省值是空字符串。</p>
+				</div>
+								<a href="overview.htm#anchorBack" title="返回">返回到“Web 服务到 DICOM”模式规范</a><p></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

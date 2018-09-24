@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<contexts>
+  <!-- Preference pages -->
+  <context id="jlm_preferences_context">
+    <description>This page allows you to configure the location of the JViews license keys file, called keys.jlm.</description>
+  </context>
+</contexts>

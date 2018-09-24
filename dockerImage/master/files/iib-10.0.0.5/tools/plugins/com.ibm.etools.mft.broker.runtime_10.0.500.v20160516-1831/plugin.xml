@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="com.ibm.etools.mft.views"
+            class="com.ibm.etools.mft.broker.runtime.views.BrokerRuntimeView"
+            icon="icons/full/obj16/brokertopology_obj.gif"
+            id="com.ibm.etools.mft.broker.runtime.views.BrokerRuntimeView"
+            name="%runtime.view">
+      </view>
+      <view
+            category="com.ibm.etools.mft.views"
+            class="com.ibm.etools.mft.broker.runtime.views.DeploymentLogView"
+            icon="icons/full/obj16/table_obj.gif"
+            id="com.ibm.etools.mft.broker.runtime.views.DeploymentLogView"
+            name="%deployment.log.view">
+      </view>
+<!--      
+      <category
+            id="com.ibm.etools.mft.broker.runtime.category"
+            name="%brokers.category">
+      </category>
+-->
+   </extension>
+
+    <extension point="org.eclipse.ui.perspectiveExtensions"> 
+        <perspectiveExtension 
+            targetID="com.ibm.etools.mft.perspectives.BrokerDevelopmentPerspective"> 
+<!--            <view id="com.ibm.etools.mft.broker.runtime.views.BrokerRuntimeView" 
+                relative="org.eclipse.ui.views.ContentOutline" 
+                relationship="stack" 
+            /> --> 
+            <view id="com.ibm.etools.mft.broker.runtime.views.DeploymentLogView" 
+                relative="org.eclipse.ui.views.PropertySheet" 
+                relationship="stack" 
+            /> 
+        </perspectiveExtension> 
+    </extension> 
+
+	<extension point="org.eclipse.ui.popupMenus">
+		<objectContribution
+			objectClass="com.ibm.etools.mft.navigator.resource.element.FlowFile"
+			id="com.ibm.etools.mft.broker.runtime.deployableObject1"
+			nameFilter="*.msgflow">
+		   <action
+           class="com.ibm.etools.mft.broker.runtime.actions.DeployMenuAction"
+           enablesFor="1"
+           icon="icons/full/obj16/assign_obj.gif"
+           id="com.ibm.etools.mft.broker.runtime.DeployMenuAction"
+           label="%DeployLabel"
+           menubarPath="additions">
+		   </action>
+		</objectContribution>
+		<objectContribution
+        id="com.ibm.etools.mft.broker.runtime.deployableObject2"
+        nameFilter="*.bar"
+        objectClass="org.eclipse.core.resources.IFile">
+		   <action
+           class="com.ibm.etools.mft.broker.runtime.actions.DeployMenuAction"
+           enablesFor="1"
+           icon="icons/full/obj16/assign_obj.gif"
+           id="com.ibm.etools.mft.broker.runtime.DeployMenuAction"
+           label="%DeployLabel"
+           menubarPath="additions">
+		   </action>
+		</objectContribution>
+		<objectContribution
+        id="com.ibm.etools.mft.broker.runtime.deployableObject3"
+        objectClass="org.eclipse.core.resources.IProject">
+		   <action
+           class="com.ibm.etools.mft.broker.runtime.actions.DeployMenuAction"
+           enablesFor="1"
+           icon="icons/full/obj16/assign_obj.gif"
+           id="com.ibm.etools.mft.broker.runtime.DeployMenuAction"
+           label="%DeployLabel"
+           menubarPath="additions">
+		   </action>
+		</objectContribution>
+		<objectContribution
+        id="com.ibm.etools.mft.broker.runtime.deployableObject4"
+        nameFilter="*.bar"
+        objectClass="com.ibm.etools.mft.navigator.resource.element.lib.BarFileReference">
+		   <action
+           class="com.ibm.etools.mft.broker.runtime.actions.DeployMenuAction"
+           enablesFor="1"
+           icon="icons/full/obj16/assign_obj.gif"
+           id="com.ibm.etools.mft.broker.runtime.DeployMenuAction"
+           label="%DeployLabel"
+           menubarPath="additions">
+		   </action>
+		</objectContribution>
+		<objectContribution
+        id="com.ibm.etools.mft.broker.runtime.deployableObject7"
+        nameFilter="*.bar"
+        objectClass="com.ibm.etools.mft.navigator.resource.element.BARFile">
+		   <action
+           class="com.ibm.etools.mft.broker.runtime.actions.DeployMenuAction"
+           enablesFor="1"
+           icon="icons/full/obj16/assign_obj.gif"
+           id="com.ibm.etools.mft.broker.runtime.DeployMenuAction"
+           label="%DeployLabel"
+           menubarPath="additions">
+		   </action>
+		</objectContribution>
+		<objectContribution
+			objectClass="com.ibm.etools.mft.navigator.resource.element.SubflowFile"
+			id="com.ibm.etools.mft.broker.runtime.deployableObject5"
+			nameFilter="*.subflow">
+		   <action
+           class="com.ibm.etools.mft.broker.runtime.actions.DeployMenuAction"
+           enablesFor="1"
+           icon="icons/full/obj16/assign_obj.gif"
+           id="com.ibm.etools.mft.broker.runtime.DeployMenuAction"
+           label="%DeployLabel"
+           menubarPath="additions">
+		   </action>
+		</objectContribution>
+        <!--objectContribution
+           id="com.ibm.etools.mft.broker.runtime.contribution1"
+           objectClass="com.ibm.etools.mft.navigator.resource.element.ConnectorServiceFile">
+           <action
+           class="com.ibm.etools.mft.broker.runtime.actions.PublishAction"
+           enablesFor="1"
+           icon="icons/full/obj16/assign_obj.gif"
+           id="com.ibm.etools.mft.broker.runtime.actions.PublishAction"
+           label="%publishLabel"
+           menubarPath="PublishServiceGroup">
+           </action>
+        </objectContribution-->
+		<objectContribution
+			objectClass="com.ibm.etools.mft.navigator.resource.element.lib.TestCaseFile"
+			id="com.ibm.etools.mft.broker.runtime.deployableObject1"
+			nameFilter="*.testcase">
+		   <action
+           class="com.ibm.etools.mft.broker.runtime.actions.DeployMenuAction"
+           enablesFor="1"
+           icon="icons/full/obj16/assign_obj.gif"
+           id="com.ibm.etools.mft.broker.runtime.DeployMenuAction"
+           label="%DeployLabel"
+           menubarPath="additions">
+		   </action>
+		</objectContribution>
+	</extension>
+	
+	<extension
+        id="com.ibm.etools.mft.broker.runtime.preferences"
+        name="com.ibm.etools.mft.broker.runtime.preferences"
+        point="org.eclipse.ui.preferencePages">
+		<page
+			class="com.ibm.etools.mft.broker.runtime.preferences.BrokerRuntimePreferencePage"
+			category="com.ibm.etools.mft.flow.preference.broker"
+			name="%brokers.category"
+			id="com.ibm.etools.mft.broker.runtime.preferences.BrokerRuntimePreferencePage" />
+	</extension>
+ <extension
+       point="org.eclipse.ui.startup">
+    <startup
+          class="com.ibm.etools.mft.broker.runtime.testnode.TestNodeStartup"></startup>
+ </extension>
+
+</plugin>

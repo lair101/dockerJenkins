@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MRMessageSet id="DG45P9806Q001" name="MQCIH" parser="MQCIH">
+  <MRMsgCollection
+    href="platform:/plugin/com.ibm.etools.msg.mqheaders/MQCIH/mqcih.mxsd"
+    prefix="" targetNamespace="">
+    <message
+      href="platform:/plugin/com.ibm.etools.msg.mqheaders/MQCIH/mqcih.mxsd#/0/MQCIH;XSDElementDeclaration$MRMessage" name="MQCIH"/>
+    <element
+      href="platform:/plugin/com.ibm.etools.msg.mqheaders/MQCIH/mqcih.mxsd#/0/MQCIH;XSDElementDeclaration"
+      name="MQCIH" type="mset://MQCIH#/-/complexType{}MQCIH_TYPE"/>
+    <complexType
+      baseType="mset://MQCIH#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType"
+      href="platform:/plugin/com.ibm.etools.msg.mqheaders/MQCIH/mqcih.mxsd#/0/MQCIH_TYPE;XSDComplexTypeDefinition" name="MQCIH_TYPE"/>
+  </MRMsgCollection>
+</MRMessageSet>

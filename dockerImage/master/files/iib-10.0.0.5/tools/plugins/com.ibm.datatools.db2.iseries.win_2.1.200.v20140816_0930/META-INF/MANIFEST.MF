@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Fragment-Host: com.ibm.datatools.db2.iseries;bundle-version="[3.0.0,4.
+ 0.0)"
+Bundle-Name: %win32FragmentName
+Bundle-SymbolicName: com.ibm.datatools.db2.iseries.win;singleton:=true
+Bundle-Version: 2.1.200.v20140816_0930
+Bundle-ManifestVersion: 2
+

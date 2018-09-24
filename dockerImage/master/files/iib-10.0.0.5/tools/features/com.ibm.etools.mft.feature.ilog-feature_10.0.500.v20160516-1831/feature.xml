@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ibm.etools.mft.feature.ilog-feature"
+      label="%Feature.name"
+      version="10.0.500.v20160516-1831"
+      provider-name="IBM"
+      image="wsFeatUpdate.jpg">
+
+   <description>
+      %description
+   </description>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="com.ibm.rules.sdk.builder"
+         download-size="0"
+         install-size="0"
+         version="8.5.0.201310300946"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.bdsl.viewer"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.rules.engine"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"
+         unpack="false"/>
+
+   <plugin
+         id="ilog.rules.brl.bal"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.bom"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.brldf"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.l10n.ar"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.l10n.de"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.l10n.es"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.l10n.fr"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.l10n.it"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.l10n.iw"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.l10n.ja"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.l10n.ko"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.l10n.nl"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.l10n.pl"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.l10n.pt"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.l10n.ru"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.l10n.zh"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.l10n.zh_TW"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.parsing"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.tokenmodel"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.brl.ui"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.dt"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.language.shared"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.shared"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.vocabulary.bom"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="ilog.rules.vocabulary.model"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="com.ibm.rules.thirdparty.apache.commons.codec"
+         download-size="0"
+         install-size="0"
+         version="1.3.0"/>
+
+   <plugin
+         id="com.ibm.rules.thirdparty.apache.commons.logging"
+         download-size="0"
+         install-size="0"
+         version="1.1.0"/>
+
+   <plugin
+         id="com.ibm.rules.thirdparty.apache.commons.httpclient"
+         download-size="0"
+         install-size="0"
+         version="3.1.0.patch654"/>
+
+   <plugin
+         id="com.ibm.rules.thirdparty.asm"
+         download-size="0"
+         install-size="0"
+         version="3.1.0"/>
+
+   <plugin
+         id="com.ibm.rules.thirdparty.bcel"
+         download-size="0"
+         install-size="0"
+         version="5.1.0"/>
+
+   <plugin
+         id="com.ibm.rules.thirdparty.dom4j"
+         download-size="0"
+         install-size="0"
+         version="1.6.1"/>
+
+   <plugin
+         id="com.ibm.rules.thirdparty.icu.charsets"
+         download-size="0"
+         install-size="0"
+         version="4.2.1"/>
+
+   <plugin
+         id="com.ibm.rules.thirdparty.jdom"
+         download-size="0"
+         install-size="0"
+         version="1.1.2"/>
+
+   <plugin
+         id="com.ibm.rules.thirdparty.log4j"
+         download-size="0"
+         install-size="0"
+         version="1.2.8"/>
+
+   <plugin
+         id="com.ibm.rules.thirdparty.openxml4j"
+         download-size="0"
+         install-size="0"
+         version="0.0.20080410.beta"/>
+
+   <plugin
+         id="com.ibm.rules.thirdparty.poi"
+         download-size="0"
+         install-size="0"
+         version="3.7.0"/>
+
+   <plugin
+         id="com.ibm.rules.thirdparty.xmlbeans"
+         download-size="0"
+         install-size="0"
+         version="2.3.0"/>
+
+   <plugin
+         id="com.ibm.rules.validation"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="com.ibm.bdsl.editor"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="com.ibm.bdsl.runtime"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+
+   <plugin
+         id="com.ibm.bdsl.runtime.eclipse"
+         download-size="0"
+         install-size="0"
+         version="8.5.1.201310300945"/>
+</feature>

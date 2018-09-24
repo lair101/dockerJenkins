@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: brlparsing.jar
+Bundle-Vendor: %Plugin.Provider
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: %Plugin.Name
+Bundle-SymbolicName: ilog.rules.brl.parsing
+Require-Bundle: ilog.rules.language.shared;bundle-version="[8.5.1,8.5.
+ 2)",ilog.rules.brl.brldf;bundle-version="[8.5.1,8.5.2)",ilog.rules.vo
+ cabulary.bom;bundle-version="[8.5.1,8.5.2)"
+Export-Package: ilog.rules.brl.parsing,ilog.rules.brl.parsing.contenta
+ ssist,ilog.rules.brl.parsing.grammar,ilog.rules.brl.parsing.grammar.s
+ ymbols,ilog.rules.brl.parsing.parser,ilog.rules.brl.parsing.parser.ea
+ rley,ilog.rules.brl.parsing.parser.earley.items,ilog.rules.brl.parsin
+ g.parser.prediction,ilog.rules.brl.parsing.scanner,ilog.rules.brl.par
+ sing.scanner.dfa,ilog.rules.brl.parsing.scanner.nfa,ilog.rules.brl.pa
+ rsing.scanner.regexpr,ilog.rules.brl.parsing.semantic,ilog.rules.brl.
+ parsing.util
+Bundle-Version: 8.5.1.201310300945
+Bundle-ManifestVersion: 2
+
+

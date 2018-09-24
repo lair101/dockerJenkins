@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ibm.healthcare.feature"
+      label="IBM Integration Bus Healthcare Pack Feature"
+      version="4.0.0.0"
+      provider-name="IBM">
+
+   <description url="http://www-1.ibm.com/support/">
+      IBM Integration Bus Healthcare Pack
+   </description>
+
+   <copyright url="http://www-1.ibm.com/support/">
+      (c) Copyright IBM Corporation 2010, 2015.
+   </copyright>
+
+   <license>
+      Licensed Materials - Property of IBM.
+  Copyright IBM Corp. 2010, 2015. All Rights Reserved.
+  US Government Users Restricted Rights - Use, duplication or disclosure
+  restricted by GSA ADP Schedule Contract with IBM Corp.
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.jet" version="0.9.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="com.ibm.etools.patterns" version="7.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.wst.wsdl" version="1.1.102" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.wst.wsdl.validation" version="1.1.102" match="greaterOrEqual"/>
+      <import plugin="javax.wsdl" version="1.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore.xmi" version="2.4.1" match="greaterOrEqual"/>
+      <import plugin="com.ibm.etools.msg.coremodel" version="7.0.0" match="greaterOrEqual"/>
+      <import plugin="com.ibm.etools.mft.patterns" version="7.0.0" match="greaterOrEqual"/>
+      <import plugin="com.ibm.etools.patterns.ui" version="7.0.0" match="greaterOrEqual"/>
+      <import plugin="com.ibm.etools.mft.pattern.support" version="7.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="com.ibm.broker.config.appdev" version="7.0.200" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.DICOM.code"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.DICOM"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.DICOM.doc"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.DICOM.network"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.DICOM.utility"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.DICOM.utility.model"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.DICOM.model"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.DICOM.ui"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.utility"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.utility.model"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.HL7.code"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.HL7"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.HL7.doc"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.HL7DFDL.code"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.HL7DFDL"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.HL7DFDL.doc"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.sample"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.sample.DFDL"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.sample.HL7v251"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.sample.HL7v26"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.sample.HL7v27"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.model"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.node"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.ui"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.device.doc"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.source.code"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.source.code.DFDL"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.reports.code"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.reports"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.reports.doc"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.devices.code"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.devices"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.devices.doc"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.devices.sample"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.data.CDA"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.data.CDA.LOINC"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.data.CDA.model"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.data.CDA.registry"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.data.DICOM"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.data.HL7"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.HL7Transformation.code"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.HL7TransformationPattern"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.HL7TransformationPattern.doc"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.HomeHealth"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.HomeHealth.doc"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.HomeHealth.code"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.HIPAAtoXML"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.HIPAAtoXML.doc"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+         
+   <plugin
+         id="com.ibm.healthcare.pattern.PIXManager"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.PIXManager.doc"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.PIXManager.code"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+         
+   <plugin
+         id="com.ibm.healthcare.pattern.XDSConsumer"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"
+         unpack="false"/>
+         
+   <plugin
+         id="com.ibm.healthcare.pattern.XDSConsumer.code"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+
+   <plugin
+         id="com.ibm.healthcare.pattern.XDSConsumer.doc"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.0"/>
+         
+
+</feature>

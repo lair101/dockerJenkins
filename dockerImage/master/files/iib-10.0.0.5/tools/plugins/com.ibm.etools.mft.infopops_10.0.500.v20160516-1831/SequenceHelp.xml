@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<contexts>
+	<context id="ComIbmSequence">
+		<description><b>Sequence node</b>
+Use the Sequence node to add a sequence number to one or more groups of input messages.</description>
+		<topic href="../com.ibm.etools.mft.doc/bc28010_.htm" label="Sequence node"/>
+		<topic href="../com.ibm.etools.mft.doc/ac00330_.htm" label="Deciding which nodes to use"/>
+	</context>
+	
+	<context id="ComIbmSequence_Properties">
+		<description><b>Properties navigator</b>
+This displays the node properties. Configure the node by selecting the properties and setting their values. Mandatory properties are marked with an asterisk.</description>
+		<topic href="../com.ibm.etools.mft.doc/bc28010_.htm" label="Sequence node"/>
+		<topic href="../com.ibm.etools.mft.doc/bc28010_.htm#bc28010_cfg" label="Sequence node - Configuring the Sequence node"/>
+	</context>
+	
+	<context id="ComIbmSequence_description">
+      	<description><b>Description page</b>
+If you want to describe the purpose of the node in the message flow, use these fields to enter a short description, a long description, or both.</description>
+		<topic href="../com.ibm.etools.mft.doc/bc28010_.htm" label="Sequence node"/>
+      	<topic href="../com.ibm.etools.mft.doc/bc28010_.htm#bc28010_cfg" label="Sequence node - Configuring the Sequence node"/>
+   </context>
+   
+    <context id="ComIbmSequence_basic">
+      	<description><b>Basic page</b>
+Enter the name of the queue from which the message flow receives messages.</description>
+		<topic href="../com.ibm.etools.mft.doc/bc28010_.htm" label="Sequence node"/>
+      	<topic href="../com.ibm.etools.mft.doc/bc28010_.htm#bc28010_cfg" label="Sequence node - Configuring the Sequence node"/>
+   </context>
+
+	<context id="ComIbmSequence_advanced">
+      	<description><b>Advanced page</b>
+Set properties that determine how messages are sequenced: for example, whether to store sequence state persistently.</description>
+		<topic href="../com.ibm.etools.mft.doc/bc28010_.htm" label="Sequence node"/>
+      	<topic href="../com.ibm.etools.mft.doc/bc28010_.htm#bc28010_cfg" label="Sequence node - Configuring the Sequence node"/>
+   </context>
+</contexts>

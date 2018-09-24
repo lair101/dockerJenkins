@@ -1,0 +1,6 @@
+#
+#Mon Sep 12 12:25:43 CEST 2011
+locale=it
+imports=bel_styles,boolean,number
+name=bel_object
+onlyVocabulary=true

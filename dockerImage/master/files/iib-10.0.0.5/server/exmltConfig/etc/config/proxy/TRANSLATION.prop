@@ -1,0 +1,2 @@
+#@ version = 1.0; encoding = Cp1252
+BundleName=com.ibm.transform.transform_text

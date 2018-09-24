@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>测试“Healthcare：HL7 到 HL7”模式</title>
+</head>
+<body role="main">
+<a name="links"></a>
+<div class="section">
+    <h1 class="topictitle1">测试“Healthcare：HL7 到 HL7”模式</h1>
+    <p class="shortdesc">
+    使用以下信息可帮助您测试“<span>Healthcare：HL7 到 HL7</span>”模式。</p>
+    
+        <p>
+        本主题包含下列各节：</p>
+        <ul><li>
+            <a href="testing.htm#test">测试应用程序</a>
+      </li>
+        <li>
+            <a href="testing.htm#messages">HL7 消息</a>
+</li>
+        <li>
+            <a href="testing.htm#setup">基本模式实例设置</a>
+        </li>
+        <li>
+            <a href="testing.htm#flow">模式实例中的信息流</a>
+        </li>
+        <li>
+            <a href="testing.htm#options">其他选项</a>
+        </li>
+    </ul>
+</div>
+<div class="section">
+    <a name="test"></a> <h2 class="sectiontitle">测试流</h2>
+    <p>
+    使用此模式可以使 HL7 应用程序互相连接，并将过滤后的消息从一个发送方应用程序路由至多个目标应用程序。通过使用消息流来模拟源和目标临床应用程序，了解如何开始使用此模式实例。
+</p>
+    <p>
+    此模式随附的 <span class="msobjpropval">TestApplication</span> 项目（请参阅<a href = "resources.htm#resources">“<span>Healthcare：HL7 到 HL7</span>”模式的资源</a>）提供了一个名为 SourceApplication 的“源”流以及 6 个名为 DestinationApplication 的“目标”流。除连接详细信息有所不同以外，这 6 个目标应用程序流完全相同。每个目标应用程序流都设置为使用
+<span class="msobjpropval">localhost</span> 以及流名称中指定的端口号。例如，DestinationApplicationListensOnPort2222 将其连接详细信息设置为 <span class="msobjpropval">localhost:2222</span>。
+</p>
+    <p>
+    <span class="msobjpropval">TestApplication</span> 项目流的连接详细信息与模式实例的缺省连接详细信息匹配。如果您在模式实例配置中更改了连接详细信息，那么还必须在测试应用程序流中更改连接详细信息。
+</p>
+    <h3 class="sectiontitle">使用流调试器测试模式</h3>
+    <p>
+    要使用流调试器测试模式，请阅读 IBM Integration Bus 文档中的“测试和调试消息流应用程序”。要将流调试器用于 GenericHL7Input 和 GenericHL7Output 节点，您必须导入这些节点所使用的子流；请参阅<a href = "resources.htm#resources"><span>“Healthcare：HL7 到 HL7”</span>模式的资源</a>。
+</p>
+</div>
+<div class="section">
+    <a name="test"></a> <h2 class="sectiontitle">HL7 测试应用程序</h2>
+    <p>
+    借助 HL7 测试应用程序，您可以使用 MLLP 向集成节点发送并接收 HL7 消息。此应用程序可以模拟单个源和目标诊断应用程序。此测试应用程序提供了用于模拟各种 MLLP 配置和消息排序的选项。模式资源中提供了 HL7 消息以用作测试数据；请参阅<a href = "resources.htm#resources">“<span>Healthcare：HL7 到 HL7</span>”模式的资源</a>。
+</p>
+    <p>
+   	要启动 HL7 测试应用程序，请完成以下步骤：<ol>
+    	<li>单击<span class="uicontrol">文件 > 新建 > 其他</span>。</li>
+    	<li>在 <span class="uicontrol">Healthcare</span> 文件夹中，选择 <span class="uicontrol">HL7 测试应用程序</span>并单击<span class="uicontrol">下一步</span>。</li>
+    	<li>输入测试应用程序设置的容器和文件名，并单击<span class="uicontrol">完成</span>。HL7 测试应用程序将开始。</li>
+    </ol>
+    </p>
+</div>
+<div class="section">
+    <a name="messages"></a> <h2 class="sectiontitle">HL7 消息</h2>
+    <p>
+    HL7 消息划分为段和字段。各个段之间的边界可能随发送应用程序不同而有所变化。测试应用程序中使用的样本消息使用十六进制字符 <span class="msobjpropval">0D</span> 和 <span class="msobjpropval">0A</span>。段内的字段通过使用每条 HL7 消息开头的 MSH 段中声明的字符进行分隔，缺省值是竖线字符 (|)。段通过第一个字段进行标识；以下示例具有 4 个段：MSH、EVN、PID 和 PV1。MSH 段是消息头，它具有一些在本主题中说明的字段。
+</p>
+    <p>
+    以下示例显示典型的 HL7 消息 (ADT A01)（为了便于阅读，添加了换行符）：</p>
+    <pre>MSH|^~\&amp;|HL7ABLAB|HNA500|HNAM|HNAM|20090911132151||ADT^A01|
+Q30235031T29347435X328970|A|2.3|123
+EVN|A01|20090911132100|||^DRONE_PM1^DRONE_PM^^^^^^^Personnel
+PID|1||1357920591||IntFace1101A^WinTask^^^^^Current||19801117|M||||||||||
+10000476524^^^FIN^FIN NBR|100000451||||||0
+PV1|1|Inpatient|CD:16067689^CD:16067691^CD:16067741^Uniontown Hospit^^Bed(s)
+^Uniontown Hospit||||||||||||||501455^Orr^Maggi^^^^^^External ID^Personnel^^^
+External
+Identifier~25584^Orr^Maggi^^^^^^PERSONNEL PRIMARY
+IDENTIFIER^Personnel^^^Personnel Primary Identifier|Inpatient|||||||||||||||||||
+||
+Uniontown Hospit||Active|||20090911132100
+    </pre>
+</div>
+<div class="section">
+    <a name="setup"></a> <h2 class="sectiontitle">基本模式实例设置</h2>
+    <p>
+    此模式实例的主要消息流如下所示：</p>
+    <ul>
+        <li>
+            接收方</li>
+        <li>
+            TransformAndRoute<var>n</var>
+        </li>
+        <li>
+            Dest<var>n</var>Sender
+        </li>
+    </ul>
+    <p>
+    如果您选择创建具有更多目标的模式实例，那么将创建更多 Dest<var>n</var>Sender 流，其中
+<var>n</var> 是目标的编号。
+</p>
+    <p>
+    您必须确保已经为模式实例设置所有队列，请参阅<a href="management.htm">管理“Healthcare：HL7 到 HL7”模式实例</a>中的“队列”部分。</p>
+</div>
+<div class="section">
+    <a name="flow"></a> <h2 class="sectiontitle">模式实例中的信息流</h2>
+    <p>
+    使用测试应用程序发送消息时，模式实例中的信息将按以下顺序流动：</p>
+    <ol>
+        <li>
+            消息置于 HL7_TEST_IN 队列中，并由 SourceApplication 流获取。
+</li>
+        <li>
+            SourceApplication 流向消息添加 MLLP 字节，然后通过 TCP/IP 将其发送到模式实例。
+</li>
+        <li>
+            消息到达“接收方”消息流，在此消息流中，将删除 MLLP 字节。
+</li>
+        <li>
+            对消息中的 MSH 段进行解析。</li>
+        <li>
+            如果在模式实例设置中启用了重复消息和排序选项，那么将检查重复消息并设置排序。
+</li>
+        <li>
+            将应答回复 (ACK) 消息发回至 SourceApplication 流。
+</li>
+        <li>
+            此消息发送到 RXF<var>n</var> 队列，其中 <var>n</var> 是目标的编号。TransformAndRoute<var>n</var> 消息流从 RXF<var>n</var> 队列获取此消息，其中 <var>n</var> 是目标的编号。
+<p>
+            如果您设置了消息或段过滤，那么将在这个流中执行过滤。根据模式实例设置，这个流可能还包含用于发布消息中的其余项以及消息的规范格式的节点。
+</p>
+        </li>
+        <li>
+            消息变换为 XML 格式并发送到各个目标流。
+</li>
+        <li>
+            在目标流中，消息将发送到 DestinationApplication 流，这类流通过 ACK 消息进行响应。
+</li>
+        <li>
+            目标流对 ACK 消息进行处理。
+</li>
+        <li>
+            根据设置的模式实例配置，消息可能还会进行重新排序并重新发送到目标。
+</li>
+    </ol>
+    <p>
+    所有的流都还有一个异常处理子流，用于处理该流所捕获到的所有问题。
+</p>
+</div>
+<div class="section">
+    <a name="options"></a> <h2 class="sectiontitle">其他选项</h2> <h3>排序</h3>
+    <p>
+    您可以在<span class="msobjprop">“选项”</span>参数组中设置模式实例的排序方式。如果选择了<span class="msobjpropval">“根据到达顺序”</span>选项进行排序，那么消息的正确顺序基于它们到达模式实例的顺序。如果选择了<span class="msobjpropval">“根据内容”</span>选项进行排序，那么消息的 MSH 段中第 13 个字段的值（本例中为
+<code>123</code>）将用作序号。
+    “接收方”消息流为模式实例设置了排序方式，并获取消息的序号。
+</p>
+    <p>
+    消息在各个目标流中重新排序。对于每个目标，您可以选择严格排序或宽松排序。如果您选择严格排序并且缺少消息，那么在缺少的消息到达之前，其余消息将挂起，这可能会无限期地阻塞流。如果选择了宽松排序，并且缺少消息，那么您可以确定流在停止等待缺少的消息并继续处理其余消息前等待的时间。
+</p>
+    <p>
+    要使用排序选项，您可以在处理过程中控制消息发送到模式实例的顺序、更改消息的序号或者使消息脱离队列。
+</p>
+    <h3>处理重复项</h3>
+    <p>
+    如果选中了<span class="msobjprop">“检查重复”</span>参数，那么“接收方”消息流将包含其他用于查找重复项的节点。消息的 MSH 段中的第 10 个字段（本例中为 <code>Q30235031T29347435X328970</code>）包含消息控制标识，用于查找重复消息。流处理完消息之后，消息将保存在可检查的队列中。<span class="msobjprop">“检查重复”</span>子流用于查找重复消息；如果消息不重复，那么处理将如常继续。但是，如果发现消息重复，并且已启用 ACK 消息，那么原始 ACK 消息将返回到发送应用程序。如果关闭了 ACK 消息，那么将以新消息到达流的方式处理重复消息。
+</p>
+    <p>
+    要进行重复处理，您可以对消息的 MSH 段中第 10 个字段进行处理。
+</p>
+    <h3>发送 ACK 和 NACK 消息</h3>
+    <p>
+    如果选中了<span class="msobjprop">“发送应答”</span>参数，那么在“接收方”消息流处理消息之后，模式实例将向发送应用程序发送 ACK 消息。此操作将通知发送应用程序，指出已成功地处理消息。SourceApplication 消息流具有配置为处理 ACK 和否定应答回复 (NACK) 消息的节点。
+    如果处理消息时发生问题，那么将改为向发送应用程序发送 NACK 消息。
+</p>
+    <p>
+    另外，目标流中也包含一些节点，用于处理目标应用程序成功接收消息之后从目标应用程序发回至模式实例的 ACK 消息。
+</p>
+    <h3>日志记录</h3>
+    <p>
+    通过模式实例配置的<span class="msobjprop">“选项”</span>组中的多个参数，您可以选择在处理消息时记录关于消息的哪些信息：</p>
+    <ul>
+        <li>
+            <span class="msobjprop">
+            日志记录</span>。可以开启或关闭此参数。日志记录将源消息的副本写入消息队列，或者将消息发布到主题。消息随其他元数据一起编写，这些数据对源消息流、集成节点名和模式实例名称进行了描述。使用日志记录可保留发送到集成节点的每条输入消息的副本。从审计角度来看，保留消息非常有价值。您可以对日志队列进行配置，以使消息在一段时间（例如一周）后到期，从而避免此队列无限增长。
+</li>
+        <li>
+            <span class="msobjprop">
+            发布</span>。如果选中了<span class="msobjprop">“日志记录”</span>，那么可以更改<span class="msobjprop">“发布”</span>参数，以确定消息是发布到主题还是发布到队列。
+</li>
+        <li>
+            <span class="msobjprop">
+            规范订阅源</span>和<span class="msobjprop">源订阅源</span>。您可以选择是否记录消息。
+</li>
+        <li>
+            <span class="msobjprop">
+            报告其余项</span>。您可以选择是否记录其余项。其余项是 HL7v25P 消息集未建模的那些字段。
+</li>
+    </ul>
+    <h3>消息和段过滤</h3>
+    <p>
+    <span class="msobjprop">
+    “消息过滤”</span>，使您可以根据消息的事件类型，即消息的 MSH 段中的第 9 个字段（本例中为
+<code>ADT^A01</code>）过滤消息。并非所有来自源应用程序的消息都是所有目标所必需的。使用消息过滤功能可将特定消息从特定目标中排除。消息过滤针对每个目标进行配置。
+</p>
+    <p>
+    指定消息过滤器时，第 9 个字段提供了<span class="msobjprop">“代码”</span>和<span class="msobjprop">“事件”</span>值。这两个值之间以音调符号 (^) 分隔。对于本文档开头的示例消息，<span class="msobjprop">“代码”</span>为 <span class="msobjpropval">ADT</span>，<span class="msobjprop">“事件”</span>为 <span class="msobjpropval">A01</span>。如果开启了排序并且过滤掉了某条消息，那么将在该消息的位置发送一条伪消息，以保持顺序不变。
+</p>
+    <p>
+    <span class="msobjprop">
+    “段过滤”</span>，使您可以指定将消息发送到目标时要从中除去的段。您可以使用段过滤功能在消息传递到目标之前从消息中除去这些段。如果目标仅支持源应用程序发送的部分消息段，那么您可能希望使用此选项过滤掉一些段，例如称为“Z 段”的 HL7 消息扩展。段过滤功能针对每个目标进行开启。
+</p>
+    <p>
+    段通过三字母代码指定（在示例消息中，代码为 MSH、EVN、PID 和 PV1）。MSH 段是不能过滤掉的消息头，即使用户指定将其过滤掉也是如此。
+</p>
+</div>
+<a href="overview.htm#anchorBack" title="返回">返回到“Healthcare：从 HL7 到 HL7”模式规范</a>
+<p>
+</p>
+</body>
+</html>

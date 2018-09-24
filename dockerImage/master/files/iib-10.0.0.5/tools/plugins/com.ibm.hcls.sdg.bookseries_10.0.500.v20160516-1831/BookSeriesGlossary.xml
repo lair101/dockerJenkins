@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codeSet>
+	<code>
+		<codeSystem>BookCodes</codeSystem>
+		<entry>
+			<keyValue name='secType'>MONO</keyValue>
+			<displayName>Monograph</displayName>
+		</entry>
+		<entry>
+			<keyValue name='secType'>SURV</keyValue>
+			<displayName>Survey</displayName>
+		</entry>
+		<entry>
+			<keyValue name='mediaType'>DVD</keyValue>
+			<displayName>Optical Disc</displayName>
+		</entry>
+		<entry>
+			<keyValue name='mediaType'>SW</keyValue>
+			<displayName>Software</displayName>
+		</entry>
+	</code>
+</codeSet>

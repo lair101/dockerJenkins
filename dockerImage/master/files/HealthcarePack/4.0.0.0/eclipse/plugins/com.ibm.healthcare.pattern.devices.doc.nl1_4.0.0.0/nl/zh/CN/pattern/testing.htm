@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>测试“Healthcare：医疗设备到 EMR”模式</title>
+</head>
+<body role="main">
+<a name="links"></a>
+<div class="section">
+    <h1 class="topictitle1">测试“Healthcare：医疗设备到 EMR”模式</h1>
+    <p class="shortdesc">
+    使用以下信息可帮助您测试“<span>Healthcare：医疗设备到 EMR</span>”模式。</p>
+</div>
+<div class="section">
+    <a name="setup"></a> <h2 class="sectiontitle">基本模式实例设置</h2>
+    <p>
+    此模式实例的主要消息流如下所示：</p>
+    <ul>
+        <li>
+            MedicalDevices</li>
+        <li>
+            TransformAndRoute</li>
+        <li>
+            Sender</li>
+        <li>
+            PatientIdentifiers</li>
+    </ul>
+    <p>
+    您必须确保已经为模式实例设置所有队列，请参阅<a href="management.htm">管理“Healthcare：医疗设备到 EMR”模式实例</a>中的“队列”部分。</p>
+</div>
+<div class="section">
+    <a name="flow"></a> <h2 class="sectiontitle">模式实例中的信息流</h2>
+    <p>
+    部署“Healthcare：医疗设备到 EMR”模式的实例时，信息将按以下顺序流动：</p>
+    <ol>
+        <li>
+            MedicalDeviceInput 节点找到其可配置服务，以确定要连接到哪些医疗设备以及要收集哪些测量。
+</li>
+        <li>
+            MedicalDeviceInput 读取医疗设备测量，并以消息形式将信息传播到 MedicalDevices 消息流中。
+</li>
+        <li>
+            MedicalDevices 消息流添加到期时间，并将消息发送到 TransformAndRoute 消息流的 RXF 队列。
+</li>
+        <li>
+            TransformAndRoute 消息流将设备消息转换为 HL7 观察结果。该消息以
+HL7 规范格式发布，以供其他应用程序使用。观察结果与该设备的当前患者标识相关联，随后写入
+DEST 队列。
+</li>
+        <li>
+            Sender 消息流将 HL7 消息发送到 EMR，后者以 ACK 进行响应。
+</li>
+        <li>
+            Sender 流对 ACK 消息进行处理。
+</li>
+    </ol>
+    <p>
+    所有的流都还有一个异常处理子流，用于处理该流所捕获到的所有问题。
+</p>
+    <p>
+    在开发期间，可以使用 HL7 测试应用程序来模拟接收 EMR。请启动测试应用程序，并启动 TCP/IP MLLP 侦听器。此测试应用程序将接收并显示模式实例所发送的观察结果。</p>
+    <p>
+   	要启动 HL7 测试应用程序，请完成以下步骤：<ol>
+    	<li>单击<span class="uicontrol">文件 > 新建 > 其他</span>。</li>
+    	<li>在 <span class="uicontrol">Healthcare</span> 文件夹中，选择 <span class="uicontrol">HL7 测试应用程序</span>并单击<span class="uicontrol">下一步</span>。</li>
+    	<li>输入测试应用程序设置的容器和文件名，并单击<span class="uicontrol">完成</span>。HL7 测试应用程序将开始。</li>
+    </ol>
+    </p>
+</div>
+<a href="overview.htm#anchorBack" title="返回">返回到“Healthcare：医疗设备到 EMR”模式规范</a>
+<p>
+</p>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="policy">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="policyProperties" />
+      </xsd:sequence>
+      <xsd:attribute name="type" type="xsd:string" />
+      <xsd:attribute name="id" type="xsd:string" />
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="policyProperties">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Description" />
+        <xsd:element ref="Basic" />
+        <xsd:element ref="MQTTSettings" />
+        <xsd:element ref="Security" />
+        <xsd:element ref="workLoadManagement" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Description">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="shortDesc" type="xsd:string" minOccurs="1" />
+        <xsd:element name="longDesc" type="xsd:string" minOccurs="1" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Basic">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="hostName" type="xsd:string" minOccurs="1" />
+        <xsd:element name="port" type="xsd:string" minOccurs="1" />
+        <xsd:element name="qos" type="xsd:string" minOccurs="1" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="MQTTSettings">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="retainPublication" type="xsd:string" minOccurs="1" />
+        <xsd:element name="clearSession" type="xsd:string" minOccurs="1" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Security">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="securityIdentity" type="xsd:string" minOccurs="1" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="workLoadManagement">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="maxBytesPerMessage" type="xsd:string" minOccurs="1" />
+        <xsd:element name="maxPublishRate" type="xsd:string" minOccurs="1" />
+        <xsd:element name="batchMessagesTimeInterval" type="xsd:string" minOccurs="1" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="policies">
+    <xsd:complexType>
+      <xsd:sequence />
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="policyGroups">
+    <xsd:complexType>
+      <xsd:sequence />
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
+

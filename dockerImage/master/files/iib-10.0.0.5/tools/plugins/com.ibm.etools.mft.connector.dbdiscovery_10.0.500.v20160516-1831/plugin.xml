@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="com.ibm.etools.mft.connector.base.ConnectorDiscovery">
+      <connector 
+      	version="1.0.0" 
+      	QName="com/ibm/mft/connector/dbConnector:DBConnector" 
+      	name="DBConnector"
+      	connectorFactory="com.ibm.etools.mft.connector.dbdiscovery.DiscoveryConnectorFactory">
+      		<discovery
+            	discoveryConnectorFactory="com.ibm.etools.mft.connector.dbdiscovery.DiscoveryConnectorFactory"
+             	displayName="%DB_CONNECTOR_DISPLAY_NAME"
+             	description="%DB_CONNECTOR_DESC"
+             	modelRelativePath="descriptor/db_connector_discovery_definition.xml"
+             	configurationBeanClass="com.ibm.etools.mft.connector.dbdiscovery.model.beans.Discovery"
+             	type="structured"
+             	icon="icons/obj16/dbService_16.gif">
+		        <searchTree>
+		        	<icon objectType="DBType">/icons/obj16/RDBDatabase.gif</icon>
+		        	<icon objectType="DBSchemaType">/icons/obj16/RDBSchema.gif</icon>
+		        	<icon objectType="DBTableType">/icons/obj16/dataTables_obj.gif</icon>
+		        </searchTree>
+      		</discovery>
+      </connector>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            name="%DB_SERVICE_WIZARD_NAME"
+            icon="icons/obj16/AddDatabaseServices.gif"
+            category="com.ibm.etools.mft.wizards.mbappdevcat"
+            class="com.ibm.etools.mft.connector.dbdiscovery.wizards.DBDiscoverServiceWizard"
+            id="com.ibm.etools.mft.connector.ui.editor.wizards.DBDiscoverServiceWizard">
+      </wizard>
+   </extension>
+   
+   <extension
+        id="com.ibm.etools.mft.connector.dbdiscovery.propertyeditors.DBMFileSelectionPropertyEditor"
+        point="com.ibm.etools.mft.wizard.editor.customPropertyEditors">
+        <EditorContributor
+           EditorId="DBMFileSelectionPropertyEditor"
+           EditorImpl="com.ibm.etools.mft.connector.dbdiscovery.propertyeditors.DBMFileSelectionPropertyEditor"
+           PluginId="com.ibm.etools.mft.connector.dbdiscovery"/>
+   </extension>
+   
+   <extension
+        id="com.ibm.etools.mft.connector.dbdiscovery.propertyeditors.ODBCDataSourcePropertyEditor"
+        point="com.ibm.etools.mft.wizard.editor.customPropertyEditors">
+        <EditorContributor
+           EditorId="ODBCDataSourcePropertyEditor"
+           EditorImpl="com.ibm.etools.mft.connector.dbdiscovery.propertyeditors.ODBCDataSourcePropertyEditor"
+           PluginId="com.ibm.etools.mft.connector.dbdiscovery"/>
+   </extension>
+   
+   <extension
+        id="com.ibm.etools.mft.connector.dbdiscovery.propertyeditors.DBResourceSelectionPropertyEditor"
+        point="com.ibm.etools.mft.wizard.editor.customPropertyEditors">
+        <EditorContributor
+           EditorId="DBResourceSelectionPropertyEditor"
+           EditorImpl="com.ibm.etools.mft.connector.dbdiscovery.propertyeditors.DBResourceSelectionPropertyEditor"
+           PluginId="com.ibm.etools.mft.connector.dbdiscovery"/>
+   </extension>
+   
+   <extension
+         id="com.ibm.etools.mft.connector.dbdiscovery.propertyeditors.ServiceOperationsPropertyEditor"
+         point="com.ibm.etools.mft.wizard.editor.customPropertyEditors">
+         <EditorContributor
+            EditorId="ServiceOperationsPropertyEditor"
+            EditorImpl="com.ibm.etools.mft.connector.dbdiscovery.propertyeditors.ServiceOperationsPropertyEditor"
+            PluginId="com.ibm.etools.mft.connector.dbdiscovery"/>
+   </extension>
+   
+</plugin>

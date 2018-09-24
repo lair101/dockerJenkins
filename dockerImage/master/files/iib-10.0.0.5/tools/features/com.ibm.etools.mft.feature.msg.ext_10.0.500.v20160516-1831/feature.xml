@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ibm.etools.mft.feature.msg.ext"
+      label="%Feature.name"
+      version="10.0.500.v20160516-1831"
+      provider-name="IBM"
+      plugin="com.ibm.etools.msg.editor"
+      image="wsFeatUpdate.jpg">
+
+   <description>
+      %description
+   </description>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="com.ibm.etools.msg.importer.dfdl.ext"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+   <plugin
+         id="com.ibm.etools.adapter.migration"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.msg.adapter.migration.ui"
+         download-size="0"
+         install-size="0"
+         version="10.0.500.v20160516-1831"
+         unpack="false"/>
+
+
+</feature>

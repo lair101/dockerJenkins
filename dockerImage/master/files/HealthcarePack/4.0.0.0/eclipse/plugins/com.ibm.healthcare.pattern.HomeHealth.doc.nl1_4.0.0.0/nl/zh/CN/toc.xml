@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS  TYPE="org.eclipse.help.toc"?>
+<toc link_to="../com.ibm.healthcare.doc/ha00000.xml#mb_continua_pattern" label="“Healthcare：Home Health”模式" topic="pattern/overview.htm">
+    <topic label="“Healthcare：Home Health”模式" href="pattern/overview.htm">
+    <topic label="有关使用模式的约束" href="pattern/constraints.htm"/>
+    <topic label="在使用此模式之前" href="pattern/before.htm"/>
+  		<topic label="模式参数" href="pattern/parameters.htm"/>
+  		<topic label="生成模式后要完成的任务" href="pattern/after.htm"/>
+  		
+    </topic>
+</toc>

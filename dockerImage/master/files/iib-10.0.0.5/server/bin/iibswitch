@@ -1,0 +1,361 @@
+#!/bin/bash
+# Licensed Materials - Property of IBM
+# 5724-A82
+# (c) Copyright IBM Corp. 2015.
+# All Rights Reserved
+# US Government Users Restricted Rights - use,
+# duplication or disclosure restricted by GSA
+# ADP Schedule Contract with IBM Corp.
+##############################################################################
+
+check_switch_type() {
+  type=$1
+   if ( [[ $type == 'agentp' ]] || [[ $type == 'agentc' ]] || [[ $type == 'switch' ]])
+   then
+     return 0
+   else
+     echo "Invalid switch type. Valid types are: agentp, agentc or switch."
+     echo ""
+     return 1
+   fi
+ }
+
+display_help() {
+      # Command to get help
+      echo "Usage 1: iibswitch create agentp -c <config.json>"
+      echo "                   update agentp -c <config.json>"
+      echo "                   stop agentp"
+      echo "                   start agentp"
+      echo "                   delete agentp"
+      echo "                   list agentp"
+      echo "                   help | -h"
+      echo "E.G. : iibswitch create agentp -c /tmp/agentp.json"
+      echo "       iibswitch update agentp -c /tmp/agentp2.json"
+      echo
+      echo "Usage 2: iibswitch create switch -c <config.json>"
+      echo "                   update switch -c <config.json>"
+      echo "                   stop switch"
+      echo "                   start switch"
+      echo "                   delete switch"
+      echo "                   list switch"
+      echo "                   help | -h"
+      echo "E.G. : iibswitch create switch -c /tmp/switch.json"
+ }
+
+##############################################################################
+# main
+#
+
+# Save arguments to this command
+ARG1=$1
+ARG2=$2
+ARG3=$3
+ARG4=$4
+ARG5=$5
+ARG6=$6
+
+# Get the install directory
+MQSI_BASE_FILEPATH=$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)
+MQSI_BASE_FILEPATH="$MQSI_BASE_FILEPATH/../.."
+#
+# First check whether we are using a global registry
+#
+if [[ -e "${MQSI_BASE_FILEPATH}/common/GLOBAL_REG" ]]
+then
+  read REGVAL < "${MQSI_BASE_FILEPATH}/common/GLOBAL_REG"
+  GLOBAL=true
+  REG_HOME="$REGVAL"
+else
+  GLOBAL=false
+  if [[ ! -n "$REG_HOME" ]]
+  then
+    REG_HOME="$HOME/iibconfig"
+  fi
+fi
+id | grep "uid=0" > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+  OWNER="NOTROOT"
+else
+  OWNER="root"
+fi
+# Check for license
+if [[ ! -e "${MQSI_BASE_FILEPATH}/license/status.dat" ]]
+then
+  # Set up temporary workpath and source mqsiprofile
+  export MQSI_WORKPATH="/tmp/iib_install"
+  mkdir -p "${MQSI_WORKPATH}/common/errors" > /dev/null 2>&1
+  mkdir -p "${MQSI_WORKPATH}/common/log" > /dev/null 2>&1
+  # Make MQSI_BASE_FILEPATH available for mqsiprofile
+  export TEMP_MQSI_BASE_FILEPATH="${MQSI_BASE_FILEPATH}"
+  . "${MQSI_BASE_FILEPATH}/server/bin/mqsiprofile" > /dev/null 2>&1
+    # Before using iib you must first accept the license agreement
+    mqsiexplain BIP15048 -m
+    if [[ "$OWNER" == "root" ]]
+    then
+      # Shared installation install instructions
+      mqsiexplain BIP15049 -m
+    else
+      # Single-user installation install instructions
+      mqsiexplain BIP15050 -m
+    fi
+  # Clean up temporary directory
+  rm -rf "/tmp/iib_install" > /dev/null 2>&1
+else
+  # --------------------------------------------------------------------
+  # Process commands
+  #
+    if [ ! -n "${ARG1}" ] || [ "${ARG1}" = "-h" ] || [ "${ARG1}" = "help" ] || [ "${ARG1}" = "-help" ]
+    then
+      display_help
+    else
+      . "${MQSI_BASE_FILEPATH}/server/bin/mqsiprofile" > /dev/null 2>&1
+      #
+      # start tools
+      #
+      if [[ "${ARG1}" = "create" ]]
+      then
+        switch_type=${ARG2}
+        if check_switch_type $switch_type;
+        then
+          if [[ ! ${ARG4} = "" ]] && [ -e ${ARG4} ] && [ "${ARG3}" = "-c" ]
+          then
+            # check to see if the switch has already been created
+            if [[ -e "$MQSI_WORKPATH/registry/IIBSWITCH_NODE" ]]
+            then
+              echo "iibswitch already created, cannot create."
+              exit 1
+            else
+              # Determine the name of the integration server property
+              case $switch_type in
+              switch)
+                prop_name=switchConfigFile
+                ;;
+              agentc)
+                prop_name=agentCConfigFile
+                ;;
+              agentp)
+                prop_name=agentPConfigFile
+                ;;
+              *)
+                echo "Cannot determine the type of the configuration file ${ARG4}"
+                exit 1
+                ;;
+              esac
+              # redirect all outout to a log file for the mqsi commands ran
+              IIBSWITCH_LOG="${MQSI_WORKPATH}/common/log/IIBSWITCH_log.txt"
+              echo "Creating the iibswitch with configuration file ${ARG4}"
+              # create a node to own the server that will run the switch
+              mqsicreatebroker IIBSWITCH_NODE >> ${IIBSWITCH_LOG} 2>&1
+              # put it in to the limited function switch mode
+              echo -n switch > "$MQSI_WORKPATH/registry/IIBSWITCH_NODE/CurrentVersion/modeExtensions"
+              # start the node
+              mqsistart IIBSWITCH_NODE >> $IIBSWITCH_LOG 2>&1
+              mqsichangeproperties IIBSWITCH_NODE -b webadmin -o server -n enabled -v false >> $IIBSWITCH_LOG 2>&1
+              mqsichangeproperties IIBSWITCH_NODE -b pubsub -o MQTTServer -n enabled -v false >> $IIBSWITCH_LOG 2>&1
+              mqsistop  IIBSWITCH_NODE >> $IIBSWITCH_LOG 2>&1
+              mqsistart  IIBSWITCH_NODE >> $IIBSWITCH_LOG 2>&1
+              # create the server to run the switch with webadmin and mqtt turned off
+              mqsicreateexecutiongroup IIBSWITCH_NODE -e IIBSWITCH_SERVER >> $IIBSWITCH_LOG 2>&1
+              # copy in the config file
+              mqsichangeproperties IIBSWITCH_NODE -e IIBSWITCH_SERVER -o ComIbmIIBSwitchManager -n switchConfigFile,agentCConfigFile,agentPConfigFile -v "","","" >> $IIBSWITCH_LOG 2>&1
+              mqsichangeproperties IIBSWITCH_NODE -e IIBSWITCH_SERVER -o ComIbmIIBSwitchManager -n ${prop_name} -p ${ARG4} >> $IIBSWITCH_LOG 2>&1
+              if [ "$?" != "0" ]
+              then
+                echo "Failed to create the iibswitch with configuration file ${ARG4}"
+                exit 1
+              fi
+              echo "iibswitch created and started."
+            fi
+          else
+            echo "Missing or incorrect config option -c."
+            echo ""
+            display_help
+            exit 1
+          fi
+        else
+          display_help
+          exit 1
+        fi
+      elif [[ "${ARG1}" = "update" ]]
+      #
+      # Update
+      #
+      then
+        switch_type=${ARG2}
+        if check_switch_type $switch_type ;
+        then
+          # Determine the name of the integration server property
+          case $switch_type in
+          switch)
+            prop_name=switchConfigFile
+            ;;
+          agentc)
+            prop_name=agentCConfigFile
+            ;;
+          agentp)
+            prop_name=agentPConfigFile
+            ;;
+          *)
+            echo "Cannot determine the type of the configuration file ${ARG4}"
+            exit 1
+            ;;
+          esac
+          # redirect all outout to a log file for the mqsi commands ran
+          IIBSWITCH_LOG="${MQSI_WORKPATH}/common/log/IIBSWITCH_log.txt"
+          # Does the file exist, and are we in config file mode?
+          if [ -e ${ARG4} ] && [ "${ARG3}" = "-c" ]
+          then
+            if [[ ! -e "$MQSI_WORKPATH/registry/IIBSWITCH_NODE" ]]
+            then
+              echo "iibswitch does not exist, cannot update."
+              exit 1
+            else
+              # copy in the new config ensuring any issue is removed
+              echo "Updating the iibswitch with configuration file ${ARG4}"
+              mqsichangeproperties IIBSWITCH_NODE -e IIBSWITCH_SERVER -o ComIbmIIBSwitchManager -n ${prop_name} -p ${ARG4} >> $IIBSWITCH_LOG 2>&1
+              if [ "$?" != "0" ]
+              then
+                echo "Failed to update the iibswitch with configuration file ${ARG4}"
+                exit 1
+              fi
+              echo "iibswitch updated."
+            fi
+          else
+            if [ "${ARG3}" = "-r" ]
+            then
+              echo "Removing ${switch_type} configuration from the iibswitch"
+              mqsichangeproperties IIBSWITCH_NODE -e IIBSWITCH_SERVER -o ComIbmIIBSwitchManager -n ${prop_name} -v "" >> $IIBSWITCH_LOG 2>&1
+              if [ "$?" != "0" ]
+              then
+                echo "Failed to remove ${switch_type} configuration from the iibswitch"
+                exit 1
+              fi
+              echo "iibswitch updated."
+            else
+              echo "Missing or incorrect config option -c"
+              echo ""
+              display_help
+              exit 1
+            fi
+          fi
+        else
+          display_help
+          exit 1
+        fi
+      elif [[ "${ARG1}" = "stop" ]]
+      #
+      # Stop
+      #
+      then
+        if check_switch_type ${ARG2};
+        then
+          # check we have a switch to stop
+          if [[ ! -e "$MQSI_WORKPATH/registry/IIBSWITCH_NODE" ]]
+          then
+            echo "iibswitch does not exist, cannot stop."
+            exit 1
+          else
+            # redirect all outout to a log file for the mqsi commands ran
+            IIBSWITCH_LOG="${MQSI_WORKPATH}/common/log/IIBSWITCH_log.txt"
+            echo "Stopping iibswitch, please wait..."
+            mqsistop IIBSWITCH_NODE >> $IIBSWITCH_LOG 2>&1
+            echo "iibswitch stopped."
+          fi
+        else
+          display_help
+          exit 1
+        fi
+      elif [[ "${ARG1}" = "start" ]]
+      #
+      # Start
+      #
+      then
+        if check_switch_type ${ARG2};
+        then
+          # check we have a switch to start
+          if [[ ! -e "$MQSI_WORKPATH/registry/IIBSWITCH_NODE" ]]
+          then
+            echo "iibswitch does not exist, cannot start."
+            exit 1
+          else
+            # redirect all outout to a log file for the mqsi commands ran
+            IIBSWITCH_LOG="${MQSI_WORKPATH}/common/log/IIBSWITCH_log.txt"
+            echo "Starting iibswitch, please wait..."
+            mqsistart IIBSWITCH_NODE >> $IIBSWITCH_LOG 2>&1
+            echo "iibswitch started."
+          fi
+        else
+          display_help
+          exit 1
+        fi
+      elif [[ "${ARG1}" = "delete" ]]
+      #
+      # Delete
+      #
+      then
+        if check_switch_type ${ARG2};
+        then
+          # check we have a switch to start
+          # if there is no switch still do delete steps to encase there is any old state
+          if [[ ! -e "$MQSI_WORKPATH/registry/IIBSWITCH_NODE" ]]
+            then
+            echo "iibswitch does not exist but will attempt to clear up any files."
+            echo ""
+          fi
+          IIBSWITCH_LOG="${MQSI_WORKPATH}/common/log/IIBSWITCH_log.txt"
+          echo "Deleting iibswitch."
+          mqsichangeproperties IIBSWITCH_NODE -e IIBSWITCH_SERVER -o ComIbmIIBSwitchManager -n switchConfigFile,agentCConfigFile,agentPConfigFile -v "","","" >> $IIBSWITCH_LOG 2>&1
+          mqsistop IIBSWITCH_NODE >> $IIBSWITCH_LOG 2>&1
+          mqsideletebroker IIBSWITCH_NODE >> $IIBSWITCH_LOG 2>&1
+          echo "iibswitch deleted."
+        else
+          display_help
+          exit 1
+        fi
+      elif [[ "${ARG1}" = "list" ]]
+      #
+      # List
+      #
+      then
+        if check_switch_type ${ARG2};
+        then
+          if [[ ! -e "$MQSI_WORKPATH/registry/IIBSWITCH_NODE" ]]
+          then
+            echo "iibswitch does not exist."
+            exit 1
+          fi
+          mqsilist IIBSWITCH_NODE -d0 > /dev/null 2>&1
+          if [ $? -ne 0 ]
+          then
+            echo "iibswitch exists, but it has not been started."
+            exit 1
+          fi
+          echo "iibswitch exists and is running."
+          SWITCHCFG=$(mqsireportproperties IIBSWITCH_NODE -e IIBSWITCH_SERVER -o ComIbmIIBSwitchManager -n switchConfigFile -p - 2>&1)
+          if [[ -n "${SWITCHCFG}" ]]
+          then
+            echo "iibswitch is configured as a switch server for secure connectivity and callable flows."
+          fi
+          AGENTCCFG=$(mqsireportproperties IIBSWITCH_NODE -e IIBSWITCH_SERVER -o ComIbmIIBSwitchManager -n agentCConfigFile -p - 2>&1)
+          if [[ -n "${AGENTCCFG}" ]]
+          then
+            echo "iibswitch is configured as a secure connectivity agent for on-premises systems."
+          fi
+          AGENTPCFG=$(mqsireportproperties IIBSWITCH_NODE -e IIBSWITCH_SERVER -o ComIbmIIBSwitchManager -n agentPConfigFile -p - 2>&1)
+          if [[ -n "${AGENTPCFG}" ]]
+          then
+            echo "iibswitch is configured as a secure connectivity agent for cloud systems."
+          fi
+        else
+          display_help
+          exit 1
+        fi
+      #
+      # error case
+      #
+      else
+         display_help
+         exit 1
+      fi
+    fi
+  fi

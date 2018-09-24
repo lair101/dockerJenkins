@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.1
+Created-By: 2.4 (IBM Corporation)
+Bundle-ManifestVersion: 2
+Bundle-Name: Pattern Authoring Extension Plug-in
+Bundle-SymbolicName: com.ibm.healthcare.pattern.HL7.code
+Bundle-Version: 4.0.0.0
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: com.ibm.etools.mft.broker.runtime,com.ibm.broker.confi
+ g.appdev
+

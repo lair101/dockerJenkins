@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+    <extension
+          point="com.ibm.msl.mapping.xml.transformEngines">
+       <engine
+             domainID="com.ibm.msl.mapping.xml">
+          <library
+                path="lib/xml.jar">
+          </library>
+       </engine>
+    </extension>   
+   <extension
+         point="com.ibm.msl.mapping.xml.resourceProviders">
+      <resourceProvider
+            class="com.ibm.etools.mft.map.xml.json.XSDResourceProviderForJSON" />
+   </extension>
+</plugin>

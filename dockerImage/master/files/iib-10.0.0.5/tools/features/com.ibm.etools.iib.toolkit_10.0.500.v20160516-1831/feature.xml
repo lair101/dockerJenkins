@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="com.ibm.etools.iib.toolkit" 
+	label="%Feature.name" 
+	version="10.0.500.v20160516-1831" 
+	provider-name="IBM" 
+	image="wsFeatUpdate.jpg">
+
+	<description>
+      %description
+   </description>
+
+	<license url="%licenseURL">
+      %license
+   </license>
+
+	<includes id="com.ibm.bpm.index.feature" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.dfdl.feature" version="1.1.200.201605091243" />
+
+	<includes id="com.ibm.dfdl.importers.feature" version="1.1.200.201605091243" />
+
+	<includes id="com.ibm.etools.mft.feature.admin" version="10.0.500.v20160516-1831"/>
+
+	<includes id="com.ibm.etools.mft.feature.admin.gtk" version="10.0.500.v20160516-1831" os="linux" ws="gtk"/>
+
+	<includes id="com.ibm.etools.mft.feature.admin.win32" version="10.0.500.v20160516-1831" os="win32" ws="win32"/>
+
+	<includes id="com.ibm.etools.mft.feature.api" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.aspectj" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.bar" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.bar.editor" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.bpm.integration" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.builder" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.config" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.connector" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.debug" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.decision.service.base" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.dotnet" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.esql" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.flow" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.flow.dnd.idl" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.flow.dnd.wsdl" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.gplang" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.ibmnodes" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.impactanalysis" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.infopops" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.jcn" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.mad" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.mapping" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.mapping.api" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.mapping.esql" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.mapping.msgmap" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.msg" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.navigator" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.node" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.patterns.base" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.patterns.community" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.php" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.quickstartwizards" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.runtime" version="10.0.500.v20160516-1831" />
+	<!-- RTC 44788
+	<includes id="com.ibm.etools.mft.feature.samples.common" version="0.0.0" />
+	-->
+	<includes id="com.ibm.etools.mft.feature.unittest" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.util" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.welcome.mb" version="10.0.500.v20160516-1831" />
+	
+	<includes id="com.ibm.etools.mft.feature.restapi" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.wid" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.feature.wid.dependencies" version="8.5.0.20130525-092636" />
+
+	<includes id="com.ibm.etools.mft.feature.xpath" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.mft.rad.base" version="9.1.1.I20141010_1515" />
+
+	<includes id="com.ibm.etools.mft.rad.datatools" version="9.1.1.I20141010_1515" />
+
+	<includes id="com.ibm.etools.msgbroker.tooling" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.hcls.sdg" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.iib.localhelp.doc.feature" version="10.0.0.v20150327_0856" />
+	
+	<includes id="com.ibm.iib.langpacks.doc.feature" version="10.0.0.v20150327_0856" />
+	
+	<includes id="com.ibm.etools.mft.feature.decision.service.ext" version="10.0.500.v20160516-1831" />
+	
+	<includes id="com.ibm.etools.mft.feature.ilog-feature" version="10.0.500.v20160516-1831" />
+		
+	<!-- WESB conversion import feature --> 
+	<includes id="com.ibm.etools.mft.feature.conversion.esb.importer" version="10.0.500.v20160516-1831" />	
+
+	<!-- dependency required by WESB conversion feature -->
+	<!--includes id="com.ibm.etools.mft.feature.wid.ext.dependencies" version="8.5.0.20130525-092636" /-->
+	<includes id="com.ibm.etools.mft.rad.esb" version="9.1.1.I20141010_1515" />
+	
+	<!-- adapter related features -->
+	<includes id="com.ibm.etools.mft.feature.adapters" version="10.0.500.v20160516-1831" />
+	<!--includes id="com.ibm.etools.mft.feature.ibmnodes.ext" version="0.0.0" /-->
+	<includes id="com.ibm.etools.mft.feature.msg.ext" version="10.0.500.v20160516-1831" />
+	<!--includes id="com.ibm.etools.mft.feature.wid.ext" version="0.0.0" /-->
+	<!--includes id="com.ibm.etools.mft.rad.delta" version="9.0.0.I20130524_1552" /-->
+	<includes id="com.ibm.j2ca.wmb.migration.feature" version="8.0.0.201110071709" />
+	<!-- end adapter related features -->
+	
+	<!-- list of Tools Common component features -->
+	<includes id="com.ibm.bpm.common.feature" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.bpm.common.ui.feature" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.bpm.gettingstarted.feature" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.etools.patterns.feature" version="10.0.500.v20160516-1831" />
+
+	<includes id="com.ibm.msl.mapping.feature" version="8.0.500.v20160505-1155" />
+
+	<includes id="com.ibm.msl.mapping.rdb.feature" version="8.0.500.v20160505-1155" />
+
+	<includes id="com.ibm.msl.mapping.service.feature" version="8.0.500.v20160505-1155" />
+
+	<!-- Jason remove MQTTNodes
+	<includes id="MQTTNodesFeature" version="0.0.0" /> -->
+	
+	<!-- RTC 38079, remove SalesforceNodes from the package -->
+	<!--includes id="SalesforceNodesFeature" version="0.0.0" /-->
+
+	<!-- list of additional required eclipse features --> 
+	<!-- from src.EMF_SDO=https://constellation.beaverton.ibm.com/targets/P2Repos/emf-sdo/20121221-02/ -->
+	<includes id="org.eclipse.emf.ecore.sdo" version="2.4.0.v200801221930" />
+	
+	<!-- from src.IES-UML=https://constellation.beaverton.ibm.com/metadata/IES-UML/post362/I/20130507/P2repository/	--> 
+	<includes id="org.eclipse.uml2" version="3.1.500.v201212050047" />	
+	<includes id="org.eclipse.jet" version="1.1.1.v201101271243-5319sC7HCAGERASDK3924" />
+	<includes id="org.eclipse.jet.uml2" version="1.1.0.v201006011447-2-07w311A1A152813" />
+
+	
+	<!-- RTC 32140: include Eclipse Marketplace in the package -->
+	<includes id="org.eclipse.epp.mpc" version="1.1.1.I20110907-0947" />	
+	<includes id="org.eclipse.equinox.p2.discovery.feature" version="1.0.100.v20120524-0542-4-Bh9oB58B5W8E28KKNEK" />
+
+	<!-- RTC 37842: Package LPEX 4.2 version of the plugin in toolkit -->
+	<includes id="com.ibm.lpex" version="4.2.0.v20130522_1423" />
+	<includes id="com.ibm.lpex.doc" version="4.2.0.v20130425_2320" />
+
+	<!-- RTC 37459: Include the org.aspectj.runtime plugin in the package 
+	<includes id="org.aspectj" version="1.7.3.20130613144500-a" />	
+-->
+</feature>

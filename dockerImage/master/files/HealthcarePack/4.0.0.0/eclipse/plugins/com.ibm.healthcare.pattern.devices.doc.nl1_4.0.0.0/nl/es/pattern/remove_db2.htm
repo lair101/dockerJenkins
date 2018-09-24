@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2011, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <title>Limpieza de DB2</title>
+    <!-- 
+       (C) COPYRIGHT International Business Machines Corp., 2011, 2014
+       All Rights Reserved * Licensed Materials - Property of IBM
+      -->
+</head>
+<body role="main">
+<div>
+    <h1 class="topictitle1">Limpieza de DB2</h1>
+    <p class="shortdesc">
+    Estas instrucciones dan por supuesto que utiliza DB2 Universal
+Database y le guían por las tareas siguientes:
+    </p>
+    <ul>
+        <li>
+            Elimine la base de datos denominada PATSDB que utiliza el patrón
+        </li>
+        <li>
+            Elimine la definición ODBC de la base de datos
+        </li>
+    </ul>
+</div>
+<p>
+Para eliminar la base de datos y la definición ODBC:
+</p>
+<ol>
+    <li>
+        En una ventana de mandatos de DB2, escriba el mandato
+siguiente para asegurarse de que se inicia DB2:
+        <pre>db2start</pre>
+    </li>
+    <li>
+        En una ventana de mandatos de DB2, escriba el mandato siguiente:
+        <pre>db2 DROP DATABASE PATSDB</pre>
+    </li>
+    <li>
+        Para eliminar la definición ODBC de la base de datos PATSDB,
+(cuyo nombre de origen de datos es PATIENTSDSN), deshaga el paso de
+configuración se ODBC; consulte Habilitación de las conexiones ODBC
+con las bases de datos en la documentación de IBM Integration Bus. 
+    </li>
+</ol>
+<p>
+</p>
+<a href="remove.htm" title="Atrás">Volver a Limpieza
+de la base de datos de identificadores de pacientes</a>
+<p>
+</p>
+</body>
+</html>

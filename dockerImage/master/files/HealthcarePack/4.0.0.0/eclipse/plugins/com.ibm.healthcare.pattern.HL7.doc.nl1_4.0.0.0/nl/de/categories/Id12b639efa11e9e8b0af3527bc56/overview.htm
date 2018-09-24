@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="copyright" content="Copyright IBM Corporation 2010" />
+<link rel="stylesheet" type="text/css" href="./css/pattern.css" />
+<title>Healthcare-Muster</title>
+</head>
+<body role="main">
+	<h1 class="topictitle1">Healthcare</h1>
+	<div>
+		<p class="shortdesc">Das IBM Integration Bus Healthcare-Paket basiert auf
+			IBM Integration Bus und unterstützt Anwendungen im Gesundheitswesen.</p>
+	</div>
+	<h3>Muster 'Healthcare: HIPAA in XML'</h3>
+	<p>
+				Das Muster <span>Healthcare: HIPAA in XML</span> generiert einen Nachrichtenfluss, den Sie zum Transformieren
+		von HIPAA-Dateien in XML-Dateien verwenden können.
+	</p>
+	<div class="image">
+				<img src="HIPAAtoXML.png"
+			alt="HIPAA-Dateien aus einer Quellenanwendung werden vom Muster in XML-Dateien transformiert" />
+	</div>
+	<h3>Muster 'Healthcare: HL7-Transformation'</h3>
+	<p>
+				Das Muster <span>Healthcare: HL7-Transformation</span> generiert grafische
+		Datenzuordnungen, mit denen Sie HL7-Nachrichten assemblieren können.
+	</p>
+	<div class="image">
+				<img src="MapGeneration1.png"
+			alt="Eine Abbildung mit dem Muster 'Healthcare: HL7-Transformation'" />
+	</div>
+	<h3>Muster 'Healthcare: HL7 an HL7 DFDL'</h3>
+	<p>
+				Das Muster <span>Healthcare: HL7 an HL7 DFDL</span> integriert eine Anwendung, die HL7-Nachrichten der Version 2 senden kann, in mindestens eine andere Anwendung, die HL7-Nachrichten empfangen kann. Die Anwendungen müssen in der Lage sein, die Nachrichten unter Verwendung von MLLP über TCP/IP zu senden und zu empfangen. Dieses
+Muster verwendet das DFDL-Nachrichtenmodell. Eine alternative Version dieses Musters mit dem Namen
+		<span>Healthcare: HL7 an HL7</span> wird für den Fall bereitgestellt, dass Sie
+		MRM und die HL7v25P-Nachrichtengruppe anstelle von DFDL verwenden möchten.
+	</p>
+	<div class="image">
+				<img src="pattern.png" alt="Diagramm mit einer Darstellung der drei Bestandteile des Musters 'Healthcare: HL7 an HL7'" />
+	</div>
+	<h3>Muster 'Healthcare: HL7 an Berichte'</h3>
+	<p>
+				Das Muster <span>
+Healthcare: HL7 an Berichte</span> integriert eine Anwendung, die HL7-Nachrichten der Version 2 mit Textberichtgenerierung senden können.
+		Textberichte werden mithilfe von PHP-Scripts geschrieben und verfügen über einen uneingeschränkten Zugriff auf die HL7-Nachrichtendaten. Vollständige Berichte werden in regelmäßigen Abständen an ein Verzeichnis auf dem Zieldateisystem übermittelt. Dabei besteht auch die Möglichkeit, die Berichte zu kopieren und auf einer externen FTP/SFTP-Site zur Verfügung zu stellen.
+	</p>
+	<div class="image">
+				<img src="reports.png"
+    alt="Eine Abbildung, die die drei Teile des Musters 'Healthcare: HL7 an Berichte' veranschaulicht" />
+	</div>
+	<h3>Muster 'Healthcare: Medizinische Geräte an EKA'</h3>
+	<p>
+				Das Muster <span>
+Healthcare: Medizinische Geräte an EKA</span> integriert medizinische Geräte in eine Anwendung für elektronische Patientenakten (EKA), die Untersuchungsergebnisnachrichten (ORU R01) des Standards HL7 v2 (Health Level Seven International) empfangen kann. Die Anwendung muss in der Lage sein, HL7-ORU-R01-Nachrichten unter Verwendung des MLLP-Protokolls (MLLP = Minimal Lower Layer Protocol) über TCP/IP zu empfangen.
+	</p>
+	<div class="image">
+				<img src="devices.png"
+    alt="Eine Abbildung, die die drei Teile des Musters 'Healthcare: Medizinische Geräte an EKA' veranschaulicht" />
+	</div>
+
+	<h3>Muster 'Healthcare: Web-Service an DICOM'</h3>
+	<p>
+				Das Muster <span>
+Healthcare: Web-Service an DICOM</span> integriert eine Anwendung, die mithilfe von Web-Services geschrieben, wurde, in DICOM-Anwendungen, die C-FIND- und C-MOVE-Operationen unterstützen. Mit diesem Muster können mithilfe eines über IBM Integration Bus implementierten Web-Service Patienten, Untersuchungen, Serien und Bilder aus einem DICOM-Archiv (PACS) abgefragt werden.
+	</p>
+	<div class="image">
+				<img src="DICOM.png"
+			alt="Eine Abbildung mit dem Verhalten des Musters 'Healthcare: Web-Service an DICOM'." />
+	</div>
+	<h3>Muster 'Healthcare: Ambulante Pflege'</h3>
+	<p>
+			Mithilfe des Musters <span>Healthcare: Ambulante Pflege</span> ermöglichen Sie Ihren	Gesundheitskontrollsystemen, Web-Service-Anforderungen von Geräten zu akzeptieren, die mit HL7 v2.6 kompatibel sind. Dadurch können Daten, die von
+Geräten für die ambulante Pflege erfasst und an das Anwendungshostgerät gesendet werden, anschließend an die anfordernde klinische Anwendung gesendet werden.
+	</p>
+	<div class="image">
+				<img src="health_home.png"
+			alt="Diagramm mit dem Verhalten des Musters 'Healthcare: Ambulante Pflege'." />
+	</div>
+	<h3>Muster 'Healthcare: Patient Identifier Cross-reference Manager'</h3>
+	<p>
+		Verwenden Sie das Muster <span>Healthcare: Patient Identifier Cross-reference Manager</span>, um einen
+Patient Identifier Cross-reference Manager zu erstellen, der dem IHE-PIX-Profil entspricht.</p>
+</body>
+</html>
+
+

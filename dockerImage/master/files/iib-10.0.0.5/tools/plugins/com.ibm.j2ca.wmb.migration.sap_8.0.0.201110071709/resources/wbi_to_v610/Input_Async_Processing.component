@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:java="http://www.ibm.com/xmlns/prod/websphere/scdl/java/6.0.0" 
+xmlns:ns1="http://*ProjectName*/Inbound_PortType" 
+xmlns:ns2="http://www.ibm.com/websphere/crossworlds/2002/CFGSchemas/*ProjectName*/interface/native/async" 
+xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" 
+xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" 
+displayName="Input_Async_Processing" name="Input_Async_Processing">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:Inbound_PortType"/>
+  </interfaces>
+  <references>
+    <reference name="Async_PortTypePartner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns2:Async_PortType"/>
+      <wire target="Native_To_Generic"/>
+    </reference>
+  </references>
+  <implementation xsi:type="java:JavaImplementation" class="Input_Async_Processing"/>
+</scdl:component>

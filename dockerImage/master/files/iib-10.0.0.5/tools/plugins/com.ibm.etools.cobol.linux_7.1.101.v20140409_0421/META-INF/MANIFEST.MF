@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-Vendor: IBM
+Fragment-Host: com.ibm.etools.cobol;bundle-version="7.0.0"
+Bundle-Version: 7.1.101.v20140409_0421
+Bundle-Localization: plugin
+Bundle-Name: COBOL Importer Linux Fragment
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ibm.etools.cobol.linux; singleton:=true
+
+

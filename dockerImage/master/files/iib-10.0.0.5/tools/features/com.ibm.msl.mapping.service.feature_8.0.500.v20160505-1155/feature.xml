@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ibm.msl.mapping.service.feature"
+      label="%featureName"
+      version="8.0.500.v20160505-1155"
+      provider-name="%provider">
+   <install-handler/>
+
+   <description>
+      %description
+   </description>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="com.ibm.msl.mapping.service"
+         download-size="0"
+         install-size="0"
+         version="8.0.500.v20160505-1155"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.msl.mapping.service.ui"
+         download-size="0"
+         install-size="0"
+         version="8.0.500.v20160505-1155"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.msl.mapping.xml.servicemap"
+         download-size="0"
+         install-size="0"
+         version="8.0.500.v20160505-1155"
+         unpack="false"/>
+
+</feature>

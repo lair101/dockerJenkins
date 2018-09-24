@@ -1,0 +1,861 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn">
+<head>
+	<!--
+		(c) Copyright IBM Corporation 2011, 2014. All rights reserved.
+		All Rights Reserved * Licensed Materials - Property of IBM 
+	-->
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="abstract" content="下列各表包含“医疗设备到 EMR”模式的模式参数详细信息"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+	<title>“医疗设备到 EMR”模式的模式参数</title>	
+	<script language="JavaScript" src="../help/actions.js"></script>
+	
+	<!-- START NON-TRANSLATABLE -->
+	<script language="JavaScript">
+	<!--
+
+	function getParameter(location, name) {
+		name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+		var search = "[\\?&]" + name + "=([^&#]*)";
+		var regex = new RegExp(search);
+		var results = regex.exec(location);
+		return (results == null ? true : (results[1] == "false" ? false : true));
+	}
+	
+	function addStyleSheet() {
+		if (getParameter(window.location.href, "everything") == false) {
+			var headId = document.getElementsByTagName("head")[0];         
+			var cssNode = document.createElement("link");
+			cssNode.type = "text/css";
+			cssNode.rel = "stylesheet";
+			cssNode.href = "../css/patterns.css";
+			cssNode.media = "screen";
+			headId.appendChild(cssNode);
+		}
+	}
+		
+	addStyleSheet(); // Depends on the query string!
+	
+	function getElementsByStyleClass (className) {
+  		var all = document.all ? document.all :
+    	document.getElementsByTagName('*');
+  		var elements = new Array();
+  		
+  		for (var e = 0; e < all.length; e++) {
+    		if (all[e].className == className) {
+      			elements[elements.length] = all[e];
+      		}
+      	}
+ 		return elements;
+	}
+	
+	function collapseAll() {
+		var elements = getElementsByStyleClass('twisty');
+		for (var e = 0; e < elements.length; e++) {
+			changeTwisty(elements[e], 'TWISTIE.COLLAPSEALL');
+		}
+	}
+	
+	function expandAll() {
+		var elements = getElementsByStyleClass('twisty');
+		for (var e = 0; e < elements.length; e++) {
+			changeTwisty(elements[e], 'TWISTIE.EXPANDALL');
+		}
+	}
+	
+	function toggleTwisty(group) {
+		changeTwisty(group, 'TWISTIE.TOGGLE');
+		// Make KC adjust content area for change of content height
+		if (typeof kc === "object" && typeof kc.resize === "function") kc.resize();
+	}
+
+	function changeTwisty(group, mode) {		
+		whichGroupId = group.parentNode.id;
+
+		whichGroupContainerId = whichGroupId + "Container";
+		whichGroupTwistyId = whichGroupId + "Twisty";
+		whichGroupTwistyImageId = whichGroupId + "Arrow";
+		groupContainerObj = document.getElementById(whichGroupContainerId);
+		twistyArrowContainerObj = document.getElementById(whichGroupTwistyId);
+		twistyArrowImageObj = document.getElementById(whichGroupTwistyImageId);
+		group.parentNode.style.height = "auto";
+
+		var toShow = false;
+		
+		if (mode == 'TWISTIE.TOGGLE') {
+			if (groupContainerObj.style.display == "none" || groupContainerObj.style.display == "") {
+				toShow = true;
+			} else {
+				toShow = false;
+			}
+		} else if (mode == 'TWISTIE.EXPANDALL') {
+			toShow = true;
+		}
+		
+		if (toShow) {
+			groupContainerObj.style.visibility = "visible";
+			groupContainerObj.style.display = "block";
+			twistyArrowImageObj.src = '../images/twistyopen.png'
+			group.parentNode.style.height = (groupContainerObj.offsetHeight + 30) +'px'; 
+	
+		} else {
+			groupContainerObj.style.visibility = "hidden";
+			groupContainerObj.style.display = "none";
+			twistyArrowImageObj.src = '../images/twistyclosed.png'
+		}
+	
+	}
+	//-->
+	</script>
+	<!-- END NON-TRANSLATABLE -->
+</head>
+<body id="com.ibm.healthcare.pattern.devices.pattern.parametertable" role="main">
+	<!-- Page main title -->
+  	<div id="title" class="invisible">
+		<h1 class="patterns-title">“<span>医疗设备到 EMR</span>”模式的参数</h1>
+  	</div>
+
+
+	
+		
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="Id135e491d19dc7e704a75d03f313">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="Id135e491d19dc7e704a75d03f313Twisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="Id135e491d19dc7e704a75d03f313Arrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">观察结果</div>
+							
+							
+
+									
+
+									
+
+									
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="Id135e491d19dc7e704a75d03f313Container">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">模式参数</th>
+													  <th class="invisible" valign="top" width="*">缺省值</th>
+													  <th valign="top" width="*">描述</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																到期时间（秒）</th>
+															<td valign="top" width="2*" class="invisible">
+																				60
+															</td>
+															<td valign="top" width="*">
+																<p>这是对每条医疗设备消息进行测量时，对这些消息设置的时间段（以秒计）。如果设备消息在这段时间经过前未进行处理，那么将符合废弃条件。</p>
+<p>将此参数保留为空可以确保设备消息永远不超时。建议您设置消息到期时间，以免到期的设备消息在后续处理时意外地与不正确的患者相关联。</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																源标识</th>
+															<td valign="top" width="2*" class="invisible">
+																																								消息代理</td>
+															<td valign="top" width="*">
+																																此参数定义一个标识，用于在错误消息、通知和标准日志记录消息中描述源。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																源设施</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																																此参数定义要包括在错误消息、通知和标准日志记录消息中的源设施。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																患者标识</th>
+															<td valign="top" width="2*" class="invisible">
+																																								使用来自设备的患者标识</td>
+															<td valign="top" width="*">
+																<p>此参数定义患者标识与设备消息相关联的方式。患者标识用于填充 HL7 观察结果消息的 PID（患者标识）段：<ol>
+<li><span class="msobjpropval">观察结果中没有患者标识</span> - 指定 HL7 观察结果消息中不需要任何 PID 段。</li>
+<li><span class="msobjpropval">使用来自设备消息的患者标识</span> - 为设备配置的患者标识将直接复制到 HL7 观察结果消息的 PID 段中。</li>
+<li><span class="msobjpropval">在数据库中查找患者标识</span> - 设备消息中的设备标识用作数据库表的键，以查找相关联的患者标识。然后，患者标识将复制到 HL7 观察结果消息的 PID 段中。</li>
+</ol>
+</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																消息标识</th>
+															<td valign="top" width="2*" class="invisible">
+																																								当前日期和时间</td>
+															<td valign="top" width="*">
+																<p>此参数定义如何在 HL7 观察结果 (ORU) 消息中创建 MSH.10 消息标识字段。</p>
+
+<p><span class="msobjpropval">“当前日期和时间”</span>将当前日期和时间组合为数字字符序列。在当前机器上，日期和时间精确到
+<span class="msobjpropval">0.000001</span> 秒。对于多个集成节点可以向同一个目标应用程序发送观察结果的高可用性配置，<span class="msobjpropval">“当前日期和时间”</span>不适用。</p>
+
+<p><span class="msobjpropval">“全局唯一标识”</span>根据当前时间戳记和其他信息（包括当前机器的网络
+MAC 地址）创建字母数字标识。<span class="msobjpropval">“全局唯一标识”</span>将创建超出
+HL7 标准所建议的 20 字符长度限制的标识。</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																患者类别</th>
+															<td valign="top" width="2*" class="invisible">
+																																								住院患者 I</td>
+															<td valign="top" width="*">
+																<p>系统使用患者类按地点对患者进行分类。患者类没有一致的行业范围定义，而是可以随地点不同而有所变化。所选参数值用于填充 HL7 ORU R01 患者就诊段 (PV1) 中的“患者类”字段 (PV1-2)。</p>
+
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	
+		
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="Id135e90e6810e068ec174ba9cf7e">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="Id135e90e6810e068ec174ba9cf7eTwisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="Id135e90e6810e068ec174ba9cf7eArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">查找患者标识</div>
+							
+							
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="Id135e90e6810e068ec174ba9cf7eContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">模式参数</th>
+													  <th class="invisible" valign="top" width="*">缺省值</th>
+													  <th valign="top" width="*">描述</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																创建 Web 服务</th>
+															<td valign="top" width="2*" class="invisible">
+																				选中</td>
+															<td valign="top" width="*">
+																<p>如果选中此参数，那么将生成其他的流，以实现用于管理患者标识数据库的 Web 服务。</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																数据源</th>
+															<td valign="top" width="2*" class="invisible">
+																				PATIENTSDSN
+															</td>
+															<td valign="top" width="*">
+																<p>此参数定义数据源名称，系统将在该数据源中查询患者标识。</p>
+<p>此参数为只读 - 显示此参数是为了突出显示必须为此模式配置的 ODBC 数据源名称。</p>
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																患者标识表</th>
+															<td valign="top" width="2*" class="invisible">
+																				PATIENTS
+															</td>
+															<td valign="top" width="*">
+																<p>此参数定义包含患者标识和设备标识的表。模式实例使用设备消息中的设备标识来查询这个表。对于每个与患者相关联的设备，在这个表中都应该存在相应的一行。</p>
+<p>此参数为只读 - 显示此参数是为了突出显示必须为此模式配置的数据库表。</p>
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	
+		
+
+			
+
+			
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="destination1">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="destination1Twisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="destination1Arrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">目标 EMR</div>
+							
+							
+
+									
+
+									
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="destination1Container">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">模式参数</th>
+													  <th class="invisible" valign="top" width="*">缺省值</th>
+													  <th valign="top" width="*">描述</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																目标类型</th>
+															<td valign="top" width="2*" class="invisible">
+																				通用</td>
+															<td valign="top" width="*">
+																																此参数定义目标应用程序的类型。此参数用于选择“发送方”流中的 GenericHL7Output 节点。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																目标标识</th>
+															<td valign="top" width="2*" class="invisible">
+																				EMR
+															</td>
+															<td valign="top" width="*">
+																																此参数定义目标的身份。在与目标相关的错误、报告和通知消息中，将使用此身份。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																目标设施</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																																此参数定义目标的设施。在与目标相关的错误、报告和通知消息中，将使用此设施。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																连接详细信息</th>
+															<td valign="top" width="2*" class="invisible">
+																																								localhost:2222
+															</td>
+															<td valign="top" width="*">
+																																此参数以 <span class="msobjpropval">hostname:port</span> 格式定义目标的 TCP/IP 连接。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																标准 MLLP</th>
+															<td valign="top" width="2*" class="invisible">
+																				选中</td>
+															<td valign="top" width="*">
+																																此参数确定是否使用 TCP/IP 和 MLLP 的缺省配置。缺省配置使用下列值：<ul>
+<li>超时：<span class="msobjpropval">60 秒</span></li>
+<li>前导 MLLP 字节：<span class="msobjpropval">0B</span></li>
+<li>定界符：<span class="msobjpropval">不适用</span></li>
+<li>重试限制：<span class="msobjpropval">3</span></li>
+<li>记录重试：<span class="msobjpropval">true</span></li>
+<li>验证：<span class="msobjpropval">false</span></li>
+</ul>
+<p>如果未选中此参数，那么用于定义非标准值的参数组将变为可见。</p>
+
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	
+		
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="destinationCommunications1">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="destinationCommunications1Twisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="destinationCommunications1Arrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">目标通信</div>
+							
+							
+
+									
+
+									
+
+									
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="destinationCommunications1Container">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">模式参数</th>
+													  <th class="invisible" valign="top" width="*">缺省值</th>
+													  <th valign="top" width="*">描述</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																超时（秒）</th>
+															<td valign="top" width="2*" class="invisible">
+																				60
+															</td>
+															<td valign="top" width="*">
+																																此参数定义目标的超时值（以秒计）。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																前导 MLLP 字节</th>
+															<td valign="top" width="2*" class="invisible">
+																				0B
+															</td>
+															<td valign="top" width="*">
+																																此参数定义对出局记录添加的前导 MLLP 字节。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																结尾 MLLP 字节</th>
+															<td valign="top" width="2*" class="invisible">
+																				1C0D
+															</td>
+															<td valign="top" width="*">
+																																此参数定义定界符。此值必须采用十六进制格式。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																重试限制</th>
+															<td valign="top" width="2*" class="invisible">
+																				3
+															</td>
+															<td valign="top" width="*">
+																																此参数定义“发送方”流尝试将 HL7 消息交付给目标应用程序的次数。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																记录重试</th>
+															<td valign="top" width="2*" class="invisible">
+																				选中</td>
+															<td valign="top" width="*">
+																																此参数确定是否对每次交付消息的尝试进行记录。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																验证</th>
+															<td valign="top" width="2*" class="invisible">
+																				无</td>
+															<td valign="top" width="*">
+																																此参数确定是否根据 HL7 消息集对消息进行验证。</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	
+		
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="Options">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="OptionsTwisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="OptionsArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">选项</div>
+							
+							
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="OptionsContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">模式参数</th>
+													  <th class="invisible" valign="top" width="*">缺省值</th>
+													  <th valign="top" width="*">描述</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																日志记录</th>
+															<td valign="top" width="2*" class="invisible">
+																				标准</td>
+															<td valign="top" width="*">
+																																此参数确定日志记录选项。有效值包括：<ul>
+<li><span class="msobjpropval">无</span>：不进行日志记录。如果模式用户希望使用源订阅源对自己的需求执行日志记录，那么也可以使用此选项。</li>
+<li><span class="msobjpropval">标准</span>：使用此模式定义的标准头信息生成每条消息的副本。此副本将发布到 <span class="filepath"><i>PatternInstance</i>/Journal</span> 主题，或者写入由<span class="msobjpropval">“发布”</span>参数确定的日志队列。</li>
+</ul>
+
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																规范订阅源</th>
+															<td valign="top" width="2*" class="invisible">
+																				取消选中</td>
+															<td valign="top" width="*">
+																																此参数确定是否生成采用规范格式的消息副本。如果选中此参数，那么<span class="msobjprop">“发布”</span>参数确定此消息副本是发送到
+<span class="filepath"><i>PatternInstance</i>.CAN</span> 队列还是发送到
+<span class="filepath"><i>PatternInstance</i>/Canonical</span> 主题。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																发布</th>
+															<td valign="top" width="2*" class="invisible">
+																				发布</td>
+															<td valign="top" width="*">
+																																此参数确定是发布日志消息、其余消息和其他报告，还是将这些消息和报告写入队列。</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	
+		
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+	
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="Id12a383eb725f0e18b3e15d717fa">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="Id12a383eb725f0e18b3e15d717faTwisty">
+								<img src="../images/twistyclosed.png"
+									name="b" id="Id12a383eb725f0e18b3e15d717faArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">常规</div>
+							
+							
+
+									
+
+									
+
+									
+
+									
+
+									
+
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="Id12a383eb725f0e18b3e15d717faContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">模式参数</th>
+													  <th class="invisible" valign="top" width="*">缺省值</th>
+													  <th valign="top" width="*">描述</th>
+												</tr>
+											</thead>
+											<tbody>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																描述</th>
+															<td valign="top" width="2*" class="invisible">
+																																								医疗设备到 EMR 模式</td>
+															<td valign="top" width="*">
+																																此参数定义所生成的流的用途，并且可以包括您需要的任何详细信息。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																队列前缀</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																																此参数定义要用作队列名称前缀的字符串。标准队列将使用此前缀和标准后缀集进行创建。
+<p>如果将此参数保留为空，那么将对模式实例名进行处理以除去非字母数字字符，然后将处理后的模式实例名用作队列前缀。</p>
+
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																流前缀</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																																此参数定义一个字符串，此字符串将添加到生成的模式实例中每个主消息流的名称开头。此字符串可以帮助在报告和监视环境中标识模式实例的组件。
+<p>如果将此参数保留为空，那么将对模式实例名进行处理以除去非字母数字字符，然后将处理后的模式实例名用作流前缀。</p>
+
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																可配置的服务前缀</th>
+															<td valign="top" width="2*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																																此参数定义要用作可配置服务名称前缀的字符串。<p>如果将此参数保留为空，那么将对模式实例名进行处理以除去非字母数字字符，然后将处理后的模式实例名用作可配置服务名称。</p>
+
+															</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																生成脚本</th>
+															<td valign="top" width="2*" class="invisible">
+																				选中</td>
+															<td valign="top" width="*">
+																																此参数确定是否生成 MQSC 部署脚本。</td>
+														</tr>
+
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																																跟踪文件名</th>
+															<td valign="top" width="2*" class="invisible">
+																				tracefile.txt
+															</td>
+															<td valign="top" width="*">
+																																此参数定义跟踪输出所要发送到的文件的名称（包括路径）。如果未提供路径，那么跟踪文件将写入 IBM Integration Bus 安装的整个机器的工作路径目录。在 Windows 上，缺省工作路径目录为 <span class="filepath">C:\ProgramData\Application Data\IBM\MQSI</span>。在 Linux 上，缺省工作路径目录为 <span class="filepath">/var/mqsi</span>。
+</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+
+
+
+
+
+
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	<div id="footnotes" class="invisible">
+		<div class="box first">
+			<div class="TitleBox"><!-- --></div>
+			<div class="FooterBox"><!-- --></div>
+			<div class="TL"><!-- --></div>
+			<div class="TR"><!-- --></div>
+			<div class="BL"><!-- --></div>
+			<div class="BR"><!-- --></div>
+			<div class="ContentBox">
+				<div class="invisible" >
+					<p class="shortdesc">所有模式参数均随其缺省值一起列出。					未指示缺省值时，表明缺省值是空字符串。</p>
+				</div>
+								<a href="overview.htm#anchorBack" title="返回">返回到“医疗设备到 EMR”模式规范</a><p></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="com.ibm.etools.mft.fcb.dndContributor">
+      <contributor
+            class="com.ibm.etools.mft.dotnet.contributor.DotNETDndContributor"
+            dndResourceExtension="exe">
+         <dndNode
+               dndNodeTypeId="ComIbmDotNetCompute.msgnode"></dndNode>
+         <dndNode
+               dndNodeTypeId="ComIbmCompute.msgnode"></dndNode>
+         <dndNode
+               dndNodeTypeId="ComIbmDotNetInput.msgnode"></dndNode>
+      </contributor>
+      <contributor
+            class="com.ibm.etools.mft.dotnet.contributor.DotNETDndContributor"
+            dndResourceExtension="dll">
+         <dndNode
+               dndNodeTypeId="ComIbmDotNetCompute.msgnode"></dndNode>
+         <dndNode
+               dndNodeTypeId="ComIbmCompute.msgnode"></dndNode>
+         <dndNode
+               dndNodeTypeId="ComIbmDotNetInput.msgnode"></dndNode>
+      </contributor>
+   </extension>
+   
+   <!-- .NET Application Domain Project Nature -->
+   <extension
+         id="dotNetNature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run class="com.ibm.etools.mft.dotnet.project.nature.DotNetNature"/>
+      </runtime>
+   </extension>
+	<!-- .NET Application Domain Project Nature Folder Overlay -->
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/full/obj16/dotnet_ovr.gif"
+            id="dotNetNatureImage"
+            natureId="com.ibm.etools.mft.dotnet.dotNetNature"/>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="com.ibm.etools.mft.wizards.mbappdevcat"
+            id="com.ibm.etools.mft.dotnet.wizard1"
+            finalPerspective="com.ibm.etools.mft.perspectives.BrokerDevelopmentPerspective"
+            class="com.ibm.etools.mft.dotnet.wizard.NewDotNETProjectWizard1"
+            icon="icons/full/obj16/dotnet.gif"
+            name="%NewAppDomainProjectWizard.name"
+            project="true">
+         <description>
+            %NewAppDomainProjectWizard.description
+         </description>
+      </wizard>
+      <wizard
+            id="com.ibm.etools.mft.dotnet.wizard2"
+            class="com.ibm.etools.mft.dotnet.wizard.NewDotNETProjectWizard2"
+            icon="icons/full/obj16/dotnet.gif"
+            name="%NewAppDomainProjectWizard.name"
+            project="true">
+         <description>
+            %NewAppDomainProjectWizard.description
+         </description>
+      </wizard>
+   </extension>
+</plugin>

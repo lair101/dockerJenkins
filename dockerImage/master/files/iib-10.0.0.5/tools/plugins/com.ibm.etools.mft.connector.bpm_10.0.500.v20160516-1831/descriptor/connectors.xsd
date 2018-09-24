@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://www.ibm.com/mb/connector" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:common="http://www.ibm.com/mb/commonmodel" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.ibm.com/mb/connector">
+
+    <xsd:import namespace="http://www.ibm.com/mb/commonmodel" schemaLocation="commonmodel.xsd"/>
+    <xsd:annotation>
+ 	   <xsd:documentation xml:lang="en">
+ 	  		Root element that defines connector discovery configuration
+ 	   </xsd:documentation>
+    </xsd:annotation>
+ 	<xsd:element name="discoveries" type="discoveries"/>
+
+
+    <xsd:complexType name="runtimeConfiguration">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+            	Defines connector configuration that is used to interact with the remote system described by the
+            	connector metadata. This configuration can be used at the runtime to invoke the remote system.
+            	It can also be used by the toolkit test environment to interact with the remote system while testing
+            	and debugging applications using the connector.
+            	It defines JAR files and Libraries required by the connector to connect to the remote systems,
+            	custom properties that may be required to configure the installed connector.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+			<xsd:element name="version" type="xsd:token"/>
+			<xsd:element name="parentCategory" type="common:category"/>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="Jars">
+                <xsd:complexType>
+                    <xsd:sequence>
+			            <xsd:element name="path" type="xsd:string"/>
+            			<xsd:element name="jarName" type="xsd:token"/>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="Libraries">
+                <xsd:complexType>
+                    <xsd:sequence>
+			            <xsd:element name="path" type="xsd:string"/>
+            			<xsd:element name="libName" type="xsd:string"/>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="configParameter">
+                <xsd:complexType>
+                    <xsd:sequence>
+			            <xsd:element name="key" type="xsd:string"/>
+            			<xsd:element name="value" type="xsd:token"/>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="outputGroup">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+            	Container for connector parameters used to configure the serialization target
+            	for the output files created as a result of the connector discovery.
+            	It helps to define the target container or project type	and container relative file path. 
+            	It also allows to define a custom group of parameters
+            	that can be specified by the user to serialize the output in a way supported by the
+            	connector discovery. 
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+   	        <xsd:element name="id" type="xsd:token"/>
+   	        <xsd:element minOccurs="1" name="containerType" type="containerEnum"/>
+   	        <xsd:element minOccurs="0" name="relativePath" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="group" type="common:group"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="discoveries">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+            	Defines discoveries supported by the connector.
+            	The element "resourceBundleTemplate" defines relative path and file name for the NL resource bundle.
+            	The element "modelVersion" defines the version of the connector model. Will be used by the authoring tool to generate the plugins
+            	The element "plugins" defines the generated plugin information that contain the connector code and model. Will be used by the authoring tool to generate the plugins
+            	The element "directionSelectionRequired" defines if the Inbound/Outbound selection is required by the discovery model. If the discovery only generates the artifacts that can only be used
+            	for outbound or only for inbound interaction then the selection is not required.
+            	The element "writeSensitiveData" defines if the sensitive user data can be serialized to the configuration artifacts. The data will be written in an encrypted format when the property 
+            	is set to true.
+            	The element "specification" points to the HTML description for this particular discovery.
+            	The element "discoveryGroups" contains the reference to the list of configuration properties describing the discovery process.
+            	The element "searchTree" describes the static part of the search tree.
+            	The element "sharedEnums" describes the enumerations that can be shared by multiple configuration parameters groups.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+        	<xsd:element name="resourceBundleTemplate" type="xsd:token"/>
+        	<xsd:element name="modelVersion" type="xsd:token"/>
+			<xsd:element minOccurs="0" name="plugins" type="common:plugins"/>
+		 	<xsd:element minOccurs="0" name="runtimeConfiguration" type="runtimeConfiguration"/>
+		 	<xsd:element minOccurs="0" name="writeSensitiveData" type="xsd:boolean" default="true" />
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="discovery">
+                <xsd:complexType>
+                    <xsd:sequence>
+						<xsd:element name="id" type="xsd:token"/>
+                        <xsd:element minOccurs="0" name="testConnectionEnabled" type="xsd:boolean" default="false" />
+                        <xsd:element name="discoveryType" type="discoveryTypeEnum" default="structured"/>
+                        <xsd:element name="discoveryGroups" type="discoveryGroups"/><!-- Discovery groups and properties -->
+                        <xsd:element minOccurs="0" name="searchTree" type="searchTree"/>
+                        <xsd:element minOccurs="0" name="sharedEnums" type="common:enums"/>
+                        <xsd:element minOccurs="0" name="specification" type="common:specification"/> <!-- Details and description of the discovery process -->
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+<!-- Search Tree Definition -->    
+    <xsd:complexType name="searchTree">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+            	Defines search tree structure supported by the connector. It can be used by the connector 
+            	developer to define the static model for the tree if possible. Otherwise it can be used to
+            	define the initial tree structure. The connector class may then populate it 
+            	with the tree elements from the remote system in the executeQuery() method.
+            	Or the tree can be built dynamically without using specifying this part of the connector 
+            	model definition. 
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+        	<!-- This element specifies the maximum number of selectable tree nodes. 
+        	By default the number of nodes is unlimited -->
+       		<xsd:element maxOccurs="1" minOccurs="0" name="selectionEnablement">
+        		<xsd:complexType>
+            		<xsd:sequence>
+            			<!-- This element defines default selection limit for the tree -->
+		        		<xsd:element minOccurs="0" maxOccurs="1" name="defaultSelectionLimit" type="xsd:integer"/>
+		        		<xsd:element maxOccurs="unbounded" minOccurs="0" name="valueChange">
+        					<xsd:complexType>
+            					<xsd:sequence>
+            						<xsd:element minOccurs="1" maxOccurs="1" name="parameterName" type="xsd:token"/>
+            						<xsd:element minOccurs="1" maxOccurs="1" name="parameterValue" type="xsd:token"/>
+            						<xsd:element minOccurs="1" maxOccurs="1" name="maxSelectionLimit" type="xsd:integer"/>
+            					</xsd:sequence>
+		    				</xsd:complexType>
+        				</xsd:element>
+		       		</xsd:sequence>
+		    	</xsd:complexType>
+        	</xsd:element>
+            <xsd:element maxOccurs="unbounded" 
+            	minOccurs="0" name="root" type="configurableNode">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+   <xsd:complexType name="configurableNode">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+            	Defines search tree elements supported by the connector.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+ 			<xsd:element name="id" type="xsd:token"/>
+            <xsd:element name="displayName" type="common:translatableText"/>
+			<xsd:element name="selectable" type="xsd:boolean"/>
+			<xsd:element minOccurs="0" name="configuration" type="selectedObjectGroup"/>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" 
+            	name="childElement" type="configurableNode"/>
+        </xsd:sequence>
+   </xsd:complexType>
+   
+<!-- END: Search Tree Definition -->    
+
+     
+   <xsd:complexType name="discoveryGroups">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+            	Defines discovery model definition sections supported by the connector.
+            	The 'discoveryProperties' element defines the connection properties 
+            	used to connect the to the remote system at the discovery time. 
+            	The 'filterProperties' element defines the properties used to filter the tree
+            	contents. User can update the filter properties to see only the tree nodes that 
+            	match filtering criteria. 
+            	The 'selectedObjectProperties' defines the configuration properties for each selectable
+            	object type. When the object is added to the selection list user will be prompted to
+            	enter the object configuration properties. For example these properties can be used to configure the
+            	connector specific annotations on the output XSD files that define the selected data objects.
+            	The 'selectionProperties' element defines the properties describing the complete selection that would
+            	be used to describe the generated service interface. It may also contain the parameters applicable to overall
+            	service. For example it may allow user to specify the configuration parameters to be used to
+            	configure the WSDL binding attributes used by the connector.
+            	The 'runtimeConnectionProperties' element defines the runtime connection properties that are used 
+            	by the connector to  connect to the remote system at runtime.
+            	The 'outputGenerationProperties' element defines output generation properties used by the connector 
+            	to generate the output files using connector specific configuration parameters.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="discoveryProperties" type="discoveryGroup"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="filterProperties" type="discoveryGroup"/>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="selectedObjectProperties" type="selectedObjectGroup"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="selectionProperties" type="discoveryGroup"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="runtimeConnectionProperties" type="discoveryGroup"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="outputGenerationProperties" type="outputGroup"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+   <xsd:complexType name="discoveryGroup">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+            	Defines groups containing the connection properties used by the discovery process.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:token"/>
+            <xsd:element minOccurs="0" name="displayName" type="common:translatableText"/>
+            <xsd:element minOccurs="0" name="description" type="common:translatableText"/>
+            <xsd:element name="groups" type="common:groups"/><!-- groups of properties for the given group-->
+            <xsd:element minOccurs="0" name="specification" type="common:specification"/> <!-- Details and description of the discovery process -->
+        </xsd:sequence>
+   </xsd:complexType>
+
+  <xsd:complexType name="selectedObjectGroup">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+            	Defines the group of parameters applicable only for the specified node type.
+            	"nodeType" corresponds to the "type" element of the "node" complex type.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:token"/>
+            <xsd:element name="nodeName" type="xsd:token"/>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="nodeType" type="xsd:token"/>
+            <xsd:element minOccurs="0" name="dataConfiguration" type="common:group"/><!-- Properties for the selected object related to the data configuration -->
+            <xsd:element minOccurs="0" name="interactionConfiguration" type="common:group"/><!-- Properties for the selected object related to the interaction/operation configuration -->
+            <xsd:element minOccurs="0" maxOccurs="1" name="outputRef" type="outputReferenceEnum"/> <!-- This element maps the nodeType to the output kind that this element will be used for -->
+        </xsd:sequence>
+   </xsd:complexType>
+  
+    <xsd:simpleType name="discoveryTypeEnum">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+            	Describes the different types of discovery if we need different UI mechanism.
+            	structured - used by the wizard steps where the sequence of steps is important.
+            	unstructured - used by a discovery process where the steps sequence is irrelevant.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+        	<xsd:enumeration value="structured"/>
+            <xsd:enumeration value="unstructured"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="containerEnum">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+            	Describes the different types of container supported to write output
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+        	<xsd:enumeration value="library"/>
+            <xsd:enumeration value="application"/>
+            <xsd:enumeration value="serviceApplication"/>
+            <xsd:enumeration value="brokerProject"/>
+            <xsd:enumeration value="folder"/>
+            <xsd:enumeration value="uploadUrl"/>
+            <xsd:enumeration value="ftpUrl"/>
+            <xsd:enumeration value="any"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+   
+
+    <xsd:simpleType name="outputReferenceEnum">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+            	Describes the different types of mapping for the selectable nodes and their properties.
+            	For example: the node can be mapped to the WSDL element: port type, operation or it could be mapped to the
+            	XSD that defines operation input or output.
+           	</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+            <!-- Simple types used to validate the values specified by the user -->
+            <!-- default would be string -->
+            <xsd:enumeration value="wsdl_operation"/>
+            <xsd:enumeration value="wsdl_porttype"/>
+            <xsd:enumeration value="wsdl_operationInput"/>
+            <xsd:enumeration value="wsdl_operationOutput"/>
+            <xsd:enumeration value="xsd_type"/>
+            <xsd:enumeration value="xsd_element"/>
+            <xsd:enumeration value="wsdl_serviceEndpoint"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+</xsd:schema>

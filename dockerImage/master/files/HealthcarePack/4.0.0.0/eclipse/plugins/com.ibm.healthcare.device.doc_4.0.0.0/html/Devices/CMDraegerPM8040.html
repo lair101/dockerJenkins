@@ -1,0 +1,922 @@
+<html>  
+<head> 
+<title>CMDraegerPM8040 Driver Help</title>
+<!--CMDraegerPM8040 Driver - Copyright Cain Medical Ltd 2012 - www.cainmedcial.com-->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+tr.head1 {
+	background-color: #CCCCCC;
+}
+tr.head2 {
+	background-color: #EEEEEE;
+}
+td.head2 {
+	background-color: #EEEEEE;
+}
+h3 {
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../css/general.css"/>
+</head>
+
+<body>
+<h1>CMDraegerPM8040 </h1>
+<p><strong>Supported devices:</strong> Draeger PM8040<br>
+  Release 1.10.0.0<br>
+  Document reference: 1a</p>
+<p>Known issues:</p>
+<ul>
+  <li>None</li>
+  </ul>
+  <h1>Computer Connection </h1>
+  
+<!-- <p><img src="Pic-Front.JPG" > 
+ ## <img src="Pic-Rear.JPG" width="401" height="142"> </p> -->
+
+<p>The driver supports the RS232 connection.</p>
+<p>Please read the following description carefully and ensure the cable in use matches the monitor. </p>
+
+<p><strong>Connectors on Port 1</strong></p>
+
+  <p>Computer connection location: rear side of PM8040 Label: Rec.</p>
+
+
+  <tr>
+    <p>Type RS-232-C 15 pin Sub D (female)</p>
+    <td> </td>
+  </tr>
+  <tr>
+  <table border="0">
+  <tr> 
+    <td class="head2">Housing</td>
+    <td>Shield on connector's housing</td>
+  </tr>
+  <tr> 
+    <td class="head2">RxD</td>
+    <td>10</td>
+  </tr>  
+  <tr> 
+    <td class="head2">TxD</td>
+    <td>11</td>
+  </tr>
+  <tr> 
+    <td class="head2">GND</td>
+    <td>12</td>
+  </tr>
+  <tr> 
+    <td class="head2">Cable</td>
+    <td>1.5kV galvanic isolation</td>
+  </tr>
+</tr>
+    </table>
+ 
+ <p><strong>Connectors on Port 2 (default port)</strong></p>
+ 
+ <p>Computer connection location: rear side of PM8040 Label: Com.</p>
+ 
+ <p>The cable is a straight-through cable and should be wired as follows: </p>
+  <tr>
+    <p>Type RS-232-C 9 pin Sub D (female)</p>
+    <td> </td>
+  </tr>
+  <tr>
+  <table border="0">
+  <tr> 
+    <td class="head2">Housing</td>
+    <td>Shield on connector's housing</td>
+  </tr>
+  <tr> 
+    <td class="head2">RxD</td>
+    <td>6</td>
+  </tr>  
+  <tr> 
+    <td class="head2">TxD</td>
+    <td>7</td>
+  </tr>
+  <tr> 
+    <td class="head2">GND</td>
+    <td>4</td>
+  </tr>
+  <tr> 
+    <td class="head2">Cable</td>
+    <td>1.5kV galvanic isolation</td>
+  </tr>
+</tr>
+    </table>
+ 
+ 
+ 
+
+<h2>Supported communication parameters: </h2>
+
+<p>Port Configuration (both ports independent):</p>
+
+<table border="0">
+  <tr> 
+    <td class="head2">Baud rate</td>
+    <td>1200</td>
+  </tr>
+  <tr> 
+    <td class="head2">Parity</td>
+    <td>E</td>
+  </tr>
+  <tr> 
+    <td class="head2">Data bits</td>
+    <td>8</td>
+  </tr>
+  <tr> 
+    <td class="head2">Start bits</td>
+    <td>1</td>
+  </tr>
+  <tr> 
+    <td class="head2">Stop bits</td>
+    <td>1</td>
+  </tr>
+</table>
+
+
+<p>Port 2 is the default port where MEDIBUS is installed by
+factory. MEDIBUS can be installed only on one port at a
+time. </p>
+<p>When MEDIBUS is installed on either port it is
+automatically uninstalled from the other port.</p>
+
+
+
+
+<h1>Supported Data Parameters </h1>
+
+
+<!-- Inset Parameter HTML Code -->
+  
+<table >
+  <tr class="head1"> 
+    <td colspan="2">ID</td>
+    <td>Sources</td>
+    <td>Acronym</td>
+    <td>Common Term</td>
+    <td>Description</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Primary</td>
+    <td>1076:887-905-999:1059:1060</td>
+    <td rowspan='2'></td>
+    <td>NIBP CUFF ERP</td>
+    <td>Cuff improperly placed</td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:955-1032:1054:1060</td>
+    <td rowspan='2'></td>
+    <td>ALARM OFF</td>
+    <td>Alarm off</td>
+    <td>Indication: Alarm intentionally off (disabled)</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:331-660:302:502</td>
+    <td>SaO2</td>
+    <td>None</td>
+    <td>arterial oxygen saturation</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:331-660:302:502</td>
+    <td>SaO2</td>
+    <td>None</td>
+    <td>arterial oxygen saturation</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:331-660:302:502</td>
+    <td>SaO2</td>
+    <td>None</td>
+    <td>arterial oxygen saturation</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:371-712:169:263</td>
+    <td>NIBP (sys)</td>
+    <td>Noninvasive Systolic Blood Pressure</td>
+    <td>Pressure of the blood, obtained noninvasively (i.e. Fingertip), at the systolic phase</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:371-712:169:263</td>
+    <td>NIBP (sys)</td>
+    <td>Noninvasive Systolic Blood Pressure</td>
+    <td>Pressure of the blood, obtained noninvasively (i.e. Fingertip), at the systolic phase</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'>1, 2</td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:346-360-671:169:263</td>
+    <td>IBP(dia)</td>
+    <td>Invasive blood pressure diastolic</td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'>1, 2</td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:346-360-671:169:263</td>
+    <td>IBP(dia)</td>
+    <td>Invasive blood pressure diastolic</td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'>1, 2</td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:137-346-360:169:263</td>
+    <td>IBP(mean)</td>
+    <td>Invasive blood pressure mean</td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'>1, 2</td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:137-346-360:169:263</td>
+    <td>IBP(mean)</td>
+    <td>Invasive blood pressure mean</td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'>1, 2</td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:346-360-712:169:263</td>
+    <td>IBP(sys)</td>
+    <td>Invasive blood pressure systolic</td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:955-1032:1054:1060</td>
+    <td rowspan='2'>1, 2</td>
+    <td>ALARM OFF</td>
+    <td>Alarm off</td>
+    <td>Indication: Alarm intentionally off (disabled)</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:346-360:169:263</td>
+    <td>IBP</td>
+    <td>Invasive Blood Pressure</td>
+    <td>Invasive blood pressure</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'>1, 2</td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:346-360-712:169:263</td>
+    <td>IBP(sys)</td>
+    <td>Invasive blood pressure systolic</td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>1076:912-931-1020:1053:1060</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>ECG lead disconnected</td>
+    <td>Error Event: (ECG) Lead Disconnected (specialized form of the generic Disconnect. In case of ECG, some ECG devices reconstruct leads when a single lead of a multilead cable falls off. This needs a special user notification, because the situation might not be visible on the display waves Reasoning: see above)</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:931-1032-1035:1057:1060</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>ECG alarm disabled</td>
+    <td>Status: All ECG Alarms are off (still need these in France to meet French homologation, despite MDD)</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>101:434-667:203:263</td>
+    <td>HR</td>
+    <td>Heart rate (ECG)</td>
+    <td>Heart rate measured from ECG</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>101:434-667:203:263</td>
+    <td>HR</td>
+    <td>Heart rate (ECG)</td>
+    <td>Heart rate measured from ECG</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower Limit Alarm Alert</td>
+    <td>Lower alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>101:455:173:261</td>
+    <td>RR (interval)</td>
+    <td>Respiration Rate</td>
+    <td>Rate of breathing, method not specified</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper Limit Alarm Alert</td>
+    <td>Upper alarm limit exceeded</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>101:455:173:261</td>
+    <td>RR (interval)</td>
+    <td>Respiration Rate</td>
+    <td>Rate of breathing, method not specified</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>109:::260</td>
+    <td rowspan='2'>1, 2</td>
+    <td>T</td>
+    <td>Temperature</td>
+    <td>Temperature - unspecified measurement of patient</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>107:955-1032:1054:1060</td>
+    <td rowspan='2'></td>
+    <td>ALARM OFF</td>
+    <td>Alarm off</td>
+    <td>Indication: Alarm intentionally off (disabled)</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>101:455:173:261</td>
+    <td>RR (interval)</td>
+    <td>Respiration Rate</td>
+    <td>Rate of breathing, method not specified</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:331-660:224:502</td>
+    <td>SpO2</td>
+    <td>SpO2</td>
+    <td>Peripheral oxygen saturation measurements</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>79:331-660:224:502</td>
+    <td>SpO2</td>
+    <td>SpO2</td>
+    <td>Peripheral oxygen saturation measurements</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>101:371:224-226:263</td>
+    <td rowspan='2'></td>
+    <td>SpO2 PR</td>
+    <td>Pulse rate measured by SpO2 sensor</td>
+    <td>Noninvasive pulse rate measured by SpO2 sensor</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>79:331-660:224:502</td>
+    <td rowspan='2'></td>
+    <td>SpO2</td>
+    <td>SpO2</td>
+    <td>Peripheral oxygen saturation measurements</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:371-712:169:263</td>
+    <td>NIBP (sys)</td>
+    <td>Noninvasive Systolic Blood Pressure</td>
+    <td>Pressure of the blood, obtained noninvasively (i.e. Fingertip), at the systolic phase</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:371-712:169:263</td>
+    <td rowspan='2'></td>
+    <td>NIBP (sys)</td>
+    <td>Noninvasive Systolic Blood Pressure</td>
+    <td>Pressure of the blood, obtained noninvasively (i.e. Fingertip), at the systolic phase</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:371-712:169:263</td>
+    <td>NIBP (sys)</td>
+    <td>Noninvasive Systolic Blood Pressure</td>
+    <td>Pressure of the blood, obtained noninvasively (i.e. Fingertip), at the systolic phase</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>101:360:169-226:263</td>
+    <td>HR (IBP)</td>
+    <td>Heart rate from invasive blood pressure</td>
+    <td>Heart rate measured by invasive blood pressure probe</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:371-671:169:263</td>
+    <td rowspan='2'></td>
+    <td>NIBP (dia)</td>
+    <td>Noninvasive Diastolic Blood Pressure</td>
+    <td>Pressure of the blood, obtained noninvasively (i.e. Fingertip), at the diastolic phase</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:371-671:169:263</td>
+    <td>NIBP (dia)</td>
+    <td>Noninvasive Diastolic Blood Pressure</td>
+    <td>Pressure of the blood, obtained noninvasively (i.e. Fingertip), at the diastolic phase</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:371-671:169:263</td>
+    <td>NIBP (dia)</td>
+    <td>Noninvasive Diastolic Blood Pressure</td>
+    <td>Pressure of the blood, obtained noninvasively (i.e. Fingertip), at the diastolic phase</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:137-371:169:263</td>
+    <td rowspan='2'></td>
+    <td>NIBP (mean)</td>
+    <td>Noninvasive Mean Blood Pressure</td>
+    <td>Pressure of the blood, obtained noninvasively (i.e. Fingertip), as computed by averaging on one cycle</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:137-371:169:263</td>
+    <td>NIBP (mean)</td>
+    <td>Noninvasive Mean Blood Pressure</td>
+    <td>Pressure of the blood, obtained noninvasively (i.e. Fingertip), as computed by averaging on one cycle</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:137-371:169:263</td>
+    <td>NIBP (mean)</td>
+    <td>Noninvasive Mean Blood Pressure</td>
+    <td>Pressure of the blood, obtained noninvasively (i.e. Fingertip), as computed by averaging on one cycle</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>101:360:169-226:263</td>
+    <td>HR (IBP)</td>
+    <td>Heart rate from invasive blood pressure</td>
+    <td>Heart rate measured by invasive blood pressure probe</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'>1, 2</td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:346-360-712:169:263</td>
+    <td>IBP(sys)</td>
+    <td>Invasive blood pressure systolic</td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>101:360:169-226:263</td>
+    <td rowspan='2'></td>
+    <td>HR (IBP)</td>
+    <td>Heart rate from invasive blood pressure</td>
+    <td>Heart rate measured by invasive blood pressure probe</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'>1, 2</td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:346-360-712:169:263</td>
+    <td>IBP(sys)</td>
+    <td>Invasive blood pressure systolic</td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:346-360-712:169:263</td>
+    <td rowspan='2'>1, 2</td>
+    <td>IBP(sys)</td>
+    <td>Invasive blood pressure systolic</td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'>1, 2</td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:137-346-360:169:263</td>
+    <td>IBP(mean)</td>
+    <td>Invasive blood pressure mean</td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'>1, 2</td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:137-346-360:169:263</td>
+    <td>IBP(mean)</td>
+    <td>Invasive blood pressure mean</td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:137-346-360:169:263</td>
+    <td rowspan='2'>1, 2</td>
+    <td>IBP(mean)</td>
+    <td>Invasive blood pressure mean</td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'>1, 2</td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:346-360-671:169:263</td>
+    <td>IBP(dia)</td>
+    <td>Invasive blood pressure diastolic</td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>81::167:261</td>
+    <td rowspan='2'></td>
+    <td>A</td>
+    <td>Apnea Duration</td>
+    <td>Duration of apnea - no flow measured</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>99:346-360-671:169:263</td>
+    <td rowspan='2'>1, 2</td>
+    <td>IBP(dia)</td>
+    <td>Invasive blood pressure diastolic</td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'>1, 2</td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>99:346-360-671:169:263</td>
+    <td>IBP(dia)</td>
+    <td>Invasive blood pressure diastolic</td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:828:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Lower limit alarm setting</td>
+    <td>Setting of lower alarm limit</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>101:434:173:261</td>
+    <td>RR (interval)</td>
+    <td>Respiration Rate</td>
+    <td>Rate of breathing, origin: ECG</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>101:434:173:261</td>
+    <td rowspan='2'></td>
+    <td>RR (interval)</td>
+    <td>Respiration Rate</td>
+    <td>Rate of breathing, origin: ECG</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr>  <tr> 
+    <td class='head2'>Primary</td>
+    <td>833:825:827:823</td>
+    <td rowspan='2'></td>
+    <td></td>
+    <td>Upper limit alarm setting</td>
+    <td>Setting of a upper limit alarm</td>
+  </tr>
+  <tr> 
+    <td class='head2'>Sub</td>
+    <td>101:434:173:261</td>
+    <td>RR (interval)</td>
+    <td>Respiration Rate</td>
+    <td>Rate of breathing, origin: ECG</td>
+  </tr>
+  <tr><td colspan='6'><hr></td></tr></table>
+
+  
+<!-- End Parameter HTML Code -->
+  
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: dt.jar
+Bundle-Vendor: %Plugin.Provider
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: %Plugin.Name
+Bundle-SymbolicName: ilog.rules.dt;singleton:=true
+Require-Bundle: ilog.rules.brl.bal;bundle-version="[8.5.1,8.5.2)",ilog
+ .rules.vocabulary.model;bundle-version="[8.5.1,8.5.2)",ilog.rules.brl
+ .brldf;bundle-version="[8.5.1,8.5.2)",ilog.rules.brl.tokenmodel;bundl
+ e-version="[8.5.1,8.5.2)",ilog.rules.brl.parsing;bundle-version="[8.5
+ .1,8.5.2)",ilog.rules.language.shared;bundle-version="[8.5.1,8.5.2)"
+Export-Package: ilog.rules.dt,ilog.rules.dt.converter,ilog.rules.dt.co
+ py,ilog.rules.dt.error,ilog.rules.dt.expression,ilog.rules.dt.express
+ ion.compatibility,ilog.rules.dt.expression.compatibility.impl,ilog.ru
+ les.dt.migration,ilog.rules.dt.model,ilog.rules.dt.model.access,ilog.
+ rules.dt.model.check,ilog.rules.dt.model.check.contiguous,ilog.rules.
+ dt.model.check.expression,ilog.rules.dt.model.check.overlap,ilog.rule
+ s.dt.model.common,ilog.rules.dt.model.common.edit,ilog.rules.dt.model
+ .common.helper,ilog.rules.dt.model.common.impl,ilog.rules.dt.model.co
+ mmon.io,ilog.rules.dt.model.common.io.converter,ilog.rules.dt.model.d
+ atatable,ilog.rules.dt.model.debug,ilog.rules.dt.model.event,ilog.rul
+ es.dt.model.expression,ilog.rules.dt.model.grammar,ilog.rules.dt.mode
+ l.helper,ilog.rules.dt.model.html,ilog.rules.dt.model.impl,ilog.rules
+ .dt.model.provider,ilog.rules.dt.model.provider.parsing,ilog.rules.dt
+ .model.refactor,ilog.rules.dt.model.services,ilog.rules.dt.model.serv
+ ices.check,ilog.rules.dt.model.services.check.descriptor,ilog.rules.d
+ t.model.undo,ilog.rules.dt.model.xml,ilog.rules.dt.model.xml.converte
+ r,ilog.rules.dt.schema,ilog.rules.dt.tests,ilog.rules.dt.util,ilog.ru
+ les.dt.util.csv
+Bundle-Version: 8.5.1.201310300945
+Bundle-ManifestVersion: 2
+
+

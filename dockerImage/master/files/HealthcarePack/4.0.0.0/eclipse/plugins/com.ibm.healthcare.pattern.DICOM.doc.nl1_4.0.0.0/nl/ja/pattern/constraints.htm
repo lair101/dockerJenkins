@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja-jp" xml:lang="ja-jp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="copyright" content="Copyright IBM Corporation 2013, 2014"/>
+    <link rel="stylesheet" type="text/css" href="./css/pattern.css"/>
+    <!-- 
+    (C) COPYRIGHT International Business Machines Corp., 2013, 2014
+    All Rights Reserved * Licensed Materials - Property of IBM
+    --> 
+    <title>「Healthcare: Web service to DICOM」パターンの使用に関する制約</title>
+</head>
+<body role="main">
+<h1 class="topictitle1"><span>「Healthcare: Web service to DICOM」</span>パターンの使用に関する制約</h1>
+<div>
+    <p class="shortdesc">
+「Healthcare: Web service to DICOM」パターンを使用する場合に適用される制約は多数あります。
+</p>
+    <p>
+以下のすべての制約を満たす場合にのみ、<span>「Healthcare: Web service to DICOM」</span>パターンを使用できます。
+</p>
+    <ul>
+        <li>
+HTTP を介した SOAP メッセージとして要求を受け取る必要がある。
+</li>
+        <li>
+要求元アプリケーションが同期要求応答対話スタイルをサポートしている必要がある。
+</li>
+        <li>
+要求元アプリケーションが「Healthcare: Web service to DICOM」パターンによって定義される検索基準および結果の XML 形式をサポートしている必要がある。
+</li>
+        <li>
+DICOM インスタンスが宛先アプリケーションに移動される場合、DICOM PACS が C-MOVE コマンドをサポートしている必要がある。
+</li>
+        <li>
+DICOM PACS が C-FIND コマンドに対して患者か研究照会ルートのいずれかをサポートしている必要がある。
+</li>
+        <li>
+ロギング処理かエラー処理が必要な場合、「Healthcare: Web service to DICOM」パターンで使用されるフォーマットが要件を満たしていると想定される。
+</li>
+    </ul>
+</div>
+<p>
+<a href="overview.htm#anchor1" title="戻る">「Healthcare: Web service to DICOM」パターンの仕様に戻る</a>
+    </p>
+</body>
+</html>

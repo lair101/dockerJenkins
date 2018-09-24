@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ibm.etools.mft.rad.esb"
+      label="%Feature.name"
+      version="9.1.1.I20141010_1515"
+      provider-name="IBM"
+      image="wsFeatUpdate.jpg">
+
+   <description>
+      %description
+   </description>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="com.ibm.etools.annotations.core"
+         download-size="0"
+         install-size="0"
+         version="1.0.302.v20141006_2148"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.j2ee.core.ws.ext"
+         download-size="0"
+         install-size="0"
+         version="6.2.305.v20141006_2148"/>
+
+   <plugin
+         id="com.ibm.etools.j2ee"
+         download-size="0"
+         install-size="0"
+         version="6.0.400.v20140114_2135"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.etools.javaee.core"
+         download-size="0"
+         install-size="0"
+         version="1.1.2.v20140114_2135"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.ws.ast.facets.core"
+         download-size="0"
+         install-size="0"
+         version="6.2.300.v20140114_2135"
+         unpack="false"/>
+
+   <plugin
+         id="com.ibm.jee.was.descriptors"
+         download-size="0"
+         install-size="0"
+         version="1.2.300.v20140114_2135"
+         unpack="false"/>
+
+</feature>

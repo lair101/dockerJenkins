@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<contexts>
+
+<!-- ===============================================================
+     Decision Service node bc23793_
+     =============================================================== -->
+
+<context id="ComIbmDecisionService">
+		<description>A decision service node executes a collection of business rules that use defined parameters.</description>
+        <topic href="../com.ibm.etools.mft.doc/bc23793_.htm" label="DecisionService node"/>	
+</context>
+
+</contexts>
